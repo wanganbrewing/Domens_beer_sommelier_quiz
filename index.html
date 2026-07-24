@@ -1,0 +1,6849 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ビアソムリエ総合 想定問題ウェブテスト（本科＋テイスティング）</title>
+<style>
+  :root{
+    --amber:#c8791a;
+    --amber-dark:#8a5211;
+    --cream:#fdf6e8;
+    --dark:#2b2013;
+    --line:#e6d7b8;
+    --good:#2e7d32;
+    --bad:#c62828;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:linear-gradient(180deg,#fbf1da 0%,#f3e4c2 100%);
+    color:var(--dark);
+    min-height:100vh;
+  }
+  .wrap{
+    max-width:800px;
+    margin:0 auto;
+    padding:24px 16px 60px;
+  }
+  header{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  header h1{
+    font-size:1.5rem;
+    margin:8px 0 4px;
+    color:var(--amber-dark);
+  }
+  header p{
+    margin:0;
+    font-size:0.85rem;
+    color:#6b5a3a;
+  }
+  .beer-icon{
+    font-size:2.2rem;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 4px 14px rgba(120,90,30,0.08);
+    margin-bottom:18px;
+  }
+  h2{
+    font-size:1.1rem;
+    color:var(--amber-dark);
+    margin-top:0;
+    border-bottom:2px solid var(--line);
+    padding-bottom:8px;
+  }
+  .mode-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    margin:14px 0;
+  }
+  .mode-item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    background:var(--cream);
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    cursor:pointer;
+    transition:border-color .15s, background .15s;
+  }
+  .mode-item:has(input:checked){
+    border-color:var(--amber);
+    background:#fbead0;
+  }
+  .mode-item input{
+    margin-top:3px;
+    transform:scale(1.15);
+  }
+  .mode-label{
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--dark);
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .mode-desc{
+    font-size:0.78rem;
+    font-weight:400;
+    color:#8a7550;
+  }
+  #cat-section{
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+    margin-top:4px;
+  }
+  .cat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:14px 0;
+  }
+  @media(max-width:520px){ .cat-grid{grid-template-columns:1fr;} }
+  .cat-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+  .cat-item input{transform:scale(1.1);}
+  .cat-count{color:#8a7550; font-size:0.78rem;}
+  .btn-row{
+    display:flex;
+    gap:10px;
+    margin:14px 0;
+    flex-wrap:wrap;
+  }
+  .btn-row button{
+    flex:1;
+    min-width:110px;
+  }
+  select, .btn{
+    font-family:inherit;
+    font-size:0.9rem;
+  }
+  button{
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+    padding:12px 18px;
+    font-size:0.95rem;
+    font-weight:600;
+    font-family:inherit;
+    transition:transform .1s, opacity .1s;
+  }
+  button:active{transform:scale(0.97);}
+  .btn-primary{
+    background:var(--amber);
+    color:#fff;
+    box-shadow:0 3px 0 var(--amber-dark);
+  }
+  .btn-primary:hover{opacity:0.92;}
+  .btn-secondary{
+    background:#eee1c4;
+    color:var(--dark);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--amber-dark);
+    border:1px solid var(--amber);
+  }
+  .full-btn{width:100%;}
+  .config-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:10px 0;
+    font-size:0.9rem;
+  }
+  .config-row select{
+    padding:6px 10px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  #screen-start .small-note{
+    font-size:0.78rem;
+    color:#8a7550;
+    margin-top:4px;
+  }
+  .exclude-row{
+    align-items:flex-start;
+  }
+  .exclude-label{
+    display:flex;
+    align-items:flex-start;
+    gap:6px;
+    font-size:0.85rem;
+    line-height:1.4;
+    cursor:pointer;
+  }
+  .exclude-label input{
+    margin-top:3px;
+    flex-shrink:0;
+  }
+  .link-btn{
+    background:none;
+    border:none;
+    color:var(--amber-dark);
+    font-size:0.78rem;
+    text-decoration:underline;
+    cursor:pointer;
+    white-space:nowrap;
+    padding:2px 0 0 8px;
+  }
+  .link-btn:hover{
+    color:var(--amber);
+  }
+  .history-panel{
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin:6px 0 10px;
+    background:var(--cream);
+  }
+  .history-panel.hidden{display:none;}
+  .history-list{
+    max-height:260px;
+    overflow-y:auto;
+    padding:4px 8px;
+  }
+  .history-empty{
+    padding:14px 8px;
+    font-size:0.82rem;
+    color:#8a7550;
+    text-align:center;
+  }
+  .history-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:8px 4px;
+    border-bottom:1px solid var(--line);
+    font-size:0.8rem;
+  }
+  .history-item:last-child{
+    border-bottom:none;
+  }
+  .history-item .h-text{
+    flex:1;
+    line-height:1.4;
+  }
+  .history-item .h-cat{
+    display:block;
+    font-size:0.7rem;
+    color:var(--amber-dark);
+    margin-bottom:2px;
+  }
+  .history-item .h-reset{
+    flex-shrink:0;
+    background:none;
+    border:1px solid var(--line);
+    color:#a1493f;
+    font-size:0.72rem;
+    padding:4px 9px;
+    border-radius:20px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .history-item .h-reset:hover{
+    background:#fbeceb;
+    border-color:#a1493f;
+  }
+
+  /* Quiz screen */
+  .progress-wrap{
+    background:#eee1c4;
+    border-radius:20px;
+    height:10px;
+    overflow:hidden;
+    margin-bottom:10px;
+  }
+  .progress-bar{
+    background:linear-gradient(90deg,var(--amber),#e0a545);
+    height:100%;
+    width:0%;
+    transition:width .3s;
+  }
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.8rem;
+    color:#6b5a3a;
+    margin-bottom:14px;
+  }
+  .meta-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .quit-btn{
+    background:none;
+    border:1px solid var(--line);
+    color:#a1493f;
+    font-size:0.72rem;
+    padding:4px 10px;
+    border-radius:20px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .quit-btn:hover{
+    background:#fbeceb;
+    border-color:#a1493f;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--cream);
+    border:1px solid var(--line);
+    color:var(--amber-dark);
+    font-size:0.72rem;
+    padding:3px 9px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .question-text{
+    font-size:1.05rem;
+    line-height:1.6;
+    margin:6px 0 18px;
+    font-weight:600;
+  }
+  .question-text .neg{
+    font-weight:800;
+    text-decoration:underline;
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    color:var(--bad);
+  }
+  .choice{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    font-size:0.92rem;
+    line-height:1.5;
+    color:var(--dark);
+    cursor:pointer;
+    font-family:inherit;
+    font-weight:600;
+    transition:transform .1s, opacity .1s;
+    user-select:text;
+    -webkit-user-select:text;
+    -moz-user-select:text;
+  }
+  .choice:hover:not(.disabled){border-color:var(--amber);}
+  .choice:active:not(.disabled){transform:scale(0.99);}
+  .choice.correct{
+    background:#e8f5e9;
+    border-color:var(--good);
+    color:#1b5e20;
+    font-weight:700;
+  }
+  .choice.incorrect{
+    background:#fdecea;
+    border-color:var(--bad);
+    color:#8e1c1c;
+    font-weight:700;
+  }
+  .choice.disabled{cursor:default;}
+  .choice:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  .explain{
+    margin-top:14px;
+    background:var(--cream);
+    border-left:4px solid var(--amber);
+    padding:12px 14px;
+    border-radius:8px;
+    font-size:0.86rem;
+    line-height:1.6;
+    display:none;
+  }
+  .explain.show{display:block;}
+  .nav-row{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .nav-row .btn-ghost{
+    padding:10px 18px;
+  }
+  .nav-row .btn-ghost:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+  }
+  .score-pill{
+    font-size:0.8rem;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:4px 12px;
+    color:var(--amber-dark);
+    font-weight:600;
+  }
+
+  /* Results */
+  .big-score{
+    text-align:center;
+    margin:8px 0 20px;
+  }
+  .big-score .num{
+    font-size:3rem;
+    font-weight:800;
+    color:var(--amber-dark);
+  }
+  .big-score .denom{
+    font-size:1.1rem;
+    color:#8a7550;
+  }
+  table.catscore{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.85rem;
+    margin-top:10px;
+  }
+  table.catscore th, table.catscore td{
+    text-align:left;
+    padding:7px 6px;
+    border-bottom:1px solid var(--line);
+  }
+  table.catscore th{color:#8a7550; font-weight:600;}
+  .bar-mini{
+    background:#eee1c4;
+    border-radius:6px;
+    height:8px;
+    overflow:hidden;
+    margin-top:3px;
+  }
+  .bar-mini > div{
+    background:var(--amber);
+    height:100%;
+  }
+  .review-item{
+    border-top:1px solid var(--line);
+    padding:12px 0;
+    font-size:0.86rem;
+  }
+  .review-item .q{font-weight:700; margin-bottom:6px;}
+  .review-item .ans-wrong{color:var(--bad);}
+  .review-item .ans-correct{color:var(--good);}
+  .hidden{display:none !important;}
+  footer{
+    text-align:center;
+    font-size:0.72rem;
+    color:#a2916c;
+    margin-top:30px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="beer-icon">🍺</div>
+    <h1>ビアソムリエ総合 想定問題ウェブテスト</h1>
+    <p>ビアソムリエ本科（1-7章）とテイスティング準備＆フレーバーホイールの配布資料から作成した想定問題集です</p>
+  </header>
+
+  <!-- START SCREEN -->
+  <div id="screen-start" class="card">
+    <h2>出題モードを選んでスタート</h2>
+
+    <div class="mode-grid" id="mode-grid">
+      <label class="mode-item">
+        <input type="radio" name="quizMode" value="freq" checked>
+        <span class="mode-label">頻出（推定）<span class="mode-desc">出題可能性が高いと推定した112問に絞って出題</span></span>
+      </label>
+      <label class="mode-item">
+        <input type="radio" name="quizMode" value="all">
+        <span class="mode-label">全問<span class="mode-desc">収録している全478問から出題</span></span>
+      </label>
+      <label class="mode-item">
+        <input type="radio" name="quizMode" value="category">
+        <span class="mode-label">カテゴリー選択<span class="mode-desc">分野を選んでその範囲から出題</span></span>
+      </label>
+    </div>
+
+    <div id="cat-section" class="hidden">
+      <div class="cat-grid" id="cat-grid"></div>
+      <div class="btn-row">
+        <button class="btn-ghost" id="selectAllBtn">全選択</button>
+        <button class="btn-ghost" id="selectNoneBtn">全解除</button>
+      </div>
+    </div>
+
+    <div class="config-row">
+      <span>出題数</span>
+      <select id="numQuestions">
+        <option value="10">10問</option>
+        <option value="20" selected>20問</option>
+        <option value="40">40問</option>
+        <option value="80">80問</option>
+        <option value="150">150問</option>
+        <option value="9999">選択範囲すべて</option>
+      </select>
+    </div>
+    <div class="config-row">
+      <span>出題順</span>
+      <select id="shuffleMode">
+        <option value="shuffle" selected>ランダム</option>
+        <option value="order">資料の並び順</option>
+      </select>
+    </div>
+    <div class="config-row exclude-row">
+      <label class="exclude-label">
+        <input type="checkbox" id="excludeCorrectChk">
+        過去に正解した問題を除外する（<span id="excludeCorrectCount">0</span>問が対象）
+      </label>
+      <button class="link-btn" id="resetHistoryBtn" type="button">全てリセット</button>
+    </div>
+    <div class="config-row" style="justify-content:flex-start;">
+      <button class="link-btn" id="manageHistoryBtn" type="button">正解履歴を1問ずつ管理する</button>
+    </div>
+    <div id="historyManagePanel" class="history-panel hidden">
+      <div id="historyList" class="history-list"></div>
+    </div>
+    <button class="btn-primary full-btn" id="startBtn" style="margin-top:14px;">テストを始める</button>
+    <p class="small-note" id="modeNote">全9分野・全386問収録。うち86問を「頻出（推定）」として選定しています。四択形式、回答直後に解説を表示します。</p>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="card hidden">
+    <div class="meta-row">
+      <span id="qIndexLabel">問題 1 / 20</span>
+      <div class="meta-right">
+        <span class="score-pill" id="scorePill">正解 0</span>
+        <button class="quit-btn" id="quitBtn" type="button">途中で終了</button>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    <span class="tag" id="catTag">分野</span>
+    <div class="question-text" id="questionText"></div>
+    <div id="choicesWrap"></div>
+    <div class="explain" id="explainBox"></div>
+    <div class="nav-row">
+      <button class="btn-ghost" id="prevBtn" disabled>&laquo; 前の問題へ</button>
+      <button class="btn-primary" id="nextBtn" disabled>次の問題へ</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="screen-result" class="card hidden">
+    <h2>結果</h2>
+    <div class="big-score">
+      <span class="num" id="finalScore">0</span><span class="denom" id="finalDenom"> / 0 問正解</span>
+    </div>
+    <table class="catscore" id="catScoreTable">
+      <thead><tr><th>分野</th><th>正解</th><th>正答率</th></tr></thead>
+      <tbody id="catScoreBody"></tbody>
+    </table>
+    <div id="reviewList" style="margin-top:18px;"></div>
+    <div class="btn-row" style="margin-top:18px;">
+      <button class="btn-secondary full-btn" id="retryBtn">もう一度挑戦する</button>
+    </div>
+    <div class="btn-row" style="margin-top:10px;">
+      <button class="link-btn" id="resetHistoryBtnResult" type="button">正解した問題の履歴をリセット</button>
+    </div>
+  </div>
+
+  <footer>DOEMENS Beer Sommelier 配布資料（本科1-7章＋テイスティング準備＆ビア・フレーバーホイール）に基づく非公式の学習用想定問題集です。実際の試験内容を保証するものではありません。<br>最終更新日：2026年7月24日 11:00</footer>
+</div>
+
+<script>
+/* ===================== 問題データ ===================== */
+const CATEGORIES = [
+  {
+    "id": "trends",
+    "name": "業界アップデート（原材料・ビアスタイル 2026）"
+  },
+  {
+    "id": "tasting_basics",
+    "name": "テイスティングとは（アロマ・味・口当たり）"
+  },
+  {
+    "id": "sensory_roles",
+    "name": "官能評価の4つの視点"
+  },
+  {
+    "id": "tasting_steps",
+    "name": "テイスティングの手順（10ステップ）"
+  },
+  {
+    "id": "flavorwheel",
+    "name": "ビア・フレーバーホイール"
+  },
+  {
+    "id": "overview",
+    "name": "ビール概論・法律・統計"
+  },
+  {
+    "id": "malt_hops",
+    "name": "原料：麦芽とホップ"
+  },
+  {
+    "id": "water_yeast",
+    "name": "原料：水と酵母"
+  },
+  {
+    "id": "sensory",
+    "name": "感覚生理学・官能評価"
+  },
+  {
+    "id": "germany",
+    "name": "ドイツビール"
+  },
+  {
+    "id": "uk",
+    "name": "英国ビール"
+  },
+  {
+    "id": "belgium",
+    "name": "ベルギービール"
+  },
+  {
+    "id": "usa",
+    "name": "アメリカビール"
+  },
+  {
+    "id": "others",
+    "name": "その他の国のビール"
+  }
+];
+
+const QUESTIONS = [
+  {
+    "cat": "trends",
+    "q": "水に関するアップデートとして正しいものはどれか。",
+    "choices": [
+      "水は限られた高価な資源になりつつある",
+      "水の使用量は年々増加している",
+      "最新の醸造設備は水を大量に使うことを推奨している",
+      "水は無尽蔵の資源であり懸念はない"
+    ],
+    "answer": 0,
+    "exp": "\"Water becomes a limited and expensive resource\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.4 Update Water）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "最新の醸造設備の傾向として正しいものはどれか。",
+    "choices": [
+      "節水（水の使用量削減）を重視している",
+      "より多くの水を使う方向にシフトしている",
+      "水質より価格を優先している",
+      "水の再利用を禁止している"
+    ],
+    "answer": 0,
+    "exp": "\"Modern brewing equipment focuses on water reduction\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.4）"
+  },
+  {
+    "cat": "trends",
+    "q": "麦芽(モルト)の新製品トレンドとして正しいものはどれか。",
+    "choices": [
+      "在来種（ヘリテージ）の大麦品種に注力している",
+      "遺伝子組み換え大麦の開発を全面的に中止した",
+      "ホップ由来の香りを添加した麦芽が主流になっている",
+      "大麦の使用をやめて小麦へ完全移行している"
+    ],
+    "answer": 0,
+    "exp": "\"New releases focus on heritage barley varieties\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.5 Update Malt）"
+  },
+  {
+    "cat": "trends",
+    "q": "新しい大麦品種の育種（ブリーディング）が重点を置いている課題は何か。",
+    "choices": [
+      "気候変動への対応",
+      "収穫量の削減",
+      "醸造時間の短縮",
+      "ラベルデザインの改善"
+    ],
+    "answer": 0,
+    "exp": "\"Breeding for new varieties focuses on climate change\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.5）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "モルト製造に関する米国・日本それぞれの動向として正しいものはどれか。",
+    "choices": [
+      "米国では国内でのモルト製造がトレンドになっており、日本でも小規模な国内モルト製造の動きがある",
+      "米国・日本ともにモルト製造を完全に海外委託する方向に転換した",
+      "日本ではモルト製造が法律で禁止された",
+      "米国ではモルト製造がすべて廃止された"
+    ],
+    "answer": 0,
+    "exp": "\"Domestic malting is trending in USA\" / \"Small domestic malting movement in Japan\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.5）"
+  },
+  {
+    "cat": "trends",
+    "q": "世界のモルト市場が苦しんでいる要因として挙げられているものはどれか。",
+    "choices": [
+      "ビール消費量の減少",
+      "大麦の豊作による供給過多",
+      "モルト製造技術の後退",
+      "為替レートの安定"
+    ],
+    "answer": 0,
+    "exp": "\"Global malt market suffers from decreased beer consumption\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.5）"
+  },
+  {
+    "cat": "trends",
+    "q": "日本のビール税制変更に伴う影響として説明されているものはどれか。",
+    "choices": [
+      "オールモルトビールが再び注目されるようになった",
+      "発泡酒の税率が引き下げられた",
+      "ビールの税率が撤廃された",
+      "麦芽比率の表示義務がなくなった"
+    ],
+    "answer": 0,
+    "exp": "\"Japanese beer taxation has changed leading to a focus on all malt beers again\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.5）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "米国のホップ栽培面積が縮小している要因として挙げられているものはどれか。",
+    "choices": [
+      "米国でのクラフトビール販売の減少",
+      "ホップの病害の世界的流行",
+      "ホップ農家の後継者不足",
+      "政府によるホップ栽培の規制強化"
+    ],
+    "answer": 0,
+    "exp": "\"Decrease in craft beer sales in USA reduces hop acreage in USA\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.6 Update Hop）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "米国のホップ生産者が再び注力している品種系統はどれか。",
+    "choices": [
+      "ビター系品種",
+      "完全な無香品種",
+      "ノンアルコール専用品種",
+      "遺伝子組み換え品種への完全移行"
+    ],
+    "answer": 0,
+    "exp": "\"US hop growers focus on bitter varieties again\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.6）"
+  },
+  {
+    "cat": "trends",
+    "q": "新しいホップ製品が注力している分野は何か。",
+    "choices": [
+      "高度な液体エキスやオイル",
+      "ペレットホップの廃止",
+      "ドライホップの禁止",
+      "ホップの缶詰化"
+    ],
+    "answer": 0,
+    "exp": "\"New hop products focus on advanced liquid extracts and oils\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.6）"
+  },
+  {
+    "cat": "trends",
+    "q": "世界のホップ市場が苦しんでいる要因は何か。",
+    "choices": [
+      "（クラフト）ビールの消費減少",
+      "ホップの生産コスト高騰による輸出減少",
+      "ホップ畑の水不足",
+      "新品種育種の停止"
+    ],
+    "answer": 0,
+    "exp": "\"Global hop market suffers from decreased (craft) beer consumption\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.6）"
+  },
+  {
+    "cat": "trends",
+    "q": "近年一定の人気を獲得しているとされる酵母はどれか。",
+    "choices": [
+      "クヴェイク酵母や希少なファームハウス酵母株",
+      "一般的なラガー酵母への回帰",
+      "パン用イーストへの転用",
+      "ワイン酵母との交配種"
+    ],
+    "answer": 0,
+    "exp": "\"Kveik yeast and rare farmhouse yeast strains gained some popularity\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.7 Update Yeast）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "新製品の酵母が注力している用途はどれか。",
+    "choices": [
+      "低アルコール・ノンアルコールビール向けの特殊酵母株",
+      "高アルコールビール専用の酵母株",
+      "天然酵母からGMO酵母への完全移行",
+      "酵母を使わない醸造法"
+    ],
+    "answer": 0,
+    "exp": "\"New releases focus on speciality yeast strains for low and non-alcohol beers\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.7）"
+  },
+  {
+    "cat": "trends",
+    "q": "米国で一定の人気を博しているとされる酵母株はどれか。",
+    "choices": [
+      "GMO酵母株",
+      "野生酵母株の使用禁止",
+      "ベルギー由来のトラピスト酵母への統一",
+      "加熱殺菌済みの酵母"
+    ],
+    "answer": 0,
+    "exp": "\"GMO strains have a certain popularity in the USA\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.7）"
+  },
+  {
+    "cat": "trends",
+    "q": "マッシュホッピング（Mash hopping）とは何を指すか。",
+    "choices": [
+      "マッシュ（仕込み工程）にホップを添加すること",
+      "発酵後にホップを添加すること",
+      "ボトリング時にホップオイルを噴霧すること",
+      "麦芽を乾燥させる工程でホップを混ぜること"
+    ],
+    "answer": 0,
+    "exp": "\"Mash hopping: Adding hops in the mash\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.8 Update Brewing）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "マッシュ中でチオール（およびその前駆体）を遊離させるために活用されるものは何か。",
+    "choices": [
+      "マッシュ中の酵素活性",
+      "追加の炭酸ガス",
+      "高濃度のアルコール",
+      "冷却装置の稼働"
+    ],
+    "answer": 0,
+    "exp": "\"Use enzyme activity in the mash to release thiol (& pre cursors)\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.8）"
+  },
+  {
+    "cat": "trends",
+    "q": "チオールを遊離させる酵母株として挙げられている2つの分類は何か。",
+    "choices": [
+      "天然株と遺伝子組み換え（GMO）株",
+      "上面発酵酵母と下面発酵酵母",
+      "液体酵母と乾燥酵母",
+      "高温発酵酵母と低温発酵酵母"
+    ],
+    "answer": 0,
+    "exp": "\"Thiols releasing yeast strains: Natural strains / GMO strains\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.8）"
+  },
+  {
+    "cat": "trends",
+    "q": "資料内で添加物（Additives）の例として名前が挙げられている製品はどれか。",
+    "choices": [
+      "Phantasm（ファンタズム）",
+      "Kveik",
+      "HSA",
+      "BBD"
+    ],
+    "answer": 0,
+    "exp": "資料p.8の添加物欄に「Phantasm」が挙げられている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.8）"
+  },
+  {
+    "cat": "trends",
+    "q": "World Beer Cup（WBC）で新たに専用カテゴリーが設けられたとされるものはどれか。",
+    "choices": [
+      "緑茶および紅茶",
+      "コーヒー",
+      "チョコレート",
+      "蜂蜜"
+    ],
+    "answer": 0,
+    "exp": "\"Dedicated green tea and tea category at WBC\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9 Update Beer Styles）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "国際的なビール市場における最大のトレンドとして挙げられているものはどれか。",
+    "choices": [
+      "低アルコール・ノンアルコールビール",
+      "高アルコールバーレイワイン",
+      "スモークビール",
+      "伝統的なピルスナーへの回帰"
+    ],
+    "answer": 0,
+    "exp": "\"Low and non-alcohol beers are the biggest trend in international beer\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "ドイツで最もトレンドとなっているスタイルとして挙げられているものはどれか。",
+    "choices": [
+      "ヘレス",
+      "デュンケル",
+      "ヴァイツェンボック",
+      "シュヴァルツビール"
+    ],
+    "answer": 0,
+    "exp": "\"Helles beer is the strongest trending style in Germany\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9）"
+  },
+  {
+    "cat": "trends",
+    "q": "米国クラフトビール市場で人気が高まっているラガーの例として挙げられていないものはどれか。",
+    "choices": [
+      "インペリアルスタウト",
+      "ピルスナー",
+      "メキシカン・ラガー",
+      "ウエストコースト・ピルスナー"
+    ],
+    "answer": 0,
+    "exp": "挙げられているのはピルスナー、ヘレス、メキシカン・ラガー、ライス・ラガー、ウエストコースト・ピルスナーで、インペリアルスタウトは含まれない。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9）"
+  },
+  {
+    "cat": "trends",
+    "q": "小規模ながら復活の兆しを見せているとされるスタイルの組み合わせはどれか。",
+    "choices": [
+      "クラシックなウエストコーストIPAとペールエール",
+      "バーレイワインとオールドエール",
+      "ベルリナーヴァイセとゴーゼ",
+      "ドッペルボックとアイスボック"
+    ],
+    "answer": 0,
+    "exp": "\"There is a small classic West Coast IPA and pale ale comeback\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9）"
+  },
+  {
+    "cat": "trends",
+    "q": "HSA（Hop Saturated Ales）とはどのようなものとして説明されているか。",
+    "choices": [
+      "米国における極端なホッピービールの次の進化形",
+      "アルコールを含まないホップウォーター",
+      "ホップを一切使わないエール",
+      "低炭酸のセッションIPA"
+    ],
+    "answer": 0,
+    "exp": "\"HSA(Hop Saturated Ales) are the next evolution of extreme hoppy beers in the USA\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.9）",
+    "freq": true
+  },
+  {
+    "cat": "trends",
+    "q": "資料の情報源（Sources）として挙げられていないものはどれか。",
+    "choices": [
+      "World Health Organization",
+      "Brewers Association",
+      "Craft Beer .COM",
+      "Hop Culture"
+    ],
+    "answer": 0,
+    "exp": "p.10にはBrewers Association, Craft Beer.COM, Beverage Industry, Craft Brewing, Hop Culture, Brew Your Own(BYO), Beervana, The Beer Connoisseur, All About Beerが挙げられている。WHOは含まれない。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.10）"
+  },
+  {
+    "cat": "trends",
+    "q": "本資料の講師（Sebastian Hohentanner氏）の役職として記載されているものはどれか。",
+    "choices": [
+      "BET株式会社 副社長 および 日本ビールソムリエ協会 理事",
+      "日本地ビール協会 会長",
+      "ドエメンス醸造学校 校長",
+      "WBC（World Beer Cup）事務局長"
+    ],
+    "answer": 0,
+    "exp": "資料p.2に\"BET Co., Ltd. Vice President\"および\"Japan Beer Sommelier Association Director\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.2）"
+  },
+  {
+    "cat": "trends",
+    "q": "Doemens Diplom Beer Sommelierコースの目標（Goal）として記載されているものはどれか。",
+    "choices": [
+      "プロのビールソムリエになるための基礎を築くこと",
+      "醸造免許の取得",
+      "ホップ農家との提携",
+      "ビール税制の改革"
+    ],
+    "answer": 0,
+    "exp": "\"Build the foundation so you can become professional beers sommeliers.\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.3）"
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "資料における「フレーバー（Flavor）」を構成する3つの要素として正しい組み合わせはどれか。",
+    "choices": [
+      "アロマ・味・口当たり（マウスフィール）",
+      "色・泡・透明度",
+      "甘味・苦味・酸味",
+      "温度・炭酸・アルコール"
+    ],
+    "answer": 0,
+    "exp": "図ではAroma（アロマ）・Taste（味）・Mouthfeel（食感/飲感）の3要素がFLAVORを構成すると示されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.13 What is Tasting?）",
+    "freq": true
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "人間が知覚できるとされる香り（アロマ）の種類数について、資料の記載として正しいものはどれか。",
+    "choices": [
+      "全体で約10,000種類あり、そのうち500～2,500種類程度が知覚可能とされる",
+      "全体で約100種類しかない",
+      "誰もが同じ香りを同じように感じる",
+      "アロマは味覚の一部として分類される"
+    ],
+    "answer": 0,
+    "exp": "\"Aroma: 10,000 different smells | 500-2,500 perceivable | different people perceive different aromas\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.14）",
+    "freq": true
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "資料で挙げられている「味（Taste）」の基本要素はどれか。",
+    "choices": [
+      "苦味・塩味・甘味・酸味・旨味",
+      "苦味・塩味・甘味・酸味の4種（旨味を含まない）",
+      "渋味・辛味を含む6種",
+      "甘味と苦味の2種"
+    ],
+    "answer": 0,
+    "exp": "\"Taste: bitter | salty | sweet | sour | umami\"と5基本味が挙げられている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.14）",
+    "freq": true
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "資料における「マウスフィール（Mouthfeel）」に含まれる要素として挙げられていないものはどれか。",
+    "choices": [
+      "色",
+      "CO2",
+      "アルコール",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "\"Mouthfeel: haptic perception in the mouth | CO2 | alcohol | body | viscosity | temperature etc.\"とあり、色（見た目）は含まれない。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.14）"
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "資料内でマウスフィールの説明として使われている表現はどれか。",
+    "choices": [
+      "口における触覚的知覚（haptic perception in the mouth）",
+      "鼻腔内での香りの知覚",
+      "舌先だけで感じる甘味",
+      "視覚による色の評価"
+    ],
+    "answer": 0,
+    "exp": "（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.14）"
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "アロマの知覚について、資料が述べていることはどれか。",
+    "choices": [
+      "人によって感じるアロマは異なる",
+      "すべての人が全く同じアロマを感じる",
+      "アロマは訓練しても知覚数を増やせない",
+      "アロマは味覚の下位分類である"
+    ],
+    "answer": 0,
+    "exp": "\"different people perceive different aromas\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.14）"
+  },
+  {
+    "cat": "tasting_basics",
+    "q": "テイスティングにおいて「目（視覚）」からの矢印が図の中で指し示している先は何か。",
+    "choices": [
+      "フレーバー（FLAVOR）の中心",
+      "味（Taste）",
+      "アロマ（Aroma）",
+      "マウスフィール（Mouthfeel）"
+    ],
+    "answer": 0,
+    "exp": "p.13の図では目（視覚）からの矢印がFLAVORの円の中心を指しており、視覚も総合的な評価に関わることが示されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.13）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "「ビアソムリエ」の官能評価における目的（Goal）として記載されているものはどれか。",
+    "choices": [
+      "消費者に向けてビールのポジティブな説明を行うこと",
+      "ビールをスタイル基準に従って評価し他のビールと比較すること",
+      "指定された品質基準に従ってビールを評価すること",
+      "ビールを規格外にするための検査を行うこと"
+    ],
+    "answer": 0,
+    "exp": "\"Beer Sommelier - Goal: Develop a positive description of the beer for consumers.\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）",
+    "freq": true
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "「ビアジャッジ（Beer Judge）」の目的として記載されているものはどれか。",
+    "choices": [
+      "スタイル基準に従ってビールを評価し、他のビールと比較すること",
+      "消費者向けにポジティブな説明をすること",
+      "醸造所の品質保証を行うこと",
+      "原材料の調達を行うこと"
+    ],
+    "answer": 0,
+    "exp": "\"Beer Judge - Goal: Evaluate a beer according to style criteria (and compare it to other beers).\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）",
+    "freq": true
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "「Brewery R&D」の目的として記載されているものはどれか。",
+    "choices": [
+      "指定された基準に従ってビールを評価し、他のビールと比較すること",
+      "消費者に対してビールを販売すること",
+      "ビアスタイルガイドラインを作成すること",
+      "競技会でビールを審査すること"
+    ],
+    "answer": 0,
+    "exp": "\"Brewery R&D - Goal: Evaluate a beer according to specified criteria (and compare it to other beers)\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "「Brewery QA」の目的として記載されているものはどれか。",
+    "choices": [
+      "品質基準や規格に従ってビールを評価すること",
+      "消費者向けの販促資料を作成すること",
+      "新しいビアスタイルを開発すること",
+      "ホップの品種改良を行うこと"
+    ],
+    "answer": 0,
+    "exp": "\"Brewery QA - Goal: Evaluate a beer according to a quality standard or specification.\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "ビアソムリエの評価における質問（Questions）として挙げられていないものはどれか。",
+    "choices": [
+      "そのビールを競技会の他のビールと比べて品質はどうか",
+      "オフフレーバー・品質の問題があり消費者に提供できないか",
+      "ビールの良いところは何か",
+      "消費者の経験を高めるために良い点をどう説明できるか"
+    ],
+    "answer": 0,
+    "exp": "「競技会の他のビールと比べて品質はどうか」はビアジャッジの質問である。ビアソムリエの質問は消費者向けの提示可否・良い点・説明方法。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "ビアジャッジの評価における質問として挙げられているものはどれか。",
+    "choices": [
+      "そのビールをスタイル・カテゴリーから除外するオフフレーバー・品質の問題はあるか",
+      "指定された基準と比較して品質はどうか",
+      "ビールを消費者に紹介できないほどの問題があるか",
+      "規格外の基準はあるか"
+    ],
+    "answer": 0,
+    "exp": "\"Are there (off) flavors/quality issues to exclude the beer from its style category?\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "Brewery R&Dの質問として挙げられているものはどれか。",
+    "choices": [
+      "不特定のフレーバーはあるか",
+      "消費者にビールを紹介できるか",
+      "他のビールと同じスタイルカテゴリーに属するか",
+      "ビアスタイルガイドラインに準拠しているか"
+    ],
+    "answer": 0,
+    "exp": "\"Are there unspecified flavors?\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "Brewery QAの質問として挙げられているものはどれか。",
+    "choices": [
+      "規格外の基準はあるか",
+      "消費者の経験を高めるための説明方法は何か",
+      "スタイル基準と比較して品質はどうか",
+      "競技会で他のビールと比較してどうか"
+    ],
+    "answer": 0,
+    "exp": "\"Is any of the criteria outside of its specification?\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15）"
+  },
+  {
+    "cat": "sensory_roles",
+    "q": "4つの官能評価の視点（ビアソムリエ・ビアジャッジ・Brewery R&D・Brewery QA）に共通して含まれる質問はどれか。",
+    "choices": [
+      "品質に問題はないか",
+      "消費者への販売価格はいくらか",
+      "ビール名は何か",
+      "醸造所の所在地はどこか"
+    ],
+    "answer": 0,
+    "exp": "いずれの視点にも品質上の問題への言及がある。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.15-16）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "テイスティング手順のステップ1「ボトルのチェック」で確認する項目として挙げられていないものはどれか。",
+    "choices": [
+      "グラスの形状",
+      "沈殿（Sedimentation）",
+      "醸造所（Brewery）",
+      "賞味期限（BBD）"
+    ],
+    "answer": 0,
+    "exp": "ステップ1では沈殿・醸造所・ビールスタイル・製造日・賞味期限・アルコール・原材料・説明（フレーバーグラス、フードペアリングなど）を確認する。グラスの形状は含まれない。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17 Tasting Basics）",
+    "freq": true
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ2「ボトルや缶を開けるか、ビールのドラフトを始める」で確認する項目はどれか。",
+    "choices": [
+      "開栓音と、ボトルのヘッドスペースにある揮発性の高いアロマ",
+      "液体の色",
+      "泡の量",
+      "グラスの清潔さ"
+    ],
+    "answer": 0,
+    "exp": "\"Opening sound / Highly volatile aromas especially in the head space of bottles.\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ3「ビールをグラスに注ぐ」で確認する項目として挙げられていないものはどれか。",
+    "choices": [
+      "アフターテイストの長さ",
+      "注いだ音",
+      "発泡",
+      "濁度"
+    ],
+    "answer": 0,
+    "exp": "ステップ3では音・発泡・色・濁度・アロマ・王冠またはコルクのチェックを行う。アフターテイストはステップ7に含まれる。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ4「最初の匂い（Quick smell）」で確認するものは何か。",
+    "choices": [
+      "揮発性アロマのトップノート",
+      "ビールの温度",
+      "グラスの厚さ",
+      "泡の色"
+    ],
+    "answer": 0,
+    "exp": "\"Volatile aroma top notes\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ5「白い背景の前でビールを見る」で確認するフォーム（泡）の項目として挙げられていないものはどれか。",
+    "choices": [
+      "粘度（viscosity）",
+      "色（color）",
+      "構造（structure）",
+      "保持力（retention）"
+    ],
+    "answer": 0,
+    "exp": "フォームの確認項目は色・構造・量・保持力・レーシング。粘度（viscosity）はステップ7の口当たりの項目である。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ6「香りを嗅ぐ」の具体的な手順として正しいものはどれか。",
+    "choices": [
+      "1回パス、素早く2回嗅ぐ、口を開けて長く1回嗅ぐ",
+      "息を止めて10秒間嗅ぐ",
+      "鼻をつまんでから嗅ぐ",
+      "グラスを振らずに1回だけ嗅ぐ"
+    ],
+    "answer": 0,
+    "exp": "\"Smell: 1 pass, 2 quick sniffs, 1 long sniff with mouth open.\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）",
+    "freq": true
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ7「ビールを一口飲む」で確認する項目として挙げられていないものはどれか。",
+    "choices": [
+      "グラスの重さ",
+      "苦味（強さ・質）",
+      "口当たり（粘度・ボディ・炭酸）",
+      "後味（アフターテイスト）"
+    ],
+    "answer": 0,
+    "exp": "ステップ7では第一印象・全体的な味・特定の風味・苦味・口当たり・後味を確認する。グラスの重さは含まれない。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ8「口と鼻から息を吐く」で確認するものは何か。",
+    "choices": [
+      "レトロネーザル（鼻腔内）アロマ",
+      "泡の消え方",
+      "ビールの温度変化",
+      "グラスの結露"
+    ],
+    "answer": 0,
+    "exp": "\"Retronasal aromas\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "ステップ9「5-8を繰り返す」の目的として挙げられているものはどれか。",
+    "choices": [
+      "確認と追加の印象、および温度と時間による変化の発育を見ること",
+      "別の銘柄のビールと比較すること",
+      "グラスを洗浄すること",
+      "スコアシートを提出すること"
+    ],
+    "answer": 0,
+    "exp": "\"Confirmation / Additional impressions\"および\"Development due to temperature and time\"と記載されている。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）"
+  },
+  {
+    "cat": "tasting_steps",
+    "q": "10ステップのテイスティング手順で、ステップ1と同じ内容が繰り返されるのはどのステップか。",
+    "choices": [
+      "ステップ10",
+      "ステップ2",
+      "ステップ5",
+      "ステップ9"
+    ],
+    "answer": 0,
+    "exp": "表の「1 or 10」の表記の通り、ステップ10はステップ1（ボトルのチェック）を再度行う。（出典：Doemens Beer Sommelier 2026「Ingredients Q&A and Tasting Preparation」 p.17）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "ビア・フレーバーホイールの中心にある2つの矢印が示す区分は何か。",
+    "choices": [
+      "オダー（香り）とテイスト（味）",
+      "甘味と苦味",
+      "アロマとボディ",
+      "天然とGMO"
+    ],
+    "answer": 0,
+    "exp": "中心の矢印は、属性が「オダー（香り）」か「テイスト（味）」かを示す。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "ビア・フレーバーホイールの構造として正しいものはどれか。",
+    "choices": [
+      "3段の同心円に用語が配列されている",
+      "4段の同心円に用語が配列されている",
+      "用語は同心円ではなく一直線に並んでいる",
+      "中心には用語がなく空白である"
+    ],
+    "answer": 0,
+    "exp": "「ビア・フレーバーホイールは、3段の同心円の中に用語が配列されています」と説明されている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "ビア・フレーバーホイールの使い方として正しい手順はどれか。",
+    "choices": [
+      "1段目（最も内側）で最も強く感じた印象の用語を選び、2段目でより具体的な用語を探す",
+      "いきなり3段目の最も外側から用語を選ぶ",
+      "香りより先に必ず色を数値化して用語を決定する",
+      "全ての段階を一度にまとめて評価し、優先順位はつけない"
+    ],
+    "answer": 0,
+    "exp": "「まず1段目（一番内側）の円の中から一番強く感じた印象で一番ふさわしい用語を…次に2段目の円の中からもっと具体的に…探します」と説明されている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「アップル香」「バナナ」「ブラックカラント香」はフレーバーホイールのどのカテゴリーに分類されるか。",
+    "choices": [
+      "アロマティック、フラグラント",
+      "サルファリー",
+      "フェノーリック",
+      "グラッシー"
+    ],
+    "answer": 0,
+    "exp": "これらはアロマティック・フラグラントの「フルーティー」下位分類に属する。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「イソアミルアセテート（酢酸イソアミル）」「エチルヘキサノアート（カプロン酸エチル）」はどのフレーバーカテゴリーの下位用語か。",
+    "choices": [
+      "エステル香",
+      "サルファリー",
+      "ロースト",
+      "アシド"
+    ],
+    "answer": 0,
+    "exp": "エステル香はアロマティック・フラグラントの下位カテゴリーである。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ドライホップ」「ホップオイル」はどのカテゴリーの下位用語か。",
+    "choices": [
+      "ホッピィ",
+      "レジナス",
+      "グレイニー",
+      "サルファリー"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ウッディ（木香）」「クルミ香」「アーモンド」はどのカテゴリーに属するか。",
+    "choices": [
+      "ナッティ",
+      "グラッシー",
+      "オキシダイズド",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「カットグラス（刈り草臭）」「ストロー（麦わら臭）」はどのカテゴリーに属するか。",
+    "choices": [
+      "グラッシー",
+      "シーリアル",
+      "ロースト",
+      "フェノーリック"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ハスキー（穀殻臭）」「コーン」「ミーリィ（粗挽き粉臭）」はどのカテゴリーに属するか。",
+    "choices": [
+      "グレイニー",
+      "シーリアル",
+      "サルファリー",
+      "アシド"
+    ],
+    "answer": 0,
+    "exp": "グレイニーは「生の」穀物臭、シーリアルは「穀物臭」であり別カテゴリーとして分けられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「モルティ（麦芽臭）」「ワーティ（麦汁臭）」はどのカテゴリーの下位用語か。",
+    "choices": [
+      "シーリアル",
+      "グレイニー",
+      "ロースト",
+      "バーント"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「カラメル香」「マラシス（糖蜜香）」「ローストバーレイ」「スモーキー」はどのカテゴリーに属するか。",
+    "choices": [
+      "ロースト",
+      "バーント",
+      "フェノーリック",
+      "サルファリー"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「タール臭」「ベークライト臭」「石炭酸臭」「クロロフェノール」はどのカテゴリーに属するか。",
+    "choices": [
+      "フェノーリック",
+      "ロースト",
+      "サルファリー",
+      "アシド"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「H2S（硫化水素）」「DMS（硫化ジメチル）」「メルカプタン」はどのカテゴリーに属するか。",
+    "choices": [
+      "サルファリー",
+      "フェノーリック",
+      "アシド",
+      "アンティック"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ライトストラック（スカンク臭）」はどのカテゴリーの下位用語として分類されているか。",
+    "choices": [
+      "サルファリー",
+      "グラッシー",
+      "ナッティ",
+      "スイート"
+    ],
+    "answer": 0,
+    "exp": "フレーバーホイールでは「ライトストラック（スカンク臭）」はサルファリー系統の下位用語として挙げられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ガーリック臭」「キャベツ臭」「オニオン臭」はどのカテゴリーに属するか。",
+    "choices": [
+      "サルファリー",
+      "アンティック",
+      "アシド",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「サワー（すっぱい）」「アセティック（酢酸臭）」はどのカテゴリーに属するか。",
+    "choices": [
+      "アシド",
+      "サルファリー",
+      "フェノーリック",
+      "オキシダイズド"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「マスティ（カビ臭）」「アーシー（土臭）」「レザリー（革臭）」「キャッティ（猫尿臭）」はどのカテゴリーに属するか。",
+    "choices": [
+      "アンティック",
+      "アシド",
+      "サルファリー",
+      "ロースト"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "ビールの「オキシダイズド（酸化した）、ステイル（古びた）」の香りと概念的に重なるとされる、紙・段ボール様の劣化臭に関連するオフフレーバーの略称は何か。",
+    "choices": [
+      "T-2-N",
+      "DMS",
+      "H2S",
+      "HSA"
+    ],
+    "answer": 0,
+    "exp": "BeerTasterテキストp.24で扱われるT-2-N（トランス-2-ノネナール）が紙・段ボール様の劣化臭として、フレーバーホイールのオキシダイズド/ステイルと概念的に重なると説明されている。（出典：BeerTaster官能評価法テキスト p.24、および巻末付録）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「オーバースイート（甘すぎる）」「シロップ味」「バニラ」「ハニー」はどのカテゴリーに属するか。",
+    "choices": [
+      "スイート",
+      "ソルティ",
+      "ビター",
+      "アストリンジェント"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「アストリンジェント（渋味）」に分類される用語として挙げられているものはどれか。",
+    "choices": [
+      "パウダリー",
+      "フルーティー",
+      "モルティ",
+      "カラメル香"
+    ],
+    "answer": 0,
+    "exp": "「アストリンジェント（渋味）：パウダリー（粉っぽい）、ドライ（渋いえぐい）、メタリック（金属味）、マウスコーティング」と挙げられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「マウスフィール」の下位用語として挙げられているものはどれか。",
+    "choices": [
+      "カーボネーション",
+      "フルーティー",
+      "カラメル香",
+      "タール臭"
+    ],
+    "answer": 0,
+    "exp": "「マウスフィール：カーボネーション（発泡感）、パウダリー（粉っぽい）」と挙げられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「フラット（気の抜けた）」「ウォータリー（水っぽい）」「ガッシー（ガスっぽい）」はどのカテゴリーに属するか。",
+    "choices": [
+      "ボディ",
+      "マウスフィール",
+      "スイート",
+      "サルファリー"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）",
+    "freq": true
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "フレーバーホイールにおいて「ウォーミング」が近接して配置されているカテゴリーはどれか。",
+    "choices": [
+      "ボディ",
+      "フルーティー",
+      "グラッシー",
+      "フェノーリック"
+    ],
+    "answer": 0,
+    "exp": "「ウォーミング」はボディに近いウェッジとして位置づけられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「フローラル」はビア・フレーバーホイールのどの大分類に属するか。",
+    "choices": [
+      "アロマティック、フラグラント",
+      "サルファリー",
+      "アシド",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ゲラニオール」「2-フェニルエタノール」はどのカテゴリーの下位に位置づけられる化合物か。",
+    "choices": [
+      "フルーティー",
+      "サルファリー",
+      "アシド",
+      "フェノーリック"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「クックドコーン（調理コーン臭）」「シュリンプライク（小海老臭）」はどのカテゴリーの下位に位置づけられるか。",
+    "choices": [
+      "サルファリー",
+      "アシド",
+      "ロースト",
+      "スイート"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「カプリル酸」はどのカテゴリーの下位用語として挙げられているか。",
+    "choices": [
+      "フェノーリック",
+      "サルファリー",
+      "アシド",
+      "スイート"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "フレーバーホイールで「バーント（焦げ臭）」はどのカテゴリーと隣接するウェッジとして説明されているか。",
+    "choices": [
+      "ロースト・フェノーリック",
+      "フルーティー・エステル香",
+      "サルファリー・アシド",
+      "ボディ・ウォーミング"
+    ],
+    "answer": 0,
+    "exp": "「バーント（焦げ臭）はown wedge, adjacent to Roasted/Phenolic」と説明されている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "フレーバーホイールを使い慣れることで得られるとされる効果として説明されているものはどれか。",
+    "choices": [
+      "以前よりも具体的にフレーバーを識別・記憶できるようになる",
+      "アルコール度数が正確にわかるようになる",
+      "醸造レシピが自動生成される",
+      "味覚が完全に一致するようになる"
+    ],
+    "answer": 0,
+    "exp": "「ビア・フレーバーホイールを使い慣れると、以前よりももっと具体的に…識別し、記憶していきます」と説明されている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「クックドベジタブル（煮た野菜臭）」「クックドキャベツ（煮たキャベツ臭）」はどのカテゴリーに属するか。",
+    "choices": [
+      "サルファリー",
+      "アシド",
+      "ロースト",
+      "フェノーリック"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ソープ（石鹸臭）」はどのカテゴリーの下位用語として挙げられているか。",
+    "choices": [
+      "サルファリー",
+      "スイート",
+      "ビター",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「二酸化硫黄」「硫化物臭」はどのカテゴリーに属するか。",
+    "choices": [
+      "サルファリー",
+      "アシド",
+      "フェノーリック",
+      "アンティック"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ミネラル臭（火打石臭）」はどのカテゴリーの下位用語として挙げられているか。",
+    "choices": [
+      "サルファリー",
+      "グラッシー",
+      "ナッティ",
+      "ロースト"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「オートオキシダイズド（自動酸化臭）」「バーントラバー（焦げたゴム臭）」はどのカテゴリーの下位用語として挙げられているか。",
+    "choices": [
+      "サルファリー",
+      "オキシダイズド・ステイル",
+      "アシド",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "抽出資料ではこれらはサルファリー系統の下位用語として挙げられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「リコリス香」「パン皮香」はどのカテゴリーに属するか。",
+    "choices": [
+      "ロースト",
+      "サルファリー",
+      "アシド",
+      "スイート"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ヨードホルム」「クロロフェノール」はどのカテゴリーの下位用語として挙げられているか。",
+    "choices": [
+      "フェノーリック",
+      "サルファリー",
+      "アシド",
+      "ボディ"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「ステイリー」という用語は、フレーバーホイールのどのカテゴリー付近に位置づけられているか。",
+    "choices": [
+      "アンティック",
+      "フルーティー",
+      "ロースト",
+      "マウスフィール"
+    ],
+    "answer": 0,
+    "exp": "「アンティック：マスティ（カビ臭）、アーシー（土臭）、レザリー（革臭）、キャッティ（猫尿臭）、ステイリー」と挙げられている。（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "「プライミングシュガー味」「ジャム味」はどのカテゴリーに属するか。",
+    "choices": [
+      "スイート",
+      "ビター",
+      "ソルティ",
+      "アストリンジェント"
+    ],
+    "answer": 0,
+    "exp": "（出典：BeerTaster官能評価法テキスト 巻末付録 ビア・フレーバーホイール）"
+  },
+  {
+    "cat": "flavorwheel",
+    "q": "フレーバーホイールの抽出ノートにおいて、境界の判別が特に難しいと注記されているカテゴリー群はどれか。",
+    "choices": [
+      "サルファリーおよびソルティ/ビター/アルカリ/アストリンジェント/マウスフィール/ボディのクラスター",
+      "フルーティーおよびエステル香",
+      "グラッシーおよびグレイニー",
+      "ロースト単独"
+    ],
+    "answer": 0,
+    "exp": "抽出ノートに「サルファリーと…クラスターの境界には一部不確実性がある」と記載されている。（出典：抽出ノート、BeerTaster官能評価法テキスト巻末付録）"
+  },
+  {
+    "cat": "overview",
+    "q": "2017年度税制改正で、ビール（ロ号ビール）の麦芽比率規定はどう変更されたか？",
+    "choices": [
+      "50%以上から67%以上に引き上げられた",
+      "67%以上から50%以上に引き下げられた",
+      "100%以上でなければならないと定められた",
+      "規定自体が撤廃され上限がなくなった"
+    ],
+    "answer": 1,
+    "exp": "従来67％以上必要だった麦芽比率要件が、50％以上に引き下げられました。（出典: 1-3ビール概論.pdf ページ29）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "2017年度税制改正でビールの副原料として新たに認められたもの（麦芽重量の5％以内）は？",
+    "choices": [
+      "果実およびコリアンダー等の香味料",
+      "精製された合成甘味料全般（人工甘味料）",
+      "牛乳や乳製品全般（乳成分）",
+      "化学調味料や着色料全般（添加物）"
+    ],
+    "answer": 0,
+    "exp": "果実やコリアンダー等の香味料が、麦芽重量の5％の範囲内で新たに副原料として認められました。（出典: 1-3ビール概論.pdf ページ30）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "全国地ビール醸造者協議会（JBA）によるクラフトビールの定義で、1回の仕込み単位（麦汁製造量）の上限は？",
+    "choices": [
+      "10キロリットル以下",
+      "20キロリットル以下",
+      "50キロリットル以下",
+      "100キロリットル以下"
+    ],
+    "answer": 1,
+    "exp": "1回の仕込み単位が20キロリットル以下の小規模な仕込みであることが定義の一つです。（出典: 1-3ビール概論.pdf ページ34）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "ビールの色の単位について、EBCとSRMの関係式として正しいものは？",
+    "choices": [
+      "EBC＝SRM×2",
+      "EBC＝SRM÷2",
+      "EBC＝SRM×10",
+      "EBC＝SRM＋2"
+    ],
+    "answer": 0,
+    "exp": "資料では「EBC＝SRM×2」と示されています。（出典: 1-3ビール概論.pdf ページ38）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "日本のビールのアルコール度数表記「ABV」が示すものは？",
+    "choices": [
+      "重量パーセント（W/V％）",
+      "容量パーセント（V/V％）",
+      "カロリーパーセント",
+      "糖度パーセント"
+    ],
+    "answer": 1,
+    "exp": "ABV（Alcohol by Volume）＝容量％。日本の表記はこちらが基本。ABW（Alcohol By Weight）は重量％。（出典: 1-3ビール概論.pdf ページ38）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "栄養表示基準で「ゼロカロリー」と表示できる基準は、100mLあたり何kcal未満か？",
+    "choices": [
+      "20kcal未満",
+      "5kcal未満",
+      "1kcal未満",
+      "0.5kcal未満"
+    ],
+    "answer": 1,
+    "exp": "「カロリーオフ」は20kcal以下/100mL、「ゼロカロリー」は5kcal未満/100mLです。（出典: 1-3ビール概論.pdf ページ39）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "UKパイントとUSパイントの容量として正しい組み合わせは？",
+    "choices": [
+      "UK 568ml／US 473ml",
+      "UK 500ml／US 500ml",
+      "UK 473ml／US 568ml",
+      "UK 600ml／US 450ml"
+    ],
+    "answer": 0,
+    "exp": "UKパイントは568ml、USパイントは473mlです。（出典: 1-3ビール概論.pdf ページ38）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "2023年キリンビール大学レポートによる、世界のビール消費量が最も多い国は？",
+    "choices": [
+      "アメリカ",
+      "中国",
+      "ドイツ",
+      "ブラジル"
+    ],
+    "answer": 1,
+    "exp": "消費量・生産量ともに中国が世界1位（約20%）とされています。（出典: 1-3ビール概論.pdf ページ42）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "2020年統計（キリンビール大学レポート）で、一人当たりのビール消費量が世界一とされる国は？",
+    "choices": [
+      "ドイツ",
+      "チェコ",
+      "アイルランド",
+      "日本"
+    ],
+    "answer": 1,
+    "exp": "チェコが一人当たり182Lで世界一とされています（日本は52位・35L）。（出典: 1-3ビール概論.pdf ページ44）",
+    "freq": true
+  },
+  {
+    "cat": "overview",
+    "q": "資料にある糖類の甘味の強さの比較で、最も甘味が強いとされる糖は？",
+    "choices": [
+      "ショ糖（スクロース）",
+      "果糖（フラクトース）",
+      "麦芽糖（マルトース）",
+      "乳糖（ガラクトース）"
+    ],
+    "answer": 1,
+    "exp": "甘味の強さはフラクトース150＞ショ糖100＞グルコース70＞マルトース40＞ガラクトース30＞乳糖20の順とされています。（出典: 1-3ビール概論.pdf ページ40）"
+  },
+  {
+    "cat": "overview",
+    "q": "ジャパンビアソムリエ協会（JBSA）が設立されたのは何年か？",
+    "choices": [
+      "2005年",
+      "2012年",
+      "2018年",
+      "2020年"
+    ],
+    "answer": 1,
+    "exp": "（一社）ジャパンビアソムリエ協会は2012年に設立されました。（出典: 1-3ビール概論.pdf ページ4）"
+  },
+  {
+    "cat": "overview",
+    "q": "国際資格「ディプロムビアソムリエ」の認定講座が日本で開講したのは何年からか？",
+    "choices": [
+      "2012年",
+      "2015年",
+      "2018年",
+      "2022年"
+    ],
+    "answer": 2,
+    "exp": "2012年開始の国内資格「ジャパンビアソムリエ」に続き、2018年から国際資格「ディプロムビアソムリエ」認定講座が開講しました。（出典: 1-3ビール概論.pdf ページ4）"
+  },
+  {
+    "cat": "overview",
+    "q": "現在、ジャパンビアソムリエ協会が使用している資格呼称は？",
+    "choices": [
+      "ジャパンビアソムリエ",
+      "ドゥーメンスビアソムリエ",
+      "ワールドビアソムリエ",
+      "マスタービアソムリエ"
+    ],
+    "answer": 1,
+    "exp": "現在は資格呼称が「ドゥーメンスビアソムリエ」に変更されています。（出典: 1-3ビール概論.pdf ページ4）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビアソムリエという資格は、もともとどの2か国から発祥したとされるか？",
+    "choices": [
+      "フランスとベルギー",
+      "ドイツとオーストリア",
+      "イギリスとアイルランド",
+      "アメリカとカナダ"
+    ],
+    "answer": 1,
+    "exp": "ペアリングなどビールの愉しみ方を広げる専門家育成のため、ビール大国のドイツとオーストリアから発祥した資格です。（出典: 1-3ビール概論.pdf ページ4）"
+  },
+  {
+    "cat": "overview",
+    "q": "1895年にDr. Albert Doemensが開校した学校の名前は？",
+    "choices": [
+      "Münchner Brauerei Akkademie",
+      "Berlin Brewing School",
+      "Bavarian Beer Institute",
+      "World Brewing Academy"
+    ],
+    "answer": 0,
+    "exp": "1895年、Dr. Albert Doemensがミュンヘン醸造学校（Münchner Brauerei Akkademie）を開校しました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "Doemensが2000年にアメリカのSiebel Instituteと協力して創設した組織は？",
+    "choices": [
+      "European Beer Star",
+      "World Brewing Academy",
+      "Institute of Masters of Beer",
+      "World Beer Cup"
+    ],
+    "answer": 1,
+    "exp": "2000年、アメリカのSiebel Instituteと協力しWorld Brewing Academyを創設しました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "ディプロムビアソムリエ講座が世界で最初に開講したのは何年か？",
+    "choices": [
+      "2000年",
+      "2004年",
+      "2009年",
+      "2013年"
+    ],
+    "answer": 1,
+    "exp": "2004年に第一回ディプロム・ビアソムリエ講座が開講しました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビアコンテスト「European Beer Star」が初めて開催されたのは何年か？",
+    "choices": [
+      "2004年",
+      "2005年",
+      "2009年",
+      "2013年"
+    ],
+    "answer": 1,
+    "exp": "2005年にEuropean Beer Starが開催されました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "第一回ビアソムリエワールドカップが開催されたのは何年か？",
+    "choices": [
+      "2004年",
+      "2005年",
+      "2009年",
+      "2013年"
+    ],
+    "answer": 2,
+    "exp": "2009年に第一回ビアソムリエワールドカップが開催されました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "「Institute of Masters of Beer」が設立されたのは何年か？",
+    "choices": [
+      "2004年",
+      "2005年",
+      "2009年",
+      "2013年"
+    ],
+    "answer": 3,
+    "exp": "2013年にInstitute of Masters of Beerが設立されました。（出典: 1-3ビール概論.pdf ページ13）"
+  },
+  {
+    "cat": "overview",
+    "q": "従来のビールの定義における「イ号ビール」の原料として正しいものは？",
+    "choices": [
+      "麦芽、ホップ、水のみ",
+      "麦芽、ホップ、水、副原料",
+      "麦芽とホップのみ",
+      "米、麦芽、水"
+    ],
+    "answer": 0,
+    "exp": "イ号ビールは麦芽、ホップ及び水を原料として発酵させたものと定義されています。（出典: 1-3ビール概論.pdf ページ29）"
+  },
+  {
+    "cat": "overview",
+    "q": "従来のビールの定義における「ハ号ビール」とはどのようなものか？",
+    "choices": [
+      "米や雑穀だけを原料として発酵させたビール",
+      "イ号またはロ号ビールにホップまたは一定の副原料を加えて発酵させたもの",
+      "アルコール分が20度以上ある高アルコールビール",
+      "麦芽とホップ以外の副原料を一切使わずに造るビール"
+    ],
+    "answer": 1,
+    "exp": "平成29年度税制改正で、イ号またはロ号ビールにホップや一定の副原料を加えて発酵させたものがハ号ビールとして新たに認められました。（出典: 1-3ビール概論.pdf ページ29）"
+  },
+  {
+    "cat": "overview",
+    "q": "従来のビールの定義において、アルコール分の上限は何度未満とされていたか？",
+    "choices": [
+      "10度未満",
+      "15度未満",
+      "20度未満",
+      "25度未満"
+    ],
+    "answer": 2,
+    "exp": "従来のビールの範囲は、アルコール分が20度未満のものとされていました。（出典: 1-3ビール概論.pdf ページ29）"
+  },
+  {
+    "cat": "overview",
+    "q": "酒税法において、ビール（350ml換算）の税率はR8.10（2026年10月）以降およそ何円になるとされるか？",
+    "choices": [
+      "37.8円",
+      "46.99円",
+      "54.25円",
+      "63.35円"
+    ],
+    "answer": 2,
+    "exp": "ビールの酒税額（350ml換算）はR2.10（2020年10月）時点の77円から段階的に引き下げられ、R8.10（2026年10月）以降は54.25円になるとされています。（出典: 1-3ビール概論.pdf ページ32）"
+  },
+  {
+    "cat": "overview",
+    "q": "An American craft brewerの定義として資料に挙げられている3要素は？",
+    "choices": [
+      "Small, Independent, Brewer",
+      "Local, Organic, Fresh",
+      "Craft, Quality, Innovation",
+      "Small, Cheap, Fast"
+    ],
+    "answer": 0,
+    "exp": "「An American craft brewer is a small and independent brewer」として、Small・Independent・Brewerの3要素が挙げられています。（出典: 1-3ビール概論.pdf ページ35）"
+  },
+  {
+    "cat": "overview",
+    "q": "発酵工程を経ないブレンド製法によるノンアルコールビールで、日本で主流のアルコール度数は？",
+    "choices": [
+      "0.00%",
+      "0.5%未満",
+      "1.0%未満",
+      "3.0%未満"
+    ],
+    "answer": 0,
+    "exp": "原料をブレンドする発酵工程のない製法では、アルコール0.00%が日本では主流とされています。（出典: 1-3ビール概論.pdf ページ41）"
+  },
+  {
+    "cat": "overview",
+    "q": "酒類の分類のうち「醸造酒」に該当しないものはどれか？",
+    "choices": [
+      "ワイン",
+      "ビール",
+      "日本酒",
+      "ウイスキー"
+    ],
+    "answer": 3,
+    "exp": "ウイスキーは蒸留酒に分類されます。醸造酒には果実原料のワイン・シードルや、穀物原料のビール・日本酒などが含まれます。（出典: 1-3ビール概論.pdf ページ46）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビールの色分類における「アンバーカラー」に相当するEBCの範囲は？",
+    "choices": [
+      "EBC4〜12",
+      "EBC12〜44",
+      "EBC44以上",
+      "EBC0〜4"
+    ],
+    "answer": 1,
+    "exp": "アンバーカラーはEBC12〜44（SRM6〜22）で、アンバー・レッド・コッパー・ブラウンなどの茶色系の色調です。（出典: 1-3ビール概論.pdf ページ38）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビールの色分類における「ダークカラー」に相当するEBCの範囲は？",
+    "choices": [
+      "EBC4〜12",
+      "EBC12〜44",
+      "EBC44以上",
+      "EBC0〜4"
+    ],
+    "answer": 2,
+    "exp": "ダークカラーはEBC44以上（SRM22以上）で、濃い茶色から黒色までを指します。（出典: 1-3ビール概論.pdf ページ38）"
+  },
+  {
+    "cat": "overview",
+    "q": "IBU（国際苦味単位）は、どのような成分の量に対応して数値が高くなるか？",
+    "choices": [
+      "α酸",
+      "糖類",
+      "ポリフェノール",
+      "タンパク質"
+    ],
+    "answer": 0,
+    "exp": "IBUはα酸が多いほど数値が高くなる、国際的な苦味の単位です。（出典: 1-3ビール概論.pdf ページ38）"
+  },
+  {
+    "cat": "overview",
+    "q": "2023年キリンビール大学レポートによる世界のビール生産量で、中国に次いで2位とされる国は？",
+    "choices": [
+      "ドイツ",
+      "アメリカ",
+      "ブラジル",
+      "メキシコ"
+    ],
+    "answer": 1,
+    "exp": "生産量・消費量ともに、1位中国、2位アメリカとされています。（出典: 1-3ビール概論.pdf ページ43）"
+  },
+  {
+    "cat": "overview",
+    "q": "一人当たりビール消費量（2020年統計）で、資料内でチェコに次いで2位に挙げられている国は？",
+    "choices": [
+      "ドイツ",
+      "オーストリア",
+      "ポーランド",
+      "アイルランド"
+    ],
+    "answer": 1,
+    "exp": "1位チェコ（182L）に次いで、2位にオーストリアが挙げられています。（出典: 1-3ビール概論.pdf ページ44）"
+  },
+  {
+    "cat": "overview",
+    "q": "一人当たりビール消費量（2020年統計）で、日本はおよそ何Lとされているか？",
+    "choices": [
+      "15L",
+      "35L",
+      "52L",
+      "88L"
+    ],
+    "answer": 1,
+    "exp": "日本は一人当たり年間約35Lとされ、順位は52位です。（出典: 1-3ビール概論.pdf ページ44）"
+  },
+  {
+    "cat": "overview",
+    "q": "二糖類である麦芽糖（マルトース）は、どの単糖類が2つ結合したものか？",
+    "choices": [
+      "ブドウ糖（グルコース）が2つ",
+      "果糖（フラクトース）が2つ",
+      "ブドウ糖と果糖",
+      "ガラクトースとブドウ糖"
+    ],
+    "answer": 0,
+    "exp": "麦芽糖（マルトース）はブドウ糖（グルコース）×ブドウ糖（グルコース）の二糖類です。（出典: 1-3ビール概論.pdf ページ40）"
+  },
+  {
+    "cat": "overview",
+    "q": "二糖類である砂糖（ショ糖・スクロース）は、どの単糖類の組み合わせか？",
+    "choices": [
+      "ブドウ糖が2つ",
+      "果糖が2つ",
+      "ブドウ糖と果糖",
+      "ガラクトースと果糖"
+    ],
+    "answer": 2,
+    "exp": "砂糖（ショ糖）はブドウ糖（グルコース）×果糖（フラクトース）の二糖類です。（出典: 1-3ビール概論.pdf ページ40）"
+  },
+  {
+    "cat": "overview",
+    "q": "ドゥーメンスが教育対象としている職種として資料に挙げられていないものは？",
+    "choices": [
+      "ブルーマスター",
+      "ウォーターソムリエ",
+      "飲料経営者",
+      "パティシエ"
+    ],
+    "answer": 3,
+    "exp": "ブルワー、ブルーマスター、ビール技術者、飲料マスター、飲料技術者、飲料経営者、食品技術者、ビアソムリエ、ウォーターソムリエなどが教育対象として挙げられています。（出典: 1-3ビール概論.pdf ページ14）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビアソムリエの試験内容として資料に挙げられている「官能検査」の内容に含まれないものは？",
+    "choices": [
+      "フレーバーおよびオフフレーバーの識別",
+      "ビアスタイルの適合性判断",
+      "ビールの銘柄再確認テスト",
+      "ワインとのブラインドテイスティング比較"
+    ],
+    "answer": 3,
+    "exp": "官能検査はフレーバー・オフフレーバー、ビアスタイル、ビール再確認の3項目が挙げられています。（出典: 1-3ビール概論.pdf ページ17）"
+  },
+  {
+    "cat": "overview",
+    "q": "ビアソムリエの試験における「実習」として資料に挙げられているものは？",
+    "choices": [
+      "樽生ドラフトとビアメニュー",
+      "ワイン抜栓とデカンタージュ",
+      "日本酒の温め方(燗つけ)実習",
+      "カクテルの調合実習"
+    ],
+    "answer": 0,
+    "exp": "実習では樽生ドラフトとビアメニューが挙げられています。（出典: 1-3ビール概論.pdf ページ17）"
+  },
+  {
+    "cat": "overview",
+    "q": "ジャパンビアソムリエ協会の会長として資料に紹介されている人物は？",
+    "choices": [
+      "セバスティアン・ホヘンタナー",
+      "山上昌弘",
+      "森本智子",
+      "端田晶"
+    ],
+    "answer": 1,
+    "exp": "山上昌弘氏がジャパンビアソムリエ協会会長として紹介されています。（出典: 1-3ビール概論.pdf ページ21）"
+  },
+  {
+    "cat": "overview",
+    "q": "「カロリーオフ」と表示できる基準は、100mLあたり何kcal以下か？",
+    "choices": [
+      "5kcal以下",
+      "10kcal以下",
+      "20kcal以下",
+      "30kcal以下"
+    ],
+    "answer": 2,
+    "exp": "「カロリーオフ」は20kcal以下/100mL、「ゼロカロリー」は5kcal未満/100mLです。（出典: 1-3ビール概論.pdf ページ39）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "大麦がビール醸造の原料として優れている理由として資料に挙げられていないものは？",
+    "choices": [
+      "デンプン貯蔵量が多い",
+      "タンパク質の比率が低い",
+      "酵素が豊富",
+      "ホップより糖度が高い"
+    ],
+    "answer": 3,
+    "exp": "資料が挙げるのは「デンプン貯蔵量」「低タンパク質比率」「豊富な酵素」「穀皮の存在」などで、糖度の比較は挙げられていません。（出典: 1､Hop and Malt.pdf スライド番号5 / ページ5）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "二条大麦（Two row Barley）の特徴として正しいものは？",
+    "choices": [
+      "タンパク質含有量が多く酵素力が強い",
+      "タンパク質含有量が少なく、大きく丸い穀粒で収量が多い",
+      "穀皮の割合が高く色調も濃くなりやすい",
+      "モルト化に向かず主に非麦芽原料として使われる"
+    ],
+    "answer": 1,
+    "exp": "二条大麦は低タンパク質・大きく丸い穀粒・高収量・冷涼な気候を好むのが特徴。六条大麦は高タンパク質・高酵素力です。（出典: 1､Hop and Malt.pdf スライド番号7 / ページ7）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "製麦（モルティング）の工程順序として正しいものは？",
+    "choices": [
+      "発芽→浸麦→乾燥（焙燥）",
+      "浸麦→発芽→乾燥（焙燥）",
+      "乾燥→浸麦→発芽（焙燥）",
+      "浸麦→乾燥→発芽（焙燥）"
+    ],
+    "answer": 1,
+    "exp": "Steeping（浸麦）→ Germination（発芽）→ Kilning（乾燥・焙燥）の順で進みます。（出典: 1､Hop and Malt.pdf スライド番号11 / ページ11）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "浸麦工程で大麦の水分含量はおよそ何％から何％まで引き上げられるか？",
+    "choices": [
+      "5％から20％",
+      "12％から44％",
+      "20％から60％",
+      "30％から80％"
+    ],
+    "answer": 1,
+    "exp": "洗浄後、水分含量を12％から44％まで増やし発芽を開始させます。（出典: 1､Hop and Malt.pdf スライド番号10 / ページ10）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "発芽の際、デンプンとタンパク質を分解する酵素の生成を促すホルモンは？",
+    "choices": [
+      "オーキシン",
+      "ジベレリン酸",
+      "サイトカイニン",
+      "エチレン"
+    ],
+    "answer": 1,
+    "exp": "ジベレリン酸によりアリューロン細胞の加水分解酵素の発現が促進されます。（出典: 1､Hop and Malt.pdf スライド番号12 / ページ12）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの毬花（アロマや苦味の源）を利用するのはどちらの株か？",
+    "choices": [
+      "雄株",
+      "雌株",
+      "雌雄同体株",
+      "どちらでも同じ"
+    ],
+    "answer": 1,
+    "exp": "毬花を使うのは雌株のみで、受精させないよう栽培管理されます（受精すると収量が下がる）。（出典: 1､Hop and Malt.pdf スライド番号26 / ページ26）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップは多年生植物とされ、おおよそ何年ほど栽培可能か？",
+    "choices": [
+      "約5年",
+      "約20年",
+      "約50年",
+      "約100年"
+    ],
+    "answer": 1,
+    "exp": "ホップは多年生植物で、栽培可能期間はおよそ20年とされています。（出典: 1､Hop and Malt.pdf スライド番号22 / ページ22）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "α酸がビール中で苦味として感じられるようになるために必要な反応は？",
+    "choices": [
+      "還元反応（リダクション）",
+      "異性化反応（イソ化）",
+      "エステル化反応（エステリフィケーション）",
+      "メイラード反応（褐変反応）"
+    ],
+    "answer": 1,
+    "exp": "α酸は溶解度が低く苦味がほとんどありませんが、イソ化することでイソα酸となり、溶解度・苦味が大きく増します。（出典: 1､Hop and Malt.pdf スライド番号32 / ページ32）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ精油（アロマの源）はホップ全体重量のうちおよそ何％を占めるか？",
+    "choices": [
+      "0.5〜3％",
+      "9.8〜15.4％",
+      "21.3〜29.7％",
+      "41.2％以上"
+    ],
+    "answer": 0,
+    "exp": "ホップ精油はホップ中のわずか0.5〜3％を占めるに過ぎませんが、400種類以上の成分が確認されています。（出典: 1､Hop and Malt.pdf スライド番号34 / ページ34）",
+    "freq": true
+  },
+  {
+    "cat": "malt_hops",
+    "q": "世界のホップ生産量の34％を占めるとされる、ドイツのビタリングホップ品種は？",
+    "choices": [
+      "ハラタウトラディション",
+      "ハラタウタウラス",
+      "テトナング",
+      "シュパルト"
+    ],
+    "answer": 1,
+    "exp": "ハラタウタウラスを含むビタリングホップがドイツの世界ホップ生産の34％を占めるとされています（アロマホップはハラタウトラディションなど）。（出典: 1､Hop and Malt.pdf ページ29）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "大麦の穀粒の構造として資料に挙げられていない部位は？",
+    "choices": [
+      "胚乳",
+      "胚",
+      "穀皮",
+      "子房"
+    ],
+    "answer": 3,
+    "exp": "大麦の穀粒は胚乳・胚盤・糊粉・胚・穀皮などから構成されます。子房は挙げられていません。（出典: 1､Hop and Malt.pdf スライド番号6 / ページ6）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "六条大麦の特徴として正しいものは？",
+    "choices": [
+      "低タンパク質で大きく丸い穀粒を持ち収量が多い",
+      "高タンパク質で酵素力が強く、モルト化しない穀類の使用に向く",
+      "冷涼な気候を好み、二条大麦より収量が多い",
+      "穀皮の割合が低く色調も淡くなりやすい"
+    ],
+    "answer": 1,
+    "exp": "六条大麦は高タンパク質、高い穀皮割合、強い酵素力を持ち、モルト化しない穀類（アジャンクツ）の使用にも向くとされます。（出典: 1､Hop and Malt.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "製麦（モルティング）の目的として資料に挙げられていないものは？",
+    "choices": [
+      "貯蔵に適した安定製品を作る",
+      "色とアロマを生成する",
+      "不要な揮発性物質を蒸発させる",
+      "ビールのアルコール度数を直接高める"
+    ],
+    "answer": 3,
+    "exp": "製麦の目的は、保存に適した安定製品作り、色とアロマの生成、不要な揮発性物質の蒸発などであり、アルコール度数を高めることは目的ではありません（アルコールは発酵で生成されます）。（出典: 1､Hop and Malt.pdf スライド番号18 / ページ18）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "浸麦（Steeping）の目的として資料に挙げられていないものは？",
+    "choices": [
+      "大麦の汚れやほこりを洗浄する",
+      "発芽を開始させる",
+      "発芽中の大麦に酸素を供給する",
+      "苦味成分を洗い流す"
+    ],
+    "answer": 3,
+    "exp": "浸麦の目的は洗浄・水分含量の増加・発芽の開始・酸素供給・呼吸によるCO2の除去であり、苦味成分の除去は挙げられていません（苦味はホップ由来）。（出典: 1､Hop and Malt.pdf スライド番号10 / ページ10）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "発芽（Germination）に適した温度範囲として資料に挙げられているのは？",
+    "choices": [
+      "2〜6℃",
+      "14〜18℃",
+      "21〜26℃",
+      "32〜37℃"
+    ],
+    "answer": 1,
+    "exp": "発芽の適正温度は14〜18℃とされ、3℃未満では生育の兆しが見られず、40℃を超えると胚が著しく傷むとされています。（出典: 1､Hop and Malt.pdf スライド番号16 / ページ16）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "発芽が開始するとされる水分含量のおおよその範囲は？",
+    "choices": [
+      "5〜10％",
+      "20〜25％",
+      "35〜40％",
+      "60〜70％"
+    ],
+    "answer": 2,
+    "exp": "水分含量35〜40％で発芽が始まり、44〜48％で発芽が加速するとされています。（出典: 1､Hop and Malt.pdf スライド番号16 / ページ16）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "大麦・麦芽に含まれる酵素のうち、デンプン分解酵素として挙げられているものは？",
+    "choices": [
+      "エンドβグルカナーゼ（β-グルカンを分解する酵素）",
+      "α-アミラーゼ、β-アミラーゼ（デンプンを糖に分解する酵素）",
+      "酸性ホスファターゼ（リン酸化合物を分解する酵素）",
+      "エンドペプチダーゼ（タンパク質を分解する酵素）"
+    ],
+    "answer": 1,
+    "exp": "デンプン分解酵素（アミロリティック酵素）としてα-アミラーゼとβ-アミラーゼが挙げられています。（出典: 1､Hop and Malt.pdf スライド番号17 / ページ17）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "大麦・麦芽の酵素のうち、タンパク質分解酵素として挙げられているものは？",
+    "choices": [
+      "エンドβグルカナーゼ",
+      "酸性ホスファターゼ",
+      "エンドペプチダーゼ",
+      "α-アミラーゼ"
+    ],
+    "answer": 2,
+    "exp": "タンパク質分解酵素（プロテオリティック酵素）としてエンドペプチダーゼが挙げられています。（出典: 1､Hop and Malt.pdf スライド番号17 / ページ17）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "麦芽の焙燥（キルニング）工程の3段階として正しい順序は？",
+    "choices": [
+      "焙煎（roasting）→乾燥（kilning）→煮沸（stewing）",
+      "煮沸（stewing）→乾燥（kilning）→焙煎（roasting）",
+      "乾燥（kilning）→煮沸（stewing）→焙煎（roasting）",
+      "焙煎（roasting）→煮沸（stewing）→乾燥（kilning）"
+    ],
+    "answer": 1,
+    "exp": "水分含量を10〜12％まで下げる煮沸（stewing）、50℃以上に温度を上げる乾燥（kilning）、最大300℃まで温度を上げる焙煎（roasting）の順です。（出典: 1､Hop and Malt.pdf スライド番号18 / ページ18）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "焙煎（roasting）では温度は最大で何℃程度まで上げられるか？",
+    "choices": [
+      "100℃",
+      "150℃",
+      "300℃",
+      "500℃"
+    ],
+    "answer": 2,
+    "exp": "焙煎では温度が最大300℃まで上げられ、色とアロマが生成されます。（出典: 1､Hop and Malt.pdf スライド番号18 / ページ18）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ベースモルトとして資料に挙げられていないものは？",
+    "choices": [
+      "ピルスナーモルト",
+      "ペールエールモルト",
+      "ウインナモルト",
+      "カラメルモルト"
+    ],
+    "answer": 3,
+    "exp": "ベースモルトにはピルスナーモルト、ペールエールモルト、ウインナモルト、ミュンヘナモルトがあります。カラメルモルトはスペシャルモルトに分類されます。（出典: 1､Hop and Malt.pdf スライド番号19 / ページ19）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "スペシャルモルトとして資料に挙げられていないものは？",
+    "choices": [
+      "カラメルモルト",
+      "メラノイジンモルト",
+      "ウインナモルト",
+      "スモークモルト"
+    ],
+    "answer": 2,
+    "exp": "ウインナモルトはベースモルトに分類されます。スペシャルモルトにはカラメルモルト、メラノイジンモルト、サワーモルト、チットモルト、スモークモルト、ローストモルト、ウィートモルトなどがあります。（出典: 1､Hop and Malt.pdf スライド番号19 / ページ19）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップは何科の植物か？",
+    "choices": [
+      "アサ科（Cannabiaceae）",
+      "バラ科（Rosaceae）",
+      "マメ科（Fabaceae）",
+      "イネ科（Poaceae）"
+    ],
+    "answer": 0,
+    "exp": "ホップはアサ科（Cannabiaceae）の植物です。（出典: 1､Hop and Malt.pdf スライド番号22 / ページ22）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ栽培に適した緯度としておおよそ資料に挙げられている範囲は？",
+    "choices": [
+      "北緯・南緯とも0〜20度",
+      "北緯・南緯とも35〜55度",
+      "北緯・南緯とも60〜80度",
+      "赤道直下のみ"
+    ],
+    "answer": 1,
+    "exp": "ホップは北緯35〜55度、南緯35〜55度の特定の緯度でのみ栽培されるとされています。（出典: 1､Hop and Malt.pdf スライド番号25 / ページ25）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ畑でのつるの高さは栽培期間中およそ何メートルに達するか？",
+    "choices": [
+      "約2メートル",
+      "約7メートル",
+      "約15メートル",
+      "約25メートル"
+    ],
+    "answer": 1,
+    "exp": "ホップは約7メートルの高さまで、約70日間で成長するとされています。（出典: 1､Hop and Malt.pdf スライド番号24 / ページ24）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの収穫時期はおおよそいつとされているか？",
+    "choices": [
+      "5月上旬",
+      "6月下旬",
+      "8月末",
+      "11月上旬"
+    ],
+    "answer": 2,
+    "exp": "ホップは8月の終わり頃に収穫され、その後加工されます。（出典: 1､Hop and Malt.pdf スライド番号28 / ページ28）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの毬花の構造として資料に挙げられていないものは？",
+    "choices": [
+      "柄（ストリグ：小花を支える軸）",
+      "小包葉（ブラクテオール：小花を包む葉）",
+      "苞（ブラクト：毬花を覆う葉状構造）",
+      "雄しべ（花粉を作る雄性器官）"
+    ],
+    "answer": 3,
+    "exp": "毬花の構造として柄、小包葉、苞、樹脂と精油を含むルプリン腺が挙げられています。（出典: 1､Hop and Malt.pdf スライド番号27 / ページ27）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ中でアロマや苦味成分を豊富に含む腺は何と呼ばれるか？",
+    "choices": [
+      "ルプリン腺（毬花基部の黄色い腺）",
+      "苞葉腺（苞の表面にある腺組織）",
+      "樹脂腺（樹脂成分を分泌する腺）",
+      "精油腺（精油成分のみを分泌する腺）"
+    ],
+    "answer": 0,
+    "exp": "ルプリン腺は樹脂と精油を含み、ホップのアロマと苦味の主な源です。（出典: 1､Hop and Malt.pdf スライド番号27 / ページ27）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの化学成分のうち、資料で最も高い割合（約40％）を占めるとされるものは？",
+    "choices": [
+      "樹脂（苦味とアロマの主成分）",
+      "タンパク質（酵母の栄養源となる成分）",
+      "セルロース等（構造を構成する繊維質成分）",
+      "精油（香り成分の主要な由来）"
+    ],
+    "answer": 2,
+    "exp": "セルロース等が約40％と最も高い割合を占め、次いで樹脂が約15％、タンパク質が約15％とされています。（出典: 1､Hop and Malt.pdf スライド番号31 / ページ31）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの化学成分のうち、樹脂の割合はおよそ何％とされているか？",
+    "choices": [
+      "約1％",
+      "約5％",
+      "約15％",
+      "約30％"
+    ],
+    "answer": 2,
+    "exp": "樹脂は約15％を占め、苦味成分（α酸等）の主な供給源です。（出典: 1､Hop and Malt.pdf スライド番号31 / ページ31）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "アメリカ産アロマホップ品種として資料に挙げられていないものは？",
+    "choices": [
+      "カスケード（グレープフルーツ様の香り）",
+      "シトラ（トロピカルフルーツ様の香り）",
+      "センテニアル（フローラルで柑橘系の香り）",
+      "ノーザンブルワー（苦味用ホップとして知られる品種）"
+    ],
+    "answer": 3,
+    "exp": "ノーザンブルワーはドイツのビタリングホップとして挙げられています。カスケード、シトラ、センテニアルはアメリカ産アロマホップです。（出典: 1､Hop and Malt.pdf ページ29）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "アメリカ産ビターホップ品種として資料に挙げられていないものは？",
+    "choices": [
+      "コロンバス",
+      "マグナム",
+      "チヌーク",
+      "サフィア"
+    ],
+    "answer": 3,
+    "exp": "サフィアはドイツのアロマホップとして挙げられています。コロンバス、マグナム、チヌークはアメリカ産ビターホップです。（出典: 1､Hop and Malt.pdf ページ30）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "世界のホップ生産の約30％を占めるとされる国は資料上どこか？",
+    "choices": [
+      "ドイツ",
+      "アメリカ",
+      "チェコ",
+      "イギリス"
+    ],
+    "answer": 1,
+    "exp": "アメリカで栽培されているホップは世界のホップ生産の約30％を占めるとされています（ドイツは約34％）。（出典: 1､Hop and Malt.pdf ページ30）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ精油の成分「ミルセン」の特徴的な香りは？",
+    "choices": [
+      "柑橘系",
+      "樹脂質",
+      "バラ様",
+      "黒すぐり"
+    ],
+    "answer": 1,
+    "exp": "ミルセンは樹脂質・フローラルな香りの成分として挙げられています。（出典: 1､Hop and Malt.pdf スライド番号33 / ページ33）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ精油の成分のうち、「黒すぐり（カシス）」のような香りを持つとされる成分は？",
+    "choices": [
+      "ミルセン（青々しい樹脂様の香り）",
+      "リナロール（バラ様のフローラルな香り）",
+      "4MMP（4-メルカプト-4-メチルペンタン-2オン、黒すぐり様の香り）",
+      "ゲラニオール（バラ様の甘い香り）"
+    ],
+    "answer": 2,
+    "exp": "4MMPは黒すぐり（カシス）様の香りを持ち、フレーバー閾値が10〜50ppbと非常に低い成分です。（出典: 1､Hop and Malt.pdf スライド番号35 / ページ35）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ精油の成分「ゲラニオール」の特徴的な香りは？",
+    "choices": [
+      "柑橘系（レモンやオレンジ様の香り）",
+      "バラ様のフローラル（甘く華やかな香り）",
+      "樹脂質（松ヤニのような香り）",
+      "ナツメグ様（スパイシーで温かみのある香り）"
+    ],
+    "answer": 1,
+    "exp": "ゲラニオールはバラを思わせるフローラルな香りが特徴とされています。（出典: 1､Hop and Malt.pdf スライド番号35 / ページ35）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ精油に含まれる成分は、現在までにいくつ以上特定されているか？",
+    "choices": [
+      "約40種類",
+      "約100種類",
+      "約400種類",
+      "約4000種類"
+    ],
+    "answer": 2,
+    "exp": "現在までに400以上の成分が識別されているとされています。（出典: 1､Hop and Malt.pdf スライド番号34 / ページ34）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップ加工品の利点として資料に挙げられていないものは？",
+    "choices": [
+      "製品の標準化が可能",
+      "保存が容易",
+      "収量が減少する",
+      "容積が小さい"
+    ],
+    "answer": 2,
+    "exp": "ホップ加工品（ペレット、エキス等）の利点は、標準化・高収量・保存容易・小容積・高安定性であり、収量減少は利点として挙げられていません。（出典: 1､Hop and Malt.pdf スライド番号36 / ページ36）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "ホップの毬花（コーン）の状態での保存に必要な温度・期間の目安は？",
+    "choices": [
+      "5℃未満で1年",
+      "常温で5年",
+      "25℃で5年",
+      "0℃で永久保存可能"
+    ],
+    "answer": 0,
+    "exp": "ホップの毬花（コーン）は5℃未満で1年、-20℃未満でさらに長期の保存が可能とされています。（出典: 1､Hop and Malt.pdf スライド番号38 / ページ38）"
+  },
+  {
+    "cat": "malt_hops",
+    "q": "現在、一般的にホップはどのような形状に加工されることが多いか？",
+    "choices": [
+      "生の毬花のまま乾燥もせず出荷するのが主流",
+      "ペレット、エキス、化学修飾エキス等に加工されることが多い",
+      "粉末状の乾燥ハーブとしてのみ流通する",
+      "液体窒素で瞬間冷凍した状態でのみ流通する"
+    ],
+    "answer": 1,
+    "exp": "現在ではペレット、エキス、化学修飾されたエキス、川下製品などの形状に加工されるのが一般的です。（出典: 1､Hop and Malt.pdf スライド番号36 / ページ36）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "完成したビール1hlあたりの平均使用水量（醸造・洗浄・冷却含む）はどれくらいとされるか？",
+    "choices": [
+      "約2hl",
+      "約6hl",
+      "約10hl",
+      "約20hl"
+    ],
+    "answer": 1,
+    "exp": "資料では完成ビール1hlあたり平均6hlの水が使用されるとされています。（出典: 2､Water & Yeast.pdf ページ3）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "「1°dH（ドイツ硬度）」はCaCO3換算で何mg/Lに相当するか？",
+    "choices": [
+      "10mg/L",
+      "14.3mg/L",
+      "17.8mg/L",
+      "0.56mg/L"
+    ],
+    "answer": 2,
+    "exp": "ドイツ硬度1°dH＝17.8mg CaCO3/L。ちなみに日本硬度1°jH＝0.56mg/Lです。（出典: 2､Water & Yeast.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "歴史的にピルスナービールが生まれたピルゼンの水質の特徴は？",
+    "choices": [
+      "非常に硬度が高い（総硬度30°dH以上）",
+      "非常に軟水（総硬度1.6°dH程度）",
+      "炭酸塩硬度が極めて高い（総硬度20°dH前後）",
+      "海水に近いミネラル分（塩化物濃度が非常に高い）"
+    ],
+    "answer": 1,
+    "exp": "ピルゼンの水は総硬度1.6°dHと非常に軟水で、淡色で繊細なピルスナーの誕生を支えました。（出典: 2､Water & Yeast.pdf スライド番号14 / ページ14）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "残留アルカリ度が高い水でマッシング（糖化）を行うと、pHはどう変化する傾向があるか？",
+    "choices": [
+      "上昇する",
+      "低下する",
+      "変化しない",
+      "常に中性になる"
+    ],
+    "answer": 0,
+    "exp": "残留アルカリ度10°dHあたりpHは約0.3上昇するとされ、色の濃いビールほど高い残留アルカリ度が適するとされます。（出典: 2､Water & Yeast.pdf スライド番号17 / ページ17）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "「ラガー酵母は低温でなければ育たない」という一般的な誤解について、資料の見解は？",
+    "choices": [
+      "正しい説明であり、ラガー酵母は低温でしか生存できない",
+      "誤りで、ラガー酵母は温暖な環境でも十分に成長・増殖する",
+      "一部のラガー酵母株のみ低温でしか増殖できない",
+      "資料には温度耐性についての記載が一切ない"
+    ],
+    "answer": 1,
+    "exp": "資料は「lager yeast need cold temperatures は間違い」と明記し、ラガー酵母も温暖下でよく増殖するとしています。（出典: 2､Water & Yeast.pdf スライド番号27 / ページ27）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "上面発酵酵母（エール酵母）の一般的な発酵温度帯は？",
+    "choices": [
+      "0〜5℃",
+      "5〜11(20)℃",
+      "15〜25(40)℃",
+      "30〜50℃"
+    ],
+    "answer": 2,
+    "exp": "上面発酵は15〜25(40)℃、下面発酵は5〜11(20)℃が目安です。（出典: 2､Water & Yeast.pdf ページ35）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "1883年、世界で初めて酵母の純粋培養に成功した人物は？",
+    "choices": [
+      "ルイ・パスツール（微生物学の父）",
+      "エミール・クリスチャン・ハンセン（カールスバーグ研究所）",
+      "カール・フォン・リンデ（冷凍機の発明者）",
+      "ポール・リンドナー（ドイツの醸造微生物学者）"
+    ],
+    "answer": 1,
+    "exp": "1883年11月12日、カールスバーグ醸造所のエミール・クリスチャン・ハンセンが初めて酵母の純粋培養に成功しました。（出典: 2､Water & Yeast.pdf スライド番号26 / ページ26）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "冷凍機を発明し、温暖な地域でもラガービール醸造を可能にした人物は？",
+    "choices": [
+      "アントン・ドレーアー",
+      "カール・フォン・リンデ",
+      "パウル・リンドナー",
+      "エミール・クリスチャン・ハンセン"
+    ],
+    "answer": 1,
+    "exp": "1873年（資料の別箇所では1876年とも）、カール・フォン・リンデが冷凍機を発明し、どこでも低温発酵が可能になりました。（出典: 2､Water & Yeast.pdf ページ29）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ブレタノマイセス・ブルクセレンシスが1904年に発見された醸造所は？",
+    "choices": [
+      "ギネス醸造所",
+      "カールスバーグ醸造所",
+      "ホーフブロイハウス",
+      "パウラーナー醸造所"
+    ],
+    "answer": 1,
+    "exp": "カールスバーグ醸造所のN. Hjelte Claussenが、イギリスのエールから1904年に発見しました。（出典: 2､Water & Yeast.pdf スライド番号39 / ページ39）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造用水の炭酸塩硬度を除去する方法として資料に挙げられていないものは？",
+    "choices": [
+      "煮沸",
+      "石灰乳の添加",
+      "イオン交換体の使用",
+      "塩素による消毒"
+    ],
+    "answer": 3,
+    "exp": "塩素処理・オゾン処理・UV照射などは微生物対策の水処理方法であり、炭酸塩硬度の除去方法（煮沸・石灰乳・イオン交換・逆浸透）とは区別されています。（出典: 2､Water & Yeast.pdf スライド番号20 / ページ20）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造用水の水源として資料に挙げられていないものは？",
+    "choices": [
+      "地下水",
+      "表面水（河川水・湖沼水・海洋水）",
+      "自然に濾過された水",
+      "蒸留水"
+    ],
+    "answer": 3,
+    "exp": "地下水、表面水、自然に濾過された水、廃水（処理後）が水源として挙げられています。（出典: 2､Water & Yeast.pdf スライド番号4 / ページ4）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造用水の水処理で「不溶解粒子状物質の除去」に使われる方法は？",
+    "choices": [
+      "沈殿・濾過",
+      "塩素処理",
+      "UV照射",
+      "イオン交換"
+    ],
+    "answer": 0,
+    "exp": "不溶解粒子状物質の除去には沈殿・濾過が用いられます。（出典: 2､Water & Yeast.pdf スライド番号5 / ページ5）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造用水の微生物対策として資料に挙げられていない方法は？",
+    "choices": [
+      "塩素処理（二酸化塩素）",
+      "オゾン処理",
+      "UV照射",
+      "糖化"
+    ],
+    "answer": 3,
+    "exp": "塩素処理、オゾン処理、濾過、UV照射が微生物濃度低減の方法として挙げられています。糖化はマッシングの工程です。（出典: 2､Water & Yeast.pdf ページ6）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "飲料水の一般的な評価基準として資料に挙げられていないものは？",
+    "choices": [
+      "色(着色の有無)",
+      "濁り(清澄度)",
+      "臭気と味(異臭・異味の有無)",
+      "アルコール度数(度数の高低)"
+    ],
+    "answer": 3,
+    "exp": "色、濁り、臭気と味、pH、電気伝導率が一般的な評価基準として挙げられています。（出典: 2､Water & Yeast.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "石灰岩質の土壌から得られる水に多く含まれるミネラルの組み合わせは？",
+    "choices": [
+      "カルシウムと炭酸塩",
+      "カルシウムと硫酸塩",
+      "マグネシウムと炭酸塩",
+      "ナトリウムと塩化物"
+    ],
+    "answer": 0,
+    "exp": "石灰岩地質からはカルシウムと炭酸塩が多く含まれる水が得られます。（出典: 2､Water & Yeast.pdf スライド番号9 / ページ9）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "石こう質の土壌から得られる水に多く含まれるミネラルの組み合わせは？",
+    "choices": [
+      "カルシウムと炭酸塩",
+      "カルシウムと硫酸塩",
+      "マグネシウムと炭酸塩",
+      "ミネラル溶解度が低い"
+    ],
+    "answer": 1,
+    "exp": "石こう質からはカルシウムと硫酸塩が多く含まれる水が得られます（バートン・アポン・トレントの水質で有名）。（出典: 2､Water & Yeast.pdf スライド番号9 / ページ9）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ドロマイト質の土壌から得られる水に多く含まれるミネラルの組み合わせは？",
+    "choices": [
+      "カルシウムと炭酸塩",
+      "カルシウムと硫酸塩",
+      "マグネシウムと炭酸塩",
+      "ミネラル溶解度が低い"
+    ],
+    "answer": 2,
+    "exp": "ドロマイト質からはマグネシウムと炭酸塩が多く含まれる水が得られます。（出典: 2､Water & Yeast.pdf スライド番号9 / ページ9）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "歴史的な醸造用水の硬度比較で、最も硬度が高いとされる都市は？（資料表内）",
+    "choices": [
+      "ピルゼン(軟水として知られる)",
+      "ミュンヘン(中硬水として知られる)",
+      "ウィーン(硬水として知られる)",
+      "バートン・アポン・トレント(資料表内で最も高い硬度)"
+    ],
+    "answer": 3,
+    "exp": "表では総硬度がバートン・アポン・トレントが72°dHと最も高く、ペールエールの産地として知られます。（出典: 2､Water & Yeast.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "歴史的醸造用水の比較で、ピルスナー（ピルゼン）が生まれた土地の総硬度は？",
+    "choices": [
+      "1.6°dH",
+      "15.0°dH",
+      "39.0°dH",
+      "72.0°dH"
+    ],
+    "answer": 0,
+    "exp": "ピルゼンの水は総硬度1.6°dHと非常に軟水です。（出典: 2､Water & Yeast.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ミュンヘンの伝統的な水質（総硬度15°dH）に対応する歴史的ビアスタイルは？",
+    "choices": [
+      "ピルスナー(軟水地域で造られるスタイル)",
+      "ミュンヘンドゥンケル(総硬度15°dHの水に対応)",
+      "ペールエール(硬水地域で造られるスタイル)",
+      "ウィンナーラガー(ウィーンの水質に対応するスタイル)"
+    ],
+    "answer": 1,
+    "exp": "ミュンヘンの水（総硬度15°dH）はミュンヘン・ドゥンケルに対応するとされています。（出典: 2､Water & Yeast.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ウィーンの伝統的な水質（総硬度39°dH）に対応する歴史的ビアスタイルは？",
+    "choices": [
+      "ピルスナー(ピルゼンの軟水に対応するスタイル)",
+      "エクスポート(ドルトムントの水質に対応するスタイル)",
+      "ウィンナースタイル(総硬度39°dHの水に対応)",
+      "ペールエール(バートンの硬水に対応するスタイル)"
+    ],
+    "answer": 2,
+    "exp": "ウィーンの水（総硬度39°dH）はウィンナースタイル（ウィンナーラガー）に対応するとされています。（出典: 2､Water & Yeast.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "「1°fH（フランス硬度）」はCaCO3換算で何mg/Lに相当するか？",
+    "choices": [
+      "10mg/L",
+      "14.3mg/L",
+      "17.8mg/L",
+      "1mg/L"
+    ],
+    "answer": 0,
+    "exp": "フランス硬度1°fHは10mg CaCO3/Lに相当します。（出典: 2､Water & Yeast.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "「1°eH（イギリス硬度）」はCaCO3換算で何mg/Lに相当するか？",
+    "choices": [
+      "10mg/L",
+      "14.3mg/L",
+      "17.8mg/L",
+      "1mg/L"
+    ],
+    "answer": 1,
+    "exp": "イギリス硬度1°eHは14.3mg CaCO3/Lに相当します。（出典: 2､Water & Yeast.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "「1°aH（アメリカ硬度）」はCaCO3換算で何mg/Lに相当するか？",
+    "choices": [
+      "10mg/L",
+      "14.3mg/L",
+      "17.8mg/L",
+      "1mg/L"
+    ],
+    "answer": 3,
+    "exp": "アメリカ硬度1°aHは1mg CaCO3/Lに相当します。（出典: 2､Water & Yeast.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "炭酸塩硬度が糖化（マッシング）に与える影響として正しいものは？",
+    "choices": [
+      "pHを上昇させる",
+      "pHを低下させる",
+      "pHには影響しない",
+      "発酵を止める"
+    ],
+    "answer": 0,
+    "exp": "炭酸塩硬度（カルシウム・マグネシウムの炭酸塩＋重炭酸塩）はpHを上昇させる方向に働きます。（出典: 2､Water & Yeast.pdf スライド番号14 / ページ14）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "非炭酸塩硬度が糖化（マッシング）に与える影響として正しいものは？",
+    "choices": [
+      "pHを上昇させる",
+      "pHを低下させる",
+      "pHには影響しない",
+      "発酵を促進する"
+    ],
+    "answer": 1,
+    "exp": "非炭酸塩硬度（硫酸カルシウム、リン酸塩、硝酸塩など）はpHを低下させる方向に働きます。（出典: 2､Water & Yeast.pdf スライド番号14 / ページ14）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "残留アルカリ度が10°dHの水を使用した場合、pHはおよそどの程度上昇するとされるか？",
+    "choices": [
+      "約0.1",
+      "約0.3",
+      "約1.0",
+      "約3.0"
+    ],
+    "answer": 1,
+    "exp": "残留アルカリ度10°dHあたり、pH値は約0.3上昇するとされています。（出典: 2､Water & Yeast.pdf スライド番号17 / ページ17）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "マッシュ・麦汁のpHが高すぎる場合の悪影響として資料に挙げられていないものは？",
+    "choices": [
+      "多くの酵素が失活する",
+      "エキス収量が低下する",
+      "発酵が長期化する",
+      "色が薄くなる"
+    ],
+    "answer": 3,
+    "exp": "高いpHは酵素の失活、エキス収量低下、渋味の増加、ホップ収率の増加、発酵の長期化などを引き起こすとされ、色が薄くなるとは記載されていません。（出典: 2､Water & Yeast.pdf スライド番号19 / ページ19）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造用水から鉄やマンガンを除去する方法として資料に挙げられているものは？",
+    "choices": [
+      "エアレーションによる酸化(空気にさらし酸化・沈殿させる方法)",
+      "塩素処理(塩素を添加し殺菌する方法)",
+      "逆浸透法のみ(膜でろ過するだけの方法)",
+      "冷却処理(温度を下げるだけの方法)"
+    ],
+    "answer": 0,
+    "exp": "エアレーション（曝気）による酸化で鉄・マンガンを除去する方法が挙げられています。（出典: 2､Water & Yeast.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "腐食性のCO2を低減する方法として資料に挙げられているものは？",
+    "choices": [
+      "エアレーション/脱気、大理石フィルターの使用",
+      "冷凍処理(一時的に凍結させる方法)",
+      "紫外線照射(殺菌のみを目的とした処理)",
+      "石灰乳の添加のみ(pH調整のみを目的とした処理)"
+    ],
+    "answer": 0,
+    "exp": "エアレーション/脱気、または大理石フィルターの使用によりCO2を低減する方法が挙げられています。（出典: 2､Water & Yeast.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "発酵という現象について、古くはどのように理解されていたとされるか？",
+    "choices": [
+      "微生物の働きとして正確に理解されていた",
+      "害のある物質を分離する洗浄工程と考えられていた",
+      "化学反応として数式で説明されていた",
+      "神からの贈り物としてのみ理解されていた"
+    ],
+    "answer": 1,
+    "exp": "発酵はガス発生や香味変化など目に見える作用が理解されておらず、害のある物質を分離する洗浄工程と考えられていました。（出典: 2､Water & Yeast.pdf スライド番号22 / ページ22）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "1680年、発酵中の糖液の中に「ボールのような構造」を初めて観察した人物は？",
+    "choices": [
+      "ルイ・パスツール",
+      "A.レーウェンフック",
+      "エミール・クリスチャン・ハンセン",
+      "カニャール・ド・ラ・トゥール"
+    ],
+    "answer": 1,
+    "exp": "1680年、A.レーウェンフックが発酵中の希釈した糖の中に「ボールのような構造」を初めて記述しました。（出典: 2､Water & Yeast.pdf スライド番号23 / ページ23）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "1834年から1837年の間に「発酵現象」を独立して解明したとされる3人の科学者に含まれないのは？",
+    "choices": [
+      "カニャール・ド・ラ・トゥール",
+      "シュワン",
+      "キュッツィング",
+      "ルイ・パスツール"
+    ],
+    "answer": 3,
+    "exp": "カニャール・ド・ラ・トゥール、シュワン、キュッツィングの3人がそれぞれ独立して解明しました。パスツールは1857〜1860年に生化学的過程を解明しました。（出典: 2､Water & Yeast.pdf スライド番号24 / ページ24）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ルイ・パスツールが1857〜1860年に示した有名な言葉として正しいものは？",
+    "choices": [
+      "「発酵なしに生命体はない」",
+      "「ビールは水より安全だ」",
+      "「酵母は植物である」",
+      "「熱処理が全てを解決する」"
+    ],
+    "answer": 0,
+    "exp": "パスツールは「No Fermentation without organisms（発酵なしに生命体はない）」等の言葉を残しました。（出典: 2､Water & Yeast.pdf スライド番号25 / ページ25）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "1893年に異なる純粋培養醸造酵母株とその発酵結果について初めて研究を行った人物は？",
+    "choices": [
+      "エミール・クリスチャン・ハンセン",
+      "ポール・リンドナー",
+      "ルイ・パスツール",
+      "カール・フォン・リンデ"
+    ],
+    "answer": 1,
+    "exp": "1893年、ポール・リンドナーが異なる純粋培養酵母株の発酵結果について初めて研究しました。（出典: 2､Water & Yeast.pdf スライド番号26 / ページ26）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "ポール・リンドナーの研究で挙げられた「Typ Frohburg」の特徴は？",
+    "choices": [
+      "最終発酵度が高い",
+      "最終発酵度が低い",
+      "発酵しない",
+      "苦味を全く生じない"
+    ],
+    "answer": 0,
+    "exp": "Typ Frohburgは最終発酵度が高く、Typ Saazは最終発酵度が低い酵母株とされています。（出典: 2､Water & Yeast.pdf スライド番号26 / ページ26）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "上面発酵酵母（エール酵母）の代謝速度について、下面発酵酵母（ラガー酵母）と比較して正しいものは？",
+    "choices": [
+      "上面発酵酵母(エール酵母)の方が代謝が速い",
+      "下面発酵酵母(ラガー酵母)の方が代謝が速い",
+      "両者の代謝速度に差はない",
+      "発酵温度が異なるため比較できない"
+    ],
+    "answer": 0,
+    "exp": "上面発酵酵母の代謝は下面発酵酵母より速いとされています。（出典: 2､Water & Yeast.pdf ページ35）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "下面発酵酵母（ラガー酵母）の特徴として正しいものは？",
+    "choices": [
+      "非常に低い温度でも成長・増殖できる",
+      "15℃を超える温度でしか発酵しない",
+      "エール酵母より発酵が速い",
+      "母細胞・娘細胞を持たない"
+    ],
+    "answer": 0,
+    "exp": "下面発酵酵母は非常に低い温度でも成長・増殖できるのが特徴です。（出典: 2､Water & Yeast.pdf ページ35）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "エール酵母はおよそ何年前から使用されているとされるか？",
+    "choices": [
+      "約1000年前",
+      "約5500年前",
+      "約11000年前",
+      "起源不明"
+    ],
+    "answer": 2,
+    "exp": "エール酵母は少なくとも11000年間利用されているとされています（一方でラガー酵母の起源は未だ不明です）。（出典: 2､Water & Yeast.pdf スライド番号28 / ページ28）",
+    "freq": true
+  },
+  {
+    "cat": "water_yeast",
+    "q": "バイエルンでは16世紀から主にどの酵母が使用されていたとされるか（純粋培養酵母登場以前）？",
+    "choices": [
+      "主にエール酵母",
+      "主にラガー酵母",
+      "エール・ラガー半々",
+      "酵母を使わない自然発酵のみ"
+    ],
+    "answer": 1,
+    "exp": "低温発酵の伝統（9月29日〜4月23日のみ醸造許可）から、16世紀以降バイエルンの醸造所では主にラガー酵母が使用されていましたが、純粋培養酵母はまだありませんでした。（出典: 2､Water & Yeast.pdf スライド番号28 / ページ28）"
+  },
+  {
+    "cat": "water_yeast",
+    "q": "醸造酵母の分類において、上面発酵酵母に含まれないものは？",
+    "choices": [
+      "ヴァイスビア酵母",
+      "ケルシュ酵母",
+      "Kveik",
+      "ラガー酵母"
+    ],
+    "answer": 3,
+    "exp": "ラガー酵母は下面発酵酵母です。ヴァイスビア酵母、ケルシュ酵母、アルト酵母、セゾン酵母、Kveikはすべて上面発酵（エール酵母）に分類されます。（出典: 2､Water & Yeast.pdf ページ35）"
+  },
+  {
+    "cat": "sensory",
+    "q": "基本の味覚のうち、1908年に池田菊苗によって発見された「第5の味」は？",
+    "choices": [
+      "辛味(三叉神経が感じる刺激)",
+      "うま味(グルタミン酸に由来する味)",
+      "渋味(タンニン等による刺激)",
+      "脂味(近年提唱されている味覚)"
+    ],
+    "answer": 1,
+    "exp": "「旨い(umai)」＋「味(mi)」に由来するうま味は、グルタミン酸などにより誘発される第5の基本味として1908年に発見されました。（出典: 1-1感覚生理学、官能評価.pdf ページ6）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "一般的な人が持つ味蕾の数はおよそいくつとされるか？",
+    "choices": [
+      "約200",
+      "約2000",
+      "約20000",
+      "約200000"
+    ],
+    "answer": 1,
+    "exp": "多くの人は約2000の味蕾を持ち、人口の約10％は約4000の味蕾を持つとされます。（出典: 1-1感覚生理学、官能評価.pdf ページ7）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "舌の後方部にあり、約100の味蕾を持つとされる乳頭は？",
+    "choices": [
+      "茸状乳頭",
+      "葉状乳頭",
+      "有郭乳頭",
+      "糸状乳頭"
+    ],
+    "answer": 2,
+    "exp": "有郭乳頭は舌後方に約100の味蕾を持ちます。茸状乳頭は前方に3〜5、葉状乳頭は側面・裏側に50の味蕾を持ちます。（出典: 1-1感覚生理学、官能評価.pdf ページ10）"
+  },
+  {
+    "cat": "sensory",
+    "q": "嗅細胞は何種類の受容体タイプにより、約1万種類の匂いを識別できるとされるか？",
+    "choices": [
+      "47種類",
+      "147種類",
+      "347種類",
+      "547種類"
+    ],
+    "answer": 2,
+    "exp": "347の異なる受容体タイプが約1万の異なる匂いを嗅ぎ分けるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ15）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "「オルソネーザル」による香りの知覚経路として正しいものは？",
+    "choices": [
+      "咀嚼中に喉から鼻腔へ抜ける香り",
+      "鼻から直接吸い込む香り",
+      "舌の表面で感じる香り",
+      "皮膚感覚として感じる香り"
+    ],
+    "answer": 1,
+    "exp": "オルソネーザル（直接鼻から）は「立ち香」、レトロネーザル（喉から）は飲食時の「口中香・戻り香」に対応します。（出典: 1-1感覚生理学、官能評価.pdf ページ13）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "「スクラムリックテスト」の最初の手順として正しいものは？",
+    "choices": [
+      "鼻を開いて匂いを嗅ぐ",
+      "鼻をつまんで閉じる",
+      "粉末を鼻に近づける",
+      "目を閉じる"
+    ],
+    "answer": 1,
+    "exp": "①鼻をつまんで閉じる→②舌に少量の粉末をのせ知覚したものを表現する→③鼻を開き印象を表現する、という手順です。（出典: 1-1感覚生理学、官能評価.pdf ページ14）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "口当たり（マウスフィール）などの、嗅覚・味覚以外で知覚される感覚は何と呼ばれるか？",
+    "choices": [
+      "視覚（Visual Perception）",
+      "触覚（Haptic Perception）",
+      "聴覚（Auditory Perception）",
+      "平衡感覚（Vestibular Sense）"
+    ],
+    "answer": 1,
+    "exp": "触感・運動感覚・三叉神経知覚・温度依存性知覚などをまとめてHaptic Perception（触覚）と呼びます。（出典: 1-1感覚生理学、官能評価.pdf ページ21）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "三叉神経（Nervus trigeminus）の3つの枝に含まれないものは？",
+    "choices": [
+      "眼神経",
+      "上顎神経",
+      "下顎神経",
+      "舌下神経"
+    ],
+    "answer": 3,
+    "exp": "三叉神経は眼神経・上顎神経・下顎神経の3枝に分かれます。舌下神経は別の脳神経です。（出典: 1-1感覚生理学、官能評価.pdf ページ23）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "ビールの苦味の強さを国際的に表す単位は？",
+    "choices": [
+      "SRM",
+      "EBC",
+      "IBU",
+      "ABV"
+    ],
+    "answer": 2,
+    "exp": "IBU（International Bitterness Units）が国際苦味単位として使われます。（出典: 1-1感覚生理学、官能評価.pdf ページ53）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "Meilgaardのフレーバーホイールは、大きくいくつのカテゴリーに分類されているか？",
+    "choices": [
+      "10",
+      "12",
+      "14",
+      "20"
+    ],
+    "answer": 2,
+    "exp": "Meilgaardのフレーバーホイールは1.AROMATIC〜14.WARMINGまで、14の大分類で構成されています。（出典: 1-1感覚生理学、官能評価.pdf ページ34）"
+  },
+  {
+    "cat": "sensory",
+    "q": "「環境の認知（Cognition of our environment）」のサイクルとして資料に示されている4要素は？",
+    "choices": [
+      "Input, Processing, Output, Feedback",
+      "Sense, Organ, Signal, Brain",
+      "Taste, Smell, Touch, Sight",
+      "Aroma, Flavor, Texture, Memory"
+    ],
+    "answer": 0,
+    "exp": "Input（入力）→Processing（処理・加工）→Output（出力）→feedback（フィードバック）というサイクルが示されています。（出典: 1-1感覚生理学、官能評価.pdf ページ2）"
+  },
+  {
+    "cat": "sensory",
+    "q": "「Sense（感覚）→Organ（器官）→Signal（信号）」の対応で、味覚（Taste）に対応する器官は？",
+    "choices": [
+      "目",
+      "耳",
+      "舌",
+      "鼻"
+    ],
+    "answer": 2,
+    "exp": "味覚（Taste）に対応する器官は舌（Tongue）です。（出典: 1-1感覚生理学、官能評価.pdf ページ3）"
+  },
+  {
+    "cat": "sensory",
+    "q": "甘味（Sweet）が持つ役割として資料に挙げられているものは？",
+    "choices": [
+      "身体に必要なミネラルを供給する役割",
+      "優れたエネルギー源であり幼少期から心地よく感じる",
+      "唾液分泌を促し消化を助ける役割",
+      "毒物や腐敗物の可能性を知らせる警告の役割"
+    ],
+    "answer": 1,
+    "exp": "甘味は優れたエネルギー源であり、生まれた直後から心地よいと感じるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ5）"
+  },
+  {
+    "cat": "sensory",
+    "q": "苦味（Bitter）が持つ役割・特徴として資料に挙げられているものは？",
+    "choices": [
+      "身体に必要なミネラルを供給する役割",
+      "唾液分泌を促し消化を助ける役割",
+      "問題や毒物の可能性があり、子供は自然に苦味を避ける",
+      "幼少期から心地よく感じるエネルギー源"
+    ],
+    "answer": 2,
+    "exp": "苦味は問題があり毒物である可能性を示すため、小さい子どもは自然に苦味を避ける傾向があるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ5）"
+  },
+  {
+    "cat": "sensory",
+    "q": "酸味（Sour）が持つ役割として資料に挙げられているものは？",
+    "choices": [
+      "身体に必要なミネラルを供給する役割",
+      "唾液分泌を促し消化を助ける",
+      "毒物や腐敗物の可能性を知らせる役割",
+      "優れたエネルギー源になる役割"
+    ],
+    "answer": 1,
+    "exp": "酸味のある食物は唾液の分泌を促すことが多く、消化を助けるとされています（未熟な果実は酸っぱいため、身体の防衛反応として唾液分泌が増加）。（出典: 1-1感覚生理学、官能評価.pdf ページ5）"
+  },
+  {
+    "cat": "sensory",
+    "q": "塩味と酸味について、その濃度と心地よさの関係として正しいものは？",
+    "choices": [
+      "低濃度では心地よいが高濃度では不快に感じる",
+      "どんな濃度でも常に心地よく感じる",
+      "どんな濃度でも常に不快に感じる",
+      "濃度が高いほど一貫して好まれる"
+    ],
+    "answer": 0,
+    "exp": "塩味・酸味は低濃度では心地良いと感じるが、高濃度になると不快に感じるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ5）"
+  },
+  {
+    "cat": "sensory",
+    "q": "食物の感覚の知覚のうち、口腔内の味覚システムが占める割合はおよそ何％とされるか？",
+    "choices": [
+      "約5％",
+      "約20％",
+      "約50％",
+      "約80％"
+    ],
+    "answer": 1,
+    "exp": "食物の感覚の約20％は、口腔内の味覚システムにより知覚されるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ7）"
+  },
+  {
+    "cat": "sensory",
+    "q": "人口の約10％が持つとされる、平均よりも多い味蕾の数はいくつとされるか？",
+    "choices": [
+      "約1000",
+      "約2000",
+      "約4000",
+      "約8000"
+    ],
+    "answer": 2,
+    "exp": "人口の約10％は約4000の味蕾を持つとされています（多くの人は約2000）。（出典: 1-1感覚生理学、官能評価.pdf ページ7）"
+  },
+  {
+    "cat": "sensory",
+    "q": "追加の受容器官によって知覚できるとされる物質は？",
+    "choices": [
+      "脂肪性物質",
+      "金属物質",
+      "繊維質",
+      "アルコール成分のみ"
+    ],
+    "answer": 0,
+    "exp": "追加の受容器官により脂肪性物質を知覚できるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ7）"
+  },
+  {
+    "cat": "sensory",
+    "q": "味蕾の構造として資料に挙げられていないものは？",
+    "choices": [
+      "味孔",
+      "微絨毛",
+      "味細胞",
+      "網膜"
+    ],
+    "answer": 3,
+    "exp": "味蕾の構造として味孔、微絨毛、味細胞、支持細胞、基底細胞、シナプス、脳へ神経線維が挙げられています。網膜は視覚器官の構造です。（出典: 1-1感覚生理学、官能評価.pdf ページ8）"
+  },
+  {
+    "cat": "sensory",
+    "q": "舌の前方部に主に位置し、3〜5の味蕾を持つ乳頭は？",
+    "choices": [
+      "有郭乳頭",
+      "葉状乳頭",
+      "茸状乳頭",
+      "糸状乳頭"
+    ],
+    "answer": 2,
+    "exp": "茸状乳頭（Fungiform papillae）は3〜5の味蕾を持ち、主に舌の前方部に位置します。（出典: 1-1感覚生理学、官能評価.pdf ページ10）"
+  },
+  {
+    "cat": "sensory",
+    "q": "舌の側面と裏側に位置し、約50の味蕾を持つ乳頭は？",
+    "choices": [
+      "有郭乳頭",
+      "葉状乳頭",
+      "茸状乳頭",
+      "糸状乳頭"
+    ],
+    "answer": 1,
+    "exp": "葉状乳頭（Foliate papillae）は約50の味蕾を持ち、舌の側面と裏側に位置します。（出典: 1-1感覚生理学、官能評価.pdf ページ10）"
+  },
+  {
+    "cat": "sensory",
+    "q": "糸状乳頭（Filiform papillae）の役割として正しいものは？",
+    "choices": [
+      "舌の乳頭の中で味蕾を最も多く含む",
+      "舌にザラつきを与え、触感を知覚する",
+      "甘味だけを選択的に感知する",
+      "嗅覚受容体を舌の表面に含む"
+    ],
+    "answer": 1,
+    "exp": "糸状乳頭は味蕾を持たず、舌にザラつきを与え触感を知覚する役割を持ちます。（出典: 1-1感覚生理学、官能評価.pdf ページ10）"
+  },
+  {
+    "cat": "sensory",
+    "q": "嗅覚のノート（香りの変化）の分類として資料に挙げられていないものは？",
+    "choices": [
+      "トップノート（Opening smell）",
+      "ミドルノート（Main smell）",
+      "ラストノート／ベースノート（End smell）",
+      "サイドノート（Side smell）"
+    ],
+    "answer": 3,
+    "exp": "トップノート、ミドルノート、ラストノート（ベースノート）の3つが挙げられています。（出典: 1-1感覚生理学、官能評価.pdf ページ12）"
+  },
+  {
+    "cat": "sensory",
+    "q": "「嗅覚は最も複雑な○○感覚である」の○○に入る言葉は？",
+    "choices": [
+      "物理",
+      "化学",
+      "視覚",
+      "触覚"
+    ],
+    "answer": 1,
+    "exp": "嗅覚は最も複雑な化学感覚であるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ12）"
+  },
+  {
+    "cat": "sensory",
+    "q": "嗅粘膜はおよそ何個の嗅細胞に覆われているとされるか？",
+    "choices": [
+      "約300万個",
+      "約3000万個",
+      "約3億個",
+      "約30億個"
+    ],
+    "answer": 1,
+    "exp": "嗅粘膜は約3000万個の嗅細胞に覆われており、寿命は1〜2カ月ほどとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ15）"
+  },
+  {
+    "cat": "sensory",
+    "q": "嗅細胞の寿命はおよそどのくらいとされているか？",
+    "choices": [
+      "1〜2日",
+      "1〜2週間",
+      "1〜2カ月",
+      "1〜2年"
+    ],
+    "answer": 2,
+    "exp": "嗅細胞の寿命は1〜2カ月ほどとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ15）"
+  },
+  {
+    "cat": "sensory",
+    "q": "匂いの受容から脳への伝達プロセスとして正しい順序は？",
+    "choices": [
+      "匂い物質→受容体結合→電気信号発生→糸球体→脳",
+      "脳→糸球体→電気信号発生→受容体結合→匂い物質",
+      "電気信号発生→匂い物質→受容体結合→糸球体→脳",
+      "受容体結合→脳→電気信号発生→糸球体→匂い物質"
+    ],
+    "answer": 0,
+    "exp": "匂い物質が受容体と結合→受容細胞が活性化し電気信号を送信→信号が糸球体に中継→脳のより高い領域に送信、という流れです。（出典: 1-1感覚生理学、官能評価.pdf ページ17）"
+  },
+  {
+    "cat": "sensory",
+    "q": "「アロマ」の定義として資料に示されているものは？",
+    "choices": [
+      "味覚のみで感じ取ったものを表す言葉",
+      "嗅覚のみ、またはアロマとフレーバーを合わせた知覚を表すのに使用される",
+      "口腔と鼻腔からの全体的な知覚のみを表す言葉",
+      "ビールの色から受ける視覚的な印象を表す言葉"
+    ],
+    "answer": 1,
+    "exp": "「アロマ」は嗅覚で感じ取ったものだけ、またはアロマとフレーバーを合わせて感じ取ったものを表すのに使用されるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ18）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "「フレーバー」の定義として資料に示されているものは？",
+    "choices": [
+      "嗅覚のみで感じ取ったものを表す言葉",
+      "口腔と鼻腔から感じ取る全体的な知覚",
+      "視覚のみで感じ取ったものを表す言葉",
+      "味覚のみで感じ取ったものを表す言葉"
+    ],
+    "answer": 1,
+    "exp": "「フレーバー」とは口腔と鼻腔から感じ取る全体的な知覚を指すと定義されています。（出典: 1-1感覚生理学、官能評価.pdf ページ18）",
+    "freq": true
+  },
+  {
+    "cat": "sensory",
+    "q": "匂いとアロマに関する人間の記憶の特徴として資料に示されているものは？",
+    "choices": [
+      "他の感覚で知覚した記憶と全く同じ性質を持つ",
+      "他の感覚で知覚した記憶と大きく異なる",
+      "記憶にはほとんど残らない",
+      "視覚の記憶より劣る"
+    ],
+    "answer": 1,
+    "exp": "人間が持つ、匂いとアロマに関する記憶は、他の感覚で知覚した記憶と大きく異なるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ18）"
+  },
+  {
+    "cat": "sensory",
+    "q": "「アロマ値（アロマコントリビューション）」の計算方法として正しいものは？",
+    "choices": [
+      "濃度×閾値",
+      "濃度÷閾値",
+      "閾値÷濃度",
+      "濃度－閾値"
+    ],
+    "answer": 1,
+    "exp": "アロマ値は、ある物質の濃度をその物質の閾値で割ったものです。（出典: 1-1感覚生理学、官能評価.pdf ページ20）"
+  },
+  {
+    "cat": "sensory",
+    "q": "資料のポテトチップスのアロマ化合物の例で、最も高いアロマ値を示した成分は？",
+    "choices": [
+      "メチオナール",
+      "2-フェニルエタナール",
+      "trans,trans-2,4-デカジエナール",
+      "いずれも同程度"
+    ],
+    "answer": 0,
+    "exp": "メチオナールは濃度20mg/kg・閾値0.2mg/kgでアロマ値100と、例示された3成分の中で最も高い値でした。（出典: 1-1感覚生理学、官能評価.pdf ページ20）"
+  },
+  {
+    "cat": "sensory",
+    "q": "n-ブタノールの閾値は、水中とビール中でどちらがより高い（感じにくい）か？",
+    "choices": [
+      "水中の方が高い",
+      "ビール中の方が高い",
+      "水中とビール中で閾値は同じである",
+      "媒体が異なるため単純に比較できない"
+    ],
+    "answer": 1,
+    "exp": "n-ブタノールの閾値は水中0.5mg/kgに対しビール中200mg/kgと、ビール中の方がはるかに閾値が高い（感じにくい）とされています。（出典: 1-1感覚生理学、官能評価.pdf ページ19）"
+  },
+  {
+    "cat": "sensory",
+    "q": "触覚（Haptic Perception）の分類として資料に挙げられていないものは？",
+    "choices": [
+      "触感（tactile sensations）",
+      "運動感覚（kinesthesia）",
+      "三叉神経知覚（trigeminal perception）",
+      "色覚（color perception）"
+    ],
+    "answer": 3,
+    "exp": "触感、運動感覚（噛んだ時の抵抗反応）、三叉神経知覚（痛み・顔の感覚）、温度依存性知覚が触覚の分類として挙げられています。（出典: 1-1感覚生理学、官能評価.pdf ページ21）"
+  },
+  {
+    "cat": "sensory",
+    "q": "口の中で感じた触覚には、どのような言葉が使われるとされるか？",
+    "choices": [
+      "「マウスフィール（口当たり）」という言葉が使われる",
+      "「テクスチャー（質感）」のみが使われる",
+      "「アフターテイスト（後味）」のみが使われる",
+      "「ボディ（コク）」のみが使われる"
+    ],
+    "answer": 0,
+    "exp": "口の中で感じた触覚には「（口当たり）マウスフィール」という言葉が使われます。（出典: 1-1感覚生理学、官能評価.pdf ページ21）"
+  },
+  {
+    "cat": "sensory",
+    "q": "広範囲の触覚と圧覚を伝える受容体として資料に挙げられているものは？",
+    "choices": [
+      "パチニ小体",
+      "メルケル細胞",
+      "マイスナー小体",
+      "ルフィニ小体"
+    ],
+    "answer": 0,
+    "exp": "パチニ小体は広範囲の触覚と圧覚を伝えるとされ、メルケル細胞・マイスナー小体は局所的な触知を担います。（出典: 1-1感覚生理学、官能評価.pdf ページ22）"
+  },
+  {
+    "cat": "sensory",
+    "q": "温かさを感知する受容体（ルフィニ小体）はおよそいくつあるとされるか？",
+    "choices": [
+      "約3000個",
+      "約3万個",
+      "約30万個",
+      "約300万個"
+    ],
+    "answer": 1,
+    "exp": "約3万個のルフィニ小体が温かさを感知するとされています（冷たさは約25万個の受容体）。（出典: 1-1感覚生理学、官能評価.pdf ページ22）"
+  },
+  {
+    "cat": "sensory",
+    "q": "冷たさを感知する受容体はおよそいくつあるとされるか？",
+    "choices": [
+      "約3万個",
+      "約25万個",
+      "約100万個",
+      "約1000万個"
+    ],
+    "answer": 1,
+    "exp": "約25万個の受容体が冷たさを感知するとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ22）"
+  },
+  {
+    "cat": "sensory",
+    "q": "三叉神経（Nervus trigeminus）はどのように位置づけられているか？",
+    "choices": [
+      "最も弱い脳神経",
+      "最大かつ最も強い脳神経",
+      "味覚のみを司る神経",
+      "嗅覚のみを司る神経"
+    ],
+    "answer": 1,
+    "exp": "三叉神経は最大の脳神経とされ、顔の知覚と運動機能を助ける3つの主要な枝に分かれます。（出典: 1-1感覚生理学、官能評価.pdf ページ23）"
+  },
+  {
+    "cat": "sensory",
+    "q": "三叉神経の「眼神経（Nervus ophthalmicus）」が支配する部位は？",
+    "choices": [
+      "額、涙腺、篩骨",
+      "上顎部、上顎の歯、口蓋",
+      "下顎部、舌、下顎の筋肉",
+      "耳のみ"
+    ],
+    "answer": 0,
+    "exp": "眼神経は額、涙腺、篩骨を支配します。（出典: 1-1感覚生理学、官能評価.pdf ページ23）"
+  },
+  {
+    "cat": "sensory",
+    "q": "扁桃体（Amygdala）が重要な役割を果たすとされるものは？",
+    "choices": [
+      "視力の調整と焦点合わせ",
+      "恐怖心の形成、情動的評価、脅威の分析",
+      "消化液の分泌と消化管の調節",
+      "体温調整と発汗のコントロール"
+    ],
+    "answer": 1,
+    "exp": "扁桃体は恐怖心を抱くのに不可欠であり、情動的評価、状況認識、潜在的な脅威の分析に重要な役割を果たすとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ25）"
+  },
+  {
+    "cat": "sensory",
+    "q": "iso-amylacetate（酢酸イソアミル）に対する「心地良さ」の評価は、年齢によってどう変化する傾向が示されているか？",
+    "choices": [
+      "年齢に関わらず一定の評価を保つ",
+      "幼児期に一度下がり、その後年齢とともに回復する",
+      "加齢とともに一貫して低下し続ける",
+      "加齢とともに一貫して上昇し続ける"
+    ],
+    "answer": 1,
+    "exp": "グラフでは4〜6歳頃に心地良さの評価が一時的に下がり、その後年齢とともに再び高くなる傾向が示されています。（出典: 1-1感覚生理学、官能評価.pdf ページ26）"
+  },
+  {
+    "cat": "sensory",
+    "q": "心理的影響として資料に挙げられている、人間の感覚の中で他の感覚より優位とされるものは？",
+    "choices": [
+      "視覚",
+      "聴覚",
+      "嗅覚",
+      "触覚"
+    ],
+    "answer": 0,
+    "exp": "人間の視覚は他の感覚より優位であるとされています。（出典: 1-1感覚生理学、官能評価.pdf ページ29）"
+  },
+  {
+    "cat": "sensory",
+    "q": "心理的影響として資料に挙げられていないものは？",
+    "choices": [
+      "サンプルの提示順序による影響",
+      "サンプルのパッケージによる先入観",
+      "質問の仕方によるバイアス",
+      "テイスティング会場の照明の色温度による影響"
+    ],
+    "answer": 3,
+    "exp": "提示順序、パッケージ、質問の仕方が評価に影響を与える要因として挙げられています。照明の色温度への言及はありません。（出典: 1-1感覚生理学、官能評価.pdf ページ29）"
+  },
+  {
+    "cat": "sensory",
+    "q": "Stillman（1993）によるフルーツジュースの色に関する知覚コントロールの実験で、色が「赤」の場合のラズベリー味の正答率は？",
+    "choices": [
+      "55.3％",
+      "89.7％",
+      "48.7％",
+      "68.4％"
+    ],
+    "answer": 1,
+    "exp": "赤色のラズベリージュースの正答率は89.7％と非常に高く示されています。（出典: 1-1感覚生理学、官能評価.pdf ページ30）"
+  },
+  {
+    "cat": "sensory",
+    "q": "ビールの色をEBCで表現する際、「5」に相当する色は？",
+    "choices": [
+      "明るい麦わら色",
+      "強いブロンズ",
+      "チェスナット色",
+      "漆黒"
+    ],
+    "answer": 0,
+    "exp": "EBC5は明るい麦わら色（light straw yellow）に相当します。（出典: 1-1感覚生理学、官能評価.pdf ページ43）"
+  },
+  {
+    "cat": "sensory",
+    "q": "ビールの濁り（ターピディティ）をEBCで表現する際、「crystal clear」に相当する数値は？",
+    "choices": [
+      "<1",
+      "1〜2",
+      "2〜3",
+      "5〜10"
+    ],
+    "answer": 0,
+    "exp": "EBC1未満がcrystal clear（澄みきった）に相当します。（出典: 1-1感覚生理学、官能評価.pdf ページ44）"
+  },
+  {
+    "cat": "sensory",
+    "q": "ビールの苦味を国際的にIBUで表現する際、「extreme」に相当する目安は？",
+    "choices": [
+      "5(ほとんど苦味を感じないレベル)",
+      "20(軽い苦味のレベル)",
+      "40(中程度の苦味のレベル)",
+      "80以上(極めて強い苦味のレベル)"
+    ],
+    "answer": 3,
+    "exp": "IBU80以上が「extreme（極めて強い）」の目安とされています。（出典: 1-1感覚生理学、官能評価.pdf ページ53）"
+  },
+  {
+    "cat": "sensory",
+    "q": "Beer Flavor Standards（ビールフレーバーの標準品）に関する説明として正しいものは？",
+    "choices": [
+      "マイクロカプセル化された標準品で、500以上の醸造所で使用されている",
+      "訓練を受けた専門家のみが使用でき、安全性は保証されていない",
+      "日本国内の醸造所でのみ使用が認められている",
+      "味の再現性に乏しく参考程度にしかならない"
+    ],
+    "answer": 0,
+    "exp": "マイクロカプセル化されたフレーバー標準品で、安全性が保証されており、100カ国以上・500を超える醸造所で使用されています。（出典: 1-1感覚生理学、官能評価.pdf ページ37）"
+  },
+  {
+    "cat": "sensory",
+    "q": "スパイダーダイアグラム（レーダーチャート）でフレーバーを表現する際、外側の先端と中心が表す値として正しいものは？",
+    "choices": [
+      "外側＝0、中心＝フレーバー強さ10",
+      "外側＝フレーバー強さ10、中心＝0",
+      "外側・中心ともに同じ値を表す",
+      "数値とは無関係な位置関係"
+    ],
+    "answer": 1,
+    "exp": "ラインの外側先端はフレーバーの強さ10を表し、中心は0（ゼロ）を表します。（出典: 1-1感覚生理学、官能評価.pdf ページ38）"
+  },
+  {
+    "cat": "germany",
+    "q": "1842年、バイエルン流の醸造法でチェコ・ピルゼンにて最初のラガービール（ボヘミアンピルス）を生み出した人物は？",
+    "choices": [
+      "アントン・ドレーアー",
+      "ヨーゼフ・グロル",
+      "ゲオルク・シュナイダー",
+      "ガブリエル・ゼードルマイアー"
+    ],
+    "answer": 1,
+    "exp": "1842年10月5日、ヴィルショーフェン出身のヨーゼフ・グロルがピルゼンで最初のラガービールを醸造しました。（出典: 3-2､ドイツのビール参考資料.pdf スライド番号3 / ページ3）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツスタイルピルスナーは1872年、後のどこの醸造所が発売したものが起源とされるか？",
+    "choices": [
+      "ラーデベルガー醸造所",
+      "シュパーテン醸造所",
+      "ホーフブロイハウス",
+      "パウラーナー醸造所"
+    ],
+    "answer": 0,
+    "exp": "1872年、後のラーデベルガー醸造所がチェコのピルスナーを真似つつ、よりホップを効かせたビールを発売しました。（出典: 3､ドイツビール.pdf ページ6）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "ヘレスラガーは1894年、北ドイツ向けにどこの醸造所が開発したとされるか？",
+    "choices": [
+      "アウグスティーナー",
+      "シュパーテン醸造所",
+      "パウラーナー醸造所",
+      "ケストリッツァー"
+    ],
+    "answer": 1,
+    "exp": "1894年、シュパーテン醸造所が北ドイツ向けの淡色ビールとしてヘレスを開発しました。（出典: 3､ドイツビール.pdf ページ7）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "バイエルンで夏季のビール醸造が禁止されていた期間（1539年の規則）はいつからいつまでか？",
+    "choices": [
+      "4月23日〜9月29日",
+      "6月1日〜8月31日",
+      "5月1日〜10月1日",
+      "3月1日〜9月1日"
+    ],
+    "answer": 0,
+    "exp": "聖ゲオルクの日（4月23日）から聖ミカエルの日（9月29日）までの夏季は醸造が禁止されていました。（出典: 3､ドイツビール.pdf ページ33）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "オクトーバーフェストビールが軽めのスタイルへと変化したのは1970年代、どこの醸造所によるとされるか？",
+    "choices": [
+      "シュパーテン醸造所",
+      "パウラーナー醸造所",
+      "ホーフブロイハウス",
+      "アウグスティーナー"
+    ],
+    "answer": 1,
+    "exp": "1970年代、パウラーナー醸造所がメルツェンより軽めのビールを開発し、量を飲みやすい今のオクトーバーフェストビアに近づきました。（出典: 3､ドイツビール.pdf ページ13）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドッペルボックの銘柄名によく見られる語尾の接尾辞は？",
+    "choices": [
+      "「-bier」",
+      "「-ator」",
+      "「-fest」",
+      "「-brau」"
+    ],
+    "answer": 1,
+    "exp": "Salvator、Optimator、Celebrator、Maximatorなど、聖人名などに由来し「-ator」で終わる名前が多く見られます。（出典: 3､ドイツビール.pdf ページ15）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "アイスボックが生まれたきっかけとされるエピソードは？",
+    "choices": [
+      "醸造家が意図的に開発した新しい濃縮技術",
+      "冬にボックビールの樽を外に一晩放置し凍らせてしまった偶然",
+      "修道院の宗教儀式に由来する伝統製法",
+      "戦時中の物資不足を補うための代替製法"
+    ],
+    "answer": 1,
+    "exp": "1890年頃、クルムバッハの醸造見習いがボックビールの樽を冬に外へ一晩放置してしまい、凍った部分を除くと濃縮されたビールができていたのが起源とされます。（出典: 3､ドイツビール.pdf ページ16）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "1872年にホーフブロイハウスのヴァイスビア醸造権を買い取り、自身の醸造所（シュナイダー・ヴァイセ）を設立した人物は？",
+    "choices": [
+      "アントン・ドレーアー",
+      "ゲオルク・シュナイダー",
+      "ヨーゼフ・グロル",
+      "ガブリエル・ゼードルマイアー"
+    ],
+    "answer": 1,
+    "exp": "1872年、ゲオルク・シュナイダーがホーフブロイハウスのヴァイスビア醸造権を買い取り独立しました。（出典: 3､ドイツビール.pdf ページ18）"
+  },
+  {
+    "cat": "germany",
+    "q": "ケルシュの定義と醸造できる醸造所を定めた「ケルシュ協定」が結ばれたのは何年か？",
+    "choices": [
+      "1971年",
+      "1985年",
+      "1997年",
+      "2008年"
+    ],
+    "answer": 1,
+    "exp": "1985年のケルシュ協定でケルシュの定義と醸造所が定められ、1997年にはEUの地理的表示保護制度にも登録されました。（出典: 3､ドイツビール.pdf ページ20）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "「ゴーゼ」というビアスタイル名の由来となった川がある町は？",
+    "choices": [
+      "ライプツィヒ",
+      "ゴスラー",
+      "バンベルク",
+      "デュッセルドルフ"
+    ],
+    "answer": 1,
+    "exp": "ゴスラーにあるゴーゼ川の水を醸造に使ったことが名前の由来とされます（その後ライプツィヒでも盛んに造られました）。（出典: 3､ドイツビール.pdf ページ23）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "伝統的なラオホビア（スモークビール）の製法を今も守り続けているバンベルクの2醸造所は？",
+    "choices": [
+      "シュパーテンとパウラーナー",
+      "シュレンケルラとシュペツィアル",
+      "アウグスティーナーとホーフブロイ",
+      "ケストリッツァーとラーデベルガー"
+    ],
+    "answer": 1,
+    "exp": "技術進歩でモルトを燻さない方法に多くの醸造所が転向する中、SchlenkerlaとSpezialの2醸造所は燻製製法を守り続けました。（出典: 3､ドイツビール.pdf ページ24）"
+  },
+  {
+    "cat": "germany",
+    "q": "「Reinheitsgebot（いわゆるビール純粋令）」という呼称が定着したのはいつ頃とされるか？",
+    "choices": [
+      "1516年の規定制定と同時に定着した",
+      "1871年のドイツ統一と同時に定着した",
+      "1918年、イギリスビールへの対抗マーケティングとして",
+      "第二次世界大戦後の復興期に定着した"
+    ],
+    "answer": 2,
+    "exp": "1516年のバイエルン公国の規定自体は古くからありますが、「Reinheitsgebot」という名称は1918年、当時勢いのあった英国ビールへの対抗マーケティングツールとして定着したとされます。（出典: 3､ドイツビール.pdf ページ32）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツ北部の中世の醸造で、12世紀まで主に使われていた植物系の香味料は？",
+    "choices": [
+      "ホップ",
+      "グルート",
+      "バニラ",
+      "シナモン"
+    ],
+    "answer": 1,
+    "exp": "12世紀までグルート（西洋ヤチヤナギ、ノコギリソウ、よもぎ等の混合ハーブ）が主に使われていました。（出典: 3-2､ドイツのビール参考資料.pdf ページ2）"
+  },
+  {
+    "cat": "germany",
+    "q": "修道院が初めてホップを醸造に使用したのは何世紀とされるか？",
+    "choices": [
+      "9世紀",
+      "12世紀",
+      "16世紀",
+      "18世紀"
+    ],
+    "answer": 1,
+    "exp": "12世紀、修道院が初めてホップを醸造に使用したとされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ2）"
+  },
+  {
+    "cat": "germany",
+    "q": "ハンザ同盟が支配した貿易の中心地域として資料に挙げられているのは？",
+    "choices": [
+      "地中海沿岸地域",
+      "北海・バルト海沿岸地域",
+      "黒海沿岸地域",
+      "北大西洋沿岸地域"
+    ],
+    "answer": 1,
+    "exp": "ハンザ同盟は12〜17世紀に北海、バルト海沿岸地域の国際貿易を支配した商人・都市の同盟です。（出典: 3､ドイツビール.pdf ページ30）"
+  },
+  {
+    "cat": "germany",
+    "q": "1500年頃、ハンザ都市ハンブルクにはおよそいくつの醸造所があったとされるか？",
+    "choices": [
+      "約60",
+      "約600",
+      "約6000",
+      "約60000"
+    ],
+    "answer": 1,
+    "exp": "1500年頃にはハンブルクだけで600もの醸造所があったとされています。（出典: 3､ドイツビール.pdf ページ30）"
+  },
+  {
+    "cat": "germany",
+    "q": "冬に飲まれたビールを指す用語「シェンクビア」に対応するのはどちらか？",
+    "choices": [
+      "夏のビール（軽く仕上げたビール）",
+      "冬のビール（生ビール）",
+      "貯蔵用に造られた強いビール",
+      "輸出専用に造られたビール"
+    ],
+    "answer": 1,
+    "exp": "冬のビールは「シェンクビア」（生ビール）、夏のビールは「Lagerbier」（貯蔵用ビール）と呼ばれました。（出典: 3-2､ドイツのビール参考資料.pdf スライド番号3 / ページ3）"
+  },
+  {
+    "cat": "germany",
+    "q": "夏のビールが長期貯蔵に耐えられるよう、通常よりどうされていたか？",
+    "choices": [
+      "より弱く、ホップも少なく造られた",
+      "より強く、ホップも多めに使用された",
+      "あえて発酵させずに造られた",
+      "意図的に高温の場所で保存された"
+    ],
+    "answer": 1,
+    "exp": "夏のビールは長期貯蔵に安定させるため、より強く、通常より多くのホップを使用して醸造されました。（出典: 3-2､ドイツのビール参考資料.pdf スライド番号3 / ページ3）"
+  },
+  {
+    "cat": "germany",
+    "q": "1839年、ピルゼン市民が設立した醸造所（後のピルスナー・ウルケルの母体）の名前は？",
+    "choices": [
+      "メスタンスキー・ピヴォヴァール（市民醸造所）",
+      "ホーフブロイハウス（バヴァリア王室醸造所）",
+      "シュパーテン醸造所（ミュンヘンの老舗醸造所）",
+      "クライン・シュヴェヒター醸造所（ウィーン近郊の醸造所）"
+    ],
+    "answer": 0,
+    "exp": "1839年、ピルゼン市民がメスタンスキー・ピヴォヴァール（市民醸造所）を設立し、後のピルスナー・ウルケルにつながります。（出典: 3-2､ドイツのビール参考資料.pdf スライド番号3 / ページ3）"
+  },
+  {
+    "cat": "germany",
+    "q": "純粋培養酵母の登場前、ビールの発酵にはどのようなことが起きていたとされるか？",
+    "choices": [
+      "常に単一の乳酸菌だけで発酵が進んでいた",
+      "乳酸菌や野生酵母を含む複数の微生物が混在していた",
+      "そもそも発酵という工程自体が行われていなかった",
+      "下面発酵酵母しか存在せず上面発酵は不可能だった"
+    ],
+    "answer": 1,
+    "exp": "純粋培養酵母以前は、乳酸菌や野生酵母を用いない発酵ができず、複数の微生物が混在した発酵が行われていました。（出典: 3-2､ドイツのビール参考資料.pdf ページ4）"
+  },
+  {
+    "cat": "germany",
+    "q": "ラガー革命の要因として資料に挙げられていないものは？",
+    "choices": [
+      "純粋培養酵母",
+      "濾過技術によるクリスタルクリアなビール",
+      "人工的な冷却技術",
+      "蒸留技術の発達"
+    ],
+    "answer": 3,
+    "exp": "純粋培養酵母、濾過、人工冷却、麦芽技術・水処理の進歩がラガー革命の要因として挙げられています。蒸留技術は挙げられていません。（出典: 3-2､ドイツのビール参考資料.pdf ページ4）"
+  },
+  {
+    "cat": "germany",
+    "q": "ラガー革命の結果として資料に挙げられているものは？",
+    "choices": [
+      "各地でビアスタイルの多様性が飛躍的に増えた",
+      "ペールラガーが約100年間ビールの多様性を破壊した",
+      "エールビールが世界的な主流の座を取り戻した",
+      "醸造でのホップの使用が法律で禁止された"
+    ],
+    "answer": 1,
+    "exp": "ラガー革命の結果、ペールラガービールが約100年間ビールの多様性を破壊し、それまでのビアスタイルの多くが忘れ去られたとされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ4）"
+  },
+  {
+    "cat": "germany",
+    "q": "オーストリアで1839年にクライン・シュヴェヒター醸造所を買収した人物は？",
+    "choices": [
+      "アントン・ドレヒャー",
+      "カール・フォン・リンデ",
+      "ヨーゼフ・グロル",
+      "ガブリエル・ゼードルマイアー"
+    ],
+    "answer": 0,
+    "exp": "1839年、アントン・ドレヒャーがクライン・シュヴェヒター醸造所を買収しました。（出典: 3-2､ドイツのビール参考資料.pdf ページ5）"
+  },
+  {
+    "cat": "germany",
+    "q": "アントン・ドレヒャーが1840〜1841年にかけて開発したビアスタイルは？",
+    "choices": [
+      "ペールラガー（ウィーンラガー）",
+      "ボヘミアンピルス（ピルゼン発祥のラガー）",
+      "デュンケル（ミュンヘン発祥の濃色ラガー）",
+      "ヴァイスビア（南ドイツ発祥の小麦ビール）"
+    ],
+    "answer": 0,
+    "exp": "1840〜1841年にかけてアントン・ドレヒャーがペールラガー（ウィーンラガー）を開発しました。（出典: 3-2､ドイツのビール参考資料.pdf ページ5）"
+  },
+  {
+    "cat": "germany",
+    "q": "19世紀末の醸造技術の画期的発明のうち、1878年にローレンツ・A・エンツィンガーが導入したものは？",
+    "choices": [
+      "冷凍機",
+      "濾過",
+      "純粋培養酵母",
+      "水化学の解明"
+    ],
+    "answer": 1,
+    "exp": "1878年、ローレンツ・A・エンツィンガーが濾過技術を導入しました。（出典: 3-2､ドイツのビール参考資料.pdf ページ5）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツ語圏・チェコの「クラシックビアスタイル」の分類で、下面発酵に含まれないものは？",
+    "choices": [
+      "Helles/Lager",
+      "Schwarzbier",
+      "Kölsch",
+      "Bock hell/Maibock"
+    ],
+    "answer": 2,
+    "exp": "Kölsch（ケルシュ）は上面発酵のスタイルです。Helles/Lager、Schwarzbier、Bock hell/Maibockなどは下面発酵に分類されます。（出典: 3-2､ドイツのビール参考資料.pdf ページ7）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツ語圏・チェコの「クラシックビアスタイル」の分類で、上面発酵に含まれないものは？",
+    "choices": [
+      "Weizen/Weizenbock",
+      "Alt",
+      "Berliner Weiße",
+      "Rauchbier"
+    ],
+    "answer": 3,
+    "exp": "Rauchbier（ラオホビア）は「主に下面発酵」に分類されています。Weizen、Alt、Berliner Weißeは上面発酵です。（出典: 3-2､ドイツのビール参考資料.pdf ページ7）"
+  },
+  {
+    "cat": "germany",
+    "q": "「Schankbier（light beer）」は、上面発酵と下面発酵のどちらに分類されるか？",
+    "choices": [
+      "上面発酵酵母のみで造られる",
+      "下面発酵酵母のみで造られる",
+      "上面発酵または下面発酵どちらも可能",
+      "資料上、発酵方式を分類できない"
+    ],
+    "answer": 2,
+    "exp": "Schankbier（軽いビール）はアルコールフリービールと同様、上面発酵・下面発酵のどちらの分類にもなり得るとされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ30）"
+  },
+  {
+    "cat": "germany",
+    "q": "ヘレス/オーストリアメルツェンの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "6〜10",
+      "16〜24",
+      "25〜35",
+      "35〜50"
+    ],
+    "answer": 1,
+    "exp": "ヘレス/ラガー/オーストリアメルツェンのIBUは16〜24とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ8）"
+  },
+  {
+    "cat": "germany",
+    "q": "ジャーマンスタイルピルスの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "16〜24",
+      "24〜48",
+      "50〜70",
+      "70以上"
+    ],
+    "answer": 1,
+    "exp": "ジャーマンスタイルピルスのIBUは24〜48とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ9）"
+  },
+  {
+    "cat": "germany",
+    "q": "ボヘミアンスタイル（ラガー）ピルスの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜15",
+      "25〜35",
+      "40〜60",
+      "60以上"
+    ],
+    "answer": 1,
+    "exp": "ボヘミアンスタイルピルスのIBUは25〜35とされています。（出典: 3-2､ドイツのビール参考資料.pdf スライド番号10 / ページ10）"
+  },
+  {
+    "cat": "germany",
+    "q": "エクスポート（独）／スペシャル（墺）の分析仕様として示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜3.5%",
+      "4.8〜5.5%",
+      "5.5〜5.8%",
+      "8.5〜14.5%"
+    ],
+    "answer": 2,
+    "exp": "エクスポート/スペシャルのアルコール度数は5.5〜5.8%とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ11）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドゥンケル/ミューニックダークの分析仕様で、ダークモルトの割合はどの程度使用されるか？",
+    "choices": [
+      "最低10%から最高30%",
+      "最低50%から最高100%",
+      "常に100%固定",
+      "ダークモルトは使用しない"
+    ],
+    "answer": 1,
+    "exp": "ドゥンケルではダークモルトの割合が最低50%から最高100%とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ12）"
+  },
+  {
+    "cat": "germany",
+    "q": "シュヴァルツビアの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "4〜6",
+      "16〜24",
+      "22〜40",
+      "40以上"
+    ],
+    "answer": 2,
+    "exp": "シュヴァルツビアのIBUは22〜40とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ13）"
+  },
+  {
+    "cat": "germany",
+    "q": "バイエルン・メルツェンの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.9〜3.4%",
+      "4.8〜5.5%",
+      "5.6〜6.0%",
+      "8.5〜14.5%"
+    ],
+    "answer": 2,
+    "exp": "バイエルン・メルツェンのアルコール度数は5.6〜6.0%とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ14）"
+  },
+  {
+    "cat": "germany",
+    "q": "オクトーバーフェストビールの分析仕様として資料に示されている特徴は？",
+    "choices": [
+      "メルツェンより色が濃くフィニッシュも甘め",
+      "メルツェンより明るい色調でメルツェンよりドライなフィニッシュ",
+      "メルツェンと分析仕様上まったく同じスタイル",
+      "小麦麦芽を50%以上使用する小麦ビール"
+    ],
+    "answer": 1,
+    "exp": "メルツェンより明るい色調（軽い黄色〜濃い黄色）で、メルツェンよりドライなフィニッシュを持つとされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ15）"
+  },
+  {
+    "cat": "germany",
+    "q": "ペールボックの分析仕様として資料に示されている初期エキス（°P）の目安は？",
+    "choices": [
+      "P7以上",
+      "P11以上",
+      "P16以上",
+      "P25以上"
+    ],
+    "answer": 2,
+    "exp": "ペールボックはP16以上、ドッペルボック（-ator）はP18以上とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ16）"
+  },
+  {
+    "cat": "germany",
+    "q": "アイスボックの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.9〜3.4%",
+      "4.8〜5.8%",
+      "6.5〜8.5%",
+      "8.5〜14.5%"
+    ],
+    "answer": 3,
+    "exp": "アイスボックのアルコール度数は8.5〜14.5%と、凍結濃縮により非常に高くなります。（出典: 3-2､ドイツのビール参考資料.pdf ページ18）"
+  },
+  {
+    "cat": "germany",
+    "q": "ラオホビアの分析仕様で使用されるとされる特別なモルトは？",
+    "choices": [
+      "スペシャルスモークモルトの添加",
+      "カラメルモルトのみを使用",
+      "小麦麦芽を100%使用",
+      "焙煎しないベースモルトのみを使用"
+    ],
+    "answer": 0,
+    "exp": "ラオホビアはスペシャルなスモークモルトの添加が特徴で、ラオホボックやヴァイツェンラオホビアとしても醸造されます。（出典: 3-2､ドイツのビール参考資料.pdf ページ19）"
+  },
+  {
+    "cat": "germany",
+    "q": "ライトヴァイツェンの分析仕様として、小麦麦芽の使用割合はどの程度とされるか？",
+    "choices": [
+      "10%以上",
+      "30%以上",
+      "50%以上",
+      "90%以上"
+    ],
+    "answer": 2,
+    "exp": "ライトヴァイツェンをはじめとするヴァイツェン系スタイルは、小麦麦芽50%以上の使用が特徴です。（出典: 3-2､ドイツのビール参考資料.pdf ページ22）"
+  },
+  {
+    "cat": "germany",
+    "q": "ヘレスヴァイツェン/ヴァイスビアの典型的なアロマとして資料に挙げられていないものは？",
+    "choices": [
+      "バナナ",
+      "熟したリンゴ",
+      "クローブ",
+      "スモーキー"
+    ],
+    "answer": 3,
+    "exp": "バナナ、熟したリンゴ、桃、アプリコットの揮発性フルーティさとクローブのアロマが特徴とされ、スモーキーな香りは挙げられていません。（出典: 3-2､ドイツのビール参考資料.pdf ページ23）"
+  },
+  {
+    "cat": "germany",
+    "q": "アルトの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "4〜6",
+      "16〜24",
+      "28〜42",
+      "50以上"
+    ],
+    "answer": 2,
+    "exp": "アルトのIBUは28〜42とされ、上面発酵の中では比較的強めの苦味を持ちます。（出典: 3-2､ドイツのビール参考資料.pdf ページ26）"
+  },
+  {
+    "cat": "germany",
+    "q": "ケルシュの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "4〜6",
+      "16〜35",
+      "28〜42",
+      "50以上"
+    ],
+    "answer": 1,
+    "exp": "ケルシュのIBUは16〜35とされています。（出典: 3-2､ドイツのビール参考資料.pdf ページ27）"
+  },
+  {
+    "cat": "germany",
+    "q": "ゴーゼの分析仕様として、使用される主な原料の組み合わせとして正しいものは？",
+    "choices": [
+      "小麦および大麦麦芽、塩、乳酸菌",
+      "大麦麦芽のみ、ホップ大量使用",
+      "小麦麦芽のみ、燻製モルト",
+      "トウモロコシ、米、砂糖"
+    ],
+    "answer": 0,
+    "exp": "ゴーゼは小麦および大麦麦芽に塩と乳酸菌を使用するのが特徴です。（出典: 3-2､ドイツのビール参考資料.pdf ページ29）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツのビール税法における「シャンクビア」の初期比重の範囲は？",
+    "choices": [
+      "P4.0〜6.9",
+      "P7.0〜10.9",
+      "P11.0〜15.9",
+      "P16.0以上"
+    ],
+    "answer": 1,
+    "exp": "ドイツのビール税法では、初期比重7〜10.9%のビールを「シャンクビア」と呼びます。（出典: 3-2､ドイツのビール参考資料.pdf ページ30）"
+  },
+  {
+    "cat": "germany",
+    "q": "2023年のドイツの醸造所数はおよそいくつとされているか？",
+    "choices": [
+      "約150",
+      "約1,492",
+      "約4,500",
+      "約9,900"
+    ],
+    "answer": 1,
+    "exp": "2023年時点でドイツの醸造所数は約1,492とされています。（出典: 3､ドイツビール.pdf ページ25）",
+    "freq": true
+  },
+  {
+    "cat": "germany",
+    "q": "2023年のドイツのビール生産量はおよそどの程度とされているか？",
+    "choices": [
+      "8.48億リットル",
+      "84.8億リットル",
+      "848億リットル",
+      "8,480億リットル"
+    ],
+    "answer": 1,
+    "exp": "2023年のドイツのビール生産量は84.8億リットルとされています。（出典: 3､ドイツビール.pdf ページ25）"
+  },
+  {
+    "cat": "germany",
+    "q": "ドイツの一人当たりビール消費量は、2004年から2023年にかけてどう変化したか？",
+    "choices": [
+      "114Lから88Lへ減少",
+      "88Lから114Lへ増加",
+      "変化なし",
+      "35Lから88Lへ増加"
+    ],
+    "answer": 0,
+    "exp": "2004年の114Lから2023年には約88Lへと減少しています。（出典: 3､ドイツビール.pdf ページ25）"
+  },
+  {
+    "cat": "germany",
+    "q": "資料によると、ドイツで最も売れているビールの種類として1位に挙げられているのは？",
+    "choices": [
+      "ヘレス",
+      "ピルス",
+      "ビールミックス飲料",
+      "ヴァイツェン"
+    ],
+    "answer": 1,
+    "exp": "最もよく売れているビールとして1位にピルスが挙げられています（2位ヘレス、3位ビールミックス飲料）。（出典: 3､ドイツビール.pdf ページ27）"
+  },
+  {
+    "cat": "germany",
+    "q": "オクトーバーフェストのビール価格（資料記載時点）は1リットルあたりおよそいくらとされているか？",
+    "choices": [
+      "5.10〜6.40ユーロ",
+      "13.60〜15.30ユーロ",
+      "24.20〜28.70ユーロ",
+      "1.30〜2.10ユーロ"
+    ],
+    "answer": 1,
+    "exp": "オクトーバーフェストのビールは1リットル13.60〜15.30ユーロ（前年比+3.87％）とされています。（出典: 3､ドイツビール.pdf ページ28）"
+  },
+  {
+    "cat": "germany",
+    "q": "「ドルトムント」エクスポートを最初に作ったとされる人物は？",
+    "choices": [
+      "ハインリヒ・ヴェンカー",
+      "アントン・ドレーアー",
+      "ゲオルク・シュナイダー",
+      "ヨーゼフ・グロル"
+    ],
+    "answer": 0,
+    "exp": "1843年、ハインリヒ・ヴェンカーがミュンヘンで覚えた醸造法を用い、ドルトムントで初めてエクスポートを作りました。（出典: 3､ドイツビール.pdf ページ9）"
+  },
+  {
+    "cat": "germany",
+    "q": "「ドルトムント」ビールが1998年にEUで登録された制度は？",
+    "choices": [
+      "地理的表示保護制度",
+      "有機認証制度",
+      "伝統的特産品保護制度",
+      "原産地呼称統制"
+    ],
+    "answer": 0,
+    "exp": "1998年、「ドルトムントの水で、ドルトムントで造ったもの」としてEUの地理的表示保護制度に登録されました。（出典: 3､ドイツビール.pdf ページ9）"
+  },
+  {
+    "cat": "uk",
+    "q": "伝統的なエールを守るための団体「CAMRA（Campaign for Real Ale）」が設立されたのは何年か？",
+    "choices": [
+      "1961年",
+      "1971年",
+      "1981年",
+      "1991年"
+    ],
+    "answer": 1,
+    "exp": "1971年に設立されたCAMRAは、現在も約20万人の会員を擁し英国エールの伝統を守っています。（出典: 4､英国ビール.pdf スライド番号11 / ページ11）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "かつてイギリスで「ホップを使わないビール」を指した呼称は？",
+    "choices": [
+      "ビール",
+      "エール",
+      "スタウト",
+      "ポーター"
+    ],
+    "answer": 1,
+    "exp": "もともとホップを使わないビールを「エール」、ホップを使ったビールを「ビール」と呼び分けていました。（出典: 4､英国ビール.pdf スライド番号17 / ページ18）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "「ポーター」という名前の由来となったのは、主にどのような人々に飲まれていたビールだったからか？",
+    "choices": [
+      "貴族や上流階級の裕福な人々",
+      "港湾で荷物を運ぶ労働者たち",
+      "教会に仕える聖職者たち",
+      "戦地に赴く軍の兵士たち"
+    ],
+    "answer": 1,
+    "exp": "1720年頃ロンドンで生まれ、港湾労働者やポーター（運搬人）に愛飲されたことが名前の由来です。（出典: 4､英国ビール.pdf スライド番号16 / ページ17）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "イギリスにおいてポーターが1972年に最後に醸造され「絶滅」したとされる醸造所は？",
+    "choices": [
+      "バス醸造所",
+      "ギネス醸造所",
+      "フラーズ醸造所",
+      "サミュエル・スミス醸造所"
+    ],
+    "answer": 1,
+    "exp": "1972年にギネス醸造所が最後にポーターを醸造した後、英国では一旦姿を消したとされます。（出典: 4､英国ビール.pdf スライド番号17 / ページ18）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "アメリカでポーターが1972年に「復活」したとされる醸造所は？",
+    "choices": [
+      "シエラネバダ（カリフォルニアのクラフト醸造所）",
+      "アンカー・ブリューイング社",
+      "ボストンビアカンパニー（マサチューセッツの醸造所）",
+      "サミュエルアダムス（ボストンの醸造所）"
+    ],
+    "answer": 1,
+    "exp": "カリフォルニア州サンフランシスコのアンカー・ブリューイング社により1972年からアメリカで復活しました。（出典: 4､英国ビール.pdf スライド番号17 / ページ18）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "1759年にダブリンで醸造所を設立したアーサー・ギネスが、当初主に醸造していたスタイルは？",
+    "choices": [
+      "スタウト",
+      "ポーター",
+      "IPA",
+      "ピルスナー"
+    ],
+    "answer": 1,
+    "exp": "当初はポーターを醸造し、その後スタウトを中心に醸造して急成長を遂げました。（出典: 4､英国ビール.pdf スライド番号22 / ページ23）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "アイリッシュドライスタウトが初めて醸造されたのは何年、どこか？",
+    "choices": [
+      "1867年、ダブリン",
+      "1900年、ロンドン",
+      "1759年、コーク",
+      "1971年、エディンバラ"
+    ],
+    "answer": 0,
+    "exp": "1867年にダブリンでローストバーレイを使ったアイリッシュドライスタウトが初めて醸造されました。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "「インペリアルスタウト」はもともと誰の宮廷向けに醸造されたとされるか？",
+    "choices": [
+      "イギリス王室",
+      "ロシア皇帝の宮廷",
+      "フランス宮廷",
+      "オランダ王室"
+    ],
+    "answer": 1,
+    "exp": "インペリアルスタウトはもともとロシア皇帝の宮廷用に醸造されたのが起源とされています。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "バーレイワインの典型的な特徴として資料に挙げられていないものは？",
+    "choices": [
+      "オークやウイスキーのような香り",
+      "シェリーやポートワインのようなノート",
+      "極めて低いアルコール度数",
+      "トフィーのような複雑な麦芽風味"
+    ],
+    "answer": 2,
+    "exp": "バーレイワインはABV7〜13%程度と高めのアルコール度数を持つスタイルです。（出典: 4､英国ビール.pdf スライド番号14 / ページ14）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "スコティッシュエールの特徴として正しいものは？",
+    "choices": [
+      "イングリッシュエールよりフルーティ・スパイシー",
+      "ホップの特徴が少なく低温で発酵させることが多い",
+      "常に上面発酵酵母以外は使用不可",
+      "強いホップの苦味が支配的"
+    ],
+    "answer": 1,
+    "exp": "スコティッシュエールは低温発酵が多く、イングリッシュエールよりフルーティさ・スパイシーさ・ホップ感が少ない傾向があります。（出典: 4､英国ビール.pdf スライド番号15 / ページ16）",
+    "freq": true
+  },
+  {
+    "cat": "uk",
+    "q": "歴史的にイギリスがビール醸造で高く評価されていた理由として資料に挙げられているものは？",
+    "choices": [
+      "数々の発明によりビール品質が特に高いとされた",
+      "気候がビール醸造にまったく不向きだった",
+      "法律によりホップの栽培が禁止されていた",
+      "国内でのビール消費が法律で禁止されていた"
+    ],
+    "answer": 0,
+    "exp": "歴史的にイギリスは数々の発明によりビール品質が特に高いとされた国でした。（出典: 4､英国ビール.pdf スライド番号4 / ページ4）"
+  },
+  {
+    "cat": "uk",
+    "q": "「産業革命」を経てイギリスが先駆者となった醸造プロセス・醸造所の特徴は？",
+    "choices": [
+      "小規模で伝統的な家内制手工業のまま",
+      "近代的な「大規模」醸造プロセスと「大規模」醸造所",
+      "ビール醸造から蒸留酒製造への完全な転換",
+      "ホップをまったく使わない伝統的な製法"
+    ],
+    "answer": 1,
+    "exp": "「産業革命」を経て、イギリスは近代的な「大規模」醸造プロセスと「大規模」醸造所のパイオニアとなりました（Burton Union System等）。（出典: 4､英国ビール.pdf スライド番号4 / ページ4）"
+  },
+  {
+    "cat": "uk",
+    "q": "産業革命の時代、ビールはイギリスの貧しい人々にとってどのような存在になったか？",
+    "choices": [
+      "贅沢品",
+      "「主食」",
+      "禁制品",
+      "輸出専用品"
+    ],
+    "answer": 1,
+    "exp": "産業革命の時代、ビールは貧しい人々の「主食」となったとされています。（出典: 4､英国ビール.pdf スライド番号4 / ページ4）"
+  },
+  {
+    "cat": "uk",
+    "q": "第一次世界大戦以降、イギリスで主に醸造・消費されるようになったビールのタイプは？",
+    "choices": [
+      "アルコール度数の高いバーレイワイン",
+      "「ライトビール」（主に経済的理由から）",
+      "大陸から輸入されたラガーのみ",
+      "アルコールをまったく含まないビールのみ"
+    ],
+    "answer": 1,
+    "exp": "第一次世界大戦以降、主に経済的理由から「ライトビール」が主に醸造・消費されるようになりました。（出典: 4､英国ビール.pdf スライド番号6 / ページ6）"
+  },
+  {
+    "cat": "uk",
+    "q": "「ラガー革命」の影響で、多くの「古典的なイギリス」のビアスタイルはどうなったとされるか？",
+    "choices": [
+      "かえってますます人気が高まった",
+      "忘れ去られた（ポーター、バーレイワインなど）",
+      "そのまま即座に世界の標準スタイルになった",
+      "政府の法律により醸造が禁止された"
+    ],
+    "answer": 1,
+    "exp": "ラガー革命の影響で、ポーターやバーレイワインなど多くの古典的イギリススタイルは忘れ去られました。（出典: 4､英国ビール.pdf スライド番号6 / ページ6）"
+  },
+  {
+    "cat": "uk",
+    "q": "約1980年頃から、イギリスの新しく開かれた醸造所で何が起きたとされるか？",
+    "choices": [
+      "ラガー専業への転換がさらに加速した",
+      "伝統的・一部忘れられたビアスタイルが再導入された",
+      "法律によりホップの使用が禁止された",
+      "経営難からパブがほぼすべて閉店した"
+    ],
+    "answer": 1,
+    "exp": "1980年頃から、伝統的で一部忘れられていたビアスタイルが新しい醸造所で再導入され始めました。（出典: 4､英国ビール.pdf スライド番号6 / ページ6）"
+  },
+  {
+    "cat": "uk",
+    "q": "イギリスにおいて「パブシーン」はどのような役割を果たしているとされるか？",
+    "choices": [
+      "もっぱら経済的な役割のみを果たす",
+      "社会政治的に非常に重要な役割",
+      "もっぱら観光客向けの役割のみを果たす",
+      "もっぱら宗教的な儀式の役割を果たす"
+    ],
+    "answer": 1,
+    "exp": "パブシーンはイギリスにおいて社会政治的に非常に重要な役割を果たしているとされています。（出典: 4､英国ビール.pdf スライド番号6 / ページ6）"
+  },
+  {
+    "cat": "uk",
+    "q": "Extra Special Bitter（ESB）の分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜20",
+      "22〜55",
+      "25〜55",
+      "40〜60"
+    ],
+    "answer": 2,
+    "exp": "ESBのIBUは25〜55とされています。（出典: 4､英国ビール.pdf スライド番号8 / ページ8）"
+  },
+  {
+    "cat": "uk",
+    "q": "（クラシック）イングリッシュペールエールの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜4%",
+      "3〜4.5%",
+      "4.8〜6%",
+      "6.5〜8%"
+    ],
+    "answer": 2,
+    "exp": "（クラシック）イングリッシュペールエールのアルコール度数は4.8〜6%とされています。（出典: 4､英国ビール.pdf スライド番号10 / ページ10）"
+  },
+  {
+    "cat": "uk",
+    "q": "イングリッシュゴールデン/サマーエールの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜20",
+      "20〜28",
+      "30〜50",
+      "50以上"
+    ],
+    "answer": 1,
+    "exp": "イングリッシュゴールデン/サマーエールのIBUは20〜28とされています。（出典: 4､英国ビール.pdf スライド番号8 / ページ8）"
+  },
+  {
+    "cat": "uk",
+    "q": "かつてパブでエールがブレンドされていた際、「甘みを加えたフレッシュなエール」を指す名称は？",
+    "choices": [
+      "ストックエール",
+      "マイルドエール",
+      "ツーペニーエール",
+      "バーレイワイン"
+    ],
+    "answer": 1,
+    "exp": "「マイルドエール」はフレッシュなエールにさらに甘みを加えたものとされ、パブでのブレンドの1/3を占めていました。（出典: 4､英国ビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "uk",
+    "q": "かつてパブでエールがブレンドされていた際、「樽熟成され既に酸味を持つエール」を指す名称は？",
+    "choices": [
+      "ストックエール",
+      "マイルドエール",
+      "ツーペニーエール",
+      "ゴールデンエール"
+    ],
+    "answer": 0,
+    "exp": "「ストックエール」は樽熟成されすでに酸味を帯びたエールとされています。（出典: 4､英国ビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "uk",
+    "q": "かつてパブでのエールブレンドの1/3を占めていた「強く、熟成された高価なエール」を指す名称は？",
+    "choices": [
+      "マイルドエール",
+      "ストックエール",
+      "ツーペニーエール",
+      "バーレイワイン"
+    ],
+    "answer": 2,
+    "exp": "「ツーペニーエール」は強く、熟成した高価なエールとされ、伝統的なエールブレンドの1/3を占めていました。（出典: 4､英国ビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "uk",
+    "q": "（ノーザンイングリッシュ）ブラウンエール（マイルドエール）の分析仕様として資料に示されている特徴は？",
+    "choices": [
+      "精巧なモルトミックス、下面発酵、少量のホップ",
+      "上面発酵で、強いホップの苦味が特徴のスタイル",
+      "小麦麦芽を50%以上使用するスタイル",
+      "燻製モルトを使用したスモーキーなスタイル"
+    ],
+    "answer": 0,
+    "exp": "精巧なモルトミックス、下面発酵（※資料表記）、少量のホップが特徴とされています。（出典: 4､英国ビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "uk",
+    "q": "オールドエール/ストックエールの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜4%",
+      "4.5〜6.5%",
+      "6〜10%",
+      "10〜15%"
+    ],
+    "answer": 2,
+    "exp": "オールドエール/ストックエールのアルコール度数は6〜10%とされています。（出典: 4､英国ビール.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "uk",
+    "q": "バーレイワインの分析仕様として資料に示されている初期エキス（°P）の範囲は？",
+    "choices": [
+      "10〜15",
+      "15〜20",
+      "20〜30",
+      "30〜40"
+    ],
+    "answer": 2,
+    "exp": "バーレイワインの初期エキスはP20〜30とされています。（出典: 4､英国ビール.pdf スライド番号14 / ページ14）"
+  },
+  {
+    "cat": "uk",
+    "q": "スコティッシュライトエールの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜3.5%",
+      "3.5〜4%",
+      "4〜5.5%",
+      "6.5〜8%"
+    ],
+    "answer": 0,
+    "exp": "スコティッシュライトエールのアルコール度数は2.5〜3.5%とされています。（出典: 4､英国ビール.pdf スライド番号15 / ページ16）"
+  },
+  {
+    "cat": "uk",
+    "q": "スコッチエール/ウィーヘビーの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜3.5%",
+      "3.5〜4%",
+      "4〜5.5%",
+      "6.5〜8%"
+    ],
+    "answer": 3,
+    "exp": "スコッチエール/ウィーヘビーのアルコール度数は6.5〜8%とされています。（出典: 4､英国ビール.pdf スライド番号15 / ページ16）"
+  },
+  {
+    "cat": "uk",
+    "q": "ポーターの語源とされる、「混合せずタップから丸ごと注がれる」ビールを指した名称は？",
+    "choices": [
+      "「Entire（Butt）」",
+      "「Mild Ale」",
+      "「Stock Ale」",
+      "「Two-Penny Ale」"
+    ],
+    "answer": 0,
+    "exp": "パブビールの混合の代わりに、丸ごと注がれる「Entire（Butt）」が醸造され、後に「ポーター」という言葉が定着しました。（出典: 4､英国ビール.pdf スライド番号9 / ページ9）"
+  },
+  {
+    "cat": "uk",
+    "q": "ポーターは「産業革命の何」と呼ばれるようになったか？",
+    "choices": [
+      "「潤滑油」",
+      "「起爆剤」",
+      "「原動力」",
+      "「副産物」"
+    ],
+    "answer": 0,
+    "exp": "ポーターは産業革命の「潤滑油」となったと表現されています。（出典: 4､英国ビール.pdf スライド番号16 / ページ17）"
+  },
+  {
+    "cat": "uk",
+    "q": "ポーターは特にどの地域へ多く輸出されたとされるか？",
+    "choices": [
+      "地中海沿岸",
+      "バルト海全域",
+      "アフリカ大陸",
+      "南米大陸"
+    ],
+    "answer": 1,
+    "exp": "ポーターは特にバルト海全域へよく輸出されたとされています。（出典: 4､英国ビール.pdf スライド番号16 / ページ17）"
+  },
+  {
+    "cat": "uk",
+    "q": "ポーターが徐々に「貧しい人々のビール」として軽んじられるようになった後、置き換わったより高貴で強いビールは？",
+    "choices": [
+      "チェコ発祥のピルスナー",
+      "スタウトポーター（後のスタウト）",
+      "強いアルコールを持つバーレイワイン",
+      "明るい色合いのゴールデンエール"
+    ],
+    "answer": 1,
+    "exp": "ポーターはより高貴で強いバージョンである「スタウトポーター」（後にスタウトのみ）に置き換わっていきました。（出典: 4､英国ビール.pdf スライド番号9 / ページ9）"
+  },
+  {
+    "cat": "uk",
+    "q": "「Brown Porter」の特徴として資料に挙げられているものは？",
+    "choices": [
+      "フレッシュな酸味があり非常にマイルド",
+      "褐色で際立ったモルト風味、ホップアロマは少ない",
+      "燻製由来の強いスモーキーな香りが支配的",
+      "チョコレートのような香りが際立って強い"
+    ],
+    "answer": 1,
+    "exp": "Brown Porterは1720年頃からのポーターの原型で、褐色・際立ったモルティさ・少ないホップアロマが特徴です。（出典: 4､英国ビール.pdf スライド番号20 / ページ21）"
+  },
+  {
+    "cat": "uk",
+    "q": "「Baltic Porter」の特徴として資料に挙げられているものは？",
+    "choices": [
+      "色はやや薄く、アルコール度数高め、キャラメル・フルーツ香は少ない",
+      "色が最も濃く、香りはカラメルが支配的",
+      "小麦麦芽を50%以上使用するスタイル",
+      "ホップをまったく使用しないスタイル"
+    ],
+    "answer": 0,
+    "exp": "Baltic Porterは1820年頃から、当初輸出用として造られ、色はやや薄く、アルコール度数が高めで、キャラメルやフルーツのアロマは少ないとされています。（出典: 4､英国ビール.pdf スライド番号20 / ページ21）"
+  },
+  {
+    "cat": "uk",
+    "q": "ロンドンポーターの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "4〜6(ごく軽い苦味)",
+      "10〜20(穏やかな苦味)",
+      "20〜40以上(しっかりとした苦味)",
+      "50以上(極めて強い苦味)"
+    ],
+    "answer": 2,
+    "exp": "ロンドンポーターのIBUは20〜40以上とされています。（出典: 4､英国ビール.pdf スライド番号18 / ページ19）"
+  },
+  {
+    "cat": "uk",
+    "q": "スタウトの中で「Milk / Sweet Stout」に含まれる非発酵性の成分は？",
+    "choices": [
+      "蜂蜜",
+      "乳糖",
+      "デキストロース",
+      "糖蜜"
+    ],
+    "answer": 1,
+    "exp": "Milk/Sweet Stoutは非発酵性の乳糖を使用し、かつては妊婦や子供も飲んでいたとされています。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）"
+  },
+  {
+    "cat": "uk",
+    "q": "「Oyster Stout」の名前の由来となった原料は？",
+    "choices": [
+      "カキ（牡蠣）またはカキの殻",
+      "調味料であるオイスターソース",
+      "牡蠣の養殖に使われる海水",
+      "真珠層を粉末にしたもの"
+    ],
+    "answer": 0,
+    "exp": "Oyster Stoutは一部、牡蠣または牡蠣の殻を使って醸造されるスタイルです。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）"
+  },
+  {
+    "cat": "uk",
+    "q": "「Foreign Extra Stout」は、現在では主にどの地域でも醸造されているとされるか？",
+    "choices": [
+      "南米各地の醸造所",
+      "アフリカ各地",
+      "北欧各地の醸造所",
+      "中東各地の醸造所"
+    ],
+    "answer": 1,
+    "exp": "かつては輸出用ビールでしたが、現在ではアフリカ各地でも広く醸造されています。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）"
+  },
+  {
+    "cat": "uk",
+    "q": "「Tropical Stout」の醸造でよく使用される甘味料は？",
+    "choices": [
+      "花の蜜から作るハチミツ",
+      "サトウキビ糖（糖蜜）",
+      "カエデの樹液から作るメープルシロップ",
+      "精製されたブドウ糖のみ"
+    ],
+    "answer": 1,
+    "exp": "Tropical Stoutはイギリスの海外諸島で醸造され、サトウキビ糖（糖蜜）を使用することが多いとされています。（出典: 4､英国ビール.pdf スライド番号25 / ページ26）"
+  },
+  {
+    "cat": "uk",
+    "q": "Irish dry Stoutの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "4〜6",
+      "10〜20",
+      "25〜45",
+      "50以上"
+    ],
+    "answer": 2,
+    "exp": "Irish dry StoutのIBUは25〜45とされています。（出典: 4､英国ビール.pdf スライド番号23 / ページ24）"
+  },
+  {
+    "cat": "uk",
+    "q": "Imperial Stoutの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "4〜4.5%",
+      "5.5〜8%",
+      "8〜12%",
+      "12〜16%"
+    ],
+    "answer": 2,
+    "exp": "Imperial Stoutのアルコール度数は8〜12%とされています。（出典: 4､英国ビール.pdf スライド番号26 / ページ27）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギービールの多様性の背景となった1919年制定の「Vandervelde法」は何を禁止したか？",
+    "choices": [
+      "ビールの製造そのもの",
+      "バーでの蒸留酒の販売",
+      "ホップの輸入",
+      "修道院での醸造"
+    ],
+    "answer": 1,
+    "exp": "バーでの蒸留酒販売を禁止したことで、代わりにアルコール度数の高いビールへの需要が高まりました。（出典: 5､ベルギービール.pdf ページ5）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "Vandervelde法が廃止されたのは何年か？",
+    "choices": [
+      "1945年",
+      "1919年",
+      "1983年",
+      "2000年"
+    ],
+    "answer": 2,
+    "exp": "1919年に制定されたVandervelde法は1983年にようやく廃止されました。（出典: 5､ベルギービール.pdf ページ5）"
+  },
+  {
+    "cat": "belgium",
+    "q": "「トラピスト」を名乗ることが許されている修道院醸造所は、資料によると世界に何か所あるか？",
+    "choices": [
+      "6か所",
+      "11か所",
+      "20か所",
+      "30か所以上"
+    ],
+    "answer": 1,
+    "exp": "トラピストビールは11の修道院醸造所のみで生産され、名称は厳重に保護されています。（出典: 5､ベルギービール.pdf ページ9）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "ランビックの自然発酵に関わる、ブリュッセル地域固有の野生酵母は？",
+    "choices": [
+      "サッカロミセス・セレビシエ（一般的なエール酵母）",
+      "ブレタノマイセス・ブルクセレンシス（またはランビックス）",
+      "カンジダ属酵母（土壌や果実に生息する酵母）",
+      "クルイベロミケス属酵母（乳製品にも見られる酵母）"
+    ],
+    "answer": 1,
+    "exp": "ブリュッセル地域固有のブレタノマイセス・ブルクセレンシスまたはランビックスによる自然発酵で造られます。（出典: 5､ベルギービール.pdf ページ23）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "「ブリュッセルのシャンパン」とも呼ばれ、熟成ランビックと若いランビックをブレンドし瓶内で長期発酵させるビールは？",
+    "choices": [
+      "ファロ",
+      "グーズ",
+      "クリーク",
+      "セゾン"
+    ],
+    "answer": 1,
+    "exp": "グーズは熟成ランビックと若いランビックをブレンドし、1年以上瓶内発酵させたスタイルです。（出典: 5､ベルギービール.pdf ページ25）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "セゾンの発酵に伝統的に使われる、温度耐性のある酵母株の特徴は？",
+    "choices": [
+      "低温でしか発酵できないラガー酵母",
+      "発酵温度最高32℃程度まで対応する赤ワイン酵母株",
+      "野生酵母でなければ発酵させられない",
+      "パン作りに使われるパン用酵母のみ使用可能"
+    ],
+    "answer": 1,
+    "exp": "セゾンには温度耐性のあるゆっくり発酵する赤ワイン酵母株が使われ、発酵温度は最高32℃にも達します。（出典: 5､ベルギービール.pdf ページ32）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーのカフェで「ドゥミ」を注文すると、通常何mlのグラスで提供されるか（フランスの「ドゥミ」＝250mlとは異なる点に注意）？",
+    "choices": [
+      "250ml",
+      "330ml",
+      "500ml",
+      "750ml"
+    ],
+    "answer": 2,
+    "exp": "ベルギーで「ドゥミ」を注文すると500mlグラスで提供されます。フランスでは250mlです。（出典: 5､ベルギービール.pdf ページ8）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "フランダースレッド（オールドブラウン）の酸味づけに関わる樽由来の微生物として資料に挙げられていないのは？",
+    "choices": [
+      "ラクトバチルス（乳酸を生成する細菌）",
+      "アセトバクター（酢酸を生成する細菌）",
+      "ブレタノマイセス（複雑な酸味を生む酵母）",
+      "サッカロミセス・パストリアヌス（下面発酵に使うラガー酵母）"
+    ],
+    "answer": 3,
+    "exp": "樽由来のラクトバチルス、アセトバクター、ブレタノマイセスなどの微生物による酸味付けが特徴です（サッカロミセス・パストリアヌスはラガー酵母種）。（出典: 5､ベルギービール.pdf ページ29）"
+  },
+  {
+    "cat": "belgium",
+    "q": "トラピスト会の中でも生産量が最も少ないとされる修道院醸造所は？",
+    "choices": [
+      "シメイ（比較的生産量の多い醸造所）",
+      "ロッシュフォール（中規模の生産量を持つ醸造所）",
+      "ヴェストフレテレン",
+      "オルヴァル（単一銘柄で知られる醸造所）"
+    ],
+    "answer": 2,
+    "exp": "資料の6醸造所のうちアヘル(Achel)は年間2,000hlと最少ですが、アヘルは2021年に国際トラピスト会（ITA）の認証を失い修道士による直接醸造の管理下になくなったため、現在は正式なトラピストビールに分類されません。現行のトラピスト公認醸造所の中では、ヴェストフレテレンが年間生産量4,700hlで最も少ない生産量です。（出典: 5､ベルギービール.pdf ページ11）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルジャンストロングビールにおいて、比重1.080（約20°P）に相当するラベル表記の数字は？",
+    "choices": [
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "answer": 1,
+    "exp": "「6」は比重1.060(約17°P)、「8」は1.080(約20°P)、「10」は1.100(約23°P)、「12」は1.120(約26°P)に対応します。（出典: 5､ベルギービール.pdf ページ19）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーは資料でどのように形容されているか？",
+    "choices": [
+      "「生きたビールの歴史博物館」",
+      "「ホップの聖地」",
+      "「ラガーの発祥地」",
+      "「ノンアルコールビールの先進国」"
+    ],
+    "answer": 0,
+    "exp": "ベルギーは「生きたビールの歴史博物館」と表現されています。（出典: 5､ベルギービール.pdf ページ2）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーの醸造所数はおよそいくつとされているか？",
+    "choices": [
+      "約15",
+      "約150",
+      "約1,500",
+      "約15,000"
+    ],
+    "answer": 1,
+    "exp": "ベルギーにはおよそ150の醸造所があるとされています。（出典: 5､ベルギービール.pdf ページ2）※なお「7､その他の国のビール.pdf」の欧州醸造所数の図では408とされています。ベルギーの醸造所数は2010年頃の約150からクラフトビールブームにより増加し、2020年代には400を超えたとされ、両資料はそれぞれ異なる時点の統計を反映していると考えられます。",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーで生産される1000種以上のビールのうち、スペシャルティビールはおよそどのくらいとされるか？",
+    "choices": [
+      "約50種",
+      "約150種",
+      "約500種",
+      "約900種"
+    ],
+    "answer": 2,
+    "exp": "1000種以上の異なるビールのうち、約500がスペシャルティビールとされています。（出典: 5､ベルギービール.pdf ページ2）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーの醸造に使われる伝統的な方法・設備として資料に挙げられていないものは？",
+    "choices": [
+      "自然発酵",
+      "樽での発酵と熟成",
+      "瓶内二次発酵",
+      "液体窒素急速冷却"
+    ],
+    "answer": 3,
+    "exp": "自然発酵、樽での発酵・熟成、瓶内二次発酵、天然コルク、ブレンドが伝統的方法として挙げられています。（出典: 5､ベルギービール.pdf ページ3）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギービールへの添加材料として資料に挙げられていないものは？",
+    "choices": [
+      "ビターオレンジの皮",
+      "グレインズオブパラダイス（ギニアショウガ）",
+      "コリアンダー等の香辛料",
+      "チョコレートチップ"
+    ],
+    "answer": 3,
+    "exp": "フルーツ、ビターオレンジの皮、砂糖、はちみつ、カラメルシロップ、各種スパイス（コリアンダー含む）、モルト化していない穀物が挙げられています。（出典: 5､ベルギービール.pdf ページ4）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギービールは全体として、ホップとモルトのどちらの風味がより支配的とされるか？",
+    "choices": [
+      "ホップが支配的でモルトは背景にある",
+      "モルトが支配的でホップは背景にある",
+      "ホップとモルトの風味が常に均等である",
+      "ホップもモルトもほとんど風味を感じない"
+    ],
+    "answer": 1,
+    "exp": "ベルギービールは主にモルトフレーバーで表現され、通常ホップはバックグラウンドにあるとされています。（出典: 5､ベルギービール.pdf ページ2）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーの有名なビアカフェとして資料に挙げられていないものは？",
+    "choices": [
+      "デリリウム・カフェ（ブリュッセル）",
+      "デ・ガレ（ブリュージュ）",
+      "クルミナトール（アントワープ）",
+      "ザ・クールシップ（ロンドン）"
+    ],
+    "answer": 3,
+    "exp": "ムーデル・ランビック、デリリウム・カフェ、ア・ラ・モール・シュビット、クルミナトール、デ・ガレ、テブルッヘベールティエ、ホップデュベルが挙げられています。（出典: 5､ベルギービール.pdf ページ6）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーのビールが提供される際の一般的な温度帯は？",
+    "choices": [
+      "1〜3℃",
+      "8〜12℃",
+      "18〜23℃",
+      "27℃以上"
+    ],
+    "answer": 1,
+    "exp": "通常セラー温度である8〜12℃で、それぞれのビールに適したグラスで提供されます。（出典: 5､ベルギービール.pdf ページ6）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギービールの瓶詰め・熟成に関する記述として正しいものは？",
+    "choices": [
+      "瓶内では熟成せず時間とともに品質が劣化するのみ",
+      "瓶内で熟成を続け、セラーで2〜3年（理想4〜8℃）貯蔵されるものもある",
+      "すべてのベルギービールは瓶内で発酵しない",
+      "賞味期限は1週間程度と非常に短いのが一般的"
+    ],
+    "answer": 1,
+    "exp": "ラガーとは対照的に、瓶内でさらに熟成を続け、セラーで2〜3年、理想的には4〜8℃で貯蔵されるとされています。（出典: 5､ベルギービール.pdf ページ7）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギービールの瓶のサイズとして資料に挙げられていないものは？",
+    "choices": [
+      "250ml",
+      "330ml",
+      "375ml",
+      "500ml"
+    ],
+    "answer": 3,
+    "exp": "250ml、330ml、375ml、750ml、750mlの倍数が挙げられています。500mlは明記されていません。（出典: 5､ベルギービール.pdf ページ7）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ランビックビールが典型的に販売される瓶のサイズは？",
+    "choices": [
+      "250ml",
+      "375ml",
+      "500ml",
+      "1000ml"
+    ],
+    "answer": 1,
+    "exp": "ランビックビールは典型的に375ml瓶で販売されます。（出典: 5､ベルギービール.pdf ページ7）"
+  },
+  {
+    "cat": "belgium",
+    "q": "トラピストビールの多くは、どのようなスタイルが中心とされるか？",
+    "choices": [
+      "ピルスナー系の淡色ラガーが中心",
+      "ストロングエール（特にダブル、トリプル）",
+      "燻製香が特徴のスモークビールが中心",
+      "フルーツを加えたフルーツランビックが中心"
+    ],
+    "answer": 1,
+    "exp": "ほとんどのトラピストビールはストロングエール、特にダブルとトリプルビールが中心です。（出典: 5､ベルギービール.pdf ページ9）"
+  },
+  {
+    "cat": "belgium",
+    "q": "トラピスト会の中で最大の生産量（120,000hl）を持つ2つの修道院として資料に挙げられているのは？",
+    "choices": [
+      "シメイとヴェストマール",
+      "ロッシュフォールとオルヴァル",
+      "アヘルとヴェストフレテレン",
+      "全て同じ生産量"
+    ],
+    "answer": 0,
+    "exp": "シメイとヴェストマールがともに120,000hlの生産量として表に挙げられています。（出典: 5､ベルギービール.pdf ページ11）"
+  },
+  {
+    "cat": "belgium",
+    "q": "オルヴァルの特徴として資料に示されているものは？",
+    "choices": [
+      "非常にホッピーでドライな単一銘柄",
+      "甘くフルボディの銘柄のみ展開",
+      "トリプルとダブルの2種類を展開",
+      "スモークモルトを使用"
+    ],
+    "answer": 0,
+    "exp": "オルヴァルは非常にホッピーでドライな特徴を持つ単一銘柄として紹介されています（瓶内熟成にブレタノマイセスを使用）。（出典: 5､ベルギービール.pdf ページ11）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ベルギーの典型的なビアスタイル分類で「ヴィット（Bière Blanche）」に分類される代表的な銘柄は？",
+    "choices": [
+      "ヒューガルデン",
+      "デュベル（ストロングゴールデンエールの代表銘柄）",
+      "クワック（アンバーエールの代表銘柄）",
+      "カンティヨン（ランビックの代表銘柄）"
+    ],
+    "answer": 0,
+    "exp": "ヴィット（白ビール）の代表例としてヒューガルデンが挙げられています。（出典: 5､ベルギービール.pdf ページ13）"
+  },
+  {
+    "cat": "belgium",
+    "q": "「アンバー（エール）」の分析仕様として資料に示される特徴は？",
+    "choices": [
+      "イングリッシュペールエールの変形でアルトビアに相当",
+      "小麦麦芽を100%使用するスタイル",
+      "自然発酵のみで造られるスタイル",
+      "極めて低いアルコール度数のスタイル"
+    ],
+    "answer": 0,
+    "exp": "アンバー（エール）はイングリッシュペールエールの変形とされ、アルトビアに相当するとされています（例：パーム、デ・コーニンク）。（出典: 5､ベルギービール.pdf ページ16）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ストロングブロンドエールの醸造でよく使用されるとされる副原料は？",
+    "choices": [
+      "コーンシロップ（約20%）",
+      "米（副原料として約20%）",
+      "小麦麦芽のみを使用",
+      "燻製モルト（燻煙香をつけるため）"
+    ],
+    "answer": 0,
+    "exp": "ストロングブロンドエールは通常コーンシロップを20%使用して醸造されるとされています（例：デュベル、デリリウム・トレメンス）。（出典: 5､ベルギービール.pdf ページ17）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ドゥーベルの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "4.2〜5.5%",
+      "6〜8.5%",
+      "7.5〜9.5%",
+      "9〜14%"
+    ],
+    "answer": 1,
+    "exp": "ドゥーベルのアルコール度数は6〜8.5%とされています。（出典: 5､ベルギービール.pdf ページ20）"
+  },
+  {
+    "cat": "belgium",
+    "q": "トリプルの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "4.2〜5.5%",
+      "6〜8.5%",
+      "7.5〜9.5%",
+      "9〜14%"
+    ],
+    "answer": 2,
+    "exp": "トリプルのアルコール度数は7.5〜9.5%とされています。（出典: 5､ベルギービール.pdf ページ21）"
+  },
+  {
+    "cat": "belgium",
+    "q": "クアドルペルの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "4〜6%",
+      "6〜9%",
+      "7〜10%",
+      "9〜14%"
+    ],
+    "answer": 3,
+    "exp": "クアドルペルのアルコール度数は9〜14%とされています（例：セント・ベルナドゥス12）。（出典: 5､ベルギービール.pdf ページ22）",
+    "freq": true
+  },
+  {
+    "cat": "belgium",
+    "q": "自然発酵ビールの分類として資料に挙げられていないものは？",
+    "choices": [
+      "「ストレート」ランビック",
+      "グーズ",
+      "ファロ",
+      "トリプル"
+    ],
+    "answer": 3,
+    "exp": "「ストレート」ランビック、グーズ、ファロ、フルーツランビックが自然発酵ビールの分類として挙げられています。トリプルは通常の上面発酵です。（出典: 5､ベルギービール.pdf ページ23）"
+  },
+  {
+    "cat": "belgium",
+    "q": "「ストレート」ランビックの分析仕様として資料に示されている熟成方法は？",
+    "choices": [
+      "瓶内で1年以上熟成させる",
+      "オーク樽で通常2〜3年熟成",
+      "ステンレスタンクで数週間だけ熟成させる",
+      "まったく熟成させずに出荷する"
+    ],
+    "answer": 1,
+    "exp": "「ストレート」ランビックは通常オーク樽で2〜3年熟成されます。（出典: 5､ベルギービール.pdf ページ24）"
+  },
+  {
+    "cat": "belgium",
+    "q": "グーズの分析仕様として示されている、瓶内発酵期間の目安は？",
+    "choices": [
+      "1週間未満",
+      "1〜2カ月",
+      "1年以上",
+      "10年以上"
+    ],
+    "answer": 2,
+    "exp": "熟成したランビックと若いランビックをブレンドし、瓶内で1年以上の長期発酵を行います。（出典: 5､ベルギービール.pdf ページ25）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ファロに加えられる特徴的な原料として資料に挙げられていないものは？",
+    "choices": [
+      "キャンディシュガー（氷砂糖）",
+      "コショウ",
+      "乾燥オレンジピール",
+      "燻製モルト"
+    ],
+    "answer": 3,
+    "exp": "キャンディシュガー、コショウ、乾燥オレンジピール、コリアンダーがファロに加えられる原料として挙げられています。（出典: 5､ベルギービール.pdf スライド番号26 / ページ26）"
+  },
+  {
+    "cat": "belgium",
+    "q": "クリーク（チェリーランビック）の製法として資料に示されているチェリーの使用量の目安は？",
+    "choices": [
+      "約20g/L",
+      "約200g/L",
+      "約2kg/L",
+      "チェリーは使用しない"
+    ],
+    "answer": 1,
+    "exp": "種を取ったスカールベークのチェリーを約200g/L加えて造られます。（出典: 5､ベルギービール.pdf ページ27）"
+  },
+  {
+    "cat": "belgium",
+    "q": "クリークの再発酵期間として資料に示されているのは？",
+    "choices": [
+      "数日程度の短い期間",
+      "3〜18カ月程度の期間",
+      "5〜10年という長い期間",
+      "期限を設けず無期限に発酵させる"
+    ],
+    "answer": 1,
+    "exp": "3〜18カ月間、オーク樽で再発酵させるとされています。（出典: 5､ベルギービール.pdf ページ27）"
+  },
+  {
+    "cat": "belgium",
+    "q": "オールドブラウン（フランダースレッド）の酸味づけに使われる樽由来の微生物として資料に挙げられているものは？",
+    "choices": [
+      "ラクトバチルス、アセトバクター、ブレタノマイセス",
+      "サッカロミセス・セレビシエのみを使用",
+      "乳酸菌のみで酸味をつける",
+      "納豆菌を用いて酸味をつける"
+    ],
+    "answer": 0,
+    "exp": "樽由来のラクトバチルス、アセトバクター、ブレタノマイセスなどの微生物による酸味付けが特徴です。（出典: 5､ベルギービール.pdf ページ29）"
+  },
+  {
+    "cat": "belgium",
+    "q": "グランクリュの分析仕様として資料に示されている特徴は？",
+    "choices": [
+      "統一的な特徴付けができない、上面/下面発酵両方が存在",
+      "必ず下面発酵酵母だけで造られる",
+      "小麦麦芽を必ず使用しなければならない",
+      "アルコール度数は常に3%以下に抑えられる"
+    ],
+    "answer": 0,
+    "exp": "グランクリュは統一的な特徴付けができないストロングビールで、上面・下面発酵どちらも存在し、樽熟成されるものもあります。（出典: 5､ベルギービール.pdf ページ30）"
+  },
+  {
+    "cat": "belgium",
+    "q": "ビエールドギャルドはもともとどの季節にのみ醸造されていたとされるか？",
+    "choices": [
+      "春のみ",
+      "夏のみ",
+      "秋のみ",
+      "冬のみ"
+    ],
+    "answer": 0,
+    "exp": "ビエールドギャルドは以前、春にしか醸造されていなかったとされています。（出典: 5､ベルギービール.pdf ページ31）"
+  },
+  {
+    "cat": "belgium",
+    "q": "セゾンの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜3.5%",
+      "4.5〜8%",
+      "10〜14%",
+      "14%以上"
+    ],
+    "answer": 1,
+    "exp": "セゾンのアルコール度数は4.5〜8%とされ、異なる強さで醸造できるとされています。（出典: 5､ベルギービール.pdf ページ32）"
+  },
+  {
+    "cat": "usa",
+    "q": "Brewers Association（米国）のクラフトビールの定義で、「小規模」とされる年間生産量の上限は？",
+    "choices": [
+      "60万バレル",
+      "600万バレル",
+      "6000万バレル",
+      "上限は定められていない"
+    ],
+    "answer": 1,
+    "exp": "年間生産量600万バレル（約70万キロリットル）以下が「小規模」の基準とされています。（出典: 6､アメリカビール.pdf ページ3）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "Brewers Associationの「独立性」の定義で、非クラフトブルワーによる所有・支配の上限は？",
+    "choices": [
+      "10%未満",
+      "25%未満",
+      "50%未満",
+      "75%未満"
+    ],
+    "answer": 1,
+    "exp": "クラフトブルワーでないアルコール飲料業界メンバーによる所有・支配（または同等の経済的利益）が25%を超えないことが条件です。（出典: 6､アメリカビール.pdf ページ3）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカにおける禁酒法（Prohibition）が施行されていた期間は？",
+    "choices": [
+      "1910年〜1920年",
+      "1920年〜1933年",
+      "1933年〜1945年",
+      "1941年〜1950年"
+    ],
+    "answer": 1,
+    "exp": "1920年から1933年まで禁酒法が施行され、この間、醸造所数は0にまで落ち込みました。（出典: 6､アメリカビール.pdf ページ17）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "1965年以降のアメリカのクラフトビール誕生の先駆けとして資料に挙げられていない醸造所は？",
+    "choices": [
+      "Anchor Brewing",
+      "Sierra Nevada",
+      "D.G. Yuengling & Son",
+      "Anheuser-Busch"
+    ],
+    "answer": 3,
+    "exp": "Anchor Brewing、Boston Beer、Sierra Nevada、D.G. Yuengling & Sonが先駆けとして挙げられています。Anheuser-Buschは大手マクロブルワリーです。（出典: 6､アメリカビール.pdf ページ22）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "資料で紹介されているアメリカ産ホップの代表的な香りの特徴は？",
+    "choices": [
+      "フローラル・スパイシー・ハーバルのみ",
+      "柑橘系、松、フルーティーな特徴",
+      "土っぽさのみ",
+      "トロピカル・ライムのみ"
+    ],
+    "answer": 1,
+    "exp": "アメリカ産ホップは柑橘系、松、フルーティーな特徴で知られます（フローラル・スパイシーはドイツ産、トロピカル・ライムはニュージーランド産の特徴とされています）。（出典: 6､アメリカビール.pdf ページ27）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "イングリッシュIPAと比較したアメリカンIPAの特徴として正しいものは？",
+    "choices": [
+      "カラメルやトーストのモルト風味がより強く出る",
+      "アルコール度数が低くホップの使用量も少ない",
+      "ホップ使用量が多くアメリカ産・ニューワールドホップが多用される",
+      "酵母由来のフルーティーなエステルがより強い"
+    ],
+    "answer": 2,
+    "exp": "アメリカンIPAはアルコール度数・ホップ使用量ともに多く、カラメルやエステルは控えめでホップ主体のバランスが特徴です。（出典: 6､アメリカビール.pdf ページ35）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカの初期の醸造業（1650年代〜）で、ニューヨークでビール造りを始めたのは主にどの地域からの移民か？",
+    "choices": [
+      "イタリア、スペイン",
+      "イギリス、オランダ",
+      "中国、日本",
+      "ロシア、ポーランド"
+    ],
+    "answer": 1,
+    "exp": "イギリスやオランダからの移民により、現在のニューヨークでビール造りが始まりました。（出典: 6､アメリカビール.pdf ページ8）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンラガーの特徴として資料に挙げられているものは？",
+    "choices": [
+      "濃色でモルト感の強いラガー",
+      "最大50%程度の副原料（コーン、米、糖類）を使用した軽いボディ",
+      "ホップの苦味が非常に強いラガー",
+      "アルコール度数が非常に高いラガー"
+    ],
+    "answer": 1,
+    "exp": "アメリカンラガーは最大50%の副原料を使用し、色が淡く軽いボディでマイルドな味わいが特徴です。（出典: 6-2､アメリカビール参考資料.pdf ページ4）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンウィートエールと南ドイツの小麦ビールを比較した際の特徴として正しいのは？",
+    "choices": [
+      "バナナやクローブのような香りがより強く出る",
+      "ホップの苦味がより控えめに仕上げられる",
+      "南ドイツの小麦ビールより際立つ苦味を持つ",
+      "味わいは南ドイツの小麦ビールとまったく同じ"
+    ],
+    "answer": 2,
+    "exp": "アメリカンウィートエールはバナナ香がほとんどなく、南ドイツの小麦ビールより苦味が際立つとされています。（出典: 6-2､アメリカビール参考資料.pdf ページ10）"
+  },
+  {
+    "cat": "usa",
+    "q": "資料中で「1バレル」はおよそ何リットルとされているか？",
+    "choices": [
+      "100L",
+      "120L",
+      "150L",
+      "200L"
+    ],
+    "answer": 1,
+    "exp": "資料では「1バレル＝120L」との記載があります（禁酒法前後の生産量の説明部分）。（出典: 6､アメリカビール.pdf ページ14）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "資料で紹介されているBe Easy Brewingが所在する日本の都市は？",
+    "choices": [
+      "弘前市",
+      "札幌市",
+      "京都市",
+      "那覇市"
+    ],
+    "answer": 0,
+    "exp": "「さくらとお城とりんごの街」青森県弘前市にBe Easy Brewingはあります（2016年オープン）。（出典: 6､アメリカビール.pdf ページ2）"
+  },
+  {
+    "cat": "usa",
+    "q": "クラフトビール・クラフトブルワーの特徴として資料に挙げられていないものは？",
+    "choices": [
+      "歴史的スタイルを独自に解釈し新しいスタイルを生み出す",
+      "地域社会への深い関わり（慈善活動、ボランティア等）",
+      "大手非クラフトブルワーによる大幅な関与を受けない",
+      "必ず特定の国のホップのみを使用する"
+    ],
+    "answer": 3,
+    "exp": "革新性、地域社会との関わり、独立性の維持などが特徴として挙げられていますが、特定国のホップのみ使用という制約は挙げられていません。（出典: 6､アメリカビール.pdf ページ4）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカ人の大半は、クラフトブルワーからおよそ何マイル圏内に住んでいるとされるか？",
+    "choices": [
+      "1マイル",
+      "10マイル",
+      "50マイル",
+      "100マイル"
+    ],
+    "answer": 1,
+    "exp": "アメリカ人の大半はクラフトブルワーの10マイル圏内に住んでいるとされています。（出典: 6､アメリカビール.pdf ページ4）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカのビール醸造史の区分で「Early Days of American Brewing」に該当する期間は？",
+    "choices": [
+      "1650-1800年",
+      "1800-1865年",
+      "1865-1920年",
+      "1920-1933年"
+    ],
+    "answer": 0,
+    "exp": "1650年から1800年が「Early Days of American Brewing」とされています。（出典: 6､アメリカビール.pdf ページ7）"
+  },
+  {
+    "cat": "usa",
+    "q": "1650〜1800年の初期のアメリカ醸造業で、ビールが遠くまで運ばれにくかった理由は？",
+    "choices": [
+      "植民地の法律で輸送そのものが禁止されていたから",
+      "木樽に入れたビールは劣化が早く遠距離輸送が難しかったから",
+      "馬車が通れるほど道路が整備されていなかったから",
+      "醸造に必要な原料が慢性的に不足していたから"
+    ],
+    "answer": 1,
+    "exp": "ビールは劣化が早いため、木樽に入れられたビールを遠くまで運ぶことは難しかったとされています。（出典: 6､アメリカビール.pdf ページ5）"
+  },
+  {
+    "cat": "usa",
+    "q": "1800-1865年の「Brewing Begins to Expand」の時代に、ニューヨークで大きなブルワリーを建て利益を実証した人物は？",
+    "choices": [
+      "ジェームズ・ヴァッサー",
+      "アーサー・ギネス",
+      "フリッツ・メイタグ",
+      "アドルファス・ブッシュ"
+    ],
+    "answer": 0,
+    "exp": "ジェームズ・ヴァッサーが大きなブルワリーを建て、ビールを作って売ることが利益になると証明しました。（出典: 6､アメリカビール.pdf ページ11）"
+  },
+  {
+    "cat": "usa",
+    "q": "1865-1920年の「Beer Drinking Increases」の時代、ビールの生産量はどう変化したとされるか？",
+    "choices": [
+      "360万バレルから6600万バレルへ増加",
+      "6600万バレルから360万バレルへ減少",
+      "この期間はほぼ横ばいで推移した",
+      "この期間についての統計データは残っていない"
+    ],
+    "answer": 0,
+    "exp": "この期間、ビールの生産量は3,600,000バレルから66,000,000バレルにまで増加したとされています。（出典: 6､アメリカビール.pdf ページ14）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカの禁酒法により、1920年から1933年の間の醸造所数はどうなったか？",
+    "choices": [
+      "変化なし",
+      "半減した",
+      "0になった",
+      "2倍に増えた"
+    ],
+    "answer": 2,
+    "exp": "1920年から1933年の禁酒法期間、醸造所数は0とされています。（出典: 6､アメリカビール.pdf ページ17）"
+  },
+  {
+    "cat": "usa",
+    "q": "禁酒法後、第二次世界大戦後から1980年にかけて、最大手5社の市場占有率はどう変化したか？",
+    "choices": [
+      "19%から75%に増加",
+      "75%から19%に減少",
+      "この期間はほとんど変化しなかった",
+      "この期間常に100%のシェアを維持した"
+    ],
+    "answer": 0,
+    "exp": "1940年代半ばから1980年までの間に、最大手5社の市場占有率は19%から75%に増加したとされています。（出典: 6､アメリカビール.pdf ページ20）"
+  },
+  {
+    "cat": "usa",
+    "q": "「Craft Beer is Born（1965〜）」の背景として資料に挙げられている理由は？",
+    "choices": [
+      "政府がクラフトビールの生産を義務化したため",
+      "海外を旅したアメリカ人が国内のビールの種類の少なさに失望したため",
+      "麦芽やホップなど原料の価格が急落したため",
+      "大手醸造所が一斉に製造を停止したため"
+    ],
+    "answer": 1,
+    "exp": "海外を旅したアメリカ人たちが国内で手に入るビールの種類の少なさに失望し、海外で飲んだスタイルを再現しようとしたのが背景とされています。（出典: 6､アメリカビール.pdf ページ4）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカのビール醸造原料として資料に挙げられている5要素は？",
+    "choices": [
+      "Hops, Malt, Yeast, Corn, Adjuncts",
+      "Water, Malt, Hops, Yeast, Sugar",
+      "Barley, Wheat, Rye, Oats, Corn",
+      "Hops, Malt, Yeast, Rice, Spices"
+    ],
+    "answer": 0,
+    "exp": "Hops（ホップ）、Malt（モルト）、Yeast（酵母）、Corn（トウモロコシ）、Adjuncts（副原料）の5要素が挙げられています。（出典: 6､アメリカビール.pdf ページ25）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカで主流のモルトとされる大麦の種類は？",
+    "choices": [
+      "六条大麦（シックスロウバーレイ）",
+      "二条大麦（ツーロウバーレイ）",
+      "裸麦（皮のない大麦）",
+      "もち麦（もち性の大麦品種）"
+    ],
+    "answer": 1,
+    "exp": "2列大麦（ツーロウバーレイ）は国内で栽培・モルト化される主流のモルトとなったとされています。（出典: 6､アメリカビール.pdf ページ25）"
+  },
+  {
+    "cat": "usa",
+    "q": "モルトの4カテゴリとして資料に挙げられているものは？",
+    "choices": [
+      "Base Malt, Caramel/Crystal Malt, Kilned Malt, Roasted Malt",
+      "Pale Malt, Dark Malt, Wheat Malt, Rye Malt",
+      "Base Malt, Smoked Malt, Sour Malt, Chit Malt",
+      "Pilsner Malt, Vienna Malt, Munich Malt, Wheat Malt"
+    ],
+    "answer": 0,
+    "exp": "Base Malt、Caramel/Crystal Malt、Kilned Malt、Roasted Maltの4カテゴリが挙げられています。（出典: 6､アメリカビール.pdf ページ29）"
+  },
+  {
+    "cat": "usa",
+    "q": "「Caramel/Crystal Malt」が広く使用されるとされるビアスタイルは？",
+    "choices": [
+      "イギリスのエール、スタウト、ポーター",
+      "アメリカンラガーのみに使用される",
+      "ドイツのピルスナーのみに使用される",
+      "ベルギーのランビックのみに使用される"
+    ],
+    "answer": 0,
+    "exp": "カラメルモルトやクリスタルモルトはイギリスのエール、スタウト、ポーターで広く使用されるとされています。（出典: 6､アメリカビール.pdf ページ29）"
+  },
+  {
+    "cat": "usa",
+    "q": "各国の酵母の特徴として、「高温発酵が可能で幅広いエステル・フェノールを生む」とされる酵母は？",
+    "choices": [
+      "アメリカン酵母",
+      "イングリッシュ酵母",
+      "ジャーマン（ラガー）酵母",
+      "ベルジャン酵母"
+    ],
+    "answer": 3,
+    "exp": "ベルギー酵母株は他の多くのビールスタイルより高い温度で発酵でき、幅広いエステルやフェノール化合物を生成するとされています。（出典: 6､アメリカビール.pdf ページ31）",
+    "freq": true
+  },
+  {
+    "cat": "usa",
+    "q": "イングリッシュ酵母の特徴として資料に挙げられているものは？",
+    "choices": [
+      "高い凝集性を持ち透明度の高いビールを作りやすい",
+      "発酵能力を持たず醸造に使用できない",
+      "常に強くフルーティーで濁りを生じさせる",
+      "フェノール香をまったく生成しない"
+    ],
+    "answer": 0,
+    "exp": "イングリッシュ酵母はバランスの取れたフルーティーでフローラルな香りが特徴で、高い凝集性を持ち透明度の高いビールを作りやすいとされています。（出典: 6､アメリカビール.pdf ページ31）"
+  },
+  {
+    "cat": "usa",
+    "q": "アジャンクツ（副原料）のうち「Sugars」に分類されるものとして資料に挙げられていないものは？",
+    "choices": [
+      "ハチミツ",
+      "ブラウンシュガー",
+      "デキストロース",
+      "ホップペレット"
+    ],
+    "answer": 3,
+    "exp": "ハチミツ、ブラウンシュガー、糖蜜、ベルギーキャンディシロップ、デキストロースなどがSugarsに分類されています。ホップペレットはSugarsではありません。（出典: 6､アメリカビール.pdf ページ33）"
+  },
+  {
+    "cat": "usa",
+    "q": "IPAでアルコール度数を高め、ホップとのバランスを取るためによく使われる糖類は？",
+    "choices": [
+      "デキストロース",
+      "乳糖（ラクトース）",
+      "麦芽糖（マルトース）",
+      "水あめ（でんぷんから作る糖）"
+    ],
+    "answer": 0,
+    "exp": "デキストロースはIPAでアルコール度数を高め、ホップとバランスを取るためによく使われるとされています。（出典: 6､アメリカビール.pdf ページ33）"
+  },
+  {
+    "cat": "usa",
+    "q": "English IPAとAmerican IPAを比較した際、American IPAの特徴として資料に挙げられているものは？",
+    "choices": [
+      "カラメルやパン、トーストのようなモルト風味が強く出る",
+      "アルコール度数もホップ使用量もイングリッシュIPAより控えめ",
+      "カラメル・パン・トースト風味は少なく、酵母由来のエステルも少ない",
+      "ホップよりもモルトの風味が全面に出る"
+    ],
+    "answer": 2,
+    "exp": "American IPAはEnglish IPAよりカラメルやパン・トーストの風味が少なく、酵母由来のエステルも少なくホップ主体のバランスが特徴です。（出典: 6､アメリカビール.pdf ページ35）"
+  },
+  {
+    "cat": "usa",
+    "q": "English BarleywineとAmerican Barleywineを比較した際、American Barleywineの特徴は？",
+    "choices": [
+      "ホップの苦味・風味・アロマがより強調される",
+      "モルティでフルーティーな特徴が中心のスタイル",
+      "比較したスタイルの中で色が最も濃いスタイル",
+      "比較したスタイルの中でアルコール度数が最も低いスタイル"
+    ],
+    "answer": 0,
+    "exp": "American BarleywineはEnglish Barleywineよりホップの苦味・風味・アロマが強調され、アメリカ産ホップが多く使用される傾向にあります。（出典: 6､アメリカビール.pdf ページ37）"
+  },
+  {
+    "cat": "usa",
+    "q": "English Brown AleとAmerican Brown Aleを比較した際、American Brown Aleの特徴は？",
+    "choices": [
+      "イングリッシュブラウンエールより苦味が弱くマイルド",
+      "イングリッシュブラウンエールより苦味が強くホップ感が際立つ",
+      "小麦麦芽を必ず使用するスタイル",
+      "下面発酵酵母を使って造られるスタイル"
+    ],
+    "answer": 1,
+    "exp": "American Brown AleはEnglish Brown Aleより苦味が強くホップ感が際立ち、より豊かなモルト風味と高めのアルコール度数を持つ傾向があります。（出典: 6､アメリカビール.pdf ページ39）"
+  },
+  {
+    "cat": "usa",
+    "q": "German Wheat、Witbier、American Wheatを比較した際、Witbierの香りの主な由来は？",
+    "choices": [
+      "酵母由来のバナナ・クローブ香が主体",
+      "添加物（スパイスや柑橘）による香りが主体",
+      "ローストモルトによる香りが主体",
+      "ホップの強いアロマが主体"
+    ],
+    "answer": 1,
+    "exp": "Witbierはヴァイスビアに似たバランスを持ちますが、スパイスや柑橘系の特徴は酵母由来ではなく添加物によるものが主とされています。（出典: 6､アメリカビール.pdf ページ41）"
+  },
+  {
+    "cat": "usa",
+    "q": "American Wheatの特徴として資料に挙げられているものは？",
+    "choices": [
+      "ドイツのヴァイスビア特有のバナナやクローブの香りが強く出る",
+      "ヴァイスビアよりホップキャラクターが強く酵母由来の特徴は控えめ",
+      "ホップの苦味がドイツヴァイツェンよりさらに弱い",
+      "下面発酵酵母を使って造られるスタイル"
+    ],
+    "answer": 1,
+    "exp": "American Wheatはヴァイスビアよりホップキャラクターが強く、酵母由来の特徴（バナナ・クローブ香）は控えめとされています。（出典: 6､アメリカビール.pdf ページ41）"
+  },
+  {
+    "cat": "usa",
+    "q": "English Bitter、Belgian Pale Ale、American Pale Aleを比較した際、American Pale Aleの特徴は？",
+    "choices": [
+      "イギリスの同スタイルより色が濃くカラメル風味が際立つ",
+      "イギリスの同スタイルより色が淡く発酵由来のプロファイルがクリーンでカラメル風味が少ない",
+      "ベルギービールとまったく同じ酵母特性を持つスタイル",
+      "比較したスタイルの中でアルコール度数が最も高いスタイル"
+    ],
+    "answer": 1,
+    "exp": "American Pale Aleはイギリスの同スタイルと比べて色が淡く、発酵由来のプロファイルがクリーンでカラメル風味が少ないのが特徴です。（出典: 6､アメリカビール.pdf ページ43）"
+  },
+  {
+    "cat": "usa",
+    "q": "American StoutとForeign Extra Stoutを比較した際、American Stoutの特徴は？",
+    "choices": [
+      "ロースト感やボディがブラックIPAより豊か",
+      "ホップの苦味が非常に弱いスタイル",
+      "小麦麦芽を主体として造られるスタイル",
+      "下面発酵酵母を必ず使用するスタイル"
+    ],
+    "answer": 0,
+    "exp": "American Stoutはホッピーで苦味が強く、ロースト感の際立つアイリッシュエクストラスタウトに似ていますが、ブラックIPAよりロースト感とボディが豊かとされています。（出典: 6､アメリカビール.pdf ページ45）"
+  },
+  {
+    "cat": "usa",
+    "q": "American PorterとEnglish Porterを比較した際、English Porterの特徴は？",
+    "choices": [
+      "苦味が強くアルコール度数が高い",
+      "通常よりソフトで甘く、カラメルのような風味が強い",
+      "ホップキャラクターがより強調される",
+      "比重がAmerican Porterより高い"
+    ],
+    "answer": 1,
+    "exp": "English PorterはAmerican Porterと異なり、通常はよりソフトで甘く、カラメルのような風味が強いのが特徴とされています。（出典: 6､アメリカビール.pdf ページ45）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカのIPAバリエーションとして資料に挙げられていないものは？",
+    "choices": [
+      "Black IPA",
+      "Rye IPA",
+      "Brut IPA",
+      "Weizen IPA"
+    ],
+    "answer": 3,
+    "exp": "Black IPA、Brown IPA、Red IPA、Rye IPA、White IPA、Brut IPA、Hazy IPA、Milkshake IPAが挙げられています。Weizen IPAは挙げられていません。（出典: 6､アメリカビール.pdf ページ46）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンラガーの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2.5〜4.5%(ライトな度数帯)",
+      "5.0〜8.0%(中程度の度数帯)",
+      "8.0〜12.0%(高めの度数帯)",
+      "12.0%以上(非常に高い度数帯)"
+    ],
+    "answer": 0,
+    "exp": "アメリカンラガーのアルコール度数は2.5〜4.5%とされています（例：バドワイザー、クアーズ、ミラー）。（出典: 6-2､アメリカビール参考資料.pdf ページ4）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンIPAの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "5〜14",
+      "20〜30",
+      "35〜70",
+      "100以上"
+    ],
+    "answer": 2,
+    "exp": "アメリカンIPAのIBUは35〜70とされています（インペリアルIPAはIBU65〜100+）。（出典: 6-2､アメリカビール参考資料.pdf ページ6）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンバーレイワインの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜20",
+      "20〜30",
+      "30〜50",
+      "50〜100"
+    ],
+    "answer": 3,
+    "exp": "アメリカンバーレイワインのIBUは50〜100とされ、ホップを多量に添加した重厚なスタイルです。（出典: 6-2､アメリカビール参考資料.pdf ページ9）"
+  },
+  {
+    "cat": "usa",
+    "q": "アメリカンウィートエールの分析仕様として資料に示されている小麦麦芽の使用割合の目安は？",
+    "choices": [
+      "10〜20%",
+      "30〜50%",
+      "60〜80%",
+      "90%以上"
+    ],
+    "answer": 1,
+    "exp": "アメリカンウィートエールは通常30〜50%の小麦麦芽を使用するとされています。（出典: 6-2､アメリカビール参考資料.pdf ページ10）"
+  },
+  {
+    "cat": "others",
+    "q": "フィンランドの伝統的なビール「サハティ」で、ホップの代わりに苦味・香りづけに使われるものは？",
+    "choices": [
+      "コリアンダー（香辛料の種子）",
+      "ジュニパーベリー（杜松の実）",
+      "塩（ミネラル分を加える調味料）",
+      "チェリー（果実の一種）"
+    ],
+    "answer": 1,
+    "exp": "サハティはホップをほとんど使わず、ジュニパーの枝や実で苦味のバランスをとる伝統的なフィンランドの農家ビールです。（出典: 7､その他の国のビール.pdf スライド番号20 / ページ20）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "ノルウェーの伝統的な農家醸造ビール「コーネル（Kornøl）」に使われる特徴的な酵母は？",
+    "choices": [
+      "クヴェイク",
+      "サフエール",
+      "ノッティンガム酵母",
+      "カリフォルニアエール酵母"
+    ],
+    "answer": 0,
+    "exp": "ノルウェーの伝統的な農家酵母「クヴェイク」は高温発酵が可能で、トロピカルからアーシーまで独特の風味を生み出します。（出典: 7､その他の国のビール.pdf スライド番号22 / ページ22）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "メキシコで飲まれる「ウィンナーラガー（Vienna Lager）」の、ビアスタイルとしての起源国は？",
+    "choices": [
+      "チェコ（ピルスナー発祥国）",
+      "オーストリア",
+      "ドイツ（多様なラガーの発祥国）",
+      "スペイン（メキシコの旧宗主国）"
+    ],
+    "answer": 1,
+    "exp": "ウィンナーラガーはオーストリア発祥のスタイルで、資料では「Vienna Lager (Mexico)」として紹介され、ウィーン麦芽を主体としたトースティーな香りが特徴とされています。（出典: 7､その他の国のビール.pdf スライド番号25 / ページ25）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "イタリアン・ピルスナーが伝統的なドイツスタイルピルスナーと大きく異なる特徴は？",
+    "choices": [
+      "麦芽を全く使わない",
+      "ドライホッピングを多用する",
+      "上面発酵で造られる",
+      "アルコール度数が10%を超える"
+    ],
+    "answer": 1,
+    "exp": "イタリアン・ピルスナーはドライホッピングを多用し、より際立つホップの香りが特徴とされています。（出典: 7､その他の国のビール.pdf スライド番号15 / ページ15）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "フランス・フランドル地方発祥とされ、ワインボトルに詰められ長期熟成されるビアスタイルは？",
+    "choices": [
+      "セゾン（ベルギー・ワロン地方発祥のスタイル）",
+      "ビエール・ド・ギャルド",
+      "グーズ（ブリュッセル周辺発祥の自然発酵ビール）",
+      "ファロ（ランビックに糖類を加えたスタイル）"
+    ],
+    "answer": 1,
+    "exp": "ビエール・ド・ギャルドはフランスのフランドル地方発祥で、瓶内で数か月〜1年ほど熟成される強めのビールです。（出典: 5､ベルギービール.pdf ページ31）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "資料によると、2010年代以降クラフトビール製造が本格化したとされる国は？",
+    "choices": [
+      "スイス",
+      "フランス",
+      "イタリア",
+      "いずれの国もまだ本格化していない"
+    ],
+    "answer": 1,
+    "exp": "フランスは2010年代以降クラフトビール製造が本格化したとされ、スイス・イタリアは1990年代からとされています。（出典: 7､その他の国のビール.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "others",
+    "q": "オーストラリアン・ペールエール、XPA、ニュージーランドIPAに共通する特徴的なホップアロマは？",
+    "choices": [
+      "スモーキーでピーティーな香りが支配的",
+      "トロピカルフルーツ、柑橘系の香り",
+      "濃厚なカラメルの香りが支配的",
+      "酸味の効いた風味が主体"
+    ],
+    "answer": 1,
+    "exp": "いずれもオセアニア産ホップ由来のトロピカルフルーツ・柑橘系・松の香りが特徴的です。（出典: 7､その他の国のビール.pdf スライド番号32 / ページ32）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "イタリアン・グレープエール（IGA）の特徴的な原料は？",
+    "choices": [
+      "ブドウ（果汁・果実・ワインなど）",
+      "コーヒー豆（焙煎した豆や抽出液）",
+      "蜂蜜（花の蜜から作る甘味料）",
+      "チョコレート（カカオから作る風味材）"
+    ],
+    "answer": 0,
+    "exp": "IGAは地元産のブドウ品種（サンジョヴェーゼ、モスカートなど）を使い、モルトとブドウの風味が調和したスタイルです。（出典: 7､その他の国のビール.pdf スライド番号17 / ページ17）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "スイスの一人当たり年間ビール消費量（2021年、資料記載）はおよそ何Lか？",
+    "choices": [
+      "33L",
+      "51L",
+      "88L",
+      "120L"
+    ],
+    "answer": 1,
+    "exp": "資料ではスイスの一人当たり年間ビール消費量は51Lとされています（フランスは33L）。（出典: 7､その他の国のビール.pdf スライド番号7 / ページ7）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "サハティのIBU（苦味）の目安として正しいものは？",
+    "choices": [
+      "非常に低い（10未満程度）",
+      "非常に高い（80以上）",
+      "中程度（40前後）",
+      "測定不能なほど高い"
+    ],
+    "answer": 0,
+    "exp": "サハティはホップをほとんど使わないため、IBUは通常10未満と非常に低い値です。（出典: 7､その他の国のビール.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "others",
+    "q": "「その他の国のビール」の資料で扱われている3つの地域区分は？",
+    "choices": [
+      "ヨーロッパ、南米、オセアニア",
+      "北米、南米、アジア",
+      "ヨーロッパ、アフリカ、アジア",
+      "北欧、南欧、中欧"
+    ],
+    "answer": 0,
+    "exp": "ヨーロッパ（フランス、スイス、イタリア）、南米（ブラジル、メキシコ）、オセアニア（オーストラリア、ニュージーランド）が扱われています（北欧のフィンランド・ノルウェーも別途扱われています）。（出典: 7､その他の国のビール.pdf スライド番号1 / ページ1）"
+  },
+  {
+    "cat": "others",
+    "q": "フランスの2021年の一人当たり年間ビール消費量はおよそ何Lとされているか？",
+    "choices": [
+      "21L",
+      "33L",
+      "51L",
+      "88L"
+    ],
+    "answer": 1,
+    "exp": "フランスの一人当たり年間ビール消費量は33Lとされています。（出典: 7､その他の国のビール.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "others",
+    "q": "フランスのマクロブルワリーとして資料に挙げられていないものは？",
+    "choices": [
+      "Heineken(Kronenburg)",
+      "Carlsberg",
+      "AB Inbev",
+      "Asahi"
+    ],
+    "answer": 3,
+    "exp": "Heineken(Kronenburg)、Carlsberg、AB Inbevがフランスのマクロブルワリーとして挙げられています。（出典: 7､その他の国のビール.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "others",
+    "q": "フランスの醸造所数（2021年）はおよそいくつとされているか？",
+    "choices": [
+      "約230",
+      "約1,228",
+      "約2,300",
+      "約4,500"
+    ],
+    "answer": 2,
+    "exp": "フランスの醸造所数は2021年時点で約2,300とされています。（出典: 7､その他の国のビール.pdf スライド番号7 / ページ7）"
+  },
+  {
+    "cat": "others",
+    "q": "ビエールドギャルドの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "4.5〜5.5%",
+      "6〜8.5%",
+      "8.5〜10%",
+      "10%以上"
+    ],
+    "answer": 1,
+    "exp": "ビエールドギャルドのABVは6%から8.5%の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号8 / ページ8）"
+  },
+  {
+    "cat": "others",
+    "q": "ビエールドギャルドの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "8〜15",
+      "18〜28",
+      "30〜50",
+      "50以上"
+    ],
+    "answer": 1,
+    "exp": "ビエールドギャルドのIBUは18から28の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号8 / ページ8）"
+  },
+  {
+    "cat": "others",
+    "q": "アルザスピルスナーの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜20",
+      "25〜45",
+      "50〜70",
+      "70以上"
+    ],
+    "answer": 1,
+    "exp": "アルザスピルスナーのIBUは25から45の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号10 / ページ10）"
+  },
+  {
+    "cat": "others",
+    "q": "スイスの2021年の一人当たり年間ビール消費量はおよそ何Lとされているか？",
+    "choices": [
+      "21L",
+      "33L",
+      "51L",
+      "88L"
+    ],
+    "answer": 2,
+    "exp": "スイスの一人当たり年間ビール消費量は51Lとされています。（出典: 7､その他の国のビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "others",
+    "q": "スイスのマクロブルワリーとして資料に挙げられているものは？",
+    "choices": [
+      "Carlsberg(Feldschlösschen)とHeineken(Calanda)（いずれもスイス国内ブランド）",
+      "Asahi（日本の大手ブランド）とKirin（日本の大手ブランド）",
+      "AB Inbev（多国籍系ブランド）とSuntory（日本の大手ブランド）",
+      "Guinness（アイルランド系ブランド）とMolson Coors（北米系ブランド）"
+    ],
+    "answer": 0,
+    "exp": "Carlsberg(Feldschlösschen)とHeineken(Calanda)がスイスのマクロブルワリーとして挙げられています。（出典: 7､その他の国のビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "others",
+    "q": "スイスのSt. Gallen Breweryは何世紀から存在するとされているか？",
+    "choices": [
+      "6世紀",
+      "9世紀",
+      "14世紀",
+      "18世紀"
+    ],
+    "answer": 1,
+    "exp": "St. Gallen Breweryは9世紀から存在するとされています。（出典: 7､その他の国のビール.pdf スライド番号12 / ページ12）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアの2021年の一人当たり年間ビール消費量はおよそ何Lとされているか？",
+    "choices": [
+      "21L",
+      "35L",
+      "51L",
+      "88L"
+    ],
+    "answer": 1,
+    "exp": "イタリアの一人当たり年間ビール消費量は35Lとされています。（出典: 7､その他の国のビール.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアの醸造所数（2021年）はおよそいくつとされているか？",
+    "choices": [
+      "約230",
+      "約814",
+      "約1,228",
+      "約2,300"
+    ],
+    "answer": 1,
+    "exp": "イタリアの醸造所数は2021年時点で約814とされています。（出典: 7､その他の国のビール.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアのマクロブルワリーとして資料に挙げられていないものは？",
+    "choices": [
+      "Birra Peroni (Asahi Europe)",
+      "Birra Castello SPA",
+      "AB Inbev Italia SPA",
+      "Duvel Moortgat Italia"
+    ],
+    "answer": 3,
+    "exp": "Heineken Italia、Birra Peroni(Asahi Europe)、AB Inbev Italia、Carlsberg Italia、Birra Castelloが挙げられています。（出典: 7､その他の国のビール.pdf スライド番号13 / ページ13）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアンピルスナーの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "3.5〜4.5%",
+      "4.5〜5.5%",
+      "5.5〜6.5%",
+      "6.5%以上"
+    ],
+    "answer": 1,
+    "exp": "イタリアンピルスナーのABVは4.5%から5.5%の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号15 / ページ15）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアングレープエール（IGA）で使われるブドウ品種として資料に挙げられていないものは？",
+    "choices": [
+      "サンジョヴェーゼ",
+      "モスカート",
+      "ネッビオーロ",
+      "シャルドネ"
+    ],
+    "answer": 3,
+    "exp": "サンジョヴェーゼ、モスカート、ネッビオーロが例として挙げられています。（出典: 7､その他の国のビール.pdf スライド番号17 / ページ17）"
+  },
+  {
+    "cat": "others",
+    "q": "イタリアングレープエール（IGA）の分析仕様として資料に示されているOG（初期比重）の範囲は？",
+    "choices": [
+      "1.020〜1.030",
+      "1.050〜1.090",
+      "1.100〜1.150",
+      "1.150以上"
+    ],
+    "answer": 1,
+    "exp": "IGAのOGはおよそ1.050から1.090の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号16 / ページ16）"
+  },
+  {
+    "cat": "others",
+    "q": "フィンランドの伝統的なビール「サハティ」の分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "2〜4%",
+      "4〜6%",
+      "7〜11%",
+      "15%以上"
+    ],
+    "answer": 2,
+    "exp": "サハティのABVは通常7%から11%とされ、ストロングビールの部類に入ります。（出典: 7､その他の国のビール.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "others",
+    "q": "サハティの外観の特徴として資料に挙げられているものは？",
+    "choices": [
+      "非常に透明でクリアな外観",
+      "無濾過のため濁った、深い琥珀色から褐色",
+      "真っ黒でオパック（完全に不透明）な外観",
+      "極めて淡い麦わら色の外観"
+    ],
+    "answer": 1,
+    "exp": "サハティは無濾過のため通常濁ったビールで、色は深い琥珀色から褐色とされています。（出典: 7､その他の国のビール.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "others",
+    "q": "サハティの伝統的なマッシュ工程の特徴として資料に挙げられているものは？",
+    "choices": [
+      "高温で長時間休ませ、デキストリン質の麦汁になる",
+      "マッシュを行わず麦芽をそのまま使用する",
+      "低温で短時間のみ処理する",
+      "マッシュを3回繰り返すデコクション法のみ使用"
+    ],
+    "answer": 0,
+    "exp": "高温で長時間の休止を含むマッシュ工程により、デキストリン質の麦汁となりビールのボディに寄与するとされています。（出典: 7､その他の国のビール.pdf スライド番号20 / ページ20）"
+  },
+  {
+    "cat": "others",
+    "q": "ノルウェーの伝統的なビール「コーネル（Kornøl）」の伝統的な特徴として資料に挙げられていないものは？",
+    "choices": [
+      "小規模自家製醸造が伝統的",
+      "クヴェイク酵母を使用",
+      "煮沸工程がない",
+      "必ずホップを大量に使用する"
+    ],
+    "answer": 3,
+    "exp": "コーネルはホップの使用が最低限、あるいは古いホップが使われることもあり、大量使用は特徴とされていません。（出典: 7､その他の国のビール.pdf スライド番号22 / ページ22）"
+  },
+  {
+    "cat": "others",
+    "q": "「クヴェイク」とはどのような酵母か？",
+    "choices": [
+      "ノルウェーの伝統的な農家酵母で高温発酵が可能",
+      "ベルギーの農家に伝わる野生酵母の一種",
+      "日本酒の醸造に使われる伝統的な酵母",
+      "フランスのワイン醸造に使われる酵母"
+    ],
+    "answer": 0,
+    "exp": "クヴェイクはノルウェーの伝統的な農家酵母で、高温での発酵が可能で独特の風味を生み出します。（出典: 7､その他の国のビール.pdf スライド番号22 / ページ22）"
+  },
+  {
+    "cat": "others",
+    "q": "ウィンナーラガー（メキシコ）の分析仕様として資料に示されているSRM（色度）の範囲は？",
+    "choices": [
+      "2〜6",
+      "10〜16",
+      "20〜30",
+      "30以上"
+    ],
+    "answer": 1,
+    "exp": "ウィンナーラガー（メキシコ）のSRMは10から16の範囲で、赤みがかった琥珀色から銅色に相当します。（出典: 7､その他の国のビール.pdf スライド番号25 / ページ25）"
+  },
+  {
+    "cat": "others",
+    "q": "メキシカンラガーの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "8〜20",
+      "25〜40",
+      "40〜60",
+      "60以上"
+    ],
+    "answer": 0,
+    "exp": "メキシカンラガーのIBUは8から20と低めで、飲みやすいスタイルです。（出典: 7､その他の国のビール.pdf スライド番号27 / ページ27）"
+  },
+  {
+    "cat": "others",
+    "q": "メキシカンラガーは、しばしば何を添えて飲まれることが多いとされるか？",
+    "choices": [
+      "レモンの皮",
+      "ライムのくさび形",
+      "ミントの葉",
+      "シナモンスティック"
+    ],
+    "answer": 1,
+    "exp": "メキシカンラガーは、爽やかな風味を引き立てるためにライムのくさび形（ライムウェッジ）を添えて飲まれることが多いとされています。（出典: 7､その他の国のビール.pdf スライド番号27 / ページ27）",
+    "freq": true
+  },
+  {
+    "cat": "others",
+    "q": "オーストラリアンペールエールの分析仕様として資料に示されているSRM（色度）の範囲は？",
+    "choices": [
+      "5〜12",
+      "15〜25",
+      "25〜35",
+      "35以上"
+    ],
+    "answer": 0,
+    "exp": "オーストラリアンペールエールのSRMは5から12の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号29 / ページ29）"
+  },
+  {
+    "cat": "others",
+    "q": "オーストラリアンXPAの分析仕様として資料に示されているIBUの範囲は？",
+    "choices": [
+      "10〜20",
+      "30〜50",
+      "50〜70",
+      "70以上"
+    ],
+    "answer": 1,
+    "exp": "オーストラリアンXPAのIBUは30から50の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号30 / ページ30）"
+  },
+  {
+    "cat": "others",
+    "q": "ニュージーランドIPAの分析仕様として資料に示されているアルコール度数の範囲は？",
+    "choices": [
+      "3〜4.5%(セッションIPA相当の低め度数)",
+      "5.5〜7.5%(標準的なIPAの度数帯)",
+      "8〜10%(ダブルIPA相当の高め度数)",
+      "10%以上(インペリアルIPA相当の極めて高い度数)"
+    ],
+    "answer": 1,
+    "exp": "ニュージーランドIPAのABVは5.5%から7.5%の範囲とされています。（出典: 7､その他の国のビール.pdf スライド番号34 / ページ34）"
+  },
+  {
+    "cat": "others",
+    "q": "ニュージーランドIPAの特徴的なアロマとして資料に挙げられているものは？",
+    "choices": [
+      "パッションフルーツ、マンゴー、キウイなどのトロピカルフルーツ",
+      "燻製由来のスモーキーな香りが支配的",
+      "乳酸由来の酸味が主体のアロマ",
+      "ハーブとスパイスの香りのみが特徴"
+    ],
+    "answer": 0,
+    "exp": "パッションフルーツ、マンゴー、キウイなどのトロピカルフルーツや柑橘、松のような香りが、ニュージーランド産ホップ由来のアロマとして挙げられています。（出典: 7､その他の国のビール.pdf スライド番号32 / ページ32）"
+  },
+  {
+    "cat": "others",
+    "q": "オーストラリアンXPAとオーストラリアンペールエールを比較した際、XPAの特徴は？",
+    "choices": [
+      "よりモルト主体でホップの主張は控えめなスタイル",
+      "より強いホップ主体で、ドライホッピングによりやや霞がかることが多い",
+      "下面発酵酵母を必ず使用して造られるスタイル",
+      "比較したスタイルの中でアルコール度数が最も高いスタイル"
+    ],
+    "answer": 1,
+    "exp": "XPAはドライホッピングによる強いトロピカル・柑橘系ホップ香が特徴で、わずかに霞がかることが多いとされています。（出典: 7､その他の国のビール.pdf スライド番号32 / ページ32）"
+  },
+  {
+    "cat": "others",
+    "q": "資料内でイタリアンピルスナーとドイツピルスナーの大きな違いとして挙げられているのは？",
+    "choices": [
+      "イタリアンピルスナーはドライホッピングを多用する",
+      "イタリアンピルスナーは上面発酵である",
+      "イタリアンピルスナーはホップを一切使わない",
+      "イタリアンピルスナーは常に濁っている"
+    ],
+    "answer": 0,
+    "exp": "イタリアンピルスナーはドライホッピングを多用し、伝統的なジャーマンピルスナーよりホップの香りが際立つのが特徴です。（出典: 7､その他の国のビール.pdf スライド番号15 / ページ15）"
+  }
+];;
+
+QUESTIONS.forEach((q,i)=>{ q._id = i; });
+
+/* ===================== アプリロジック ===================== */
+const HISTORY_KEY = "beerSommelierCombinedQuiz_correctIds";
+
+function loadCorrectIds(){
+  try{
+    const raw = localStorage.getItem(HISTORY_KEY);
+    if(!raw) return new Set();
+    return new Set(JSON.parse(raw));
+  }catch(e){
+    return new Set();
+  }
+}
+function saveCorrectIds(set){
+  try{
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(Array.from(set)));
+  }catch(e){}
+}
+let correctIdsHistory = loadCorrectIds();
+
+function updateExcludeCorrectCount(){
+  const el = document.getElementById("excludeCorrectCount");
+  if(el) el.textContent = correctIdsHistory.size;
+}
+
+function escapeHtmlPlain(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function removeCorrectId(id){
+  correctIdsHistory.delete(id);
+  saveCorrectIds(correctIdsHistory);
+  updateExcludeCorrectCount();
+  renderHistoryList();
+}
+
+function renderHistoryList(){
+  const listEl = document.getElementById("historyList");
+  if(!listEl) return;
+  const ids = Array.from(correctIdsHistory).sort((a,b)=>a-b);
+  if(ids.length === 0){
+    listEl.innerHTML = '<div class="history-empty">過去に正解した問題はまだありません。</div>';
+    return;
+  }
+  let html = "";
+  ids.forEach(id=>{
+    const q = QUESTIONS[id];
+    if(!q) return;
+    html += `<div class="history-item">
+      <div class="h-text"><span class="h-cat">${escapeHtmlPlain(catName(q.cat))}</span>${escapeHtmlPlain(q.q)}</div>
+      <button class="h-reset" data-id="${id}">リセット</button>
+    </div>`;
+  });
+  listEl.innerHTML = html;
+  listEl.querySelectorAll(".h-reset").forEach(btn=>{
+    btn.onclick = ()=> removeCorrectId(parseInt(btn.dataset.id, 10));
+  });
+}
+
+const catGrid = document.getElementById("cat-grid");
+CATEGORIES.forEach(c=>{
+  const count = QUESTIONS.filter(q=>q.cat===c.id).length;
+  const label = document.createElement("label");
+  label.className = "cat-item";
+  label.innerHTML = `<input type="checkbox" value="${c.id}" checked> <span>${c.name} <span class="cat-count">(${count}問)</span></span>`;
+  catGrid.appendChild(label);
+});
+
+document.getElementById("selectAllBtn").onclick = ()=>{
+  catGrid.querySelectorAll("input").forEach(cb=>cb.checked=true);
+};
+document.getElementById("selectNoneBtn").onclick = ()=>{
+  catGrid.querySelectorAll("input").forEach(cb=>cb.checked=false);
+};
+
+const FREQ_COUNT = QUESTIONS.filter(q=>q.freq).length;
+const catSection = document.getElementById("cat-section");
+const modeNote = document.getElementById("modeNote");
+const modeNotes = {
+  freq: `全9分野・全${QUESTIONS.length}問収録。うち${FREQ_COUNT}問を「頻出（推定）」として選定しています。四択形式、回答直後に解説と出典（資料名・ページ）を表示します。`,
+  all: `全9分野・全${QUESTIONS.length}問から出題します。四択形式、回答直後に解説と出典（資料名・ページ）を表示します。`,
+  category: `分野ごとに出題範囲を選べます。四択形式、回答直後に解説と出典（資料名・ページ）を表示します。`
+};
+function updateModeUI(){
+  const selected = document.querySelector('input[name="quizMode"]:checked').value;
+  if(selected === "category"){
+    catSection.classList.remove("hidden");
+  } else {
+    catSection.classList.add("hidden");
+  }
+  modeNote.textContent = modeNotes[selected];
+}
+document.querySelectorAll('input[name="quizMode"]').forEach(r=>{
+  r.addEventListener("change", updateModeUI);
+});
+updateModeUI();
+updateExcludeCorrectCount();
+
+function doResetHistory(){
+  if(correctIdsHistory.size === 0){
+    alert("リセットする履歴はありません。");
+    return;
+  }
+  if(confirm("過去に正解した問題の履歴をすべて削除します。よろしいですか？")){
+    correctIdsHistory = new Set();
+    saveCorrectIds(correctIdsHistory);
+    updateExcludeCorrectCount();
+    renderHistoryList();
+  }
+}
+document.getElementById("resetHistoryBtn").onclick = doResetHistory;
+document.getElementById("resetHistoryBtnResult").onclick = doResetHistory;
+
+document.getElementById("manageHistoryBtn").onclick = ()=>{
+  const panel = document.getElementById("historyManagePanel");
+  const isHidden = panel.classList.contains("hidden");
+  if(isHidden){
+    renderHistoryList();
+    panel.classList.remove("hidden");
+    document.getElementById("manageHistoryBtn").textContent = "正解履歴の管理を閉じる";
+  } else {
+    panel.classList.add("hidden");
+    document.getElementById("manageHistoryBtn").textContent = "正解履歴を1問ずつ管理する";
+  }
+};
+
+let quizSet = [];
+let currentIndex = 0;
+let correctCount = 0;
+let userAnswers = []; // {q, chosen, correct}
+
+function shuffleArr(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+document.getElementById("startBtn").onclick = ()=>{
+  const quizMode = document.querySelector('input[name="quizMode"]:checked').value;
+  let pool;
+  if(quizMode === "freq"){
+    pool = QUESTIONS.filter(q=>q.freq);
+    if(pool.length===0){
+      alert("頻出問題が見つかりませんでした。");
+      return;
+    }
+  } else if(quizMode === "all"){
+    pool = QUESTIONS.slice();
+  } else {
+    const selectedCats = Array.from(catGrid.querySelectorAll("input:checked")).map(cb=>cb.value);
+    if(selectedCats.length===0){
+      alert("出題する分野を1つ以上選んでください。");
+      return;
+    }
+    pool = QUESTIONS.filter(q=>selectedCats.includes(q.cat));
+  }
+  const excludeCorrect = document.getElementById("excludeCorrectChk").checked;
+  if(excludeCorrect){
+    const filtered = pool.filter(q=>!correctIdsHistory.has(q._id));
+    if(filtered.length===0){
+      alert("この条件では、過去に正解していない問題が見つかりませんでした。除外設定を外すか、履歴をリセットしてください。");
+      return;
+    }
+    pool = filtered;
+  }
+  const shuffleMode = document.getElementById("shuffleMode").value;
+  if(shuffleMode==="shuffle") pool = shuffleArr(pool);
+  const n = parseInt(document.getElementById("numQuestions").value,10);
+  quizSet = pool.slice(0, Math.min(n, pool.length));
+  // 選択肢の表示順を毎回シャッフルする（正解の位置が固定にならないようにする）
+  quizSet = quizSet.map(q=>{
+    const order = shuffleArr([0,1,2,3]);
+    return Object.assign({}, q, {
+      choices: order.map(i=>q.choices[i]),
+      answer: order.indexOf(q.answer)
+    });
+  });
+  currentIndex = 0;
+  correctCount = 0;
+  userAnswers = [];
+  document.getElementById("screen-start").classList.add("hidden");
+  document.getElementById("screen-result").classList.add("hidden");
+  document.getElementById("screen-quiz").classList.remove("hidden");
+  renderQuestion();
+};
+
+function catName(id){
+  const c = CATEGORIES.find(c=>c.id===id);
+  return c ? c.name : id;
+}
+
+function escapeHtml(s){
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+const NEG_PATTERNS = /(該当しない|含まれない|挙げられていない)/g;
+function highlightNegative(s){
+  return escapeHtml(s).replace(NEG_PATTERNS, '<span class="neg">$1</span>');
+}
+
+function renderQuestion(){
+  const total = quizSet.length;
+  const q = quizSet[currentIndex];
+  document.getElementById("qIndexLabel").textContent = `問題 ${currentIndex+1} / ${total}`;
+  document.getElementById("scorePill").textContent = `正解 ${correctCount}`;
+  document.getElementById("progressBar").style.width = `${(currentIndex/total)*100}%`;
+  document.getElementById("catTag").textContent = catName(q.cat);
+  document.getElementById("questionText").innerHTML = highlightNegative(q.q);
+  const wrap = document.getElementById("choicesWrap");
+  wrap.innerHTML = "";
+  const explainBox = document.getElementById("explainBox");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  prevBtn.disabled = (currentIndex === 0);
+
+  const existingAnswer = userAnswers[currentIndex];
+
+  q.choices.forEach((choiceText, idx)=>{
+    const btn = document.createElement("div");
+    btn.className = "choice";
+    btn.setAttribute("role", "button");
+    btn.setAttribute("tabindex", "0");
+    btn.textContent = `${String.fromCharCode(65+idx)}. ${choiceText}`;
+    wrap.appendChild(btn);
+    if(existingAnswer){
+      btn.classList.add("disabled");
+      btn.removeAttribute("tabindex");
+      if(idx === q.answer) btn.classList.add("correct");
+      if(idx === existingAnswer.chosenIdx && idx !== q.answer) btn.classList.add("incorrect");
+    } else {
+      btn.onclick = ()=> selectAnswer(idx, btn);
+      btn.onkeydown = (e)=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          selectAnswer(idx, btn);
+        }
+      };
+    }
+  });
+
+  if(existingAnswer){
+    explainBox.textContent = (existingAnswer.isCorrect ? "○ 正解！ " : "✕ 不正解。 ") + q.exp;
+    explainBox.classList.add("show");
+    nextBtn.disabled = false;
+  } else {
+    explainBox.classList.remove("show");
+    explainBox.textContent = "";
+    nextBtn.disabled = true;
+  }
+}
+
+function selectAnswer(idx, btnEl){
+  const q = quizSet[currentIndex];
+  const allBtns = document.querySelectorAll("#choicesWrap .choice");
+  allBtns.forEach(b=>{
+    b.classList.add("disabled");
+    b.removeAttribute("tabindex");
+    b.onclick = null;
+    b.onkeydown = null;
+  });
+
+  const isCorrect = idx === q.answer;
+  if(isCorrect){
+    correctCount++;
+    correctIdsHistory.add(q._id);
+    saveCorrectIds(correctIdsHistory);
+    updateExcludeCorrectCount();
+  }
+  allBtns[q.answer].classList.add("correct");
+  if(!isCorrect){
+    btnEl.classList.add("incorrect");
+  }
+
+  userAnswers.push({
+    q: q.q,
+    chosenIdx: idx,
+    chosenText: q.choices[idx],
+    correctText: q.choices[q.answer],
+    isCorrect: isCorrect,
+    exp: q.exp,
+    cat: q.cat
+  });
+
+  const explainBox = document.getElementById("explainBox");
+  explainBox.textContent = (isCorrect ? "○ 正解！ " : "✕ 不正解。 ") + q.exp;
+  explainBox.classList.add("show");
+  document.getElementById("scorePill").textContent = `正解 ${correctCount}`;
+  document.getElementById("nextBtn").disabled = false;
+}
+
+document.getElementById("nextBtn").onclick = ()=>{
+  currentIndex++;
+  if(currentIndex >= quizSet.length){
+    showResult();
+  } else {
+    renderQuestion();
+  }
+};
+
+document.getElementById("prevBtn").onclick = ()=>{
+  if(currentIndex > 0){
+    currentIndex--;
+    renderQuestion();
+  }
+};
+
+document.getElementById("quitBtn").onclick = ()=>{
+  if(confirm("テストを途中で終了しますか？ここまでの回答結果を表示します。")){
+    showResult();
+  }
+};
+
+function showResult(){
+  document.getElementById("screen-quiz").classList.add("hidden");
+  document.getElementById("screen-result").classList.remove("hidden");
+  document.getElementById("progressBar").style.width = "100%";
+
+  document.getElementById("finalScore").textContent = correctCount;
+  document.getElementById("finalDenom").textContent = ` / ${userAnswers.length} 問正解`;
+
+  // カテゴリ別集計
+  const catStats = {};
+  userAnswers.forEach(a=>{
+    if(!catStats[a.cat]) catStats[a.cat] = {correct:0, total:0};
+    catStats[a.cat].total++;
+    if(a.isCorrect) catStats[a.cat].correct++;
+  });
+  const tbody = document.getElementById("catScoreBody");
+  tbody.innerHTML = "";
+  Object.keys(catStats).forEach(catId=>{
+    const s = catStats[catId];
+    const pct = Math.round((s.correct/s.total)*100);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${catName(catId)}</td><td>${s.correct}/${s.total}</td>
+      <td style="min-width:110px;">${pct}%<div class="bar-mini"><div style="width:${pct}%"></div></div></td>`;
+    tbody.appendChild(tr);
+  });
+
+  // 誤答レビュー
+  const reviewWrap = document.getElementById("reviewList");
+  const wrong = userAnswers.filter(a=>!a.isCorrect);
+  if(userAnswers.length===0){
+    reviewWrap.innerHTML = "<h2>未回答のまま終了しました。</h2>";
+  } else if(wrong.length===0){
+    reviewWrap.innerHTML = "<h2>全問正解です！お見事です 🎉</h2>";
+  } else {
+    let html = `<h2>復習：間違えた問題（${wrong.length}問）</h2>`;
+    wrong.forEach(a=>{
+      html += `<div class="review-item">
+        <div class="q">${a.q}</div>
+        <div class="ans-wrong">あなたの回答：${a.chosenText}</div>
+        <div class="ans-correct">正解：${a.correctText}</div>
+        <div style="margin-top:6px; color:#6b5a3a;">${a.exp}</div>
+      </div>`;
+    });
+    reviewWrap.innerHTML = html;
+  }
+}
+
+document.getElementById("retryBtn").onclick = ()=>{
+  document.getElementById("screen-result").classList.add("hidden");
+  document.getElementById("screen-start").classList.remove("hidden");
+};
+</script>
+</body>
+</html>
