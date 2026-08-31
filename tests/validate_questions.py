@@ -21,7 +21,7 @@ def main() -> None:
     assert DATA["metadata"]["examQuestionCount"] == 50
     assert DATA["metadata"]["examMinutes"] == 40
     assert DATA["metadata"]["passingRate"] == 0.5
-    assert DATA["metadata"]["multiAnswerQuestionCount"] == 192
+    assert DATA["metadata"]["multiAnswerQuestionCount"] == 244
     assert len(QUESTIONS) == 1000
     assert len({question["id"] for question in QUESTIONS}) == 1000
     assert len({question["question"] for question in QUESTIONS}) == 1000
@@ -59,8 +59,8 @@ def main() -> None:
         assert not re.search(r"人気の高いビールブランドの流通|ケルシュ用グラス|ピルスナーに用いられる代表的なグラス|何mlのグラスで提供|ドラフト（樽生）設備|コースメニュー", question["question"])
     answer_counts = Counter(len(question["correct"]) for question in QUESTIONS)
     assert set(answer_counts) == {0, 1, 2, 3}
-    assert answer_counts == {0: 2, 1: 806, 2: 28, 3: 164}
-    assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 192
+    assert answer_counts == {0: 2, 1: 754, 2: 80, 3: 164}
+    assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 244
     negative_pattern = re.compile(r"誤っている|適切でない|正しくない|該当しない|当てはまらない|含まれない")
     assert not any(negative_pattern.search(question["question"]) for question in QUESTIONS)
     assert paired_count == 0
@@ -90,7 +90,8 @@ def main() -> None:
     assert "該当する選択肢はない（0個）として回答" in APP_JS and "該当する選択肢はない（0個）として回答" in INDEX_HTML
     assert 'name="robots" content="noindex, nofollow' in INDEX_HTML
     assert "User-agent: *" in ROBOTS_TXT and "Disallow: /" in ROBOTS_TXT
-    assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 350, "B": 400, "C": 250}
+    assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 312, "B": 376, "C": 312}
+    assert {tier["id"]: tier["count"] for tier in DATA["metadata"]["frequencyTiers"]} == {"A": 312, "B": 376, "C": 312}
     assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 1000
     excluded_categories = {"quality", "service", "draft", "pairing", "marketing"}
     assert len(DATA["metadata"]["categories"]) == 7
@@ -119,6 +120,24 @@ def main() -> None:
     assert '$("#openNavigatorMobile").addEventListener("click", () => setNavigatorOpen(true))' in APP_JS
     assert '.map-fab{display:none!important}' in STYLES_CSS
     assert '.mobile-map-trigger{display:inline-flex' in STYLES_CSS
+    blackcurrant_ids = {"BK-0034", "BK-0480"}
+    assert all(not any("黒すぐり" in choice or "カシス" in choice for choice in question_by_id[question_id]["choices"]) for question_id in blackcurrant_ids)
+    water_style_ids = {"BK-0011", "BK-0038", "BK-0039", "BK-0706"}
+    assert all(not any("（" in choice or "(" in choice for choice in question_by_id[question_id]["choices"]) for question_id in water_style_ids)
+    consumption_pattern = re.compile(r"(?:一人|1人)当たり.*ビール消費量|ビール消費量.*(?:一人|1人)当たり")
+    assert all(question["frequencyTier"] == "C" for question in QUESTIONS if consumption_pattern.search(question["question"]))
+    hardness_only_ids = {"BK-0005", "BK-0006", "BK-0007", "BK-0008", "BK-0011", "BK-0038", "BK-0039", "BK-0061", "BK-0069", "BK-0070", "BK-0071", "BK-0123", "BK-0147", "BK-0191", "BK-0202", "BK-0706", "BK-0757", "BK-0834"}
+    assert all(question_by_id[question_id]["frequencyTier"] == "C" for question_id in hardness_only_ids)
+    extreme_ibu_ids = {"BK-0277", "BK-0320", "BK-0449", "BK-0554", "BK-0561", "BK-0901"}
+    assert all(question["frequencyTier"] == "C" for question in QUESTIONS if re.search(r"(?<![A-Za-z])(?:IBU|EBC)(?![A-Za-z])", question["question"]) and question["id"] not in extreme_ibu_ids)
+    style_guide = DATA["metadata"]["mobileStyleGuideIntegration"]
+    style_guide_ids = set(style_guide["questionIds"])
+    assert style_guide["questionCount"] == 52 == len(style_guide_ids)
+    assert all(question_by_id[question_id]["category"] == "beer_styles" for question_id in style_guide_ids)
+    assert all(len(question_by_id[question_id]["correct"]) == 2 for question_id in style_guide_ids)
+    assert all(len(question_by_id[question_id]["choices"]) == 4 for question_id in style_guide_ids)
+    assert all(question_by_id[question_id]["sources"][0]["filename"] == "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf" for question_id in style_guide_ids)
+    assert not any("ジャパニーズ・ドライラガー" in question_by_id[question_id]["question"] for question_id in style_guide_ids)
     print(f"OK: 1,000 checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
 
 
