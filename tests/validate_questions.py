@@ -11,6 +11,7 @@ DATA = json.loads((ROOT / "questions.json").read_text(encoding="utf-8"))
 QUESTIONS = DATA["questions"]
 APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+STYLES_CSS = (ROOT / "styles.css").read_text(encoding="utf-8")
 ROBOTS_TXT = (ROOT / "robots.txt").read_text(encoding="utf-8")
 
 
@@ -114,6 +115,10 @@ def main() -> None:
         values = [float(value) for choice in question["choices"] for value in re.findall(r"\d+(?:\.\d+)?", choice)]
         assert min(values) <= 0.5 and max(values) >= 18
     assert "50問中35問は正答が2個以上" in INDEX_HTML
+    assert 'id="openNavigatorMobile"' in INDEX_HTML and 'id="unansweredBadgeMobile"' in INDEX_HTML
+    assert '$("#openNavigatorMobile").addEventListener("click", () => setNavigatorOpen(true))' in APP_JS
+    assert '.map-fab{display:none!important}' in STYLES_CSS
+    assert '.mobile-map-trigger{display:inline-flex' in STYLES_CSS
     print(f"OK: 1,000 checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
 
 

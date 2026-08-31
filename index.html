@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass 1000 | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1000</small></span></a>
-    <div class="header-status"><small class="version-badge">v14</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v15</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -56,7 +56,7 @@
     </section>
 
     <section id="sessionView" class="view" hidden>
-      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><div class="session-meta"><span id="sessionModeBadge">最終試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" aria-live="polite">40:00</time></div></div>
+      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><button class="mobile-map-trigger" id="openNavigatorMobile" type="button" aria-controls="navigator" aria-expanded="false">一覧 <span id="unansweredBadgeMobile">50</span></button><div class="session-meta"><span id="sessionModeBadge">最終試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" aria-live="polite">40:00</time></div></div>
       <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
       <div class="session-layout">
         <article class="question-panel">
@@ -78,6 +78,6 @@
   </main>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=14" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=15" defer></script>
 </body>
 </html>

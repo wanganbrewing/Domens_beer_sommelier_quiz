@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v14";
+const APP_VERSION = "v15";
 const STORAGE = { history: "bierkompass-history-v14", session: "bierkompass-session-v14", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -109,8 +109,9 @@ function bindEvents() {
   $("#restartSessionButton").addEventListener("click", requestRestart);
   $("#retryButton").addEventListener("click", restartSession);
   $("#resetHistoryButton").addEventListener("click", requestHistoryReset);
-  $("#openNavigator").addEventListener("click", () => $("#navigator").classList.add("open"));
-  $("#closeNavigator").addEventListener("click", () => $("#navigator").classList.remove("open"));
+  $("#openNavigator").addEventListener("click", () => setNavigatorOpen(true));
+  $("#openNavigatorMobile").addEventListener("click", () => setNavigatorOpen(true));
+  $("#closeNavigator").addEventListener("click", () => setNavigatorOpen(false));
   $("#confirmDialog").addEventListener("close", () => { if ($("#confirmDialog").returnValue === "confirm" && pendingConfirm) pendingConfirm(); pendingConfirm = null; });
 }
 
@@ -122,6 +123,11 @@ function setMode(nextMode) {
   $("#modeSummary").textContent = mode === "exam" ? "50問・40分・合格基準50%" : "50問ずつ回答・解説と出典を表示";
   $("#startButton span").textContent = mode === "exam" ? "最終試験を始める" : "学習を始める";
   updatePoolCount();
+}
+
+function setNavigatorOpen(open) {
+  $("#navigator").classList.toggle("open", open);
+  $("#openNavigatorMobile").setAttribute("aria-expanded", String(open));
 }
 
 function selectedFilters() {
@@ -308,18 +314,19 @@ function markNoSelection() {
 
 function moveQuestion(delta) {
   session.current = Math.max(0, Math.min(session.questionIds.length - 1, session.current + delta));
-  $("#navigator").classList.remove("open");
+  setNavigatorOpen(false);
   renderQuestion();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function goToQuestion(index) { session.current = index; $("#navigator").classList.remove("open"); renderQuestion(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+function goToQuestion(index) { session.current = index; setNavigatorOpen(false); renderQuestion(); window.scrollTo({ top: 0, behavior: "smooth" }); }
 
 function renderNavigator() {
   const answered = session.questionIds.filter((id) => session.answered[id]).length;
   $("#questionMap").innerHTML = session.questionIds.map((id, index) => `<button type="button" data-index="${index}" class="${session.answered[id] ? "answered" : ""} ${index === session.current ? "current" : ""}" aria-label="問題${index + 1}${session.answered[id] ? " 回答済み" : " 未回答"}">${index + 1}</button>`).join("");
   $$("#questionMap button").forEach((button) => button.addEventListener("click", () => goToQuestion(Number(button.dataset.index))));
   $("#unansweredBadge").textContent = session.questionIds.length - answered;
+  $("#unansweredBadgeMobile").textContent = session.questionIds.length - answered;
 }
 
 function checkStudyAnswer() {
