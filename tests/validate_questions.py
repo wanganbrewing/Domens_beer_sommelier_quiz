@@ -120,6 +120,7 @@ def main() -> None:
     assert '$("#openNavigatorMobile").addEventListener("click", () => setNavigatorOpen(true))' in APP_JS
     assert '.map-fab{display:none!important}' in STYLES_CSS
     assert '.mobile-map-trigger{display:inline-flex' in STYLES_CSS
+    assert '.final-exam-guide[hidden]{display:none}' in STYLES_CSS
     blackcurrant_ids = {"BK-0034", "BK-0480"}
     assert all(not any("黒すぐり" in choice or "カシス" in choice for choice in question_by_id[question_id]["choices"]) for question_id in blackcurrant_ids)
     water_style_ids = {"BK-0011", "BK-0038", "BK-0039", "BK-0706"}
