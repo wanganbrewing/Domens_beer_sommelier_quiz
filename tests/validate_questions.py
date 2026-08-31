@@ -16,6 +16,7 @@ ROBOTS_TXT = (ROOT / "robots.txt").read_text(encoding="utf-8")
 
 def main() -> None:
     assert DATA["metadata"]["questionCount"] == 1000
+    assert DATA["metadata"]["studyQuestionCount"] == 50
     assert DATA["metadata"]["examQuestionCount"] == 50
     assert DATA["metadata"]["examMinutes"] == 40
     assert DATA["metadata"]["passingRate"] == 0.5
@@ -43,9 +44,14 @@ def main() -> None:
         assert not re.search(r"のの(?:年|時期)|正しい.*誤っている|適切な.*誤っている|について.*について", question["question"])
         assert "回答は1つとは限りません" not in question["question"]
         supporting_text = question["explanation"] + "\0" + "\0".join(question["choiceReasons"])
+        gravity_text = question["question"] + "\0" + "\0".join(question["choices"]) + "\0" + supporting_text
+        assert not re.search(r"(?<![A-Z])(?:OG|FG)(?![A-Z])|初期比重|最終比重", gravity_text)
         assert not re.search(r"出典資料|資料が示す|資料では", supporting_text)
         assert not re.search(r"^（古く|^ーシップ|^これらの発明|^一般的に炭酸|^冬に氷|について、が", question["question"])
         assert all(not re.search(r"^[、,。]|[■□●▪]|講座終了後|レポート", choice) for choice in question["choices"])
+        for choice in question["choices"]:
+            assert all(int(match.group(1)) <= 2026 for match in re.finditer(r"(?<![\d,])(\d{3,4})年(?!前)", choice))
+            assert all(float(match.group(1)) <= 100 for match in re.finditer(r"(?<![\d.])(\d+(?:\.\d+)?)%", choice))
         japan_text = question["question"] + "\0" + "\0".join(question["choices"])
         assert not re.search(r"日本|ジャパン|JBA|JBSA|地ビール|酒税|キリンビール大学|全国地ビール|文化交流ヴィラ|[イロハ]号ビール|2017年度税制改正", japan_text)
         assert all("ビールの日本史" not in source["filename"] for source in question["sources"])
@@ -59,6 +65,10 @@ def main() -> None:
     assert 'const inputType = "checkbox"' in APP_JS
     assert 'type="radio"' not in APP_JS
     assert "broadExamSample(pool, count)" in APP_JS
+    assert "studyQuestionSample(pool, count)" in APP_JS
+    assert 'class="negative-cue"' in APP_JS
+    assert '$("#questionText").innerHTML = formatQuestionText(question.question)' in APP_JS
+    assert "data.metadata.studyQuestionCount" in APP_JS
     assert "Math.round(count * 0.7)" in APP_JS
     assert "balancedQuestionSample(multiAnswerPool, multiAnswerCount)" in APP_JS
     assert "broadQuestionScore(b) - broadQuestionScore(a)" in APP_JS

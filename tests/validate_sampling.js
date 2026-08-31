@@ -26,8 +26,19 @@ const context = {
 };
 vm.runInNewContext(appSource, context, { filename: "app.js" });
 
-const { broadExamSample } = context.window.BierKompass;
+const { studyQuestionSample, broadExamSample, formatQuestionText } = context.window.BierKompass;
 const tierAPool = data.questions.filter((question) => question.frequencyTier === "A");
+
+assert.equal(formatQuestionText("正しいものを選ぶ。"), "正しいものを選ぶ。");
+assert.equal(formatQuestionText("誤っているものを選ぶ。"), '<span class="negative-cue">誤っている</span>ものを選ぶ。');
+assert.equal(formatQuestionText("<script>正しくない</script>"), '&lt;script&gt;<span class="negative-cue">正しくない</span>&lt;/script&gt;');
+
+for (let run = 0; run < 25; run += 1) {
+  const sample = studyQuestionSample(tierAPool, 50);
+  assert.equal(sample.length, 50);
+  assert.equal(new Set(sample.map((question) => question.id)).size, 50);
+}
+assert.equal(studyQuestionSample(tierAPool.slice(0, 17), 50).length, 17);
 
 for (let run = 0; run < 25; run += 1) {
   const sample = broadExamSample(tierAPool, 50);
@@ -37,4 +48,4 @@ for (let run = 0; run < 25; run += 1) {
   assert.equal(sample.filter((question) => question.correct.length < 2).length, 15);
 }
 
-console.log("OK: final exam sampling returns 35 multi-answer and 15 other questions");
+console.log("OK: study mode returns 50 questions; final exam returns 35 multi-answer and 15 other questions");
