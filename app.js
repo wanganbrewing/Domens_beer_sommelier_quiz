@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const STORAGE = { history: "bierkompass-history-v3", session: "bierkompass-session-v3", settings: "bierkompass-settings-v3" };
+const STORAGE = { history: "bierkompass-history-v5", session: "bierkompass-session-v5", settings: "bierkompass-settings-v5" };
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -139,11 +139,32 @@ function restoreSettings() {
 function startSession() {
   const pool = filteredPool();
   const count = mode === "exam" ? data.metadata.examQuestionCount : pool.length;
-  const questionIds = shuffle(pool).slice(0, count).map((question) => question.id);
+  const selectedQuestions = mode === "exam" ? broadExamSample(pool, count) : shuffle(pool).slice(0, count);
+  const questionIds = selectedQuestions.map((question) => question.id);
   const optionOrders = Object.fromEntries(questionIds.map((id) => [id, shuffle(questionsById.get(id).choices.map((_, index) => index))]));
   session = { mode, questionIds, optionOrders, answers: {}, answered: {}, checked: {}, current: 0, startedAt: Date.now(), durationSeconds: mode === "exam" ? data.metadata.examMinutes * 60 : null, completed: false };
   persistSession();
   showSession();
+}
+
+function broadExamSample(pool, count) {
+  const groups = new Map();
+  for (const question of shuffle(pool)) {
+    if (!groups.has(question.category)) groups.set(question.category, []);
+    groups.get(question.category).push(question);
+  }
+  let categories = shuffle([...groups.keys()]);
+  const selected = [];
+  while (selected.length < count && categories.length) {
+    const nextRound = [];
+    for (const category of categories) {
+      const group = groups.get(category);
+      if (group.length && selected.length < count) selected.push(group.pop());
+      if (group.length) nextRound.push(category);
+    }
+    categories = nextRound;
+  }
+  return shuffle(selected);
 }
 
 function showView(name) {
@@ -171,11 +192,11 @@ function renderQuestion() {
   $("#progressBar").style.width = `${((session.current + 1) / session.questionIds.length) * 100}%`;
   $("#frequencyTag").textContent = `${question.frequencyTier} · ${TIER_NAMES[question.frequencyTier]}`;
   $("#categoryTag").textContent = categoryName(question.category);
-  $("#typeTag").textContent = question.type === "multiple" ? "複数選択" : "単一選択";
+  $("#typeTag").textContent = "複数選択";
   $("#questionText").textContent = question.question;
-  $("#answerHint").textContent = question.type === "multiple" ? "正しいと思うものをすべて選択してください。正答数は決まっていません。" : "最も適切なものを1つ選択してください。";
+  $("#answerHint").textContent = "正しいと思うものをすべて選択してください。正答数は決まっていません。";
   const selected = selectedValues(question.id);
-  const inputType = question.type === "multiple" ? "checkbox" : "radio";
+  const inputType = "checkbox";
   $("#choiceList").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const stateClass = checked ? (question.correct.includes(originalIndex) ? "correct" : selected.includes(originalIndex) ? "wrong" : "") : "";
     return `<div class="choice ${stateClass}"><input type="${inputType}" name="answer" id="choice-${displayIndex}" value="${originalIndex}" ${selected.includes(originalIndex) ? "checked" : ""} ${checked ? "disabled" : ""}><label for="choice-${displayIndex}"><span class="choice-key">${String.fromCharCode(65 + displayIndex)}</span><span>${escapeHtml(question.choices[originalIndex])}</span></label></div>`;
@@ -344,5 +365,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, broadExamSample };
 init();

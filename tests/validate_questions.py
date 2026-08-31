@@ -9,6 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((ROOT / "questions.json").read_text(encoding="utf-8"))
 QUESTIONS = DATA["questions"]
+APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
+INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 
 
 def main() -> None:
@@ -35,6 +37,10 @@ def main() -> None:
         assert all(not re.search(r"^[、,。]|[■□●▪]|講座終了後|レポート", choice) for choice in question["choices"])
     answer_counts = Counter(len(question["correct"]) for question in QUESTIONS)
     assert set(answer_counts) == {0, 1, 2, 3}
+    assert 'const inputType = "checkbox"' in APP_JS
+    assert 'type="radio"' not in APP_JS
+    assert "broadExamSample(pool, count)" in APP_JS
+    assert "広く浅く" in INDEX_HTML
     assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 350, "B": 400, "C": 250}
     assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 1000
     print(f"OK: 1,000 multiple-selection questions; answer counts={dict(sorted(answer_counts.items()))}; unique IDs/stems/signatures; sources and 3 frequency tiers")
