@@ -20,7 +20,7 @@ def main() -> None:
     assert DATA["metadata"]["examQuestionCount"] == 50
     assert DATA["metadata"]["examMinutes"] == 40
     assert DATA["metadata"]["passingRate"] == 0.5
-    assert DATA["metadata"]["multiAnswerQuestionCount"] == 700
+    assert DATA["metadata"]["multiAnswerQuestionCount"] == 192
     assert len(QUESTIONS) == 1000
     assert len({question["id"] for question in QUESTIONS}) == 1000
     assert len({question["question"] for question in QUESTIONS}) == 1000
@@ -58,16 +58,17 @@ def main() -> None:
         assert not re.search(r"人気の高いビールブランドの流通|ケルシュ用グラス|ピルスナーに用いられる代表的なグラス|何mlのグラスで提供|ドラフト（樽生）設備|コースメニュー", question["question"])
     answer_counts = Counter(len(question["correct"]) for question in QUESTIONS)
     assert set(answer_counts) == {0, 1, 2, 3}
-    assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 700
-    negative_count = sum(bool(re.search(r"誤っている|適切でない", question["question"])) for question in QUESTIONS)
-    assert 500 <= negative_count <= 600
+    assert answer_counts == {0: 2, 1: 806, 2: 28, 3: 164}
+    assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 192
+    negative_pattern = re.compile(r"誤っている|適切でない|正しくない|該当しない|当てはまらない|含まれない")
+    assert not any(negative_pattern.search(question["question"]) for question in QUESTIONS)
     assert paired_count == 0
     assert 'const inputType = "checkbox"' in APP_JS
     assert 'type="radio"' not in APP_JS
     assert "broadExamSample(pool, count)" in APP_JS
     assert "studyQuestionSample(pool, count)" in APP_JS
-    assert 'class="negative-cue"' in APP_JS
-    assert '$("#questionText").innerHTML = formatQuestionText(question.question)' in APP_JS
+    assert 'class="negative-cue"' not in APP_JS
+    assert '$("#questionText").textContent = question.question' in APP_JS
     assert "data.metadata.studyQuestionCount" in APP_JS
     assert "Math.round(count * 0.7)" in APP_JS
     assert "balancedQuestionSample(multiAnswerPool, multiAnswerCount)" in APP_JS
@@ -105,6 +106,14 @@ def main() -> None:
     brewing_dates = question_by_id["BK-0356"]
     assert all(len(re.findall(r"\d+", choice)) == 4 for choice in brewing_dates["choices"])
     assert question_by_id["BK-0910"]["question"] == "官能評価におけるアロマは、主にどの感覚で知覚しますか。"
+    expected_abv_ids = {"BK-0130", "BK-0137", "BK-0233", "BK-0266", "BK-0312", "BK-0333", "BK-0341", "BK-0383", "BK-0559", "BK-0768", "BK-0794", "BK-0804"}
+    direct_abv = {question["id"]: question for question in QUESTIONS if re.search(r"アルコール度数.*範囲", question["question"])}
+    assert set(direct_abv) == expected_abv_ids
+    for question in direct_abv.values():
+        assert len(question["correct"]) == 1
+        values = [float(value) for choice in question["choices"] for value in re.findall(r"\d+(?:\.\d+)?", choice)]
+        assert min(values) <= 0.5 and max(values) >= 18
+    assert "50問中35問は正答が2個以上" in INDEX_HTML
     print(f"OK: 1,000 checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
 
 

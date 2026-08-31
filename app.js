@@ -1,22 +1,14 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v13";
-const STORAGE = { history: "bierkompass-history-v11", session: "bierkompass-session-v12", settings: "bierkompass-settings-v10" };
+const APP_VERSION = "v14";
+const STORAGE = { history: "bierkompass-history-v14", session: "bierkompass-session-v14", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
-const NEGATIVE_CUES = new Set(["正しくない", "誤っている", "適切でない", "該当しない", "当てはまらない", "含まれない", "不適切な", "不適切である", "誤りである"]);
-const NEGATIVE_CUE_PATTERN = /(正しくない|誤っている|適切でない|該当しない|当てはまらない|含まれない|不適切な|不適切である|誤りである)/g;
-
-function formatQuestionText(value) {
-  return String(value ?? "").split(NEGATIVE_CUE_PATTERN).map((part) => (
-    NEGATIVE_CUES.has(part) ? `<span class="negative-cue">${escapeHtml(part)}</span>` : escapeHtml(part)
-  )).join("");
-}
 
 let data;
 let questionsById = new Map();
@@ -269,7 +261,7 @@ function renderQuestion() {
   $("#frequencyTag").textContent = `${question.frequencyTier} · ${TIER_NAMES[question.frequencyTier]}`;
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
-  $("#questionText").innerHTML = formatQuestionText(question.question);
+  $("#questionText").textContent = question.question;
   $("#answerHint").textContent = "問題文の条件に当てはまるものをすべて選択してください。選択数は決まっていません。";
   const selected = selectedValues(question.id);
   const inputType = "checkbox";
@@ -346,11 +338,10 @@ function renderFeedback(question) {
   $("#feedbackExplanation").textContent = question.explanation;
   const personQuestion = /人物|誰|発明した|導入した|設立した|開発した/.test(question.question)
     && /パスツール|ハンセン|リンデ|レーウェンフック|ヨーゼフ・グロル|アントン・ドレ|ゼードルマ|アーサー・ギネス|ヤコブセン|ピエール・セリス|ドゥーメンス/.test(question.choices.join(" "));
-  const asksForIncorrect = /誤っている|適切でない/.test(question.question);
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const isCorrect = question.correct.includes(originalIndex);
-    const isFactuallyCorrect = asksForIncorrect ? !isCorrect : isCorrect;
+    const isFactuallyCorrect = isCorrect;
     const learningNote = personQuestion && isFactuallyCorrect ? ` — ${question.choiceReasons[originalIndex]}` : "";
     const displayKey = String.fromCharCode(65 + displayIndex);
     return `<details><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}${escapeHtml(learningNote)}</summary><p>${escapeHtml(question.choiceReasons[originalIndex])}</p></details>`;
@@ -414,7 +405,7 @@ function showResult() {
   $("#scoreRate").textContent = `${Math.round(result.rate * 100)}%`;
   $("#scorePoints").textContent = `${result.earned} / ${result.maximum}点`;
   $("#categoryResults").innerHTML = Object.entries(result.categories).map(([id, item]) => { const rate = item.maximum ? item.earned / item.maximum : 0; return `<div class="category-result"><strong>${escapeHtml(categoryName(id))}</strong><div class="bar"><i style="width:${rate * 100}%"></i></div><span>${item.earned}/${item.maximum}点</span></div>`; }).join("");
-  $("#reviewList").innerHTML = result.review.map((item, index) => { const question = questionsById.get(item.id); const order = session.optionOrders[item.id]; const answers = question.correct.length ? order.map((originalIndex, displayIndex) => ({ originalIndex, displayIndex })).filter(({ originalIndex }) => question.correct.includes(originalIndex)).map(({ originalIndex, displayIndex }) => `${String.fromCharCode(65 + displayIndex)}：${question.choices[originalIndex]}`).join("／") : "該当なし（0個）"; return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${formatQuestionText(question.question)}</h3><details><summary>正答・解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><p><strong>出典：</strong>${question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／")}</p></details></article>`; }).join("");
+  $("#reviewList").innerHTML = result.review.map((item, index) => { const question = questionsById.get(item.id); const order = session.optionOrders[item.id]; const answers = question.correct.length ? order.map((originalIndex, displayIndex) => ({ originalIndex, displayIndex })).filter(({ originalIndex }) => question.correct.includes(originalIndex)).map(({ originalIndex, displayIndex }) => `${String.fromCharCode(65 + displayIndex)}：${question.choices[originalIndex]}`).join("／") : "該当なし（0個）"; return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><p><strong>出典：</strong>${question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／")}</p></details></article>`; }).join("");
 }
 
 function restartSession() {
@@ -449,5 +440,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, broadQuestionScore, formatQuestionText };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, broadQuestionScore };
 startAccessControl();

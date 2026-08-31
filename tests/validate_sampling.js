@@ -26,12 +26,8 @@ const context = {
 };
 vm.runInNewContext(appSource, context, { filename: "app.js" });
 
-const { studyQuestionSample, broadExamSample, formatQuestionText } = context.window.BierKompass;
+const { studyQuestionSample, broadExamSample } = context.window.BierKompass;
 const tierAPool = data.questions.filter((question) => question.frequencyTier === "A");
-
-assert.equal(formatQuestionText("正しいものを選ぶ。"), "正しいものを選ぶ。");
-assert.equal(formatQuestionText("誤っているものを選ぶ。"), '<span class="negative-cue">誤っている</span>ものを選ぶ。');
-assert.equal(formatQuestionText("<script>正しくない</script>"), '&lt;script&gt;<span class="negative-cue">正しくない</span>&lt;/script&gt;');
 
 for (let run = 0; run < 25; run += 1) {
   const sample = studyQuestionSample(tierAPool, 50);
