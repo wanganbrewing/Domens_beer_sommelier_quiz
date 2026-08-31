@@ -149,13 +149,13 @@ def main() -> None:
         question = question_by_id[question_id]
         dimensions = [label for label in ("詳細説明", "特徴定義", "原材料・工程") if f"の{label}として" in question["question"]]
         assert len(dimensions) == 1
-        assert all(dimensions[0] in reason for reason in question["choiceReasons"])
-        assert question["choiceReasons"][question["correct"][0]].startswith("正答：この内容が示すスタイルは")
+        assert question["choiceReasons"][question["correct"][0]].startswith("この内容が示すスタイル：")
         assert all(
-            reason.startswith("誤答：この内容が示すスタイルは")
+            reason.startswith("この内容が示すスタイル：")
             for index, reason in enumerate(question["choiceReasons"])
             if index not in question["correct"]
         )
+        assert all("ではありません" not in reason and "合致します" not in reason for reason in question["choiceReasons"])
         assert all(not choice.startswith(("詳細説明：", "特徴定義：", "原材料・工程：")) for choice in question["choices"])
     assert not any(re.search(r"情報源|Sources?|参照元|情報の出典", question["question"], re.IGNORECASE) for question in QUESTIONS)
     vacuous_markers = (
