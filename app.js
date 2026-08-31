@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v19";
+const APP_VERSION = "v20";
 const STORAGE = { history: "bierkompass-history-v19", session: "bierkompass-session-v19", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -356,6 +356,15 @@ function renderFeedback(question) {
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}</p>`).join("")}`;
 }
 
+function renderReviewChoiceReasons(question, order) {
+  return order.map((originalIndex, displayIndex) => {
+    const choice = question.choices[originalIndex];
+    const isCorrect = question.correct.includes(originalIndex);
+    const displayKey = String.fromCharCode(65 + displayIndex);
+    return `<details><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}</summary><p>${escapeHtml(question.choiceReasons[originalIndex])}</p></details>`;
+  }).join("");
+}
+
 function recordHistory(question, correct) {
   const item = history[question.id] || { attempts: 0, correctCount: 0, incorrectCount: 0, lastAnsweredAt: null, mastered: false };
   item.attempts += 1;
@@ -412,7 +421,18 @@ function showResult() {
   $("#scoreRate").textContent = `${Math.round(result.rate * 100)}%`;
   $("#scorePoints").textContent = `${result.earned} / ${result.maximum}点`;
   $("#categoryResults").innerHTML = Object.entries(result.categories).map(([id, item]) => { const rate = item.maximum ? item.earned / item.maximum : 0; return `<div class="category-result"><strong>${escapeHtml(categoryName(id))}</strong><div class="bar"><i style="width:${rate * 100}%"></i></div><span>${item.earned}/${item.maximum}点</span></div>`; }).join("");
-  $("#reviewList").innerHTML = result.review.map((item, index) => { const question = questionsById.get(item.id); const order = session.optionOrders[item.id]; const answers = question.correct.length ? order.map((originalIndex, displayIndex) => ({ originalIndex, displayIndex })).filter(({ originalIndex }) => question.correct.includes(originalIndex)).map(({ originalIndex, displayIndex }) => `${String.fromCharCode(65 + displayIndex)}：${question.choices[originalIndex]}`).join("／") : "該当なし（0個）"; return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><p><strong>出典：</strong>${question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／")}</p></details></article>`; }).join("");
+  $("#reviewList").innerHTML = result.review.map((item, index) => {
+    const question = questionsById.get(item.id);
+    const order = session.optionOrders[item.id];
+    const answers = question.correct.length
+      ? order.map((originalIndex, displayIndex) => ({ originalIndex, displayIndex }))
+        .filter(({ originalIndex }) => question.correct.includes(originalIndex))
+        .map(({ originalIndex, displayIndex }) => `${String.fromCharCode(65 + displayIndex)}：${question.choices[originalIndex]}`).join("／")
+      : "該当なし（0個）";
+    const choiceReasons = renderReviewChoiceReasons(question, order);
+    const sources = question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／");
+    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・全選択肢の解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><div class="choice-reasons review-choice-reasons">${choiceReasons}</div><p><strong>出典：</strong>${sources}</p></details></article>`;
+  }).join("");
 }
 
 function restartSession() {
