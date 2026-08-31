@@ -1,8 +1,8 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v7";
-const STORAGE = { history: "bierkompass-history-v6", session: "bierkompass-session-v6", settings: "bierkompass-settings-v6" };
+const APP_VERSION = "v9";
+const STORAGE = { history: "bierkompass-history-v9", session: "bierkompass-session-v9", settings: "bierkompass-settings-v9" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
@@ -240,7 +240,7 @@ function renderQuestion() {
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
   $("#questionText").textContent = question.question;
-  $("#answerHint").textContent = "正しいと思うものをすべて選択してください。正答数は決まっていません。";
+  $("#answerHint").textContent = "正しいと思うものをすべて選択してください。正答が0個の場合もあります。";
   const selected = selectedValues(question.id);
   const inputType = "checkbox";
   $("#choiceList").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
@@ -253,9 +253,9 @@ function renderQuestion() {
   $("#prevButton").disabled = session.current === 0;
   $("#nextButton").disabled = session.current === session.questionIds.length - 1;
   $("#nextButton").hidden = session.mode === "study" && !checked;
-  $("#checkButton").textContent = question.type === "multiple" && selected.length === 0 ? "選択なしで回答する" : "回答する";
+  $("#checkButton").textContent = question.type === "multiple" && selected.length === 0 ? "正しい選択肢はない（0個）として回答" : "回答する";
   $("#checkButton").disabled = (question.type === "single" && selected.length === 0) || checked;
-  $("#noSelectionButton").hidden = !(session.mode === "exam" && question.type === "multiple");
+  $("#noSelectionButton").hidden = !(session.mode === "exam" && question.type === "multiple" && selected.length === 0);
   $("#noSelectionButton").disabled = checked || (Boolean(session.answered[question.id]) && selected.length === 0);
   $("#clearSelectionButton").disabled = (!session.answered[question.id] && selected.length === 0) || checked;
   renderNavigator();
@@ -266,9 +266,7 @@ function captureAnswer() {
   const question = currentQuestion();
   session.answers[question.id] = $$("#choiceList input:checked").map((input) => Number(input.value));
   session.answered[question.id] = true;
-  $("#checkButton").disabled = question.type === "single" && session.answers[question.id].length === 0;
-  renderNavigator();
-  persistSession();
+  renderQuestion();
 }
 
 function clearSelection() {
@@ -316,7 +314,13 @@ function renderFeedback(question) {
   $("#feedbackPanel").classList.toggle("incorrect", !correct);
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
   $("#feedbackExplanation").textContent = question.explanation;
-  $("#choiceReasons").innerHTML = question.choices.map((choice, index) => `<details><summary>${question.correct.includes(index) ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}</summary><p>${escapeHtml(question.choiceReasons[index])}</p></details>`).join("");
+  const personQuestion = /人物|誰|発明した|導入した|設立した|開発した/.test(question.question)
+    && /パスツール|ハンセン|リンデ|レーウェンフック|ヨーゼフ・グロル|アントン・ドレ|ゼードルマ|アーサー・ギネス|ヤコブセン|ピエール・セリス|ドゥーメンス/.test(question.choices.filter((_, index) => question.correct.includes(index)).join(" "));
+  $("#choiceReasons").innerHTML = question.choices.map((choice, index) => {
+    const isCorrect = question.correct.includes(index);
+    const learningNote = personQuestion && isCorrect ? ` — ${question.choiceReasons[index]}` : "";
+    return `<details><summary>${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}${escapeHtml(learningNote)}</summary><p>${escapeHtml(question.choiceReasons[index])}</p></details>`;
+  }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}</p>`).join("")}`;
 }
 
@@ -376,7 +380,7 @@ function showResult() {
   $("#scoreRate").textContent = `${Math.round(result.rate * 100)}%`;
   $("#scorePoints").textContent = `${result.earned} / ${result.maximum}点`;
   $("#categoryResults").innerHTML = Object.entries(result.categories).map(([id, item]) => { const rate = item.maximum ? item.earned / item.maximum : 0; return `<div class="category-result"><strong>${escapeHtml(categoryName(id))}</strong><div class="bar"><i style="width:${rate * 100}%"></i></div><span>${item.earned}/${item.maximum}点</span></div>`; }).join("");
-  $("#reviewList").innerHTML = result.review.map((item, index) => { const question = questionsById.get(item.id); const answers = question.correct.length ? question.correct.map((answer) => question.choices[answer]).join("／") : "正答なし（何も選択しない）"; return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><p><strong>出典：</strong>${question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／")}</p></details></article>`; }).join("");
+  $("#reviewList").innerHTML = result.review.map((item, index) => { const question = questionsById.get(item.id); const answers = question.correct.length ? question.correct.map((answer) => question.choices[answer]).join("／") : "該当なし（0個）"; return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><p><strong>出典：</strong>${question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／")}</p></details></article>`; }).join("");
 }
 
 function restartSession() {

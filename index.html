@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass 1000 | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1000</small></span></a>
-    <div class="header-status"><small class="version-badge">v7</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v9</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -63,7 +63,7 @@
           <div class="question-tags"><span id="frequencyTag"></span><span id="categoryTag"></span><span id="typeTag"></span></div><h2 id="questionText"></h2><p class="answer-hint" id="answerHint"></p>
           <form id="answerForm"><div id="choiceList" class="choice-list"></div></form>
           <section id="feedbackPanel" class="feedback" hidden aria-live="polite"><div id="feedbackVerdict" class="feedback-verdict"></div><p id="feedbackExplanation"></p><div id="choiceReasons" class="choice-reasons"></div><div id="sourceList" class="sources"></div></section>
-          <div class="question-actions"><button class="ghost" id="clearSelectionButton" type="button">選択をクリア</button><button class="ghost" id="noSelectionButton" type="button">選択なしを回答として記録</button><div class="action-spacer"></div><button class="secondary" id="prevButton" type="button">← 前へ</button><button class="primary" id="checkButton" type="button">回答する</button><button class="primary" id="nextButton" type="button">次へ →</button></div>
+          <div class="question-actions"><button class="ghost" id="clearSelectionButton" type="button">選択をクリア</button><button class="ghost" id="noSelectionButton" type="button">正しい選択肢はない（0個）として回答</button><div class="action-spacer"></div><button class="secondary" id="prevButton" type="button">← 前へ</button><button class="primary" id="checkButton" type="button">回答する</button><button class="primary" id="nextButton" type="button">次へ →</button></div>
         </article>
         <aside class="navigator" id="navigator"><div class="navigator-heading"><div><span>QUESTION MAP</span><h3>問題一覧</h3></div><button id="closeNavigator" type="button" aria-label="問題一覧を閉じる">×</button></div><div class="navigator-legend"><span><i class="answered-dot"></i>回答済み</span><span><i></i>未回答</span></div><div id="questionMap" class="question-map"></div><button class="danger-outline" id="restartSessionButton" type="button">今回の試験を最初から</button><button class="primary submit-exam" id="submitExamButton" type="button">試験を終了して採点</button></aside>
       </div><button class="map-fab" id="openNavigator" type="button">問題一覧 <span id="unansweredBadge">50</span></button>
@@ -78,6 +78,6 @@
   </main>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=7" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=9" defer></script>
 </body>
 </html>
