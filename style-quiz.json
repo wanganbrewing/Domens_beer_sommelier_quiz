@@ -1,0 +1,1405 @@
+{
+  "metadata": {
+    "version": "2026-08-31-style-step-quiz-v1",
+    "styleCount": 52,
+    "families": [
+      {
+        "id": "lager",
+        "label": "ラガー",
+        "count": 16
+      },
+      {
+        "id": "ale",
+        "label": "エール",
+        "count": 36
+      }
+    ],
+    "countries": [
+      {
+        "id": "germany",
+        "label": "ドイツ",
+        "count": 18
+      },
+      {
+        "id": "belgium",
+        "label": "ベルギー",
+        "count": 10
+      },
+      {
+        "id": "czech",
+        "label": "チェコ",
+        "count": 2
+      },
+      {
+        "id": "england",
+        "label": "イギリス",
+        "count": 6
+      },
+      {
+        "id": "america",
+        "label": "アメリカ",
+        "count": 7
+      },
+      {
+        "id": "other",
+        "label": "その他の国",
+        "count": 9
+      }
+    ],
+    "candidatePolicy": "Step 1の発酵タイプとStep 2の国に一致するスタイルを上限なしですべて表示する。"
+  },
+  "styles": [
+    {
+      "id": "STYLE-01",
+      "name": "ジャーマン・ピルスナー",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "淡い黄色、高透明度、純白でキメ細かい持続泡。",
+        "detail": "ハーバル・グラッシーなホップ香、ドライでクリスプ。",
+        "colorLabel": "淡い黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "clear",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "淡い黄色、高透明度、純白でキメ細かい持続泡。ハーバル・グラッシーなホップ香、ドライでクリスプ。",
+      "definition": "シャープでエッジの効いた強いホップ苦味（IBU 24〜48）とドライなフィニッシュ。",
+      "ingredients": "ピルスナー麦芽100%、独産ノーブルホップ、下面発酵酵母（5〜11℃）、硫酸塩硬水。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 1,
+        "locator": "PDF表示ページ1（印刷ページ1）",
+        "section": "ジャーマン・ピルスナー - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-02",
+      "name": "ミュンヘナー・ヘレス",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "澄んだ黄金色、豊かな純白泡。",
+        "detail": "焼きたての白パンや麦汁の優しい甘香。炭酸適度で丸みある口当たり。",
+        "colorLabel": "澄んだ黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "clear",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "澄んだ黄金色、豊かな純白泡。焼きたての白パンや麦汁の優しい甘香。炭酸適度で丸みある口当たり。",
+      "definition": "ホップ苦味が控えめで、麦芽本来の上品な甘みと旨味が主役（モルトフォーカス）。",
+      "ingredients": "淡色麦芽100%、穏やかなノーブルホップ、下面発酵酵母、脱炭酸水処理水。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 2,
+        "locator": "PDF表示ページ2（印刷ページ2）",
+        "section": "ミュンヘナー・ヘレス - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-03",
+      "name": "ドルトムンダー／エクスポート",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "濃い黄金色、クリア、しっかりした泡立ち。",
+        "detail": "力強い麦芽香と程よいホップ感。フルボディとキレ。",
+        "colorLabel": "濃い黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "clear",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "濃い黄金色、クリア、しっかりした泡立ち。力強い麦芽香と程よいホップ感。フルボディとキレ。",
+      "definition": "ヘレス以上のモルトボディ・アルコール感と、ピルスナーに迫る適度なホップ苦味の共存。",
+      "ingredients": "高比重麦汁、下面発酵、ドルトムントの炭酸塩・硫酸塩共存水。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 2,
+        "locator": "PDF表示ページ2（印刷ページ2）",
+        "section": "ドルトムンダー／エクスポート - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-04",
+      "name": "メルツェン／フェストビア",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "淡〜濃アンバー色、リッチな泡。",
+        "detail": "トースト、焼いたパン、カラメル麦芽の芳醇な香り。滑らかなコク。",
+        "colorLabel": "淡〜濃アンバー色",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "淡〜濃アンバー色、リッチな泡。トースト、焼いたパン、カラメル麦芽の芳醇な香り。滑らかなコク。",
+      "definition": "カラメル・トースト麦芽のリッチなモルトバックボーンと、長期ラガーリングによる円熟味。",
+      "ingredients": "ミュンヘン麦芽＋カラメル麦芽、下面発酵酵母、春仕込み・夏季長期低温貯蔵（ラガーリング）。",
+      "group": "amber_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 3,
+        "locator": "PDF表示ページ3（印刷ページ3）",
+        "section": "メルツェン／フェストビア - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-05",
+      "name": "ミュンヘナー・ドゥンケル",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "濃褐色〜ダーク、ルビーの輝き、クリーミーな泡。",
+        "detail": "パンの耳、トフィー、微かなミルクチョコ香。",
+        "colorLabel": "濃褐色〜ダーク",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "濃褐色〜ダーク、ルビーの輝き、クリーミーな泡。パンの耳、トフィー、微かなミルクチョコ香。",
+      "definition": "スタウトのような焦げ苦味や酸味がなく、ミュンヘン麦芽の甘美で芳醇なコクが際立つ。",
+      "ingredients": "ミュンヘン麦芽（50〜100%）、下面発酵酵母、高い残留アルカリ度（RA）水質。",
+      "group": "dark_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 3,
+        "locator": "PDF表示ページ3（印刷ページ3）",
+        "section": "ミュンヘナー・ドゥンケル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-06",
+      "name": "シュヴァルツビア",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "漆黒（ルビーハイライト）、淡褐色持続泡。",
+        "detail": "ロースト麦芽、ビターチョコ、珈琲香。軽快でドライ。",
+        "colorLabel": "漆黒（ルビーハイライト）",
+        "colorHex": "#24100c",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "漆黒（ルビーハイライト）、淡褐色持続泡。ロースト麦芽、ビターチョコ、珈琲香。軽快でドライ。",
+      "definition": "黒い見た目ながらエールスタウトのような重さ・フルーティさがなく、すっきりとドライ。",
+      "ingredients": "ロースト麦芽・ダーク麦芽（色度70〜120 EBC）、下面発酵酵母、中軟水。",
+      "group": "dark_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 4,
+        "locator": "PDF表示ページ4（印刷ページ4）",
+        "section": "シュヴァルツビア - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-07",
+      "name": "ドッペルボック",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "濃ルビー褐色。",
+        "detail": "レーズン、干しプラム、濃厚トフィー香。アルコール感と極めて重厚なフルボディ。",
+        "colorLabel": "濃ルビー褐色",
+        "colorHex": "#8d251c",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "濃ルビー褐色。レーズン、干しプラム、濃厚トフィー香。アルコール感と極めて重厚なフルボディ。",
+      "definition": "高比重仕込みによる圧倒的なメラノイジンモルトの甘美さと「-ator」の伝統的接尾辞。",
+      "ingredients": "高比重仕込み、メラノイジン麦芽、下面発酵酵母による低温長期発酵。",
+      "group": "strong_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 4,
+        "locator": "PDF表示ページ4（印刷ページ4）",
+        "section": "ドッペルボック - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-08",
+      "name": "アイスボック",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "極濃褐色、泡は極めて薄い。",
+        "detail": "シェリー酒、ポートワイン、糖蜜、完熟ドライフルーツ香。シロップ様粘性。",
+        "colorLabel": "極濃褐色",
+        "colorHex": "#24100c",
+        "clarity": "soft",
+        "foam": "thin",
+        "glass": "pilsner"
+      },
+      "detail": "極濃褐色、泡は極めて薄い。シェリー酒、ポートワイン、糖蜜、完熟ドライフルーツ香。シロップ様粘性。",
+      "definition": "凍結濃縮による8.5〜14.5%の超高アルコールと凝縮されたモルトの強烈な甘美さ（泡はすぐ消える）。",
+      "ingredients": "ボックビールを氷点下で凍結させ氷を除去して濃縮、下面発酵熟成。",
+      "group": "strong_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 5,
+        "locator": "PDF表示ページ5（印刷ページ5）",
+        "section": "アイスボック - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-09",
+      "name": "ラオホビア",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "暗褐色、しっかりした泡立ち。",
+        "detail": "燻製ベーコン、木炭、焚き火のスモーキーアロマ。カラメルモルトのコク。",
+        "colorLabel": "暗褐色",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "暗褐色、しっかりした泡立ち。燻製ベーコン、木炭、焚き火のスモーキーアロマ。カラメルモルトのコク。",
+      "definition": "ブナの木で燻製した麦芽由来のグアヤコール等フェノール香と下面ラガーの調和。",
+      "ingredients": "スモーク麦芽（Rauchmalz 50〜100%）、下面発酵酵母（メルツェンベース）、バンベルク水。",
+      "group": "smoked_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 5,
+        "locator": "PDF表示ページ5（印刷ページ5）",
+        "section": "ラオホビア - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-10",
+      "name": "ケラービア／ツヴィッケル",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "乳白色〜やや濁った淡黄色。",
+        "detail": "樽出しの新鮮なイースト香、低炭酸ガス、素朴で丸い麦芽味。",
+        "colorLabel": "乳白色〜やや濁った淡黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "乳白色〜やや濁った淡黄色。樽出しの新鮮なイースト香、低炭酸ガス、素朴で丸い麦芽味。",
+      "definition": "無濾過（Unfiltered）による酵母混濁と低炭酸、フレッシュなホップとモルトの自然な旨味。",
+      "ingredients": "無濾過（酵母・タンパク質残存）、下面発酵、樽出し低炭酸ガス仕上げ。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 6,
+        "locator": "PDF表示ページ6（印刷ページ6）",
+        "section": "ケラービア／ツヴィッケル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-11",
+      "name": "シャンクビア／ライトビール",
+      "family": "lager",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "極淡黄色、クリア。",
+        "detail": "軽い麦芽香、控えめなホップ。非常に軽快で薄いボディ、爽快なキレ。",
+        "colorLabel": "極淡黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "clear",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "極淡黄色、クリア。軽い麦芽香、控えめなホップ。非常に軽快で薄いボディ、爽快なキレ。",
+      "definition": "麦芽100%の味わいを保ちつつ、アルコール2.5〜3.7%・カロリーを低減した独税法規格。",
+      "ingredients": "低濃度の麦汁、下面発酵、麦芽100%仕込み。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 6,
+        "locator": "PDF表示ページ6（印刷ページ6）",
+        "section": "シャンクビア／ライトビール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-12",
+      "name": "ボヘミアン・ピルスナー",
+      "family": "lager",
+      "country": "czech",
+      "countryLabel": "チェコ",
+      "appearance": {
+        "summary": "深みある黄金色、ハラディンカ等の極めて分厚くクリーミーな泡。",
+        "detail": "ザーツホップ香とモルトの甘み。",
+        "colorLabel": "深みある黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "深みある黄金色、ハラディンカ等の極めて分厚くクリーミーな泡。ザーツホップ香とモルトの甘み。",
+      "definition": "極軟水による角のない丸い苦味と、デコクション麦芽の厚み、微量ジアセチル（0.08mg/l）の許容。",
+      "ingredients": "モラヴィア大麦・3回デコクション、ザーツホップ、下面酵母、ピルゼン極軟水（1.6°dH）。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 7,
+        "locator": "PDF表示ページ7（印刷ページ7）",
+        "section": "ボヘミアン・ピルスナー - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-13",
+      "name": "チェコ・ダークラガー",
+      "family": "lager",
+      "country": "czech",
+      "countryLabel": "チェコ",
+      "appearance": {
+        "summary": "濃褐色〜黒、きめ細かい泡。",
+        "detail": "カラメル、トースト、ナッツの香ばしさ。ザーツホップの苦味。",
+        "colorLabel": "濃褐色〜黒",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "濃褐色〜黒、きめ細かい泡。カラメル、トースト、ナッツの香ばしさ。ザーツホップの苦味。",
+      "definition": "モルトの甘みとザーツホップのノーブルな苦味が調和した、ドリンカブルなチェコ伝統黒ラガー。",
+      "ingredients": "カラメル麦芽＋ロースト麦芽、ザーツホップ、下面発酵酵母、軟水〜中硬水。",
+      "group": "dark_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 7,
+        "locator": "PDF表示ページ7（印刷ページ7）",
+        "section": "チェコ・ダークラガー - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-14",
+      "name": "アメリカン・ライトラガー",
+      "family": "lager",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "極めて淡い黄色、高い透明度、泡持ちは短め。",
+        "detail": "微かな米やコーンの甘香。炭酸強くライトボディ。",
+        "colorLabel": "極めて淡い黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "clear",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "極めて淡い黄色、高い透明度、泡持ちは短め。微かな米やコーンの甘香。炭酸強くライトボディ。",
+      "definition": "副原料最大50%使用による超軽量ボディと、残糖がほぼゼロの高発酵度による水のような喉越し。",
+      "ingredients": "米・コーン副原料（最大50%）、下面発酵（高減糖度）、低温発酵。",
+      "group": "pale_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 8,
+        "locator": "PDF表示ページ8（印刷ページ8）",
+        "section": "アメリカン・ライトラガー - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-15",
+      "name": "ウィンナーラガー／メキシカン",
+      "family": "lager",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "赤みがかった琥珀色〜銅色、クリーミーな泡。",
+        "detail": "ウィーン麦芽のトースト・ビスケット香。マイルドな苦味。",
+        "colorLabel": "赤みがかった琥珀色〜銅色",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "赤みがかった琥珀色〜銅色、クリーミーな泡。ウィーン麦芽のトースト・ビスケット香。マイルドな苦味。",
+      "definition": "ウィーン麦芽由来のトースティーで香ばしいモルト風味と、ラガーのすっきりした飲み口。",
+      "ingredients": "ウィーン麦芽、ノーブルホップ、下面発酵（アントン・ドレハー発祥、メキシコへ継承）。",
+      "group": "amber_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 9,
+        "locator": "PDF表示ページ9（印刷ページ9）",
+        "section": "ウィンナーラガー／メキシカン - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-16",
+      "name": "バルチック・ポーター",
+      "family": "lager",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "漆黒〜極濃褐色。",
+        "detail": "ダークチョコ、プラム、カラメル、微かなアルコール香。滑らかで重厚。",
+        "colorLabel": "漆黒〜極濃褐色",
+        "colorHex": "#24100c",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "漆黒〜極濃褐色。ダークチョコ、プラム、カラメル、微かなアルコール香。滑らかで重厚。",
+      "definition": "下面発酵（ラガー酵母）による低温長期熟成のため、上面スタウトと異なりエステル控えめでスムーズ。",
+      "ingredients": "高比重ダーク麦汁、下面発酵酵母、低温長期貯蔵。",
+      "group": "strong_lager",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 9,
+        "locator": "PDF表示ページ9（印刷ページ9）",
+        "section": "バルチック・ポーター - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-17",
+      "name": "ヘーフェ・ヴァイス",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "白濁アンバー、グラスから盛り上がる巨大な持続泡。",
+        "detail": "熟したバナナ、クローブ、小麦のクリーミーな酸味。",
+        "colorLabel": "白濁アンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "hazy",
+        "foam": "rich",
+        "glass": "weizen"
+      },
+      "detail": "白濁アンバー、グラスから盛り上がる巨大な持続泡。熟したバナナ、クローブ、小麦のクリーミーな酸味。",
+      "definition": "小麦麦芽50%以上と、ヴァイス酵母特有の酢酸イソアミル（バナナ香4.4mg/l）＋4-VG（クローブ香）。",
+      "ingredients": "小麦麦芽（>50%）、上面ヴァイス酵母（15〜25℃発酵）、極低ホップ、高炭酸ガス。",
+      "group": "wheat",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 10,
+        "locator": "PDF表示ページ10（印刷ページ10）",
+        "section": "ヘーフェ・ヴァイス - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-18",
+      "name": "クリスタル・ヴァイツェン",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "澄み切った黄金色、純白の豊かな泡。",
+        "detail": "すっきりとしたバナナ・洋梨エステル、クローブ香。強炭酸。",
+        "colorLabel": "澄み切った黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "weizen"
+      },
+      "detail": "澄み切った黄金色、純白の豊かな泡。すっきりとしたバナナ・洋梨エステル、クローブ香。強炭酸。",
+      "definition": "ヘーフェヴァイスと同等のバナナ・クローブエステルを持ちながら、濾過により完全にクリアな外観。",
+      "ingredients": "小麦麦芽50%以上、ヴァイス酵母発酵後に珪藻土等で完全濾過（酵母除去）。",
+      "group": "wheat",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 10,
+        "locator": "PDF表示ページ10（印刷ページ10）",
+        "section": "クリスタル・ヴァイツェン - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-19",
+      "name": "ダークヴァイツェン／ボック",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "混濁した濃褐色、分厚くモコモコした泡。",
+        "detail": "バナナ、クローブ、カラメル、ミルクチョコ香。フルボディ。",
+        "colorLabel": "混濁した濃褐色",
+        "colorHex": "#4a1d12",
+        "clarity": "hazy",
+        "foam": "rich",
+        "glass": "weizen"
+      },
+      "detail": "混濁した濃褐色、分厚くモコモコした泡。バナナ、クローブ、カラメル、ミルクチョコ香。フルボディ。",
+      "definition": "小麦酵母のバナナ＆クローブ香に、ロースト・カラメル麦芽の香ばしいコクが融合。",
+      "ingredients": "小麦麦芽＋ダークカラメル麦芽、上面ヴァイス酵母（ボックはP16°P以上の高比重）。",
+      "group": "wheat",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 11,
+        "locator": "PDF表示ページ11（印刷ページ11）",
+        "section": "ダークヴァイツェン／ボック - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-20",
+      "name": "ケルシュ",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "淡いペールゴールド、高透明度。",
+        "detail": "ほのかな青リンゴ、洋梨エステル、穏やかなホップ香。ドライ。",
+        "colorLabel": "淡いペールゴールド",
+        "colorHex": "#dda52e",
+        "clarity": "clear",
+        "foam": "medium",
+        "glass": "pilsner"
+      },
+      "detail": "淡いペールゴールド、高透明度。ほのかな青リンゴ、洋梨エステル、穏やかなホップ香。ドライ。",
+      "definition": "エール酵母の低温発酵とラガーリングによる、ラガーのようなクリスプ感とエールの華やかさの融合。",
+      "ingredients": "淡色麦芽、ノーブルホップ、ケルシュ専用上面酵母（15℃以下発酵＋低温熟成）、1985年ケルシュ協定。",
+      "group": "hybrid",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 11,
+        "locator": "PDF表示ページ11（印刷ページ11）",
+        "section": "ケルシュ - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-21",
+      "name": "アルトビア（デュッセルドルフ）",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "銅色〜濃褐色、緻密な持続泡。",
+        "detail": "ミュンヘン麦芽のトースト・カラメル香。ノーブルホップの引き締まった苦味。",
+        "colorLabel": "銅色〜濃褐色",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "pilsner"
+      },
+      "detail": "銅色〜濃褐色、緻密な持続泡。ミュンヘン麦芽のトースト・カラメル香。ノーブルホップの引き締まった苦味。",
+      "definition": "上面発酵酵母による適度なエステルと、低温熟成によるクリーンさ、際立つホップ苦味（IBU 28〜42）。",
+      "ingredients": "ミュンヘン・カラメル麦芽、スパイツ系ノーブルホップ、上面酵母（低温発酵・熟成）。",
+      "group": "hybrid",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 12,
+        "locator": "PDF表示ページ12（印刷ページ12）",
+        "section": "アルトビア（デュッセルドルフ） - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-22",
+      "name": "ベルリナー・ヴァイセ",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "白濁した極淡黄色、泡は薄く早く消える。",
+        "detail": "レモン、青リンゴ、乳酸のファンキー香。強炭酸。",
+        "colorLabel": "白濁した極淡黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "hazy",
+        "foam": "thin",
+        "glass": "tulip"
+      },
+      "detail": "白濁した極淡黄色、泡は薄く早く消える。レモン、青リンゴ、乳酸のファンキー香。強炭酸。",
+      "definition": "乳酸菌（Lactobacillus）による鮮烈な酸味と、低アルコール（2.8〜3.2%）、ホップ苦味の皆無さ。",
+      "ingredients": "小麦・大麦麦芽、上面酵母＋乳酸菌＋ブレタノマイセス、極低ホップ（IBU4〜6）。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 12,
+        "locator": "PDF表示ページ12（印刷ページ12）",
+        "section": "ベルリナー・ヴァイセ - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-23",
+      "name": "ゴーゼ",
+      "family": "ale",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "appearance": {
+        "summary": "淡黄色〜琥珀色、混濁、泡持ちは控えめ。",
+        "detail": "コリアンダーの柑橘スパイシー香と乳酸の酸味。塩味。",
+        "colorLabel": "淡黄色〜琥珀色",
+        "colorHex": "#b85b1d",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "淡黄色〜琥珀色、混濁、泡持ちは控えめ。コリアンダーの柑橘スパイシー香と乳酸の酸味。塩味。",
+      "definition": "乳酸発酵の酸味に、副原料の「塩（NaCl）」によるミネラル塩味と「コリアンダー」が調和。",
+      "ingredients": "小麦麦芽＋大麦麦芽、塩、コリアンダー、乳酸菌＋上面酵母（ビール純粋令の例外伝統品）。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 13,
+        "locator": "PDF表示ページ13（印刷ページ13）",
+        "section": "ゴーゼ - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-24",
+      "name": "ベルジャン・ホワイト",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "白濁した淡黄色、モコモコと盛り上がる巨大な泡。",
+        "detail": "ビターオレンジピールとコリアンダーのスパイシー香。",
+        "colorLabel": "白濁した淡黄色",
+        "colorHex": "#f0cf55",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "weizen"
+      },
+      "detail": "白濁した淡黄色、モコモコと盛り上がる巨大な泡。ビターオレンジピールとコリアンダーのスパイシー香。",
+      "definition": "未発芽小麦（Unmalted wheat）によるシルキーな舌触りと、オレンジピール＋コリアンダーの副原料香。",
+      "ingredients": "大麦麦芽＋未発芽小麦（30〜40%）、ビターオレンジピール、コリアンダーシード、ベルジャン上面酵母。",
+      "group": "wheat",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 13,
+        "locator": "PDF表示ページ13（印刷ページ13）",
+        "section": "ベルジャン・ホワイト - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-25",
+      "name": "ゴールデンストロングエール",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "輝くブロンド、グラスを埋め尽くす巨大なシャンパン泡。",
+        "detail": "洋梨、リンゴ、白コショウ香。完全ドライ。",
+        "colorLabel": "輝くブロンド",
+        "colorHex": "#dda52e",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "輝くブロンド、グラスを埋め尽くす巨大なシャンパン泡。洋梨、リンゴ、白コショウ香。完全ドライ。",
+      "definition": "糖類添加による完全発酵（ドライなキレ）と、シャンパンに匹敵する高炭酸ガス、繊細なホップ苦味。",
+      "ingredients": "淡色麦芽＋糖類（コーンシロップ20%）、ベルジャン酵母、低温熟成＋瓶内二次発酵。",
+      "group": "belgian",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 14,
+        "locator": "PDF表示ページ14（印刷ページ14）",
+        "section": "ゴールデンストロングエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-26",
+      "name": "トラピスト・ダブル",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "アンバー〜濃褐色、キメ細かいリッチな泡。",
+        "detail": "干しプラム、レーズン、ダークチェリー、ラム酒香。フルボディ。",
+        "colorLabel": "アンバー〜濃褐色",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "tulip"
+      },
+      "detail": "アンバー〜濃褐色、キメ細かいリッチな泡。干しプラム、レーズン、ダークチェリー、ラム酒香。フルボディ。",
+      "definition": "ダークキャンディシュガー由来のドライフルーツ・カラメル風味と、修道院酵母のリッチなエステル。",
+      "ingredients": "大麦麦芽＋ダークキャンディシュガー、修道院酵母（上面発酵）、瓶内二次発酵。",
+      "group": "belgian",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 14,
+        "locator": "PDF表示ページ14（印刷ページ14）",
+        "section": "トラピスト・ダブル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-27",
+      "name": "トラピスト・トリプル",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "輝く黄金色、分厚く盛り上がる純白泡。",
+        "detail": "完熟バナナ、桃、クローブのスパイシーエステル。重厚な甘美さ。",
+        "colorLabel": "輝く黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "tulip"
+      },
+      "detail": "輝く黄金色、分厚く盛り上がる純白泡。完熟バナナ、桃、クローブのスパイシーエステル。重厚な甘美さ。",
+      "definition": "白砂糖添加による高い仕込み麦汁の濃さと、重厚なモルト感・エステル、しっかりした苦味。",
+      "ingredients": "淡色麦芽＋白キャンディシュガー、修道院酵母、瓶内二次発酵。",
+      "group": "belgian",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 15,
+        "locator": "PDF表示ページ15（印刷ページ15）",
+        "section": "トラピスト・トリプル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-28",
+      "name": "クアドルペル／ダークストロング",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "赤褐色〜黒褐色。",
+        "detail": "イチジク、デーツ、糖蜜、トフィーの濃厚アロマ。粘性のある超重厚フルボディ。",
+        "colorLabel": "赤褐色〜黒褐色",
+        "colorHex": "#713416",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "赤褐色〜黒褐色。イチジク、デーツ、糖蜜、トフィーの濃厚アロマ。粘性のある超重厚フルボディ。",
+      "definition": "高比重の極厚の麦汁エキスと、9〜14%の包容力あるアルコール温感。",
+      "ingredients": "超高比重仕込み、複数種の糖類、修道院酵母、長期熟成・瓶内二次発酵。",
+      "group": "belgian",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 15,
+        "locator": "PDF表示ページ15（印刷ページ15）",
+        "section": "クアドルペル／ダークストロング - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-29",
+      "name": "セゾン",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "ブロンズ〜アンバー、やや濁り、巨大な泡。",
+        "detail": "黒胡椒、柑橘ピール、樹脂、干草香。完全ドライな酸味。",
+        "colorLabel": "ブロンズ〜アンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "ブロンズ〜アンバー、やや濁り、巨大な泡。黒胡椒、柑橘ピール、樹脂、干草香。完全ドライな酸味。",
+      "definition": "赤ワイン系セゾン酵母（最高32℃高温発酵）による4-VP黒胡椒フェノールと、極限までの高減糖（完全辛口）。",
+      "ingredients": "ピルスナー麦芽主体、高温耐性セゾン酵母（25〜32℃）、ノーブル〜スタイリアンホップ。",
+      "group": "farmhouse",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 16,
+        "locator": "PDF表示ページ16（印刷ページ16）",
+        "section": "セゾン - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-30",
+      "name": "オルヴァル",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "濁りのあるオレンジアンバー、分厚く消えない泡。",
+        "detail": "レザー（革）、干草、セージ香。鋭い苦味と乾いた酸味。",
+        "colorLabel": "濁りのあるオレンジアンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "hazy",
+        "foam": "rich",
+        "glass": "tulip"
+      },
+      "detail": "濁りのあるオレンジアンバー、分厚く消えない泡。レザー（革）、干草、セージ香。鋭い苦味と乾いた酸味。",
+      "definition": "ドライホッピングのシャープな苦味と、ブレタノマイセス酵母によるホースブランケット（馬小屋）香。",
+      "ingredients": "ペール＋カラメル麦芽、ドライホッピング、ブレタノマイセス瓶内二次発酵（単一銘柄）。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 16,
+        "locator": "PDF表示ページ16（印刷ページ16）",
+        "section": "オルヴァル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-31",
+      "name": "フランダース・レッドエール",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "ダークルビー〜マホガニー、泡は薄く儚い。",
+        "detail": "バルサミコ酢、オーク樽、ブラックチェリー香。",
+        "colorLabel": "ダークルビー〜マホガニー",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "thin",
+        "glass": "tulip"
+      },
+      "detail": "ダークルビー〜マホガニー、泡は薄く儚い。バルサミコ酢、オーク樽、ブラックチェリー香。",
+      "definition": "オーク樽熟成による乳酸菌・酢酸菌の奥深い酸味と、ウィーン麦芽・カラメルの甘みの融合（赤ワイン調）。",
+      "ingredients": "ウィーン麦芽、オーク大樽熟成（2年熟成とフレッシュのブレンド）、乳酸菌・酢酸菌・ブレタノ。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 17,
+        "locator": "PDF表示ページ17（印刷ページ17）",
+        "section": "フランダース・レッドエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-32",
+      "name": "ストレート・ランビック／グーズ",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "濁りある黄金色、泡は急速に消える。",
+        "detail": "野生酵母の馬小屋・干草香、グレープフルーツ皮、シャープな酸味。",
+        "colorLabel": "濁りある黄金色",
+        "colorHex": "#dda52e",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "濁りある黄金色、泡は急速に消える。野生酵母の馬小屋・干草香、グレープフルーツ皮、シャープな酸味。",
+      "definition": "センヌ川流域の野生微生物による自然発酵と、オーク樽熟成ランビックのブレンド（ホップ苦味なし）。",
+      "ingredients": "大麦＋未発芽小麦（30〜40%）、陳旧ホップ（防腐目的）、クールシップ自然冷却、オーク樽熟成。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 17,
+        "locator": "PDF表示ページ17（印刷ページ17）",
+        "section": "ストレート・ランビック／グーズ - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-33",
+      "name": "クリーク",
+      "family": "ale",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "appearance": {
+        "summary": "鮮やかなルビーレッド、ピンク色の泡。",
+        "detail": "フレッシュチェリー、アーモンド核香、強い酸味と果実味。",
+        "colorLabel": "鮮やかなルビーレッド",
+        "colorHex": "#8d251c",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "鮮やかなルビーレッド、ピンク色の泡。フレッシュチェリー、アーモンド核香、強い酸味と果実味。",
+      "definition": "ランビックオーク樽に生のスカールベークチェリー（約200g/l）を漬け込み再発酵させた酸味と果実味。",
+      "ingredients": "ランビック原酒＋スカールベークチェリー、3〜18カ月樽内再発酵。",
+      "group": "sour",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 18,
+        "locator": "PDF表示ページ18（印刷ページ18）",
+        "section": "クリーク - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-34",
+      "name": "ビター／ESB",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "ゴールド〜濃アンバー、英国カスク特有の薄い泡膜。",
+        "detail": "ビスケット、トーストモルト香、アーシーなホップ感。",
+        "colorLabel": "ゴールド〜濃アンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "ゴールド〜濃アンバー、英国カスク特有の薄い泡膜。ビスケット、トーストモルト香、アーシーなホップ感。",
+      "definition": "英国パブ伝統のドリンカブルエール。ファグル等のハーブ香とモルトのバランス、低炭酸。",
+      "ingredients": "ペールエール麦芽＋クリスタル麦芽、英産ホップ（Fuggle, Golding）、英国エール酵母。",
+      "group": "british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 18,
+        "locator": "PDF表示ページ18（印刷ページ18）",
+        "section": "ビター／ESB - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-35",
+      "name": "イングリッシュ・ペールエール",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "アンバー色、適度な泡。",
+        "detail": "トースト、マーマレード香、ウッディ・アーシーなホップ香。しっかりした苦味。",
+        "colorLabel": "アンバー色",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "アンバー色、適度な泡。トースト、マーマレード香、ウッディ・アーシーなホップ香。しっかりした苦味。",
+      "definition": "バートン・アポン・トレントの硫酸塩硬水（72°dH）によるホップ苦味の抽出とモルトの厚み。",
+      "ingredients": "ペール麦芽、英産アロマホップ、英国エール酵母、バートン高硫酸塩硬水。",
+      "group": "british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 19,
+        "locator": "PDF表示ページ19（印刷ページ19）",
+        "section": "イングリッシュ・ペールエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-36",
+      "name": "イングリッシュ・ブラウンエール",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "ヘーゼルナッツブラウン、淡ベージュ泡。",
+        "detail": "煎ったナッツ、トフィー、ビスケット香。シルキーな口当たり。",
+        "colorLabel": "ヘーゼルナッツブラウン",
+        "colorHex": "#713416",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "ヘーゼルナッツブラウン、淡ベージュ泡。煎ったナッツ、トフィー、ビスケット香。シルキーな口当たり。",
+      "definition": "ナッティで香ばしいモルト風味と、高凝集性英国酵母によるまろやかで優しい甘み。",
+      "ingredients": "ブラウンモルト＋クリスタルモルト、穏やかな英産ホップ、高凝集性上面酵母。",
+      "group": "british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 19,
+        "locator": "PDF表示ページ19（印刷ページ19）",
+        "section": "イングリッシュ・ブラウンエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-37",
+      "name": "イングリッシュ・バーレイワイン",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "赤褐色〜濃カッパー、泡は極めて薄い。",
+        "detail": "ドライフルーツ、シェリー酒、トフィー、古びた革香。超重厚。",
+        "colorLabel": "赤褐色〜濃カッパー",
+        "colorHex": "#713416",
+        "clarity": "soft",
+        "foam": "thin",
+        "glass": "pint"
+      },
+      "detail": "赤褐色〜濃カッパー、泡は極めて薄い。ドライフルーツ、シェリー酒、トフィー、古びた革香。超重厚。",
+      "definition": "高比重仕込みによる極濃麦汁による「大麦のワイン」。長期熟成によるシェリー香とアルコール温感。",
+      "ingredients": "超高比重ペール麦汁、英産ホップ多量投入、上面酵母、長期セラー熟成。",
+      "group": "strong_british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 20,
+        "locator": "PDF表示ページ20（印刷ページ20）",
+        "section": "イングリッシュ・バーレイワイン - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-38",
+      "name": "ロンドン・ポーター",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "ダークブラウン〜黒、ベージュの泡。",
+        "detail": "ミルクチョコ、トースト、カラメル香。スタウトよりソフト。",
+        "colorLabel": "ダークブラウン〜黒",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "ダークブラウン〜黒、ベージュの泡。ミルクチョコ、トースト、カラメル香。スタウトよりソフト。",
+      "definition": "1720年ロンドン発祥（Entire Butt）。ブラウンモルト由来の甘香ばしさと優しい口当たり。",
+      "ingredients": "ブラウンモルト＋チョコモルト、英産ホップ、英国上面酵母。",
+      "group": "dark_british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 20,
+        "locator": "PDF表示ページ20（印刷ページ20）",
+        "section": "ロンドン・ポーター - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-39",
+      "name": "アイリッシュ・ドライスタウト",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "不透明な漆黒、超濃密でクリーミーな極上泡。",
+        "detail": "ダークエスプレッソ、ビターカカオ香。シャープな焦げ酸味。",
+        "colorLabel": "不透明な漆黒",
+        "colorHex": "#24100c",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "不透明な漆黒、超濃密でクリーミーな極上泡。ダークエスプレッソ、ビターカカオ香。シャープな焦げ酸味。",
+      "definition": "未発芽ローストバーレイ（焦がし大麦）による焦げ酸味と、ダブリン炭酸塩硬水による調和、ドライなキレ。",
+      "ingredients": "ベース麦芽＋未発芽ローストバーレイ（約10%）、上面酵母、ダブリン炭酸塩硬水。",
+      "group": "dark_british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 21,
+        "locator": "PDF表示ページ21（印刷ページ21）",
+        "section": "アイリッシュ・ドライスタウト - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-40",
+      "name": "インペリアルスタウト",
+      "family": "ale",
+      "country": "england",
+      "countryLabel": "イギリス",
+      "appearance": {
+        "summary": "完全な漆黒、濃褐色泡。",
+        "detail": "圧倒的なロースト麦芽、ビターチョコ、糖蜜、レーズン香。濃厚で温かいアルコール。",
+        "colorLabel": "完全な漆黒",
+        "colorHex": "#24100c",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "完全な漆黒、濃褐色泡。圧倒的なロースト麦芽、ビターチョコ、糖蜜、レーズン香。濃厚で温かいアルコール。",
+      "definition": "ロシア皇帝宮廷向け輸出発祥。強烈なロースト感に対抗する高IBU（50〜90）と重厚フルボディ。",
+      "ingredients": "多量のロースト麦芽・ダークモルト、大量ホップ、高比重上面発酵。",
+      "group": "dark_british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 21,
+        "locator": "PDF表示ページ21（印刷ページ21）",
+        "section": "インペリアルスタウト - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-41",
+      "name": "スコッチエール（ウィーヘビー）",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "濃アンバー〜暗褐色、クリーミー泡。",
+        "detail": "カラメル化麦汁の濃厚な甘み、トフィー、微かなピートスモーク香。",
+        "colorLabel": "濃アンバー〜暗褐色",
+        "colorHex": "#4a1d12",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "濃アンバー〜暗褐色、クリーミー泡。カラメル化麦汁の濃厚な甘み、トフィー、微かなピートスモーク香。",
+      "definition": "スコットランドの冷涼気候による低温発酵（エステル・ホップ感を抑制）と麦汁煮詰めの甘み。",
+      "ingredients": "ペール麦芽＋長時間煮沸カラメル化、ピート麦芽微量、低温上面発酵、極低ホップ。",
+      "group": "strong_british",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 22,
+        "locator": "PDF表示ページ22（印刷ページ22）",
+        "section": "スコッチエール（ウィーヘビー） - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-42",
+      "name": "アメリカン・ペールエール",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "艶やかなアンバーゴールド、白い泡。",
+        "detail": "カスケードホップ由来のグレープフルーツ・松香。心地よい苦味。",
+        "colorLabel": "艶やかなアンバーゴールド",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "艶やかなアンバーゴールド、白い泡。カスケードホップ由来のグレープフルーツ・松香。心地よい苦味。",
+      "definition": "アメリカ産カスケードホップの鮮烈な柑橘アロマと、中立的酵母によるクリーンなホップフォワード設計。",
+      "ingredients": "2条大麦麦芽＋少量カラメル麦芽、米産カスケードホップ、クリーンなアメリカンエール酵母。",
+      "group": "hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 22,
+        "locator": "PDF表示ページ22（印刷ページ22）",
+        "section": "アメリカン・ペールエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-43",
+      "name": "アメリカン・IPA",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "ゴールド〜濃アンバー。",
+        "detail": "グレープフルーツ、パイン（松）、パッションフルーツ香。強烈に突き抜ける苦味。",
+        "colorLabel": "ゴールド〜濃アンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "ゴールド〜濃アンバー。グレープフルーツ、パイン（松）、パッションフルーツ香。強烈に突き抜ける苦味。",
+      "definition": "高IBU（35〜70+）の強烈なホップ苦味と、それを支えるどっしりしたモルト骨格、アルコール感。",
+      "ingredients": "淡色麦芽、米産C系ホップ大量投入（煮沸＆ドライホップ）、硫酸塩水質（バートン化）。",
+      "group": "hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 23,
+        "locator": "PDF表示ページ23（印刷ページ23）",
+        "section": "アメリカン・IPA - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-44",
+      "name": "インペリアル／ダブルIPA",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "アンバー〜カッパー。",
+        "detail": "極限まで投入されたホップの超濃厚シトラス・レジン香。強烈無比な苦味と重厚ボディ。",
+        "colorLabel": "アンバー〜カッパー",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "アンバー〜カッパー。極限まで投入されたホップの超濃厚シトラス・レジン香。強烈無比な苦味と重厚ボディ。",
+      "definition": "IBU 65〜100+の極限苦味と、ABV 8〜11%の高アルコール、高比重モルトの圧倒的パワー。",
+      "ingredients": "高比重麦汁＋デキストロース（高発酵度化）、大量ホップ（ケトル＆多段ドライホップ）。",
+      "group": "hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 23,
+        "locator": "PDF表示ページ23（印刷ページ23）",
+        "section": "インペリアル／ダブルIPA - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-45",
+      "name": "ヘイジーIPA／NEIPA",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "鮮やかなマットイエロー混濁（Hazy）、濃厚な泡。",
+        "detail": "マンゴー、パッションフルーツ果汁感。シルキーな苦味。",
+        "colorLabel": "鮮やかなマットイエロー混濁（Hazy）",
+        "colorHex": "#dda52e",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "鮮やかなマットイエロー混濁（Hazy）、濃厚な泡。マンゴー、パッションフルーツ果汁感。シルキーな苦味。",
+      "definition": "オーツ麦・小麦麦芽による高混濁と滑らか口当たり、大量ドライホップによるジューシーアロマ（苦味抑制）。",
+      "ingredients": "オーツ麦・小麦麦汁、塩化物優位水質（Cl:SO4 > 2:1）、ワールプール＆大量ドライホップ、低凝集酵母。",
+      "group": "hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 24,
+        "locator": "PDF表示ページ24（印刷ページ24）",
+        "section": "ヘイジーIPA／NEIPA - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-46",
+      "name": "アメリカン・ウィートエール",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "麦わら〜ゴールド、持続性ある白い泡。",
+        "detail": "クリーンな穀物風味、爽やかなシトラスホップ香。すっきり。",
+        "colorLabel": "麦わら〜ゴールド",
+        "colorHex": "#f0cf55",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "weizen"
+      },
+      "detail": "麦わら〜ゴールド、持続性ある白い泡。クリーンな穀物風味、爽やかなシトラスホップ香。すっきり。",
+      "definition": "小麦麦芽を30〜50%使用しながら、ドイツヴァイツェンのようなバナナ・クローブ香が皆無でホッピー。",
+      "ingredients": "小麦麦芽（30〜50%）＋2条大麦、米産アロマホップ、クリーン発酵アメリカンエール酵母。",
+      "group": "wheat",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 24,
+        "locator": "PDF表示ページ24（印刷ページ24）",
+        "section": "アメリカン・ウィートエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-47",
+      "name": "アメリカン・バーレイワイン",
+      "family": "ale",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "appearance": {
+        "summary": "アンバー〜赤褐色、薄い泡。",
+        "detail": "スグリ、トフィー、シェリー香に加え、強烈な柑橘・松のホップアロマと苦味。",
+        "colorLabel": "アンバー〜赤褐色",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "アンバー〜赤褐色、薄い泡。スグリ、トフィー、シェリー香に加え、強烈な柑橘・松のホップアロマと苦味。",
+      "definition": "イギリス産バーレイワインの重厚モルトボディに、アメリカ産ホップの圧倒的な苦味（IBU 50〜100）を融合。",
+      "ingredients": "超高比重麦汁、米産アロマホップ・ビタリングホップ大量投入、上面酵母。",
+      "group": "strong_hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 25,
+        "locator": "PDF表示ページ25（印刷ページ25）",
+        "section": "アメリカン・バーレイワイン - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-48",
+      "name": "ビエール・ド・ギャルド",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "ブロンズ〜アンバー、しっかりした泡立ち。",
+        "detail": "土っぽいトーストモルト、軽カラメル、穏やかな果実香。",
+        "colorLabel": "ブロンズ〜アンバー",
+        "colorHex": "#b85b1d",
+        "clarity": "soft",
+        "foam": "rich",
+        "glass": "tulip"
+      },
+      "detail": "ブロンズ〜アンバー、しっかりした泡立ち。土っぽいトーストモルト、軽カラメル、穏やかな果実香。",
+      "definition": "仏フランドル地方発祥。春仕込み・ワイン瓶長期セラー貯蔵（Garde）による落ち着いた熟成感。",
+      "ingredients": "ウィーン・カラメル麦芽、フレンチノーブルホップ、上面発酵（または低温熟成）、ワイン瓶・コルク打栓。",
+      "group": "farmhouse",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 25,
+        "locator": "PDF表示ページ25（印刷ページ25）",
+        "section": "ビエール・ド・ギャルド - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-49",
+      "name": "イタリアン・グレープエール",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "淡黄色〜赤ワイン色、ワイン様の軽やかな泡立ち。",
+        "detail": "赤白ブドウの果実香、上品な酸味と心地よいタンニン。",
+        "colorLabel": "淡黄色〜赤ワイン色",
+        "colorHex": "#f0cf55",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "淡黄色〜赤ワイン色、ワイン様の軽やかな泡立ち。赤白ブドウの果実香、上品な酸味と心地よいタンニン。",
+      "definition": "麦汁に地元産ブドウ果汁（マスト最大40%）を添加。ワインの気品ある酸味とビールの麦芽感が融合。",
+      "ingredients": "大麦麦汁＋ブドウ果汁（マスト）、ワイン酵母またはエール酵母、低ホップ。",
+      "group": "fruit",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 26,
+        "locator": "PDF表示ページ26（印刷ページ26）",
+        "section": "イタリアン・グレープエール - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-50",
+      "name": "サハティ",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "無濾過濃色混濁、泡はほぼ立たない。",
+        "detail": "ジュニパーベリー（杜松の実）の針葉樹香、バナナ様の甘香。重厚。",
+        "colorLabel": "無濾過濃色混濁",
+        "colorHex": "#dda52e",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "無濾過濃色混濁、泡はほぼ立たない。ジュニパーベリー（杜松の実）の針葉樹香、バナナ様の甘香。重厚。",
+      "definition": "ホップ不使用（ジュニパー枝葉で濾過・香付け）、パン酵母発酵、麦汁無煮沸（Raw Ale）の伝統農家麦酒。",
+      "ingredients": "ライ麦・大麦麦芽、ジュニパーベリー、フィンランドパン酵母（ベーカリーイースト）、無煮沸。",
+      "group": "farmhouse_raw",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 26,
+        "locator": "PDF表示ページ26（印刷ページ26）",
+        "section": "サハティ - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-51",
+      "name": "コーネル",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "混濁ゴールド、低炭酸。",
+        "detail": "ジュニパーの清涼感、クヴェイク由来の強烈なオレンジ・トロピカルエステル。",
+        "colorLabel": "混濁ゴールド",
+        "colorHex": "#dda52e",
+        "clarity": "hazy",
+        "foam": "medium",
+        "glass": "tulip"
+      },
+      "detail": "混濁ゴールド、低炭酸。ジュニパーの清涼感、クヴェイク由来の強烈なオレンジ・トロピカルエステル。",
+      "definition": "ノルウェー農家伝統クヴェイク（Kveik）酵母による30〜40℃超高温急速発酵と、ジュニパー温浸液。",
+      "ingredients": "大麦麦芽＋ジュニパー枝葉温浸液、Kveik農家酵母（30〜40℃発酵）、無煮沸（Raw Ale）。",
+      "group": "farmhouse_raw",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 27,
+        "locator": "PDF表示ページ27（印刷ページ27）",
+        "section": "コーネル - Step 1〜4"
+      }
+    },
+    {
+      "id": "STYLE-52",
+      "name": "ニュージーランドIPA／XPA",
+      "family": "ale",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "appearance": {
+        "summary": "明るいゴールド、適度な白い泡。",
+        "detail": "ソーヴィニヨン・ブラン白ワイン、パッションフルーツ、ライム香。",
+        "colorLabel": "明るいゴールド",
+        "colorHex": "#dda52e",
+        "clarity": "soft",
+        "foam": "medium",
+        "glass": "pint"
+      },
+      "detail": "明るいゴールド、適度な白い泡。ソーヴィニヨン・ブラン白ワイン、パッションフルーツ、ライム香。",
+      "definition": "ニュージーランド産ホップ（ネルソンソーヴィン、モトゥエカ等）特有の白ワイン・南国果実アロマ。",
+      "ingredients": "淡色モルト、NZ産ホップ（Nelson Sauvin, Motueka, Galaxy等）、クリーン上面酵母。",
+      "group": "hoppy",
+      "source": {
+        "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+        "page": 27,
+        "locator": "PDF表示ページ27（印刷ページ27）",
+        "section": "ニュージーランドIPA／XPA - Step 1〜4"
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=26">
+  <link rel="stylesheet" href="styles.css?v=27">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>685</small></span></a>
-    <div class="header-status"><small class="version-badge">v26</small><span id="headerProgress">学習記録 0 / 685</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v27</small><span id="headerProgress">学習記録 0 / 685</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -52,7 +52,17 @@
         <section class="final-exam-guide" id="finalExamGuide" hidden aria-labelledby="finalExamTitle"><div><p class="eyebrow">FINAL EXAM</p><h3 id="finalExamTitle">最終試験</h3><p>選択した分野から均等に、広く浅く出題します。50問中35問は正答が2個以上で、設問はすべて肯定形です。</p></div><ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分</span></li><li><b>複数</b><span>選択式</span></li><li><b>0〜3</b><span>正答数</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>合格基準</span></li></ol></section>
         <div class="launch-panel"><div class="launch-summary"><span id="poolCount">出題 50問（対象 685問）</span><strong id="modeSummary">50問ずつ回答・解説と出典を表示</strong></div><button class="primary launch" id="startButton" type="button"><span>学習を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
       </section>
+      <section class="style-corner" aria-labelledby="styleCornerTitle">
+        <div><p class="eyebrow">NEW · STYLE IDENTIFICATION</p><h2 id="styleCornerTitle">4ステップ ビアスタイル判定</h2><p>グラスの泡と色から発酵タイプを推測し、国、原材料・工程へ進み、最後に条件へ合う全スタイルから回答します。</p><ol><li><b>1</b>ラガー／エール</li><li><b>2</b>国</li><li><b>3</b>原材料・工程</li><li><b>4</b>スタイル</li></ol></div>
+        <div class="style-corner-action"><div class="mini-beer" aria-hidden="true"><i></i><span></span></div><button class="primary" id="startStyleQuizButton" type="button">スタイル判定を始める →</button><p id="styleCornerMessage" class="message" role="status"></p></div>
+      </section>
       <section class="stats" aria-label="学習状況"><article><span>MASTERED</span><strong id="masteredStat">0</strong><small>正解済み</small></article><article><span>ATTEMPTS</span><strong id="attemptStat">0</strong><small>累計回答</small></article><article><span>ACCURACY</span><strong id="accuracyStat">—</strong><small>完全正解率</small></article><article><span>QUESTION BANK</span><strong>685</strong><small>全問題</small></article></section>
+    </section>
+
+    <section id="styleQuizView" class="view" hidden>
+      <div class="style-quiz-topbar"><button class="ghost" id="styleQuizHomeButton" type="button">← ホームへ戻る</button><span id="styleQuizStepLabel">STEP 1 / 4</span></div>
+      <div class="style-quiz-progress" aria-hidden="true"><i id="styleQuizProgress"></i></div>
+      <article class="style-quiz-panel"><div id="styleQuizBody"></div><p id="styleQuizMessage" class="message" role="status"></p><div class="style-quiz-actions"><button class="secondary" id="styleQuizBackButton" type="button">← 前へ戻る</button><button class="primary" id="styleQuizNextButton" type="button">次のStepへ →</button></div></article>
     </section>
 
     <section id="sessionView" class="view" hidden>
@@ -87,6 +97,6 @@
   </footer>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=26" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=27" defer></script><script src="style-quiz.js?v=27" defer></script>
 </body>
 </html>

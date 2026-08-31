@@ -186,21 +186,34 @@ STYLE_REPLACEMENTS = {
 
 
 EXTREME_ABV = {
-    "BK-0130": ("7.5〜9.5%", "高アルコールのトリプル"),
-    "BK-0341": ("7.5〜9.5%", "高アルコールのトリプル"),
-    "BK-0137": ("8〜12%", "高アルコールのImperial Stout"),
-    "BK-0233": ("8〜12%", "高アルコールのImperial Stout"),
-    "BK-0266": ("8.5〜14.5%", "高アルコールのアイスボック"),
-    "BK-0559": ("8.5〜14.5%", "高アルコールのアイスボック"),
-    "BK-0312": ("9〜14%", "高アルコールのクアドルペル"),
-    "BK-0804": ("9〜14%", "高アルコールのクアドルペル"),
-    "BK-0333": ("2.5〜3.5%", "低アルコールのスコティッシュライトエール"),
-    "BK-0768": ("2.5〜3.5%", "低アルコールのスコティッシュライトエール"),
-    "BK-0383": ("7〜11%", "高アルコールのサハティ"),
-    "BK-0794": ("7〜11%", "高アルコールのサハティ"),
+    "BK-0130": ("7.5〜9.5%", "トリプル"),
+    "BK-0137": ("8〜12%", "Imperial Stout"),
+    "BK-0266": ("8.5〜14.5%", "アイスボック"),
+    "BK-0312": ("9〜14%", "クアドルペル"),
+    "BK-0333": ("2.5〜3.5%", "スコティッシュライトエール"),
+    "BK-0383": ("7〜11%", "サハティ"),
+    "BK-0233": ("4.4〜5.5%", "ミュンヘナー・ヘレス"),
+    "BK-0341": ("4.8〜5.8%", "ボヘミアン・ピルスナー"),
+    "BK-0559": ("4.8〜5.6%", "ヘーフェ・ヴァイス"),
+    "BK-0768": ("4.8〜5.5%", "ケルシュ"),
+    "BK-0794": ("4.2〜5.5%", "ベルジャン・ホワイト"),
+    "BK-0804": ("2.8〜3.2%", "ベルリナー・ヴァイセ"),
 }
 
 SECOND_ABV_WORDING_IDS = {"BK-0233", "BK-0341", "BK-0559", "BK-0768", "BK-0794", "BK-0804"}
+ABV_SOURCE_OVERRIDES = {
+    "BK-0233": (2, "ミュンヘナー・ヘレス"),
+    "BK-0341": (7, "ボヘミアン・ピルスナー"),
+    "BK-0559": (10, "ヘーフェ・ヴァイス"),
+    "BK-0768": (11, "ケルシュ"),
+    "BK-0794": (13, "ベルジャン・ホワイト"),
+    "BK-0804": (12, "ベルリナー・ヴァイセ"),
+}
+ABV_BANDS = (
+    ("high", "高い（7.0〜15.0%程度）", 7.0, 15.0),
+    ("medium", "中くらい（4.0〜6.9%程度）", 4.0, 6.9),
+    ("low", "低い（0.0〜3.9%程度）", 0.0, 3.9),
+)
 
 
 def positivize_stem(stem: str) -> str:
@@ -232,6 +245,48 @@ def rewrite_reason(reason: str, choice: str, is_correct: bool) -> str:
     return tail
 
 
+def abv_band_for(actual: str) -> str:
+    values = [float(value) for value in re.findall(r"\d+(?:\.\d+)?", actual)]
+    if not values:
+        raise ValueError(f"ABV range not found: {actual}")
+    midpoint = sum(values[:2]) / min(2, len(values))
+    if midpoint >= 7.0:
+        return "high"
+    if midpoint < 4.0:
+        return "low"
+    return "medium"
+
+
+def categorize_abv_question(question: dict, question_id: str, actual: str, description: str) -> None:
+    style_name = re.sub(r"^(?:高|低)アルコールの", "", description)
+    if question_id in SECOND_ABV_WORDING_IDS:
+        question["question"] = f"{style_name}の一般的な度数を、高・中・低の3区分で表すとどれですか？"
+    else:
+        question["question"] = f"{style_name}のアルコール度数区分として最も近いものを選んでください。"
+    correct_band = abv_band_for(actual)
+    question["choices"] = [label for _, label, _, _ in ABV_BANDS]
+    question["correct"] = [index for index, (band, _, _, _) in enumerate(ABV_BANDS) if band == correct_band]
+    band_label = next(label for band, label, _, _ in ABV_BANDS if band == correct_band)
+    question["explanation"] = f"{style_name}の代表的なアルコール度数は{actual}で、区分は「{band_label}」です。"
+    question["choiceReasons"] = []
+    for band, label, minimum, maximum in ABV_BANDS:
+        if band == correct_band:
+            reason = f"{actual}は、この区分の目安である{minimum:.1f}〜{maximum:.1f}%に収まります。"
+        else:
+            reason = f"{actual}は、この区分の目安である{minimum:.1f}〜{maximum:.1f}%から外れます。"
+        question["choiceReasons"].append(reason)
+    if question_id in ABV_SOURCE_OVERRIDES:
+        page, source_style = ABV_SOURCE_OVERRIDES[question_id]
+        question["sources"] = [{
+            "filename": "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf",
+            "locator": f"PDF表示ページ{page}（印刷ページ{page}）",
+            "page": page,
+            "unit": "ページ",
+            "section": f"{source_style} - ABV",
+            "raw": f"Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf p.{page} {source_style}",
+        }]
+
+
 def main() -> None:
     data = json.loads(QUESTIONS_PATH.read_text(encoding="utf-8"))
     by_id = {question["id"]: question for question in data["questions"]}
@@ -259,16 +314,7 @@ def main() -> None:
 
     for question_id, (actual, description) in EXTREME_ABV.items():
         question = by_id[question_id]
-        style_name = re.sub(r"^(?:高|低)アルコールの", "", description)
-        if question_id in SECOND_ABV_WORDING_IDS:
-            question["question"] = f"{style_name}のアルコール度数の一般的な目安として、正しい範囲をすべて選んでください。"
-        else:
-            question["question"] = f"{style_name}の代表的なアルコール度数の範囲として、正しいものをすべて選んでください。"
-        low_choices = ["0.0〜0.5%", "8〜12%", "18〜22%"] if "低アルコール" in description else ["0.0〜0.5%", "2.5〜3.5%", "18〜22%"]
-        question["choices"] = [actual, *low_choices]
-        question["correct"] = [0]
-        question["explanation"] = f"{description}の代表的なアルコール度数範囲は{actual}です。"
-        question["choiceReasons"] = ["", "", "", ""]
+        categorize_abv_question(question, question_id, actual, description)
 
     answer_counts = Counter(len(question["correct"]) for question in data["questions"])
     multi_count = sum(count for answers, count in answer_counts.items() if answers >= 2)
@@ -278,7 +324,7 @@ def main() -> None:
 
     direct_abv_ids = {
         question["id"] for question in data["questions"]
-        if re.search(r"アルコール度数.*範囲", question["question"])
+        if "アルコール度数区分" in question["question"] or "高・中・低の3区分" in question["question"]
     }
     assert direct_abv_ids == set(EXTREME_ABV)
     assert not any(NEGATIVE_PATTERN.search(question["question"]) for question in data["questions"])

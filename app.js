@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v26";
+const APP_VERSION = "v27";
 const STORAGE = { history: "bierkompass-history-v19", session: "bierkompass-session-v19", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -242,7 +242,7 @@ function broadQuestionScore(question) {
 }
 
 function showView(name) {
-  ["home", "session", "result"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
+  ["home", "session", "result", "styleQuiz"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
   window.scrollTo({ top: 0, behavior: "instant" });
   $("#app").focus({ preventScroll: true });
 }
@@ -472,5 +472,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, broadQuestionScore };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, broadQuestionScore, escapeHtml, goHome, showView, shuffle };
 startAccessControl();

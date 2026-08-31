@@ -13,6 +13,8 @@ APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 STYLES_CSS = (ROOT / "styles.css").read_text(encoding="utf-8")
 ROBOTS_TXT = (ROOT / "robots.txt").read_text(encoding="utf-8")
+STYLE_DATA = json.loads((ROOT / "style-quiz.json").read_text(encoding="utf-8"))
+STYLE_JS = (ROOT / "style-quiz.js").read_text(encoding="utf-8")
 
 
 def main() -> None:
@@ -112,12 +114,23 @@ def main() -> None:
     assert all(len(re.findall(r"\d+", choice)) == 4 for choice in brewing_dates["choices"])
     assert question_by_id["BK-0851"]["question"].endswith("官能評価におけるアロマは、主にどの感覚で知覚しますか。")
     expected_abv_ids = {"BK-0130", "BK-0137", "BK-0233", "BK-0266", "BK-0312", "BK-0333", "BK-0341", "BK-0383", "BK-0559", "BK-0768", "BK-0794", "BK-0804"}
-    direct_abv = {question["id"]: question for question in QUESTIONS if re.search(r"アルコール度数.*範囲", question["question"])}
+    direct_abv = {
+        question["id"]: question
+        for question in QUESTIONS
+        if "アルコール度数区分" in question["question"] or "高・中・低の3区分" in question["question"]
+    }
     assert set(direct_abv) == expected_abv_ids
+    expected_bands = {"高い（7.0〜15.0%程度）", "中くらい（4.0〜6.9%程度）", "低い（0.0〜3.9%程度）"}
     for question in direct_abv.values():
         assert len(question["correct"]) == 1
-        values = [float(value) for choice in question["choices"] for value in re.findall(r"\d+(?:\.\d+)?", choice)]
-        assert min(values) <= 0.5 and max(values) >= 18
+        assert set(question["choices"]) == expected_bands
+        assert re.search(r"\d+(?:\.\d+)?〜\d+(?:\.\d+)?%", question["explanation"])
+    assert Counter(question["correct"][0] for question in direct_abv.values()) == {0: 5, 1: 5, 2: 2}
+    assert not any(re.search(r"アルコール度数.*範囲", question["question"]) for question in QUESTIONS)
+    assert all(
+        direct_abv[question_id]["sources"][0]["filename"] == "Doemens_Beer_Styles_Mobile_Fluffy_Foam.pdf"
+        for question_id in {"BK-0233", "BK-0341", "BK-0559", "BK-0768", "BK-0794", "BK-0804"}
+    )
     assert "50問中35問は正答が2個以上" in INDEX_HTML
     assert 'id="openNavigatorMobile"' in INDEX_HTML and 'id="unansweredBadgeMobile"' in INDEX_HTML
     assert '$("#openNavigatorMobile").addEventListener("click", () => setNavigatorOpen(true))' in APP_JS
@@ -192,7 +205,7 @@ def main() -> None:
         for question in QUESTIONS
         for reason in question["choiceReasons"]
     )
-    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2435
+    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2387
     assert not any(
         len(nonempty := [reason.strip() for reason in question["choiceReasons"] if reason.strip()]) >= 2
         and len(set(nonempty)) == 1
@@ -205,6 +218,25 @@ def main() -> None:
         assert len(set(reasons)) == len(reasons)
     assert 'class="choice-verdict"' in APP_JS
     assert 'if (!reason) return "";' not in APP_JS
+    assert STYLE_DATA["metadata"]["styleCount"] == 52
+    assert {item["id"]: item["count"] for item in STYLE_DATA["metadata"]["families"]} == {"lager": 16, "ale": 36}
+    assert {item["id"]: item["count"] for item in STYLE_DATA["metadata"]["countries"]} == {
+        "germany": 18, "belgium": 10, "czech": 2, "england": 6, "america": 7, "other": 9,
+    }
+    assert all(
+        style["appearance"]["colorHex"].startswith("#")
+        and style["appearance"]["foam"] in {"rich", "medium", "thin"}
+        and style["appearance"]["clarity"] in {"clear", "hazy", "soft"}
+        and style["definition"] and style["ingredients"]
+        for style in STYLE_DATA["styles"]
+    )
+    assert not any("ジャパニーズ・ドライラガー" in style["name"] for style in STYLE_DATA["styles"])
+    assert 'id="styleQuizView"' in INDEX_HTML and 'id="startStyleQuizButton"' in INDEX_HTML
+    assert '["home", "session", "result", "styleQuiz"]' in APP_JS
+    assert "style.family === state.answers.family && style.country === state.answers.country" in STYLE_JS
+    assert "選択条件に一致するスタイルを、全${matching.length}件表示" in STYLE_JS
+    assert "slice(" not in STYLE_JS
+    assert 'id="styleQuizBackButton"' in INDEX_HTML and "state.step -= 1" in STYLE_JS
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313
     assert DATA["metadata"]["deduplication"]["removedSourceQuestionCount"] == 2
     print(f"OK: 685 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
