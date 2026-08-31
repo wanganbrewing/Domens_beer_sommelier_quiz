@@ -125,6 +125,7 @@ def main() -> None:
     assert '.final-exam-guide[hidden]{display:none}' in STYLES_CSS
     assert "正答・全選択肢の解説・出典を見る" in APP_JS
     assert "renderReviewChoiceReasons(question, order)" in APP_JS
+    assert APP_JS.count("<details open><summary>") >= 2
     blackcurrant_ids = {"BK-0034", "BK-0480"}
     assert all(not any("黒すぐり" in choice or "カシス" in choice for choice in question_by_id[question_id]["choices"]) for question_id in blackcurrant_ids if question_id in question_by_id)
     water_style_ids = {"BK-0011", "BK-0038", "BK-0039", "BK-0706"}
@@ -148,6 +149,12 @@ def main() -> None:
         dimensions = [label for label in ("詳細説明", "特徴定義", "原材料・工程") if f"の{label}として" in question["question"]]
         assert len(dimensions) == 1
         assert all(dimensions[0] in reason for reason in question["choiceReasons"])
+        assert question["choiceReasons"][question["correct"][0]].startswith("正答：この内容が示すスタイルは")
+        assert all(
+            reason.startswith("誤答：この内容が示すスタイルは")
+            for index, reason in enumerate(question["choiceReasons"])
+            if index not in question["correct"]
+        )
         assert all(not choice.startswith(("詳細説明：", "特徴定義：", "原材料・工程：")) for choice in question["choices"])
     assert not any(re.search(r"情報源|Sources?|参照元|情報の出典", question["question"], re.IGNORECASE) for question in QUESTIONS)
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313

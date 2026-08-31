@@ -171,11 +171,12 @@ def build_question(
     }
     choices = [style[field], *(distractor[field] for distractor in distractors)]
     explanation = (
-        f"{style['name']}の{field_labels[field]}として合致するのは、正答として示した内容です。"
+        f"{style['name']}の{field_labels[field]}は「{style[field]}」です。"
+        f"不正解の選択肢は別スタイルの{field_labels[field]}であり、該当するスタイル名を各選択肢の解説に示します。"
     )
     reasons = [
-        f"この{field_labels[field]}は{style['name']}に合致します。",
-        *(f"これは{distractor['name']}の{field_labels[field]}であり、{style['name']}には合致しません。" for distractor in distractors),
+        f"正答：この内容が示すスタイルは「{style['name']}」です。{style['name']}の{field_labels[field]}に合致します。",
+        *(f"誤答：この内容が示すスタイルは「{distractor['name']}」です。{style['name']}の{field_labels[field]}ではありません。" for distractor in distractors),
     ]
     page = style["page"]
     return {
@@ -237,7 +238,7 @@ def main() -> None:
         category["count"] = category_counts[category["id"]]
     for tier in data["metadata"]["frequencyTiers"]:
         tier["count"] = tier_counts[tier["id"]]
-    data["metadata"]["version"] = "2026-08-31-doemens-global-v6"
+    data["metadata"]["version"] = "2026-08-31-doemens-global-v8"
     data["metadata"]["multiAnswerQuestionCount"] = sum(
         len(question["correct"]) >= 2 for question in data["questions"]
     )
