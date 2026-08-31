@@ -5,6 +5,22 @@
   const FAMILY_LABELS = { lager: "ラガー", ale: "エール" };
   const CLARITY_LABELS = { clear: "クリア", hazy: "濁りあり", soft: "外観説明を参照" };
   const FOAM_LABELS = { rich: "豊か・持続的", medium: "中程度", thin: "少ない・薄い" };
+  const COUNTRY_ANSWER_WORDS = [
+    "ドイツ", "独産", "ジャーマン", "German", "Germany", "ベルギー", "ベルジャン", "Belgian", "Belgium",
+    "チェコ", "Czech", "イギリス", "英国", "英産", "イングリッシュ", "English", "British", "England",
+    "アメリカ", "米国", "アメリカン", "American", "America", "オーストリア", "メキシコ", "フランス",
+    "イタリア", "フィンランド", "ポーランド", "アイルランド", "アイリッシュ", "スコットランド", "スコッチ", "ニュージーランド",
+  ];
+  const FAMILY_ANSWER_WORDS = ["ラガー", "エール", "下面発酵", "上面発酵", "Lager", "Ale"];
+  const STYLE_TERM_WORDS = [
+    "ピルスナー", "ヘレス", "エクスポート", "フェストビア", "デュンケル", "シュヴァルツビア", "ドッペルボック",
+    "アイスボック", "ボック", "ラオホビア", "ケラービア", "ツヴィッケル", "シャンクビア", "ライトビール",
+    "ポーター", "ヴァイス", "ヴァイツェン", "ケルシュ", "アルトビア", "ベルリナーヴァイセ", "ゴーゼ",
+    "ホワイト", "ストロング", "トラピスト", "ダブル", "トリプル", "クアドルペル", "セゾン", "オルヴァル",
+    "ランビック", "グーズ", "クリーク", "ビター", "ペールエール", "ブラウンエール", "バーレイワイン",
+    "スタウト", "ウィーヘビー", "ウィートエール", "グレープエール", "ビエール・ド・ギャルド", "サハティ",
+    "コーネル", "IPA", "NEIPA", "XPA", "ESB",
+  ];
   let styleData = null;
   let styleDataPromise = null;
   let state = null;
@@ -13,7 +29,7 @@
   const byId = (id) => document.getElementById(id);
 
   function loadStyleData() {
-    styleDataPromise ||= fetch("style-quiz.json?v27", { cache: "no-store" }).then((response) => {
+    styleDataPromise ||= fetch("style-quiz.json?v29", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`スタイルデータを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -22,6 +38,37 @@
 
   function styleById(id) {
     return styleData.styles.find((style) => style.id === id);
+  }
+
+  function styleAnswerWords() {
+    return styleData.styles.flatMap((style) => {
+      const withoutParentheses = style.name.replace(/（[^）]*）/g, "");
+      return [style.name, withoutParentheses, ...withoutParentheses.split(/[／・]/)]
+        .map((word) => word.trim())
+        .filter((word) => word.length >= 3);
+    });
+  }
+
+  function replaceAnswerWords(text, words, replacement) {
+    let result = text;
+    [...new Set(words)].sort((a, b) => b.length - a.length).forEach((word) => {
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      result = result.replace(new RegExp(escaped, "gi"), replacement);
+    });
+    return result;
+  }
+
+  function answerSafeText(text) {
+    let result = replaceAnswerWords(text || "", styleAnswerWords(), "このスタイル");
+    result = replaceAnswerWords(result, STYLE_TERM_WORDS, "別のビアスタイル");
+    result = replaceAnswerWords(result, COUNTRY_ANSWER_WORDS, "現地");
+    result = replaceAnswerWords(result, FAMILY_ANSWER_WORDS, "指定の発酵系統");
+    return result
+      .replace(/(?:このスタイル){2,}/g, "このスタイル")
+      .replace(/(?:現地){2,}/g, "現地")
+      .replace(/(?:このスタイル|別のビアスタイル|指定の発酵系統)麦芽/g, "専用麦芽")
+      .replace(/(?:このスタイル|別のビアスタイル|指定の発酵系統)酵母/g, "専用酵母")
+      .replace(/現地専用酵母/g, "現地の専用酵母");
   }
 
   function buildIngredientOptions(target) {
@@ -72,7 +119,7 @@
       <dl class="appearance-facts">
         <div><dt>色</dt><dd>${escapeHtml(appearance.colorLabel)}</dd></div>
         <div><dt>透明度</dt><dd>${escapeHtml(CLARITY_LABELS[appearance.clarity])}</dd></div>
-        <div><dt>泡</dt><dd>${escapeHtml(FOAM_LABELS[appearance.foam])}</dd></div>
+        <div><dt>泡持ち</dt><dd>${escapeHtml(FOAM_LABELS[appearance.foam])}</dd></div>
       </dl>
     </div>`;
   }
@@ -94,7 +141,7 @@
   function renderStep(target) {
     if (state.step === 1) {
       return `<div class="style-step-heading"><p class="eyebrow">STEP 1 · APPEARANCE</p><h1>ラガーか、エールか</h1><p>グラスの色・透明度・泡と詳細説明から、発酵タイプを推測してください。</p></div>
-        <div class="style-clue-card appearance-clue">${beerVisual(target)}<div><h2>外観・香味・口当たり</h2><p class="appearance-summary">${escapeHtml(target.appearance.summary)}</p><p>${escapeHtml(target.appearance.detail)}</p></div></div>
+        <div class="style-clue-card appearance-clue">${beerVisual(target)}<div><h2>外観・香味・口当たり</h2><p class="appearance-summary">${escapeHtml(answerSafeText(target.appearance.summary))}</p><p>${escapeHtml(answerSafeText(target.appearance.detail))}</p></div></div>
         ${optionCards("style-family", [
           { value: "lager", label: "ラガー" },
           { value: "ale", label: "エール" },
@@ -103,13 +150,13 @@
     if (state.step === 2) {
       const options = styleData.metadata.countries.map((country) => ({ value: country.id, label: country.label }));
       return `<div class="style-step-heading"><p class="eyebrow">STEP 2 · DEFINITION</p><h1>国を選ぶ</h1><p>特徴定義から、このスタイルが属する国・地域区分を選んでください。</p></div>
-        <div class="style-clue-card"><h2>特徴定義</h2><p>${escapeHtml(target.definition)}</p></div>
+        <div class="style-clue-card"><h2>特徴定義</h2><p>${escapeHtml(answerSafeText(target.definition))}</p></div>
         ${optionCards("style-country", options, state.answers.country, "country-grid")}`;
     }
     if (state.step === 3) {
-      const options = state.ingredientOptions.map((option) => ({ value: option.id, label: option.label }));
+      const options = state.ingredientOptions.map((option) => ({ value: option.id, label: answerSafeText(option.label) }));
       return `<div class="style-step-heading"><p class="eyebrow">STEP 3 · INGREDIENTS & PROCESS</p><h1>原材料・工程を選ぶ</h1><p>ここまでの外観と特徴定義に合う原材料・醸造工程を選んでください。</p></div>
-        <div class="style-clue-card compact"><h2>特徴定義を再確認</h2><p>${escapeHtml(target.definition)}</p></div>
+        <div class="style-clue-card compact"><h2>特徴定義を再確認</h2><p>${escapeHtml(answerSafeText(target.definition))}</p></div>
         ${optionCards("style-ingredients", options, state.answers.ingredientStyleId, "ingredient-grid")}`;
     }
     const matching = candidates();
@@ -117,7 +164,15 @@
       return `<div class="style-step-heading"><p class="eyebrow">STEP 4 · STYLE</p><h1>スタイルを選ぶ</h1></div>
         <div class="no-style-candidates"><strong>条件に合うスタイルがありません</strong><p>「${escapeHtml(FAMILY_LABELS[state.answers.family] || "未選択")}」と「${escapeHtml(styleData.metadata.countries.find((item) => item.id === state.answers.country)?.label || "未選択")}」の組み合わせを見直してください。</p><p>「前へ戻る」から国または発酵タイプを変更できます。</p></div>`;
     }
-    return `<div class="style-step-heading"><p class="eyebrow">STEP 4 · STYLE</p><h1>最後にスタイルを選ぶ</h1><p>選択条件に一致するスタイルを、全${matching.length}件表示しています。</p></div>
+    const selectedCountry = styleData.metadata.countries.find((item) => item.id === state.answers.country)?.label || "未選択";
+    const selectedIngredient = styleById(state.answers.ingredientStyleId)?.ingredients || "未選択";
+    return `<div class="style-step-heading"><p class="eyebrow">STEP 4 · STYLE</p><h1>最後にスタイルを選ぶ</h1><p>外観と詳細情報、ここまでに選んだ条件を確認してください。選択条件に一致する全${matching.length}件を表示しています。</p></div>
+      <div class="style-clue-card appearance-clue style-final-clue">${beerVisual(target)}<div><h2>詳細情報</h2><p>${escapeHtml(answerSafeText(target.detail))}</p></div></div>
+      <section class="style-selected-summary" aria-label="選択した情報"><h2>選択した情報</h2><dl>
+        <div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[state.answers.family] || "未選択")}</dd></div>
+        <div><dt>国・地域</dt><dd>${escapeHtml(selectedCountry)}</dd></div>
+        <div><dt>原材料・工程</dt><dd>${escapeHtml(answerSafeText(selectedIngredient))}</dd></div>
+      </dl></section>
       <div class="candidate-filter"><span>${escapeHtml(FAMILY_LABELS[state.answers.family])}</span><b>×</b><span>${escapeHtml(matching[0].countryLabel)}</span><strong>${matching.length}候補</strong></div>
       ${optionCards("style-final", matching.map((style) => ({ value: style.id, label: style.name })), state.answers.styleId, "candidate-grid")}`;
   }

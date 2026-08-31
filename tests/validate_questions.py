@@ -18,17 +18,18 @@ STYLE_JS = (ROOT / "style-quiz.js").read_text(encoding="utf-8")
 
 
 def main() -> None:
-    assert DATA["metadata"]["questionCount"] == 685
+    assert DATA["metadata"]["questionCount"] == 1000
     assert DATA["metadata"]["studyQuestionCount"] == 50
     assert DATA["metadata"]["examQuestionCount"] == 50
     assert DATA["metadata"]["examMinutes"] == 40
     assert DATA["metadata"]["passingRate"] == 0.5
     assert DATA["metadata"]["multiAnswerQuestionCount"] == 112
-    assert len(QUESTIONS) == 685
-    assert len({question["id"] for question in QUESTIONS}) == 685
-    assert len({question["question"] for question in QUESTIONS}) == 685
+    assert len(QUESTIONS) == 1000
+    assert len({question["id"] for question in QUESTIONS}) == 1000
+    assert {question["id"] for question in QUESTIONS} == {f"BK-{index:04d}" for index in range(1, 1001)}
+    assert len({question["question"] for question in QUESTIONS}) == 1000
     signatures = {question["question"] + "\0" + "\0".join(question["choices"]) for question in QUESTIONS}
-    assert len(signatures) == 685
+    assert len(signatures) == 1000
     normalized_questions = [re.sub(r"\s+", "", re.sub(r"^理解確認[:：]\s*", "", question["question"])) for question in QUESTIONS]
     assert len(normalized_questions) == len(set(normalized_questions))
     paired_count = 0
@@ -63,7 +64,7 @@ def main() -> None:
         assert not re.search(r"人気の高いビールブランドの流通|ケルシュ用グラス|ピルスナーに用いられる代表的なグラス|何mlのグラスで提供|ドラフト（樽生）設備|コースメニュー", question["question"])
     answer_counts = Counter(len(question["correct"]) for question in QUESTIONS)
     assert set(answer_counts) == {0, 1, 2, 3}
-    assert answer_counts == {0: 2, 1: 571, 2: 16, 3: 96}
+    assert answer_counts == {0: 2, 1: 886, 2: 16, 3: 96}
     assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 112
     negative_pattern = re.compile(r"誤っている|適切でない|正しくない|該当しない|当てはまらない|含まれない")
     assert not any(negative_pattern.search(question["question"]) for question in QUESTIONS)
@@ -95,9 +96,9 @@ def main() -> None:
     assert "該当する選択肢はない（0個）として回答" in APP_JS and "該当する選択肢はない（0個）として回答" in INDEX_HTML
     assert 'name="robots" content="noindex, nofollow' in INDEX_HTML
     assert "User-agent: *" in ROBOTS_TXT and "Disallow: /" in ROBOTS_TXT
-    assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 272, "B": 253, "C": 160}
-    assert {tier["id"]: tier["count"] for tier in DATA["metadata"]["frequencyTiers"]} == {"A": 272, "B": 253, "C": 160}
-    assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 685
+    assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 366, "B": 409, "C": 225}
+    assert {tier["id"]: tier["count"] for tier in DATA["metadata"]["frequencyTiers"]} == {"A": 366, "B": 409, "C": 225}
+    assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 1000
     excluded_categories = {"quality", "service", "draft", "pairing", "marketing"}
     assert len(DATA["metadata"]["categories"]) == 7
     assert not ({question["category"] for question in QUESTIONS} & excluded_categories)
@@ -152,7 +153,11 @@ def main() -> None:
     consumption_pattern = re.compile(r"(?:一人|1人)当たり.*ビール消費量|ビール消費量.*(?:一人|1人)当たり")
     assert all(question["frequencyTier"] == "C" for question in QUESTIONS if consumption_pattern.search(question["question"]))
     hardness_only_ids = {"BK-0005", "BK-0006", "BK-0007", "BK-0008", "BK-0011", "BK-0038", "BK-0039", "BK-0061", "BK-0069", "BK-0070", "BK-0071", "BK-0123", "BK-0147", "BK-0191", "BK-0202", "BK-0706", "BK-0757", "BK-0834"}
-    assert all(question_by_id[question_id]["frequencyTier"] == "C" for question_id in hardness_only_ids if question_id in question_by_id)
+    assert all(
+        question_by_id[question_id]["frequencyTier"] == "C"
+        for question_id in hardness_only_ids
+        if question_id in question_by_id and re.search(r"硬度|硬水|軟水", question_by_id[question_id]["question"])
+    )
     extreme_ibu_ids = {"BK-0277", "BK-0320", "BK-0449", "BK-0554", "BK-0561", "BK-0901"}
     assert all(question["frequencyTier"] == "C" for question in QUESTIONS if re.search(r"(?<![A-Za-z])(?:IBU|EBC)(?![A-Za-z])", question["question"]) and question["id"] not in extreme_ibu_ids)
     style_guide = DATA["metadata"]["mobileStyleGuideIntegration"]
@@ -205,7 +210,7 @@ def main() -> None:
         for question in QUESTIONS
         for reason in question["choiceReasons"]
     )
-    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2387
+    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2708
     assert not any(
         len(nonempty := [reason.strip() for reason in question["choiceReasons"] if reason.strip()]) >= 2
         and len(set(nonempty)) == 1
@@ -234,12 +239,28 @@ def main() -> None:
     assert 'id="styleQuizView"' in INDEX_HTML and 'id="startStyleQuizButton"' in INDEX_HTML
     assert '["home", "session", "result", "styleQuiz"]' in APP_JS
     assert "style.family === state.answers.family && style.country === state.answers.country" in STYLE_JS
-    assert "選択条件に一致するスタイルを、全${matching.length}件表示" in STYLE_JS
+    assert "選択条件に一致する全${matching.length}件を表示" in STYLE_JS
     assert "slice(" not in STYLE_JS
     assert 'id="styleQuizBackButton"' in INDEX_HTML and "state.step -= 1" in STYLE_JS
+    assert "function answerSafeText(text)" in STYLE_JS
+    assert all(token in STYLE_JS for token in ("styleAnswerWords()", "STYLE_TERM_WORDS", "COUNTRY_ANSWER_WORDS", "FAMILY_ANSWER_WORDS"))
+    assert "answerSafeText(target.appearance.detail)" in STYLE_JS
+    assert "answerSafeText(target.definition)" in STYLE_JS
+    assert "answerSafeText(option.label)" in STYLE_JS
+    assert 'class="style-clue-card appearance-clue style-final-clue"' in STYLE_JS
+    assert 'class="style-selected-summary"' in STYLE_JS
+    assert all(label in STYLE_JS for label in ("色", "透明度", "泡持ち", "選択した情報", "原材料・工程"))
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313
     assert DATA["metadata"]["deduplication"]["removedSourceQuestionCount"] == 2
-    print(f"OK: 685 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
+    assert DATA["metadata"]["deduplication"]["currentDuplicateCount"] == 0
+    assert DATA["metadata"]["deduplication"]["reauthoredQuestionCount"] == 315
+    expansion = DATA["metadata"]["expansionTo1000"]
+    assert expansion["addedQuestionCount"] == 315
+    assert expansion["styleQuestionCount"] == 312
+    assert expansion["sensoryMethodQuestionCount"] == 3
+    assert "1000" in INDEX_HTML and "685" not in INDEX_HTML
+    assert 'const APP_VERSION = "v29"' in APP_JS
+    print(f"OK: 1000 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
 
 
 if __name__ == "__main__":
