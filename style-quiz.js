@@ -10,6 +10,14 @@
     "チェコ", "Czech", "イギリス", "英国", "英産", "イングリッシュ", "English", "British", "England",
     "アメリカ", "米国", "アメリカン", "American", "America", "オーストリア", "メキシコ", "フランス",
     "イタリア", "フィンランド", "ポーランド", "アイルランド", "アイリッシュ", "スコットランド", "スコッチ", "ニュージーランド",
+    "イタリアン", "フレンチ", "ノルウェー", "ロシア", "NZ産", "独税法", "仏フランドル地方",
+  ];
+  const LOCATION_ANSWER_WORDS = [
+    "フランドル地方", "フランドル", "フランダース", "ドルトムント", "ミュンヘン", "バンベルク",
+    "ボヘミア", "モラヴィア", "ピルゼン", "ウィーン", "デュッセルドルフ", "ケルン", "ベルリン",
+    "ゴスラー", "ライプツィヒ", "センヌ川流域", "センヌ川", "バートン・アポン・トレント", "バートン",
+    "ロンドン", "ダブリン", "バルト地方", "ザーツ", "スタイリアン", "シャンパン",
+    "ネルソンソーヴィン", "モトゥエカ", "Nelson Sauvin", "Motueka",
   ];
   const FAMILY_ANSWER_WORDS = ["ラガー", "エール", "下面発酵", "上面発酵", "Lager", "Ale"];
   const STYLE_TERM_WORDS = [
@@ -29,7 +37,7 @@
   const byId = (id) => document.getElementById(id);
 
   function loadStyleData() {
-    styleDataPromise ||= fetch("style-quiz.json?v29", { cache: "no-store" }).then((response) => {
+    styleDataPromise ||= fetch("style-quiz.json?v30", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`スタイルデータを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -40,8 +48,8 @@
     return styleData.styles.find((style) => style.id === id);
   }
 
-  function styleAnswerWords() {
-    return styleData.styles.flatMap((style) => {
+  function styleAnswerWords(styles = styleData?.styles || []) {
+    return styles.flatMap((style) => {
       const withoutParentheses = style.name.replace(/（[^）]*）/g, "");
       return [style.name, withoutParentheses, ...withoutParentheses.split(/[／・]/)]
         .map((word) => word.trim())
@@ -58,10 +66,11 @@
     return result;
   }
 
-  function answerSafeText(text) {
-    let result = replaceAnswerWords(text || "", styleAnswerWords(), "このスタイル");
+  function answerSafeText(text, styles) {
+    let result = replaceAnswerWords(text || "", styleAnswerWords(styles), "このスタイル");
     result = replaceAnswerWords(result, STYLE_TERM_WORDS, "別のビアスタイル");
     result = replaceAnswerWords(result, COUNTRY_ANSWER_WORDS, "現地");
+    result = replaceAnswerWords(result, LOCATION_ANSWER_WORDS, "現地");
     result = replaceAnswerWords(result, FAMILY_ANSWER_WORDS, "指定の発酵系統");
     return result
       .replace(/(?:このスタイル){2,}/g, "このスタイル")
@@ -271,5 +280,5 @@
   byId("styleQuizBackButton").addEventListener("click", previousStep);
   byId("styleQuizNextButton").addEventListener("click", nextStep);
 
-  window.BierKompassStyleQuiz = { candidates, startStyleQuiz };
+  window.BierKompassStyleQuiz = { answerSafeText, candidates, startStyleQuiz };
 })();

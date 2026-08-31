@@ -242,8 +242,10 @@ def main() -> None:
     assert "選択条件に一致する全${matching.length}件を表示" in STYLE_JS
     assert "slice(" not in STYLE_JS
     assert 'id="styleQuizBackButton"' in INDEX_HTML and "state.step -= 1" in STYLE_JS
-    assert "function answerSafeText(text)" in STYLE_JS
-    assert all(token in STYLE_JS for token in ("styleAnswerWords()", "STYLE_TERM_WORDS", "COUNTRY_ANSWER_WORDS", "FAMILY_ANSWER_WORDS"))
+    assert "function answerSafeText(text, styles)" in STYLE_JS
+    assert all(token in STYLE_JS for token in ("styleAnswerWords(styles", "STYLE_TERM_WORDS", "COUNTRY_ANSWER_WORDS", "LOCATION_ANSWER_WORDS", "FAMILY_ANSWER_WORDS"))
+    assert all(place in STYLE_JS for place in ("フランドル", "ドルトムント", "ミュンヘン", "ピルゼン", "バートン", "ロンドン", "ダブリン", "センヌ川"))
+    assert 'replaceAnswerWords(result, LOCATION_ANSWER_WORDS, "現地")' in STYLE_JS
     assert "answerSafeText(target.appearance.detail)" in STYLE_JS
     assert "answerSafeText(target.definition)" in STYLE_JS
     assert "answerSafeText(option.label)" in STYLE_JS
