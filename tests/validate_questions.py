@@ -125,6 +125,11 @@ def main() -> None:
     assert '.final-exam-guide[hidden]{display:none}' in STYLES_CSS
     assert "正答・選択肢の解説・出典を見る" in APP_JS
     assert "正答・解説・出典を見る" in APP_JS
+    assert "制作：Wangan Brewing" not in INDEX_HTML
+    assert "制作支援：OpenAI Codex" not in INDEX_HTML
+    assert "Doemens Biersommelier関連資料を参照" in INDEX_HTML
+    assert "Doemens公式問題集ではありません" in INDEX_HTML
+    assert ".site-credit" in STYLES_CSS
     assert "renderReviewChoiceReasons(question, order)" in APP_JS
     assert APP_JS.count("<details open><summary>") >= 2
     blackcurrant_ids = {"BK-0034", "BK-0480"}
