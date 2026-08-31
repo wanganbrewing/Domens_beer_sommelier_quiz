@@ -11,6 +11,7 @@ DATA = json.loads((ROOT / "questions.json").read_text(encoding="utf-8"))
 QUESTIONS = DATA["questions"]
 APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+ROBOTS_TXT = (ROOT / "robots.txt").read_text(encoding="utf-8")
 
 
 def main() -> None:
@@ -53,6 +54,8 @@ def main() -> None:
     assert "広く浅く" in INDEX_HTML
     assert 'id="accessGate"' in INDEX_HTML
     assert "ACCESS_PASSWORD_HASH" in APP_JS and 'input.value === "beer"' not in APP_JS
+    assert 'name="robots" content="noindex, nofollow' in INDEX_HTML
+    assert "User-agent: *" in ROBOTS_TXT and "Disallow: /" in ROBOTS_TXT
     assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 350, "B": 400, "C": 250}
     assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 1000
     print(f"OK: 1,000 checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; clear paired questions={paired_count}; unique IDs/stems/signatures; sources and 3 frequency tiers")
