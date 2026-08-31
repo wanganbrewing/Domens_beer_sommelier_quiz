@@ -1,8 +1,8 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v10";
-const STORAGE = { history: "bierkompass-history-v9", session: "bierkompass-session-v9", settings: "bierkompass-settings-v10" };
+const APP_VERSION = "v11";
+const STORAGE = { history: "bierkompass-history-v11", session: "bierkompass-session-v11", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
@@ -185,6 +185,21 @@ function startSession() {
 }
 
 function broadExamSample(pool, count) {
+  const multiAnswerPool = pool.filter((question) => question.correct.length >= 2);
+  const otherPool = pool.filter((question) => question.correct.length < 2);
+  let multiAnswerCount = Math.min(multiAnswerPool.length, Math.round(count * 0.7));
+  let otherCount = Math.min(otherPool.length, count - multiAnswerCount);
+  if (multiAnswerCount + otherCount < count) {
+    multiAnswerCount = Math.min(multiAnswerPool.length, count - otherCount);
+    otherCount = Math.min(otherPool.length, count - multiAnswerCount);
+  }
+  return shuffle([
+    ...balancedQuestionSample(multiAnswerPool, multiAnswerCount),
+    ...balancedQuestionSample(otherPool, otherCount),
+  ]);
+}
+
+function balancedQuestionSample(pool, count) {
   const groups = new Map();
   for (const question of shuffle(pool)) {
     if (!groups.has(question.category)) groups.set(question.category, []);
@@ -202,7 +217,7 @@ function broadExamSample(pool, count) {
     }
     categories = nextRound;
   }
-  return shuffle(selected);
+  return selected;
 }
 
 function broadQuestionScore(question) {
@@ -241,7 +256,7 @@ function renderQuestion() {
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
   $("#questionText").textContent = question.question;
-  $("#answerHint").textContent = "正しいと思うものをすべて選択してください。正答が0個の場合もあります。";
+  $("#answerHint").textContent = "問題文の条件に当てはまるものをすべて選択してください。選択数は決まっていません。";
   const selected = selectedValues(question.id);
   const inputType = "checkbox";
   $("#choiceList").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
@@ -254,7 +269,7 @@ function renderQuestion() {
   $("#prevButton").disabled = session.current === 0;
   $("#nextButton").disabled = session.current === session.questionIds.length - 1;
   $("#nextButton").hidden = session.mode === "study" && !checked;
-  $("#checkButton").textContent = question.type === "multiple" && selected.length === 0 ? "正しい選択肢はない（0個）として回答" : "回答する";
+  $("#checkButton").textContent = question.type === "multiple" && selected.length === 0 ? "該当する選択肢はない（0個）として回答" : "回答する";
   $("#checkButton").disabled = (question.type === "single" && selected.length === 0) || checked;
   $("#noSelectionButton").hidden = !(session.mode === "exam" && question.type === "multiple" && selected.length === 0);
   $("#noSelectionButton").disabled = checked || (Boolean(session.answered[question.id]) && selected.length === 0);
@@ -316,11 +331,13 @@ function renderFeedback(question) {
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
   $("#feedbackExplanation").textContent = question.explanation;
   const personQuestion = /人物|誰|発明した|導入した|設立した|開発した/.test(question.question)
-    && /パスツール|ハンセン|リンデ|レーウェンフック|ヨーゼフ・グロル|アントン・ドレ|ゼードルマ|アーサー・ギネス|ヤコブセン|ピエール・セリス|ドゥーメンス/.test(question.choices.filter((_, index) => question.correct.includes(index)).join(" "));
+    && /パスツール|ハンセン|リンデ|レーウェンフック|ヨーゼフ・グロル|アントン・ドレ|ゼードルマ|アーサー・ギネス|ヤコブセン|ピエール・セリス|ドゥーメンス/.test(question.choices.join(" "));
+  const asksForIncorrect = /誤っている|適切でない/.test(question.question);
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const isCorrect = question.correct.includes(originalIndex);
-    const learningNote = personQuestion && isCorrect ? ` — ${question.choiceReasons[originalIndex]}` : "";
+    const isFactuallyCorrect = asksForIncorrect ? !isCorrect : isCorrect;
+    const learningNote = personQuestion && isFactuallyCorrect ? ` — ${question.choiceReasons[originalIndex]}` : "";
     const displayKey = String.fromCharCode(65 + displayIndex);
     return `<details><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}${escapeHtml(learningNote)}</summary><p>${escapeHtml(question.choiceReasons[originalIndex])}</p></details>`;
   }).join("");

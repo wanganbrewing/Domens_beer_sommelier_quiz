@@ -19,6 +19,7 @@ def main() -> None:
     assert DATA["metadata"]["examQuestionCount"] == 50
     assert DATA["metadata"]["examMinutes"] == 40
     assert DATA["metadata"]["passingRate"] == 0.5
+    assert DATA["metadata"]["multiAnswerQuestionCount"] == 700
     assert len(QUESTIONS) == 1000
     assert len({question["id"] for question in QUESTIONS}) == 1000
     assert len({question["question"] for question in QUESTIONS}) == 1000
@@ -39,6 +40,7 @@ def main() -> None:
         assert all(question["question"].count(left) == question["question"].count(right) for left, right in [("(", ")"), ("（", "）"), ("「", "」"), ("『", "』")])
         assert not re.search(r"でが挙げる|について、が|としてに|昔なの|入れられの|^が", question["question"])
         assert "2つの基礎的な問い" not in question["question"] and "①" not in question["question"] and "②" not in question["question"]
+        assert not re.search(r"のの(?:年|時期)|正しい.*誤っている|適切な.*誤っている|について.*について", question["question"])
         assert "回答は1つとは限りません" not in question["question"]
         supporting_text = question["explanation"] + "\0" + "\0".join(question["choiceReasons"])
         assert not re.search(r"出典資料|資料が示す|資料では", supporting_text)
@@ -50,10 +52,15 @@ def main() -> None:
         assert not re.search(r"人気の高いビールブランドの流通|ケルシュ用グラス|ピルスナーに用いられる代表的なグラス|何mlのグラスで提供|ドラフト（樽生）設備|コースメニュー", question["question"])
     answer_counts = Counter(len(question["correct"]) for question in QUESTIONS)
     assert set(answer_counts) == {0, 1, 2, 3}
+    assert sum(count for answers, count in answer_counts.items() if answers >= 2) == 700
+    negative_count = sum(bool(re.search(r"誤っている|適切でない", question["question"])) for question in QUESTIONS)
+    assert 500 <= negative_count <= 600
     assert paired_count == 0
     assert 'const inputType = "checkbox"' in APP_JS
     assert 'type="radio"' not in APP_JS
     assert "broadExamSample(pool, count)" in APP_JS
+    assert "Math.round(count * 0.7)" in APP_JS
+    assert "balancedQuestionSample(multiAnswerPool, multiAnswerCount)" in APP_JS
     assert "broadQuestionScore(b) - broadQuestionScore(a)" in APP_JS
     assert "広く浅く" in INDEX_HTML
     assert 'let mode = "study"' in APP_JS
@@ -65,9 +72,9 @@ def main() -> None:
     assert 'const order = session.optionOrders[item.id]' in APP_JS
     assert 'id="accessGate"' in INDEX_HTML
     assert "ACCESS_PASSWORD_HASH" in APP_JS and 'input.value === "beer"' not in APP_JS
-    assert "personQuestion && isCorrect" in APP_JS
+    assert "personQuestion && isFactuallyCorrect" in APP_JS
     assert "アーサー・ギネス" in APP_JS and "ヤコブセン" in APP_JS and "ピエール・セリス" in APP_JS
-    assert "正しい選択肢はない（0個）として回答" in APP_JS and "正しい選択肢はない（0個）として回答" in INDEX_HTML
+    assert "該当する選択肢はない（0個）として回答" in APP_JS and "該当する選択肢はない（0個）として回答" in INDEX_HTML
     assert 'name="robots" content="noindex, nofollow' in INDEX_HTML
     assert "User-agent: *" in ROBOTS_TXT and "Disallow: /" in ROBOTS_TXT
     assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 350, "B": 400, "C": 250}
@@ -78,7 +85,7 @@ def main() -> None:
     assert not ({category["id"] for category in DATA["metadata"]["categories"]} & excluded_categories)
     question_by_id = {question["id"]: question for question in QUESTIONS}
     representative_ids = {"BK-0166", "BK-0168", "BK-0176", "BK-0181", "BK-0370", "BK-0626", "BK-0630", "BK-0645", "BK-0648", "BK-0672"}
-    assert all("人物は誰" in question_by_id[question_id]["question"] for question_id in representative_ids)
+    assert all("人物" in question_by_id[question_id]["question"] for question_id in representative_ids)
     assert all("リンドナー" not in question_by_id[question_id]["question"] + " ".join(question_by_id[question_id]["choices"]) for question_id in representative_ids)
     assert len(DATA["metadata"]["brewingBoostIds"]) == 50
     assert all(question_by_id[question_id]["category"] in {"brewing_process", "fermentation"} for question_id in DATA["metadata"]["brewingBoostIds"])
