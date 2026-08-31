@@ -229,8 +229,7 @@ def rewrite_reason(reason: str, choice: str, is_correct: bool) -> str:
     verdict_marker = reason.find("」は")
     verdict_end = reason.find("。", verdict_marker + 2) if verdict_marker >= 0 else -1
     tail = reason[verdict_end + 1 :].strip() if verdict_end >= 0 else ""
-    prefix = f"「{choice}」は設問の条件に合う正しい内容です。" if is_correct else f"「{choice}」は正しい内容ではないため、選択対象ではありません。"
-    return prefix + tail
+    return tail
 
 
 def main() -> None:
@@ -269,12 +268,7 @@ def main() -> None:
         question["choices"] = [actual, *low_choices]
         question["correct"] = [0]
         question["explanation"] = f"{description}の代表的なアルコール度数範囲は{actual}です。"
-        question["choiceReasons"] = [
-            f"{actual}は、このスタイルの正しい度数範囲です。",
-            f"{low_choices[0]}は、このスタイルの度数範囲ではありません。",
-            f"{low_choices[1]}は、このスタイルの度数範囲ではありません。",
-            f"{low_choices[2]}は、このスタイルの度数範囲ではありません。",
-        ]
+        question["choiceReasons"] = ["", "", "", ""]
 
     answer_counts = Counter(len(question["correct"]) for question in data["questions"])
     multi_count = sum(count for answers, count in answer_counts.items() if answers >= 2)

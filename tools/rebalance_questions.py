@@ -17,6 +17,22 @@ VACUOUS_REASON_MARKERS = (
     "条件に当てはまらないため、この設問では選択しません。",
     "正しい内容なので、この否定形の設問では選択しません。",
     "設問の条件に当てはまらないため、選択対象です。",
+    "正しい回答は",
+    "該当箇所の記述と一致しません",
+    "正しい数値範囲は",
+    "この設問の正答は",
+    "正答の条件に合います",
+    "正答の数値範囲に合います",
+    "正しい内容は",
+    "出典内容とは異なる説明です",
+    "正しい内容ではないため、選択対象ではありません",
+    "設問の条件に合う正しい内容です",
+    "設問の条件に合う正しいスタイルです",
+    "設問の条件に合わないため、選択対象ではありません",
+    "正しくは「",
+    "の特徴として正しい内容です",
+    "の度数範囲ではありません",
+    "の正しい度数範囲です",
 )
 
 
@@ -186,7 +202,10 @@ def main() -> None:
                 question["question"] = cleaned
                 changed += 1
             for index, reason in enumerate(question["choiceReasons"]):
-                if any(marker in reason for marker in VACUOUS_REASON_MARKERS):
+                if reason.strip() and (
+                    reason.strip() == question["explanation"].strip()
+                    or any(marker in reason for marker in VACUOUS_REASON_MARKERS)
+                ):
                     question["choiceReasons"][index] = ""
                     removed_reasons += 1
         QUESTIONS_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

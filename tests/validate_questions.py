@@ -168,9 +168,30 @@ def main() -> None:
         "条件に当てはまらないため、この設問では選択しません。",
         "正しい内容なので、この否定形の設問では選択しません。",
         "設問の条件に当てはまらないため、選択対象です。",
+        "正しい回答は",
+        "該当箇所の記述と一致しません",
+        "正しい数値範囲は",
+        "この設問の正答は",
+        "正答の条件に合います",
+        "正答の数値範囲に合います",
+        "正しい内容は",
+        "出典内容とは異なる説明です",
+        "正しい内容ではないため、選択対象ではありません",
+        "設問の条件に合う正しい内容です",
+        "設問の条件に合う正しいスタイルです",
+        "設問の条件に合わないため、選択対象ではありません",
+        "正しくは「",
+        "の特徴として正しい内容です",
+        "の度数範囲ではありません",
+        "の正しい度数範囲です",
     )
     assert not any(marker in reason for question in QUESTIONS for reason in question["choiceReasons"] for marker in vacuous_markers)
-    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 208
+    assert not any(
+        reason.strip() and reason.strip() == question["explanation"].strip()
+        for question in QUESTIONS
+        for reason in question["choiceReasons"]
+    )
+    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2438
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313
     assert DATA["metadata"]["deduplication"]["removedSourceQuestionCount"] == 2
     print(f"OK: 685 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
