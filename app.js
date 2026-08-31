@@ -1,7 +1,8 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const STORAGE = { history: "bierkompass-history-v5", session: "bierkompass-session-v5", settings: "bierkompass-settings-v5" };
+const APP_VERSION = "v6";
+const STORAGE = { history: "bierkompass-history-v6", session: "bierkompass-session-v6", settings: "bierkompass-settings-v6" };
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -31,7 +32,7 @@ function categoryName(id) { return data.metadata.categories.find((category) => c
 
 async function init() {
   try {
-    const response = await fetch("questions.json", { cache: "no-store" });
+    const response = await fetch(`questions.json?${APP_VERSION}`, { cache: "no-store" });
     if (!response.ok) throw new Error(`問題データを取得できませんでした (${response.status})`);
     data = await response.json();
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
@@ -153,6 +154,7 @@ function broadExamSample(pool, count) {
     if (!groups.has(question.category)) groups.set(question.category, []);
     groups.get(question.category).push(question);
   }
+  for (const group of groups.values()) group.sort((a, b) => broadQuestionScore(b) - broadQuestionScore(a));
   let categories = shuffle([...groups.keys()]);
   const selected = [];
   while (selected.length < count && categories.length) {
@@ -165,6 +167,15 @@ function broadExamSample(pool, count) {
     categories = nextRound;
   }
   return shuffle(selected);
+}
+
+function broadQuestionScore(question) {
+  let score = { A: 4, B: 2, C: 0 }[question.frequencyTier] || 0;
+  if (question.question.includes("2つの基礎的な問い")) score += 5;
+  if (!/[0-9０-９]{3,}|何年|何L|何ml|何℃/.test(question.question)) score += 2;
+  if (question.question.length < 180) score += 1;
+  if (Math.max(...question.choices.map((choice) => choice.length)) < 90) score += 1;
+  return score;
 }
 
 function showView(name) {
@@ -365,5 +376,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool, broadExamSample };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, broadExamSample, broadQuestionScore };
 init();
