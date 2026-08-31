@@ -51,6 +51,8 @@ def main() -> None:
     assert "broadExamSample(pool, count)" in APP_JS
     assert "broadQuestionScore(b) - broadQuestionScore(a)" in APP_JS
     assert "広く浅く" in INDEX_HTML
+    assert 'id="accessGate"' in INDEX_HTML
+    assert "ACCESS_PASSWORD_HASH" in APP_JS and 'input.value === "beer"' not in APP_JS
     assert Counter(question["frequencyTier"] for question in QUESTIONS) == {"A": 350, "B": 400, "C": 250}
     assert sum(category["count"] for category in DATA["metadata"]["categories"]) == 1000
     print(f"OK: 1,000 checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; clear paired questions={paired_count}; unique IDs/stems/signatures; sources and 3 frequency tiers")

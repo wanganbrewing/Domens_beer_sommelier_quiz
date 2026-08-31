@@ -1,8 +1,10 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v6";
+const APP_VERSION = "v7";
 const STORAGE = { history: "bierkompass-history-v6", session: "bierkompass-session-v6", settings: "bierkompass-settings-v6" };
+const ACCESS_KEY = "bierkompass-access-v1";
+const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -20,6 +22,39 @@ function loadJson(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
 }
 function saveJson(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+function unlockAccess() {
+  document.body.classList.remove("access-locked");
+  $("#accessGate").hidden = true;
+  $(".site-header").removeAttribute("aria-hidden");
+  $("#app").removeAttribute("aria-hidden");
+}
+async function startAccessControl() {
+  if (localStorage.getItem(ACCESS_KEY) === "granted") {
+    unlockAccess();
+    await init();
+    return;
+  }
+  const form = $("#accessForm");
+  const input = $("#accessPassword");
+  const message = $("#accessMessage");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (await sha256(input.value) !== ACCESS_PASSWORD_HASH) {
+      message.textContent = "パスワードが違います。";
+      input.select();
+      return;
+    }
+    localStorage.setItem(ACCESS_KEY, "granted");
+    unlockAccess();
+    await init();
+  });
+  input.focus();
+}
 function shuffle(values) {
   const result = [...values];
   for (let i = result.length - 1; i > 0; i -= 1) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; }
@@ -377,4 +412,4 @@ function updateStats() {
 function updateHome() { updateStats(); updatePoolCount(); }
 
 window.BierKompass = { scoreQuestion, sameSet, filteredPool, broadExamSample, broadQuestionScore };
-init();
+startAccessControl();
