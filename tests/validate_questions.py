@@ -73,6 +73,7 @@ def main() -> None:
     assert "balancedQuestionSample(multiAnswerPool, multiAnswerCount)" in APP_JS
     assert "broadQuestionScore(b) - broadQuestionScore(a)" in APP_JS
     assert "広く浅く" in INDEX_HTML
+    assert "知識の現在地" not in INDEX_HTML and "次の一杯" not in INDEX_HTML
     assert 'let mode = "study"' in APP_JS
     assert INDEX_HTML.index('data-mode="study"') < INDEX_HTML.index('data-mode="exam"')
     assert 'data-mode="study" role="tab" aria-selected="true"' in INDEX_HTML
