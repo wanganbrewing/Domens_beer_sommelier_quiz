@@ -56,6 +56,13 @@ def main() -> None:
     assert "broadExamSample(pool, count)" in APP_JS
     assert "broadQuestionScore(b) - broadQuestionScore(a)" in APP_JS
     assert "広く浅く" in INDEX_HTML
+    assert 'let mode = "study"' in APP_JS
+    assert INDEX_HTML.index('data-mode="study"') < INDEX_HTML.index('data-mode="exam"')
+    assert 'data-mode="study" role="tab" aria-selected="true"' in INDEX_HTML
+    assert 'tier.id === "A" ? "checked" : ""' in APP_JS
+    assert 'session.optionOrders[question.id].map((originalIndex, displayIndex)' in APP_JS
+    assert 'const displayKey = String.fromCharCode(65 + displayIndex)' in APP_JS
+    assert 'const order = session.optionOrders[item.id]' in APP_JS
     assert 'id="accessGate"' in INDEX_HTML
     assert "ACCESS_PASSWORD_HASH" in APP_JS and 'input.value === "beer"' not in APP_JS
     assert "personQuestion && isCorrect" in APP_JS

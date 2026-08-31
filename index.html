@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass 1000 | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1000</small></span></a>
-    <div class="header-status"><small class="version-badge">v9</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v10</small><span id="headerProgress">学習記録 0 / 1000</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -43,14 +43,14 @@
       </div>
 
       <section class="dashboard" aria-labelledby="dashboardTitle">
-        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="exam" role="tab" aria-selected="true">最終試験</button><button class="mode-tab" data-mode="study" role="tab" aria-selected="false">学習モード</button></div></div>
+        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="study" role="tab" aria-selected="true">学習モード</button><button class="mode-tab" data-mode="exam" role="tab" aria-selected="false">最終試験</button></div></div>
         <div class="config-grid">
           <fieldset class="config-card frequency-card"><legend><span>01</span> 出題予想頻度</legend><p>複数選択できます。選んだ頻度の問題だけを出題します。</p><div id="frequencyFilters" class="frequency-options"></div></fieldset>
           <fieldset class="config-card category-card"><legend><span>02</span> 分野</legend><div class="select-tools"><p>学習したい分野を選択</p><button type="button" class="text-button" id="toggleCategories">すべて解除</button></div><div id="categoryFilters" class="category-options"></div></fieldset>
-          <fieldset class="config-card history-card" id="historyFilterCard" hidden><legend><span>03</span> 学習履歴</legend><label class="select-label" for="historyFilter">出題対象</label><select id="historyFilter"><option value="all">全問題</option><option value="unanswered">未回答のみ</option><option value="wrong">過去に不正解だった問題のみ</option><option value="not-mastered">正解済みを除外</option></select></fieldset>
+          <fieldset class="config-card history-card" id="historyFilterCard"><legend><span>03</span> 学習履歴</legend><label class="select-label" for="historyFilter">出題対象</label><select id="historyFilter"><option value="all">全問題</option><option value="unanswered">未回答のみ</option><option value="wrong">過去に不正解だった問題のみ</option><option value="not-mastered">正解済みを除外</option></select></fieldset>
         </div>
-        <section class="final-exam-guide" id="finalExamGuide" aria-labelledby="finalExamTitle"><div><p class="eyebrow">FINAL EXAM</p><h3 id="finalExamTitle">最終試験</h3><p>選択した分野から均等に、広く浅く出題します。正答数は0・1・複数のいずれもあります。</p></div><ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分</span></li><li><b>複数</b><span>選択式</span></li><li><b>0〜3</b><span>正答数</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>合格基準</span></li></ol></section>
-        <div class="launch-panel"><div class="launch-summary"><span id="poolCount">対象 1,000問</span><strong id="modeSummary">50問・40分・合格基準50%</strong></div><button class="primary launch" id="startButton" type="button"><span>最終試験を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
+        <section class="final-exam-guide" id="finalExamGuide" hidden aria-labelledby="finalExamTitle"><div><p class="eyebrow">FINAL EXAM</p><h3 id="finalExamTitle">最終試験</h3><p>選択した分野から均等に、広く浅く出題します。正答数は0・1・複数のいずれもあります。</p></div><ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分</span></li><li><b>複数</b><span>選択式</span></li><li><b>0〜3</b><span>正答数</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>合格基準</span></li></ol></section>
+        <div class="launch-panel"><div class="launch-summary"><span id="poolCount">対象 1,000問</span><strong id="modeSummary">1問ずつ回答・解説と出典を表示</strong></div><button class="primary launch" id="startButton" type="button"><span>学習を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
       </section>
       <section class="stats" aria-label="学習状況"><article><span>MASTERED</span><strong id="masteredStat">0</strong><small>正解済み</small></article><article><span>ATTEMPTS</span><strong id="attemptStat">0</strong><small>累計回答</small></article><article><span>ACCURACY</span><strong id="accuracyStat">—</strong><small>完全正解率</small></article><article><span>QUESTION BANK</span><strong>1,000</strong><small>全問題</small></article></section>
     </section>
@@ -78,6 +78,6 @@
   </main>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=9" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=10" defer></script>
 </body>
 </html>
