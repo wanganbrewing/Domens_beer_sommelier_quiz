@@ -89,23 +89,23 @@ STYLE_GROUPS = [
 ]
 
 DISTRACTOR_NAMES_BY_GROUP = {
-    "pale_lager": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "amber_lager": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "dark_lager": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "strong_lager": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "smoked_lager": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "wheat": ("アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA"),
-    "hybrid": ("アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA"),
-    "sour": ("ジャーマン・ピルスナー", "アイスボック"),
-    "belgian": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト"),
-    "farmhouse": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト"),
-    "british": ("ゴーゼ", "インペリアル／ダブルIPA"),
-    "strong_british": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "dark_british": ("ゴーゼ", "ヘーフェ・ヴァイス"),
-    "hoppy": ("ゴーゼ", "アイリッシュ・ドライスタウト"),
-    "strong_hoppy": ("ゴーゼ", "アイリッシュ・ドライスタウト"),
-    "fruit": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト"),
-    "farmhouse_raw": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト"),
+    "pale_lager": ("ゴーゼ", "ヘーフェ・ヴァイス", "アイリッシュ・ドライスタウト"),
+    "amber_lager": ("ゴーゼ", "ヘーフェ・ヴァイス", "アイリッシュ・ドライスタウト"),
+    "dark_lager": ("ゴーゼ", "ヘーフェ・ヴァイス", "ジャーマン・ピルスナー"),
+    "strong_lager": ("ゴーゼ", "ヘーフェ・ヴァイス", "ジャーマン・ピルスナー"),
+    "smoked_lager": ("ゴーゼ", "ヘーフェ・ヴァイス", "ジャーマン・ピルスナー"),
+    "wheat": ("アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA", "ゴーゼ"),
+    "hybrid": ("アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA", "ゴーゼ"),
+    "sour": ("ジャーマン・ピルスナー", "アイスボック", "インペリアル／ダブルIPA"),
+    "belgian": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト", "ゴーゼ"),
+    "farmhouse": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA"),
+    "british": ("ゴーゼ", "インペリアル／ダブルIPA", "ヘーフェ・ヴァイス"),
+    "strong_british": ("ゴーゼ", "ヘーフェ・ヴァイス", "ジャーマン・ピルスナー"),
+    "dark_british": ("ゴーゼ", "ヘーフェ・ヴァイス", "ジャーマン・ピルスナー"),
+    "hoppy": ("ゴーゼ", "アイリッシュ・ドライスタウト", "ミュンヘナー・ヘレス"),
+    "strong_hoppy": ("ゴーゼ", "アイリッシュ・ドライスタウト", "ミュンヘナー・ヘレス"),
+    "fruit": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト", "ヘーフェ・ヴァイス"),
+    "farmhouse_raw": ("ジャーマン・ピルスナー", "アイリッシュ・ドライスタウト", "インペリアル／ダブルIPA"),
 }
 
 EXCLUDED_STYLE_NAMES = {"ジャパニーズ・ドライラガー"}
@@ -161,45 +161,29 @@ def build_question(
     question_id: str,
     tier: str,
     style: dict,
-    distractors: tuple[dict, dict],
-    fields: tuple[str, str],
+    distractors: tuple[dict, dict, dict],
+    field: str,
 ) -> dict:
     field_labels = {
         "detail": "詳細説明",
         "definition": "特徴定義",
         "ingredients": "原材料・工程",
     }
-    first_field, second_field = fields
-    first_distractor, second_distractor = distractors
-    choices = [
-        f"{field_labels[first_field]}：{style[first_field]}",
-        f"{field_labels[first_field]}：{first_distractor[first_field]}",
-        f"{field_labels[second_field]}：{style[second_field]}",
-        f"{field_labels[second_field]}：{second_distractor[second_field]}",
-    ]
+    choices = [style[field], *(distractor[field] for distractor in distractors)]
     explanation = (
-        f"{style['name']}は、外観・香味、際立つ特徴、原材料・工程から整理できます。"
-        "正答の2項目は同じスタイル像を示します。"
+        f"{style['name']}の{field_labels[field]}として合致するのは、正答として示した内容です。"
     )
     reasons = [
-        f"この{field_labels[first_field]}は{style['name']}に合致します。",
-        (
-            f"これは{first_distractor['name']}の{field_labels[first_field]}であり、"
-            f"{style['name']}には合致しません。"
-        ),
-        f"この{field_labels[second_field]}は{style['name']}に合致します。",
-        (
-            f"これは{second_distractor['name']}の{field_labels[second_field]}であり、"
-            f"{style['name']}には合致しません。"
-        ),
+        f"この{field_labels[field]}は{style['name']}に合致します。",
+        *(f"これは{distractor['name']}の{field_labels[field]}であり、{style['name']}には合致しません。" for distractor in distractors),
     ]
     page = style["page"]
     return {
         "category": "beer_styles",
         "type": "multiple",
-        "question": f"{style['name']}に合致する詳細説明・特徴定義・原材料／工程をすべて選んでください。",
+        "question": f"{style['name']}の{field_labels[field]}として合致するものを選んでください。",
         "choices": choices,
-        "correct": [0, 2],
+        "correct": [0],
         "explanation": explanation,
         "choiceReasons": reasons,
         "sources": [
@@ -237,17 +221,13 @@ def main() -> None:
             raise ValueError(f"{question_id} is not a beer style question")
         distractor_names = DISTRACTOR_NAMES_BY_GROUP[style["group"]]
         distractors = tuple(styles_by_name[name] for name in distractor_names)
-        field_pairs = (
-            ("detail", "definition"),
-            ("definition", "ingredients"),
-            ("detail", "ingredients"),
-        )
+        fields = ("detail", "definition", "ingredients")
         replacements[question_id] = build_question(
             question_id,
             old["frequencyTier"],
             style,
             distractors,
-            field_pairs[index % len(field_pairs)],
+            fields[index % len(fields)],
         )
 
     data["questions"] = [replacements.get(question["id"], question) for question in data["questions"]]
@@ -265,7 +245,7 @@ def main() -> None:
         "source": SOURCE_FILENAME,
         "questionCount": len(REPLACEMENT_IDS),
         "questionIds": REPLACEMENT_IDS,
-        "policy": "各スタイルの詳細説明・特徴定義・原材料工程を問う。誤答は近縁スタイルではなく、違いが明確な別スタイルから採用する。日本固有スタイルは従来方針に従い除外する。",
+        "policy": "1問につき詳細説明・特徴定義・原材料工程の1種類だけを問い、全選択肢を同じ種類に統一する。誤答は違いが明確な別スタイルから採用し、日本固有スタイルは除外する。",
     }
     args.questions.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"OK: integrated {len(replacements)} style-guide questions; tiers={dict(sorted(tier_counts.items()))}")
