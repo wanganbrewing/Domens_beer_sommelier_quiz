@@ -87,8 +87,9 @@ def main() -> None:
     assert 'const order = session.optionOrders[item.id]' in APP_JS
     assert 'id="accessGate"' in INDEX_HTML
     assert "ACCESS_PASSWORD_HASH" in APP_JS and 'input.value === "beer"' not in APP_JS
-    assert "personQuestion && isFactuallyCorrect" in APP_JS
-    assert "アーサー・ギネス" in APP_JS and "ヤコブセン" in APP_JS and "ピエール・セリス" in APP_JS
+    assert "personQuestion && isFactuallyCorrect" not in APP_JS
+    serialized_data = json.dumps(DATA, ensure_ascii=False)
+    assert all(name in serialized_data for name in ("アーサー・ギネス", "ヤコブセン", "ピエール・セリス"))
     assert "該当する選択肢はない（0個）として回答" in APP_JS and "該当する選択肢はない（0個）として回答" in INDEX_HTML
     assert 'name="robots" content="noindex, nofollow' in INDEX_HTML
     assert "User-agent: *" in ROBOTS_TXT and "Disallow: /" in ROBOTS_TXT
@@ -123,8 +124,7 @@ def main() -> None:
     assert '.map-fab{display:none!important}' in STYLES_CSS
     assert '.mobile-map-trigger{display:inline-flex' in STYLES_CSS
     assert '.final-exam-guide[hidden]{display:none}' in STYLES_CSS
-    assert "正答・選択肢の解説・出典を見る" in APP_JS
-    assert "正答・解説・出典を見る" in APP_JS
+    assert "正答・選択肢判定・解説・出典を見る" in APP_JS
     assert "制作：Wangan Brewing" not in INDEX_HTML
     assert "制作支援：OpenAI Codex" not in INDEX_HTML
     assert "Doemens Biersommelier関連資料を参照" in INDEX_HTML
@@ -184,6 +184,7 @@ def main() -> None:
         "の特徴として正しい内容です",
         "の度数範囲ではありません",
         "の正しい度数範囲です",
+        "正しい説明です。",
     )
     assert not any(marker in reason for question in QUESTIONS for reason in question["choiceReasons"] for marker in vacuous_markers)
     assert not any(
@@ -191,7 +192,19 @@ def main() -> None:
         for question in QUESTIONS
         for reason in question["choiceReasons"]
     )
-    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2438
+    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 2435
+    assert not any(
+        len(nonempty := [reason.strip() for reason in question["choiceReasons"] if reason.strip()]) >= 2
+        and len(set(nonempty)) == 1
+        for question in QUESTIONS
+    )
+    question_by_id = {question["id"]: question for question in QUESTIONS}
+    for question_id in ("BK-0187", "BK-0213"):
+        reasons = question_by_id[question_id]["choiceReasons"]
+        assert all(reason.strip() for reason in reasons)
+        assert len(set(reasons)) == len(reasons)
+    assert 'class="choice-verdict"' in APP_JS
+    assert 'if (!reason) return "";' not in APP_JS
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313
     assert DATA["metadata"]["deduplication"]["removedSourceQuestionCount"] == 2
     print(f"OK: 685 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
