@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v21";
+const APP_VERSION = "v22";
 const STORAGE = { history: "bierkompass-history-v19", session: "bierkompass-session-v19", settings: "bierkompass-settings-v10" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -347,11 +347,13 @@ function renderFeedback(question) {
     && /パスツール|ハンセン|リンデ|レーウェンフック|ヨーゼフ・グロル|アントン・ドレ|ゼードルマ|アーサー・ギネス|ヤコブセン|ピエール・セリス|ドゥーメンス/.test(question.choices.join(" "));
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
+    const reason = question.choiceReasons[originalIndex].trim();
+    if (!reason) return "";
     const isCorrect = question.correct.includes(originalIndex);
     const isFactuallyCorrect = isCorrect;
     const learningNote = personQuestion && isFactuallyCorrect ? ` — ${question.choiceReasons[originalIndex]}` : "";
     const displayKey = String.fromCharCode(65 + displayIndex);
-    return `<details open><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}${escapeHtml(learningNote)}</summary><p>${escapeHtml(question.choiceReasons[originalIndex])}</p></details>`;
+    return `<details open><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}${escapeHtml(learningNote)}</summary><p>${escapeHtml(reason)}</p></details>`;
   }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}</p>`).join("")}`;
 }
@@ -359,9 +361,11 @@ function renderFeedback(question) {
 function renderReviewChoiceReasons(question, order) {
   return order.map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
+    const reason = question.choiceReasons[originalIndex].trim();
+    if (!reason) return "";
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    return `<details open><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}</summary><p>${escapeHtml(question.choiceReasons[originalIndex])}</p></details>`;
+    return `<details open><summary>${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}</summary><p>${escapeHtml(reason)}</p></details>`;
   }).join("");
 }
 
@@ -431,7 +435,8 @@ function showResult() {
       : "該当なし（0個）";
     const choiceReasons = renderReviewChoiceReasons(question, order);
     const sources = question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／");
-    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>正答・全選択肢の解説・出典を見る</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p><div class="choice-reasons review-choice-reasons">${choiceReasons}</div><p><strong>出典：</strong>${sources}</p></details></article>`;
+    const reviewLabel = choiceReasons ? "正答・選択肢の解説・出典を見る" : "正答・解説・出典を見る";
+    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p>${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
   }).join("");
 }
 

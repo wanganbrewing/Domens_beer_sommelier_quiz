@@ -12,6 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 QUESTIONS_PATH = ROOT / "questions.json"
 TARGET_MULTI_ANSWER = 700
 NEGATIVE_MARKERS = ("適切でない", "誤っている", "正しくない", "挙げられていない", "含まれない", "該当しない")
+VACUOUS_REASON_MARKERS = (
+    "設問の条件に当てはまるため、選択対象です。",
+    "条件に当てはまらないため、この設問では選択しません。",
+    "正しい内容なので、この否定形の設問では選択しません。",
+    "設問の条件に当てはまらないため、選択対象です。",
+)
 
 
 def is_negative(text: str) -> bool:
@@ -148,36 +154,19 @@ def complement(question: dict) -> list[int]:
 
 
 def convert_positive_question(question: dict, new_stem: str) -> None:
-    original_correct = question["correct"][0]
-    old_reasons = list(question["choiceReasons"])
     question["question"] = new_stem
     question["correct"] = complement(question)
     question["explanation"] = f"この設問では誤っている選択肢を選びます。{question['explanation']}"
-    question["choiceReasons"] = [
-        (
-            f"「{choice}」は正しい内容なので、この否定形の設問では選択しません。{old_reasons[index]}"
-            if index == original_correct
-            else f"「{choice}」は設問の条件に当てはまらないため、選択対象です。{old_reasons[index]}"
-        )
-        for index, choice in enumerate(question["choices"])
-    ]
+    question["choiceReasons"] = ["" for _ in question["choices"]]
 
 
 def convert_negative_question(question: dict, new_stem: str) -> None:
     original_false = question["correct"][0]
-    old_reasons = list(question["choiceReasons"])
     false_choice = question["choices"][original_false]
     question["question"] = new_stem
     question["correct"] = complement(question)
     question["explanation"] = f"「{false_choice}」は条件に当てはまりません。したがって、それ以外の選択肢が正答です。{question['explanation']}"
-    question["choiceReasons"] = [
-        (
-            f"「{choice}」は条件に当てはまらないため、この設問では選択しません。{old_reasons[index]}"
-            if index == original_false
-            else f"「{choice}」は設問の条件に当てはまるため、選択対象です。"
-        )
-        for index, choice in enumerate(question["choices"])
-    ]
+    question["choiceReasons"] = ["" for _ in question["choices"]]
 
 
 def main() -> None:
@@ -190,13 +179,18 @@ def main() -> None:
     questions = data["questions"]
     if args.clean_only:
         changed = 0
+        removed_reasons = 0
         for question in questions:
             cleaned = clean_stem(question["question"])
             if cleaned != question["question"]:
                 question["question"] = cleaned
                 changed += 1
+            for index, reason in enumerate(question["choiceReasons"]):
+                if any(marker in reason for marker in VACUOUS_REASON_MARKERS):
+                    question["choiceReasons"][index] = ""
+                    removed_reasons += 1
         QUESTIONS_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        print(f"cleaned question stems: {changed}")
+        print(f"cleaned question stems: {changed}; removed vacuous choice reasons: {removed_reasons}")
         return
     existing_multi = sum(len(question["correct"]) >= 2 for question in questions)
     conversions_needed = TARGET_MULTI_ANSWER - existing_multi

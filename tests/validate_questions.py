@@ -123,7 +123,8 @@ def main() -> None:
     assert '.map-fab{display:none!important}' in STYLES_CSS
     assert '.mobile-map-trigger{display:inline-flex' in STYLES_CSS
     assert '.final-exam-guide[hidden]{display:none}' in STYLES_CSS
-    assert "正答・全選択肢の解説・出典を見る" in APP_JS
+    assert "正答・選択肢の解説・出典を見る" in APP_JS
+    assert "正答・解説・出典を見る" in APP_JS
     assert "renderReviewChoiceReasons(question, order)" in APP_JS
     assert APP_JS.count("<details open><summary>") >= 2
     blackcurrant_ids = {"BK-0034", "BK-0480"}
@@ -157,6 +158,14 @@ def main() -> None:
         )
         assert all(not choice.startswith(("詳細説明：", "特徴定義：", "原材料・工程：")) for choice in question["choices"])
     assert not any(re.search(r"情報源|Sources?|参照元|情報の出典", question["question"], re.IGNORECASE) for question in QUESTIONS)
+    vacuous_markers = (
+        "設問の条件に当てはまるため、選択対象です。",
+        "条件に当てはまらないため、この設問では選択しません。",
+        "正しい内容なので、この否定形の設問では選択しません。",
+        "設問の条件に当てはまらないため、選択対象です。",
+    )
+    assert not any(marker in reason for question in QUESTIONS for reason in question["choiceReasons"] for marker in vacuous_markers)
+    assert sum(not reason.strip() for question in QUESTIONS for reason in question["choiceReasons"]) == 208
     assert DATA["metadata"]["deduplication"]["removedDuplicateCount"] == 313
     assert DATA["metadata"]["deduplication"]["removedSourceQuestionCount"] == 2
     print(f"OK: 685 unique checkbox questions; answer counts={dict(sorted(answer_counts.items()))}; paired questions={paired_count}; representative people and numeric distractors checked; sources and 3 frequency tiers")
