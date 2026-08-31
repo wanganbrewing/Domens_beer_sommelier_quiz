@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#091a23">
   <meta name="description" content="Doemens Biersommelier試験対策の非公式Web問題集。全1,000問、模擬試験・頻度別学習・履歴保存に対応。">
   <title>BierKompass 1000 | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -23,26 +23,27 @@
       </div>
 
       <section class="dashboard" aria-labelledby="dashboardTitle">
-        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="exam" role="tab" aria-selected="true">模擬試験</button><button class="mode-tab" data-mode="study" role="tab" aria-selected="false">学習モード</button></div></div>
+        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="exam" role="tab" aria-selected="true">最終試験</button><button class="mode-tab" data-mode="study" role="tab" aria-selected="false">学習モード</button></div></div>
         <div class="config-grid">
           <fieldset class="config-card frequency-card"><legend><span>01</span> 出題予想頻度</legend><p>複数選択できます。選んだ頻度の問題だけを出題します。</p><div id="frequencyFilters" class="frequency-options"></div></fieldset>
           <fieldset class="config-card category-card"><legend><span>02</span> 分野</legend><div class="select-tools"><p>学習したい分野を選択</p><button type="button" class="text-button" id="toggleCategories">すべて解除</button></div><div id="categoryFilters" class="category-options"></div></fieldset>
           <fieldset class="config-card history-card" id="historyFilterCard" hidden><legend><span>03</span> 学習履歴</legend><label class="select-label" for="historyFilter">出題対象</label><select id="historyFilter"><option value="all">全問題</option><option value="unanswered">未回答のみ</option><option value="wrong">過去に不正解だった問題のみ</option><option value="not-mastered">正解済みを除外</option></select></fieldset>
         </div>
-        <div class="launch-panel"><div class="launch-summary"><span id="poolCount">対象 1,000問</span><strong id="modeSummary">50問・40分・合格基準50%</strong></div><button class="primary launch" id="startButton" type="button"><span>模擬試験を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
+        <section class="final-exam-guide" id="finalExamGuide" aria-labelledby="finalExamTitle"><div><p class="eyebrow">FINAL EXAM</p><h3 id="finalExamTitle">最終試験</h3><p>旧試験規則を参考にした筆記試験形式です。</p></div><ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分</span></li><li><b>複数</b><span>選択式</span></li><li><b>0〜3</b><span>正答数</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>合格基準</span></li></ol></section>
+        <div class="launch-panel"><div class="launch-summary"><span id="poolCount">対象 1,000問</span><strong id="modeSummary">50問・40分・合格基準50%</strong></div><button class="primary launch" id="startButton" type="button"><span>最終試験を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
       </section>
       <section class="stats" aria-label="学習状況"><article><span>MASTERED</span><strong id="masteredStat">0</strong><small>正解済み</small></article><article><span>ATTEMPTS</span><strong id="attemptStat">0</strong><small>累計回答</small></article><article><span>ACCURACY</span><strong id="accuracyStat">—</strong><small>完全正解率</small></article><article><span>QUESTION BANK</span><strong>1,000</strong><small>全問題</small></article></section>
     </section>
 
     <section id="sessionView" class="view" hidden>
-      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><div class="session-meta"><span id="sessionModeBadge">模擬試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" aria-live="polite">40:00</time></div></div>
+      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><div class="session-meta"><span id="sessionModeBadge">最終試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" aria-live="polite">40:00</time></div></div>
       <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
       <div class="session-layout">
         <article class="question-panel">
           <div class="question-tags"><span id="frequencyTag"></span><span id="categoryTag"></span><span id="typeTag"></span></div><h2 id="questionText"></h2><p class="answer-hint" id="answerHint"></p>
           <form id="answerForm"><div id="choiceList" class="choice-list"></div></form>
           <section id="feedbackPanel" class="feedback" hidden aria-live="polite"><div id="feedbackVerdict" class="feedback-verdict"></div><p id="feedbackExplanation"></p><div id="choiceReasons" class="choice-reasons"></div><div id="sourceList" class="sources"></div></section>
-          <div class="question-actions"><button class="ghost" id="clearSelectionButton" type="button">選択をクリア</button><div class="action-spacer"></div><button class="secondary" id="prevButton" type="button">← 前へ</button><button class="primary" id="checkButton" type="button">回答する</button><button class="primary" id="nextButton" type="button">次へ →</button></div>
+          <div class="question-actions"><button class="ghost" id="clearSelectionButton" type="button">選択をクリア</button><button class="ghost" id="noSelectionButton" type="button">選択なしを回答として記録</button><div class="action-spacer"></div><button class="secondary" id="prevButton" type="button">← 前へ</button><button class="primary" id="checkButton" type="button">回答する</button><button class="primary" id="nextButton" type="button">次へ →</button></div>
         </article>
         <aside class="navigator" id="navigator"><div class="navigator-heading"><div><span>QUESTION MAP</span><h3>問題一覧</h3></div><button id="closeNavigator" type="button" aria-label="問題一覧を閉じる">×</button></div><div class="navigator-legend"><span><i class="answered-dot"></i>回答済み</span><span><i></i>未回答</span></div><div id="questionMap" class="question-map"></div><button class="danger-outline" id="restartSessionButton" type="button">今回の試験を最初から</button><button class="primary submit-exam" id="submitExamButton" type="button">試験を終了して採点</button></aside>
       </div><button class="map-fab" id="openNavigator" type="button">問題一覧 <span id="unansweredBadge">50</span></button>
@@ -57,6 +58,6 @@
   </main>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="app.js?v=3" defer></script>
 </body>
 </html>
