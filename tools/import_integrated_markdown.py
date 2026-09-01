@@ -252,6 +252,9 @@ def main() -> None:
     }
     if not args.validate_only:
         payload = {"metadata": metadata, "questions": questions}
+        from enrich_question_explanations import enrich_questions
+
+        enrich_questions(payload, ROOT / "blind-tasting.json")
         args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         summary["output"] = str(args.output)
     print(json.dumps(summary, ensure_ascii=False, default=dict))

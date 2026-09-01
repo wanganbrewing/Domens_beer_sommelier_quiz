@@ -27,12 +27,15 @@ const context = {
 vm.runInNewContext(appSource, context, { filename: "app.js" });
 
 const { studyQuestionSample, broadExamSample } = context.window.BierKompass;
-const tierAPool = data.questions.filter((question) => question.frequencyTier === "A");
+const tierAPool = data.questions.filter((question) => question.active !== false && question.frequencyTier === "A");
+assert.equal(data.questions.filter((question) => question.active !== false).length, 950);
+assert.equal(tierAPool.filter((question) => question.category === "pairing").length, 0);
 
 for (let run = 0; run < 25; run += 1) {
   const sample = studyQuestionSample(tierAPool, 50);
   assert.equal(sample.length, 50);
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
+  assert.equal(sample.filter((question) => question.category === "pairing").length, 0);
 }
 assert.equal(studyQuestionSample(tierAPool.slice(0, 17), 50).length, 17);
 

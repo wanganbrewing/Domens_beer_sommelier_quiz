@@ -28,6 +28,42 @@ def clean(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def japanese_text(value: str) -> str:
+    """Replace source-side English tasting terms that would leak into the Japanese UI."""
+    replacements = {
+        "distinctively full-bodied": "際立つフルボディ",
+        "hop flavor and aroma normally absent": "ホップの香味は通常ほぼ感じられない",
+        "poor head retention": "泡持ちが弱い",
+        "good foam development and retention": "泡立ちと泡持ちが良好",
+        "sharp bitterness": "鋭い苦味",
+        "creamy mouthfeeling": "クリーミーな口当たり",
+        "mellow flavor with low carbonation": "低炭酸で穏やかな味わい",
+        "warming alcohol": "温かみのあるアルコール感",
+        "fullbodied but effervescent": "フルボディながら発泡感がある",
+        "amber or dark weizen": "琥珀色または濃色のヴァイツェン",
+        "pronounced aromas of chocolate": "はっきりしたチョコレート香",
+        "Brettanomyces yeasts": "ブレタノマイセス酵母",
+        "very light": "非常に軽い",
+        "Spontaneous": "自然発酵",
+        "Farmhouse": "農家醸造系",
+        "Lager": "下面発酵（ラガー）",
+        "Ale": "上面発酵（エール）",
+    }
+    result = value
+    for source, target in replacements.items():
+        result = result.replace(source, target)
+    return result
+
+
+def japanese_observations(blind_card: dict[str, str]) -> list[str]:
+    return [
+        f"外観：{japanese_text(blind_card['appearance'])}",
+        f"香り：{japanese_text(blind_card['aroma'])}",
+        f"味わい：{japanese_text(blind_card['taste'])}",
+        f"口当たり：{japanese_text(blind_card['mouthfeel'])}",
+    ]
+
+
 def field(block: str, label: str) -> str:
     match = re.search(rf"^{re.escape(label)}\s*(.+)$", block, re.MULTILINE)
     if not match:
@@ -108,13 +144,14 @@ def parse_scenarios(source: Path) -> list[dict]:
             "countryLabel": country_label,
             "difficulty": len(match.group(2)),
             "blindCard": blind_card,
-            "step1Keywords": split_items(step1, "/"),
-            "step2Characteristic": step2,
-            "step3IngredientsProcess": split_items(step3),
+            "step1ObservationsJa": japanese_observations(blind_card),
+            "step1KeywordsSource": split_items(step1, "/"),
+            "step2Characteristic": japanese_text(step2),
+            "step3IngredientsProcess": [japanese_text(item) for item in split_items(step3)],
             "fermentationFamily": family,
-            "fermentationDetail": fermentation_detail,
-            "exclusions": exclusions,
-            "conclusion": conclusion,
+            "fermentationDetail": japanese_text(fermentation_detail),
+            "exclusions": [{"style": item["style"], "reason": japanese_text(item["reason"])} for item in exclusions],
+            "conclusion": japanese_text(conclusion),
             "choices": choices,
             "correctChoice": correct_choice,
             "answer": choices[correct_choice],

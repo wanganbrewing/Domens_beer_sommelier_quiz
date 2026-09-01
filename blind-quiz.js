@@ -2,9 +2,9 @@
 
 (() => {
   const { escapeHtml, goHome, showView, shuffle, sameSet } = window.BierKompass;
-  const HISTORY_KEY = "bierkompass-blind-history-v1";
-  const STAGES = ["STEP 1", "STEP 2", "STEP 3", "STEP 4.1", "STEP 4.2", "STEP 4.3"];
-  const FAMILY_LABELS = { Lager: "Lager／ラガー", Ale: "Ale／エール", Spontaneous: "Spontaneous／自然発酵", Farmhouse: "Farmhouse／農家醸造" };
+  const HISTORY_KEY = "bierkompass-blind-history-v2";
+  const STAGES = ["観察整理", "特徴定義", "原材料・工程", "発酵系統", "候補除外", "スタイル結論"];
+  const FAMILY_LABELS = { Lager: "下面発酵（ラガー）", Ale: "上面発酵（エール）", Spontaneous: "自然発酵", Farmhouse: "農家醸造系" };
   const byId = (id) => document.getElementById(id);
   let blindData = null;
   let dataPromise = null;
@@ -16,7 +16,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v33", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v34", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -107,7 +107,7 @@
     state.hintOpen = false;
     state.answers = { step1: [], step2: "", step3: [], family: "", exclusions: [], reasons: [], final: null };
     state.options = {
-      step1: uniqueOptions(target.step1Keywords, others.flatMap((scenario) => scenario.step1Keywords), 3),
+      step1: uniqueOptions(target.step1ObservationsJa, others.flatMap((scenario) => scenario.step1ObservationsJa), 3),
       step2: shuffle([{ id: target.id, label: target.step2Characteristic }, ...shuffle(others).slice(0, 3).map((scenario) => ({ id: scenario.id, label: scenario.step2Characteristic }))]),
       step3: uniqueOptions(target.step3IngredientsProcess, others.flatMap((scenario) => scenario.step3IngredientsProcess), 3),
       choices: shuffle(target.choices.map((label, index) => ({ index, label }))),
@@ -169,20 +169,20 @@
   function renderStage(target) {
     const compactCard = state.stage > 0;
     let content = "";
-    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · DETAILED DESCRIPTION</p><h1>観察を言語化する</h1><p>ブラインドカードと一致する英日キーワードをすべて選んでください。</p></div>${blindCard(target)}${checks("blind-step1", state.options.step1, state.answers.step1)}`;
-    if (state.stage === 1) content = `<div class="style-step-heading"><p class="eyebrow">STEP 2 · KEY CHARACTERISTIC</p><h1>最大の特徴を定義する</h1><p>このビールを最も強く決定づける特徴を1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-step2", state.options.step2.map((item) => ({ value: item.id, label: item.label })), state.answers.step2)}`;
-    if (state.stage === 2) content = `<div class="style-step-heading"><p class="eyebrow">STEP 3 · INGREDIENTS & PROCESS</p><h1>原材料・工程を逆算する</h1><p>観察情報から考えられる原材料・工程をすべて選んでください。</p></div>${blindCard(target, compactCard)}${checks("blind-step3", state.options.step3, state.answers.step3)}`;
-    if (state.stage === 3) content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.1 · FERMENTATION</p><h1>発酵系統を判定する</h1><p>クリーンさだけで即断せず、例外も考慮して1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-family", Object.entries(FAMILY_LABELS).map(([value, label]) => ({ value, label })), state.answers.family)}`;
+    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · 観察整理</p><h1>観察を言語化する</h1><p>ブラインドカードと一致する日本語の観察表現をすべて選んでください。</p></div>${blindCard(target)}${checks("blind-step1", state.options.step1, state.answers.step1)}`;
+    if (state.stage === 1) content = `<div class="style-step-heading"><p class="eyebrow">STEP 2 · 特徴定義</p><h1>最大の特徴を定義する</h1><p>このビールを最も強く決定づける特徴を1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-step2", state.options.step2.map((item) => ({ value: item.id, label: item.label })), state.answers.step2)}`;
+    if (state.stage === 2) content = `<div class="style-step-heading"><p class="eyebrow">STEP 3 · 原材料・工程</p><h1>原材料・工程を逆算する</h1><p>観察情報から考えられる原材料・工程をすべて選んでください。</p></div>${blindCard(target, compactCard)}${checks("blind-step3", state.options.step3, state.answers.step3)}`;
+    if (state.stage === 3) content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.1 · 発酵系統</p><h1>発酵系統を判定する</h1><p>クリーンさだけで即断せず、例外も考慮して1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-family", Object.entries(FAMILY_LABELS).map(([value, label]) => ({ value, label })), state.answers.family)}`;
     if (state.stage === 4) {
       const wrongIndexes = target.choices.map((_, index) => index).filter((index) => index !== target.correctChoice);
-      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.2 · EXCLUSION</p><h1>候補を理由とともに除外する</h1><p>除外できるスタイル3つと、成立する除外理由3つを選んでください。</p></div>${blindCard(target, true)}
+      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.2 · 候補除外</p><h1>候補を理由とともに除外する</h1><p>除外できるスタイル3つと、成立する除外理由3つを選んでください。</p></div>${blindCard(target, true)}
         <h2 class="blind-subheading">除外するスタイル</h2>${checks("blind-exclusions", state.options.choices.map((item) => ({ value: item.index, label: item.label })), state.answers.exclusions.map(String))}
         <h2 class="blind-subheading">除外理由</h2>${checks("blind-reasons", state.options.reasons, state.answers.reasons)}
         <p class="blind-selection-note">正しい除外対象は${wrongIndexes.length}件です。理由も観察情報と照合してください。</p>`;
     }
     if (state.stage === 5) {
       const remaining = state.options.choices.filter((item) => !state.answers.exclusions.includes(item.index));
-      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.3 · CONCLUSION</p><h1>最終スタイルを選ぶ</h1><p>除外せず残した候補から、最も合致するスタイルを1つ選んでください。</p></div>${blindCard(target, true)}
+      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.3 · スタイル結論</p><h1>最終スタイルを選ぶ</h1><p>除外せず残した候補から、最も合致するスタイルを1つ選んでください。</p></div>${blindCard(target, true)}
         <section class="blind-reasoning-summary"><div><span>特徴</span><b>${escapeHtml(state.options.step2.find((item) => item.id === state.answers.step2)?.label || "未回答")}</b></div><div><span>発酵系統</span><b>${escapeHtml(FAMILY_LABELS[state.answers.family] || "未回答")}</b></div><div><span>残った候補</span><b>${remaining.length}件</b></div></section>
         ${remaining.length ? radios("blind-final", remaining.map((item) => ({ value: item.index, label: item.label })), state.answers.final) : `<div class="no-style-candidates"><strong>候補をすべて除外しています</strong><p>「前へ戻る」から除外対象を見直してください。</p></div>`}`;
     }
@@ -204,7 +204,7 @@
   function scoreScenario(target) {
     const wrongIndexes = target.choices.map((_, index) => index).filter((index) => index !== target.correctChoice);
     const correctReasons = target.exclusions.map((item) => item.reason);
-    const step1 = selectionPoints(state.answers.step1, target.step1Keywords, 2);
+    const step1 = selectionPoints(state.answers.step1, target.step1ObservationsJa, 2);
     const step2 = state.answers.step2 === target.id ? 2 : 0;
     const step3 = selectionPoints(state.answers.step3, target.step3IngredientsProcess, 2);
     const family = state.answers.family === target.fermentationFamily ? 1 : 0;
@@ -246,14 +246,15 @@
     return `<div class="style-result ${score.total >= 5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark">${score.total >= 5 ? "✓" : "△"}</div>
       <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
-        ${resultRow("Step 1 詳細説明", score.step1, 2, target.step1Keywords.join("／"))}
+        ${resultRow("Step 1 観察整理", score.step1, 2, target.step1ObservationsJa.join("／"))}
         ${resultRow("Step 2 特徴定義", score.step2, 2, target.step2Characteristic)}
         ${resultRow("Step 3 原材料・工程", score.step3, 2, target.step3IngredientsProcess.join("／"))}
-        ${resultRow("Step 4.1 発酵系統", score.family, 1, target.fermentationDetail)}
+        ${resultRow("Step 4.1 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily])}
         ${resultRow("Step 4.2 除外", score.exclusionStyles + score.exclusionReasons, 2, exclusionText)}
-        ${resultRow("Step 4.3 結論", score.final, 1, target.conclusion)}
+        ${resultRow("Step 4.3 結論", score.final, 1, target.answer)}
       </ul>
-      <section class="style-answer-detail"><h2>模範分析</h2>${blindCard(target, true)}<dl><div><dt>特徴定義</dt><dd>${escapeHtml(target.step2Characteristic)}</dd></div><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>結論</dt><dd>${escapeHtml(target.conclusion)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
+      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${escapeHtml(target.answer)}</strong><p>${escapeHtml(target.step2Characteristic)}</p><ul>${target.exclusions.map((item) => `<li><b>${escapeHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
+      <section class="style-answer-detail"><h2>模範分析</h2>${blindCard(target, true)}<dl><div><dt>特徴定義</dt><dd>${escapeHtml(target.step2Characteristic)}</dd></div><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>結論</dt><dd>${escapeHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
     </div>`;
   }
 
@@ -321,10 +322,11 @@
 
   function bindDynamic() {
     byId("blindQuizBody").querySelectorAll("input").forEach((input) => input.addEventListener("change", () => { if (state.screen === "question" && !state.finished) captureAnswers(); setMessage(); }));
-    byId("blindHintButton")?.addEventListener("click", () => { state.hintOpen = !state.hintOpen; render(); });
+    byId("blindHintButton")?.addEventListener("click", () => { state.hintOpen = !state.hintOpen; render({ preserveScroll: true }); });
   }
 
-  function render() {
+  function render({ preserveScroll = false } = {}) {
+    const previousScrollY = preserveScroll ? window.scrollY : 0;
     const body = byId("blindQuizBody");
     const backButton = byId("blindQuizBackButton");
     const nextButton = byId("blindQuizNextButton");
@@ -353,7 +355,8 @@
     }
     updateStepLabel(state?.mode === "exam" && state?.deadline ? Math.max(0, Math.ceil((state.deadline - Date.now()) / 1000)) : null);
     bindDynamic();
-    window.scrollTo({ top: 0, behavior: "instant" });
+    if (preserveScroll) requestAnimationFrame(() => window.scrollTo({ top: previousScrollY, behavior: "instant" }));
+    else window.scrollTo({ top: 0, behavior: "instant" });
   }
 
   byId("startBlindQuizButton").addEventListener("click", startBlindQuiz);

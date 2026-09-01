@@ -17,6 +17,7 @@ INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 BLIND_JS = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
 
 EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
+ACTIVE_TIERS = {"A": 375, "B": 325, "C": 250}
 EXPECTED_ANSWERS = {1: 276, 2: 211, 3: 277, 4: 236}
 EXPECTED_CATEGORIES = {
     "raw_materials": 110,
@@ -31,6 +32,7 @@ EXPECTED_CATEGORIES = {
     "quality_law": 40,
     "integrated": 40,
 }
+ACTIVE_CATEGORIES = {key: value for key, value in EXPECTED_CATEGORIES.items() if key != "pairing"}
 EXPECTED_IDS = (
     [f"A-{number:03d}" for number in range(1, 151)]
     + [f"S-{number:03d}" for number in range(1, 61)]
@@ -46,6 +48,9 @@ def normalized(value: str) -> str:
 
 def main() -> None:
     assert METADATA["questionCount"] == 1000
+    assert METADATA["activeQuestionCount"] == 950
+    assert METADATA["excludedQuestionCount"] == 50
+    assert METADATA["excludedCategories"] == ["pairing"]
     assert METADATA["studyQuestionCount"] == 50
     assert METADATA["examQuestionCount"] == 50
     assert METADATA["examMinutes"] == 40
@@ -72,6 +77,9 @@ def main() -> None:
         assert all(0 <= index < 4 for index in question["correct"])
         assert len(question["choiceReasons"]) == 4
         assert question["explanation"].strip()
+        assert all(question["choiceReasons"][index].strip() for index in question["correct"])
+        if question["category"] == "beer_styles":
+            assert all(question["choiceReasons"][index].strip() for index in range(4) if index not in question["correct"])
         assert "**" not in question["question"]
         assert all("**" not in choice and "→ 加えて" not in choice for choice in question["choices"])
         assert len(question["sources"]) == 1
@@ -83,7 +91,7 @@ def main() -> None:
     assert Counter(question["frequencyTier"] for question in QUESTIONS) == EXPECTED_TIERS
     assert {
         tier["id"]: tier["count"] for tier in METADATA["frequencyTiers"]
-    } == EXPECTED_TIERS
+    } == ACTIVE_TIERS
     assert Counter(len(question["correct"]) for question in QUESTIONS) == EXPECTED_ANSWERS
     assert METADATA["answerCountDistribution"] == {
         str(key): value for key, value in EXPECTED_ANSWERS.items()
@@ -92,20 +100,25 @@ def main() -> None:
     assert Counter(question["category"] for question in QUESTIONS) == EXPECTED_CATEGORIES
     assert {
         category["id"]: category["count"] for category in METADATA["categories"]
-    } == EXPECTED_CATEGORIES
+    } == ACTIVE_CATEGORIES
+    assert sum(question["active"] for question in QUESTIONS) == 950
+    assert all(not question["active"] for question in QUESTIONS if question["category"] == "pairing")
+    assert all(question["active"] for question in QUESTIONS if question["category"] != "pairing")
+    assert all("添付資料に個別解説の記載はありません" not in question["explanation"] for question in QUESTIONS)
 
     source_import = METADATA["sourceImport"]
     assert source_import["mainQuestionCount"] == 1000
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v33"' in APP_JS
-    assert '"bierkompass-history-v22"' in APP_JS
-    assert '"bierkompass-session-v22"' in APP_JS
-    assert '"bierkompass-settings-v13"' in APP_JS
-    assert "styles.css?v=33" in INDEX_HTML
-    assert "app.js?v=33" in INDEX_HTML
-    assert "blind-quiz.js?v=33" in INDEX_HTML
+    assert 'const APP_VERSION = "v34"' in APP_JS
+    assert '"bierkompass-history-v23"' in APP_JS
+    assert '"bierkompass-session-v23"' in APP_JS
+    assert '"bierkompass-settings-v14"' in APP_JS
+    assert "question.active === false" in APP_JS
+    assert "styles.css?v=34" in INDEX_HTML
+    assert "app.js?v=34" in INDEX_HTML
+    assert "blind-quiz.js?v=34" in INDEX_HTML
     assert "style-quiz.js" not in INDEX_HTML
     assert '$("#questionText").innerHTML = questionHtml(question.question)' in APP_JS
     assert 'class="negative-cue"' in APP_JS
@@ -118,7 +131,7 @@ def main() -> None:
 
     print(
         "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
-        "A/B/C=400/350/250; v3 answer distribution and app v33 wiring verified"
+        "1000 stored / 950 active; pairing excluded; all correct and beer-style wrong choices explained; app v34 verified"
     )
 
 

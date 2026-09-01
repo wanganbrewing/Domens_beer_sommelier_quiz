@@ -1,8 +1,8 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v33";
-const STORAGE = { history: "bierkompass-history-v22", session: "bierkompass-session-v22", settings: "bierkompass-settings-v13" };
+const APP_VERSION = "v34";
+const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v23", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
@@ -145,6 +145,7 @@ function selectedFilters() {
 function filteredPool() {
   const filters = selectedFilters();
   return data.questions.filter((question) => {
+    if (question.active === false) return false;
     if (!filters.tiers.includes(question.frequencyTier) || !filters.categories.includes(question.category)) return false;
     if (mode !== "study" || filters.historyFilter === "all") return true;
     const item = history[question.id];
@@ -471,8 +472,10 @@ function startTimer() {
 
 function updateStats() {
   const values = Object.values(history); const attempts = values.reduce((sum, item) => sum + item.attempts, 0); const correct = values.reduce((sum, item) => sum + item.correctCount, 0); const mastered = values.filter((item) => item.mastered).length;
-  $("#headerProgress").textContent = `学習記録 ${mastered.toLocaleString()} / ${data.metadata.questionCount.toLocaleString()}`;
+  const activeQuestionCount = data.metadata.activeQuestionCount || data.metadata.questionCount;
+  $("#headerProgress").textContent = `学習記録 ${mastered.toLocaleString()} / ${activeQuestionCount.toLocaleString()}`;
   $("#masteredStat").textContent = mastered.toLocaleString(); $("#attemptStat").textContent = attempts.toLocaleString(); $("#accuracyStat").textContent = attempts ? `${Math.round((correct / attempts) * 100)}%` : "—";
+  $("#questionBankStat").textContent = activeQuestionCount.toLocaleString();
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 

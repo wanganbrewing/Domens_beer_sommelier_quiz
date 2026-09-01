@@ -53,7 +53,13 @@
         "taste": "シャープでエッジの効いた苦味、ドライなフィニッシュ",
         "mouthfeel": "ライト〜ミディアム、炭酸しっかり"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡黄金・清澄・純白のきめ細かい泡",
+        "香り：ハーバルでスパイシーなホップ香、エステルなし",
+        "味わい：シャープでエッジの効いた苦味、ドライなフィニッシュ",
+        "口当たり：ライト〜ミディアム、炭酸しっかり"
+      ],
+      "step1KeywordsSource": [
         "pale gold, brilliant",
         "herbal-spicy noble hop",
         "sharp clean bitterness, dry finish"
@@ -66,7 +72,7 @@
         "やや硬質の水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（エステル皆無）",
+      "fermentationDetail": "下面発酵（ラガー）（エステル皆無）",
       "exclusions": [
         {
           "style": "ヘレス",
@@ -106,7 +112,13 @@
         "taste": "上品なモルトの甘みと旨み、苦味は締める程度",
         "mouthfeel": "ミディアム、丸い口当たり"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：澄んだ黄金・豊かな純白泡",
+        "香り：焼きたて白パン・麦汁の優しい甘香、ホップ控えめ",
+        "味わい：上品なモルトの甘みと旨み、苦味は締める程度",
+        "口当たり：ミディアム、丸い口当たり"
+      ],
+      "step1KeywordsSource": [
         "golden, clear",
         "bready, light malt aroma",
         "malty sweetness, low hop bitterness"
@@ -119,7 +131,7 @@
         "脱炭酸処理水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（クリーン）",
+      "fermentationDetail": "下面発酵（ラガー）（クリーン）",
       "exclusions": [
         {
           "style": "ピルスナー",
@@ -159,7 +171,13 @@
         "taste": "ヘレスより厚いモルトとピルスに迫る苦味の両立、キレもある",
         "mouthfeel": "フルボディ寄り、アルコール感"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濃い黄金・クリア・しっかりした泡",
+        "香り：力強い麦芽香＋程よいホップ",
+        "味わい：ヘレスより厚いモルトとピルスに迫る苦味の両立、キレもある",
+        "口当たり：フルボディ寄り、アルコール感"
+      ],
+      "step1KeywordsSource": [
         "deep gold",
         "strong malt + moderate hop",
         "balanced, full-bodied with clean finish"
@@ -171,7 +189,7 @@
         "ドルトムントの炭酸塩＋硫酸塩共存水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "ヘレス",
@@ -211,7 +229,13 @@
         "taste": "リッチなモルトバックボーン、円熟した甘み、苦味は支え",
         "mouthfeel": "ミディアム〜フル、滑らか"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡〜濃アンバー・リッチな泡",
+        "香り：トースト・焼いたパン・カラメル",
+        "味わい：リッチなモルトバックボーン、円熟した甘み、苦味は支え",
+        "口当たり：ミディアム〜フル、滑らか"
+      ],
+      "step1KeywordsSource": [
         "amber",
         "toast, caramel note",
         "rich malty, mellow from long lagering"
@@ -223,7 +247,7 @@
         "長期低温貯蔵（春仕込み伝統）"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（濃色・熟成）",
+      "fermentationDetail": "下面発酵（ラガー）（濃色・熟成）",
       "exclusions": [
         {
           "style": "ウィンナー",
@@ -263,7 +287,13 @@
         "taste": "甘美で芳醇なモルトのコク、焦げ苦味や酸味なし",
         "mouthfeel": "ミディアム、丸い"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濃褐色〜ダーク、ルビーの輝き、クリーミーな泡",
+        "香り：パンの耳・トフィー・微かなミルクチョコ",
+        "味わい：甘美で芳醇なモルトのコク、焦げ苦味や酸味なし",
+        "口当たり：ミディアム、丸い"
+      ],
+      "step1KeywordsSource": [
         "amber to deep brown, ruby",
         "bread crust, toffee",
         "malty, no burnt bitterness"
@@ -275,7 +305,7 @@
         "高残留アルカリ度の水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（濃色・下面）",
+      "fermentationDetail": "下面発酵（ラガー）（濃色・下面）",
       "exclusions": [
         {
           "style": "シュヴァルツ",
@@ -315,7 +345,13 @@
         "taste": "見た目に反して軽快でドライ、クリーン",
         "mouthfeel": "ライト〜ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：漆黒（ルビーハイライト）・淡褐色の持続泡",
+        "香り：ロースト麦芽・ビターチョコ・珈琲",
+        "味わい：見た目に反して軽快でドライ、クリーン",
+        "口当たり：ライト〜ミディアム"
+      ],
+      "step1KeywordsSource": [
         "black with ruby highlights",
         "roast, bitter chocolate, coffee",
         "surprisingly light and dry"
@@ -327,7 +363,7 @@
         "中軟水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（漆黒・クリーン）",
+      "fermentationDetail": "下面発酵（ラガー）（漆黒・クリーン）",
       "exclusions": [
         {
           "style": "ドゥンケル",
@@ -367,7 +403,13 @@
         "taste": "圧倒的なメラノイジンの甘美さ、温かいアルコール",
         "mouthfeel": "distinctively full-bodied（際立つフルボディ）"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濃ルビー褐色・泡は中程度",
+        "香り：レーズン・干しプラム・濃厚トフィー、エステルなし",
+        "味わい：圧倒的なメラノイジンの甘美さ、温かいアルコール",
+        "口当たり：際立つフルボディ（際立つフルボディ）"
+      ],
+      "step1KeywordsSource": [
         "deep ruby brown",
         "raisin, dried plum, toffee (malt-derived)",
         "rich, warming, full-bodied"
@@ -380,7 +422,7 @@
         "低温長期発酵"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（ハイアルコール・クリーン）",
+      "fermentationDetail": "下面発酵（ラガー）（ハイアルコール・クリーン）",
       "exclusions": [
         {
           "style": "クアドルペル",
@@ -420,7 +462,13 @@
         "taste": "凝縮された強烈な甘美さと高アルコール",
         "mouthfeel": "シロップ様の粘性・灼けるような温感"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：極濃褐色・泡は極めて薄くすぐ消える",
+        "香り：シェリー・ポートワイン・糖蜜・完熟ドライフルーツ",
+        "味わい：凝縮された強烈な甘美さと高アルコール",
+        "口当たり：シロップ様の粘性・灼けるような温感"
+      ],
+      "step1KeywordsSource": [
         "very dark",
         "sherry, port, molasses",
         "intensely concentrated, syrupy, hot alcohol"
@@ -431,7 +479,7 @@
         "下面発酵ベース"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（凍結濃縮）",
+      "fermentationDetail": "下面発酵（ラガー）（凍結濃縮）",
       "exclusions": [
         {
           "style": "ドッペルボック",
@@ -471,7 +519,13 @@
         "taste": "カラメルモルトのコク＋燻香の調和、クリーン",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：暗褐色・しっかりした泡",
+        "香り：燻製ベーコン・木炭・焚き火のスモーク一色",
+        "味わい：カラメルモルトのコク＋燻香の調和、クリーン",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "dark brown",
         "smoky bacon, beechwood smoke",
         "clean lager base with caramel"
@@ -483,7 +537,7 @@
         "バンベルク伝統"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（燻製モルト）",
+      "fermentationDetail": "下面発酵（ラガー）（燻製モルト）",
       "exclusions": [
         {
           "style": "通常ラガー全般",
@@ -523,7 +577,13 @@
         "taste": "丸く自然な旨み、フレッシュなホップ",
         "mouthfeel": "低炭酸（mellow flavor with low carbonation）・柔らか"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：乳白がかった濁りの淡黄色",
+        "香り：樽出しの新鮮なイースト香・素朴な麦芽",
+        "味わい：丸く自然な旨み、フレッシュなホップ",
+        "口当たり：低炭酸（低炭酸で穏やかな味わい）・柔らか"
+      ],
+      "step1KeywordsSource": [
         "cloudy pale",
         "fresh yeasty, rustic malt",
         "mellow, low carbonation, unfiltered"
@@ -535,7 +595,7 @@
         "樽出し低ガス仕上げ"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（無濾過・低炭酸）",
+      "fermentationDetail": "下面発酵（ラガー）（無濾過・低炭酸）",
       "exclusions": [
         {
           "style": "ヘレス",
@@ -575,7 +635,13 @@
         "taste": "麦芽100%の味は保ちつつ非常に軽い、爽快なキレ",
         "mouthfeel": "very light、薄いボディ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：極淡黄色・クリア",
+        "香り：軽い麦芽香・控えめホップ",
+        "味わい：麦芽100%の味は保ちつつ非常に軽い、爽快なキレ",
+        "口当たり：非常に軽い、薄いボディ"
+      ],
+      "step1KeywordsSource": [
         "very pale, light",
         "light malt aroma",
         "clean, very light body, crisp"
@@ -587,7 +653,7 @@
         "麦芽100%（独の税法規格）"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（低アルコール規格）",
+      "fermentationDetail": "下面発酵（ラガー）（低アルコール規格）",
       "exclusions": [
         {
           "style": "ヘレス",
@@ -627,7 +693,13 @@
         "taste": "優しい甘み、苦味ごく低い",
         "mouthfeel": "fullbodied but effervescent（フルだが高炭酸で軽快）"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：白濁アンバー・グラスから盛り上がる巨大持続泡",
+        "香り：熟したバナナ・クローブ・小麦のクリーミーさ",
+        "味わい：優しい甘み、苦味ごく低い",
+        "口当たり：フルボディながら発泡感がある（フルだが高炭酸で軽快）"
+      ],
+      "step1KeywordsSource": [
         "cloudy, huge rocky head",
         "banana, clove",
         "low bitterness, effervescent"
@@ -640,7 +712,7 @@
         "高炭酸"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（小麦上面発酵）",
+      "fermentationDetail": "上面発酵（エール）（小麦上面発酵）",
       "exclusions": [
         {
           "style": "ヴィット",
@@ -680,7 +752,13 @@
         "taste": "すっきり、苦味低い",
         "mouthfeel": "強炭酸・クリスプ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：澄み切った黄金・純白の豊かな泡（透明！）",
+        "香り：バナナ・洋梨・クローブ",
+        "味わい：すっきり、苦味低い",
+        "口当たり：強炭酸・クリスプ"
+      ],
+      "step1KeywordsSource": [
         "brilliant clear gold",
         "banana, pear, clove",
         "crisp, effervescent"
@@ -691,7 +769,7 @@
         "ヴァイス酵母発酵後に完全濾過（酵母除去）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（濾過小麦エール）",
+      "fermentationDetail": "上面発酵（エール）（濾過小麦エール）",
       "exclusions": [
         {
           "style": "ヘーフェヴァイツェン",
@@ -731,7 +809,13 @@
         "taste": "香ばしいコクと小麦の柔らかさ、（強い場合はアルコールの厚み）",
         "mouthfeel": "フルボディ・高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：混濁した濃褐色（琥珀色または濃色のヴァイツェン）・分厚い泡",
+        "香り：バナナ・クローブ＋カラメル・ミルクチョコ",
+        "味わい：香ばしいコクと小麦の柔らかさ、（強い場合はアルコールの厚み）",
+        "口当たり：フルボディ・高炭酸"
+      ],
+      "step1KeywordsSource": [
         "cloudy dark",
         "banana & clove + caramel, chocolate",
         "full-bodied wheat"
@@ -742,7 +826,7 @@
         "上面ヴァイス酵母（ボックは高比重）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（濃色小麦）",
+      "fermentationDetail": "上面発酵（エール）（濃色小麦）",
       "exclusions": [
         {
           "style": "ドゥンケル",
@@ -782,7 +866,13 @@
         "taste": "ドライでクリスプ、繊細",
         "mouthfeel": "ライト・スムーズ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡いペールゴールド・高透明度",
+        "香り：ほのかな青リンゴ・洋梨、穏やかなホップ",
+        "味わい：ドライでクリスプ、繊細",
+        "口当たり：ライト・スムーズ"
+      ],
+      "step1KeywordsSource": [
         "pale gold, brilliant",
         "subtle green apple, pear ester",
         "crisp, delicate, dry"
@@ -794,7 +884,7 @@
         "ケルン協定"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（ただし極めてクリーン＝ひっかけ注意）",
+      "fermentationDetail": "上面発酵（エール）（ただし極めてクリーン＝ひっかけ注意）",
       "exclusions": [
         {
           "style": "ヘレス",
@@ -834,7 +924,13 @@
         "taste": "適度なエステルと際立つ引き締まった苦味、熟成でクリーン",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：銅色〜濃褐色・緻密な持続泡",
+        "香り：トースト・カラメル＋スパイシーなノーブルホップ",
+        "味わい：適度なエステルと際立つ引き締まった苦味、熟成でクリーン",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "copper to brown",
         "toast-caramel + spicy hop",
         "firm bitterness, clean but estery"
@@ -847,7 +943,7 @@
         "上面酵母＋低温熟成"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（伝統的上面）",
+      "fermentationDetail": "上面発酵（エール）（伝統的上面）",
       "exclusions": [
         {
           "style": "ケルシュ",
@@ -887,7 +983,13 @@
         "taste": "鮮烈な乳酸酸味、苦味ほぼ皆無、塩味なし",
         "mouthfeel": "超ライト・強炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：白濁した極淡黄色・泡は薄くすぐ消える",
+        "香り：レモン・青リンゴ・乳酸のフレッシュな酸香",
+        "味わい：鮮烈な乳酸酸味、苦味ほぼ皆無、塩味なし",
+        "口当たり：超ライト・強炭酸"
+      ],
+      "step1KeywordsSource": [
         "pale, cloudy",
         "lemon, lactic sour",
         "sharply tart, no bitterness",
@@ -900,7 +1002,7 @@
         "極低ホップ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（乳酸混合発酵）",
+      "fermentationDetail": "上面発酵（エール）（乳酸混合発酵）",
       "exclusions": [
         {
           "style": "ゴーゼ",
@@ -940,7 +1042,13 @@
         "taste": "酸味に加えはっきりした塩味",
         "mouthfeel": "ライト・爽快"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡黄〜琥珀・混濁・泡控えめ",
+        "香り：コリアンダーの柑橘スパイス＋乳酸",
+        "味わい：酸味に加えはっきりした塩味",
+        "口当たり：ライト・爽快"
+      ],
+      "step1KeywordsSource": [
         "hazy pale",
         "coriander, lactic",
         "distinct salinity"
@@ -953,7 +1061,7 @@
         "乳酸菌＋上面酵母（純粋令の歴史的例外）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（塩・スパイス・サワー）",
+      "fermentationDetail": "上面発酵（エール）（塩・スパイス・サワー）",
       "exclusions": [
         {
           "style": "ベルリナーヴァイセ",
@@ -993,7 +1101,13 @@
         "taste": "味わい極めて軽く残糖ほぼゼロ、水のような喉越し",
         "mouthfeel": "超ライト・強炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：極めて淡い黄色・高透明・泡持ち短め",
+        "香り：ごく微かな穀物と米・コーンの甘香",
+        "味わい：味わい極めて軽く残糖ほぼゼロ、水のような喉越し",
+        "口当たり：超ライト・強炭酸"
+      ],
+      "step1KeywordsSource": [
         "very pale straw",
         "faint grainy-corn",
         "extremely light, watery, highly carbonated"
@@ -1006,7 +1120,7 @@
         "低温発酵"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "オールモルトピルスナー",
@@ -1021,7 +1135,7 @@
           "reason": "もう少し苦味・キレの輪郭"
         }
       ],
-      "conclusion": "American Light / Regular Lager（アメリカンライトラガー）",
+      "conclusion": "American Light / Regular 下面発酵（ラガー）（アメリカンライトラガー）",
       "choices": [
         "ジャーマンピルスナー",
         "アメリカンライトラガー",
@@ -1046,7 +1160,13 @@
         "taste": "心地よい苦味とクリーンな骨格、飲みやすい",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：艶やかなアンバーゴールド・白い泡",
+        "香り：グレープフルーツ・松（カスケード系）",
+        "味わい：心地よい苦味とクリーンな骨格、飲みやすい",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "amber gold",
         "grapefruit, pine (Cascade)",
         "pleasant bitterness, clean yeast"
@@ -1058,7 +1178,7 @@
         "クリーンな米エール酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（クリーン系）",
+      "fermentationDetail": "上面発酵（エール）（クリーン系）",
       "exclusions": [
         {
           "style": "イングリッシュペール",
@@ -1073,7 +1193,7 @@
           "reason": "濁りとジュース感"
         }
       ],
-      "conclusion": "American-Style Pale Ale（アメリカン・ペールエール）",
+      "conclusion": "American-Style Pale 上面発酵（エール）（アメリカン・ペールエール）",
       "choices": [
         "イングリッシュペールエール",
         "アメリカンIPA",
@@ -1098,7 +1218,13 @@
         "taste": "突き抜ける強い苦味、それを支えるモルト骨格",
         "mouthfeel": "ミディアム、しっかり"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ゴールド〜濃アンバー・清澄",
+        "香り：グレープフルーツ・パイン・パッションフルーツが強烈",
+        "味わい：突き抜ける強い苦味、それを支えるモルト骨格",
+        "口当たり：ミディアム、しっかり"
+      ],
+      "step1KeywordsSource": [
         "gold-amber, clear",
         "intense citrus-pine",
         "assertive bitterness with malt backbone"
@@ -1110,7 +1236,7 @@
         "硫酸塩水質"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "APA",
@@ -1125,7 +1251,7 @@
           "reason": "アーシーでモルティ"
         }
       ],
-      "conclusion": "American-Style India Pale Ale（アメリカンIPA）",
+      "conclusion": "American-Style India Pale 上面発酵（エール）（アメリカンIPA）",
       "choices": [
         "APA",
         "アメリカンIPA",
@@ -1150,7 +1276,13 @@
         "taste": "強烈無比な苦味＋高いアルコールとどっしりした比重感",
         "mouthfeel": "重厚"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：アンバー〜カッパー",
+        "香り：超濃厚なシトラス・レジン（樹脂）",
+        "味わい：強烈無比な苦味＋高いアルコールとどっしりした比重感",
+        "口当たり：重厚"
+      ],
+      "step1KeywordsSource": [
         "amber-copper",
         "hugely resinous citrus",
         "extreme bitterness, high alcohol"
@@ -1161,7 +1293,7 @@
         "多段ドライホップ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "通常IPA",
@@ -1201,7 +1333,13 @@
         "taste": "苦味は丸くソフト、ジューシー",
         "mouthfeel": "シルキー・ふくよか"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：鮮やかなマットイエローの濁り・濃厚な泡",
+        "香り：マンゴー・パッションフルーツの果汁感",
+        "味わい：苦味は丸くソフト、ジューシー",
+        "口当たり：シルキー・ふくよか"
+      ],
+      "step1KeywordsSource": [
         "hazy matte yellow",
         "mango, passionfruit juice",
         "soft bitterness, silky"
@@ -1215,7 +1353,7 @@
         "低凝集酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "ウエストコーストIPA",
@@ -1255,7 +1393,13 @@
         "taste": "すっきりホッピー",
         "mouthfeel": "ライト・爽快"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：麦わら〜ゴールド・持続する白い泡",
+        "香り：クリーンな穀物と爽やかなシトラスホップ、バナナ・クローブ皆無",
+        "味わい：すっきりホッピー",
+        "口当たり：ライト・爽快"
+      ],
+      "step1KeywordsSource": [
         "straw-gold",
         "clean grain + citrus hop, NO banana",
         "clove",
@@ -1268,7 +1412,7 @@
         "クリーン米酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（クリーン小麦）",
+      "fermentationDetail": "上面発酵（エール）（クリーン小麦）",
       "exclusions": [
         {
           "style": "ヘーフェヴァイツェン",
@@ -1308,7 +1452,13 @@
         "taste": "重厚モルト×圧倒的ホップ苦味の正面衝突",
         "mouthfeel": "超フルボディ・温感"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：アンバー〜赤褐色・泡薄め",
+        "香り：スグリ・トフィー・シェリーに加え強烈な柑橘・松",
+        "味わい：重厚モルト×圧倒的ホップ苦味の正面衝突",
+        "口当たり：超フルボディ・温感"
+      ],
+      "step1KeywordsSource": [
         "amber-mahogany",
         "toffee-sherry + intense citrus hop",
         "massive malt AND hops"
@@ -1321,7 +1471,7 @@
         "熟成"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "英バーレイワイン",
@@ -1361,7 +1511,13 @@
         "taste": "ホップの苦味主導、焦げは薄く",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：漆黒だがIPA様の泡",
+        "香り：柑橘・松の米ホップが前面、ローストは背景に控えめ",
+        "味わい：ホップの苦味主導、焦げは薄く",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "black but hop-forward",
         "citrus-pine over restrained roast"
       ],
@@ -1371,7 +1527,7 @@
         "米ホップ大量"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アメリカンスタウト",
@@ -1411,7 +1567,13 @@
         "taste": "バランス型でドリンカブル、穏やかな苦味",
         "mouthfeel": "低炭酸・スムーズ（カスク様）"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ゴールド〜濃アンバー・薄い泡膜",
+        "香り：ビスケット・トーストモルト、アーシーな英ホップ",
+        "味わい：バランス型でドリンカブル、穏やかな苦味",
+        "口当たり：低炭酸・スムーズ（カスク様）"
+      ],
+      "step1KeywordsSource": [
         "gold-amber",
         "biscuit, earthy Fuggle-Golding hop",
         "balanced, drinkable",
@@ -1425,7 +1587,7 @@
         "カスク文化"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "APA",
@@ -1465,7 +1627,13 @@
         "taste": "しっかりした苦味とモルトの厚み（硬水由来のドライさ）",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：アンバー・適度な泡",
+        "香り：トースト・マーマレード・ウッディ＆アーシーなホップ",
+        "味わい：しっかりした苦味とモルトの厚み（硬水由来のドライさ）",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "amber",
         "toast, marmalade, woody-earthy hop",
         "firm bitterness (Burton water)"
@@ -1477,7 +1645,7 @@
         "バートン高硫酸塩硬水"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（英国）",
+      "fermentationDetail": "上面発酵（エール）（英国）",
       "exclusions": [
         {
           "style": "アメリカンIPA",
@@ -1492,7 +1660,7 @@
           "reason": "下面クリーン"
         }
       ],
-      "conclusion": "Classic English-Style Pale Ale（イングリッシュ・ペールエール）",
+      "conclusion": "Classic English-Style Pale 上面発酵（エール）（イングリッシュ・ペールエール）",
       "choices": [
         "アメリカンIPA",
         "イングリッシュペールエール",
@@ -1517,7 +1685,13 @@
         "taste": "英国的な締まった苦味、米IPAより穏やかな柑橘感",
         "mouthfeel": "ミディアム・炭酸控えめ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ゴールド〜アンバー",
+        "香り：アーシー・フローラルな英ホップがIPAとして強め、モルティ",
+        "味わい：英国的な締まった苦味、米IPAより穏やかな柑橘感",
+        "口当たり：ミディアム・炭酸控えめ"
+      ],
+      "step1KeywordsSource": [
         "earthy-floral English hop, malty backbone",
         "firm but rounded bitterness"
       ],
@@ -1529,7 +1703,7 @@
         "（輸出史の文脈）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アメリカンIPA",
@@ -1544,7 +1718,7 @@
           "reason": "酵母のスパイス香"
         }
       ],
-      "conclusion": "English-Style India Pale Ale（イングリッシュIPA）",
+      "conclusion": "English-Style India Pale 上面発酵（エール）（イングリッシュIPA）",
       "choices": [
         "アメリカンIPA",
         "イングリッシュIPA",
@@ -1569,7 +1743,13 @@
         "taste": "ナッティで香ばしく、まろやかで優しい甘み",
         "mouthfeel": "シルキー・低め炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ヘーゼルナッツブラウン・淡ベージュ泡",
+        "香り：煎ったナッツ・トフィー・ビスケット",
+        "味わい：ナッティで香ばしく、まろやかで優しい甘み",
+        "口当たり：シルキー・低め炭酸"
+      ],
+      "step1KeywordsSource": [
         "hazelnut brown",
         "roasted nuts, toffee",
         "nutty, mellow, gentle sweetness"
@@ -1581,7 +1761,7 @@
         "高凝集英酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アメリカンブラウン",
@@ -1596,7 +1776,7 @@
           "reason": "よりダークでチョコ"
         }
       ],
-      "conclusion": "English-Style Brown Ale（イングリッシュ・ブラウン）",
+      "conclusion": "English-Style Brown 上面発酵（エール）（イングリッシュ・ブラウン）",
       "choices": [
         "アメリカンブラウン",
         "ドゥンケル",
@@ -1621,7 +1801,13 @@
         "taste": "甘香ばしく口当たりソフト、スタウトより柔らかい",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ダークブラウン〜黒・ベージュ泡",
+        "香り：はっきりしたチョコレート香（ミルクチョコ顕著）・トースト・カラメル",
+        "味わい：甘香ばしく口当たりソフト、スタウトより柔らかい",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "dark brown-black",
         "chocolate, toast, caramel",
         "soft, gently sweet"
@@ -1633,7 +1819,7 @@
         "英上面酵母（1720年代ロンドン起源）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アイリッシュスタウト",
@@ -1673,7 +1859,13 @@
         "taste": "シャープな焦げ酸味とドライなキレ、見た目より軽い",
         "mouthfeel": "クリーミー（窒素提供文化）"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：不透明な漆黒・超濃密でクリーミーな極上泡（クリーミーな口当たり）",
+        "香り：ダークエスプレッソ・ビターカカオ",
+        "味わい：シャープな焦げ酸味とドライなキレ、見た目より軽い",
+        "口当たり：クリーミー（窒素提供文化）"
+      ],
+      "step1KeywordsSource": [
         "opaque black, dense creamy head",
         "espresso, bitter cacao",
         "sharp roasted dryness, light body"
@@ -1685,7 +1877,7 @@
         "ダブリン炭酸塩硬水"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "ポーター",
@@ -1725,7 +1917,13 @@
         "taste": "強烈なロースト感に対抗する高い苦味、濃厚で温かい",
         "mouthfeel": "超フルボディ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：完全な漆黒・濃褐色泡",
+        "香り：圧倒的ロースト・ビターチョコ・糖蜜・レーズン",
+        "味わい：強烈なロースト感に対抗する高い苦味、濃厚で温かい",
+        "口当たり：超フルボディ"
+      ],
+      "step1KeywordsSource": [
         "jet black",
         "overwhelming roast, chocolate, molasses, raisin",
         "intense, warming"
@@ -1738,7 +1936,7 @@
         "高比重上面発酵"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "ドライスタウト",
@@ -1778,7 +1976,13 @@
         "taste": "「大麦のワイン」の超重厚な甘美、ホップも英国的にしっかり",
         "mouthfeel": "超フル・温感・低炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：赤褐〜濃カッパー・泡は極めて薄い",
+        "香り：ドライフルーツ・シェリー・トフィー・古びた革（熟成香）",
+        "味わい：「大麦のワイン」の超重厚な甘美、ホップも英国的にしっかり",
+        "口当たり：超フル・温感・低炭酸"
+      ],
+      "step1KeywordsSource": [
         "deep copper",
         "dried fruit, sherry, aged leather",
         "vinous, immensely rich"
@@ -1791,7 +1995,7 @@
         "セラー熟成"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アメリカンバーレイ",
@@ -1831,7 +2035,13 @@
         "taste": "モルト一辺倒の重厚な甘み、ホップ極小、エステル控えめ",
         "mouthfeel": "フル・滑らか"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濃アンバー〜暗褐色・クリーミー泡",
+        "香り：カラメル化した麦汁の濃厚な甘香・トフィー・ごく微かなピート",
+        "味わい：モルト一辺倒の重厚な甘み、ホップ極小、エステル控えめ",
+        "口当たり：フル・滑らか"
+      ],
+      "step1KeywordsSource": [
         "dark amber",
         "intense caramelized wort, toffee, hint of peat",
         "malt-dominant, restrained esters"
@@ -1843,7 +2053,7 @@
         "極低ホップ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（低エステル）",
+      "fermentationDetail": "上面発酵（エール）（低エステル）",
       "exclusions": [
         {
           "style": "イングリッシュペール",
@@ -1858,7 +2068,7 @@
           "reason": "燻製が主役"
         }
       ],
-      "conclusion": "Scotch Ale / Wee Heavy（スコッチエール）",
+      "conclusion": "Scotch 上面発酵（エール） / Wee Heavy（スコッチエール）",
       "choices": [
         "ドッペルボック",
         "スコッチエール",
@@ -1883,7 +2093,13 @@
         "taste": "残る甘み（発酵しない糖）とロースト、苦味は穏やか",
         "mouthfeel": "丸く厚い"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：漆黒・ベージュ泡",
+        "香り：ロースト＋明確な甘いミルキーさ",
+        "味わい：残る甘み（発酵しない糖）とロースト、苦味は穏やか",
+        "口当たり：丸く厚い"
+      ],
+      "step1KeywordsSource": [
         "black",
         "roast + creamy sweetness",
         "lingering sweetness (unfermentable sugar)"
@@ -1894,7 +2110,7 @@
         "英上面酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "ドライスタウト",
@@ -1934,7 +2150,13 @@
         "taste": "シルキーで柔らかく、酸はほのか、苦味低い",
         "mouthfeel": "シルキー（未発芽小麦）・軽快"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：白濁した淡黄色・モコモコと盛り上がる大きな泡",
+        "香り：ビターオレンジピール・コリアンダー",
+        "味わい：シルキーで柔らかく、酸はほのか、苦味低い",
+        "口当たり：シルキー（未発芽小麦）・軽快"
+      ],
+      "step1KeywordsSource": [
         "hazy pale",
         "bitter orange peel, coriander",
         "silky (unmalted wheat), gentle"
@@ -1947,7 +2169,7 @@
         "ベルジャン上面酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（ベルジャン小麦スパイス）",
+      "fermentationDetail": "上面発酵（エール）（ベルジャン小麦スパイス）",
       "exclusions": [
         {
           "style": "ヘーフェヴァイツェン",
@@ -1987,7 +2209,13 @@
         "taste": "高アルコールなのに完全ドライ、繊細な苦味",
         "mouthfeel": "軽い！高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：輝くブロンド・グラスを埋め尽くすシャンパン様の巨大泡",
+        "香り：洋梨・リンゴ・白コショウ",
+        "味わい：高アルコールなのに完全ドライ、繊細な苦味",
+        "口当たり：軽い！高炭酸"
+      ],
+      "step1KeywordsSource": [
         "brilliant blond, champagne-like head",
         "pear, apple, white pepper",
         "bone dry despite strength"
@@ -1999,7 +2227,7 @@
         "低温熟成＋瓶内二次発酵"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（ベルジャン・ハイアルコール）",
+      "fermentationDetail": "上面発酵（エール）（ベルジャン・ハイアルコール）",
       "exclusions": [
         {
           "style": "トリプル",
@@ -2014,7 +2242,7 @@
           "reason": "胡椒フェノールが立ち色も濃いめ"
         }
       ],
-      "conclusion": "Belgian Strong Blond Ale（ゴールデンストロング／デュベル型）",
+      "conclusion": "Belgian Strong Blond 上面発酵（エール）（ゴールデンストロング／デュベル型）",
       "choices": [
         "トリプル",
         "ゴールデンストロング",
@@ -2039,7 +2267,13 @@
         "taste": "ドライフルーツとカラメルの融合、フルボディ",
         "mouthfeel": "ミディアム〜フル・瓶内発酵の細かい泡"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：アンバー〜濃褐色・キメ細かいリッチな泡",
+        "香り：干しプラム・レーズン・ダークチェリー・ラム酒",
+        "味わい：ドライフルーツとカラメルの融合、フルボディ",
+        "口当たり：ミディアム〜フル・瓶内発酵の細かい泡"
+      ],
+      "step1KeywordsSource": [
         "dark amber-brown",
         "dried plum, raisin, dark cherry",
         "fruity-caramel richness"
@@ -2051,7 +2285,7 @@
         "瓶内二次発酵"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（修道院・濃色）",
+      "fermentationDetail": "上面発酵（エール）（修道院・濃色）",
       "exclusions": [
         {
           "style": "トリプル",
@@ -2091,7 +2325,13 @@
         "taste": "重厚な甘美さ＋しっかりした苦味、高アルコール",
         "mouthfeel": "フル・高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：輝く黄金色・分厚く盛り上がる純白泡",
+        "香り：完熟バナナ・桃・クローブのスパイシーエステル",
+        "味わい：重厚な甘美さ＋しっかりした苦味、高アルコール",
+        "口当たり：フル・高炭酸"
+      ],
+      "step1KeywordsSource": [
         "deep gold",
         "ripe banana, peach, clove",
         "rich yet strong bitterness"
@@ -2103,7 +2343,7 @@
         "瓶内二次発酵"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "デュベル型",
@@ -2143,7 +2383,13 @@
         "taste": "粘性ある超重厚な甘美と包容力あるアルコール温感、焦げなし",
         "mouthfeel": "超フル・ヴィスカス"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：赤褐〜黒褐色",
+        "香り：イチジク・デーツ・糖蜜・トフィー",
+        "味わい：粘性ある超重厚な甘美と包容力あるアルコール温感、焦げなし",
+        "口当たり：超フル・ヴィスカス"
+      ],
+      "step1KeywordsSource": [
         "mahogany",
         "fig, date, molasses",
         "immensely rich, warming, no roast"
@@ -2157,7 +2403,7 @@
         "瓶内二次発酵"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "インペリアルスタウト",
@@ -2172,7 +2418,7 @@
           "reason": "英酵母・ホップ強め"
         }
       ],
-      "conclusion": "Belgian Quadrupel / Dark Strong Ale（クアドルペル）",
+      "conclusion": "Belgian Quadrupel / Dark Strong 上面発酵（エール）（クアドルペル）",
       "choices": [
         "インペリアルスタウト",
         "クアドルペル",
@@ -2197,7 +2443,13 @@
         "taste": "極限までドライな辛口、しっかりした苦味",
         "mouthfeel": "ライト〜ミディアム・高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ブロンズ〜アンバー・やや濁り・巨大な泡",
+        "香り：黒胡椒・柑橘ピール・干草",
+        "味わい：極限までドライな辛口、しっかりした苦味",
+        "口当たり：ライト〜ミディアム・高炭酸"
+      ],
+      "step1KeywordsSource": [
         "bronze, slightly hazy",
         "black pepper phenol, citrus",
         "bone dry, brisk"
@@ -2209,7 +2461,7 @@
         "ノーブル系ホップ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（高温発酵ファームハウス）",
+      "fermentationDetail": "上面発酵（エール）（高温発酵ファームハウス）",
       "exclusions": [
         {
           "style": "トリプル",
@@ -2249,7 +2501,13 @@
         "taste": "ドライホップの鋭い苦味＋乾いた微酸",
         "mouthfeel": "ドライ・高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濁りのあるオレンジアンバー・分厚く消えない泡",
+        "香り：革・干草・セージ（ブレタノマイセス酵母）",
+        "味わい：ドライホップの鋭い苦味＋乾いた微酸",
+        "口当たり：ドライ・高炭酸"
+      ],
+      "step1KeywordsSource": [
         "hazy orange amber",
         "leather, hay, sage (Brett)",
         "sharp hoppy bitterness, dry tartness"
@@ -2261,7 +2519,7 @@
         "瓶内ブレタノ二次発酵（単一銘柄）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（ブレタノ熟成）",
+      "fermentationDetail": "上面発酵（エール）（ブレタノ熟成）",
       "exclusions": [
         {
           "style": "他のトラピスト",
@@ -2301,7 +2559,13 @@
         "taste": "乳酸・酢酸の奥深い酸とカラメル甘みの融合＝赤ワイン調",
         "mouthfeel": "シルキー・低泡"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ダークルビー〜マホガニー・泡は薄く儚い",
+        "香り：バルサミコ酢・オーク樽・ブラックチェリー",
+        "味わい：乳酸・酢酸の奥深い酸とカラメル甘みの融合＝赤ワイン調",
+        "口当たり：シルキー・低泡"
+      ],
+      "step1KeywordsSource": [
         "dark ruby",
         "balsamic, oak, black cherry",
         "wine-like sweet-sour complexity"
@@ -2313,7 +2577,7 @@
         "乳酸菌/酢酸菌/ブレタノ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（樽混合発酵）",
+      "fermentationDetail": "上面発酵（エール）（樽混合発酵）",
       "exclusions": [
         {
           "style": "グーズ",
@@ -2328,7 +2592,7 @@
           "reason": "酸が皆無"
         }
       ],
-      "conclusion": "Flanders Red Ale / Oud Bruin（フランダース・レッド）",
+      "conclusion": "Flanders Red 上面発酵（エール） / Oud Bruin（フランダース・レッド）",
       "choices": [
         "グーズ",
         "フランダースレッド",
@@ -2353,7 +2617,13 @@
         "taste": "シャープな酸、ホップ苦味なし（陳旧ホップ）",
         "mouthfeel": "ドライ・高炭酸（瓶内）"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濁りある黄金色・泡は急速に消える",
+        "香り：馬小屋・干草の野生香、グレープフルーツ皮",
+        "味わい：シャープな酸、ホップ苦味なし（陳旧ホップ）",
+        "口当たり：ドライ・高炭酸（瓶内）"
+      ],
+      "step1KeywordsSource": [
         "hazy gold",
         "horse blanket, hay",
         "sharply tart, no hop bitterness",
@@ -2367,7 +2637,7 @@
         "オーク樽熟成→若古ブレンド瓶内再発酵"
       ],
       "fermentationFamily": "Spontaneous",
-      "fermentationDetail": "Spontaneous（自然発酵）",
+      "fermentationDetail": "自然発酵（自然発酵）",
       "exclusions": [
         {
           "style": "ベルリナーヴァイセ",
@@ -2407,7 +2677,13 @@
         "taste": "強い酸味と果実味、シロップ的甘さはない",
         "mouthfeel": "ドライ・高炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：鮮やかなルビーレッド・ピンクの泡",
+        "香り：フレッシュチェリー・アーモンド核（種の香り）",
+        "味わい：強い酸味と果実味、シロップ的甘さはない",
+        "口当たり：ドライ・高炭酸"
+      ],
+      "step1KeywordsSource": [
         "ruby red, pink head",
         "fresh cherry, almond kernel",
         "tart and fruity, not syrupy"
@@ -2418,7 +2694,7 @@
         "樽内3〜18ヶ月再発酵"
       ],
       "fermentationFamily": "Spontaneous",
-      "fermentationDetail": "Spontaneous（フルーツ自然発酵）",
+      "fermentationDetail": "自然発酵（フルーツ自然発酵）",
       "exclusions": [
         {
           "style": "甘口フルーツビール",
@@ -2458,7 +2734,13 @@
         "taste": "中庸の強さ、優しい甘みとバランス",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：金色・清澄〜微濁・良好な泡",
+        "香り：穏やかな洋梨・スパイスのベルジャン酵母香",
+        "味わい：中庸の強さ、優しい甘みとバランス",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "gold",
         "gentle pear-spice Belgian yeast",
         "balanced, moderately strong"
@@ -2470,7 +2752,7 @@
         "（大冒険をしない設計）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "デュベル型",
@@ -2485,7 +2767,7 @@
           "reason": "小麦とスパイス添加"
         }
       ],
-      "conclusion": "Belgian Blond Ale（ベルジャンブロンド）",
+      "conclusion": "Belgian Blond 上面発酵（エール）（ベルジャンブロンド）",
       "choices": [
         "ゴールデンストロング",
         "ベルジャンブロンド",
@@ -2510,7 +2792,13 @@
         "taste": "角のない丸い苦味、デコクション由来の厚み、微量のジアセチル許容",
         "mouthfeel": "ミディアム・ソフト"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：深みある黄金色・極めて分厚くクリーミーな泡",
+        "香り：ザーツホップの上品な香りとモルトの甘み",
+        "味わい：角のない丸い苦味、デコクション由来の厚み、微量のジアセチル許容",
+        "口当たり：ミディアム・ソフト"
+      ],
+      "step1KeywordsSource": [
         "deep gold, dense creamy head",
         "Saaz hop, rich malt",
         "rounded soft bitterness (soft water)"
@@ -2524,7 +2812,7 @@
         "ピルゼン極軟水"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "ジャーマンピルス",
@@ -2564,7 +2852,13 @@
         "taste": "モルトの甘みとノーブルな苦味の調和、ドリンカブル",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：濃褐〜黒・きめ細かい泡",
+        "香り：カラメル・トースト・ナッツの香ばしさ＋ザーツ",
+        "味わい：モルトの甘みとノーブルな苦味の調和、ドリンカブル",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "dark brown",
         "caramel, toast, nutty + Saaz",
         "balanced, drinkable dark lager"
@@ -2576,7 +2870,7 @@
         "下面酵母"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "ドゥンケル",
@@ -2591,7 +2885,7 @@
           "reason": "上面・焦げ酸味"
         }
       ],
-      "conclusion": "Czech Dark Lager – Tmavé（チェコ・ダークラガー）〔チェコ〕",
+      "conclusion": "Czech Dark 下面発酵（ラガー） – Tmavé（チェコ・ダークラガー）〔チェコ〕",
       "choices": [
         "ドゥンケル",
         "チェコダーク",
@@ -2616,7 +2910,13 @@
         "taste": "香ばしいモルト風味とすっきりした飲み口、マイルドな苦味",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：赤みがかった琥珀〜銅色・クリーミー泡",
+        "香り：ウィーン麦芽のトースト・ビスケット",
+        "味わい：香ばしいモルト風味とすっきりした飲み口、マイルドな苦味",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "reddish amber",
         "toasty, biscuity Vienna malt",
         "clean, mild"
@@ -2628,7 +2928,7 @@
         "下面発酵（ドレハー発祥）"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "メルツェン",
@@ -2643,7 +2943,7 @@
           "reason": "英エステルと低炭酸"
         }
       ],
-      "conclusion": "Vienna-Style / Mexican Amber Lager（ウィンナーラガー）〔墺・メキシコ〕",
+      "conclusion": "Vienna-Style / Mexican Amber 下面発酵（ラガー）（ウィンナーラガー）〔墺・メキシコ〕",
       "choices": [
         "メルツェン",
         "ウィンナーラガー",
@@ -2668,7 +2968,13 @@
         "taste": "滑らかで重厚、高アルコールなのにエステル控えめでスムーズ",
         "mouthfeel": "フル・シルキー"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：漆黒〜極濃褐色",
+        "香り：ダークチョコ・プラム・カラメル・微かなアルコール",
+        "味わい：滑らかで重厚、高アルコールなのにエステル控えめでスムーズ",
+        "口当たり：フル・シルキー"
+      ],
+      "step1KeywordsSource": [
         "black",
         "dark chocolate, plum",
         "smooth, strong, clean (bottom-fermented)"
@@ -2680,7 +2986,7 @@
         "低温長期貯蔵（バルト海沿岸）"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager（下面発酵ポーター）",
+      "fermentationDetail": "下面発酵（ラガー）（下面発酵ポーター）",
       "exclusions": [
         {
           "style": "イングリッシュポーター",
@@ -2720,7 +3026,13 @@
         "taste": "極限まで糖を切ったドライなキレ、後味に残らない",
         "mouthfeel": "ライト・強炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡いストローゴールド・高透明・純白泡",
+        "香り：ニュートラルな穀物香、エステル・フェノール皆無",
+        "味わい：極限まで糖を切ったドライなキレ、後味に残らない",
+        "口当たり：ライト・強炭酸"
+      ],
+      "step1KeywordsSource": [
         "pale straw, brilliant",
         "neutral grain",
         "super-attenuated, crisp dry finish"
@@ -2733,7 +3045,7 @@
         "低温発酵"
       ],
       "fermentationFamily": "Lager",
-      "fermentationDetail": "Lager",
+      "fermentationDetail": "下面発酵（ラガー）",
       "exclusions": [
         {
           "style": "エール全般",
@@ -2748,7 +3060,7 @@
           "reason": "輪郭がさらに薄い（僅差識別）"
         }
       ],
-      "conclusion": "Japanese Dry Lager（ジャパニーズ・ドライラガー）〔日本〕",
+      "conclusion": "Japanese Dry 下面発酵（ラガー）（ジャパニーズ・ドライラガー）〔日本〕",
       "choices": [
         "ヘレス",
         "ジャパニーズドライ",
@@ -2773,7 +3085,13 @@
         "taste": "落ち着いた熟成感、モルティで角がない、フェノールなし",
         "mouthfeel": "ミディアム・スムーズ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ブロンズ〜アンバー・しっかりした泡",
+        "香り：土っぽいトーストモルト・軽いカラメル・穏やかな果実",
+        "味わい：落ち着いた熟成感、モルティで角がない、フェノールなし",
+        "口当たり：ミディアム・スムーズ"
+      ],
+      "step1KeywordsSource": [
         "bronze-amber",
         "earthy toast, light caramel",
         "mellow, cellared malty character"
@@ -2787,7 +3105,7 @@
         "コルク瓶文化"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（クリーン寄り）",
+      "fermentationDetail": "上面発酵（エール）（クリーン寄り）",
       "exclusions": [
         {
           "style": "セゾン",
@@ -2827,7 +3145,13 @@
         "taste": "ワインの気品ある酸味とビールの麦芽感の融合、心地よいタンニン",
         "mouthfeel": "ワイン的・ドライ"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：淡黄〜赤ワイン色・ワイン様の軽い泡立ち",
+        "香り：赤白ブドウの果実香・上品な酸",
+        "味わい：ワインの気品ある酸味とビールの麦芽感の融合、心地よいタンニン",
+        "口当たり：ワイン的・ドライ"
+      ],
+      "step1KeywordsSource": [
         "pale to wine-red",
         "grape must, refined acidity",
         "vinous with malt backbone"
@@ -2839,7 +3163,7 @@
         "低ホップ"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale（ブドウ融合）",
+      "fermentationDetail": "上面発酵（エール）（ブドウ融合）",
       "exclusions": [
         {
           "style": "フルーツランビック",
@@ -2854,7 +3178,7 @@
           "reason": "バルサミコ・樽"
         }
       ],
-      "conclusion": "Italian Grape Ale – IGA（イタリアン・グレープエール）〔イタリア〕",
+      "conclusion": "Italian Grape 上面発酵（エール） – IGA（イタリアン・グレープエール）〔イタリア〕",
       "choices": [
         "クリーク",
         "IGA",
@@ -2879,7 +3203,13 @@
         "taste": "重厚で素朴、ホップの苦味なし",
         "mouthfeel": "フル・低炭酸・粘性"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：無濾過の濃色混濁・泡はほぼ立たない",
+        "香り：ジュニパーベリーの針葉樹香＋バナナ様の甘香",
+        "味わい：重厚で素朴、ホップの苦味なし",
+        "口当たり：フル・低炭酸・粘性"
+      ],
+      "step1KeywordsSource": [
         "turbid dark, no head",
         "juniper, banana-like sweetness",
         "no hops, raw ale"
@@ -2890,10 +3220,10 @@
         "大麦麦芽",
         "ジュニパー",
         "パン酵母",
-        "無煮沸（Raw Ale）"
+        "無煮沸（Raw 上面発酵（エール））"
       ],
       "fermentationFamily": "Farmhouse",
-      "fermentationDetail": "Farmhouse（無煮沸・農家麦酒）",
+      "fermentationDetail": "農家醸造系（無煮沸・農家麦酒）",
       "exclusions": [
         {
           "style": "通常小麦ビール",
@@ -2933,7 +3263,13 @@
         "taste": "素朴でジューシー、苦味低い",
         "mouthfeel": "ミディアム・低炭酸"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：混濁ゴールド・低炭酸",
+        "香り：ジュニパーの清涼感＋強烈なオレンジ・トロピカルのエステル",
+        "味わい：素朴でジューシー、苦味低い",
+        "口当たり：ミディアム・低炭酸"
+      ],
+      "step1KeywordsSource": [
         "hazy gold",
         "juniper + intense orange-tropical esters (kveik)",
         "rustic"
@@ -2945,7 +3281,7 @@
         "無煮沸伝統"
       ],
       "fermentationFamily": "Farmhouse",
-      "fermentationDetail": "Farmhouse（クヴェイク）",
+      "fermentationDetail": "農家醸造系（クヴェイク）",
       "exclusions": [
         {
           "style": "サハティ",
@@ -2960,7 +3296,7 @@
           "reason": "ホップ由来の果実（酵母でない）"
         }
       ],
-      "conclusion": "Norwegian Farmhouse Ale – Kornøl（コーネル）〔ノルウェー〕",
+      "conclusion": "Norwegian 農家醸造系 上面発酵（エール） – Kornøl（コーネル）〔ノルウェー〕",
       "choices": [
         "サハティ",
         "コーネル",
@@ -2985,7 +3321,13 @@
         "taste": "輪郭のある苦味と鮮烈な南国ホップ、クリーン",
         "mouthfeel": "ミディアム"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：明るいゴールド・適度な白い泡",
+        "香り：ソーヴィニヨンブラン（白ワイン）・パッションフルーツ・ライム",
+        "味わい：輪郭のある苦味と鮮烈な南国ホップ、クリーン",
+        "口当たり：ミディアム"
+      ],
+      "step1KeywordsSource": [
         "bright gold",
         "Sauvignon Blanc, passionfruit, lime (NZ hops)",
         "clean, defined bitterness"
@@ -2997,7 +3339,7 @@
         "クリーン上面酵母"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "アメリカンIPA",
@@ -3037,7 +3379,13 @@
         "taste": "果実味あるバランス、ドライ寄り",
         "mouthfeel": "高炭酸・ライブリー"
       },
-      "step1Keywords": [
+      "step1ObservationsJa": [
+        "外観：ゴールド・瓶内発酵の澱と細かい持続泡",
+        "香り：洋梨・リンゴの果実エステル、ホップ穏やか",
+        "味わい：果実味あるバランス、ドライ寄り",
+        "口当たり：高炭酸・ライブリー"
+      ],
+      "step1KeywordsSource": [
         "gold with sediment",
         "pear-apple fruity esters",
         "lively carbonation, balanced"
@@ -3049,7 +3397,7 @@
         "瓶内二次発酵（クーパーズが象徴）"
       ],
       "fermentationFamily": "Ale",
-      "fermentationDetail": "Ale",
+      "fermentationDetail": "上面発酵（エール）",
       "exclusions": [
         {
           "style": "ケルシュ",
@@ -3064,7 +3412,7 @@
           "reason": "小麦の質感"
         }
       ],
-      "conclusion": "Australian Sparkling Ale（スパークリングエール）〔オーストラリア〕",
+      "conclusion": "Australian Sparkling 上面発酵（エール）（スパークリングエール）〔オーストラリア〕",
       "choices": [
         "ケルシュ",
         "スパークリングエール",

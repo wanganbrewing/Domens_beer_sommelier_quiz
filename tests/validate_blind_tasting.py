@@ -40,7 +40,11 @@ def main() -> None:
     for scenario in SCENARIOS:
         assert set(scenario["blindCard"]) == {"appearance", "aroma", "taste", "mouthfeel"}
         assert all(value.strip() for value in scenario["blindCard"].values())
-        assert 2 <= len(scenario["step1Keywords"]) <= 4
+        assert len(scenario["step1ObservationsJa"]) == 4
+        assert scenario["step1ObservationsJa"][0].startswith("外観：")
+        assert scenario["step1ObservationsJa"][1].startswith("香り：")
+        assert scenario["step1ObservationsJa"][2].startswith("味わい：")
+        assert scenario["step1ObservationsJa"][3].startswith("口当たり：")
         assert scenario["step2Characteristic"].strip()
         assert 2 <= len(scenario["step3IngredientsProcess"]) <= 5
         assert len(scenario["exclusions"]) == 3
@@ -53,10 +57,14 @@ def main() -> None:
     assert "startBlindQuizButton" in INDEX
     assert "blindQuizView" in INDEX
     assert "練習モード" in SCRIPT and "試験モード" in SCRIPT and "弱点モード" in SCRIPT
-    assert "bierkompass-blind-history-v1" in SCRIPT
+    assert "bierkompass-blind-history-v2" in SCRIPT
     assert "secondsPerScenario" in SCRIPT
     assert "除外するスタイル" in SCRIPT and "除外理由" in SCRIPT
-    print("OK: 58 blind-tasting scenarios; six-stage 10-point flow; practice/exam/weak modes verified")
+    assert "このスタイルはこれで覚える" in SCRIPT
+    assert "step1ObservationsJa" in SCRIPT and "target.step1Keywords" not in SCRIPT
+    assert "下面発酵（ラガー）" in SCRIPT and "上面発酵（エール）" in SCRIPT
+    assert "render({ preserveScroll: true })" in SCRIPT
+    print("OK: 58 Japanese blind-tasting scenarios; memory comparisons and scroll-preserving hint verified")
 
 
 if __name__ == "__main__":
