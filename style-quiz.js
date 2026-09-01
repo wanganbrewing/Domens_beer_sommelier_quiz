@@ -37,7 +37,7 @@
   const byId = (id) => document.getElementById(id);
 
   function loadStyleData() {
-    styleDataPromise ||= fetch("style-quiz.json?v31", { cache: "no-store" }).then((response) => {
+    styleDataPromise ||= fetch("style-quiz.json?v30", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`スタイルデータを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -149,9 +149,8 @@
 
   function renderStep(target) {
     if (state.step === 1) {
-      const integratedClue = target.diagnostic?.clue;
       return `<div class="style-step-heading"><p class="eyebrow">STEP 1 · APPEARANCE</p><h1>ラガーか、エールか</h1><p>グラスの色・透明度・泡と詳細説明から、発酵タイプを推測してください。</p></div>
-        <div class="style-clue-card appearance-clue">${beerVisual(target)}<div><h2>${integratedClue ? "統合版の判定描写" : "外観・香味・口当たり"}</h2><p class="appearance-summary">${escapeHtml(answerSafeText(integratedClue || target.appearance.summary))}</p>${integratedClue ? "" : `<p>${escapeHtml(answerSafeText(target.appearance.detail))}</p>`}</div></div>
+        <div class="style-clue-card appearance-clue">${beerVisual(target)}<div><h2>外観・香味・口当たり</h2><p class="appearance-summary">${escapeHtml(answerSafeText(target.appearance.summary))}</p><p>${escapeHtml(answerSafeText(target.appearance.detail))}</p></div></div>
         ${optionCards("style-family", [
           { value: "lager", label: "ラガー" },
           { value: "ale", label: "エール" },
@@ -191,24 +190,6 @@
     return `<li class="${isCorrect ? "ok" : "ng"}"><span>${isCorrect ? "✓" : "✕"}</span><div><small>${escapeHtml(label)}</small><b>${escapeHtml(selected || "未回答")}</b>${isCorrect ? "" : `<em>正答：${escapeHtml(correct)}</em>`}</div></li>`;
   }
 
-  function renderDiagnostic(target) {
-    const diagnostic = target.diagnostic;
-    if (!diagnostic) return "";
-    const exclusions = diagnostic.choices.map((choice, index) => {
-      const reason = diagnostic.choiceReasons[index]?.trim();
-      if (!reason || choice === diagnostic.correctChoice) return "";
-      return `<li><b>${escapeHtml(choice)}</b><span>${escapeHtml(reason)}</span></li>`;
-    }).filter(Boolean).join("");
-    return `<section class="style-answer-detail style-diagnostic-detail">
-      <p class="eyebrow">INTEGRATED STYLE MODULE · ${escapeHtml(diagnostic.id)}</p>
-      <h2>統合版の判定情報</h2>
-      <p class="diagnostic-clue">${escapeHtml(diagnostic.clue)}</p>
-      <p><strong>正答スタイル：</strong>${escapeHtml(diagnostic.correctChoice)}</p>
-      ${exclusions ? `<h3>他候補の除外ポイント</h3><ul>${exclusions}</ul>` : ""}
-      <p class="style-source">出典：${escapeHtml(diagnostic.source.filename)}、${escapeHtml(diagnostic.source.locator)}</p>
-    </section>`;
-  }
-
   function renderResult(target) {
     const selectedStyle = styleById(state.answers.styleId);
     const selectedIngredient = styleById(state.answers.ingredientStyleId);
@@ -227,7 +208,6 @@
         ${resultLine("Step 3 原材料・工程", selectedIngredient?.ingredients, target.ingredients, ingredientCorrect)}
         ${resultLine("Step 4 スタイル", selectedStyle?.name, target.name, styleCorrect)}
       </ul>
-      ${renderDiagnostic(target)}
       <section class="style-answer-detail"><h2>このスタイルを整理</h2>
         <dl><div><dt>詳細説明</dt><dd>${escapeHtml(target.detail)}</dd></div><div><dt>特徴定義</dt><dd>${escapeHtml(target.definition)}</dd></div><div><dt>原材料・工程</dt><dd>${escapeHtml(target.ingredients)}</dd></div></dl>
         <p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}、「${escapeHtml(target.source.section)}」</p>

@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = Path.home() / "Downloads" / "ドゥーメンス予想問題1000問_完全統合版.md"
+DEFAULT_SOURCE = Path(r"C:\Users\tokun\Downloads\ドゥーメンス予想問題1000問_完全統合版.md")
 DEFAULT_OUTPUT = ROOT / "questions.json"
 
 ID_PATTERN = re.compile(r"^\*\*((?:A|B|C|S)-\d{3})\.\*\*", re.MULTILINE)
