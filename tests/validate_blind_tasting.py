@@ -74,6 +74,10 @@ def main() -> None:
     assert 'const STAGES = ["観察", "原材料・工程", "発酵系統", "国・地域", "候補絞り込み", "最終判定", "決め手"]' in SCRIPT
     assert "下面発酵（ラガー）" in SCRIPT and "上面発酵（エール）" in SCRIPT
     assert "render({ preserveScroll: true })" in SCRIPT
+    assert "blind-selected-details" in SCRIPT and "state.answers.ingredients.map" in SCRIPT
+    assert "現在の推理は" in SCRIPT and "1対1で比べてください" in SCRIPT
+    assert "escapeHtml(hints[state.stage])" in SCRIPT
+    assert '"△"' not in SCRIPT and "目標達成" in SCRIPT and "要復習" in SCRIPT and "要確認" in SCRIPT
     print("OK: 58 scenarios; seven-stage causal reasoning flow and representative beers verified")
 
 

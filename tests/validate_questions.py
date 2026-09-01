@@ -47,6 +47,9 @@ def normalized(value: str) -> str:
 
 
 def main() -> None:
+    cross_reference_choice = re.compile(
+        r"[（(][^）)]*[a-dA-D]\s*(?:と|、|,|・|〜|～|/|／|\+)\s*[a-dA-D][^）)]*[）)]"
+    )
     assert METADATA["questionCount"] == 1000
     assert METADATA["activeQuestionCount"] == 950
     assert METADATA["excludedQuestionCount"] == 50
@@ -82,6 +85,7 @@ def main() -> None:
             assert all(question["choiceReasons"][index].strip() for index in range(4) if index not in question["correct"])
         assert "**" not in question["question"]
         assert all("**" not in choice and "→ 加えて" not in choice for choice in question["choices"])
+        assert all(not cross_reference_choice.search(choice) for choice in question["choices"])
         assert len(question["sources"]) == 1
         source = question["sources"][0]
         assert source["filename"] == "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md"
@@ -111,14 +115,14 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v36"' in APP_JS
+    assert 'const APP_VERSION = "v37"' in APP_JS
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v23"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=36" in INDEX_HTML
-    assert "app.js?v=36" in INDEX_HTML
-    assert "blind-quiz.js?v=36" in INDEX_HTML
+    assert "styles.css?v=37" in INDEX_HTML
+    assert "app.js?v=37" in INDEX_HTML
+    assert "blind-quiz.js?v=37" in INDEX_HTML
     assert "spreadAnswerCounts" in APP_JS
     assert "style-quiz.js" not in INDEX_HTML
     assert '$("#questionText").innerHTML = questionHtml(question.question)' in APP_JS
@@ -132,7 +136,8 @@ def main() -> None:
 
     print(
         "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
-        "1000 stored / 950 active; explanations present; answer counts dispersed; app v36 verified"
+        "1000 stored / 950 active; self-contained choices; explanations present; "
+        "answer counts dispersed; app v37 verified"
     )
 
 

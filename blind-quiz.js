@@ -16,7 +16,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v36", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v37", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -175,14 +175,29 @@
 
   function hint() {
     if (state.mode === "exam" || state.stage === 0) return "";
-    const hints = ["", "香味を麦芽・ホップ・酵母・水・特殊工程の原因へ逆算します。", "エステル、フェノール、野生香とクリーンさの組み合わせを確認します。", "国名そのものではなく、原材料と発酵文化の組み合わせから判断します。", "観察情報と両立しない候補をすべて外します。", "残った候補のうち、全情報を最も無理なく説明できるものを選びます。", "他候補との差を最も短く説明できる特徴を探します。"][state.stage];
-    return `<div class="blind-hint"><button type="button" class="text-button" id="blindHintButton">${state.hintOpen ? "ヒントを閉じる" : "ヒントを見る"}</button>${state.hintOpen ? `<p>${escapeHtml(hints)}</p>` : ""}</div>`;
+    const target = currentScenario();
+    const card = target.blindCard;
+    const selectedIngredients = state.answers.ingredients.length ? state.answers.ingredients.join("／") : "まだ選択していません";
+    const selectedFamily = FAMILY_LABELS[state.answers.family] || "まだ選択していません";
+    const hints = [
+      "",
+      `まずアロマの「${card.aroma}」に注目し、麦芽・ホップ・酵母・副原料・熟成のどれが原因かを分けてください。次に味の「${card.taste}」と同じ原因で説明できるか確認します。`,
+      `アロマの「${card.aroma}」に、果実香・スパイス香・野生香・クリーンさのどれが表れているか確認してください。味の終わり方も合わせると、発酵系統を絞れます。`,
+      `現在の推理は「${selectedIngredients}」＋「${selectedFamily}」です。この組み合わせが歴史的に定着した地域を考えてください。単独の特徴ではなく、組み合わせで判断します。`,
+      `各候補を、①発酵系統、②外観、③選択した原材料・工程の順に照合してください。1項目でも明確に矛盾する候補は除外できます。`,
+      `残した候補が、アロマの「${card.aroma}」と味の「${card.taste}」を同時に説明できるか確認してください。広い共通点より、候補間の違いを優先します。`,
+      `最終候補と最後まで迷った候補を1対1で比べてください。両方に共通する特徴ではなく、一方だけを特定できる特徴が決め手です。`,
+    ];
+    return `<div class="blind-hint"><button type="button" class="text-button" id="blindHintButton">${state.hintOpen ? "ヒントを閉じる" : "ヒントを見る"}</button>${state.hintOpen ? `<p>${escapeHtml(hints[state.stage])}</p>` : ""}</div>`;
   }
 
   function reasoningSummary() {
     const family = FAMILY_LABELS[state.answers.family] || "未回答";
     const country = blindData.metadata.countries.find((item) => item.id === state.answers.country)?.label || "未回答";
-    return `<section class="blind-reasoning-summary"><div><span>発酵系統</span><b>${escapeHtml(family)}</b></div><div><span>国・地域</span><b>${escapeHtml(country)}</b></div><div><span>原材料・工程</span><b>${state.answers.ingredients.length}件選択</b></div></section>`;
+    const ingredients = state.answers.ingredients.length
+      ? `<ul>${state.answers.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+      : "<em>未回答</em>";
+    return `<section class="blind-reasoning-summary"><div><span>発酵系統</span><b>${escapeHtml(family)}</b></div><div><span>国・地域</span><b>${escapeHtml(country)}</b></div><div class="blind-selected-details"><span>原材料・工程 · ${state.answers.ingredients.length}件選択</span>${ingredients}</div></section>`;
   }
 
   function renderStage(target) {
@@ -244,13 +259,15 @@
   }
 
   function resultRow(label, points, maximum, answer) {
-    return `<li class="${points === maximum ? "ok" : "ng"}"><span>${points === maximum ? "✓" : "△"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>${escapeHtml(answer)}</b></div></li>`;
+    const complete = points === maximum;
+    return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>${escapeHtml(answer)}</b></div></li>`;
   }
 
   function renderScenarioResult(target) {
     const score = state.currentScore;
     const excludedStyles = target.choices.filter((_, index) => index !== target.correctChoice).join("／");
-    return `<div class="style-result ${score.total >= 5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark">${score.total >= 5 ? "✓" : "△"}</div>
+    const achieved = score.total >= 5;
+    return `<div class="style-result ${achieved ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark result-status-mark">${achieved ? "目標達成" : "要復習"}</div>
       <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
         ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"))}
@@ -282,7 +299,8 @@
   function renderSummary() {
     const total = state.results.reduce((sum, item) => sum + item.score, 0);
     const maximum = state.results.length * 10;
-    return `<div class="style-result ${total >= maximum * .5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING EXAM</p><div class="style-result-mark">${total >= maximum * .5 ? "✓" : "△"}</div><h1>${total} / ${maximum}点</h1><p>10シナリオの総合結果です。候補絞り込みを誤ったシナリオは弱点モードへ記録しました。</p>
+    const achieved = total >= maximum * .5;
+    return `<div class="style-result ${achieved ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING EXAM</p><div class="style-result-mark result-status-mark">${achieved ? "目標達成" : "要復習"}</div><h1>${total} / ${maximum}点</h1><p>10シナリオの総合結果です。候補絞り込みを誤ったシナリオは弱点モードへ記録しました。</p>
       <div class="blind-summary-list">${state.results.map((item, index) => `<div><span>${index + 1}. ${escapeHtml(item.id)}</span><b>${item.score}/10点</b><small>${item.shortlistCorrect ? "絞り込み ✓" : "絞り込み 要復習"}</small></div>`).join("")}</div></div>`;
   }
 
