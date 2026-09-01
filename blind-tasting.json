@@ -72,6 +72,7 @@
         "sharp clean bitterness, dry finish"
       ],
       "step2Characteristic": "エッジの効いた強いホップ苦味＋完全ドライ（クリーン）",
+      "decisiveEvidence": "エッジの効いた強いホップ苦味＋完全ドライ（クリーン）",
       "step3IngredientsProcess": [
         "ピルスナー麦芽100%",
         "独産ノーブルホップ",
@@ -103,6 +104,11 @@
       ],
       "correctChoice": 1,
       "answer": "ジャーマンピルスナー",
+      "representativeBeers": [
+        "Bitburger Premium Pils",
+        "Jever Pilsener",
+        "Warsteiner Premium Verum"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-01"
@@ -138,6 +144,7 @@
         "malty sweetness, low hop bitterness"
       ],
       "step2Characteristic": "モルトフォーカス（ホップは脇役）",
+      "decisiveEvidence": "モルトフォーカス（ホップは脇役）",
       "step3IngredientsProcess": [
         "淡色麦芽100%",
         "穏やかなノーブルホップ",
@@ -169,6 +176,11 @@
       ],
       "correctChoice": 0,
       "answer": "ミュンヘナー・ヘレス",
+      "representativeBeers": [
+        "Augustiner Lagerbier Hell",
+        "Weihenstephaner Original Helles",
+        "Hofbräu Original"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-02"
@@ -203,6 +215,7 @@
         "balanced, full-bodied with clean finish"
       ],
       "step2Characteristic": "ヘレスとピルスの中間バランス＋高めのボディ・度数",
+      "decisiveEvidence": "ヘレスとピルスの中間バランス＋高めのボディ・度数",
       "step3IngredientsProcess": [
         "高比重麦汁",
         "下面発酵",
@@ -233,6 +246,10 @@
       ],
       "correctChoice": 2,
       "answer": "ドルトムンダー",
+      "representativeBeers": [
+        "DAB Dortmunder Export",
+        "Dortmunder Union Export"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-03"
@@ -267,6 +284,7 @@
         "rich malty, mellow from long lagering"
       ],
       "step2Characteristic": "カラメル・トーストモルト＋長期ラガーリングの円熟",
+      "decisiveEvidence": "カラメル・トーストモルト＋長期ラガーリングの円熟",
       "step3IngredientsProcess": [
         "ミュンヘン麦芽＋カラメル麦芽",
         "下面酵母",
@@ -297,6 +315,10 @@
       ],
       "correctChoice": 1,
       "answer": "メルツェン",
+      "representativeBeers": [
+        "Ayinger Märzen",
+        "Hacker-Pschorr Oktoberfest Märzen"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-04"
@@ -331,6 +353,7 @@
         "malty, no burnt bitterness"
       ],
       "step2Characteristic": "ミュンヘン麦芽の甘美なコク（黒くなくスタウト的焦げがない）",
+      "decisiveEvidence": "ミュンヘン麦芽の甘美なコク（黒くなくスタウト的焦げがない）",
       "step3IngredientsProcess": [
         "ミュンヘン麦芽50-100%",
         "下面酵母",
@@ -361,6 +384,11 @@
       ],
       "correctChoice": 1,
       "answer": "ミュンヘナー・ドゥンケル",
+      "representativeBeers": [
+        "Ayinger Altbairisch Dunkel",
+        "Hofbräu Dunkel",
+        "Weltenburger Kloster Barock Dunkel"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-05"
@@ -396,6 +424,7 @@
         "surprisingly light and dry"
       ],
       "step2Characteristic": "「黒いのに軽い」：エステル・重さ・焦げ酸味がない黒",
+      "decisiveEvidence": "「黒いのに軽い」：エステル・重さ・焦げ酸味がない黒",
       "step3IngredientsProcess": [
         "ロースト麦芽（除皮系含む）",
         "下面酵母",
@@ -426,6 +455,10 @@
       ],
       "correctChoice": 2,
       "answer": "シュヴァルツビア",
+      "representativeBeers": [
+        "Köstritzer Schwarzbier",
+        "Mönchshof Schwarzbier"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-06"
@@ -461,6 +494,7 @@
         "rich, warming, full-bodied"
       ],
       "step2Characteristic": "高比重×下面発酵の「液体のパン」＝重厚モルト＋クリーン",
+      "decisiveEvidence": "高比重×下面発酵の「液体のパン」＝重厚モルト＋クリーン",
       "step3IngredientsProcess": [
         "高比重仕込み",
         "メラノイジン/ミュンヘン麦芽",
@@ -492,6 +526,11 @@
       ],
       "correctChoice": 1,
       "answer": "ドッペルボック",
+      "representativeBeers": [
+        "Paulaner Salvator",
+        "Ayinger Celebrator",
+        "Andechser Doppelbock Dunkel"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-07"
@@ -525,6 +564,7 @@
         "intensely concentrated, syrupy, hot alcohol"
       ],
       "step2Characteristic": "凍結濃縮による極端な濃縮感（泡が立たない）",
+      "decisiveEvidence": "凍結濃縮による極端な濃縮感（泡が立たない）",
       "step3IngredientsProcess": [
         "ボックを氷点下で凍結→氷を除去して濃縮",
         "下面発酵ベース"
@@ -554,6 +594,10 @@
       ],
       "correctChoice": 1,
       "answer": "アイスボック",
+      "representativeBeers": [
+        "Kulmbacher Eisbock",
+        "Schneider Aventinus Eisbock"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-08"
@@ -587,6 +631,7 @@
         "clean lager base with caramel"
       ],
       "step2Characteristic": "ブナ燻製麦芽のスモーク香（唯一無二のシグナル）",
+      "decisiveEvidence": "ブナ燻製麦芽のスモーク香（唯一無二のシグナル）",
       "step3IngredientsProcess": [
         "ラウホマルツ50-100%",
         "下面酵母（メルツェンベース）",
@@ -617,6 +662,10 @@
       ],
       "correctChoice": 0,
       "answer": "ラオホビア",
+      "representativeBeers": [
+        "Aecht Schlenkerla Rauchbier Märzen",
+        "Spezial Rauchbier Märzen"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-09"
@@ -653,6 +702,7 @@
         "mellow, low carbonation, unfiltered"
       ],
       "step2Characteristic": "無濾過（酵母混濁）＋低炭酸の樽出し感",
+      "decisiveEvidence": "無濾過（酵母混濁）＋低炭酸の樽出し感",
       "step3IngredientsProcess": [
         "無濾過",
         "下面発酵",
@@ -683,6 +733,10 @@
       ],
       "correctChoice": 1,
       "answer": "ケラービア",
+      "representativeBeers": [
+        "St. GeorgenBräu Kellerbier",
+        "Mahrs Bräu Kellerbier"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-10"
@@ -716,6 +770,7 @@
         "clean, very light body, crisp"
       ],
       "step2Characteristic": "麦芽100%のまま設計的に軽量化（低比重仕込み）",
+      "decisiveEvidence": "麦芽100%のまま設計的に軽量化（低比重仕込み）",
       "step3IngredientsProcess": [
         "低初期比重",
         "下面発酵",
@@ -746,6 +801,9 @@
       ],
       "correctChoice": 2,
       "answer": "ライヒトビア",
+      "representativeBeers": [
+        "Schönramer Surtaler Schankbier"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-11"
@@ -780,6 +838,7 @@
         "low bitterness, effervescent"
       ],
       "step2Characteristic": "酵母由来のバナナ＋クローブ（小麦50%以上）",
+      "decisiveEvidence": "酵母由来のバナナ＋クローブ（小麦50%以上）",
       "step3IngredientsProcess": [
         "小麦麦芽>50%",
         "上面ヴァイス酵母（POF+）",
@@ -811,6 +870,11 @@
       ],
       "correctChoice": 1,
       "answer": "ヘーフェヴァイツェン",
+      "representativeBeers": [
+        "Weihenstephaner Hefeweissbier",
+        "Schneider Weisse Original",
+        "Erdinger Weissbier"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-12"
@@ -846,6 +910,7 @@
         "crisp, effervescent"
       ],
       "step2Characteristic": "ヴァイツェンの香りなのに完全にクリアな外観",
+      "decisiveEvidence": "ヴァイツェンの香りなのに完全にクリアな外観",
       "step3IngredientsProcess": [
         "小麦麦芽50%以上",
         "ヴァイス酵母発酵後に完全濾過（酵母除去）"
@@ -875,6 +940,10 @@
       ],
       "correctChoice": 2,
       "answer": "クリスタルヴァイツェン",
+      "representativeBeers": [
+        "Weihenstephaner Kristallweissbier",
+        "Erdinger Kristall"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-13"
@@ -911,6 +980,7 @@
         "full-bodied wheat"
       ],
       "step2Characteristic": "バナナ・クローブ×濃色麦芽の融合（強ければボック級）",
+      "decisiveEvidence": "バナナ・クローブ×濃色麦芽の融合（強ければボック級）",
       "step3IngredientsProcess": [
         "小麦麦芽＋ダークカラメル麦芽",
         "上面ヴァイス酵母（ボックは高比重）"
@@ -940,6 +1010,11 @@
       ],
       "correctChoice": 1,
       "answer": "ダークヴァイツェン",
+      "representativeBeers": [
+        "Weihenstephaner Hefeweissbier Dunkel",
+        "Erdinger Dunkel",
+        "Franziskaner Hefe-Weissbier Dunkel"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-14"
@@ -974,6 +1049,7 @@
         "crisp, delicate, dry"
       ],
       "step2Characteristic": "ラガーのようなクリスプさ×エールの微かな華やかさ（低温上面＋ラガーリング）",
+      "decisiveEvidence": "ラガーのようなクリスプさ×エールの微かな華やかさ（低温上面＋ラガーリング）",
       "step3IngredientsProcess": [
         "淡色麦芽",
         "ケルシュ専用上面酵母（低温発酵）＋低温熟成",
@@ -1004,6 +1080,11 @@
       ],
       "correctChoice": 1,
       "answer": "ケルシュ",
+      "representativeBeers": [
+        "Früh Kölsch",
+        "Gaffel Kölsch",
+        "Reissdorf Kölsch"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-15"
@@ -1039,6 +1120,7 @@
         "firm bitterness, clean but estery"
       ],
       "step2Characteristic": "上面発酵×低温熟成×強めのホップ苦味（デュッセルドルフ）",
+      "decisiveEvidence": "上面発酵×低温熟成×強めのホップ苦味（デュッセルドルフ）",
       "step3IngredientsProcess": [
         "ミュンヘン",
         "カラメル麦芽",
@@ -1070,6 +1152,11 @@
       ],
       "correctChoice": 2,
       "answer": "アルトビア",
+      "representativeBeers": [
+        "Uerige Alt",
+        "Schumacher Alt",
+        "Füchschen Alt"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-16"
@@ -1107,6 +1194,7 @@
         "light, effervescent"
       ],
       "step2Characteristic": "乳酸のクリーンな酸＋超軽量（塩・スパイスなし）",
+      "decisiveEvidence": "乳酸のクリーンな酸＋超軽量（塩・スパイスなし）",
       "step3IngredientsProcess": [
         "小麦＋大麦麦芽",
         "上面酵母＋乳酸菌（伝統はブレタノも）",
@@ -1137,6 +1225,10 @@
       ],
       "correctChoice": 1,
       "answer": "ベルリナーヴァイセ",
+      "representativeBeers": [
+        "Berliner Kindl Weisse",
+        "Schneeeule Marlene"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-17"
@@ -1171,6 +1263,7 @@
         "distinct salinity"
       ],
       "step2Characteristic": "塩（NaCl）＝ほぼ唯一無二の決定シグナル",
+      "decisiveEvidence": "塩（NaCl）＝ほぼ唯一無二の決定シグナル",
       "step3IngredientsProcess": [
         "小麦＋大麦麦芽",
         "塩",
@@ -1202,6 +1295,10 @@
       ],
       "correctChoice": 2,
       "answer": "ゴーゼ",
+      "representativeBeers": [
+        "Ritterguts Gose",
+        "Bayerischer Bahnhof Original Leipziger Gose"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-18"
@@ -1235,6 +1332,7 @@
         "extremely light, watery, highly carbonated"
       ],
       "step2Characteristic": "副原料による超軽量ボディ＋高発酵度",
+      "decisiveEvidence": "副原料による超軽量ボディ＋高発酵度",
       "step3IngredientsProcess": [
         "米",
         "コーン副原料（最大50%）",
@@ -1266,6 +1364,11 @@
       ],
       "correctChoice": 1,
       "answer": "アメリカンライトラガー",
+      "representativeBeers": [
+        "Bud Light",
+        "Coors Light",
+        "Miller Lite"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-01"
@@ -1299,6 +1402,7 @@
         "pleasant bitterness, clean yeast"
       ],
       "step2Characteristic": "米国産ホップの柑橘・松＋中立酵母のホップフォワード（穏やか版）",
+      "decisiveEvidence": "米国産ホップの柑橘・松＋中立酵母のホップフォワード（穏やか版）",
       "step3IngredientsProcess": [
         "2条大麦＋少量カラメル麦芽",
         "米産Cホップ",
@@ -1329,6 +1433,11 @@
       ],
       "correctChoice": 2,
       "answer": "アメリカンペールエール",
+      "representativeBeers": [
+        "Sierra Nevada Pale Ale",
+        "Deschutes Mirror Pond Pale Ale",
+        "Dale's Pale Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-02"
@@ -1365,6 +1474,7 @@
         "assertive bitterness with malt backbone"
       ],
       "step2Characteristic": "高IBUの強烈なホップ苦味（クリア）",
+      "decisiveEvidence": "高IBUの強烈なホップ苦味（クリア）",
       "step3IngredientsProcess": [
         "淡色麦芽",
         "米産ホップ大量投入（煮沸＆ドライホップ）",
@@ -1395,6 +1505,11 @@
       ],
       "correctChoice": 1,
       "answer": "アメリカンIPA",
+      "representativeBeers": [
+        "Bell's Two Hearted Ale",
+        "Stone IPA",
+        "Lagunitas IPA"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-03"
@@ -1427,6 +1542,7 @@
         "extreme bitterness, high alcohol"
       ],
       "step2Characteristic": "IPAをさらに強化：苦味・度数・比重の全部盛り",
+      "decisiveEvidence": "IPAをさらに強化：苦味・度数・比重の全部盛り",
       "step3IngredientsProcess": [
         "高比重麦汁＋デキストロース（高発酵度化）",
         "多段ドライホップ"
@@ -1456,6 +1572,11 @@
       ],
       "correctChoice": 1,
       "answer": "ダブルIPA",
+      "representativeBeers": [
+        "Russian River Pliny the Elder",
+        "Dogfish Head 90 Minute IPA",
+        "Stone Ruination IPA"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-04"
@@ -1490,6 +1611,7 @@
         "soft bitterness, silky"
       ],
       "step2Characteristic": "濁り×ジュース様アロマ×抑えた苦味",
+      "decisiveEvidence": "濁り×ジュース様アロマ×抑えた苦味",
       "step3IngredientsProcess": [
         "オーツ",
         "小麦併用",
@@ -1522,6 +1644,11 @@
       ],
       "correctChoice": 2,
       "answer": "ヘイジーIPA",
+      "representativeBeers": [
+        "Tree House Julius",
+        "Sierra Nevada Hazy Little Thing",
+        "The Alchemist Heady Topper"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-05"
@@ -1557,6 +1684,7 @@
         "crisp"
       ],
       "step2Characteristic": "小麦使用なのにヴァイツェン香が皆無（クリーン酵母）",
+      "decisiveEvidence": "小麦使用なのにヴァイツェン香が皆無（クリーン酵母）",
       "step3IngredientsProcess": [
         "小麦麦芽30-50%＋2条大麦",
         "米産アロマホップ",
@@ -1587,6 +1715,10 @@
       ],
       "correctChoice": 1,
       "answer": "アメリカンウィート",
+      "representativeBeers": [
+        "Widmer Hefeweizen",
+        "Bell's Oberon Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-06"
@@ -1621,6 +1753,7 @@
         "massive malt AND hops"
       ],
       "step2Characteristic": "英バーレイの骨格に米国ホップを全力投入",
+      "decisiveEvidence": "英バーレイの骨格に米国ホップを全力投入",
       "step3IngredientsProcess": [
         "超高比重麦汁",
         "米産アロマ＆ビタリング大量",
@@ -1652,6 +1785,10 @@
       ],
       "correctChoice": 2,
       "answer": "アメリカンバーレイワイン",
+      "representativeBeers": [
+        "Sierra Nevada Bigfoot",
+        "Anchor Old Foghorn"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-07"
@@ -1684,6 +1821,7 @@
         "citrus-pine over restrained roast"
       ],
       "step2Characteristic": "「黒いのにIPAの香り」の意図的ギャップ",
+      "decisiveEvidence": "「黒いのにIPAの香り」の意図的ギャップ",
       "step3IngredientsProcess": [
         "除皮ロースト麦芽で色だけ付与",
         "米ホップ大量"
@@ -1713,6 +1851,10 @@
       ],
       "correctChoice": 1,
       "answer": "ブラックIPA",
+      "representativeBeers": [
+        "Stone Sublimely Self-Righteous Black IPA",
+        "Deschutes Hop in the Dark"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-08"
@@ -1750,6 +1892,7 @@
         "low carbonation"
       ],
       "step2Characteristic": "英パブの日常酒：低炭酸×アーシーホップ×モルトの調和",
+      "decisiveEvidence": "英パブの日常酒：低炭酸×アーシーホップ×モルトの調和",
       "step3IngredientsProcess": [
         "ペール＋クリスタル麦芽",
         "英産ホップ",
@@ -1781,6 +1924,11 @@
       ],
       "correctChoice": 1,
       "answer": "ビター/ESB",
+      "representativeBeers": [
+        "Fuller's ESB",
+        "Timothy Taylor Landlord",
+        "Adnams Southwold Bitter"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-01"
@@ -1815,6 +1963,7 @@
         "firm bitterness (Burton water)"
       ],
       "step2Characteristic": "バートン硫酸塩硬水の引き締まった苦味×英モルト",
+      "decisiveEvidence": "バートン硫酸塩硬水の引き締まった苦味×英モルト",
       "step3IngredientsProcess": [
         "ペール麦芽",
         "英産アロマホップ",
@@ -1845,6 +1994,10 @@
       ],
       "correctChoice": 1,
       "answer": "イングリッシュペールエール",
+      "representativeBeers": [
+        "Fuller's London Pride",
+        "Bass Pale Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-02"
@@ -1878,6 +2031,7 @@
         "firm but rounded bitterness"
       ],
       "step2Characteristic": "IPAの骨格×英国ホップ・英国酵母（vs 米IPAの識別）",
+      "decisiveEvidence": "IPAの骨格×英国ホップ・英国酵母（vs 米IPAの識別）",
       "step3IngredientsProcess": [
         "ペール麦芽",
         "EKG/ファグル系",
@@ -1909,6 +2063,10 @@
       ],
       "correctChoice": 1,
       "answer": "イングリッシュIPA",
+      "representativeBeers": [
+        "Samuel Smith India Ale",
+        "Worthington White Shield"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-03"
@@ -1943,6 +2101,7 @@
         "nutty, mellow, gentle sweetness"
       ],
       "step2Characteristic": "ナッティ＆トフィーの英国的まろやかさ",
+      "decisiveEvidence": "ナッティ＆トフィーの英国的まろやかさ",
       "step3IngredientsProcess": [
         "ブラウン＋クリスタルモルト",
         "穏やかな英ホップ",
@@ -1973,6 +2132,10 @@
       ],
       "correctChoice": 2,
       "answer": "イングリッシュブラウン",
+      "representativeBeers": [
+        "Newcastle Brown Ale",
+        "Samuel Smith Nut Brown Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-04"
@@ -2006,6 +2169,7 @@
         "soft, gently sweet"
       ],
       "step2Characteristic": "ブラウンモルトの甘香ばしさ（焦げ酸味なし）",
+      "decisiveEvidence": "ブラウンモルトの甘香ばしさ（焦げ酸味なし）",
       "step3IngredientsProcess": [
         "ブラウン＋チョコモルト",
         "英産ホップ",
@@ -2036,6 +2200,10 @@
       ],
       "correctChoice": 1,
       "answer": "ロンドンポーター",
+      "representativeBeers": [
+        "Fuller's London Porter",
+        "Samuel Smith Taddy Porter"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-05"
@@ -2071,6 +2239,7 @@
         "sharp roasted dryness, light body"
       ],
       "step2Characteristic": "ローストバーレイの焦げ×超クリーミー泡×軽い飲み口",
+      "decisiveEvidence": "ローストバーレイの焦げ×超クリーミー泡×軽い飲み口",
       "step3IngredientsProcess": [
         "ベース麦芽＋未発芽ローストバーレイ",
         "上面酵母",
@@ -2101,6 +2270,11 @@
       ],
       "correctChoice": 1,
       "answer": "アイリッシュドライスタウト",
+      "representativeBeers": [
+        "Guinness Draught",
+        "Murphy's Irish Stout",
+        "Beamish Irish Stout"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-06"
@@ -2136,6 +2310,7 @@
         "intense, warming"
       ],
       "step2Characteristic": "ロースト支配×高苦味×超重厚（帝政ロシア輸出の物語）",
+      "decisiveEvidence": "ロースト支配×高苦味×超重厚（帝政ロシア輸出の物語）",
       "step3IngredientsProcess": [
         "多量のロースト",
         "ダークモルト",
@@ -2167,6 +2342,10 @@
       ],
       "correctChoice": 1,
       "answer": "インペリアルスタウト",
+      "representativeBeers": [
+        "Courage Imperial Russian Stout",
+        "Samuel Smith Imperial Stout"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-07"
@@ -2202,6 +2381,7 @@
         "vinous, immensely rich"
       ],
       "step2Characteristic": "長期熟成のシェリー様酸化熟成香×ワイン級の強さ",
+      "decisiveEvidence": "長期熟成のシェリー様酸化熟成香×ワイン級の強さ",
       "step3IngredientsProcess": [
         "超高比重ペール麦汁",
         "英産ホップ多量",
@@ -2233,6 +2413,11 @@
       ],
       "correctChoice": 1,
       "answer": "イングリッシュバーレイワイン",
+      "representativeBeers": [
+        "Thomas Hardy's Ale",
+        "Fuller's Golden Pride",
+        "J.W. Lees Harvest Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-08"
@@ -2269,6 +2454,7 @@
         "malt-dominant, restrained esters"
       ],
       "step2Characteristic": "麦汁煮詰めの甘み×冷涼発酵の抑制（スコットランド）",
+      "decisiveEvidence": "麦汁煮詰めの甘み×冷涼発酵の抑制（スコットランド）",
       "step3IngredientsProcess": [
         "ペール麦芽＋長時間煮沸カラメル化",
         "低温上面発酵",
@@ -2299,6 +2485,10 @@
       ],
       "correctChoice": 1,
       "answer": "スコッチエール",
+      "representativeBeers": [
+        "Belhaven Wee Heavy",
+        "Traquair House Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-09"
@@ -2332,6 +2522,7 @@
         "lingering sweetness (unfermentable sugar)"
       ],
       "step2Characteristic": "乳糖による残存甘味（スイート系スタウト）",
+      "decisiveEvidence": "乳糖による残存甘味（スイート系スタウト）",
       "step3IngredientsProcess": [
         "ロースト麦芽＋ラクトース",
         "英上面酵母"
@@ -2361,6 +2552,10 @@
       ],
       "correctChoice": 1,
       "answer": "ミルクスタウト",
+      "representativeBeers": [
+        "Mackeson Stout",
+        "Left Hand Milk Stout"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-10"
@@ -2396,6 +2591,7 @@
         "silky (unmalted wheat), gentle"
       ],
       "step2Characteristic": "副原料（オレンジピール＋コリアンダー）のスパイス香",
+      "decisiveEvidence": "副原料（オレンジピール＋コリアンダー）のスパイス香",
       "step3IngredientsProcess": [
         "大麦麦芽＋未発芽小麦30-40%",
         "オレンジピール",
@@ -2427,6 +2623,11 @@
       ],
       "correctChoice": 1,
       "answer": "ベルジャンホワイト",
+      "representativeBeers": [
+        "Hoegaarden",
+        "Blanche de Namur",
+        "St.Bernardus Wit"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-01"
@@ -2462,6 +2663,7 @@
         "bone dry despite strength"
       ],
       "step2Characteristic": "「強いのに軽くドライ」＝糖添加による完全発酵",
+      "decisiveEvidence": "「強いのに軽くドライ」＝糖添加による完全発酵",
       "step3IngredientsProcess": [
         "淡色麦芽＋糖類",
         "高発酵度ベルジャン酵母",
@@ -2492,6 +2694,11 @@
       ],
       "correctChoice": 1,
       "answer": "ゴールデンストロング",
+      "representativeBeers": [
+        "Duvel",
+        "Delirium Tremens",
+        "Piraat"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-02"
@@ -2526,6 +2733,7 @@
         "fruity-caramel richness"
       ],
       "step2Characteristic": "ダークキャンディシュガー由来の干果×修道院酵母エステル",
+      "decisiveEvidence": "ダークキャンディシュガー由来の干果×修道院酵母エステル",
       "step3IngredientsProcess": [
         "大麦麦芽＋ダークキャンディシュガー",
         "修道院酵母",
@@ -2556,6 +2764,11 @@
       ],
       "correctChoice": 1,
       "answer": "ダブル",
+      "representativeBeers": [
+        "Westmalle Dubbel",
+        "Chimay Red",
+        "Rochefort 6"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-03"
@@ -2590,6 +2803,7 @@
         "rich yet strong bitterness"
       ],
       "step2Characteristic": "黄金色×強い×スパイシー（白糖添加の高比重）",
+      "decisiveEvidence": "黄金色×強い×スパイシー（白糖添加の高比重）",
       "step3IngredientsProcess": [
         "淡色麦芽＋白キャンディシュガー",
         "修道院酵母",
@@ -2620,6 +2834,11 @@
       ],
       "correctChoice": 2,
       "answer": "トリプル",
+      "representativeBeers": [
+        "Westmalle Tripel",
+        "Tripel Karmeliet",
+        "Chimay White"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-04"
@@ -2655,6 +2874,7 @@
         "immensely rich, warming, no roast"
       ],
       "step2Characteristic": "ベルジャン最高峰の超高比重（焦げ苦味が無い黒系ストロング）",
+      "decisiveEvidence": "ベルジャン最高峰の超高比重（焦げ苦味が無い黒系ストロング）",
       "step3IngredientsProcess": [
         "超高比重仕込み",
         "複数糖類",
@@ -2687,6 +2907,11 @@
       ],
       "correctChoice": 1,
       "answer": "クアドルペル",
+      "representativeBeers": [
+        "Westvleteren 12",
+        "Rochefort 10",
+        "St.Bernardus Abt 12"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-05"
@@ -2723,6 +2948,7 @@
         "bone dry, brisk"
       ],
       "step2Characteristic": "胡椒様フェノール×超高発酵度（農家の季節ビール）",
+      "decisiveEvidence": "胡椒様フェノール×超高発酵度（農家の季節ビール）",
       "step3IngredientsProcess": [
         "ピルスナー麦芽主体",
         "高温耐性セゾン酵母（〜32℃）",
@@ -2753,6 +2979,11 @@
       ],
       "correctChoice": 1,
       "answer": "セゾン",
+      "representativeBeers": [
+        "Saison Dupont",
+        "Fantôme Saison",
+        "Saison de Dottignies"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-06"
@@ -2788,6 +3019,7 @@
         "sharp hoppy bitterness, dry tartness"
       ],
       "step2Characteristic": "ブレタノ熟成×ドライホッピング（トラピストの異端児）",
+      "decisiveEvidence": "ブレタノ熟成×ドライホッピング（トラピストの異端児）",
       "step3IngredientsProcess": [
         "ペール＋カラメル麦芽",
         "ドライホッピング",
@@ -2818,6 +3050,9 @@
       ],
       "correctChoice": 1,
       "answer": "オルヴァル",
+      "representativeBeers": [
+        "Orval"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-07"
@@ -2852,6 +3087,7 @@
         "wine-like sweet-sour complexity"
       ],
       "step2Characteristic": "オーク大樽熟成の混合酸（酸×モルト甘の赤ワイン様）",
+      "decisiveEvidence": "オーク大樽熟成の混合酸（酸×モルト甘の赤ワイン様）",
       "step3IngredientsProcess": [
         "ウィーン系麦芽",
         "オーク大樽長期熟成＋若ビールのブレンド",
@@ -2882,6 +3118,11 @@
       ],
       "correctChoice": 1,
       "answer": "フランダースレッド",
+      "representativeBeers": [
+        "Rodenbach Grand Cru",
+        "Duchesse de Bourgogne",
+        "Cuvée des Jacobins"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-08"
@@ -2918,6 +3159,7 @@
         "blend of mature and young lambics"
       ],
       "step2Characteristic": "自然発酵の野生香×熟成ブレンド（ブリュッセルのシャンパン）",
+      "decisiveEvidence": "自然発酵の野生香×熟成ブレンド（ブリュッセルのシャンパン）",
       "step3IngredientsProcess": [
         "大麦＋未発芽小麦",
         "陳旧ホップ",
@@ -2949,6 +3191,11 @@
       ],
       "correctChoice": 1,
       "answer": "グーズ",
+      "representativeBeers": [
+        "3 Fonteinen Oude Geuze",
+        "Boon Oude Geuze",
+        "Cantillon Gueuze"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-09"
@@ -2983,6 +3230,7 @@
         "tart and fruity, not syrupy"
       ],
       "step2Characteristic": "ランビック樽への実チェリー漬け込み再発酵",
+      "decisiveEvidence": "ランビック樽への実チェリー漬け込み再発酵",
       "step3IngredientsProcess": [
         "ランビック原酒＋スカールベーク種チェリー",
         "樽内3〜18ヶ月再発酵"
@@ -3012,6 +3260,10 @@
       ],
       "correctChoice": 1,
       "answer": "クリーク",
+      "representativeBeers": [
+        "Cantillon Kriek",
+        "Boon Kriek Mariage Parfait"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-10"
@@ -3045,6 +3297,7 @@
         "balanced, moderately strong"
       ],
       "step2Characteristic": "「強すぎないベルジャン」＝酵母香はあるが中庸",
+      "decisiveEvidence": "「強すぎないベルジャン」＝酵母香はあるが中庸",
       "step3IngredientsProcess": [
         "淡色麦芽",
         "ベルジャン酵母",
@@ -3075,6 +3328,10 @@
       ],
       "correctChoice": 1,
       "answer": "ベルジャンブロンド",
+      "representativeBeers": [
+        "Leffe Blond",
+        "Affligem Blond"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-11"
@@ -3110,6 +3367,7 @@
         "rounded soft bitterness (soft water)"
       ],
       "step2Characteristic": "極軟水の丸い苦味×デコクションの厚み（チェコ）",
+      "decisiveEvidence": "極軟水の丸い苦味×デコクションの厚み（チェコ）",
       "step3IngredientsProcess": [
         "モラヴィア大麦",
         "3回デコクション",
@@ -3142,6 +3400,11 @@
       ],
       "correctChoice": 1,
       "answer": "ボヘミアンピルスナー",
+      "representativeBeers": [
+        "Pilsner Urquell",
+        "Budweiser Budvar Original",
+        "Bernard Celebration Lager"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-01"
@@ -3175,6 +3438,7 @@
         "balanced, drinkable dark lager"
       ],
       "step2Characteristic": "チェコ的な黒：甘み×ザーツ苦味の同居",
+      "decisiveEvidence": "チェコ的な黒：甘み×ザーツ苦味の同居",
       "step3IngredientsProcess": [
         "カラメル＋ロースト麦芽",
         "ザーツ",
@@ -3205,6 +3469,11 @@
       ],
       "correctChoice": 1,
       "answer": "チェコダーク",
+      "representativeBeers": [
+        "Budweiser Budvar Dark",
+        "Kozel Dark",
+        "U Fleků 13°"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-02"
@@ -3237,6 +3506,7 @@
         "clean, mild"
       ],
       "step2Characteristic": "トーストモルト×クリーンラガー（墺→メキシコ継承）",
+      "decisiveEvidence": "トーストモルト×クリーンラガー（墺→メキシコ継承）",
       "step3IngredientsProcess": [
         "ウィーン麦芽",
         "ノーブルホップ",
@@ -3267,6 +3537,11 @@
       ],
       "correctChoice": 1,
       "answer": "ウィンナーラガー",
+      "representativeBeers": [
+        "Ottakringer Wiener Original",
+        "Negra Modelo",
+        "Great Lakes Eliot Ness"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-03"
@@ -3301,6 +3576,7 @@
         "smooth, strong, clean (bottom-fermented)"
       ],
       "step2Characteristic": "下面発酵の高アルコール黒＝「エステルのないインペリアル」",
+      "decisiveEvidence": "下面発酵の高アルコール黒＝「エステルのないインペリアル」",
       "step3IngredientsProcess": [
         "高比重ダーク麦汁",
         "下面酵母",
@@ -3331,6 +3607,11 @@
       ],
       "correctChoice": 1,
       "answer": "バルチックポーター",
+      "representativeBeers": [
+        "Żywiec Porter",
+        "Okocim Porter",
+        "Sinebrychoff Porter"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-04"
@@ -3364,6 +3645,7 @@
         "super-attenuated, crisp dry finish"
       ],
       "step2Characteristic": "「キレ」＝極限の高発酵度×完全クリーン",
+      "decisiveEvidence": "「キレ」＝極限の高発酵度×完全クリーン",
       "step3IngredientsProcess": [
         "淡色麦芽＋米",
         "コーン",
@@ -3395,6 +3677,9 @@
       ],
       "correctChoice": 1,
       "answer": "ジャパニーズドライ",
+      "representativeBeers": [
+        "Asahi Super Dry"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-05"
@@ -3430,6 +3715,7 @@
         "mellow, cellared malty character"
       ],
       "step2Characteristic": "長期セラー貯蔵（Garde）の落ち着き×モルティ（仏北部）",
+      "decisiveEvidence": "長期セラー貯蔵（Garde）の落ち着き×モルティ（仏北部）",
       "step3IngredientsProcess": [
         "ウィーン",
         "カラメル麦芽",
@@ -3462,6 +3748,11 @@
       ],
       "correctChoice": 1,
       "answer": "ビエール・ド・ギャルド",
+      "representativeBeers": [
+        "Jenlain Ambrée",
+        "3 Monts",
+        "Ch'Ti Ambrée"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-06"
@@ -3495,6 +3786,7 @@
         "vinous with malt backbone"
       ],
       "step2Characteristic": "ブドウ果汁（マスト）添加＝ワインとビールの融合（伊）",
+      "decisiveEvidence": "ブドウ果汁（マスト）添加＝ワインとビールの融合（伊）",
       "step3IngredientsProcess": [
         "大麦麦汁＋地元産ブドウ果汁（最大40%）",
         "ワイン酵母orエール酵母",
@@ -3525,6 +3817,10 @@
       ],
       "correctChoice": 1,
       "answer": "IGA",
+      "representativeBeers": [
+        "Birra del Borgo L'Equilibrista",
+        "LoverBeer BeerBera"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-07"
@@ -3560,6 +3856,7 @@
         "no hops, raw ale"
       ],
       "step2Characteristic": "ジュニパー×パン酵母×無煮沸（フィンランド農家）",
+      "decisiveEvidence": "ジュニパー×パン酵母×無煮沸（フィンランド農家）",
       "step3IngredientsProcess": [
         "ライ麦",
         "大麦麦芽",
@@ -3592,6 +3889,10 @@
       ],
       "correctChoice": 1,
       "answer": "サハティ",
+      "representativeBeers": [
+        "Lammin Sahti",
+        "Finlandia Sahti"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-08"
@@ -3627,6 +3928,7 @@
         "rustic"
       ],
       "step2Characteristic": "クヴェイク酵母の30〜40℃超高温発酵＝オレンジ様エステル",
+      "decisiveEvidence": "クヴェイク酵母の30〜40℃超高温発酵＝オレンジ様エステル",
       "step3IngredientsProcess": [
         "大麦麦芽＋ジュニパー浸出液",
         "Kveik農家酵母",
@@ -3657,6 +3959,9 @@
       ],
       "correctChoice": 1,
       "answer": "コーネル",
+      "representativeBeers": [
+        "Voss Bryggeri Vossaøl 1814"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-09"
@@ -3690,6 +3995,7 @@
         "clean, defined bitterness"
       ],
       "step2Characteristic": "NZ産ホップ特有の白ワイン・南国果実アロマ",
+      "decisiveEvidence": "NZ産ホップ特有の白ワイン・南国果実アロマ",
       "step3IngredientsProcess": [
         "淡色モルト",
         "Nelson Sauvin/Motueka等",
@@ -3720,6 +4026,11 @@
       ],
       "correctChoice": 1,
       "answer": "NZ IPA",
+      "representativeBeers": [
+        "8 Wired HopWired NZ IPA",
+        "Epic Full Send NZIPA",
+        "Tuatara Aotearoa Pale Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-10"
@@ -3754,6 +4065,7 @@
         "lively carbonation, balanced"
       ],
       "step2Characteristic": "瓶内発酵の澱×果実エステル（豪州の歴史様式）",
+      "decisiveEvidence": "瓶内発酵の澱×果実エステル（豪州の歴史様式）",
       "step3IngredientsProcess": [
         "淡色麦芽",
         "豪州系酵母",
@@ -3784,6 +4096,9 @@
       ],
       "correctChoice": 1,
       "answer": "スパークリングエール",
+      "representativeBeers": [
+        "Coopers Sparkling Ale"
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-11"

@@ -2,8 +2,8 @@
 
 (() => {
   const { escapeHtml, goHome, showView, shuffle, sameSet } = window.BierKompass;
-  const HISTORY_KEY = "bierkompass-blind-history-v3";
-  const STAGES = ["観察整理", "特徴定義", "原材料・工程", "発酵系統", "候補除外", "スタイル結論"];
+  const HISTORY_KEY = "bierkompass-blind-history-v4";
+  const STAGES = ["観察", "原材料・工程", "発酵系統", "国・地域", "候補絞り込み", "最終判定", "決め手"];
   const FAMILY_LABELS = { Lager: "下面発酵（ラガー）", Ale: "上面発酵（エール）", Spontaneous: "自然発酵", Farmhouse: "農家醸造系" };
   const byId = (id) => document.getElementById(id);
   let blindData = null;
@@ -16,7 +16,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v35", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v36", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -49,12 +49,12 @@
   function renderSetup() {
     const countries = blindData.metadata.countries.map((country) => `
       <label class="blind-filter"><input type="checkbox" name="blind-country" value="${escapeHtml(country.id)}" checked><span>${escapeHtml(country.label)} <small>${country.count}件</small></span></label>`).join("");
-    return `<div class="style-step-heading"><p class="eyebrow">BLIND TASTING · SETUP</p><h1>判定トレーニングを選ぶ</h1><p>添付仕様の全58シナリオから、国・難易度を指定して出題します。</p></div>
+    return `<div class="style-step-heading"><p class="eyebrow">BLIND TASTING · SETUP</p><h1>判定トレーニングを選ぶ</h1><p>全58シナリオを、観察から原因・発酵・文化圏・スタイルへ段階的に推理します。</p></div>
       <div class="blind-setup-grid">
         <fieldset class="blind-setup-card"><legend>モード</legend>
           <label class="blind-mode"><input type="radio" name="blind-mode" value="practice" checked><span><b>練習モード</b><small>1問ずつ・ヒントあり</small></span></label>
           <label class="blind-mode"><input type="radio" name="blind-mode" value="exam"><span><b>試験モード</b><small>ランダム10問・1問3分</small></span></label>
-          <label class="blind-mode"><input type="radio" name="blind-mode" value="weak"><span><b>弱点モード</b><small>除外操作を誤った問題を優先</small></span></label>
+          <label class="blind-mode"><input type="radio" name="blind-mode" value="weak"><span><b>弱点モード</b><small>候補絞り込みを誤った問題を優先</small></span></label>
         </fieldset>
         <fieldset class="blind-setup-card"><legend>国・地域</legend><div class="blind-filter-grid">${countries}</div></fieldset>
         <fieldset class="blind-setup-card"><legend>難易度</legend><div class="blind-filter-grid">
@@ -77,9 +77,9 @@
     if (!pool.length) return setMessage("条件に合うシナリオがありません。国・難易度を選び直してください。");
     if (mode === "weak") {
       const history = currentHistory();
-      pool = pool.filter((scenario) => (history[scenario.id]?.weakExclusion || 0) > 0);
-      if (!pool.length) return setMessage("この条件には除外操作の弱点記録がありません。練習モードで回答すると記録されます。");
-      pool.sort((a, b) => (history[b.id]?.weakExclusion || 0) - (history[a.id]?.weakExclusion || 0));
+      pool = pool.filter((scenario) => (history[scenario.id]?.weakShortlist || 0) > 0);
+      if (!pool.length) return setMessage("この条件には候補絞り込みの弱点記録がありません。練習モードで回答すると記録されます。");
+      pool.sort((a, b) => (history[b.id]?.weakShortlist || 0) - (history[a.id]?.weakShortlist || 0));
     } else {
       pool = shuffle(pool);
     }
@@ -98,6 +98,19 @@
     return shuffle(result);
   }
 
+  function uniqueLabeledOptions(target, others, count = 4) {
+    const result = [{ id: target.id, label: target.decisiveEvidence }];
+    const labels = new Set([target.decisiveEvidence]);
+    for (const scenario of shuffle(others)) {
+      if (result.length >= count) break;
+      if (!labels.has(scenario.decisiveEvidence)) {
+        result.push({ id: scenario.id, label: scenario.decisiveEvidence });
+        labels.add(scenario.decisiveEvidence);
+      }
+    }
+    return shuffle(result);
+  }
+
   function beginScenario() {
     clearInterval(timerHandle);
     const target = currentScenario();
@@ -105,13 +118,13 @@
     state.stage = 0;
     state.finished = false;
     state.hintOpen = false;
-    state.answers = { step1: [], step2: "", step3: [], family: "", exclusions: [], reasons: [], final: null };
+    state.answers = { ingredients: [], family: "", country: "", exclusions: [], final: null, decisive: "" };
     state.options = {
-      step1: uniqueOptions(target.step1InterpretationsJa, others.flatMap((scenario) => scenario.step1InterpretationsJa), 3),
-      step2: shuffle([{ id: target.id, label: target.step2Characteristic }, ...shuffle(others).slice(0, 3).map((scenario) => ({ id: scenario.id, label: scenario.step2Characteristic }))]),
-      step3: uniqueOptions(target.step3IngredientsProcess, others.flatMap((scenario) => scenario.step3IngredientsProcess), 3),
-      choices: shuffle(target.choices.map((label, index) => ({ index, label }))),
-      reasons: uniqueOptions(target.exclusions.map((item) => item.reason), others.flatMap((scenario) => scenario.exclusions.map((item) => item.reason)), 1),
+      ingredients: uniqueOptions(target.step3IngredientsProcess, others.flatMap((scenario) => scenario.step3IngredientsProcess), 3),
+      families: shuffle(Object.entries(FAMILY_LABELS).map(([value, label]) => ({ value, label }))),
+      countries: shuffle(blindData.metadata.countries.map((country) => ({ value: country.id, label: country.label }))),
+      styles: shuffle(target.choices.map((label, index) => ({ index, label }))),
+      decisive: uniqueLabeledOptions(target, others),
     };
     if (state.mode === "exam") {
       state.deadline = Date.now() + blindData.metadata.secondsPerScenario * 1000;
@@ -133,7 +146,7 @@
     if (state.finished) return byId("blindQuizStepLabel").textContent = state.mode === "exam" ? `RESULT ${state.queueIndex + 1} / ${state.queue.length}` : "RESULT";
     const prefix = state.mode === "exam" ? `${state.queueIndex + 1} / ${state.queue.length} · ` : "";
     const timer = remaining === null || state.mode !== "exam" ? "" : ` · ${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
-    byId("blindQuizStepLabel").textContent = `${prefix}${STAGES[state.stage]}${timer}`;
+    byId("blindQuizStepLabel").textContent = `${prefix}STEP ${state.stage + 1} · ${STAGES[state.stage]}${timer}`;
   }
 
   function blindCard(target, compact = false) {
@@ -144,49 +157,49 @@
     </dl></section>`;
   }
 
-  function checks(name, options, selected, className = "") {
-    return `<div class="blind-option-grid ${className}">${options.map((option, index) => {
+  function checks(name, options, selected) {
+    return `<div class="blind-option-grid">${options.map((option, index) => {
       const value = typeof option === "object" ? option.value : option;
       const label = typeof option === "object" ? option.label : option;
       return `<label class="blind-option"><input type="checkbox" name="${escapeHtml(name)}" value="${escapeHtml(value)}" ${selected.includes(String(value)) ? "checked" : ""}><span>${String.fromCharCode(65 + index)}</span><b>${escapeHtml(label)}</b></label>`;
     }).join("")}</div>`;
   }
 
-  function radios(name, options, selected, className = "") {
-    return `<div class="blind-option-grid ${className}">${options.map((option, index) => {
+  function radios(name, options, selected) {
+    return `<div class="blind-option-grid">${options.map((option, index) => {
       const value = typeof option === "object" ? option.value : option;
       const label = typeof option === "object" ? option.label : option;
       return `<label class="blind-option"><input type="radio" name="${escapeHtml(name)}" value="${escapeHtml(value)}" ${String(selected) === String(value) ? "checked" : ""}><span>${String.fromCharCode(65 + index)}</span><b>${escapeHtml(label)}</b></label>`;
     }).join("")}</div>`;
   }
 
-  function hint(target) {
-    if (state.mode === "exam") return "";
-    const hints = ["観察語を、外観・香り・味の順に整理します。", `決定軸は「${target.step2Characteristic}」です。`, "香味の原因を麦芽・ホップ・酵母・水・特殊工程へ逆算します。", "エステルやフェノール、野生香の有無を先に確認します。", "正答候補以外の3スタイルを、観察情報と矛盾する理由で除外します。", "除外せず残した候補から最終スタイルを選びます。"][state.stage];
+  function hint() {
+    if (state.mode === "exam" || state.stage === 0) return "";
+    const hints = ["", "香味を麦芽・ホップ・酵母・水・特殊工程の原因へ逆算します。", "エステル、フェノール、野生香とクリーンさの組み合わせを確認します。", "国名そのものではなく、原材料と発酵文化の組み合わせから判断します。", "観察情報と両立しない候補をすべて外します。", "残った候補のうち、全情報を最も無理なく説明できるものを選びます。", "他候補との差を最も短く説明できる特徴を探します。"][state.stage];
     return `<div class="blind-hint"><button type="button" class="text-button" id="blindHintButton">${state.hintOpen ? "ヒントを閉じる" : "ヒントを見る"}</button>${state.hintOpen ? `<p>${escapeHtml(hints)}</p>` : ""}</div>`;
   }
 
+  function reasoningSummary() {
+    const family = FAMILY_LABELS[state.answers.family] || "未回答";
+    const country = blindData.metadata.countries.find((item) => item.id === state.answers.country)?.label || "未回答";
+    return `<section class="blind-reasoning-summary"><div><span>発酵系統</span><b>${escapeHtml(family)}</b></div><div><span>国・地域</span><b>${escapeHtml(country)}</b></div><div><span>原材料・工程</span><b>${state.answers.ingredients.length}件選択</b></div></section>`;
+  }
+
   function renderStage(target) {
-    const compactCard = state.stage > 0;
+    const card = blindCard(target, state.stage > 0);
     let content = "";
-    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · 観察整理</p><h1>観察から方向性を判断する</h1><p>カードの文章を手掛かりに、スタイル識別に使える方向性をすべて選んでください。選択肢は観察文の言い換えではなく、香味・外観の判断軸です。</p></div>${blindCard(target)}${checks("blind-step1", state.options.step1, state.answers.step1)}`;
-    if (state.stage === 1) content = `<div class="style-step-heading"><p class="eyebrow">STEP 2 · 特徴定義</p><h1>最大の特徴を定義する</h1><p>このビールを最も強く決定づける特徴を1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-step2", state.options.step2.map((item) => ({ value: item.id, label: item.label })), state.answers.step2)}`;
-    if (state.stage === 2) content = `<div class="style-step-heading"><p class="eyebrow">STEP 3 · 原材料・工程</p><h1>原材料・工程を逆算する</h1><p>観察情報から考えられる原材料・工程をすべて選んでください。</p></div>${blindCard(target, compactCard)}${checks("blind-step3", state.options.step3, state.answers.step3)}`;
-    if (state.stage === 3) content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.1 · 発酵系統</p><h1>発酵系統を判定する</h1><p>クリーンさだけで即断せず、例外も考慮して1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-family", Object.entries(FAMILY_LABELS).map(([value, label]) => ({ value, label })), state.answers.family)}`;
-    if (state.stage === 4) {
-      const wrongIndexes = target.choices.map((_, index) => index).filter((index) => index !== target.correctChoice);
-      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.2 · 候補除外</p><h1>候補を理由とともに除外する</h1><p>除外できるスタイル3つと、成立する除外理由3つを選んでください。</p></div>${blindCard(target, true)}
-        <h2 class="blind-subheading">除外するスタイル</h2>${checks("blind-exclusions", state.options.choices.map((item) => ({ value: item.index, label: item.label })), state.answers.exclusions.map(String))}
-        <h2 class="blind-subheading">除外理由</h2>${checks("blind-reasons", state.options.reasons, state.answers.reasons)}
-        <p class="blind-selection-note">正しい除外対象は${wrongIndexes.length}件です。理由も観察情報と照合してください。</p>`;
-    }
+    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · 観察</p><h1>ブラインド情報を観察する</h1><p>この画面では回答しません。外観・香り・味・口当たりを確認し、原因を考えてから次へ進んでください。</p></div>${card}<section class="blind-observation-note"><strong>観察は入力情報です</strong><p>次の画面から、観察結果を生む原材料・工程を推理します。</p></section>`;
+    if (state.stage === 1) content = `<div class="style-step-heading"><p class="eyebrow">STEP 2 · 原材料・工程</p><h1>香味の原因を逆算する</h1><p>観察情報を生む可能性が高い原材料・醸造工程をすべて選んでください。</p></div>${card}${checks("blind-ingredients", state.options.ingredients, state.answers.ingredients)}`;
+    if (state.stage === 2) content = `<div class="style-step-heading"><p class="eyebrow">STEP 3 · 発酵系統</p><h1>発酵の系統を判定する</h1><p>原材料・工程の推測と香味を踏まえ、最も適切な発酵系統を1つ選んでください。</p></div>${card}${radios("blind-family", state.options.families, state.answers.family)}`;
+    if (state.stage === 3) content = `<div class="style-step-heading"><p class="eyebrow">STEP 4 · 国・地域</p><h1>醸造文化圏を判定する</h1><p>原材料、工程、発酵系統から、このスタイルが属する国・地域区分を1つ選んでください。</p></div>${card}${reasoningSummary()}${radios("blind-country", state.options.countries, state.answers.country)}`;
+    if (state.stage === 4) content = `<div class="style-step-heading"><p class="eyebrow">STEP 5 · 候補絞り込み</p><h1>成立しない候補を外す</h1><p>これまでの推理と矛盾し、候補から除外できるスタイルをすべて選んでください。</p></div>${card}${reasoningSummary()}${checks("blind-exclusions", state.options.styles.map((item) => ({ value: item.index, label: item.label })), state.answers.exclusions.map(String))}`;
     if (state.stage === 5) {
-      const remaining = state.options.choices.filter((item) => !state.answers.exclusions.includes(item.index));
-      content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.3 · スタイル結論</p><h1>最終スタイルを選ぶ</h1><p>除外せず残した候補から、最も合致するスタイルを1つ選んでください。</p></div>${blindCard(target, true)}
-        <section class="blind-reasoning-summary"><div><span>特徴</span><b>${escapeHtml(state.options.step2.find((item) => item.id === state.answers.step2)?.label || "未回答")}</b></div><div><span>発酵系統</span><b>${escapeHtml(FAMILY_LABELS[state.answers.family] || "未回答")}</b></div><div><span>残った候補</span><b>${remaining.length}件</b></div></section>
-        ${remaining.length ? radios("blind-final", remaining.map((item) => ({ value: item.index, label: item.label })), state.answers.final) : `<div class="no-style-candidates"><strong>候補をすべて除外しています</strong><p>「前へ戻る」から除外対象を見直してください。</p></div>`}`;
+      const remaining = state.options.styles.filter((item) => !state.answers.exclusions.includes(item.index));
+      content = `<div class="style-step-heading"><p class="eyebrow">STEP 6 · 最終判定</p><h1>スタイルを1つ選ぶ</h1><p>除外せず残した候補から、観察情報を最も無理なく説明できるスタイルを選んでください。</p></div>${card}${reasoningSummary()}
+        ${remaining.length ? radios("blind-final", remaining.map((item) => ({ value: item.index, label: item.label })), state.answers.final) : `<div class="no-style-candidates"><strong>候補をすべて除外しています</strong><p>「前へ戻る」から候補の絞り込みを見直してください。</p></div>`}`;
     }
-    return content + hint(target);
+    if (state.stage === 6) content = `<div class="style-step-heading"><p class="eyebrow">STEP 7 · 決め手</p><h1>特定の決め手を選ぶ</h1><p>最終スタイルを他の候補から区別するうえで、最も重要な特徴を1つ選んでください。</p></div>${card}${reasoningSummary()}${radios("blind-decisive", state.options.decisive.map((item) => ({ value: item.id, label: item.label })), state.answers.decisive)}`;
+    return content + hint();
   }
 
   function selectionPoints(selected, correct, maximum) {
@@ -197,21 +210,15 @@
     return Math.round(Math.max(0, maximum * (truePositive - falsePositive) / Math.max(1, correctSet.size)) * 10) / 10;
   }
 
-  function sameStringSet(left, right) {
-    return left.length === right.length && [...left].sort().every((value, index) => value === [...right].sort()[index]);
-  }
-
   function scoreScenario(target) {
     const wrongIndexes = target.choices.map((_, index) => index).filter((index) => index !== target.correctChoice);
-    const correctReasons = target.exclusions.map((item) => item.reason);
-    const step1 = selectionPoints(state.answers.step1, target.step1InterpretationsJa, 2);
-    const step2 = state.answers.step2 === target.id ? 2 : 0;
-    const step3 = selectionPoints(state.answers.step3, target.step3IngredientsProcess, 2);
+    const ingredients = selectionPoints(state.answers.ingredients, target.step3IngredientsProcess, 3);
     const family = state.answers.family === target.fermentationFamily ? 1 : 0;
-    const exclusionStyles = sameSet(state.answers.exclusions, wrongIndexes) ? 1 : 0;
-    const exclusionReasons = sameStringSet(state.answers.reasons, correctReasons) ? 1 : 0;
-    const final = state.answers.final !== null && Number(state.answers.final) === target.correctChoice ? 1 : 0;
-    return { step1, step2, step3, family, exclusionStyles, exclusionReasons, final, total: step1 + step2 + step3 + family + exclusionStyles + exclusionReasons + final };
+    const country = state.answers.country === target.country ? 1 : 0;
+    const shortlist = sameSet(state.answers.exclusions, wrongIndexes) ? 1 : 0;
+    const final = state.answers.final !== null && Number(state.answers.final) === target.correctChoice ? 3 : 0;
+    const decisive = state.answers.decisive === target.id ? 1 : 0;
+    return { ingredients, family, country, shortlist, final, decisive, total: ingredients + family + country + shortlist + final + decisive };
   }
 
   function finishScenario(timedOut = false) {
@@ -222,14 +229,14 @@
     state.finished = true;
     state.timedOut = timedOut;
     state.currentScore = score;
-    state.results.push({ id: target.id, score: score.total, exclusionCorrect: score.exclusionStyles + score.exclusionReasons === 2 });
+    state.results.push({ id: target.id, score: score.total, shortlistCorrect: score.shortlist === 1 });
     const history = currentHistory();
-    const item = history[target.id] || { attempts: 0, totalPoints: 0, best: 0, weakExclusion: 0 };
+    const item = history[target.id] || { attempts: 0, totalPoints: 0, best: 0, weakShortlist: 0 };
     item.attempts += 1;
     item.totalPoints += score.total;
     item.best = Math.max(item.best, score.total);
-    if (score.exclusionStyles + score.exclusionReasons < 2) item.weakExclusion += 1;
-    else item.weakExclusion = Math.max(0, item.weakExclusion - 1);
+    if (!score.shortlist) item.weakShortlist = (item.weakShortlist || 0) + 1;
+    else item.weakShortlist = Math.max(0, (item.weakShortlist || 0) - 1);
     item.lastAnsweredAt = new Date().toISOString();
     history[target.id] = item;
     localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
@@ -242,19 +249,20 @@
 
   function renderScenarioResult(target) {
     const score = state.currentScore;
-    const exclusionText = target.exclusions.map((item) => `${item.style}：${item.reason}`).join("／");
+    const excludedStyles = target.choices.filter((_, index) => index !== target.correctChoice).join("／");
     return `<div class="style-result ${score.total >= 5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark">${score.total >= 5 ? "✓" : "△"}</div>
       <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
-        ${resultRow("Step 1 観察整理", score.step1, 2, target.step1InterpretationsJa.join("／"))}
-        ${resultRow("Step 2 特徴定義", score.step2, 2, target.step2Characteristic)}
-        ${resultRow("Step 3 原材料・工程", score.step3, 2, target.step3IngredientsProcess.join("／"))}
-        ${resultRow("Step 4.1 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily])}
-        ${resultRow("Step 4.2 除外", score.exclusionStyles + score.exclusionReasons, 2, exclusionText)}
-        ${resultRow("Step 4.3 結論", score.final, 1, target.answer)}
+        ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"))}
+        ${resultRow("Step 3 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily])}
+        ${resultRow("Step 4 国・地域", score.country, 1, target.countryLabel)}
+        ${resultRow("Step 5 候補絞り込み", score.shortlist, 1, excludedStyles)}
+        ${resultRow("Step 6 最終判定", score.final, 3, target.answer)}
+        ${resultRow("Step 7 決め手", score.decisive, 1, target.decisiveEvidence)}
       </ul>
-      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${escapeHtml(target.answer)}</strong><p>${escapeHtml(target.step2Characteristic)}</p><ul>${target.exclusions.map((item) => `<li><b>${escapeHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
-      <section class="style-answer-detail"><h2>模範分析</h2>${blindCard(target, true)}<dl><div><dt>特徴定義</dt><dd>${escapeHtml(target.step2Characteristic)}</dd></div><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>結論</dt><dd>${escapeHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
+      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${escapeHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${escapeHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
+      <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${escapeHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
+      <section class="representative-beers"><p class="eyebrow">COMMERCIAL EXAMPLES</p><h2>代表的なビール銘柄</h2><ul>${target.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul><small>学習用の代表例です。製品仕様や流通状況は変更される場合があります。</small></section>
     </div>`;
   }
 
@@ -274,28 +282,25 @@
   function renderSummary() {
     const total = state.results.reduce((sum, item) => sum + item.score, 0);
     const maximum = state.results.length * 10;
-    return `<div class="style-result ${total >= maximum * .5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING EXAM</p><div class="style-result-mark">${total >= maximum * .5 ? "✓" : "△"}</div><h1>${total} / ${maximum}点</h1><p>10シナリオの総合結果です。除外操作を誤ったシナリオは弱点モードへ記録しました。</p>
-      <div class="blind-summary-list">${state.results.map((item, index) => `<div><span>${index + 1}. ${escapeHtml(item.id)}</span><b>${item.score}/10点</b><small>${item.exclusionCorrect ? "除外 ✓" : "除外 要復習"}</small></div>`).join("")}</div></div>`;
+    return `<div class="style-result ${total >= maximum * .5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING EXAM</p><div class="style-result-mark">${total >= maximum * .5 ? "✓" : "△"}</div><h1>${total} / ${maximum}点</h1><p>10シナリオの総合結果です。候補絞り込みを誤ったシナリオは弱点モードへ記録しました。</p>
+      <div class="blind-summary-list">${state.results.map((item, index) => `<div><span>${index + 1}. ${escapeHtml(item.id)}</span><b>${item.score}/10点</b><small>${item.shortlistCorrect ? "絞り込み ✓" : "絞り込み 要復習"}</small></div>`).join("")}</div></div>`;
   }
 
   function captureAnswers() {
     const body = byId("blindQuizBody");
-    if (state.stage === 0) state.answers.step1 = [...body.querySelectorAll('input[name="blind-step1"]:checked')].map((input) => input.value);
-    if (state.stage === 1) state.answers.step2 = body.querySelector('input[name="blind-step2"]:checked')?.value || "";
-    if (state.stage === 2) state.answers.step3 = [...body.querySelectorAll('input[name="blind-step3"]:checked')].map((input) => input.value);
-    if (state.stage === 3) state.answers.family = body.querySelector('input[name="blind-family"]:checked')?.value || "";
-    if (state.stage === 4) {
-      state.answers.exclusions = [...body.querySelectorAll('input[name="blind-exclusions"]:checked')].map((input) => Number(input.value));
-      state.answers.reasons = [...body.querySelectorAll('input[name="blind-reasons"]:checked')].map((input) => input.value);
-    }
+    if (state.stage === 1) state.answers.ingredients = [...body.querySelectorAll('input[name="blind-ingredients"]:checked')].map((input) => input.value);
+    if (state.stage === 2) state.answers.family = body.querySelector('input[name="blind-family"]:checked')?.value || "";
+    if (state.stage === 3) state.answers.country = body.querySelector('input[name="blind-country"]:checked')?.value || "";
+    if (state.stage === 4) state.answers.exclusions = [...body.querySelectorAll('input[name="blind-exclusions"]:checked')].map((input) => Number(input.value));
     if (state.stage === 5) {
       const value = body.querySelector('input[name="blind-final"]:checked')?.value;
       state.answers.final = value === undefined ? null : Number(value);
     }
+    if (state.stage === 6) state.answers.decisive = body.querySelector('input[name="blind-decisive"]:checked')?.value || "";
   }
 
   function hasCurrentAnswer() {
-    return [state.answers.step1.length, state.answers.step2, state.answers.step3.length, state.answers.family, state.answers.exclusions.length && state.answers.reasons.length, state.answers.final !== null][state.stage];
+    return [true, state.answers.ingredients.length, state.answers.family, state.answers.country, state.answers.exclusions.length, state.answers.final !== null, state.answers.decisive][state.stage];
   }
 
   function next() {
@@ -304,7 +309,7 @@
     if (state.finished) return advanceAfterResult();
     captureAnswers();
     if (!hasCurrentAnswer()) return setMessage("選択してから次へ進んでください。");
-    if (state.stage === 5) return finishScenario(false);
+    if (state.stage === STAGES.length - 1) return finishScenario(false);
     state.stage += 1;
     state.hintOpen = false;
     render();
@@ -351,7 +356,7 @@
       body.innerHTML = renderStage(currentScenario());
       byId("blindQuizProgress").style.width = `${((state.stage + 1) / STAGES.length) * 100}%`;
       backButton.textContent = state.stage === 0 ? "← ホームへ" : "← 前へ戻る";
-      nextButton.textContent = state.stage === 5 ? "判定する →" : "次へ →";
+      nextButton.textContent = state.stage === 0 ? "推理を始める →" : state.stage === STAGES.length - 1 ? "判定する →" : "次へ →";
     }
     updateStepLabel(state?.mode === "exam" && state?.deadline ? Math.max(0, Math.ceil((state.deadline - Date.now()) / 1000)) : null);
     bindDynamic();

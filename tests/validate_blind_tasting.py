@@ -50,7 +50,10 @@ def main() -> None:
         card_text = " ".join(scenario["blindCard"].values())
         assert all(item not in card_text for item in scenario["step1InterpretationsJa"])
         assert scenario["step2Characteristic"].strip()
+        assert scenario["decisiveEvidence"] == scenario["step2Characteristic"]
         assert 2 <= len(scenario["step3IngredientsProcess"]) <= 5
+        assert 1 <= len(scenario["representativeBeers"]) <= 3
+        assert all(beer.strip() for beer in scenario["representativeBeers"])
         assert len(scenario["exclusions"]) == 3
         assert len(scenario["choices"]) == 4
         assert len(set(scenario["choices"])) == 4
@@ -61,14 +64,17 @@ def main() -> None:
     assert "startBlindQuizButton" in INDEX
     assert "blindQuizView" in INDEX
     assert "練習モード" in SCRIPT and "試験モード" in SCRIPT and "弱点モード" in SCRIPT
-    assert "bierkompass-blind-history-v3" in SCRIPT
+    assert "bierkompass-blind-history-v4" in SCRIPT
     assert "secondsPerScenario" in SCRIPT
-    assert "除外するスタイル" in SCRIPT and "除外理由" in SCRIPT
+    assert "成立しない候補を外す" in SCRIPT and "特定の決め手を選ぶ" in SCRIPT
     assert "このスタイルはこれで覚える" in SCRIPT
-    assert "step1InterpretationsJa" in SCRIPT and "target.step1ObservationsJa" not in SCRIPT and "target.step1Keywords" not in SCRIPT
+    assert "観察は入力情報です" in SCRIPT
+    assert "target.step1InterpretationsJa" not in SCRIPT and "target.step1ObservationsJa" not in SCRIPT and "target.step1Keywords" not in SCRIPT
+    assert "代表的なビール銘柄" in SCRIPT and "representativeBeers" in SCRIPT
+    assert 'const STAGES = ["観察", "原材料・工程", "発酵系統", "国・地域", "候補絞り込み", "最終判定", "決め手"]' in SCRIPT
     assert "下面発酵（ラガー）" in SCRIPT and "上面発酵（エール）" in SCRIPT
     assert "render({ preserveScroll: true })" in SCRIPT
-    print("OK: 58 Japanese blind-tasting scenarios; Step 1 uses inferred diagnostic axes rather than copied observations")
+    print("OK: 58 scenarios; seven-stage causal reasoning flow and representative beers verified")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v35";
+const APP_VERSION = "v36";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v23", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -198,7 +198,22 @@ function startSession() {
 }
 
 function studyQuestionSample(pool, count) {
-  return shuffle(pool).slice(0, count);
+  const fourAnswerPool = pool.filter((question) => question.correct.length === 4);
+  const otherPool = pool.filter((question) => question.correct.length !== 4);
+  let fourAnswerCount = Math.min(
+    fourAnswerPool.length,
+    Math.round(count * fourAnswerPool.length / Math.max(1, pool.length)),
+    Math.floor((count + 1) / 2),
+  );
+  let otherCount = Math.min(otherPool.length, count - fourAnswerCount);
+  if (fourAnswerCount + otherCount < count) {
+    fourAnswerCount = Math.min(fourAnswerPool.length, count - otherCount);
+    otherCount = Math.min(otherPool.length, count - fourAnswerCount);
+  }
+  return spreadAnswerCounts([
+    ...shuffle(fourAnswerPool).slice(0, fourAnswerCount),
+    ...shuffle(otherPool).slice(0, otherCount),
+  ]);
 }
 
 function broadExamSample(pool, count) {
@@ -210,10 +225,24 @@ function broadExamSample(pool, count) {
     multiAnswerCount = Math.min(multiAnswerPool.length, count - otherCount);
     otherCount = Math.min(otherPool.length, count - multiAnswerCount);
   }
-  return shuffle([
+  return spreadAnswerCounts([
     ...balancedQuestionSample(multiAnswerPool, multiAnswerCount),
     ...balancedQuestionSample(otherPool, otherCount),
   ]);
+}
+
+function spreadAnswerCounts(questions) {
+  const fourAnswerQuestions = shuffle(questions.filter((question) => question.correct.length === 4));
+  const otherQuestions = shuffle(questions.filter((question) => question.correct.length !== 4));
+  const slots = Array.from({ length: otherQuestions.length + 1 }, () => []);
+  const slotOrder = shuffle(slots.map((_, index) => index));
+  fourAnswerQuestions.forEach((question, index) => slots[slotOrder[index % slotOrder.length]].push(question));
+  const result = [];
+  for (let index = 0; index < slots.length; index += 1) {
+    result.push(...slots[index]);
+    if (index < otherQuestions.length) result.push(otherQuestions[index]);
+  }
+  return result;
 }
 
 function balancedQuestionSample(pool, count) {
@@ -479,5 +508,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, broadQuestionScore, escapeHtml, goHome, showView, shuffle };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, spreadAnswerCounts, broadQuestionScore, escapeHtml, goHome, showView, shuffle };
 startAccessControl();

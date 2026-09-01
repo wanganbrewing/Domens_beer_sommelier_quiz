@@ -31,11 +31,22 @@ const tierAPool = data.questions.filter((question) => question.active !== false 
 assert.equal(data.questions.filter((question) => question.active !== false).length, 950);
 assert.equal(tierAPool.filter((question) => question.category === "pairing").length, 0);
 
+function maximumRun(sample, answerCount) {
+  let current = 0;
+  let maximum = 0;
+  for (const question of sample) {
+    current = question.correct.length === answerCount ? current + 1 : 0;
+    maximum = Math.max(maximum, current);
+  }
+  return maximum;
+}
+
 for (let run = 0; run < 25; run += 1) {
   const sample = studyQuestionSample(tierAPool, 50);
   assert.equal(sample.length, 50);
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
   assert.equal(sample.filter((question) => question.category === "pairing").length, 0);
+  assert.ok(maximumRun(sample, 4) <= 1, "study mode should separate four-answer questions");
 }
 assert.equal(studyQuestionSample(tierAPool.slice(0, 17), 50).length, 17);
 
@@ -45,6 +56,7 @@ for (let run = 0; run < 25; run += 1) {
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
   assert.equal(sample.filter((question) => question.correct.length >= 2).length, 35);
   assert.equal(sample.filter((question) => question.correct.length < 2).length, 15);
+  assert.ok(maximumRun(sample, 4) <= 1, "final exam should separate four-answer questions");
 }
 
-console.log("OK: study mode returns 50 questions; final exam returns 35 multi-answer and 15 other questions");
+console.log("OK: 50-question sampling disperses four-answer questions; final exam keeps 35 multi-answer questions");
