@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -13,6 +14,16 @@ SCENARIOS = DATA["scenarios"]
 META = DATA["metadata"]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 SCRIPT = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
+EARLY_ANSWER_LEAK = re.compile(
+    r"独産|英産|米産|米ホップ|英エール|英酵母|英上面|仏ノーブル|豪州|"
+    r"バルト海|ドルトムント|ミュンヘン|バンベルク|ケルシュ|ケルン|"
+    r"シュパルト|バートン|EKG|ファグル|ダブリン|ベルジャン|セゾン酵母|"
+    r"ザーツ|ピルゼン|ウィーン|Kveik|Nelson|Motueka|クーパーズ|カスク|APA"
+)
+OBSERVATION_ANSWER_WORD = re.compile(
+    r"カスク|英ホップ|米ホップ|ザーツ|ウィーン麦芽|カスケード系|"
+    r"ベルジャン酵母|コリアンダー|陳旧ホップ|ジュニパー|メラノイジン|ロースト麦芽"
+)
 
 
 def main() -> None:
@@ -48,10 +59,13 @@ def main() -> None:
         assert 2 <= len(scenario["step1InterpretationsJa"]) <= 6
         assert len(scenario["step1InterpretationsJa"]) == len(set(scenario["step1InterpretationsJa"]))
         card_text = " ".join(scenario["blindCard"].values())
+        assert not OBSERVATION_ANSWER_WORD.search(card_text)
         assert all(item not in card_text for item in scenario["step1InterpretationsJa"])
         assert scenario["step2Characteristic"].strip()
         assert scenario["decisiveEvidence"] == scenario["step2Characteristic"]
         assert 2 <= len(scenario["step3IngredientsProcess"]) <= 5
+        assert not EARLY_ANSWER_LEAK.search(" ".join(scenario["step3IngredientsProcess"]))
+        assert all("APA" not in choice for choice in scenario["choices"])
         assert 1 <= len(scenario["representativeBeers"]) <= 3
         assert all(beer.strip() for beer in scenario["representativeBeers"])
         assert len(scenario["exclusions"]) == 3
@@ -78,6 +92,7 @@ def main() -> None:
     assert "現在の推理は" in SCRIPT and "1対1で比べてください" in SCRIPT
     assert "escapeHtml(hints[state.stage])" in SCRIPT
     assert '"△"' not in SCRIPT and "目標達成" in SCRIPT and "要復習" in SCRIPT and "要確認" in SCRIPT
+    assert "正答：${escapeHtml(correctAnswer)}" in SCRIPT and "あなたの回答：" in SCRIPT
     print("OK: 58 scenarios; seven-stage causal reasoning flow and representative beers verified")
 
 

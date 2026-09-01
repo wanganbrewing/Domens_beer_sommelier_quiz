@@ -16,7 +16,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v37", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v38", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -258,24 +258,28 @@
     render();
   }
 
-  function resultRow(label, points, maximum, answer) {
+  function resultRow(label, points, maximum, correctAnswer, userAnswer) {
     const complete = points === maximum;
-    return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>${escapeHtml(answer)}</b></div></li>`;
+    return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>正答：${escapeHtml(correctAnswer)}</b><em class="user-answer">あなたの回答：${escapeHtml(userAnswer || "未選択")}</em></div></li>`;
   }
 
   function renderScenarioResult(target) {
     const score = state.currentScore;
     const excludedStyles = target.choices.filter((_, index) => index !== target.correctChoice).join("／");
+    const selectedCountry = blindData.metadata.countries.find((item) => item.id === state.answers.country)?.label || "未選択";
+    const selectedExclusions = state.answers.exclusions.map((index) => target.choices[index]).filter(Boolean).join("／");
+    const selectedFinal = state.answers.final === null ? "未選択" : target.choices[Number(state.answers.final)];
+    const selectedDecisive = state.options.decisive.find((item) => item.id === state.answers.decisive)?.label || "未選択";
     const achieved = score.total >= 5;
     return `<div class="style-result ${achieved ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark result-status-mark">${achieved ? "目標達成" : "要復習"}</div>
       <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
-        ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"))}
-        ${resultRow("Step 3 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily])}
-        ${resultRow("Step 4 国・地域", score.country, 1, target.countryLabel)}
-        ${resultRow("Step 5 候補絞り込み", score.shortlist, 1, excludedStyles)}
-        ${resultRow("Step 6 最終判定", score.final, 3, target.answer)}
-        ${resultRow("Step 7 決め手", score.decisive, 1, target.decisiveEvidence)}
+        ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"), state.answers.ingredients.join("／"))}
+        ${resultRow("Step 3 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily], FAMILY_LABELS[state.answers.family] || "未選択")}
+        ${resultRow("Step 4 国・地域", score.country, 1, target.countryLabel, selectedCountry)}
+        ${resultRow("Step 5 候補絞り込み", score.shortlist, 1, excludedStyles, selectedExclusions)}
+        ${resultRow("Step 6 最終判定", score.final, 3, target.answer, selectedFinal)}
+        ${resultRow("Step 7 決め手", score.decisive, 1, target.decisiveEvidence, selectedDecisive)}
       </ul>
       <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${escapeHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${escapeHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
       <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${escapeHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>

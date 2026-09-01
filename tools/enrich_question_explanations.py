@@ -120,6 +120,58 @@ def wrong_style_reason(
     return f"誤答：「{short(choice)}」は「{topic}」の代表的な識別点ではありません。正答側の{answer_hint}を優先して覚えます。"
 
 
+def wrong_general_reason(
+    question: dict,
+    choice: str,
+    correct_choice_targets: dict[str, set[str]],
+) -> str:
+    """Explain a wrong choice with the fact the learner should remember instead."""
+    topic = subject(question["question"])
+    answer_hint = correct_summary(question)
+    normalized_choice = normalize(choice)
+
+    if "誤っている" in question["question"]:
+        return (
+            f"誤答としては選びません。「{short(choice)}」は正しい内容です。"
+            "この設問は誤っている選択肢を選ぶ逆問です。"
+        )
+
+    misconception_corrections = (
+        (r"エステル.*バター|バター.*エステル", "バター・バタースコッチ様の香りは主にジアセチルです。エステルはバナナ、洋梨、リンゴなどの果実様香に関係します。"),
+        (r"青リンゴ|未熟.*リンゴ", "青リンゴ様香の代表的原因はアセトアルデヒドです。発酵・熟成が不十分な場合などに目立ちます。"),
+        (r"クリームコーン|煮野菜", "クリームコーンや煮野菜様の香りはDMSが代表的原因です。麦汁煮沸や冷却、原料由来の前駆体と関係します。"),
+        (r"紙|段ボール", "紙・段ボール様の香りは酸化で生じるトランス-2-ノネナールの代表的表現です。"),
+        (r"スカンク|日光臭", "スカンク様の日光臭は、光でホップ成分が変化して生じる3-MBTが代表的原因です。"),
+        (r"チーズ|イソ吉草酸", "古いチーズや汗様の香りはイソ吉草酸に結びつき、劣化したホップなどが原因になり得ます。"),
+        (r"金属|血.*インク", "金属・血・インク様の風味は、鉄や銅などとの接触や設備由来の金属汚染を確認します。"),
+    )
+    for pattern, correction in misconception_corrections:
+        if re.search(pattern, choice):
+            return f"誤答：「{short(choice)}」は対応関係が異なります。{correction}"
+
+    linked_targets = sorted(correct_choice_targets.get(normalized_choice, set()) - {topic})
+    if len(linked_targets) == 1:
+        return (
+            f"誤答：「{short(choice)}」は「{linked_targets[0]}」で正答となる知識です。"
+            f"この問題では{answer_hint}が正しい内容です。"
+        )
+
+    category_labels = {
+        "raw_materials": "原材料の性質・用途の対応が異なります",
+        "brewing_process": "工程の目的・順序・作用の対応が異なります",
+        "fermentation": "酵母・発酵生成物・熟成作用の対応が異なります",
+        "history": "人物・年代・地域・文化の対応が異なります",
+        "sensory": "官能用語と知覚される特徴の対応が異なります",
+        "off_flavor": "香味表現と原因物質・発生要因の対応が異なります",
+        "service_quality": "提供・保存・設備管理の原則と異なります",
+        "quality_law": "品質・成分・規格上の整理が異なります",
+        "pairing": "料理とビールの強度・調和・対比の考え方と異なります",
+        "integrated": "複数分野を合わせた判断条件と異なります",
+    }
+    reason = category_labels.get(question["category"], "設問の条件と異なります")
+    return f"誤答：「{short(choice)}」は{reason}。正しくは{answer_hint}です。"
+
+
 def overall_explanation(question: dict) -> str:
     topic = subject(question["question"])
     summary = correct_summary(question)
@@ -136,7 +188,7 @@ def enrich_questions(payload: dict, blind_path: Path | None = None) -> dict:
 
     correct_choice_targets: dict[str, set[str]] = defaultdict(set)
     for question in questions:
-        if question["category"] != "beer_styles":
+        if "誤っている" in question["question"]:
             continue
         target = subject(question["question"])
         for index in question["correct"]:
@@ -153,6 +205,8 @@ def enrich_questions(payload: dict, blind_path: Path | None = None) -> dict:
                 question["choiceReasons"][index] = correct_reason(question, choice)
             elif question["category"] == "beer_styles":
                 question["choiceReasons"][index] = wrong_style_reason(question, choice, profiles, correct_choice_targets)
+            else:
+                question["choiceReasons"][index] = wrong_general_reason(question, choice, correct_choice_targets)
 
     active_questions = [question for question in questions if question["active"]]
     active_category_counts = Counter(question["category"] for question in active_questions)
@@ -171,7 +225,7 @@ def enrich_questions(payload: dict, blind_path: Path | None = None) -> dict:
     ]
     metadata["explanationEnrichment"] = {
         "allCorrectChoicesExplained": True,
-        "allBeerStyleWrongChoicesExplained": True,
+        "allWrongChoicesExplained": True,
         "method": "添付資料の正答、同一問題バンク内の対応知識、ブラインド判定のスタイル識別軸を相互参照",
     }
     return payload

@@ -84,6 +84,113 @@ REPRESENTATIVE_BEERS = {
 }
 
 
+# Step 2 must test causal inference rather than reveal the later country/style answer.
+# These labels retain the brewing knowledge while removing country names, regional
+# abbreviations, style names, and wording copied directly from the observation card.
+INGREDIENT_PROCESS_REPLACEMENTS = {
+    "独産ノーブルホップ": "ハーバルでスパイシーなノーブルホップ",
+    "ドルトムントの炭酸塩＋硫酸塩共存水": "炭酸塩と硫酸塩がともに多い硬水",
+    "ミュンヘン麦芽＋カラメル麦芽": "濃色キルンド麦芽＋カラメル麦芽",
+    "ミュンヘン麦芽50-100%": "濃色キルンド麦芽50-100%",
+    "メラノイジン/ミュンヘン麦芽": "濃色キルンド麦芽と長時間の加熱工程",
+    "ボックを氷点下で凍結→氷を除去して濃縮": "強いラガーを氷点下で凍結し、氷を除いて濃縮",
+    "ラウホマルツ50-100%": "ブナ材で燻した麦芽50-100%",
+    "下面酵母（メルツェンベース）": "下面酵母を使う琥珀色ラガーベース",
+    "バンベルク伝統": "木材燻煙麦芽を用いる歴史的製法",
+    "樽出し低ガス仕上げ": "無濾過のまま低圧で容器内熟成して提供",
+    "麦芽100%（独の税法規格）": "副原料を使わない麦芽100%設計",
+    "上面ヴァイス酵母（POF+）": "バナナ香とクローブ香を生む上面酵母（POF+）",
+    "高炭酸": "瓶内熟成で強い発泡感を得る",
+    "ヴァイス酵母発酵後に完全濾過（酵母除去）": "果実・スパイス香を生む上面酵母で発酵後、完全濾過",
+    "上面ヴァイス酵母（ボックは高比重）": "果実・スパイス香を生む上面酵母",
+    "ケルシュ専用上面酵母（低温発酵）＋低温熟成": "上面酵母を低温発酵させ、さらに低温熟成",
+    "ケルン協定": "原産地と伝統製法を保護する地域協定",
+    "ミュンヘン": "濃色キルンド麦芽",
+    "シュパルト系ホップ": "繊細でスパイシーなノーブルホップ",
+    "乳酸菌＋上面酵母（純粋令の歴史的例外）": "乳酸菌＋上面酵母",
+    "米": "ライス",
+    "米産Cホップ": "グレープフルーツと松脂を思わせるホップ",
+    "クリーンな米エール酵母": "エステルを抑えるクリーンな上面酵母",
+    "米産ホップ大量投入（煮沸＆ドライホップ）": "柑橘・松脂系ホップを煮沸とドライホップで大量投入",
+    "米産アロマホップ": "柑橘系アロマホップ",
+    "クリーン米酵母": "フェノールをほぼ出さないクリーンな上面酵母",
+    "米産アロマ＆ビタリング大量": "柑橘・樹脂系ホップを香味と苦味の両方へ大量使用",
+    "米ホップ大量": "柑橘・松脂系ホップを大量使用",
+    "英産ホップ": "アーシーでハーバルな伝統品種ホップ",
+    "英エール酵母": "穏やかな果実香を出す高凝集上面酵母",
+    "カスク文化": "無濾過・低炭酸の容器内コンディショニング",
+    "英産アロマホップ": "フローラルでアーシーな伝統品種ホップ",
+    "バートン高硫酸塩硬水": "硫酸塩の多い硬水",
+    "EKG/ファグル系": "アーシーでフローラルな伝統品種ホップ",
+    "英酵母": "穏やかな果実香を残す高凝集上面酵母",
+    "（輸出史の文脈）": "長距離輸送を背景に苦味と保存性を高めた設計",
+    "ブラウン＋クリスタルモルト": "淡色基礎麦芽＋結晶麦芽＋少量の濃色麦芽",
+    "穏やかな英ホップ": "穏やかなアーシー系ホップ",
+    "高凝集英酵母": "高凝集の上面酵母",
+    "ブラウン＋チョコモルト": "淡色基礎麦芽＋チョコレート麦芽",
+    "英上面酵母（1720年代ロンドン起源）": "高凝集の上面酵母",
+    "ダブリン炭酸塩硬水": "炭酸塩の多い硬水",
+    "英産ホップ多量": "アーシーでハーバルなホップを多量使用",
+    "英上面酵母": "高凝集の上面酵母",
+    "ベルジャン上面酵母": "果実香と穏やかなスパイス香を生む上面酵母",
+    "高発酵度ベルジャン酵母": "高発酵度で果実・スパイス香を生む上面酵母",
+    "高温耐性セゾン酵母（〜32℃）": "高温耐性・高発酵度のスパイシーな上面酵母（〜32℃）",
+    "ランビック原酒＋スカールベーク種チェリー": "自然発酵の原酒＋酸味の強い在来種チェリー",
+    "ベルジャン酵母": "穏やかな果実・スパイス香を生む上面酵母",
+    "（大冒険をしない設計）": "香味を中庸に整えたバランス設計",
+    "モラヴィア大麦": "高品質な淡色大麦麦芽",
+    "ザーツ": "繊細でハーバルなノーブルホップ",
+    "ピルゼン極軟水": "ミネラル分の非常に少ない軟水",
+    "ウィーン系麦芽": "軽く焙燥した琥珀色の基礎麦芽",
+    "ウィーン麦芽": "軽く焙燥した琥珀色の基礎麦芽",
+    "下面発酵（ドレハー発祥）": "下面発酵",
+    "低温長期貯蔵（バルト海沿岸）": "長期低温貯蔵",
+    "ウィーン": "軽く焙燥した琥珀色の基礎麦芽",
+    "仏ノーブルホップ": "穏やかなノーブルホップ",
+    "コルク瓶文化": "コルク栓の大瓶で熟成させる提供伝統",
+    "ジュニパー": "針葉樹の枝や実を醸造水・濾過へ利用",
+    "大麦麦芽＋ジュニパー浸出液": "大麦麦芽＋針葉樹の枝や実の浸出液",
+    "Kveik農家酵母": "高温で速く発酵する伝統的な農家酵母",
+    "Nelson Sauvin/Motueka等": "白ブドウ・ライム・トロピカル香を持つ新世界ホップ",
+    "豪州系酵母": "果実香を生む高発酵度の上面酵母",
+    "瓶内二次発酵（クーパーズが象徴）": "酵母の澱を残す瓶内二次発酵",
+}
+
+
+BLIND_CARD_OVERRIDES = {
+    "D-06": {"aroma": "焦がしたパンの縁・ビターチョコ・コーヒー"},
+    "D-07": {"taste": "濃いパン皮とトフィーの甘美さ、温かいアルコール"},
+    "D-10": {"aroma": "焼きたてパン様の新鮮なイースト香・素朴な麦芽"},
+    "D-11": {"taste": "穀物の風味を保ちつつ非常に軽い、爽快なキレ"},
+    "D-18": {"aroma": "レモン皮様のスパイス香と乳酸を思わせる酸香"},
+    "U-02": {"aroma": "グレープフルーツ・松脂"},
+    "U-08": {
+        "appearance": "漆黒・淡褐色のしっかりした泡",
+        "aroma": "柑橘・松脂のホップ香が前面、焦げ香は背景に控えめ",
+    },
+    "E-01": {
+        "aroma": "ビスケット・トーストモルト、土や草を思わせる穏やかなホップ香",
+        "mouthfeel": "穏やかな炭酸・滑らかな口当たり",
+    },
+    "E-03": {
+        "aroma": "アーシー・フローラルなホップが強めで、モルト感もある",
+        "taste": "引き締まった苦味、柑橘感は穏やか",
+    },
+    "E-08": {"taste": "超重厚な麦芽の甘美さと、熟成後も残るしっかりした苦味"},
+    "B-01": {
+        "aroma": "柑橘の皮・胡椒・青いハーブを思わせる香り",
+        "mouthfeel": "シルキーで軽快",
+    },
+    "B-09": {"taste": "シャープな酸味があり、ホップの苦味はほぼ感じない"},
+    "B-11": {"aroma": "穏やかな洋梨・白胡椒を思わせる香り"},
+    "O-01": {"aroma": "上品なハーブ・スパイス香とモルトの甘み"},
+    "O-02": {"aroma": "カラメル・トースト・ナッツの香ばしさと穏やかなハーブ香"},
+    "O-03": {"aroma": "トーストしたパン・ビスケット"},
+    "O-08": {"aroma": "針葉樹を思わせる清涼香とバナナ様の甘い香り"},
+    "O-09": {"aroma": "針葉樹の清涼感と強いオレンジ・トロピカルの果実香"},
+}
+
+
 def clean(value: str) -> str:
     value = value.replace("**", "").replace("`", "")
     return re.sub(r"\s+", " ", value).strip()
@@ -109,6 +216,7 @@ def japanese_text(value: str) -> str:
         "Farmhouse": "農家醸造系",
         "Lager": "下面発酵（ラガー）",
         "Ale": "上面発酵（エール）",
+        "APA": "アメリカンペールエール",
     }
     result = value
     for source, target in replacements.items():
@@ -253,6 +361,25 @@ def parse_scenarios(source: Path) -> list[dict]:
     return scenarios
 
 
+def apply_ui_overrides(scenarios: list[dict]) -> None:
+    """Keep early-stage clues diagnostic without spelling out later answers."""
+    for scenario in scenarios:
+        scenario["choices"] = [
+            "アメリカンペールエール" if choice == "APA" else choice
+            for choice in scenario["choices"]
+        ]
+        scenario["answer"] = scenario["choices"][scenario["correctChoice"]]
+        for exclusion in scenario["exclusions"]:
+            if exclusion["style"] == "APA":
+                exclusion["style"] = "アメリカンペールエール"
+        scenario["step3IngredientsProcess"] = [
+            INGREDIENT_PROCESS_REPLACEMENTS.get(item, item)
+            for item in scenario["step3IngredientsProcess"]
+        ]
+        scenario["blindCard"].update(BLIND_CARD_OVERRIDES.get(scenario["id"], {}))
+        scenario["step1ObservationsJa"] = japanese_observations(scenario["blindCard"])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
@@ -260,13 +387,14 @@ def main() -> None:
     parser.add_argument("--validate-only", action="store_true")
     args = parser.parse_args()
     scenarios = parse_scenarios(args.source)
+    apply_ui_overrides(scenarios)
     ids = [scenario["id"] for scenario in scenarios]
     if len(scenarios) != 58 or len(ids) != len(set(ids)):
         raise ValueError(f"Expected 58 unique scenarios, found {len(scenarios)}")
     payload = {
         "metadata": {
             "title": "ブラインドテイスティング判定シミュレーション",
-            "version": "2026-09-01-full-spec",
+            "version": "2026-09-01-full-spec-no-answer-leaks",
             "scenarioCount": len(scenarios),
             "examScenarioCount": 10,
             "secondsPerScenario": 180,

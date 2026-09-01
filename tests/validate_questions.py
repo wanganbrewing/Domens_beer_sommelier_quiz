@@ -80,9 +80,7 @@ def main() -> None:
         assert all(0 <= index < 4 for index in question["correct"])
         assert len(question["choiceReasons"]) == 4
         assert question["explanation"].strip()
-        assert all(question["choiceReasons"][index].strip() for index in question["correct"])
-        if question["category"] == "beer_styles":
-            assert all(question["choiceReasons"][index].strip() for index in range(4) if index not in question["correct"])
+        assert all(reason.strip() for reason in question["choiceReasons"])
         assert "**" not in question["question"]
         assert all("**" not in choice and "→ 加えて" not in choice for choice in question["choices"])
         assert all(not cross_reference_choice.search(choice) for choice in question["choices"])
@@ -109,20 +107,25 @@ def main() -> None:
     assert all(not question["active"] for question in QUESTIONS if question["category"] == "pairing")
     assert all(question["active"] for question in QUESTIONS if question["category"] != "pairing")
     assert all("添付資料に個別解説の記載はありません" not in question["explanation"] for question in QUESTIONS)
+    ester_question = next(question for question in QUESTIONS if question["id"] == "A-050")
+    assert "バター・バタースコッチ様の香りは主にジアセチル" in ester_question["choiceReasons"][3]
+    assert "果実様香" in ester_question["choiceReasons"][3]
 
     source_import = METADATA["sourceImport"]
     assert source_import["mainQuestionCount"] == 1000
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v37"' in APP_JS
+    assert 'const APP_VERSION = "v38"' in APP_JS
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v23"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=37" in INDEX_HTML
-    assert "app.js?v=37" in INDEX_HTML
-    assert "blind-quiz.js?v=37" in INDEX_HTML
+    assert "styles.css?v=38" in INDEX_HTML
+    assert "app.js?v=38" in INDEX_HTML
+    assert "blind-quiz.js?v=38" in INDEX_HTML
+    assert all("APA" not in question["question"] for question in QUESTIONS)
+    assert all("APA" not in choice for question in QUESTIONS for choice in question["choices"])
     assert "spreadAnswerCounts" in APP_JS
     assert "style-quiz.js" not in INDEX_HTML
     assert '$("#questionText").innerHTML = questionHtml(question.question)' in APP_JS
@@ -137,7 +140,7 @@ def main() -> None:
     print(
         "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
         "1000 stored / 950 active; self-contained choices; explanations present; "
-        "answer counts dispersed; app v37 verified"
+        "answer counts dispersed; app v38 verified"
     )
 
 
