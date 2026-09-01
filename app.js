@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v39";
+const APP_VERSION = "v41";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v23", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -277,7 +277,7 @@ function broadQuestionScore(question) {
 }
 
 function showView(name) {
-  ["home", "session", "result", "blindQuiz"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
+  ["home", "session", "result", "blindQuiz", "beerGuide"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
   window.scrollTo({ top: 0, behavior: "instant" });
   $("#app").focus({ preventScroll: true });
 }

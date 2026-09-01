@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "ブラインドテイスティング判定シミュレーション",
-    "version": "2026-09-01-polished-japanese-v39",
+    "version": "2026-09-01-purchasable-catalog-v41",
     "scenarioCount": 58,
     "examScenarioCount": 10,
     "secondsPerScenario": 180,
@@ -109,6 +109,15 @@
         "Jever Pilsener",
         "Warsteiner Premium Verum"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Bitburger Premium Pils",
+          "url": "https://bier.jp/itemdetail/Dx101i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-01"
@@ -181,6 +190,15 @@
         "Weihenstephaner Original Helles",
         "Hofbräu Original"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Hofbräu Original",
+          "url": "https://bier.jp/itemdetail/Zx011i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-02"
@@ -250,6 +268,15 @@
         "DAB Dortmunder Export",
         "Dortmunder Union Export"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Baeren The Day N Classic",
+          "url": "https://bier.jp/itemdetail/Bx101i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-03"
@@ -318,6 +345,15 @@
       "representativeBeers": [
         "Ayinger Märzen",
         "Hacker-Pschorr Oktoberfest Märzen"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Hirschbräu Märzen",
+          "url": "https://bier.jp/itemdetail/Ex572i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -389,6 +425,15 @@
         "Hofbräu Dunkel",
         "Weltenburger Kloster Barock Dunkel"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Hofbräu Dunkel",
+          "url": "https://bier.jp/itemdetail/Zx013i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-05"
@@ -458,6 +503,15 @@
       "representativeBeers": [
         "Köstritzer Schwarzbier",
         "Mönchshof Schwarzbier"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Köstritzer Schwarzbier",
+          "url": "https://bier.jp/itemdetail/Dx103i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -531,6 +585,15 @@
         "Ayinger Celebrator",
         "Andechser Doppelbock Dunkel"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Paulaner Salvator",
+          "url": "https://bier.jp/itemdetail/Ix113i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-07"
@@ -597,6 +660,15 @@
       "representativeBeers": [
         "Kulmbacher Eisbock",
         "Schneider Aventinus Eisbock"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Schneider Aventinus Eisbock TAP9",
+          "url": "https://bier.jp/itemdetail/Cx318i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -665,6 +737,15 @@
       "representativeBeers": [
         "Aecht Schlenkerla Rauchbier Märzen",
         "Spezial Rauchbier Märzen"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Aecht Schlenkerla Rauchbier Märzen",
+          "url": "https://bier.jp/itemdetail/Cx401i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -737,6 +818,15 @@
         "St. GeorgenBräu Kellerbier",
         "Mahrs Bräu Kellerbier"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Opa's Liebling Kellerbier",
+          "url": "https://bier.jp/itemdetail/Hx106i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-10"
@@ -804,6 +894,7 @@
       "representativeBeers": [
         "Schönramer Surtaler Schankbier"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-11"
@@ -875,6 +966,15 @@
         "Schneider Weisse Original",
         "Erdinger Weissbier"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Weihenstephaner Hefeweissbier",
+          "url": "https://bier.jp/itemdetail/Nx002i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-12"
@@ -943,6 +1043,15 @@
       "representativeBeers": [
         "Weihenstephaner Kristallweissbier",
         "Erdinger Kristall"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Schneider Kristall TAP2",
+          "url": "https://bier.jp/itemdetail/Cx309i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1015,6 +1124,15 @@
         "Erdinger Dunkel",
         "Franziskaner Hefe-Weissbier Dunkel"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Weihenstephaner Hefeweissbier Dunkel",
+          "url": "https://bier.jp/itemdetail/Nx004i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-14"
@@ -1084,6 +1202,15 @@
         "Früh Kölsch",
         "Gaffel Kölsch",
         "Reissdorf Kölsch"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Früh Kölsch",
+          "url": "https://bier.jp/itemdetail/Cx330i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1157,6 +1284,15 @@
         "Schumacher Alt",
         "Füchschen Alt"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Uerige Alt",
+          "url": "https://bier.jp/itemdetail/Cx313i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-16"
@@ -1229,6 +1365,15 @@
         "Berliner Kindl Weisse",
         "Schneeeule Marlene"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Schneeeule Marlene",
+          "url": "https://bier.jp/itemdetail/Hx201i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "D-17"
@@ -1298,6 +1443,15 @@
       "representativeBeers": [
         "Ritterguts Gose",
         "Bayerischer Bahnhof Original Leipziger Gose"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Ritterguts Gose",
+          "url": "https://bier.jp/itemdetail/Hx030i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1369,6 +1523,7 @@
         "Coors Light",
         "Miller Lite"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-01"
@@ -1437,6 +1592,15 @@
         "Sierra Nevada Pale Ale",
         "Deschutes Mirror Pond Pale Ale",
         "Dale's Pale Ale"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Sierra Nevada Pale Ale",
+          "url": "https://bier.jp/itemdetail/Nx590i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1510,6 +1674,15 @@
         "Stone IPA",
         "Lagunitas IPA"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Stone IPA",
+          "url": "https://bier.jp/itemdetail/Nx440i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-03"
@@ -1576,6 +1749,15 @@
         "Russian River Pliny the Elder",
         "Dogfish Head 90 Minute IPA",
         "Stone Ruination IPA"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "German Coast DIPA",
+          "url": "https://bier.jp/itemdetail/Ax881i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1649,6 +1831,15 @@
         "Sierra Nevada Hazy Little Thing",
         "The Alchemist Heady Topper"
       ],
+      "purchaseOptions": [
+        {
+          "name": "ISEKADO Hazy IPA",
+          "url": "https://www.biyagura.jp/c/hazy/0003",
+          "shop": "ISEKADO",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-05"
@@ -1718,6 +1909,15 @@
       "representativeBeers": [
         "Widmer Hefeweizen",
         "Bell's Oberon Ale"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "ナギサビール アメリカンウィート",
+          "url": "https://www.toretore-online.jp/SHOP/t4562.html",
+          "shop": "とれとれ市場",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1789,6 +1989,7 @@
         "Sierra Nevada Bigfoot",
         "Anchor Old Foghorn"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "U-07"
@@ -1854,6 +2055,15 @@
       "representativeBeers": [
         "Stone Sublimely Self-Righteous Black IPA",
         "Deschutes Hop in the Dark"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Camba Black Shark",
+          "url": "https://bier.jp/itemdetail/Ax986i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -1929,6 +2139,15 @@
         "Timothy Taylor Landlord",
         "Adnams Southwold Bitter"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Fuller's ESB",
+          "url": "https://bier.jp/itemdetail/Ix206i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-01"
@@ -1997,6 +2216,15 @@
       "representativeBeers": [
         "Fuller's London Pride",
         "Bass Pale Ale"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Fuller's London Pride",
+          "url": "https://bier.jp/itemdetail/Ix204i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -2067,6 +2295,7 @@
         "Samuel Smith India Ale",
         "Worthington White Shield"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-03"
@@ -2136,6 +2365,7 @@
         "Newcastle Brown Ale",
         "Samuel Smith Nut Brown Ale"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-04"
@@ -2203,6 +2433,15 @@
       "representativeBeers": [
         "Fuller's London Porter",
         "Samuel Smith Taddy Porter"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Thornbridge Market Porter",
+          "url": "https://goodbeer.jp/shopdetail/000000002492/",
+          "shop": "goodbeer",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -2275,6 +2514,15 @@
         "Murphy's Irish Stout",
         "Beamish Irish Stout"
       ],
+      "purchaseOptions": [
+        {
+          "name": "O'Hara's Irish Stout",
+          "url": "https://bier.jp/itemdetail/Ix232i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-06"
@@ -2345,6 +2593,15 @@
       "representativeBeers": [
         "Courage Imperial Russian Stout",
         "Samuel Smith Imperial Stout"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "大山Gビール インペリアルスタウト2025",
+          "url": "https://gbeer.ocnk.net/product/368",
+          "shop": "地ビールと地酒の蔵元くめざくら",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -2418,6 +2675,15 @@
         "Fuller's Golden Pride",
         "J.W. Lees Harvest Ale"
       ],
+      "purchaseOptions": [
+        {
+          "name": "J.W. Lees Harvest Ale 2001",
+          "url": "https://www.thewinecountry.com/jw-lees-harvest-ale-2021-limited-edition-275ml-bot.html",
+          "shop": "The Wine Country",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-08"
@@ -2489,6 +2755,15 @@
         "Belhaven Wee Heavy",
         "Traquair House Ale"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Be Easy × Scott Murphy Scott Ale",
+          "url": "https://www.beervolta.shop-pro.jp/?pid=190143542",
+          "shop": "Beer Volta",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "E-09"
@@ -2555,6 +2830,15 @@
       "representativeBeers": [
         "Mackeson Stout",
         "Left Hand Milk Stout"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "KAKUIDA 熟成ミルクスタウト",
+          "url": "https://kakuida-brewery.com/?pid=164277879",
+          "shop": "KAKUIDA BREWERY",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -2628,6 +2912,15 @@
         "Blanche de Namur",
         "St.Bernardus Wit"
       ],
+      "purchaseOptions": [
+        {
+          "name": "St.Bernardus Wit",
+          "url": "https://beeronline.jp/products/20107942",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-01"
@@ -2699,6 +2992,15 @@
         "Delirium Tremens",
         "Piraat"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Delirium Tremens",
+          "url": "https://beeronline.jp/products/delirium-tremens-330",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-02"
@@ -2769,6 +3071,15 @@
         "Chimay Red",
         "Rochefort 6"
       ],
+      "purchaseOptions": [
+        {
+          "name": "St.Bernardus Pater 6",
+          "url": "https://beeronline.jp/products/20165732",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-03"
@@ -2838,6 +3149,15 @@
         "Westmalle Tripel",
         "Tripel Karmeliet",
         "Chimay White"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Tripel Karmeliet",
+          "url": "https://beeronline.jp/products/20098712",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -2912,6 +3232,15 @@
         "Rochefort 10",
         "St.Bernardus Abt 12"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Rochefort 10",
+          "url": "https://beershop.jp/SHOP/83079.html",
+          "shop": "Beershop",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-05"
@@ -2984,6 +3313,15 @@
         "Fantôme Saison",
         "Saison de Dottignies"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Saison Dupont",
+          "url": "https://beeronline.jp/products/saison-dupont-330ml",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-06"
@@ -3052,6 +3390,15 @@
       "answer": "オルヴァル",
       "representativeBeers": [
         "Orval"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Orval",
+          "url": "https://store.shopping.yahoo.co.jp/bbuehata/b-0006.html",
+          "shop": "ベルギー麦酒屋ウエハタ",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -3122,6 +3469,15 @@
         "Rodenbach Grand Cru",
         "Duchesse de Bourgogne",
         "Cuvée des Jacobins"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Duchesse de Bourgogne",
+          "url": "https://www.belgianbeer.co.jp/products/detail.php?product_id=84",
+          "shop": "ベルギービールJapan",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -3196,6 +3552,15 @@
         "Boon Oude Geuze",
         "Cantillon Gueuze"
       ],
+      "purchaseOptions": [
+        {
+          "name": "3 Fonteinen Oude Geuze",
+          "url": "https://beeronline.jp/products/139315641",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-09"
@@ -3264,6 +3629,15 @@
         "Cantillon Kriek",
         "Boon Kriek Mariage Parfait"
       ],
+      "purchaseOptions": [
+        {
+          "name": "3 Fonteinen Oude Kriek",
+          "url": "https://beeronline.jp/products/139316818",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "B-10"
@@ -3331,6 +3705,15 @@
       "representativeBeers": [
         "Leffe Blond",
         "Affligem Blond"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Moinette Blonde",
+          "url": "https://beeronline.jp/products/moinette-blonde-330ml",
+          "shop": "クラフトビールオンライン",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -3405,6 +3788,15 @@
         "Budweiser Budvar Original",
         "Bernard Celebration Lager"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Pilsner Urquell",
+          "url": "https://bier.jp/itemdetail/Nx005i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-01"
@@ -3474,6 +3866,15 @@
         "Kozel Dark",
         "U Fleků 13°"
       ],
+      "purchaseOptions": [
+        {
+          "name": "Gold Dot Club Dark Beer",
+          "url": "https://theslopshop-tokyo.myshopify.com/products/b290-c47001",
+          "shop": "The Slop Shop Tokyo",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
+      ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-02"
@@ -3541,6 +3942,15 @@
         "Ottakringer Wiener Original",
         "Negra Modelo",
         "Great Lakes Eliot Ness"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Baeren Coolship Vienna Lager 2026",
+          "url": "https://bier.jp/itemdetail/Bx107i",
+          "shop": "bier.jp",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -3612,6 +4022,7 @@
         "Okocim Porter",
         "Sinebrychoff Porter"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-04"
@@ -3679,6 +4090,15 @@
       "answer": "ジャパニーズドライ",
       "representativeBeers": [
         "Asahi Super Dry"
+      ],
+      "purchaseOptions": [
+        {
+          "name": "Asahi Super Dry 350ml",
+          "url": "https://market.kita-grp.co.jp/items/119701",
+          "shop": "スーパーキタムラ",
+          "unit": "1本",
+          "verifiedAt": "2026-09-01"
+        }
       ],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
@@ -3753,6 +4173,7 @@
         "3 Monts",
         "Ch'Ti Ambrée"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-06"
@@ -3821,6 +4242,7 @@
         "Birra del Borgo L'Equilibrista",
         "LoverBeer BeerBera"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-07"
@@ -3893,6 +4315,7 @@
         "Lammin Sahti",
         "Finlandia Sahti"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-08"
@@ -3962,6 +4385,7 @@
       "representativeBeers": [
         "Voss Bryggeri Vossaøl 1814"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-09"
@@ -4031,6 +4455,7 @@
         "Epic Full Send NZIPA",
         "Tuatara Aotearoa Pale Ale"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-10"
@@ -4099,6 +4524,7 @@
       "representativeBeers": [
         "Coopers Sparkling Ale"
       ],
+      "purchaseOptions": [],
       "source": {
         "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
         "locator": "O-11"

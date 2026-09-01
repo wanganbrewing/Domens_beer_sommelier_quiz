@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=41">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1000</small></span></a>
-    <div class="header-status"><small class="version-badge">v39</small><span id="headerProgress">学習記録 0 / 950</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v41</small><span id="headerProgress">学習記録 0 / 950</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -56,6 +56,10 @@
         <div><p class="eyebrow">NEW · BLIND TASTING</p><h2 id="blindCornerTitle">ブラインドテイスティング判定</h2><p>観察情報から、原材料・工程、発酵系統、国・地域、候補絞り込み、最終スタイル、決め手まで段階的に推理します。</p><ol><li><b>1</b>観察</li><li><b>2</b>原因推理</li><li><b>3</b>系統・地域</li><li><b>4</b>最終判定</li></ol></div>
         <div class="style-corner-action"><div class="mini-beer" aria-hidden="true"><i></i><span></span></div><button class="primary" id="startBlindQuizButton" type="button">判定シミュレーションを始める →</button><p id="blindCornerMessage" class="message" role="status"></p></div>
       </section>
+      <section class="beer-guide-corner" aria-labelledby="beerGuideCornerTitle">
+        <div><p class="eyebrow">STYLE &amp; SHOP GUIDE</p><h2 id="beerGuideCornerTitle">代表ビール購入ガイド</h2><p>判定シミュレーションの全58スタイルと代表銘柄を一覧で確認できます。在庫あり・1本購入を確認できた銘柄は、名前から販売ページを開けます。</p></div>
+        <div class="beer-guide-corner-action"><button class="primary" id="openBeerGuideButton" type="button">全スタイル・銘柄を見る →</button><p id="beerGuideCornerMessage" class="message" role="status"></p></div>
+      </section>
       <section class="stats" aria-label="学習状況"><article><span>MASTERED</span><strong id="masteredStat">0</strong><small>正解済み</small></article><article><span>ATTEMPTS</span><strong id="attemptStat">0</strong><small>累計回答</small></article><article><span>ACCURACY</span><strong id="accuracyStat">—</strong><small>完全正解率</small></article><article><span>QUESTION BANK</span><strong id="questionBankStat">950</strong><small>出題対象</small></article></section>
     </section>
 
@@ -63,6 +67,15 @@
       <div class="style-quiz-topbar"><button class="ghost" id="blindQuizHomeButton" type="button">← ホームへ戻る</button><span id="blindQuizStepLabel">SETUP</span></div>
       <div class="style-quiz-progress" aria-hidden="true"><i id="blindQuizProgress"></i></div>
       <article class="style-quiz-panel"><div id="blindQuizBody"></div><p id="blindQuizMessage" class="message" role="status"></p><div class="style-quiz-actions" id="blindQuizActions"><button class="secondary" id="blindQuizBackButton" type="button">← 前へ戻る</button><button class="primary" id="blindQuizNextButton" type="button">次へ →</button></div></article>
+    </section>
+
+    <section id="beerGuideView" class="view" hidden>
+      <div class="style-quiz-topbar"><button class="ghost" id="beerGuideHomeButton" type="button">← ホームへ戻る</button><span>58 STYLE GUIDE</span></div>
+      <article class="beer-guide-panel">
+        <div class="beer-guide-heading"><div><p class="eyebrow">REPRESENTATIVE BEER CATALOG</p><h1>代表ビール購入ガイド</h1><p>全58スタイルを国・地域別に掲載しています。販売リンクは確認日時点で「在庫あり・1本購入」を満たした商品だけです。</p></div><div class="beer-guide-summary" id="beerGuideSummary"></div></div>
+        <div class="beer-guide-toolbar"><label for="beerGuideSearch">スタイル・銘柄を検索</label><input id="beerGuideSearch" type="search" placeholder="例：ピルスナー、スタウト、オルヴァル"></div>
+        <div id="beerGuideBody"></div>
+      </article>
     </section>
 
     <section id="sessionView" class="view" hidden>
@@ -97,6 +110,6 @@
   </footer>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=39" defer></script><script src="app.js?v=39" defer></script><script src="blind-quiz.js?v=39" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=41" defer></script><script src="app.js?v=41" defer></script><script src="blind-quiz.js?v=41" defer></script>
 </body>
 </html>

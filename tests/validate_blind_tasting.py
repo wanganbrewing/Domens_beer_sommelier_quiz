@@ -70,6 +70,13 @@ def main() -> None:
         assert all(choice not in {"NZ IPA", "IGA", "ダブル", "コーネル"} for choice in scenario["choices"])
         assert 1 <= len(scenario["representativeBeers"]) <= 3
         assert all(beer.strip() for beer in scenario["representativeBeers"])
+        assert isinstance(scenario["purchaseOptions"], list)
+        for offer in scenario["purchaseOptions"]:
+            assert set(offer) == {"name", "url", "shop", "unit", "verifiedAt"}
+            assert offer["name"].strip() and offer["shop"].strip()
+            assert offer["url"].startswith("https://")
+            assert offer["unit"] == "1本"
+            assert offer["verifiedAt"] == "2026-09-01"
         assert len(scenario["exclusions"]) == 3
         assert len(scenario["choices"]) == 4
         assert len(set(scenario["choices"])) == 4
@@ -93,6 +100,8 @@ def main() -> None:
     assert "観察は入力情報です" in SCRIPT
     assert "target.step1InterpretationsJa" not in SCRIPT and "target.step1ObservationsJa" not in SCRIPT and "target.step1Keywords" not in SCRIPT
     assert "代表的なビール銘柄" in SCRIPT and "representativeBeers" in SCRIPT
+    assert "1本から購入できる代表例" in SCRIPT and "purchaseOptions" in SCRIPT
+    assert sum(bool(scenario["purchaseOptions"]) for scenario in SCENARIOS) >= 40
     assert 'const STAGES = ["観察", "原材料・工程", "発酵系統", "国・地域", "候補絞り込み", "最終判定", "決め手"]' in SCRIPT
     assert "下面発酵（ラガー）" in SCRIPT and "上面発酵（エール）" in SCRIPT
     assert "render({ preserveScroll: true })" in SCRIPT
@@ -101,7 +110,10 @@ def main() -> None:
     assert "escapeHtml(hints[state.stage])" in SCRIPT
     assert '"△"' not in SCRIPT and "目標達成" in SCRIPT and "要復習" in SCRIPT and "要確認" in SCRIPT
     assert "正答：${render(correctAnswer)}" in SCRIPT and "あなたの回答：" in SCRIPT
-    assert 'fetch("blind-tasting.json?v39"' in SCRIPT
+    assert 'fetch("blind-tasting.json?v41"' in SCRIPT
+    assert "openBeerGuideButton" in INDEX and "beerGuideView" in INDEX
+    assert "代表ビール購入ガイド" in INDEX and "renderBeerGuide" in SCRIPT
+    assert "全58スタイル" in INDEX and "販売リンク未確認" in SCRIPT
     assert "styleAnswerHtml(target.answer)" in SCRIPT
     assert "BierKompassStyleLinks" in SCRIPT
     assert 'const ROOT = "https://www.bjcp.org/style/2021"' in STYLE_LINKS

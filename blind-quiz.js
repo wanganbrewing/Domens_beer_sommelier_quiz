@@ -17,7 +17,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v39", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v41", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -45,6 +45,42 @@
     clearInterval(timerHandle);
     state = null;
     goHome();
+  }
+
+  function beerGuideOffer(offer) {
+    return `<a class="beer-guide-offer" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(offer.name)}の販売ページを新しいタブで開く"><strong>${escapeHtml(offer.name)} <span aria-hidden="true">↗</span></strong><small>${escapeHtml(offer.shop)}・${escapeHtml(offer.unit)}・在庫確認 ${escapeHtml(offer.verifiedAt)}</small></a>`;
+  }
+
+  function renderBeerGuide(query = "") {
+    const normalizedQuery = query.trim().toLocaleLowerCase("ja");
+    const linkedCount = blindData.scenarios.filter((scenario) => scenario.purchaseOptions?.length).length;
+    byId("beerGuideSummary").innerHTML = `<strong>${linkedCount}<small> / ${blindData.scenarios.length}スタイル</small></strong><span>販売リンク確認済み</span>`;
+    const sections = blindData.metadata.countries.map((country) => {
+      const scenarios = blindData.scenarios.filter((scenario) => {
+        if (scenario.country !== country.id) return false;
+        const searchText = [scenario.answer, scenario.countryLabel, ...scenario.representativeBeers, ...(scenario.purchaseOptions || []).map((offer) => offer.name)].join(" ").toLocaleLowerCase("ja");
+        return !normalizedQuery || searchText.includes(normalizedQuery);
+      });
+      if (!scenarios.length) return "";
+      const cards = scenarios.map((scenario) => {
+        const offers = scenario.purchaseOptions || [];
+        return `<article class="beer-guide-card ${offers.length ? "available" : "unavailable"}"><div class="beer-guide-card-head"><span>${escapeHtml(scenario.id)}</span><small>${escapeHtml(FAMILY_LABELS[scenario.fermentationFamily])}</small></div><h3>${styleAnswerHtml(scenario.answer)}</h3><p class="beer-guide-label">学習用の代表銘柄</p><ul>${scenario.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul>${offers.length ? `<p class="beer-guide-label purchase">在庫・1本購入を確認した代表例</p><div class="beer-guide-offers">${offers.map(beerGuideOffer).join("")}</div>` : `<p class="beer-guide-no-stock">販売リンク未確認</p>`}</article>`;
+      }).join("");
+      return `<section class="beer-guide-country"><div class="beer-guide-country-heading"><h2>${escapeHtml(country.label)}</h2><span>${scenarios.length}スタイル</span></div><div class="beer-guide-grid">${cards}</div></section>`;
+    }).join("");
+    byId("beerGuideBody").innerHTML = sections || `<p class="beer-guide-empty">該当するスタイル・銘柄がありません。</p>`;
+  }
+
+  function openBeerGuide() {
+    const message = byId("beerGuideCornerMessage");
+    message.textContent = "一覧データを読み込んでいます…";
+    loadData().then((payload) => {
+      blindData = payload;
+      message.textContent = "";
+      byId("beerGuideSearch").value = "";
+      renderBeerGuide();
+      showView("beerGuide");
+    }).catch((error) => { message.textContent = error.message; });
   }
 
   function renderSetup() {
@@ -265,6 +301,14 @@
     return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>正答：${render(correctAnswer)}</b><em class="user-answer">あなたの回答：${render(userAnswer || "未選択")}</em></div></li>`;
   }
 
+  function representativeBeerSection(target) {
+    const offers = Array.isArray(target.purchaseOptions) ? target.purchaseOptions : [];
+    if (!offers.length) {
+      return `<section class="representative-beers"><p class="eyebrow">COMMERCIAL EXAMPLES</p><h2>代表的なビール銘柄</h2><ul>${target.representativeBeers.map((beer) => `<li class="beer-reference-only">${escapeHtml(beer)}</li>`).join("")}</ul><p class="beer-stock-unavailable">現在、在庫あり・1本購入の両条件を満たす販売ページを確認できていません。</p><small>銘柄は学習用の代表例です。販売状況は随時見直します。</small></section>`;
+    }
+    return `<section class="representative-beers"><p class="eyebrow">COMMERCIAL EXAMPLES</p><h2>1本から購入できる代表例</h2><ul>${offers.map((offer) => `<li class="beer-purchase-item"><a class="beer-purchase-link" href="${escapeHtml(offer.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(offer.name)}の販売ページを新しいタブで開く"><span>${escapeHtml(offer.name)} <b aria-hidden="true">↗</b></span><small>${escapeHtml(offer.shop)}・${escapeHtml(offer.unit)}・在庫確認 ${escapeHtml(offer.verifiedAt)}</small></a></li>`).join("")}</ul><small>確認日時点の情報です。購入前に販売ページで在庫・価格・配送条件をご確認ください。</small></section>`;
+  }
+
   function renderScenarioResult(target) {
     const score = state.currentScore;
     const excludedStyles = target.choices.filter((_, index) => index !== target.correctChoice).join("／");
@@ -285,7 +329,7 @@
       </ul>
       <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${styleAnswerHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${styleAnswerHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
       <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${styleAnswerHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
-      <section class="representative-beers"><p class="eyebrow">COMMERCIAL EXAMPLES</p><h2>代表的なビール銘柄</h2><ul>${target.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul><small>学習用の代表例です。製品仕様や流通状況は変更される場合があります。</small></section>
+      ${representativeBeerSection(target)}
     </div>`;
   }
 
@@ -389,6 +433,9 @@
   }
 
   byId("startBlindQuizButton").addEventListener("click", startBlindQuiz);
+  byId("openBeerGuideButton").addEventListener("click", openBeerGuide);
+  byId("beerGuideHomeButton").addEventListener("click", goHome);
+  byId("beerGuideSearch").addEventListener("input", (event) => renderBeerGuide(event.target.value));
   byId("blindQuizHomeButton").addEventListener("click", closeBlindQuiz);
   byId("blindQuizBackButton").addEventListener("click", back);
   byId("blindQuizNextButton").addEventListener("click", next);

@@ -84,6 +84,72 @@ REPRESENTATIVE_BEERS = {
 }
 
 
+PURCHASE_VERIFIED_AT = "2026-09-01"
+
+
+def purchase_option(name: str, url: str, shop: str) -> dict[str, str]:
+    return {
+        "name": name,
+        "url": url,
+        "shop": shop,
+        "unit": "1本",
+        "verifiedAt": PURCHASE_VERIFIED_AT,
+    }
+
+
+# Only direct product pages that showed both current stock and single-item ordering
+# at the verification date are listed.  When the classic commercial example was
+# unavailable, a purchasable beer of the same style is used instead.
+PURCHASE_OPTIONS = {
+    "D-01": [purchase_option("Bitburger Premium Pils", "https://bier.jp/itemdetail/Dx101i", "bier.jp")],
+    "D-02": [purchase_option("Hofbräu Original", "https://bier.jp/itemdetail/Zx011i", "bier.jp")],
+    "D-03": [purchase_option("Baeren The Day N Classic", "https://bier.jp/itemdetail/Bx101i", "bier.jp")],
+    "D-04": [purchase_option("Hirschbräu Märzen", "https://bier.jp/itemdetail/Ex572i", "bier.jp")],
+    "D-05": [purchase_option("Hofbräu Dunkel", "https://bier.jp/itemdetail/Zx013i", "bier.jp")],
+    "D-06": [purchase_option("Köstritzer Schwarzbier", "https://bier.jp/itemdetail/Dx103i", "bier.jp")],
+    "D-07": [purchase_option("Paulaner Salvator", "https://bier.jp/itemdetail/Ix113i", "bier.jp")],
+    "D-08": [purchase_option("Schneider Aventinus Eisbock TAP9", "https://bier.jp/itemdetail/Cx318i", "bier.jp")],
+    "D-09": [purchase_option("Aecht Schlenkerla Rauchbier Märzen", "https://bier.jp/itemdetail/Cx401i", "bier.jp")],
+    "D-10": [purchase_option("Opa's Liebling Kellerbier", "https://bier.jp/itemdetail/Hx106i", "bier.jp")],
+    "D-12": [purchase_option("Weihenstephaner Hefeweissbier", "https://bier.jp/itemdetail/Nx002i", "bier.jp")],
+    "D-13": [purchase_option("Schneider Kristall TAP2", "https://bier.jp/itemdetail/Cx309i", "bier.jp")],
+    "D-14": [purchase_option("Weihenstephaner Hefeweissbier Dunkel", "https://bier.jp/itemdetail/Nx004i", "bier.jp")],
+    "D-15": [purchase_option("Früh Kölsch", "https://bier.jp/itemdetail/Cx330i", "bier.jp")],
+    "D-16": [purchase_option("Uerige Alt", "https://bier.jp/itemdetail/Cx313i", "bier.jp")],
+    "D-17": [purchase_option("Schneeeule Marlene", "https://bier.jp/itemdetail/Hx201i", "bier.jp")],
+    "D-18": [purchase_option("Ritterguts Gose", "https://bier.jp/itemdetail/Hx030i", "bier.jp")],
+    "U-02": [purchase_option("Sierra Nevada Pale Ale", "https://bier.jp/itemdetail/Nx590i", "bier.jp")],
+    "U-03": [purchase_option("Stone IPA", "https://bier.jp/itemdetail/Nx440i", "bier.jp")],
+    "U-04": [purchase_option("German Coast DIPA", "https://bier.jp/itemdetail/Ax881i", "bier.jp")],
+    "U-05": [purchase_option("ISEKADO Hazy IPA", "https://www.biyagura.jp/c/hazy/0003", "ISEKADO")],
+    "U-06": [purchase_option("ナギサビール アメリカンウィート", "https://www.toretore-online.jp/SHOP/t4562.html", "とれとれ市場")],
+    "U-08": [purchase_option("Camba Black Shark", "https://bier.jp/itemdetail/Ax986i", "bier.jp")],
+    "E-01": [purchase_option("Fuller's ESB", "https://bier.jp/itemdetail/Ix206i", "bier.jp")],
+    "E-02": [purchase_option("Fuller's London Pride", "https://bier.jp/itemdetail/Ix204i", "bier.jp")],
+    "E-05": [purchase_option("Thornbridge Market Porter", "https://goodbeer.jp/shopdetail/000000002492/", "goodbeer")],
+    "E-06": [purchase_option("O'Hara's Irish Stout", "https://bier.jp/itemdetail/Ix232i", "bier.jp")],
+    "E-07": [purchase_option("大山Gビール インペリアルスタウト2025", "https://gbeer.ocnk.net/product/368", "地ビールと地酒の蔵元くめざくら")],
+    "E-08": [purchase_option("J.W. Lees Harvest Ale 2001", "https://www.thewinecountry.com/jw-lees-harvest-ale-2021-limited-edition-275ml-bot.html", "The Wine Country")],
+    "E-09": [purchase_option("Be Easy × Scott Murphy Scott Ale", "https://www.beervolta.shop-pro.jp/?pid=190143542", "Beer Volta")],
+    "E-10": [purchase_option("KAKUIDA 熟成ミルクスタウト", "https://kakuida-brewery.com/?pid=164277879", "KAKUIDA BREWERY")],
+    "B-01": [purchase_option("St.Bernardus Wit", "https://beeronline.jp/products/20107942", "クラフトビールオンライン")],
+    "B-02": [purchase_option("Delirium Tremens", "https://beeronline.jp/products/delirium-tremens-330", "クラフトビールオンライン")],
+    "B-03": [purchase_option("St.Bernardus Pater 6", "https://beeronline.jp/products/20165732", "クラフトビールオンライン")],
+    "B-04": [purchase_option("Tripel Karmeliet", "https://beeronline.jp/products/20098712", "クラフトビールオンライン")],
+    "B-05": [purchase_option("Rochefort 10", "https://beershop.jp/SHOP/83079.html", "Beershop")],
+    "B-06": [purchase_option("Saison Dupont", "https://beeronline.jp/products/saison-dupont-330ml", "クラフトビールオンライン")],
+    "B-07": [purchase_option("Orval", "https://store.shopping.yahoo.co.jp/bbuehata/b-0006.html", "ベルギー麦酒屋ウエハタ")],
+    "B-08": [purchase_option("Duchesse de Bourgogne", "https://www.belgianbeer.co.jp/products/detail.php?product_id=84", "ベルギービールJapan")],
+    "B-09": [purchase_option("3 Fonteinen Oude Geuze", "https://beeronline.jp/products/139315641", "クラフトビールオンライン")],
+    "B-10": [purchase_option("3 Fonteinen Oude Kriek", "https://beeronline.jp/products/139316818", "クラフトビールオンライン")],
+    "B-11": [purchase_option("Moinette Blonde", "https://beeronline.jp/products/moinette-blonde-330ml", "クラフトビールオンライン")],
+    "O-01": [purchase_option("Pilsner Urquell", "https://bier.jp/itemdetail/Nx005i", "bier.jp")],
+    "O-02": [purchase_option("Gold Dot Club Dark Beer", "https://theslopshop-tokyo.myshopify.com/products/b290-c47001", "The Slop Shop Tokyo")],
+    "O-03": [purchase_option("Baeren Coolship Vienna Lager 2026", "https://bier.jp/itemdetail/Bx107i", "bier.jp")],
+    "O-05": [purchase_option("Asahi Super Dry 350ml", "https://market.kita-grp.co.jp/items/119701", "スーパーキタムラ")],
+}
+
+
 # Step 2 must test causal inference rather than reveal the later country/style answer.
 # These labels retain the brewing knowledge while removing country names, regional
 # abbreviations, style names, and wording copied directly from the observation card.
@@ -413,6 +479,7 @@ def parse_scenarios(source: Path) -> list[dict]:
             "correctChoice": correct_choice,
             "answer": choices[correct_choice],
             "representativeBeers": REPRESENTATIVE_BEERS[scenario_id],
+            "purchaseOptions": PURCHASE_OPTIONS.get(scenario_id, []),
             "source": {"filename": source.name, "locator": scenario_id},
         })
     return scenarios
@@ -463,7 +530,7 @@ def main() -> None:
     payload = {
         "metadata": {
             "title": "ブラインドテイスティング判定シミュレーション",
-            "version": "2026-09-01-polished-japanese-v39",
+            "version": "2026-09-01-purchasable-catalog-v41",
             "scenarioCount": len(scenarios),
             "examScenarioCount": 10,
             "secondsPerScenario": 180,

@@ -323,7 +323,7 @@ def main() -> None:
         "reverseQuestionsConvertedToPositive", 0
     )
     payload["metadata"]["japanesePolish"] = {
-        "version": "2026-09-01-v39",
+        "version": "2026-09-01-v41",
         "reverseQuestionsConvertedToPositive": max(previous_converted, len(converted_reverse)),
         "answerCountHintsRemoved": True,
         "awkwardLiteralPhrasesRewritten": True,
