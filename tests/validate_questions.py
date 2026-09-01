@@ -15,6 +15,7 @@ METADATA = DATA["metadata"]
 APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 STYLE_JS = (ROOT / "style-quiz.js").read_text(encoding="utf-8")
+STYLE_DATA = json.loads((ROOT / "style-quiz.json").read_text(encoding="utf-8"))
 
 EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
 EXPECTED_ANSWERS = {1: 271, 2: 8, 3: 675, 4: 46}
@@ -98,23 +99,66 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v30"' in APP_JS
+    assert 'const APP_VERSION = "v31"' in APP_JS
     assert '"bierkompass-history-v20"' in APP_JS
     assert '"bierkompass-session-v20"' in APP_JS
     assert '"bierkompass-settings-v11"' in APP_JS
-    assert "styles.css?v=30" in INDEX_HTML
-    assert "app.js?v=30" in INDEX_HTML
-    assert "style-quiz.js?v=30" in INDEX_HTML
+    assert "styles.css?v=31" in INDEX_HTML
+    assert "app.js?v=31" in INDEX_HTML
+    assert "style-quiz.js?v=31" in INDEX_HTML
     assert "1〜4" in INDEX_HTML
     assert "0〜3" not in INDEX_HTML
     assert "noindex, nofollow" in INDEX_HTML
     assert 'type="password"' in INDEX_HTML
     assert "styleQuizView" in INDEX_HTML
     assert "answerSafeText" in STYLE_JS
+    assert 'fetch("style-quiz.json?v31"' in STYLE_JS
+    assert "renderDiagnostic(target)" in STYLE_JS
+
+    style_module = STYLE_DATA["styleModule"]
+    assert len(style_module) == 60
+    assert [item["id"] for item in style_module] == [
+        f"S-{number:03d}" for number in range(1, 61)
+    ]
+    assert Counter(item["kind"] for item in style_module) == {
+        "blind_identification": 25,
+        "elimination_reasoning": 10,
+        "comparison_axis": 15,
+        "feature_matrix": 10,
+    }
+    assert all(len(item["choices"]) == 4 for item in style_module)
+    assert all(item["correct"] for item in style_module)
+    diagnostics = [style for style in STYLE_DATA["styles"] if "diagnostic" in style]
+    assert len(diagnostics) == 25
+    assert {style["diagnostic"]["id"] for style in diagnostics} == {
+        f"S-{number:03d}" for number in range(1, 26)
+    }
+    assert all(
+        style["diagnostic"]["correctChoice"]
+        in style["diagnostic"]["choices"]
+        for style in diagnostics
+    )
+    assert all(
+        not any(
+            choice in style["diagnostic"]["clue"]
+            for choice in style["diagnostic"]["choices"]
+        )
+        for style in diagnostics
+    )
+    integrated = STYLE_DATA["metadata"]["integratedModule"]
+    assert integrated == {
+        "filename": "ドゥーメンス予想問題1000問_完全統合版.md",
+        "questionCount": 60,
+        "blindIdentificationCount": 25,
+        "eliminationReasoningCount": 10,
+        "comparisonAxisCount": 15,
+        "featureMatrixCount": 10,
+        "linkedStyleCount": 25,
+    }
 
     print(
         "OK: 1000 imported questions; unique IDs/text; "
-        "A/B/C=400/350/250; answer counts and app v30 wiring verified"
+        "A/B/C=400/350/250; 60 style-module items and app v31 wiring verified"
     )
 
 
