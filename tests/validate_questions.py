@@ -111,14 +111,14 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v34"' in APP_JS
+    assert 'const APP_VERSION = "v35"' in APP_JS
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v23"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=34" in INDEX_HTML
-    assert "app.js?v=34" in INDEX_HTML
-    assert "blind-quiz.js?v=34" in INDEX_HTML
+    assert "styles.css?v=35" in INDEX_HTML
+    assert "app.js?v=35" in INDEX_HTML
+    assert "blind-quiz.js?v=35" in INDEX_HTML
     assert "style-quiz.js" not in INDEX_HTML
     assert '$("#questionText").innerHTML = questionHtml(question.question)' in APP_JS
     assert 'class="negative-cue"' in APP_JS
@@ -131,7 +131,7 @@ def main() -> None:
 
     print(
         "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
-        "1000 stored / 950 active; pairing excluded; all correct and beer-style wrong choices explained; app v34 verified"
+        "1000 stored / 950 active; pairing excluded; all correct and beer-style wrong choices explained; app v35 verified"
     )
 
 

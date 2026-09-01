@@ -2,7 +2,7 @@
 
 (() => {
   const { escapeHtml, goHome, showView, shuffle, sameSet } = window.BierKompass;
-  const HISTORY_KEY = "bierkompass-blind-history-v2";
+  const HISTORY_KEY = "bierkompass-blind-history-v3";
   const STAGES = ["観察整理", "特徴定義", "原材料・工程", "発酵系統", "候補除外", "スタイル結論"];
   const FAMILY_LABELS = { Lager: "下面発酵（ラガー）", Ale: "上面発酵（エール）", Spontaneous: "自然発酵", Farmhouse: "農家醸造系" };
   const byId = (id) => document.getElementById(id);
@@ -16,7 +16,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v34", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v35", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -107,7 +107,7 @@
     state.hintOpen = false;
     state.answers = { step1: [], step2: "", step3: [], family: "", exclusions: [], reasons: [], final: null };
     state.options = {
-      step1: uniqueOptions(target.step1ObservationsJa, others.flatMap((scenario) => scenario.step1ObservationsJa), 3),
+      step1: uniqueOptions(target.step1InterpretationsJa, others.flatMap((scenario) => scenario.step1InterpretationsJa), 3),
       step2: shuffle([{ id: target.id, label: target.step2Characteristic }, ...shuffle(others).slice(0, 3).map((scenario) => ({ id: scenario.id, label: scenario.step2Characteristic }))]),
       step3: uniqueOptions(target.step3IngredientsProcess, others.flatMap((scenario) => scenario.step3IngredientsProcess), 3),
       choices: shuffle(target.choices.map((label, index) => ({ index, label }))),
@@ -169,7 +169,7 @@
   function renderStage(target) {
     const compactCard = state.stage > 0;
     let content = "";
-    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · 観察整理</p><h1>観察を言語化する</h1><p>ブラインドカードと一致する日本語の観察表現をすべて選んでください。</p></div>${blindCard(target)}${checks("blind-step1", state.options.step1, state.answers.step1)}`;
+    if (state.stage === 0) content = `<div class="style-step-heading"><p class="eyebrow">STEP 1 · 観察整理</p><h1>観察から方向性を判断する</h1><p>カードの文章を手掛かりに、スタイル識別に使える方向性をすべて選んでください。選択肢は観察文の言い換えではなく、香味・外観の判断軸です。</p></div>${blindCard(target)}${checks("blind-step1", state.options.step1, state.answers.step1)}`;
     if (state.stage === 1) content = `<div class="style-step-heading"><p class="eyebrow">STEP 2 · 特徴定義</p><h1>最大の特徴を定義する</h1><p>このビールを最も強く決定づける特徴を1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-step2", state.options.step2.map((item) => ({ value: item.id, label: item.label })), state.answers.step2)}`;
     if (state.stage === 2) content = `<div class="style-step-heading"><p class="eyebrow">STEP 3 · 原材料・工程</p><h1>原材料・工程を逆算する</h1><p>観察情報から考えられる原材料・工程をすべて選んでください。</p></div>${blindCard(target, compactCard)}${checks("blind-step3", state.options.step3, state.answers.step3)}`;
     if (state.stage === 3) content = `<div class="style-step-heading"><p class="eyebrow">STEP 4.1 · 発酵系統</p><h1>発酵系統を判定する</h1><p>クリーンさだけで即断せず、例外も考慮して1つ選んでください。</p></div>${blindCard(target, compactCard)}${radios("blind-family", Object.entries(FAMILY_LABELS).map(([value, label]) => ({ value, label })), state.answers.family)}`;
@@ -204,7 +204,7 @@
   function scoreScenario(target) {
     const wrongIndexes = target.choices.map((_, index) => index).filter((index) => index !== target.correctChoice);
     const correctReasons = target.exclusions.map((item) => item.reason);
-    const step1 = selectionPoints(state.answers.step1, target.step1ObservationsJa, 2);
+    const step1 = selectionPoints(state.answers.step1, target.step1InterpretationsJa, 2);
     const step2 = state.answers.step2 === target.id ? 2 : 0;
     const step3 = selectionPoints(state.answers.step3, target.step3IngredientsProcess, 2);
     const family = state.answers.family === target.fermentationFamily ? 1 : 0;
@@ -246,7 +246,7 @@
     return `<div class="style-result ${score.total >= 5 ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark">${score.total >= 5 ? "✓" : "△"}</div>
       <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
-        ${resultRow("Step 1 観察整理", score.step1, 2, target.step1ObservationsJa.join("／"))}
+        ${resultRow("Step 1 観察整理", score.step1, 2, target.step1InterpretationsJa.join("／"))}
         ${resultRow("Step 2 特徴定義", score.step2, 2, target.step2Characteristic)}
         ${resultRow("Step 3 原材料・工程", score.step3, 2, target.step3IngredientsProcess.join("／"))}
         ${resultRow("Step 4.1 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily])}

@@ -64,6 +64,35 @@ def japanese_observations(blind_card: dict[str, str]) -> list[str]:
     ]
 
 
+INTERPRETATION_RULES = [
+    ("淡色〜黄金色系の外観", r"\b(?:pale|straw|gold|golden|blond)\b"),
+    ("琥珀〜赤褐色系の外観", r"\b(?:amber|copper|bronze|mahogany|ruby|reddish)\b"),
+    ("濃褐色〜黒色系の外観", r"\b(?:dark|brown|black|opaque|jet)\b"),
+    ("透明感が高い", r"\b(?:clear|brilliant)\b"),
+    ("濁りや沈殿が見られる", r"\b(?:cloudy|hazy|turbid|sediment|unfiltered)\b"),
+    ("麦芽由来の香味が識別軸", r"\b(?:malt|malty|bread|bready|biscuit|toast|toasty|caramel|toffee|nutty|molasses|wort)\b"),
+    ("ホップ香や苦味が識別軸", r"\b(?:hop|hops|saaz|fuggle|golding|cascade|citrus|pine|resinous|grapefruit|bitterness|bitter)\b"),
+    ("焙煎由来の香味が識別軸", r"\b(?:roast|roasted|coffee|espresso|cacao|chocolate)\b"),
+    ("酵母由来の果実・スパイス香が識別軸", r"\b(?:banana|clove|ester|esters|pear|apple|fruit|fruity|mango|passionfruit|cherry|fig|date|plum|raisin|pepper)\b"),
+    ("酸味が主要な識別軸", r"\b(?:lactic|tart|sour|acidity|balsamic|vinous)\b"),
+    ("燻製香が主要な識別軸", r"\b(?:smoke|smoky|bacon|peat)\b"),
+    ("野生酵母由来の香りが識別軸", r"\b(?:brett|horse|leather|hay|sage)\b"),
+    ("ハーブ・スパイス香が識別軸", r"\b(?:coriander|spice|spicy|herbal|juniper|earthy)\b"),
+    ("軽快でドライな飲み口", r"\b(?:light|watery|crisp|dry|delicate|attenuated)\b"),
+    ("豊潤で高いボディ", r"\b(?:full-bodied|fullbodied|rich|syrupy|warming|massive|intense|concentrated)\b"),
+    ("発泡感が強い", r"\b(?:effervescent|carbonated|carbonation|champagne|lively)\b"),
+    ("炭酸が穏やか", r"\blow carbonation\b"),
+    ("滑らかで丸みのある口当たり", r"\b(?:creamy|silky|smooth|rounded|mellow)\b"),
+]
+
+
+def step1_interpretations(value: str) -> list[str]:
+    """Convert raw observations into standardized diagnostic axes, not copied phrases."""
+    lowered = value.lower()
+    interpretations = [label for label, pattern in INTERPRETATION_RULES if re.search(pattern, lowered)]
+    return interpretations[:6]
+
+
 def field(block: str, label: str) -> str:
     match = re.search(rf"^{re.escape(label)}\s*(.+)$", block, re.MULTILINE)
     if not match:
@@ -145,6 +174,7 @@ def parse_scenarios(source: Path) -> list[dict]:
             "difficulty": len(match.group(2)),
             "blindCard": blind_card,
             "step1ObservationsJa": japanese_observations(blind_card),
+            "step1InterpretationsJa": step1_interpretations(step1),
             "step1KeywordsSource": split_items(step1, "/"),
             "step2Characteristic": japanese_text(step2),
             "step3IngredientsProcess": [japanese_text(item) for item in split_items(step3)],
