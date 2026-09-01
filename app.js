@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v38";
+const APP_VERSION = "v39";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v23", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -9,6 +9,7 @@ const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周�
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+const answerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);
 const questionHtml = (value) => escapeHtml(value).replace(
   /(誤っているものを1つ選べ|誤っている|正しくない|適切でない|該当しない|当てはまらない|含まれない)/g,
   '<span class="negative-cue">$1</span>',
@@ -376,15 +377,15 @@ function renderFeedback(question) {
   const correct = sameSet(selectedValues(question.id), question.correct);
   $("#feedbackPanel").classList.toggle("incorrect", !correct);
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
-  $("#feedbackExplanation").textContent = question.explanation;
+  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation);
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${escapeHtml(reason)}</p></details>`
+      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}</p>`).join("")}`;
@@ -396,9 +397,9 @@ function renderReviewChoiceReasons(question, order) {
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${escapeHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${escapeHtml(reason)}</p></details>`
+      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
 }
@@ -470,7 +471,7 @@ function showResult() {
     const choiceReasons = renderReviewChoiceReasons(question, order);
     const sources = question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／");
     const reviewLabel = "正答・選択肢判定・解説・出典を見る";
-    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>正答：</strong>${escapeHtml(answers)}</p><p>${escapeHtml(question.explanation)}</p>${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
+    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : "✕ 要復習"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${answerHtml(question.explanation)}</p>${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
   }).join("");
 }
 

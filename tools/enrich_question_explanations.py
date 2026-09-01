@@ -40,7 +40,7 @@ def short(value: str, length: int = 58) -> str:
 def subject(question: str) -> str:
     value = re.sub(r"〔[^〕]+〕", "", question)
     value = re.sub(r"（[^）]*(?:選べ|基準|手帳)[^）]*）", "", value)
-    for separator in ("について", "の特徴", "の個性", "とは", "と呼", "はどれ", "を選", "で正", "に関"):
+    for separator in ("について", "の特徴", "の個性", "とは", "と呼", "はどれ", "を選", "を見分け", "の識別", "で正", "に関"):
         if separator in value:
             value = value.split(separator, 1)[0]
             break
@@ -78,7 +78,7 @@ def correct_reason(question: dict, choice: str) -> str:
     topic = subject(question["question"])
     category = question["category"]
     if category == "beer_styles":
-        return f"正答：「{topic}」を見分けるための要点です。覚える内容は「{short(choice)}」です。"
+        return f"正答：「{short(choice)}」は「{topic}」に当てはまる特徴です。"
     label = CATEGORY_REASON.get(category, "設問の知識")
     return f"正答：「{short(choice)}」は、{label}として正しい内容です。"
 
@@ -100,24 +100,24 @@ def wrong_style_reason(
     linked_targets = sorted(correct_choice_targets.get(normalize(choice), set()) - {topic})
     if len(linked_targets) == 1:
         return (
-            f"誤答：「{short(choice)}」は「{linked_targets[0]}」を整理するときに使われる内容です。"
-            f"「{topic}」とは識別軸が異なります。"
+            f"誤答：「{short(choice)}」は「{linked_targets[0]}」に当てはまる特徴です。"
+            f"この問題で問われている「{topic}」の特徴ではありません。"
         )
 
     answer_hint = correct_summary(question)
     if re.search(r"(?:ABV|IBU|EBC|°P|%|度|年|℃|比重|数値|[0-9０-９])", choice, re.IGNORECASE):
-        return f"誤答：「{short(choice)}」の数値・範囲は「{topic}」の基準と一致しません。正答側の{answer_hint}と対比してください。"
+        return f"誤答：「{short(choice)}」に示された値は「{topic}」の範囲外です。正しい範囲は{answer_hint}です。"
     if re.search(r"(?:上面|下面|自然発酵|混合発酵|酵母|発酵|ラガー|エール)", choice):
-        return f"誤答：「{short(choice)}」は発酵系統または酵母の対応が異なります。「{topic}」では{answer_hint}が判断材料です。"
+        return f"誤答：「{short(choice)}」は発酵方式または酵母の特徴が「{topic}」と異なります。正しい特徴は{answer_hint}です。"
     if re.search(r"(?:色|淡|黄金|琥珀|褐色|黒|透明|濁|泡)", choice):
-        return f"誤答：「{short(choice)}」は外観の特徴が「{topic}」と一致しません。外観は正答側の{answer_hint}で整理します。"
+        return f"誤答：「{short(choice)}」は「{topic}」の典型的な外観ではありません。正しい特徴は{answer_hint}です。"
     if re.search(r"(?:香|苦味|甘|酸|塩味|ロースト|モルト|ホップ|バナナ|クローブ|果実|ドライ)", choice):
-        return f"誤答：「{short(choice)}」は香味の方向が「{topic}」と異なります。識別には正答側の{answer_hint}を使います。"
+        return f"誤答：「{short(choice)}」は「{topic}」の典型的な香味ではありません。正しい特徴は{answer_hint}です。"
     if re.search(r"(?:麦芽|ホップ|水|副原料|糖|瓶内|樽|熟成|濾過|煮沸|濃縮)", choice):
-        return f"誤答：「{short(choice)}」は原材料・工程の組み合わせが「{topic}」と一致しません。正答側の{answer_hint}を確認してください。"
+        return f"誤答：「{short(choice)}」は「{topic}」で用いる原材料または工程と異なります。正しい内容は{answer_hint}です。"
     if re.search(r"(?:ドイツ|ベルギー|英国|イギリス|アメリカ|チェコ|地域|都市|修道院|協定|法律)", choice):
-        return f"誤答：「{short(choice)}」は産地・歴史的背景の対応が異なります。「{topic}」は正答側の{answer_hint}で整理します。"
-    return f"誤答：「{short(choice)}」は「{topic}」の代表的な識別点ではありません。正答側の{answer_hint}を優先して覚えます。"
+        return f"誤答：「{short(choice)}」は「{topic}」の産地または歴史的背景と一致しません。正しい内容は{answer_hint}です。"
+    return f"誤答：「{short(choice)}」は「{topic}」に当てはまりません。正しい内容は{answer_hint}です。"
 
 
 def wrong_general_reason(
@@ -176,9 +176,9 @@ def overall_explanation(question: dict) -> str:
     topic = subject(question["question"])
     summary = correct_summary(question)
     if question["category"] == "beer_styles":
-        return f"「{topic}」を判別するときは、{summary}を一組の識別ポイントとして覚えます。"
+        return f"「{topic}」の識別では、{summary}が重要な特徴です。"
     label = CATEGORY_REASON.get(question["category"], "設問の要点")
-    return f"この問題では{label}として、{summary}が正しい組み合わせです。"
+    return f"{label}として正しい内容は、{summary}です。"
 
 
 def enrich_questions(payload: dict, blind_path: Path | None = None) -> dict:

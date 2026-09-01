@@ -159,7 +159,10 @@ INGREDIENT_PROCESS_REPLACEMENTS = {
 
 BLIND_CARD_OVERRIDES = {
     "D-06": {"aroma": "焦がしたパンの縁・ビターチョコ・コーヒー"},
-    "D-07": {"taste": "濃いパン皮とトフィーの甘美さ、温かいアルコール"},
+    "D-07": {
+        "taste": "濃いパン皮とトフィーの甘美さ、温かいアルコール",
+        "mouthfeel": "際立つフルボディ",
+    },
     "D-10": {"aroma": "焼きたてパン様の新鮮なイースト香・素朴な麦芽"},
     "D-11": {"taste": "穀物の風味を保ちつつ非常に軽い、爽快なキレ"},
     "D-18": {"aroma": "レモン皮様のスパイス香と乳酸を思わせる酸香"},
@@ -176,7 +179,11 @@ BLIND_CARD_OVERRIDES = {
         "aroma": "アーシー・フローラルなホップが強めで、モルト感もある",
         "taste": "引き締まった苦味、柑橘感は穏やか",
     },
-    "E-08": {"taste": "超重厚な麦芽の甘美さと、熟成後も残るしっかりした苦味"},
+    "E-06": {
+        "appearance": "不透明な漆黒・非常にきめ細かく密でクリーミーな泡",
+        "mouthfeel": "窒素ガスによる非常に滑らかな口当たり",
+    },
+    "E-08": {"taste": "非常に重厚な麦芽の甘美さと、熟成後も残るしっかりした苦味"},
     "B-01": {
         "aroma": "柑橘の皮・胡椒・青いハーブを思わせる香り",
         "mouthfeel": "シルキーで軽快",
@@ -189,6 +196,48 @@ BLIND_CARD_OVERRIDES = {
     "O-08": {"aroma": "針葉樹を思わせる清涼香とバナナ様の甘い香り"},
     "O-09": {"aroma": "針葉樹の清涼感と強いオレンジ・トロピカルの果実香"},
 }
+
+
+BLIND_TEXT_REPLACEMENTS = (
+    ("陳旧ホップ", "熟成ホップ"),
+    ("若古ブレンド", "若いビールと熟成したビールのブレンド"),
+    ("超高比重", "非常に高い初期比重"),
+    ("超高アルコール", "非常に高いアルコール度数"),
+    ("超重厚", "非常に重厚"),
+    ("超濃密", "非常にきめ細かく密"),
+    ("超クリーミー", "非常にクリーミー"),
+    ("ホップフォワード", "ホップの香味を前面に出す設計"),
+    ("モルティで", "モルト風味が豊かで"),
+    ("モルティな", "モルト風味の豊かな"),
+    ("モルティ", "モルト風味が豊か"),
+    ("クリーンラガー", "クリーンなラガー発酵"),
+    ("米国産ホップの柑橘・松＋中立酵母のホップの香味を前面に出す設計（穏やか版）", "柑橘・松脂系ホップとクリーンな酵母の穏やかなバランス"),
+    ("英バーレイの骨格に米国ホップを全力投入", "重厚な麦芽の支えに柑橘・樹脂系ホップを大量使用"),
+    ("IPAの骨格×英国ホップ・英国酵母（vs 米IPAの識別）", "しっかりした苦味を、アーシーなホップ香と穏やかな酵母由来香が支える"),
+    ("上面エステル", "上面発酵酵母由来の果実香"),
+    ("焦げ酸味", "焙煎麦芽由来の酸味"),
+    ("超ライト", "非常に軽い"),
+    ("超フルボディ", "非常に重いボディ"),
+    ("超フル", "非常に重いボディ"),
+    ("極限まで", "非常に"),
+    ("極限の", "非常に高い"),
+    ("ドリンカブル", "飲みやすい"),
+    ("シルキー", "絹のように滑らか"),
+    ("ヴィスカス", "粘性が高い"),
+    ("ライブリー", "活発な発泡感"),
+    ("灼けるような温感", "焼けるようなアルコールの温感"),
+    ("エステル皆無", "エステルがほとんど感じられない"),
+    ("アーシーさ", "土やハーブを思わせる香り"),
+    ("甘香ばしさ", "甘く香ばしい風味"),
+    ("超濃厚", "非常に濃厚"),
+)
+
+
+def polish_blind_text(value: str) -> str:
+    result = value
+    for source, target in BLIND_TEXT_REPLACEMENTS:
+        result = result.replace(source, target)
+    return result
 
 
 def clean(value: str) -> str:
@@ -377,6 +426,17 @@ def apply_ui_overrides(scenarios: list[dict]) -> None:
             for item in scenario["step3IngredientsProcess"]
         ]
         scenario["blindCard"].update(BLIND_CARD_OVERRIDES.get(scenario["id"], {}))
+        scenario["blindCard"] = {
+            key: polish_blind_text(value) for key, value in scenario["blindCard"].items()
+        }
+        scenario["step2Characteristic"] = polish_blind_text(scenario["step2Characteristic"])
+        scenario["decisiveEvidence"] = polish_blind_text(scenario["decisiveEvidence"])
+        scenario["step3IngredientsProcess"] = [
+            polish_blind_text(item) for item in scenario["step3IngredientsProcess"]
+        ]
+        scenario["fermentationDetail"] = polish_blind_text(scenario["fermentationDetail"])
+        for exclusion in scenario["exclusions"]:
+            exclusion["reason"] = polish_blind_text(exclusion["reason"])
         scenario["step1ObservationsJa"] = japanese_observations(scenario["blindCard"])
 
 
@@ -394,7 +454,7 @@ def main() -> None:
     payload = {
         "metadata": {
             "title": "ブラインドテイスティング判定シミュレーション",
-            "version": "2026-09-01-full-spec-no-answer-leaks",
+            "version": "2026-09-01-polished-japanese-v39",
             "scenarioCount": len(scenarios),
             "examScenarioCount": 10,
             "secondsPerScenario": 180,

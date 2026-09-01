@@ -15,10 +15,11 @@ METADATA = DATA["metadata"]
 APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 BLIND_JS = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
+STYLE_LINKS_JS = (ROOT / "style-links.js").read_text(encoding="utf-8")
 
 EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
 ACTIVE_TIERS = {"A": 375, "B": 325, "C": 250}
-EXPECTED_ANSWERS = {1: 276, 2: 211, 3: 277, 4: 236}
+EXPECTED_ANSWERS = {1: 133, 2: 211, 3: 420, 4: 236}
 EXPECTED_CATEGORIES = {
     "raw_materials": 110,
     "brewing_process": 50,
@@ -50,6 +51,12 @@ def main() -> None:
     cross_reference_choice = re.compile(
         r"[（(][^）)]*[a-dA-D]\s*(?:と|、|,|・|〜|～|/|／|\+)\s*[a-dA-D][^）)]*[）)]"
     )
+    unnatural_language = re.compile(
+        r"陳旧|前面度|〔逆問|手帳基準|ズレ|収束|裏取り|正答側|"
+        r"覚える内容|数値・範囲|香味の方向|&#xA0;|上面エステル|"
+        r"エステル皆無|焦げ酸味|甘香ばしさ|アーシーさ|高Cl=|高SO4="
+    )
+    answer_count_hint = re.compile(r"[0-9０-９]+つ選べ")
     assert METADATA["questionCount"] == 1000
     assert METADATA["activeQuestionCount"] == 950
     assert METADATA["excludedQuestionCount"] == 50
@@ -81,6 +88,12 @@ def main() -> None:
         assert len(question["choiceReasons"]) == 4
         assert question["explanation"].strip()
         assert all(reason.strip() for reason in question["choiceReasons"])
+        assert not re.search(r"[:：]\s*$", question["question"])
+        assert not answer_count_hint.search(question["question"])
+        assert not unnatural_language.search(question["question"])
+        assert not unnatural_language.search(question["explanation"])
+        assert all(not unnatural_language.search(choice) for choice in question["choices"])
+        assert all(not unnatural_language.search(reason) for reason in question["choiceReasons"])
         assert "**" not in question["question"]
         assert all("**" not in choice and "→ 加えて" not in choice for choice in question["choices"])
         assert all(not cross_reference_choice.search(choice) for choice in question["choices"])
@@ -98,7 +111,8 @@ def main() -> None:
     assert METADATA["answerCountDistribution"] == {
         str(key): value for key, value in EXPECTED_ANSWERS.items()
     }
-    assert METADATA["multiAnswerQuestionCount"] == 724
+    assert METADATA["multiAnswerQuestionCount"] == 867
+    assert METADATA["japanesePolish"]["reverseQuestionsConvertedToPositive"] == 143
     assert Counter(question["category"] for question in QUESTIONS) == EXPECTED_CATEGORIES
     assert {
         category["id"]: category["count"] for category in METADATA["categories"]
@@ -116,14 +130,16 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v38"' in APP_JS
+    assert 'const APP_VERSION = "v39"' in APP_JS
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v23"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=38" in INDEX_HTML
-    assert "app.js?v=38" in INDEX_HTML
-    assert "blind-quiz.js?v=38" in INDEX_HTML
+    assert "styles.css?v=39" in INDEX_HTML
+    assert "style-links.js?v=39" in INDEX_HTML
+    assert "app.js?v=39" in INDEX_HTML
+    assert "blind-quiz.js?v=39" in INDEX_HTML
+    assert INDEX_HTML.index("style-links.js?v=39") < INDEX_HTML.index("app.js?v=39")
     assert all("APA" not in question["question"] for question in QUESTIONS)
     assert all("APA" not in choice for question in QUESTIONS for choice in question["choices"])
     assert "spreadAnswerCounts" in APP_JS
@@ -136,11 +152,21 @@ def main() -> None:
     assert 'type="password"' in INDEX_HTML
     assert "blindQuizView" in INDEX_HTML
     assert "scoreScenario" in BLIND_JS
+    assert "BierKompassStyleLinks" in APP_JS and "answerHtml" in APP_JS
+    assert "target=\"_blank\"" in STYLE_LINKS_JS
+    assert 'const ROOT = "https://www.bjcp.org/style/2021"' in STYLE_LINKS_JS
+
+    pils_helles = next(question for question in QUESTIONS if question["id"] == "A-088")
+    assert "ピルスとヘレス" in pils_helles["question"]
+    assert pils_helles["correct"] == [0, 1, 2]
+    baltic_porter = next(question for question in QUESTIONS if question["id"] == "A-310")
+    assert baltic_porter["correct"] == [0, 1, 2, 3]
+    assert all("正答：" in reason for reason in baltic_porter["choiceReasons"])
 
     print(
         "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
         "1000 stored / 950 active; self-contained choices; explanations present; "
-        "answer counts dispersed; app v38 verified"
+        "reverse artifacts repaired; Japanese polished; answer links limited to feedback; app v39 verified"
     )
 
 

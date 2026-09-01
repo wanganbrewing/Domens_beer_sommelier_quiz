@@ -14,6 +14,7 @@ SCENARIOS = DATA["scenarios"]
 META = DATA["metadata"]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 SCRIPT = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
+STYLE_LINKS = (ROOT / "style-links.js").read_text(encoding="utf-8")
 EARLY_ANSWER_LEAK = re.compile(
     r"独産|英産|米産|米ホップ|英エール|英酵母|英上面|仏ノーブル|豪州|"
     r"バルト海|ドルトムント|ミュンヘン|バンベルク|ケルシュ|ケルン|"
@@ -75,6 +76,12 @@ def main() -> None:
         assert scenario["answer"] == scenario["choices"][scenario["correctChoice"]]
         assert scenario["source"]["filename"] == "ブラインドテイスティング判定シミュレーション_完全仕様.md"
         assert scenario["source"]["locator"] == scenario["id"]
+        serialized = json.dumps(scenario, ensure_ascii=False)
+        assert not re.search(
+            r"陳旧|若古|mouthfeeling|超濃密|超濃厚|超重厚|ホップフォワード|"
+            r"ズレ|収束|裏取り|上面エステル|エステル皆無|焦げ酸味|甘香ばしさ|アーシーさ",
+            serialized,
+        )
     assert "startBlindQuizButton" in INDEX
     assert "blindQuizView" in INDEX
     assert "練習モード" in SCRIPT and "試験モード" in SCRIPT and "弱点モード" in SCRIPT
@@ -92,7 +99,11 @@ def main() -> None:
     assert "現在の推理は" in SCRIPT and "1対1で比べてください" in SCRIPT
     assert "escapeHtml(hints[state.stage])" in SCRIPT
     assert '"△"' not in SCRIPT and "目標達成" in SCRIPT and "要復習" in SCRIPT and "要確認" in SCRIPT
-    assert "正答：${escapeHtml(correctAnswer)}" in SCRIPT and "あなたの回答：" in SCRIPT
+    assert "正答：${render(correctAnswer)}" in SCRIPT and "あなたの回答：" in SCRIPT
+    assert 'fetch("blind-tasting.json?v39"' in SCRIPT
+    assert "styleAnswerHtml(target.answer)" in SCRIPT
+    assert "BierKompassStyleLinks" in SCRIPT
+    assert 'const ROOT = "https://www.bjcp.org/style/2021"' in STYLE_LINKS
     print("OK: 58 scenarios; seven-stage causal reasoning flow and representative beers verified")
 
 

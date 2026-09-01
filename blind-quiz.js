@@ -6,6 +6,7 @@
   const STAGES = ["観察", "原材料・工程", "発酵系統", "国・地域", "候補絞り込み", "最終判定", "決め手"];
   const FAMILY_LABELS = { Lager: "下面発酵（ラガー）", Ale: "上面発酵（エール）", Spontaneous: "自然発酵", Farmhouse: "農家醸造系" };
   const byId = (id) => document.getElementById(id);
+  const styleAnswerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);
   let blindData = null;
   let dataPromise = null;
   let state = null;
@@ -16,7 +17,7 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v38", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v39", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return response.json();
     });
@@ -258,9 +259,10 @@
     render();
   }
 
-  function resultRow(label, points, maximum, correctAnswer, userAnswer) {
+  function resultRow(label, points, maximum, correctAnswer, userAnswer, linkStyles = false) {
     const complete = points === maximum;
-    return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>正答：${escapeHtml(correctAnswer)}</b><em class="user-answer">あなたの回答：${escapeHtml(userAnswer || "未選択")}</em></div></li>`;
+    const render = linkStyles ? styleAnswerHtml : escapeHtml;
+    return `<li class="${complete ? "ok" : "ng"}"><span class="result-status-label">${complete ? "正解" : "要確認"}</span><div><small>${escapeHtml(label)} · ${points}/${maximum}点</small><b>正答：${render(correctAnswer)}</b><em class="user-answer">あなたの回答：${render(userAnswer || "未選択")}</em></div></li>`;
   }
 
   function renderScenarioResult(target) {
@@ -272,17 +274,17 @@
     const selectedDecisive = state.options.decisive.find((item) => item.id === state.answers.decisive)?.label || "未選択";
     const achieved = score.total >= 5;
     return `<div class="style-result ${achieved ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark result-status-mark">${achieved ? "目標達成" : "要復習"}</div>
-      <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${escapeHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
+      <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${styleAnswerHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
         ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"), state.answers.ingredients.join("／"))}
         ${resultRow("Step 3 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily], FAMILY_LABELS[state.answers.family] || "未選択")}
         ${resultRow("Step 4 国・地域", score.country, 1, target.countryLabel, selectedCountry)}
-        ${resultRow("Step 5 候補絞り込み", score.shortlist, 1, excludedStyles, selectedExclusions)}
-        ${resultRow("Step 6 最終判定", score.final, 3, target.answer, selectedFinal)}
+        ${resultRow("Step 5 候補絞り込み", score.shortlist, 1, excludedStyles, selectedExclusions, true)}
+        ${resultRow("Step 6 最終判定", score.final, 3, target.answer, selectedFinal, true)}
         ${resultRow("Step 7 決め手", score.decisive, 1, target.decisiveEvidence, selectedDecisive)}
       </ul>
-      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${escapeHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${escapeHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
-      <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${escapeHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
+      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${styleAnswerHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${styleAnswerHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
+      <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${styleAnswerHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
       <section class="representative-beers"><p class="eyebrow">COMMERCIAL EXAMPLES</p><h2>代表的なビール銘柄</h2><ul>${target.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul><small>学習用の代表例です。製品仕様や流通状況は変更される場合があります。</small></section>
     </div>`;
   }
