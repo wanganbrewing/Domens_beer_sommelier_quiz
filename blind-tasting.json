@@ -2758,12 +2758,12 @@
       "conclusion": "Trappist / Abbey Dubbel（ダブル）",
       "choices": [
         "トリプル",
-        "ダブル",
+        "ベルジャン・デュッベル",
         "ドッペルボック",
         "ドゥンケル"
       ],
       "correctChoice": 1,
-      "answer": "ダブル",
+      "answer": "ベルジャン・デュッベル",
       "representativeBeers": [
         "Westmalle Dubbel",
         "Chimay Red",
@@ -2817,7 +2817,7 @@
           "reason": "より淡くドライで軽い"
         },
         {
-          "style": "ダブル",
+          "style": "ベルジャン・デュッベル",
           "reason": "濃褐色"
         },
         {
@@ -2828,7 +2828,7 @@
       "conclusion": "Trappist / Abbey Tripel（トリプル）",
       "choices": [
         "ゴールデンストロング",
-        "ダブル",
+        "ベルジャン・デュッベル",
         "トリプル",
         "ヴァイツェンボック"
       ],
@@ -2890,7 +2890,7 @@
           "reason": "焦げロースト支配"
         },
         {
-          "style": "ダブル",
+          "style": "ベルジャン・デュッベル",
           "reason": "一段軽い"
         },
         {
@@ -2902,7 +2902,7 @@
       "choices": [
         "インペリアルスタウト",
         "クアドルペル",
-        "ダブル",
+        "ベルジャン・デュッベル",
         "イングリッシュバーレイワイン"
       ],
       "correctChoice": 1,
@@ -3811,12 +3811,12 @@
       "conclusion": "Italian Grape 上面発酵（エール） – IGA（イタリアン・グレープエール）〔イタリア〕",
       "choices": [
         "クリーク",
-        "IGA",
+        "グレープエール（旧称イタリアングレープエール）",
         "フランダースレッド",
         "甘口フルーツエール"
       ],
       "correctChoice": 1,
-      "answer": "IGA",
+      "answer": "グレープエール（旧称イタリアングレープエール）",
       "representativeBeers": [
         "Birra del Borgo L'Equilibrista",
         "LoverBeer BeerBera"
@@ -3872,7 +3872,7 @@
           "reason": "ホップ使用・煮沸あり"
         },
         {
-          "style": "コーネル",
+          "style": "コルンエール（ノルウェー農家ビール）",
           "reason": "クヴェイクのオレンジ様で酵母が別"
         },
         {
@@ -3884,7 +3884,7 @@
       "choices": [
         "ヴァイツェンボック",
         "サハティ",
-        "コーネル",
+        "コルンエール（ノルウェー農家ビール）",
         "スコッチエール"
       ],
       "correctChoice": 1,
@@ -3953,12 +3953,12 @@
       "conclusion": "Norwegian 農家醸造系 上面発酵（エール） – Kornøl（コーネル）〔ノルウェー〕",
       "choices": [
         "サハティ",
-        "コーネル",
+        "コルンエール（ノルウェー農家ビール）",
         "セゾン",
         "NEIPA"
       ],
       "correctChoice": 1,
-      "answer": "コーネル",
+      "answer": "コルンエール（ノルウェー農家ビール）",
       "representativeBeers": [
         "Voss Bryggeri Vossaøl 1814"
       ],
@@ -4020,12 +4020,12 @@
       "conclusion": "New Zealand-Style IPA / XPA〔ニュージーランド〕",
       "choices": [
         "アメリカンIPA",
-        "NZ IPA",
+        "ニュージーランドIPA",
         "イングリッシュIPA",
         "NEIPA"
       ],
       "correctChoice": 1,
-      "answer": "NZ IPA",
+      "answer": "ニュージーランドIPA",
       "representativeBeers": [
         "8 Wired HopWired NZ IPA",
         "Epic Full Send NZIPA",

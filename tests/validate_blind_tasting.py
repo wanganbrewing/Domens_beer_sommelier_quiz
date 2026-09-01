@@ -67,6 +67,7 @@ def main() -> None:
         assert 2 <= len(scenario["step3IngredientsProcess"]) <= 5
         assert not EARLY_ANSWER_LEAK.search(" ".join(scenario["step3IngredientsProcess"]))
         assert all("APA" not in choice for choice in scenario["choices"])
+        assert all(choice not in {"NZ IPA", "IGA", "ダブル", "コーネル"} for choice in scenario["choices"])
         assert 1 <= len(scenario["representativeBeers"]) <= 3
         assert all(beer.strip() for beer in scenario["representativeBeers"])
         assert len(scenario["exclusions"]) == 3

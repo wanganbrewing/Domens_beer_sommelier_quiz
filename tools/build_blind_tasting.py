@@ -232,6 +232,14 @@ BLIND_TEXT_REPLACEMENTS = (
     ("超濃厚", "非常に濃厚"),
 )
 
+STYLE_NAME_REPLACEMENTS = {
+    "APA": "アメリカンペールエール",
+    "NZ IPA": "ニュージーランドIPA",
+    "IGA": "グレープエール（旧称イタリアングレープエール）",
+    "ダブル": "ベルジャン・デュッベル",
+    "コーネル": "コルンエール（ノルウェー農家ビール）",
+}
+
 
 def polish_blind_text(value: str) -> str:
     result = value
@@ -414,13 +422,14 @@ def apply_ui_overrides(scenarios: list[dict]) -> None:
     """Keep early-stage clues diagnostic without spelling out later answers."""
     for scenario in scenarios:
         scenario["choices"] = [
-            "アメリカンペールエール" if choice == "APA" else choice
+            STYLE_NAME_REPLACEMENTS.get(choice, choice)
             for choice in scenario["choices"]
         ]
         scenario["answer"] = scenario["choices"][scenario["correctChoice"]]
         for exclusion in scenario["exclusions"]:
-            if exclusion["style"] == "APA":
-                exclusion["style"] = "アメリカンペールエール"
+            exclusion["style"] = STYLE_NAME_REPLACEMENTS.get(
+                exclusion["style"], exclusion["style"]
+            )
         scenario["step3IngredientsProcess"] = [
             INGREDIENT_PROCESS_REPLACEMENTS.get(item, item)
             for item in scenario["step3IngredientsProcess"]
