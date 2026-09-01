@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = Path(r"C:\Users\tokun\Downloads\ドゥーメンス予想問題1000問_完全統合版.md")
+DEFAULT_SOURCE = Path.home() / "Downloads" / "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md"
 DEFAULT_OUTPUT = ROOT / "questions.json"
 
 ID_PATTERN = re.compile(r"^\*\*((?:A|B|C|S)-\d{3})\.\*\*", re.MULTILINE)
@@ -203,7 +203,7 @@ def parse_questions(source: Path) -> tuple[list[dict], dict]:
     metadata = {
         "title": "BierKompass 1000",
         "subtitle": "Doemens Biersommelier 試験対策",
-        "version": "2026-09-01-integrated-markdown-v1",
+        "version": "2026-09-01-integrated-markdown-v3-25-percent-distribution",
         "questionCount": len(questions),
         "studyQuestionCount": 50,
         "examQuestionCount": 50,
@@ -229,7 +229,7 @@ def parse_questions(source: Path) -> tuple[list[dict], dict]:
         "multiAnswerQuestionCount": sum(count for answers, count in answer_counts.items() if answers >= 2),
         "answerCountDistribution": {str(key): answer_counts[key] for key in sorted(answer_counts)},
         "duplicateQuestionTextCount": len(duplicate_texts),
-        "questionDesign": "全問4択の複数選択式。添付Markdown記載の正答を保持し、最終試験では50問中35問を正答2個以上から抽出する。",
+        "questionDesign": "全問4択の複数選択式。v3添付Markdown記載の正答パターンを保持し、最終試験では50問中35問を正答2個以上から抽出する。",
     }
     return questions, metadata
 

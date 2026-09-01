@@ -14,10 +14,10 @@ QUESTIONS = DATA["questions"]
 METADATA = DATA["metadata"]
 APP_JS = (ROOT / "app.js").read_text(encoding="utf-8")
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
-STYLE_JS = (ROOT / "style-quiz.js").read_text(encoding="utf-8")
+BLIND_JS = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
 
 EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
-EXPECTED_ANSWERS = {1: 271, 2: 8, 3: 675, 4: 46}
+EXPECTED_ANSWERS = {1: 276, 2: 211, 3: 277, 4: 236}
 EXPECTED_CATEGORIES = {
     "raw_materials": 110,
     "brewing_process": 50,
@@ -59,8 +59,9 @@ def main() -> None:
 
     question_texts = [normalized(question["question"]) for question in QUESTIONS]
     assert all(question_texts)
-    assert len(question_texts) == len(set(question_texts)) == 1000
-    assert METADATA["duplicateQuestionTextCount"] == 0
+    assert len(set(question_texts)) == 890
+    assert METADATA["duplicateQuestionTextCount"] == 30
+    assert len({(normalized(question["question"]), tuple(question["choices"])) for question in QUESTIONS}) == 1000
 
     for question in QUESTIONS:
         assert question["type"] == "multiple"
@@ -75,7 +76,7 @@ def main() -> None:
         assert all("**" not in choice and "→ 加えて" not in choice for choice in question["choices"])
         assert len(question["sources"]) == 1
         source = question["sources"][0]
-        assert source["filename"] == "ドゥーメンス予想問題1000問_完全統合版.md"
+        assert source["filename"] == "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md"
         assert source["locator"] == question["id"]
         assert source["unit"] == "問題ID"
 
@@ -87,7 +88,7 @@ def main() -> None:
     assert METADATA["answerCountDistribution"] == {
         str(key): value for key, value in EXPECTED_ANSWERS.items()
     }
-    assert METADATA["multiAnswerQuestionCount"] == 729
+    assert METADATA["multiAnswerQuestionCount"] == 724
     assert Counter(question["category"] for question in QUESTIONS) == EXPECTED_CATEGORIES
     assert {
         category["id"]: category["count"] for category in METADATA["categories"]
@@ -98,23 +99,26 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v30"' in APP_JS
-    assert '"bierkompass-history-v20"' in APP_JS
-    assert '"bierkompass-session-v20"' in APP_JS
-    assert '"bierkompass-settings-v11"' in APP_JS
-    assert "styles.css?v=30" in INDEX_HTML
-    assert "app.js?v=30" in INDEX_HTML
-    assert "style-quiz.js?v=30" in INDEX_HTML
+    assert 'const APP_VERSION = "v33"' in APP_JS
+    assert '"bierkompass-history-v22"' in APP_JS
+    assert '"bierkompass-session-v22"' in APP_JS
+    assert '"bierkompass-settings-v13"' in APP_JS
+    assert "styles.css?v=33" in INDEX_HTML
+    assert "app.js?v=33" in INDEX_HTML
+    assert "blind-quiz.js?v=33" in INDEX_HTML
+    assert "style-quiz.js" not in INDEX_HTML
+    assert '$("#questionText").innerHTML = questionHtml(question.question)' in APP_JS
+    assert 'class="negative-cue"' in APP_JS
     assert "1〜4" in INDEX_HTML
     assert "0〜3" not in INDEX_HTML
     assert "noindex, nofollow" in INDEX_HTML
     assert 'type="password"' in INDEX_HTML
-    assert "styleQuizView" in INDEX_HTML
-    assert "answerSafeText" in STYLE_JS
+    assert "blindQuizView" in INDEX_HTML
+    assert "scoreScenario" in BLIND_JS
 
     print(
-        "OK: 1000 imported questions; unique IDs/text; "
-        "A/B/C=400/350/250; answer counts and app v30 wiring verified"
+        "OK: 1000 v3 questions; unique IDs and full question/choice sets; "
+        "A/B/C=400/350/250; v3 answer distribution and app v33 wiring verified"
     )
 
 

@@ -1,0 +1,3082 @@
+{
+  "metadata": {
+    "title": "ブラインドテイスティング判定シミュレーション",
+    "version": "2026-09-01-full-spec",
+    "scenarioCount": 58,
+    "examScenarioCount": 10,
+    "secondsPerScenario": 180,
+    "maximumPoints": 10,
+    "countries": [
+      {
+        "id": "germany",
+        "label": "ドイツ",
+        "count": 18
+      },
+      {
+        "id": "america",
+        "label": "アメリカ",
+        "count": 8
+      },
+      {
+        "id": "uk_ireland",
+        "label": "イギリス・アイルランド",
+        "count": 10
+      },
+      {
+        "id": "belgium",
+        "label": "ベルギー",
+        "count": 11
+      },
+      {
+        "id": "other",
+        "label": "その他の国",
+        "count": 11
+      }
+    ],
+    "difficultyCounts": {
+      "1": 11,
+      "2": 38,
+      "3": 9
+    },
+    "sourceFilename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+    "note": "仕様見出しは全50シナリオと記載されていますが、連番データ58件を欠落なく収録しています。"
+  },
+  "scenarios": [
+    {
+      "id": "D-01",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "淡黄金・清澄・純白のきめ細かい泡",
+        "aroma": "ハーバルでスパイシーなホップ香、エステルなし",
+        "taste": "シャープでエッジの効いた苦味、ドライなフィニッシュ",
+        "mouthfeel": "ライト〜ミディアム、炭酸しっかり"
+      },
+      "step1Keywords": [
+        "pale gold, brilliant",
+        "herbal-spicy noble hop",
+        "sharp clean bitterness, dry finish"
+      ],
+      "step2Characteristic": "エッジの効いた強いホップ苦味＋完全ドライ（クリーン）",
+      "step3IngredientsProcess": [
+        "ピルスナー麦芽100%",
+        "独産ノーブルホップ",
+        "下面酵母",
+        "やや硬質の水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（エステル皆無）",
+      "exclusions": [
+        {
+          "style": "ヘレス",
+          "reason": "苦味が控えめでモルト主役"
+        },
+        {
+          "style": "ボヘミアンピルス",
+          "reason": "軟水由来の丸い苦味とモルトの厚み"
+        },
+        {
+          "style": "ケルシュ",
+          "reason": "上面の微エステルがある"
+        }
+      ],
+      "conclusion": "German-Style Pilsener（ジャーマン・ピルスナー）",
+      "choices": [
+        "ヘレス",
+        "ジャーマンピルスナー",
+        "ボヘミアンピルスナー",
+        "ケルシュ"
+      ],
+      "correctChoice": 1,
+      "answer": "ジャーマンピルスナー",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-01"
+      }
+    },
+    {
+      "id": "D-02",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "澄んだ黄金・豊かな純白泡",
+        "aroma": "焼きたて白パン・麦汁の優しい甘香、ホップ控えめ",
+        "taste": "上品なモルトの甘みと旨み、苦味は締める程度",
+        "mouthfeel": "ミディアム、丸い口当たり"
+      },
+      "step1Keywords": [
+        "golden, clear",
+        "bready, light malt aroma",
+        "malty sweetness, low hop bitterness"
+      ],
+      "step2Characteristic": "モルトフォーカス（ホップは脇役）",
+      "step3IngredientsProcess": [
+        "淡色麦芽100%",
+        "穏やかなノーブルホップ",
+        "下面酵母",
+        "脱炭酸処理水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（クリーン）",
+      "exclusions": [
+        {
+          "style": "ピルスナー",
+          "reason": "苦味が強すぎる"
+        },
+        {
+          "style": "ドルトムンダー",
+          "reason": "ボディ・度数が上"
+        },
+        {
+          "style": "ヴァイツェン",
+          "reason": "バナナ香がない"
+        }
+      ],
+      "conclusion": "Munich-Style Helles（ミュンヘナー・ヘレス）",
+      "choices": [
+        "ミュンヘナー・ヘレス",
+        "ジャーマンピルスナー",
+        "ドルトムンダー",
+        "ケラービア"
+      ],
+      "correctChoice": 0,
+      "answer": "ミュンヘナー・ヘレス",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-02"
+      }
+    },
+    {
+      "id": "D-03",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "濃い黄金・クリア・しっかりした泡",
+        "aroma": "力強い麦芽香＋程よいホップ",
+        "taste": "ヘレスより厚いモルトとピルスに迫る苦味の両立、キレもある",
+        "mouthfeel": "フルボディ寄り、アルコール感"
+      },
+      "step1Keywords": [
+        "deep gold",
+        "strong malt + moderate hop",
+        "balanced, full-bodied with clean finish"
+      ],
+      "step2Characteristic": "ヘレスとピルスの中間バランス＋高めのボディ・度数",
+      "step3IngredientsProcess": [
+        "高比重麦汁",
+        "下面発酵",
+        "ドルトムントの炭酸塩＋硫酸塩共存水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "ヘレス",
+          "reason": "軽すぎる"
+        },
+        {
+          "style": "ジャーマンピルス",
+          "reason": "モルトの厚みが足りない"
+        },
+        {
+          "style": "メルツェン",
+          "reason": "琥珀色でカラメル香"
+        }
+      ],
+      "conclusion": "Dortmunder / European-Style Export（ドルトムンダー／エクスポート）",
+      "choices": [
+        "ヘレス",
+        "メルツェン",
+        "ドルトムンダー",
+        "ジャーマンピルスナー"
+      ],
+      "correctChoice": 2,
+      "answer": "ドルトムンダー",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-03"
+      }
+    },
+    {
+      "id": "D-04",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "淡〜濃アンバー・リッチな泡",
+        "aroma": "トースト・焼いたパン・カラメル",
+        "taste": "リッチなモルトバックボーン、円熟した甘み、苦味は支え",
+        "mouthfeel": "ミディアム〜フル、滑らか"
+      },
+      "step1Keywords": [
+        "amber",
+        "toast, caramel note",
+        "rich malty, mellow from long lagering"
+      ],
+      "step2Characteristic": "カラメル・トーストモルト＋長期ラガーリングの円熟",
+      "step3IngredientsProcess": [
+        "ミュンヘン麦芽＋カラメル麦芽",
+        "下面酵母",
+        "長期低温貯蔵（春仕込み伝統）"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（濃色・熟成）",
+      "exclusions": [
+        {
+          "style": "ウィンナー",
+          "reason": "より軽くマイルド"
+        },
+        {
+          "style": "ボック",
+          "reason": "さらに強い"
+        },
+        {
+          "style": "ドゥンケル",
+          "reason": "より暗色でパンの耳系"
+        }
+      ],
+      "conclusion": "Bavarian Märzen / Oktoberfestbier（メルツェン）",
+      "choices": [
+        "ウィンナーラガー",
+        "メルツェン",
+        "ドッペルボック",
+        "ドゥンケル"
+      ],
+      "correctChoice": 1,
+      "answer": "メルツェン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-04"
+      }
+    },
+    {
+      "id": "D-05",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "濃褐色〜ダーク、ルビーの輝き、クリーミーな泡",
+        "aroma": "パンの耳・トフィー・微かなミルクチョコ",
+        "taste": "甘美で芳醇なモルトのコク、焦げ苦味や酸味なし",
+        "mouthfeel": "ミディアム、丸い"
+      },
+      "step1Keywords": [
+        "amber to deep brown, ruby",
+        "bread crust, toffee",
+        "malty, no burnt bitterness"
+      ],
+      "step2Characteristic": "ミュンヘン麦芽の甘美なコク（黒くなくスタウト的焦げがない）",
+      "step3IngredientsProcess": [
+        "ミュンヘン麦芽50-100%",
+        "下面酵母",
+        "高残留アルカリ度の水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（濃色・下面）",
+      "exclusions": [
+        {
+          "style": "シュヴァルツ",
+          "reason": "より黒くドライでロースト立ち"
+        },
+        {
+          "style": "ポーター",
+          "reason": "上面エステルあり"
+        },
+        {
+          "style": "ドゥンケルヴァイツェン",
+          "reason": "バナナ香あり"
+        }
+      ],
+      "conclusion": "Munich-Style Dunkel（ミュンヘナー・ドゥンケル）",
+      "choices": [
+        "シュヴァルツビア",
+        "ミュンヘナー・ドゥンケル",
+        "ロンドンポーター",
+        "ドゥンケルヴァイツェン"
+      ],
+      "correctChoice": 1,
+      "answer": "ミュンヘナー・ドゥンケル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-05"
+      }
+    },
+    {
+      "id": "D-06",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "漆黒（ルビーハイライト）・淡褐色の持続泡",
+        "aroma": "ロースト麦芽・ビターチョコ・珈琲",
+        "taste": "見た目に反して軽快でドライ、クリーン",
+        "mouthfeel": "ライト〜ミディアム"
+      },
+      "step1Keywords": [
+        "black with ruby highlights",
+        "roast, bitter chocolate, coffee",
+        "surprisingly light and dry"
+      ],
+      "step2Characteristic": "「黒いのに軽い」：エステル・重さ・焦げ酸味がない黒",
+      "step3IngredientsProcess": [
+        "ロースト麦芽（除皮系含む）",
+        "下面酵母",
+        "中軟水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（漆黒・クリーン）",
+      "exclusions": [
+        {
+          "style": "ドゥンケル",
+          "reason": "茶色で甘口"
+        },
+        {
+          "style": "ドライスタウト",
+          "reason": "上面・焦げ酸味・超クリーミー泡"
+        },
+        {
+          "style": "バルチックポーター",
+          "reason": "高アルコールで重厚"
+        }
+      ],
+      "conclusion": "German-Style Schwarzbier（シュヴァルツビア）",
+      "choices": [
+        "ドゥンケル",
+        "アイリッシュドライスタウト",
+        "シュヴァルツビア",
+        "バルチックポーター"
+      ],
+      "correctChoice": 2,
+      "answer": "シュヴァルツビア",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-06"
+      }
+    },
+    {
+      "id": "D-07",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "濃ルビー褐色・泡は中程度",
+        "aroma": "レーズン・干しプラム・濃厚トフィー、エステルなし",
+        "taste": "圧倒的なメラノイジンの甘美さ、温かいアルコール",
+        "mouthfeel": "distinctively full-bodied（際立つフルボディ）"
+      },
+      "step1Keywords": [
+        "deep ruby brown",
+        "raisin, dried plum, toffee (malt-derived)",
+        "rich, warming, full-bodied"
+      ],
+      "step2Characteristic": "高比重×下面発酵の「液体のパン」＝重厚モルト＋クリーン",
+      "step3IngredientsProcess": [
+        "高比重仕込み",
+        "メラノイジン/ミュンヘン麦芽",
+        "下面酵母",
+        "低温長期発酵"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（ハイアルコール・クリーン）",
+      "exclusions": [
+        {
+          "style": "クアドルペル",
+          "reason": "ベルジャン酵母のエステル・スパイスあり"
+        },
+        {
+          "style": "バーレイワイン",
+          "reason": "上面エステル＋強ホップ"
+        },
+        {
+          "style": "アイスボック",
+          "reason": "粘性・度数がさらに極端"
+        }
+      ],
+      "conclusion": "Traditional Doppelbock（ドッペルボック）",
+      "choices": [
+        "クアドルペル",
+        "ドッペルボック",
+        "バーレイワイン",
+        "アイスボック"
+      ],
+      "correctChoice": 1,
+      "answer": "ドッペルボック",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-07"
+      }
+    },
+    {
+      "id": "D-08",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "極濃褐色・泡は極めて薄くすぐ消える",
+        "aroma": "シェリー・ポートワイン・糖蜜・完熟ドライフルーツ",
+        "taste": "凝縮された強烈な甘美さと高アルコール",
+        "mouthfeel": "シロップ様の粘性・灼けるような温感"
+      },
+      "step1Keywords": [
+        "very dark",
+        "sherry, port, molasses",
+        "intensely concentrated, syrupy, hot alcohol"
+      ],
+      "step2Characteristic": "凍結濃縮による極端な濃縮感（泡が立たない）",
+      "step3IngredientsProcess": [
+        "ボックを氷点下で凍結→氷を除去して濃縮",
+        "下面発酵ベース"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（凍結濃縮）",
+      "exclusions": [
+        {
+          "style": "ドッペルボック",
+          "reason": "ここまで粘性・度数が極端でない"
+        },
+        {
+          "style": "バーレイワイン",
+          "reason": "ホップ苦味と上面エステル"
+        },
+        {
+          "style": "クアドルペル",
+          "reason": "ベルジャン酵母香"
+        }
+      ],
+      "conclusion": "Eisbock（アイスボック）",
+      "choices": [
+        "ドッペルボック",
+        "アイスボック",
+        "イングリッシュバーレイワイン",
+        "クアドルペル"
+      ],
+      "correctChoice": 1,
+      "answer": "アイスボック",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-08"
+      }
+    },
+    {
+      "id": "D-09",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "暗褐色・しっかりした泡",
+        "aroma": "燻製ベーコン・木炭・焚き火のスモーク一色",
+        "taste": "カラメルモルトのコク＋燻香の調和、クリーン",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "dark brown",
+        "smoky bacon, beechwood smoke",
+        "clean lager base with caramel"
+      ],
+      "step2Characteristic": "ブナ燻製麦芽のスモーク香（唯一無二のシグナル）",
+      "step3IngredientsProcess": [
+        "ラウホマルツ50-100%",
+        "下面酵母（メルツェンベース）",
+        "バンベルク伝統"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（燻製モルト）",
+      "exclusions": [
+        {
+          "style": "通常ラガー全般",
+          "reason": "燻香皆無"
+        },
+        {
+          "style": "ピートスモークエール",
+          "reason": "上面・薬品的な煙質"
+        },
+        {
+          "style": "ポーター",
+          "reason": "焦げはあるが燻製香ではない"
+        }
+      ],
+      "conclusion": "Rauchbier（ラオホビア）",
+      "choices": [
+        "ラオホビア",
+        "シュヴァルツビア",
+        "ピートスモックエール",
+        "ロンドンポーター"
+      ],
+      "correctChoice": 0,
+      "answer": "ラオホビア",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-09"
+      }
+    },
+    {
+      "id": "D-10",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "乳白がかった濁りの淡黄色",
+        "aroma": "樽出しの新鮮なイースト香・素朴な麦芽",
+        "taste": "丸く自然な旨み、フレッシュなホップ",
+        "mouthfeel": "低炭酸（mellow flavor with low carbonation）・柔らか"
+      },
+      "step1Keywords": [
+        "cloudy pale",
+        "fresh yeasty, rustic malt",
+        "mellow, low carbonation, unfiltered"
+      ],
+      "step2Characteristic": "無濾過（酵母混濁）＋低炭酸の樽出し感",
+      "step3IngredientsProcess": [
+        "無濾過",
+        "下面発酵",
+        "樽出し低ガス仕上げ"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（無濾過・低炭酸）",
+      "exclusions": [
+        {
+          "style": "ヘレス",
+          "reason": "透明に濾過済み"
+        },
+        {
+          "style": "ヴァイツェン",
+          "reason": "バナナ・クローブ香がある"
+        },
+        {
+          "style": "ベルリナーヴァイセ",
+          "reason": "鮮烈な酸"
+        }
+      ],
+      "conclusion": "Kellerbier / Zwickelbier（ケラービア）",
+      "choices": [
+        "ヘレス",
+        "ケラービア",
+        "ヘーフェヴァイツェン",
+        "ベルリナーヴァイセ"
+      ],
+      "correctChoice": 1,
+      "answer": "ケラービア",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-10"
+      }
+    },
+    {
+      "id": "D-11",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "極淡黄色・クリア",
+        "aroma": "軽い麦芽香・控えめホップ",
+        "taste": "麦芽100%の味は保ちつつ非常に軽い、爽快なキレ",
+        "mouthfeel": "very light、薄いボディ"
+      },
+      "step1Keywords": [
+        "very pale, light",
+        "light malt aroma",
+        "clean, very light body, crisp"
+      ],
+      "step2Characteristic": "麦芽100%のまま設計的に軽量化（低比重仕込み）",
+      "step3IngredientsProcess": [
+        "低初期比重",
+        "下面発酵",
+        "麦芽100%（独の税法規格）"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（低アルコール規格）",
+      "exclusions": [
+        {
+          "style": "ヘレス",
+          "reason": "度数・ボディが標準的"
+        },
+        {
+          "style": "アメリカンライト",
+          "reason": "米・コーン副原料の香味"
+        },
+        {
+          "style": "ベルリナーヴァイセ",
+          "reason": "酸がある"
+        }
+      ],
+      "conclusion": "German Leichtbier / Schankbier（ライヒトビア）",
+      "choices": [
+        "アメリカンライトラガー",
+        "ヘレス",
+        "ライヒトビア",
+        "ベルリナーヴァイセ"
+      ],
+      "correctChoice": 2,
+      "answer": "ライヒトビア",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-11"
+      }
+    },
+    {
+      "id": "D-12",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "白濁アンバー・グラスから盛り上がる巨大持続泡",
+        "aroma": "熟したバナナ・クローブ・小麦のクリーミーさ",
+        "taste": "優しい甘み、苦味ごく低い",
+        "mouthfeel": "fullbodied but effervescent（フルだが高炭酸で軽快）"
+      },
+      "step1Keywords": [
+        "cloudy, huge rocky head",
+        "banana, clove",
+        "low bitterness, effervescent"
+      ],
+      "step2Characteristic": "酵母由来のバナナ＋クローブ（小麦50%以上）",
+      "step3IngredientsProcess": [
+        "小麦麦芽>50%",
+        "上面ヴァイス酵母（POF+）",
+        "極低ホップ",
+        "高炭酸"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（小麦上面発酵）",
+      "exclusions": [
+        {
+          "style": "ヴィット",
+          "reason": "バナナ香でなくオレンジピール＋コリアンダー"
+        },
+        {
+          "style": "クリスタルヴァイツェン",
+          "reason": "透明"
+        },
+        {
+          "style": "アメリカンウィート",
+          "reason": "バナナ・クローブ皆無"
+        }
+      ],
+      "conclusion": "Hefeweizen / South German-Style Weizen（ヘーフェヴァイツェン）",
+      "choices": [
+        "ベルジャンホワイト",
+        "ヘーフェヴァイツェン",
+        "アメリカンウィート",
+        "クリスタルヴァイツェン"
+      ],
+      "correctChoice": 1,
+      "answer": "ヘーフェヴァイツェン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-12"
+      }
+    },
+    {
+      "id": "D-13",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "澄み切った黄金・純白の豊かな泡（透明！）",
+        "aroma": "バナナ・洋梨・クローブ",
+        "taste": "すっきり、苦味低い",
+        "mouthfeel": "強炭酸・クリスプ"
+      },
+      "step1Keywords": [
+        "brilliant clear gold",
+        "banana, pear, clove",
+        "crisp, effervescent"
+      ],
+      "step2Characteristic": "ヴァイツェンの香りなのに完全にクリアな外観",
+      "step3IngredientsProcess": [
+        "小麦麦芽50%以上",
+        "ヴァイス酵母発酵後に完全濾過（酵母除去）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（濾過小麦エール）",
+      "exclusions": [
+        {
+          "style": "ヘーフェヴァイツェン",
+          "reason": "白濁している"
+        },
+        {
+          "style": "ケルシュ",
+          "reason": "バナナ・クローブがない"
+        },
+        {
+          "style": "ピルスナー",
+          "reason": "エステル皆無"
+        }
+      ],
+      "conclusion": "Kristallweizen（クリスタルヴァイツェン）",
+      "choices": [
+        "ヘーフェヴァイツェン",
+        "ケルシュ",
+        "クリスタルヴァイツェン",
+        "ジャーマンピルスナー"
+      ],
+      "correctChoice": 2,
+      "answer": "クリスタルヴァイツェン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-13"
+      }
+    },
+    {
+      "id": "D-14",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "混濁した濃褐色（amber or dark weizen）・分厚い泡",
+        "aroma": "バナナ・クローブ＋カラメル・ミルクチョコ",
+        "taste": "香ばしいコクと小麦の柔らかさ、（強い場合はアルコールの厚み）",
+        "mouthfeel": "フルボディ・高炭酸"
+      },
+      "step1Keywords": [
+        "cloudy dark",
+        "banana & clove + caramel, chocolate",
+        "full-bodied wheat"
+      ],
+      "step2Characteristic": "バナナ・クローブ×濃色麦芽の融合（強ければボック級）",
+      "step3IngredientsProcess": [
+        "小麦麦芽＋ダークカラメル麦芽",
+        "上面ヴァイス酵母（ボックは高比重）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（濃色小麦）",
+      "exclusions": [
+        {
+          "style": "ドゥンケル",
+          "reason": "下面でバナナ香なし"
+        },
+        {
+          "style": "ヘーフェヴァイツェン",
+          "reason": "淡色"
+        },
+        {
+          "style": "デュッベル",
+          "reason": "ベルジャン酵母の干果系でクローブ質が違う"
+        }
+      ],
+      "conclusion": "Dunkel Weizen / Weizenbock（ダークヴァイツェン／ヴァイツェンボック）",
+      "choices": [
+        "ミュンヘナードゥンケル",
+        "ダークヴァイツェン",
+        "トラピストダブル",
+        "ヘーフェヴァイツェン"
+      ],
+      "correctChoice": 1,
+      "answer": "ダークヴァイツェン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-14"
+      }
+    },
+    {
+      "id": "D-15",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "淡いペールゴールド・高透明度",
+        "aroma": "ほのかな青リンゴ・洋梨、穏やかなホップ",
+        "taste": "ドライでクリスプ、繊細",
+        "mouthfeel": "ライト・スムーズ"
+      },
+      "step1Keywords": [
+        "pale gold, brilliant",
+        "subtle green apple, pear ester",
+        "crisp, delicate, dry"
+      ],
+      "step2Characteristic": "ラガーのようなクリスプさ×エールの微かな華やかさ（低温上面＋ラガーリング）",
+      "step3IngredientsProcess": [
+        "淡色麦芽",
+        "ケルシュ専用上面酵母（低温発酵）＋低温熟成",
+        "ケルン協定"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（ただし極めてクリーン＝ひっかけ注意）",
+      "exclusions": [
+        {
+          "style": "ヘレス",
+          "reason": "エステルが皆無の下面"
+        },
+        {
+          "style": "ピルスナー",
+          "reason": "苦味がシャープすぎる"
+        },
+        {
+          "style": "アルト",
+          "reason": "濃色で苦味強い"
+        }
+      ],
+      "conclusion": "Kölsch（ケルシュ）",
+      "choices": [
+        "ヘレス",
+        "ケルシュ",
+        "ジャーマンピルスナー",
+        "アルトビア"
+      ],
+      "correctChoice": 1,
+      "answer": "ケルシュ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-15"
+      }
+    },
+    {
+      "id": "D-16",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "銅色〜濃褐色・緻密な持続泡",
+        "aroma": "トースト・カラメル＋スパイシーなノーブルホップ",
+        "taste": "適度なエステルと際立つ引き締まった苦味、熟成でクリーン",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "copper to brown",
+        "toast-caramel + spicy hop",
+        "firm bitterness, clean but estery"
+      ],
+      "step2Characteristic": "上面発酵×低温熟成×強めのホップ苦味（デュッセルドルフ）",
+      "step3IngredientsProcess": [
+        "ミュンヘン",
+        "カラメル麦芽",
+        "シュパルト系ホップ",
+        "上面酵母＋低温熟成"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（伝統的上面）",
+      "exclusions": [
+        {
+          "style": "ケルシュ",
+          "reason": "淡色で穏やか"
+        },
+        {
+          "style": "ドゥンケル",
+          "reason": "下面で苦味弱い"
+        },
+        {
+          "style": "ESB",
+          "reason": "英ホップのアーシーさ・低炭酸"
+        }
+      ],
+      "conclusion": "Düsseldorf Altbier（アルトビア）",
+      "choices": [
+        "ケルシュ",
+        "ドゥンケル",
+        "アルトビア",
+        "ESB"
+      ],
+      "correctChoice": 2,
+      "answer": "アルトビア",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-16"
+      }
+    },
+    {
+      "id": "D-17",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "白濁した極淡黄色・泡は薄くすぐ消える",
+        "aroma": "レモン・青リンゴ・乳酸のフレッシュな酸香",
+        "taste": "鮮烈な乳酸酸味、苦味ほぼ皆無、塩味なし",
+        "mouthfeel": "超ライト・強炭酸"
+      },
+      "step1Keywords": [
+        "pale, cloudy",
+        "lemon, lactic sour",
+        "sharply tart, no bitterness",
+        "light, effervescent"
+      ],
+      "step2Characteristic": "乳酸のクリーンな酸＋超軽量（塩・スパイスなし）",
+      "step3IngredientsProcess": [
+        "小麦＋大麦麦芽",
+        "上面酵母＋乳酸菌（伝統はブレタノも）",
+        "極低ホップ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（乳酸混合発酵）",
+      "exclusions": [
+        {
+          "style": "ゴーゼ",
+          "reason": "塩とコリアンダーがある"
+        },
+        {
+          "style": "グーズ",
+          "reason": "野生香・樽・度数が上"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "酸が主役でない"
+        }
+      ],
+      "conclusion": "Berliner Weiße（ベルリナーヴァイセ）",
+      "choices": [
+        "ゴーゼ",
+        "ベルリナーヴァイセ",
+        "グーズ",
+        "ベルジャンホワイト"
+      ],
+      "correctChoice": 1,
+      "answer": "ベルリナーヴァイセ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-17"
+      }
+    },
+    {
+      "id": "D-18",
+      "country": "germany",
+      "countryLabel": "ドイツ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "淡黄〜琥珀・混濁・泡控えめ",
+        "aroma": "コリアンダーの柑橘スパイス＋乳酸",
+        "taste": "酸味に加えはっきりした塩味",
+        "mouthfeel": "ライト・爽快"
+      },
+      "step1Keywords": [
+        "hazy pale",
+        "coriander, lactic",
+        "distinct salinity"
+      ],
+      "step2Characteristic": "塩（NaCl）＝ほぼ唯一無二の決定シグナル",
+      "step3IngredientsProcess": [
+        "小麦＋大麦麦芽",
+        "塩",
+        "コリアンダー",
+        "乳酸菌＋上面酵母（純粋令の歴史的例外）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（塩・スパイス・サワー）",
+      "exclusions": [
+        {
+          "style": "ベルリナーヴァイセ",
+          "reason": "塩・コリアンダーなし"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "酸味がない"
+        },
+        {
+          "style": "ランビック",
+          "reason": "塩なし・野生香"
+        }
+      ],
+      "conclusion": "Leipzig-Style Gose（ゴーゼ）",
+      "choices": [
+        "ベルリナーヴァイセ",
+        "ヴィット",
+        "ゴーゼ",
+        "グーズ"
+      ],
+      "correctChoice": 2,
+      "answer": "ゴーゼ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "D-18"
+      }
+    },
+    {
+      "id": "U-01",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "極めて淡い黄色・高透明・泡持ち短め",
+        "aroma": "ごく微かな穀物と米・コーンの甘香",
+        "taste": "味わい極めて軽く残糖ほぼゼロ、水のような喉越し",
+        "mouthfeel": "超ライト・強炭酸"
+      },
+      "step1Keywords": [
+        "very pale straw",
+        "faint grainy-corn",
+        "extremely light, watery, highly carbonated"
+      ],
+      "step2Characteristic": "副原料による超軽量ボディ＋高発酵度",
+      "step3IngredientsProcess": [
+        "米",
+        "コーン副原料（最大50%）",
+        "下面発酵",
+        "低温発酵"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "オールモルトピルスナー",
+          "reason": "麦芽のコクと苦味が明確"
+        },
+        {
+          "style": "ライヒトビア",
+          "reason": "麦芽100%の質感"
+        },
+        {
+          "style": "日本ドライ",
+          "reason": "もう少し苦味・キレの輪郭"
+        }
+      ],
+      "conclusion": "American Light / Regular Lager（アメリカンライトラガー）",
+      "choices": [
+        "ジャーマンピルスナー",
+        "アメリカンライトラガー",
+        "ライヒトビア",
+        "ヘレス"
+      ],
+      "correctChoice": 1,
+      "answer": "アメリカンライトラガー",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-01"
+      }
+    },
+    {
+      "id": "U-02",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "艶やかなアンバーゴールド・白い泡",
+        "aroma": "グレープフルーツ・松（カスケード系）",
+        "taste": "心地よい苦味とクリーンな骨格、飲みやすい",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "amber gold",
+        "grapefruit, pine (Cascade)",
+        "pleasant bitterness, clean yeast"
+      ],
+      "step2Characteristic": "米国産ホップの柑橘・松＋中立酵母のホップフォワード（穏やか版）",
+      "step3IngredientsProcess": [
+        "2条大麦＋少量カラメル麦芽",
+        "米産Cホップ",
+        "クリーンな米エール酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（クリーン系）",
+      "exclusions": [
+        {
+          "style": "イングリッシュペール",
+          "reason": "アーシーな英ホップとモルティさ"
+        },
+        {
+          "style": "アメリカンIPA",
+          "reason": "苦味・度数が一段上"
+        },
+        {
+          "style": "NEIPA",
+          "reason": "濁りとジュース感"
+        }
+      ],
+      "conclusion": "American-Style Pale Ale（アメリカン・ペールエール）",
+      "choices": [
+        "イングリッシュペールエール",
+        "アメリカンIPA",
+        "アメリカンペールエール",
+        "NEIPA"
+      ],
+      "correctChoice": 2,
+      "answer": "アメリカンペールエール",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-02"
+      }
+    },
+    {
+      "id": "U-03",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ゴールド〜濃アンバー・清澄",
+        "aroma": "グレープフルーツ・パイン・パッションフルーツが強烈",
+        "taste": "突き抜ける強い苦味、それを支えるモルト骨格",
+        "mouthfeel": "ミディアム、しっかり"
+      },
+      "step1Keywords": [
+        "gold-amber, clear",
+        "intense citrus-pine",
+        "assertive bitterness with malt backbone"
+      ],
+      "step2Characteristic": "高IBUの強烈なホップ苦味（クリア）",
+      "step3IngredientsProcess": [
+        "淡色麦芽",
+        "米産ホップ大量投入（煮沸＆ドライホップ）",
+        "硫酸塩水質"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "APA",
+          "reason": "苦味・度数が控えめ"
+        },
+        {
+          "style": "ヘイジーIPA",
+          "reason": "濁り・丸い苦味"
+        },
+        {
+          "style": "イングリッシュIPA",
+          "reason": "アーシーでモルティ"
+        }
+      ],
+      "conclusion": "American-Style India Pale Ale（アメリカンIPA）",
+      "choices": [
+        "APA",
+        "アメリカンIPA",
+        "ヘイジーIPA",
+        "イングリッシュIPA"
+      ],
+      "correctChoice": 1,
+      "answer": "アメリカンIPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-03"
+      }
+    },
+    {
+      "id": "U-04",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "アンバー〜カッパー",
+        "aroma": "超濃厚なシトラス・レジン（樹脂）",
+        "taste": "強烈無比な苦味＋高いアルコールとどっしりした比重感",
+        "mouthfeel": "重厚"
+      },
+      "step1Keywords": [
+        "amber-copper",
+        "hugely resinous citrus",
+        "extreme bitterness, high alcohol"
+      ],
+      "step2Characteristic": "IPAをさらに強化：苦味・度数・比重の全部盛り",
+      "step3IngredientsProcess": [
+        "高比重麦汁＋デキストロース（高発酵度化）",
+        "多段ドライホップ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "通常IPA",
+          "reason": "一段弱い"
+        },
+        {
+          "style": "アメリカンバーレイワイン",
+          "reason": "モルト甘みが主役"
+        },
+        {
+          "style": "トリプル",
+          "reason": "ベルジャン酵母のスパイス"
+        }
+      ],
+      "conclusion": "Imperial / Double IPA（ダブルIPA）",
+      "choices": [
+        "アメリカンIPA",
+        "ダブルIPA",
+        "アメリカンバーレイワイン",
+        "トリプル"
+      ],
+      "correctChoice": 1,
+      "answer": "ダブルIPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-04"
+      }
+    },
+    {
+      "id": "U-05",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "鮮やかなマットイエローの濁り・濃厚な泡",
+        "aroma": "マンゴー・パッションフルーツの果汁感",
+        "taste": "苦味は丸くソフト、ジューシー",
+        "mouthfeel": "シルキー・ふくよか"
+      },
+      "step1Keywords": [
+        "hazy matte yellow",
+        "mango, passionfruit juice",
+        "soft bitterness, silky"
+      ],
+      "step2Characteristic": "濁り×ジュース様アロマ×抑えた苦味",
+      "step3IngredientsProcess": [
+        "オーツ",
+        "小麦併用",
+        "塩化物優位水質",
+        "ワールプール＆大量ドライホップ",
+        "低凝集酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "ウエストコーストIPA",
+          "reason": "透明で鋭い苦味"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "スパイス香で果汁感なし"
+        },
+        {
+          "style": "アメリカンウィート",
+          "reason": "クリーン穀物系"
+        }
+      ],
+      "conclusion": "Juicy or Hazy IPA（ヘイジーIPA／NEIPA）",
+      "choices": [
+        "ウエストコーストIPA",
+        "ヴィット",
+        "ヘイジーIPA",
+        "アメリカンウィート"
+      ],
+      "correctChoice": 2,
+      "answer": "ヘイジーIPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-05"
+      }
+    },
+    {
+      "id": "U-06",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "麦わら〜ゴールド・持続する白い泡",
+        "aroma": "クリーンな穀物と爽やかなシトラスホップ、バナナ・クローブ皆無",
+        "taste": "すっきりホッピー",
+        "mouthfeel": "ライト・爽快"
+      },
+      "step1Keywords": [
+        "straw-gold",
+        "clean grain + citrus hop, NO banana",
+        "clove",
+        "crisp"
+      ],
+      "step2Characteristic": "小麦使用なのにヴァイツェン香が皆無（クリーン酵母）",
+      "step3IngredientsProcess": [
+        "小麦麦芽30-50%＋2条大麦",
+        "米産アロマホップ",
+        "クリーン米酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（クリーン小麦）",
+      "exclusions": [
+        {
+          "style": "ヘーフェヴァイツェン",
+          "reason": "バナナ・クローブあり"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "オレンジピール香"
+        },
+        {
+          "style": "ケルシュ",
+          "reason": "小麦のニュアンスが乏しい"
+        }
+      ],
+      "conclusion": "American Wheat Beer（アメリカン・ウィート）",
+      "choices": [
+        "ヘーフェヴァイツェン",
+        "アメリカンウィート",
+        "ヴィット",
+        "ケルシュ"
+      ],
+      "correctChoice": 1,
+      "answer": "アメリカンウィート",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-06"
+      }
+    },
+    {
+      "id": "U-07",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "アンバー〜赤褐色・泡薄め",
+        "aroma": "スグリ・トフィー・シェリーに加え強烈な柑橘・松",
+        "taste": "重厚モルト×圧倒的ホップ苦味の正面衝突",
+        "mouthfeel": "超フルボディ・温感"
+      },
+      "step1Keywords": [
+        "amber-mahogany",
+        "toffee-sherry + intense citrus hop",
+        "massive malt AND hops"
+      ],
+      "step2Characteristic": "英バーレイの骨格に米国ホップを全力投入",
+      "step3IngredientsProcess": [
+        "超高比重麦汁",
+        "米産アロマ＆ビタリング大量",
+        "上面酵母",
+        "熟成"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "英バーレイワイン",
+          "reason": "ホップ・柑橘が控えめ"
+        },
+        {
+          "style": "ダブルIPA",
+          "reason": "色が淡くモルト甘み控えめ"
+        },
+        {
+          "style": "ドッペルボック",
+          "reason": "下面クリーン"
+        }
+      ],
+      "conclusion": "American-Style Barley Wine（アメリカンバーレイワイン）",
+      "choices": [
+        "イングリッシュバーレイワイン",
+        "ダブルIPA",
+        "アメリカンバーレイワイン",
+        "ドッペルボック"
+      ],
+      "correctChoice": 2,
+      "answer": "アメリカンバーレイワイン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-07"
+      }
+    },
+    {
+      "id": "U-08",
+      "country": "america",
+      "countryLabel": "アメリカ",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "漆黒だがIPA様の泡",
+        "aroma": "柑橘・松の米ホップが前面、ローストは背景に控えめ",
+        "taste": "ホップの苦味主導、焦げは薄く",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "black but hop-forward",
+        "citrus-pine over restrained roast"
+      ],
+      "step2Characteristic": "「黒いのにIPAの香り」の意図的ギャップ",
+      "step3IngredientsProcess": [
+        "除皮ロースト麦芽で色だけ付与",
+        "米ホップ大量"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アメリカンスタウト",
+          "reason": "ロースト主導"
+        },
+        {
+          "style": "シュヴァルツ",
+          "reason": "下面クリーンでホップ香なし"
+        },
+        {
+          "style": "ポーター",
+          "reason": "チョコ甘香主導"
+        }
+      ],
+      "conclusion": "Black IPA（ブラックIPA）",
+      "choices": [
+        "アメリカンスタウト",
+        "ブラックIPA",
+        "シュヴァルツビア",
+        "ロンドンポーター"
+      ],
+      "correctChoice": 1,
+      "answer": "ブラックIPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "U-08"
+      }
+    },
+    {
+      "id": "E-01",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ゴールド〜濃アンバー・薄い泡膜",
+        "aroma": "ビスケット・トーストモルト、アーシーな英ホップ",
+        "taste": "バランス型でドリンカブル、穏やかな苦味",
+        "mouthfeel": "低炭酸・スムーズ（カスク様）"
+      },
+      "step1Keywords": [
+        "gold-amber",
+        "biscuit, earthy Fuggle-Golding hop",
+        "balanced, drinkable",
+        "low carbonation"
+      ],
+      "step2Characteristic": "英パブの日常酒：低炭酸×アーシーホップ×モルトの調和",
+      "step3IngredientsProcess": [
+        "ペール＋クリスタル麦芽",
+        "英産ホップ",
+        "英エール酵母",
+        "カスク文化"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "APA",
+          "reason": "柑橘ホップが前面"
+        },
+        {
+          "style": "ピルスナー",
+          "reason": "下面・高炭酸"
+        },
+        {
+          "style": "ヘレス",
+          "reason": "エステルなし"
+        }
+      ],
+      "conclusion": "English Bitter / Extra Special Bitter（ビター／ESB）",
+      "choices": [
+        "APA",
+        "ビター/ESB",
+        "ジャーマンピルスナー",
+        "ヘレス"
+      ],
+      "correctChoice": 1,
+      "answer": "ビター/ESB",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-01"
+      }
+    },
+    {
+      "id": "E-02",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "アンバー・適度な泡",
+        "aroma": "トースト・マーマレード・ウッディ＆アーシーなホップ",
+        "taste": "しっかりした苦味とモルトの厚み（硬水由来のドライさ）",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "amber",
+        "toast, marmalade, woody-earthy hop",
+        "firm bitterness (Burton water)"
+      ],
+      "step2Characteristic": "バートン硫酸塩硬水の引き締まった苦味×英モルト",
+      "step3IngredientsProcess": [
+        "ペール麦芽",
+        "英産アロマホップ",
+        "バートン高硫酸塩硬水"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（英国）",
+      "exclusions": [
+        {
+          "style": "アメリカンIPA",
+          "reason": "シトラス・トロピカル支配"
+        },
+        {
+          "style": "ESB",
+          "reason": "より軽くパブ向き"
+        },
+        {
+          "style": "ウィンナー",
+          "reason": "下面クリーン"
+        }
+      ],
+      "conclusion": "Classic English-Style Pale Ale（イングリッシュ・ペールエール）",
+      "choices": [
+        "アメリカンIPA",
+        "イングリッシュペールエール",
+        "ESB",
+        "ウィンナーラガー"
+      ],
+      "correctChoice": 1,
+      "answer": "イングリッシュペールエール",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-02"
+      }
+    },
+    {
+      "id": "E-03",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "ゴールド〜アンバー",
+        "aroma": "アーシー・フローラルな英ホップがIPAとして強め、モルティ",
+        "taste": "英国的な締まった苦味、米IPAより穏やかな柑橘感",
+        "mouthfeel": "ミディアム・炭酸控えめ"
+      },
+      "step1Keywords": [
+        "earthy-floral English hop, malty backbone",
+        "firm but rounded bitterness"
+      ],
+      "step2Characteristic": "IPAの骨格×英国ホップ・英国酵母（vs 米IPAの識別）",
+      "step3IngredientsProcess": [
+        "ペール麦芽",
+        "EKG/ファグル系",
+        "英酵母",
+        "（輸出史の文脈）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アメリカンIPA",
+          "reason": "柑橘・松が支配的"
+        },
+        {
+          "style": "ESB",
+          "reason": "強度が一段下"
+        },
+        {
+          "style": "ベルジャンIPA",
+          "reason": "酵母のスパイス香"
+        }
+      ],
+      "conclusion": "English-Style India Pale Ale（イングリッシュIPA）",
+      "choices": [
+        "アメリカンIPA",
+        "イングリッシュIPA",
+        "ESB",
+        "ベルジャンIPA"
+      ],
+      "correctChoice": 1,
+      "answer": "イングリッシュIPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-03"
+      }
+    },
+    {
+      "id": "E-04",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ヘーゼルナッツブラウン・淡ベージュ泡",
+        "aroma": "煎ったナッツ・トフィー・ビスケット",
+        "taste": "ナッティで香ばしく、まろやかで優しい甘み",
+        "mouthfeel": "シルキー・低め炭酸"
+      },
+      "step1Keywords": [
+        "hazelnut brown",
+        "roasted nuts, toffee",
+        "nutty, mellow, gentle sweetness"
+      ],
+      "step2Characteristic": "ナッティ＆トフィーの英国的まろやかさ",
+      "step3IngredientsProcess": [
+        "ブラウン＋クリスタルモルト",
+        "穏やかな英ホップ",
+        "高凝集英酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アメリカンブラウン",
+          "reason": "ホップ苦味と柑橘が強い"
+        },
+        {
+          "style": "ドゥンケル",
+          "reason": "下面クリーン"
+        },
+        {
+          "style": "ポーター",
+          "reason": "よりダークでチョコ"
+        }
+      ],
+      "conclusion": "English-Style Brown Ale（イングリッシュ・ブラウン）",
+      "choices": [
+        "アメリカンブラウン",
+        "ドゥンケル",
+        "イングリッシュブラウン",
+        "ロンドンポーター"
+      ],
+      "correctChoice": 2,
+      "answer": "イングリッシュブラウン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-04"
+      }
+    },
+    {
+      "id": "E-05",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ダークブラウン〜黒・ベージュ泡",
+        "aroma": "pronounced aromas of chocolate（ミルクチョコ顕著）・トースト・カラメル",
+        "taste": "甘香ばしく口当たりソフト、スタウトより柔らかい",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "dark brown-black",
+        "chocolate, toast, caramel",
+        "soft, gently sweet"
+      ],
+      "step2Characteristic": "ブラウンモルトの甘香ばしさ（焦げ酸味なし）",
+      "step3IngredientsProcess": [
+        "ブラウン＋チョコモルト",
+        "英産ホップ",
+        "英上面酵母（1720年代ロンドン起源）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アイリッシュスタウト",
+          "reason": "ローストバーレイの焦げ酸味・超ドライ"
+        },
+        {
+          "style": "バルチック",
+          "reason": "下面・高アルコール"
+        },
+        {
+          "style": "シュヴァルツ",
+          "reason": "下面・軽快ドライ"
+        }
+      ],
+      "conclusion": "Brown / Robust Porter（ロンドン・ポーター）",
+      "choices": [
+        "アイリッシュドライスタウト",
+        "ロンドンポーター",
+        "バルチックポーター",
+        "シュヴァルツビア"
+      ],
+      "correctChoice": 1,
+      "answer": "ロンドンポーター",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-05"
+      }
+    },
+    {
+      "id": "E-06",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "不透明な漆黒・超濃密でクリーミーな極上泡（creamy mouthfeeling）",
+        "aroma": "ダークエスプレッソ・ビターカカオ",
+        "taste": "シャープな焦げ酸味とドライなキレ、見た目より軽い",
+        "mouthfeel": "クリーミー（窒素提供文化）"
+      },
+      "step1Keywords": [
+        "opaque black, dense creamy head",
+        "espresso, bitter cacao",
+        "sharp roasted dryness, light body"
+      ],
+      "step2Characteristic": "ローストバーレイの焦げ×超クリーミー泡×軽い飲み口",
+      "step3IngredientsProcess": [
+        "ベース麦芽＋未発芽ローストバーレイ",
+        "上面酵母",
+        "ダブリン炭酸塩硬水"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "ポーター",
+          "reason": "甘みがあり焦げ酸味なし"
+        },
+        {
+          "style": "シュヴァルツ",
+          "reason": "下面ラガー"
+        },
+        {
+          "style": "ミルクスタウト",
+          "reason": "乳糖の甘み"
+        }
+      ],
+      "conclusion": "Classic Irish-Style Dry Stout（アイリッシュ・ドライスタウト）",
+      "choices": [
+        "ロンドンポーター",
+        "アイリッシュドライスタウト",
+        "シュヴァルツビア",
+        "ミルクスタウト"
+      ],
+      "correctChoice": 1,
+      "answer": "アイリッシュドライスタウト",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-06"
+      }
+    },
+    {
+      "id": "E-07",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "完全な漆黒・濃褐色泡",
+        "aroma": "圧倒的ロースト・ビターチョコ・糖蜜・レーズン",
+        "taste": "強烈なロースト感に対抗する高い苦味、濃厚で温かい",
+        "mouthfeel": "超フルボディ"
+      },
+      "step1Keywords": [
+        "jet black",
+        "overwhelming roast, chocolate, molasses, raisin",
+        "intense, warming"
+      ],
+      "step2Characteristic": "ロースト支配×高苦味×超重厚（帝政ロシア輸出の物語）",
+      "step3IngredientsProcess": [
+        "多量のロースト",
+        "ダークモルト",
+        "大量ホップ",
+        "高比重上面発酵"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "ドライスタウト",
+          "reason": "軽くて度数が低い"
+        },
+        {
+          "style": "バーレイワイン",
+          "reason": "黒くない"
+        },
+        {
+          "style": "クアド",
+          "reason": "焦げがなくベルジャン香"
+        }
+      ],
+      "conclusion": "British-Style Imperial Stout（インペリアルスタウト）",
+      "choices": [
+        "ドライスタウト",
+        "インペリアルスタウト",
+        "バーレイワイン",
+        "クアドルペル"
+      ],
+      "correctChoice": 1,
+      "answer": "インペリアルスタウト",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-07"
+      }
+    },
+    {
+      "id": "E-08",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "赤褐〜濃カッパー・泡は極めて薄い",
+        "aroma": "ドライフルーツ・シェリー・トフィー・古びた革（熟成香）",
+        "taste": "「大麦のワイン」の超重厚な甘美、ホップも英国的にしっかり",
+        "mouthfeel": "超フル・温感・低炭酸"
+      },
+      "step1Keywords": [
+        "deep copper",
+        "dried fruit, sherry, aged leather",
+        "vinous, immensely rich"
+      ],
+      "step2Characteristic": "長期熟成のシェリー様酸化熟成香×ワイン級の強さ",
+      "step3IngredientsProcess": [
+        "超高比重ペール麦汁",
+        "英産ホップ多量",
+        "上面酵母",
+        "セラー熟成"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アメリカンバーレイ",
+          "reason": "柑橘ホップが突出"
+        },
+        {
+          "style": "インペリアルスタウト",
+          "reason": "漆黒でロースト"
+        },
+        {
+          "style": "アイスボック",
+          "reason": "下面・凍結濃縮"
+        }
+      ],
+      "conclusion": "British-Style Barley Wine（イングリッシュ・バーレイワイン）",
+      "choices": [
+        "アメリカンバーレイワイン",
+        "イングリッシュバーレイワイン",
+        "インペリアルスタウト",
+        "アイスボック"
+      ],
+      "correctChoice": 1,
+      "answer": "イングリッシュバーレイワイン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-08"
+      }
+    },
+    {
+      "id": "E-09",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "濃アンバー〜暗褐色・クリーミー泡",
+        "aroma": "カラメル化した麦汁の濃厚な甘香・トフィー・ごく微かなピート",
+        "taste": "モルト一辺倒の重厚な甘み、ホップ極小、エステル控えめ",
+        "mouthfeel": "フル・滑らか"
+      },
+      "step1Keywords": [
+        "dark amber",
+        "intense caramelized wort, toffee, hint of peat",
+        "malt-dominant, restrained esters"
+      ],
+      "step2Characteristic": "麦汁煮詰めの甘み×冷涼発酵の抑制（スコットランド）",
+      "step3IngredientsProcess": [
+        "ペール麦芽＋長時間煮沸カラメル化",
+        "低温上面発酵",
+        "極低ホップ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（低エステル）",
+      "exclusions": [
+        {
+          "style": "イングリッシュペール",
+          "reason": "ホップが立つ"
+        },
+        {
+          "style": "ドッペルボック",
+          "reason": "下面（識別は発酵香の僅差）"
+        },
+        {
+          "style": "ラオホ",
+          "reason": "燻製が主役"
+        }
+      ],
+      "conclusion": "Scotch Ale / Wee Heavy（スコッチエール）",
+      "choices": [
+        "ドッペルボック",
+        "スコッチエール",
+        "イングリッシュペールエール",
+        "ラオホビア"
+      ],
+      "correctChoice": 1,
+      "answer": "スコッチエール",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-09"
+      }
+    },
+    {
+      "id": "E-10",
+      "country": "uk_ireland",
+      "countryLabel": "イギリス・アイルランド",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "漆黒・ベージュ泡",
+        "aroma": "ロースト＋明確な甘いミルキーさ",
+        "taste": "残る甘み（発酵しない糖）とロースト、苦味は穏やか",
+        "mouthfeel": "丸く厚い"
+      },
+      "step1Keywords": [
+        "black",
+        "roast + creamy sweetness",
+        "lingering sweetness (unfermentable sugar)"
+      ],
+      "step2Characteristic": "乳糖による残存甘味（スイート系スタウト）",
+      "step3IngredientsProcess": [
+        "ロースト麦芽＋ラクトース",
+        "英上面酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "ドライスタウト",
+          "reason": "ドライで焦げ酸味"
+        },
+        {
+          "style": "オートミールスタウト",
+          "reason": "甘さよりシルキーさ"
+        },
+        {
+          "style": "ポーター",
+          "reason": "ここまで甘くない"
+        }
+      ],
+      "conclusion": "Milk / Sweet Stout（ミルクスタウト）",
+      "choices": [
+        "ドライスタウト",
+        "ミルクスタウト",
+        "オートミールスタウト",
+        "ロンドンポーター"
+      ],
+      "correctChoice": 1,
+      "answer": "ミルクスタウト",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "E-10"
+      }
+    },
+    {
+      "id": "B-01",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "白濁した淡黄色・モコモコと盛り上がる大きな泡",
+        "aroma": "ビターオレンジピール・コリアンダー",
+        "taste": "シルキーで柔らかく、酸はほのか、苦味低い",
+        "mouthfeel": "シルキー（未発芽小麦）・軽快"
+      },
+      "step1Keywords": [
+        "hazy pale",
+        "bitter orange peel, coriander",
+        "silky (unmalted wheat), gentle"
+      ],
+      "step2Characteristic": "副原料（オレンジピール＋コリアンダー）のスパイス香",
+      "step3IngredientsProcess": [
+        "大麦麦芽＋未発芽小麦30-40%",
+        "オレンジピール",
+        "コリアンダー",
+        "ベルジャン上面酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（ベルジャン小麦スパイス）",
+      "exclusions": [
+        {
+          "style": "ヘーフェヴァイツェン",
+          "reason": "バナナ・クローブ主体で副原料なし"
+        },
+        {
+          "style": "ゴーゼ",
+          "reason": "塩味・強い酸"
+        },
+        {
+          "style": "ベルリナー",
+          "reason": "酸が主役"
+        }
+      ],
+      "conclusion": "Belgian-Style Witbier（ベルジャンホワイト）",
+      "choices": [
+        "ヘーフェヴァイツェン",
+        "ベルジャンホワイト",
+        "ゴーゼ",
+        "ベルリナーヴァイセ"
+      ],
+      "correctChoice": 1,
+      "answer": "ベルジャンホワイト",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-01"
+      }
+    },
+    {
+      "id": "B-02",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "輝くブロンド・グラスを埋め尽くすシャンパン様の巨大泡",
+        "aroma": "洋梨・リンゴ・白コショウ",
+        "taste": "高アルコールなのに完全ドライ、繊細な苦味",
+        "mouthfeel": "軽い！高炭酸"
+      },
+      "step1Keywords": [
+        "brilliant blond, champagne-like head",
+        "pear, apple, white pepper",
+        "bone dry despite strength"
+      ],
+      "step2Characteristic": "「強いのに軽くドライ」＝糖添加による完全発酵",
+      "step3IngredientsProcess": [
+        "淡色麦芽＋糖類",
+        "高発酵度ベルジャン酵母",
+        "低温熟成＋瓶内二次発酵"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（ベルジャン・ハイアルコール）",
+      "exclusions": [
+        {
+          "style": "トリプル",
+          "reason": "よりモルティで重い"
+        },
+        {
+          "style": "ピルスナー",
+          "reason": "度数が低いラガー"
+        },
+        {
+          "style": "セゾン",
+          "reason": "胡椒フェノールが立ち色も濃いめ"
+        }
+      ],
+      "conclusion": "Belgian Strong Blond Ale（ゴールデンストロング／デュベル型）",
+      "choices": [
+        "トリプル",
+        "ゴールデンストロング",
+        "ピルスナー",
+        "セゾン"
+      ],
+      "correctChoice": 1,
+      "answer": "ゴールデンストロング",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-02"
+      }
+    },
+    {
+      "id": "B-03",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "アンバー〜濃褐色・キメ細かいリッチな泡",
+        "aroma": "干しプラム・レーズン・ダークチェリー・ラム酒",
+        "taste": "ドライフルーツとカラメルの融合、フルボディ",
+        "mouthfeel": "ミディアム〜フル・瓶内発酵の細かい泡"
+      },
+      "step1Keywords": [
+        "dark amber-brown",
+        "dried plum, raisin, dark cherry",
+        "fruity-caramel richness"
+      ],
+      "step2Characteristic": "ダークキャンディシュガー由来の干果×修道院酵母エステル",
+      "step3IngredientsProcess": [
+        "大麦麦芽＋ダークキャンディシュガー",
+        "修道院酵母",
+        "瓶内二次発酵"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（修道院・濃色）",
+      "exclusions": [
+        {
+          "style": "トリプル",
+          "reason": "淡色ゴールド"
+        },
+        {
+          "style": "ドゥンケル",
+          "reason": "下面でエステルなし"
+        },
+        {
+          "style": "ドッペルボック",
+          "reason": "クリーンなモルト干果のみ"
+        }
+      ],
+      "conclusion": "Trappist / Abbey Dubbel（ダブル）",
+      "choices": [
+        "トリプル",
+        "ダブル",
+        "ドッペルボック",
+        "ドゥンケル"
+      ],
+      "correctChoice": 1,
+      "answer": "ダブル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-03"
+      }
+    },
+    {
+      "id": "B-04",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "輝く黄金色・分厚く盛り上がる純白泡",
+        "aroma": "完熟バナナ・桃・クローブのスパイシーエステル",
+        "taste": "重厚な甘美さ＋しっかりした苦味、高アルコール",
+        "mouthfeel": "フル・高炭酸"
+      },
+      "step1Keywords": [
+        "deep gold",
+        "ripe banana, peach, clove",
+        "rich yet strong bitterness"
+      ],
+      "step2Characteristic": "黄金色×強い×スパイシー（白糖添加の高比重）",
+      "step3IngredientsProcess": [
+        "淡色麦芽＋白キャンディシュガー",
+        "修道院酵母",
+        "瓶内二次発酵"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "デュベル型",
+          "reason": "より淡くドライで軽い"
+        },
+        {
+          "style": "ダブル",
+          "reason": "濃褐色"
+        },
+        {
+          "style": "ヴァイツェンボック",
+          "reason": "小麦の白濁とクローブ質"
+        }
+      ],
+      "conclusion": "Trappist / Abbey Tripel（トリプル）",
+      "choices": [
+        "ゴールデンストロング",
+        "ダブル",
+        "トリプル",
+        "ヴァイツェンボック"
+      ],
+      "correctChoice": 2,
+      "answer": "トリプル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-04"
+      }
+    },
+    {
+      "id": "B-05",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "赤褐〜黒褐色",
+        "aroma": "イチジク・デーツ・糖蜜・トフィー",
+        "taste": "粘性ある超重厚な甘美と包容力あるアルコール温感、焦げなし",
+        "mouthfeel": "超フル・ヴィスカス"
+      },
+      "step1Keywords": [
+        "mahogany",
+        "fig, date, molasses",
+        "immensely rich, warming, no roast"
+      ],
+      "step2Characteristic": "ベルジャン最高峰の超高比重（焦げ苦味が無い黒系ストロング）",
+      "step3IngredientsProcess": [
+        "超高比重仕込み",
+        "複数糖類",
+        "修道院酵母",
+        "長期熟成",
+        "瓶内二次発酵"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "インペリアルスタウト",
+          "reason": "焦げロースト支配"
+        },
+        {
+          "style": "ダブル",
+          "reason": "一段軽い"
+        },
+        {
+          "style": "バーレイワイン",
+          "reason": "英酵母・ホップ強め"
+        }
+      ],
+      "conclusion": "Belgian Quadrupel / Dark Strong Ale（クアドルペル）",
+      "choices": [
+        "インペリアルスタウト",
+        "クアドルペル",
+        "ダブル",
+        "イングリッシュバーレイワイン"
+      ],
+      "correctChoice": 1,
+      "answer": "クアドルペル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-05"
+      }
+    },
+    {
+      "id": "B-06",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ブロンズ〜アンバー・やや濁り・巨大な泡",
+        "aroma": "黒胡椒・柑橘ピール・干草",
+        "taste": "極限までドライな辛口、しっかりした苦味",
+        "mouthfeel": "ライト〜ミディアム・高炭酸"
+      },
+      "step1Keywords": [
+        "bronze, slightly hazy",
+        "black pepper phenol, citrus",
+        "bone dry, brisk"
+      ],
+      "step2Characteristic": "胡椒様フェノール×超高発酵度（農家の季節ビール）",
+      "step3IngredientsProcess": [
+        "ピルスナー麦芽主体",
+        "高温耐性セゾン酵母（〜32℃）",
+        "ノーブル系ホップ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（高温発酵ファームハウス）",
+      "exclusions": [
+        {
+          "style": "トリプル",
+          "reason": "甘みと重さが残る"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "オレンジピールで低苦味"
+        },
+        {
+          "style": "ビエール・ド・ギャルド",
+          "reason": "発酵度低くモルティでフェノールなし"
+        }
+      ],
+      "conclusion": "Classic Saison（セゾン）",
+      "choices": [
+        "トリプル",
+        "セゾン",
+        "ヴィット",
+        "ビエール・ド・ギャルド"
+      ],
+      "correctChoice": 1,
+      "answer": "セゾン",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-06"
+      }
+    },
+    {
+      "id": "B-07",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "濁りのあるオレンジアンバー・分厚く消えない泡",
+        "aroma": "革・干草・セージ（Brettanomyces yeasts）",
+        "taste": "ドライホップの鋭い苦味＋乾いた微酸",
+        "mouthfeel": "ドライ・高炭酸"
+      },
+      "step1Keywords": [
+        "hazy orange amber",
+        "leather, hay, sage (Brett)",
+        "sharp hoppy bitterness, dry tartness"
+      ],
+      "step2Characteristic": "ブレタノ熟成×ドライホッピング（トラピストの異端児）",
+      "step3IngredientsProcess": [
+        "ペール＋カラメル麦芽",
+        "ドライホッピング",
+        "瓶内ブレタノ二次発酵（単一銘柄）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（ブレタノ熟成）",
+      "exclusions": [
+        {
+          "style": "他のトラピスト",
+          "reason": "甘口でブレタノ香なし"
+        },
+        {
+          "style": "グーズ",
+          "reason": "自然発酵で無ホップ苦味"
+        },
+        {
+          "style": "セゾン",
+          "reason": "培養酵母の胡椒香"
+        }
+      ],
+      "conclusion": "Trappist Beer – Orval（オルヴァル）",
+      "choices": [
+        "トリプル",
+        "オルヴァル",
+        "グーズ",
+        "セゾン"
+      ],
+      "correctChoice": 1,
+      "answer": "オルヴァル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-07"
+      }
+    },
+    {
+      "id": "B-08",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ダークルビー〜マホガニー・泡は薄く儚い",
+        "aroma": "バルサミコ酢・オーク樽・ブラックチェリー",
+        "taste": "乳酸・酢酸の奥深い酸とカラメル甘みの融合＝赤ワイン調",
+        "mouthfeel": "シルキー・低泡"
+      },
+      "step1Keywords": [
+        "dark ruby",
+        "balsamic, oak, black cherry",
+        "wine-like sweet-sour complexity"
+      ],
+      "step2Characteristic": "オーク大樽熟成の混合酸（酸×モルト甘の赤ワイン様）",
+      "step3IngredientsProcess": [
+        "ウィーン系麦芽",
+        "オーク大樽長期熟成＋若ビールのブレンド",
+        "乳酸菌/酢酸菌/ブレタノ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（樽混合発酵）",
+      "exclusions": [
+        {
+          "style": "グーズ",
+          "reason": "黄金色で乳酸ファンキー寄り"
+        },
+        {
+          "style": "クリーク",
+          "reason": "鮮紅色でフレッシュチェリー"
+        },
+        {
+          "style": "ドゥンケル",
+          "reason": "酸が皆無"
+        }
+      ],
+      "conclusion": "Flanders Red Ale / Oud Bruin（フランダース・レッド）",
+      "choices": [
+        "グーズ",
+        "フランダースレッド",
+        "クリーク",
+        "ドゥンケル"
+      ],
+      "correctChoice": 1,
+      "answer": "フランダースレッド",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-08"
+      }
+    },
+    {
+      "id": "B-09",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "濁りある黄金色・泡は急速に消える",
+        "aroma": "馬小屋・干草の野生香、グレープフルーツ皮",
+        "taste": "シャープな酸、ホップ苦味なし（陳旧ホップ）",
+        "mouthfeel": "ドライ・高炭酸（瓶内）"
+      },
+      "step1Keywords": [
+        "hazy gold",
+        "horse blanket, hay",
+        "sharply tart, no hop bitterness",
+        "blend of mature and young lambics"
+      ],
+      "step2Characteristic": "自然発酵の野生香×熟成ブレンド（ブリュッセルのシャンパン）",
+      "step3IngredientsProcess": [
+        "大麦＋未発芽小麦",
+        "陳旧ホップ",
+        "クールシップ自然接種",
+        "オーク樽熟成→若古ブレンド瓶内再発酵"
+      ],
+      "fermentationFamily": "Spontaneous",
+      "fermentationDetail": "Spontaneous（自然発酵）",
+      "exclusions": [
+        {
+          "style": "ベルリナーヴァイセ",
+          "reason": "乳酸のみ・低度数"
+        },
+        {
+          "style": "セゾン",
+          "reason": "培養酵母・胡椒香・ホップ苦味あり"
+        },
+        {
+          "style": "フランダース",
+          "reason": "赤色で酢酸・カラメル"
+        }
+      ],
+      "conclusion": "Gueuze / Traditional Lambic（グーズ）",
+      "choices": [
+        "ベルリナーヴァイセ",
+        "グーズ",
+        "セゾン",
+        "フランダースレッド"
+      ],
+      "correctChoice": 1,
+      "answer": "グーズ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-09"
+      }
+    },
+    {
+      "id": "B-10",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "鮮やかなルビーレッド・ピンクの泡",
+        "aroma": "フレッシュチェリー・アーモンド核（種の香り）",
+        "taste": "強い酸味と果実味、シロップ的甘さはない",
+        "mouthfeel": "ドライ・高炭酸"
+      },
+      "step1Keywords": [
+        "ruby red, pink head",
+        "fresh cherry, almond kernel",
+        "tart and fruity, not syrupy"
+      ],
+      "step2Characteristic": "ランビック樽への実チェリー漬け込み再発酵",
+      "step3IngredientsProcess": [
+        "ランビック原酒＋スカールベーク種チェリー",
+        "樽内3〜18ヶ月再発酵"
+      ],
+      "fermentationFamily": "Spontaneous",
+      "fermentationDetail": "Spontaneous（フルーツ自然発酵）",
+      "exclusions": [
+        {
+          "style": "甘口フルーツビール",
+          "reason": "加糖のケミカルな甘さ"
+        },
+        {
+          "style": "フランダースレッド",
+          "reason": "チェリー無添加・バルサミコ調"
+        },
+        {
+          "style": "ベルリナー＋シロップ",
+          "reason": "提供時添加で別物"
+        }
+      ],
+      "conclusion": "Belgian Fruit Lambic – Kriek（クリーク）",
+      "choices": [
+        "甘口チェリービール",
+        "クリーク",
+        "フランダースレッド",
+        "ベルリナーヴァイセ"
+      ],
+      "correctChoice": 1,
+      "answer": "クリーク",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-10"
+      }
+    },
+    {
+      "id": "B-11",
+      "country": "belgium",
+      "countryLabel": "ベルギー",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "金色・清澄〜微濁・良好な泡",
+        "aroma": "穏やかな洋梨・スパイスのベルジャン酵母香",
+        "taste": "中庸の強さ、優しい甘みとバランス",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "gold",
+        "gentle pear-spice Belgian yeast",
+        "balanced, moderately strong"
+      ],
+      "step2Characteristic": "「強すぎないベルジャン」＝酵母香はあるが中庸",
+      "step3IngredientsProcess": [
+        "淡色麦芽",
+        "ベルジャン酵母",
+        "（大冒険をしない設計）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "デュベル型",
+          "reason": "明確に強くドライ"
+        },
+        {
+          "style": "トリプル",
+          "reason": "高比重で重厚"
+        },
+        {
+          "style": "ヴィット",
+          "reason": "小麦とスパイス添加"
+        }
+      ],
+      "conclusion": "Belgian Blond Ale（ベルジャンブロンド）",
+      "choices": [
+        "ゴールデンストロング",
+        "ベルジャンブロンド",
+        "トリプル",
+        "ヴィット"
+      ],
+      "correctChoice": 1,
+      "answer": "ベルジャンブロンド",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "B-11"
+      }
+    },
+    {
+      "id": "O-01",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "深みある黄金色・極めて分厚くクリーミーな泡",
+        "aroma": "ザーツホップの上品な香りとモルトの甘み",
+        "taste": "角のない丸い苦味、デコクション由来の厚み、微量のジアセチル許容",
+        "mouthfeel": "ミディアム・ソフト"
+      },
+      "step1Keywords": [
+        "deep gold, dense creamy head",
+        "Saaz hop, rich malt",
+        "rounded soft bitterness (soft water)"
+      ],
+      "step2Characteristic": "極軟水の丸い苦味×デコクションの厚み（チェコ）",
+      "step3IngredientsProcess": [
+        "モラヴィア大麦",
+        "3回デコクション",
+        "ザーツ",
+        "下面酵母",
+        "ピルゼン極軟水"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "ジャーマンピルス",
+          "reason": "硬水でドライ・シャープ"
+        },
+        {
+          "style": "ヘレス",
+          "reason": "苦味が弱くホップ香も控えめ"
+        },
+        {
+          "style": "ケルシュ",
+          "reason": "上面微エステル"
+        }
+      ],
+      "conclusion": "Bohemian-Style Pilsener（ボヘミアンピルスナー）〔チェコ〕",
+      "choices": [
+        "ジャーマンピルスナー",
+        "ボヘミアンピルスナー",
+        "ヘレス",
+        "ケルシュ"
+      ],
+      "correctChoice": 1,
+      "answer": "ボヘミアンピルスナー",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-01"
+      }
+    },
+    {
+      "id": "O-02",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "濃褐〜黒・きめ細かい泡",
+        "aroma": "カラメル・トースト・ナッツの香ばしさ＋ザーツ",
+        "taste": "モルトの甘みとノーブルな苦味の調和、ドリンカブル",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "dark brown",
+        "caramel, toast, nutty + Saaz",
+        "balanced, drinkable dark lager"
+      ],
+      "step2Characteristic": "チェコ的な黒：甘み×ザーツ苦味の同居",
+      "step3IngredientsProcess": [
+        "カラメル＋ロースト麦芽",
+        "ザーツ",
+        "下面酵母"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "ドゥンケル",
+          "reason": "ホップ苦味がより控えめ"
+        },
+        {
+          "style": "シュヴァルツ",
+          "reason": "よりドライで軽快"
+        },
+        {
+          "style": "スタウト",
+          "reason": "上面・焦げ酸味"
+        }
+      ],
+      "conclusion": "Czech Dark Lager – Tmavé（チェコ・ダークラガー）〔チェコ〕",
+      "choices": [
+        "ドゥンケル",
+        "チェコダーク",
+        "シュヴァルツビア",
+        "ドライスタウト"
+      ],
+      "correctChoice": 1,
+      "answer": "チェコダーク",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-02"
+      }
+    },
+    {
+      "id": "O-03",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "赤みがかった琥珀〜銅色・クリーミー泡",
+        "aroma": "ウィーン麦芽のトースト・ビスケット",
+        "taste": "香ばしいモルト風味とすっきりした飲み口、マイルドな苦味",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "reddish amber",
+        "toasty, biscuity Vienna malt",
+        "clean, mild"
+      ],
+      "step2Characteristic": "トーストモルト×クリーンラガー（墺→メキシコ継承）",
+      "step3IngredientsProcess": [
+        "ウィーン麦芽",
+        "ノーブルホップ",
+        "下面発酵（ドレハー発祥）"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "メルツェン",
+          "reason": "より甘く強い"
+        },
+        {
+          "style": "アルト",
+          "reason": "上面で苦味強い"
+        },
+        {
+          "style": "ESB",
+          "reason": "英エステルと低炭酸"
+        }
+      ],
+      "conclusion": "Vienna-Style / Mexican Amber Lager（ウィンナーラガー）〔墺・メキシコ〕",
+      "choices": [
+        "メルツェン",
+        "ウィンナーラガー",
+        "アルトビア",
+        "ESB"
+      ],
+      "correctChoice": 1,
+      "answer": "ウィンナーラガー",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-03"
+      }
+    },
+    {
+      "id": "O-04",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "漆黒〜極濃褐色",
+        "aroma": "ダークチョコ・プラム・カラメル・微かなアルコール",
+        "taste": "滑らかで重厚、高アルコールなのにエステル控えめでスムーズ",
+        "mouthfeel": "フル・シルキー"
+      },
+      "step1Keywords": [
+        "black",
+        "dark chocolate, plum",
+        "smooth, strong, clean (bottom-fermented)"
+      ],
+      "step2Characteristic": "下面発酵の高アルコール黒＝「エステルのないインペリアル」",
+      "step3IngredientsProcess": [
+        "高比重ダーク麦汁",
+        "下面酵母",
+        "低温長期貯蔵（バルト海沿岸）"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager（下面発酵ポーター）",
+      "exclusions": [
+        {
+          "style": "イングリッシュポーター",
+          "reason": "上面・低度数"
+        },
+        {
+          "style": "インペリアルスタウト",
+          "reason": "上面エステル・強い焦げ"
+        },
+        {
+          "style": "ドッペルボック",
+          "reason": "焦げ・チョコが弱い"
+        }
+      ],
+      "conclusion": "Baltic-Style Porter（バルチックポーター）〔ポーランド等〕",
+      "choices": [
+        "ロンドンポーター",
+        "バルチックポーター",
+        "インペリアルスタウト",
+        "ドッペルボック"
+      ],
+      "correctChoice": 1,
+      "answer": "バルチックポーター",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-04"
+      }
+    },
+    {
+      "id": "O-05",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "淡いストローゴールド・高透明・純白泡",
+        "aroma": "ニュートラルな穀物香、エステル・フェノール皆無",
+        "taste": "極限まで糖を切ったドライなキレ、後味に残らない",
+        "mouthfeel": "ライト・強炭酸"
+      },
+      "step1Keywords": [
+        "pale straw, brilliant",
+        "neutral grain",
+        "super-attenuated, crisp dry finish"
+      ],
+      "step2Characteristic": "「キレ」＝極限の高発酵度×完全クリーン",
+      "step3IngredientsProcess": [
+        "淡色麦芽＋米",
+        "コーン",
+        "高発酵性下面酵母",
+        "低温発酵"
+      ],
+      "fermentationFamily": "Lager",
+      "fermentationDetail": "Lager",
+      "exclusions": [
+        {
+          "style": "エール全般",
+          "reason": "エステルがある"
+        },
+        {
+          "style": "ヘレス",
+          "reason": "麦芽の甘みが残る"
+        },
+        {
+          "style": "アメリカンライト",
+          "reason": "輪郭がさらに薄い（僅差識別）"
+        }
+      ],
+      "conclusion": "Japanese Dry Lager（ジャパニーズ・ドライラガー）〔日本〕",
+      "choices": [
+        "ヘレス",
+        "ジャパニーズドライ",
+        "アメリカンライトラガー",
+        "ケルシュ"
+      ],
+      "correctChoice": 1,
+      "answer": "ジャパニーズドライ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-05"
+      }
+    },
+    {
+      "id": "O-06",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "ブロンズ〜アンバー・しっかりした泡",
+        "aroma": "土っぽいトーストモルト・軽いカラメル・穏やかな果実",
+        "taste": "落ち着いた熟成感、モルティで角がない、フェノールなし",
+        "mouthfeel": "ミディアム・スムーズ"
+      },
+      "step1Keywords": [
+        "bronze-amber",
+        "earthy toast, light caramel",
+        "mellow, cellared malty character"
+      ],
+      "step2Characteristic": "長期セラー貯蔵（Garde）の落ち着き×モルティ（仏北部）",
+      "step3IngredientsProcess": [
+        "ウィーン",
+        "カラメル麦芽",
+        "仏ノーブルホップ",
+        "上面発酵＋低温熟成",
+        "コルク瓶文化"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（クリーン寄り）",
+      "exclusions": [
+        {
+          "style": "セゾン",
+          "reason": "高発酵度で胡椒フェノール"
+        },
+        {
+          "style": "ベルジャンブロンド",
+          "reason": "甘やかなエステル前面"
+        },
+        {
+          "style": "メルツェン",
+          "reason": "下面ラガー"
+        }
+      ],
+      "conclusion": "French-Style Bière de Garde（ビエール・ド・ギャルド）〔フランス〕",
+      "choices": [
+        "セゾン",
+        "ビエール・ド・ギャルド",
+        "ベルジャンブロンド",
+        "メルツェン"
+      ],
+      "correctChoice": 1,
+      "answer": "ビエール・ド・ギャルド",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-06"
+      }
+    },
+    {
+      "id": "O-07",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "淡黄〜赤ワイン色・ワイン様の軽い泡立ち",
+        "aroma": "赤白ブドウの果実香・上品な酸",
+        "taste": "ワインの気品ある酸味とビールの麦芽感の融合、心地よいタンニン",
+        "mouthfeel": "ワイン的・ドライ"
+      },
+      "step1Keywords": [
+        "pale to wine-red",
+        "grape must, refined acidity",
+        "vinous with malt backbone"
+      ],
+      "step2Characteristic": "ブドウ果汁（マスト）添加＝ワインとビールの融合（伊）",
+      "step3IngredientsProcess": [
+        "大麦麦汁＋地元産ブドウ果汁（最大40%）",
+        "ワイン酵母orエール酵母",
+        "低ホップ"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale（ブドウ融合）",
+      "exclusions": [
+        {
+          "style": "フルーツランビック",
+          "reason": "野生混合酸の強烈な酸"
+        },
+        {
+          "style": "甘口フルーツエール",
+          "reason": "シロップ的加糖"
+        },
+        {
+          "style": "フランダース",
+          "reason": "バルサミコ・樽"
+        }
+      ],
+      "conclusion": "Italian Grape Ale – IGA（イタリアン・グレープエール）〔イタリア〕",
+      "choices": [
+        "クリーク",
+        "IGA",
+        "フランダースレッド",
+        "甘口フルーツエール"
+      ],
+      "correctChoice": 1,
+      "answer": "IGA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-07"
+      }
+    },
+    {
+      "id": "O-08",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 1,
+      "blindCard": {
+        "appearance": "無濾過の濃色混濁・泡はほぼ立たない",
+        "aroma": "ジュニパーベリーの針葉樹香＋バナナ様の甘香",
+        "taste": "重厚で素朴、ホップの苦味なし",
+        "mouthfeel": "フル・低炭酸・粘性"
+      },
+      "step1Keywords": [
+        "turbid dark, no head",
+        "juniper, banana-like sweetness",
+        "no hops, raw ale"
+      ],
+      "step2Characteristic": "ジュニパー×パン酵母×無煮沸（フィンランド農家）",
+      "step3IngredientsProcess": [
+        "ライ麦",
+        "大麦麦芽",
+        "ジュニパー",
+        "パン酵母",
+        "無煮沸（Raw Ale）"
+      ],
+      "fermentationFamily": "Farmhouse",
+      "fermentationDetail": "Farmhouse（無煮沸・農家麦酒）",
+      "exclusions": [
+        {
+          "style": "通常小麦ビール",
+          "reason": "ホップ使用・煮沸あり"
+        },
+        {
+          "style": "コーネル",
+          "reason": "クヴェイクのオレンジ様で酵母が別"
+        },
+        {
+          "style": "スコッチエール",
+          "reason": "ピートと煮詰め"
+        }
+      ],
+      "conclusion": "Finnish-Style Sahti（サハティ）〔フィンランド〕",
+      "choices": [
+        "ヴァイツェンボック",
+        "サハティ",
+        "コーネル",
+        "スコッチエール"
+      ],
+      "correctChoice": 1,
+      "answer": "サハティ",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-08"
+      }
+    },
+    {
+      "id": "O-09",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "混濁ゴールド・低炭酸",
+        "aroma": "ジュニパーの清涼感＋強烈なオレンジ・トロピカルのエステル",
+        "taste": "素朴でジューシー、苦味低い",
+        "mouthfeel": "ミディアム・低炭酸"
+      },
+      "step1Keywords": [
+        "hazy gold",
+        "juniper + intense orange-tropical esters (kveik)",
+        "rustic"
+      ],
+      "step2Characteristic": "クヴェイク酵母の30〜40℃超高温発酵＝オレンジ様エステル",
+      "step3IngredientsProcess": [
+        "大麦麦芽＋ジュニパー浸出液",
+        "Kveik農家酵母",
+        "無煮沸伝統"
+      ],
+      "fermentationFamily": "Farmhouse",
+      "fermentationDetail": "Farmhouse（クヴェイク）",
+      "exclusions": [
+        {
+          "style": "サハティ",
+          "reason": "パン酵母のバナナ様"
+        },
+        {
+          "style": "セゾン",
+          "reason": "胡椒フェノール・高減糖"
+        },
+        {
+          "style": "NEIPA",
+          "reason": "ホップ由来の果実（酵母でない）"
+        }
+      ],
+      "conclusion": "Norwegian Farmhouse Ale – Kornøl（コーネル）〔ノルウェー〕",
+      "choices": [
+        "サハティ",
+        "コーネル",
+        "セゾン",
+        "NEIPA"
+      ],
+      "correctChoice": 1,
+      "answer": "コーネル",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-09"
+      }
+    },
+    {
+      "id": "O-10",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 2,
+      "blindCard": {
+        "appearance": "明るいゴールド・適度な白い泡",
+        "aroma": "ソーヴィニヨンブラン（白ワイン）・パッションフルーツ・ライム",
+        "taste": "輪郭のある苦味と鮮烈な南国ホップ、クリーン",
+        "mouthfeel": "ミディアム"
+      },
+      "step1Keywords": [
+        "bright gold",
+        "Sauvignon Blanc, passionfruit, lime (NZ hops)",
+        "clean, defined bitterness"
+      ],
+      "step2Characteristic": "NZ産ホップ特有の白ワイン・南国果実アロマ",
+      "step3IngredientsProcess": [
+        "淡色モルト",
+        "Nelson Sauvin/Motueka等",
+        "クリーン上面酵母"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "アメリカンIPA",
+          "reason": "松・グレープフルーツ主体"
+        },
+        {
+          "style": "イングリッシュIPA",
+          "reason": "アーシー・モルティ"
+        },
+        {
+          "style": "NEIPA",
+          "reason": "濁りとジュース感"
+        }
+      ],
+      "conclusion": "New Zealand-Style IPA / XPA〔ニュージーランド〕",
+      "choices": [
+        "アメリカンIPA",
+        "NZ IPA",
+        "イングリッシュIPA",
+        "NEIPA"
+      ],
+      "correctChoice": 1,
+      "answer": "NZ IPA",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-10"
+      }
+    },
+    {
+      "id": "O-11",
+      "country": "other",
+      "countryLabel": "その他の国",
+      "difficulty": 3,
+      "blindCard": {
+        "appearance": "ゴールド・瓶内発酵の澱と細かい持続泡",
+        "aroma": "洋梨・リンゴの果実エステル、ホップ穏やか",
+        "taste": "果実味あるバランス、ドライ寄り",
+        "mouthfeel": "高炭酸・ライブリー"
+      },
+      "step1Keywords": [
+        "gold with sediment",
+        "pear-apple fruity esters",
+        "lively carbonation, balanced"
+      ],
+      "step2Characteristic": "瓶内発酵の澱×果実エステル（豪州の歴史様式）",
+      "step3IngredientsProcess": [
+        "淡色麦芽",
+        "豪州系酵母",
+        "瓶内二次発酵（クーパーズが象徴）"
+      ],
+      "fermentationFamily": "Ale",
+      "fermentationDetail": "Ale",
+      "exclusions": [
+        {
+          "style": "ケルシュ",
+          "reason": "濾過されクリーン・低炭酸寄り"
+        },
+        {
+          "style": "ゴールデンストロング",
+          "reason": "強すぎる"
+        },
+        {
+          "style": "ウィート系",
+          "reason": "小麦の質感"
+        }
+      ],
+      "conclusion": "Australian Sparkling Ale（スパークリングエール）〔オーストラリア〕",
+      "choices": [
+        "ケルシュ",
+        "スパークリングエール",
+        "ゴールデンストロング",
+        "アメリカンウィート"
+      ],
+      "correctChoice": 1,
+      "answer": "スパークリングエール",
+      "source": {
+        "filename": "ブラインドテイスティング判定シミュレーション_完全仕様.md",
+        "locator": "O-11"
+      }
+    }
+  ]
+}

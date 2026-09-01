@@ -1,14 +1,18 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v30";
-const STORAGE = { history: "bierkompass-history-v20", session: "bierkompass-session-v20", settings: "bierkompass-settings-v11" };
+const APP_VERSION = "v33";
+const STORAGE = { history: "bierkompass-history-v22", session: "bierkompass-session-v22", settings: "bierkompass-settings-v13" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+const questionHtml = (value) => escapeHtml(value).replace(
+  /(誤っているものを1つ選べ|誤っている|正しくない|適切でない|該当しない|当てはまらない|含まれない)/g,
+  '<span class="negative-cue">$1</span>',
+);
 
 let data;
 let questionsById = new Map();
@@ -242,7 +246,7 @@ function broadQuestionScore(question) {
 }
 
 function showView(name) {
-  ["home", "session", "result", "styleQuiz"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
+  ["home", "session", "result", "blindQuiz"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
   window.scrollTo({ top: 0, behavior: "instant" });
   $("#app").focus({ preventScroll: true });
 }
@@ -267,7 +271,7 @@ function renderQuestion() {
   $("#frequencyTag").textContent = `${question.frequencyTier} · ${TIER_NAMES[question.frequencyTier]}`;
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
-  $("#questionText").textContent = question.question;
+  $("#questionText").innerHTML = questionHtml(question.question);
   $("#answerHint").textContent = "問題文の条件に当てはまるものをすべて選択してください。選択数は決まっていません。";
   const selected = selectedValues(question.id);
   const inputType = "checkbox";
