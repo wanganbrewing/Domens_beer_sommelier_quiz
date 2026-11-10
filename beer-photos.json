@@ -1,0 +1,145 @@
+[
+  {
+    "id": "D-02",
+    "beer": "Schrüfer Helles",
+    "style": "ミュンヘナー・ヘレス",
+    "image": "images/beers/D-02.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Brewery_Schr%C3%BCfer,_glass_of_German_helles,_Priesendorf,_Upper_Franconia.jpg",
+    "author": "Nemracc",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "File:Brewery Schrüfer, glass of German helles, Priesendorf, Upper Franconia.jpg"
+  },
+  {
+    "id": "D-04",
+    "beer": "Paulaner Oktoberfest Märzen",
+    "style": "メルツェン",
+    "image": "images/beers/D-04.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Paulaner_Oktoberfest_Marzen_11.2oz_bottle_and_beer_mug.jpg",
+    "author": "Scott A. Miller",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "title": "File:Paulaner Oktoberfest Marzen 11.2oz bottle and beer mug.jpg"
+  },
+  {
+    "id": "D-05",
+    "beer": "Schrüfer Dunkel",
+    "style": "ミュンヘナー・ドゥンケル",
+    "image": "images/beers/D-05.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Brewery_Schr%C3%BCfer,_glass_of_dark_German_lager_(Dunkel),_Priesendorf,_Upper_Franconia.jpg",
+    "author": "Nemracc",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "File:Brewery Schrüfer, glass of dark German lager (Dunkel), Priesendorf, Upper Franconia.jpg"
+  },
+  {
+    "id": "D-06",
+    "beer": "Köstritzer Schwarzbier",
+    "style": "シュヴァルツビア",
+    "image": "images/beers/D-06.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Glass_of_K%C3%B6stritzer_Schwarzbier.jpg",
+    "author": "Jmcstrav at English Wikipedia",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "title": "File:Glass of Köstritzer Schwarzbier.jpg"
+  },
+  {
+    "id": "D-07",
+    "beer": "Spaten Optimator",
+    "style": "ドッペルボック",
+    "image": "images/beers/D-07.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Beer_optimator_glass_bottle.jpg",
+    "author": "Jon Sullivan",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "title": "File:Beer optimator glass bottle.jpg"
+  },
+  {
+    "id": "D-10",
+    "beer": "Schlossbrauerei Reckendorf Kellerbier",
+    "style": "ケラービア",
+    "image": "images/beers/D-10.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Brewery_Schlossbrauerei_Reckendorf,_Kellerbier,_Upper_Franconia,_Germany.jpg",
+    "author": "Nemracc",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "File:Brewery Schlossbrauerei Reckendorf, Kellerbier, Upper Franconia, Germany.jpg"
+  },
+  {
+    "id": "D-12",
+    "beer": "Paulaner Hefe-Weißbier",
+    "style": "ヘーフェヴァイツェン",
+    "image": "images/beers/D-12.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Weizenbier.jpg",
+    "author": "Trexer",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "title": "File:Weizenbier.jpg"
+  },
+  {
+    "id": "U-03",
+    "beer": "Lagunitas IPA",
+    "style": "アメリカンIPA",
+    "image": "images/beers/U-03.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Glass_and_bottle_of_Lagunitas_IPA.jpg",
+    "author": "Mitsjol",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "title": "File:Glass and bottle of Lagunitas IPA.jpg"
+  },
+  {
+    "id": "E-06",
+    "beer": "Guinness Draught",
+    "style": "アイリッシュドライスタウト",
+    "image": "images/beers/E-06.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Guinness_Glass_2010.jpg",
+    "author": "User:ArchiveCarrickfergus",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "title": "File:Guinness Glass 2010.jpg"
+  },
+  {
+    "id": "B-02",
+    "beer": "Duvel",
+    "style": "ゴールデンストロング",
+    "image": "images/beers/B-02.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Duvel_beer_in_beer_glass,_2024.jpg",
+    "author": "Chris Olszewski",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "title": "File:Duvel beer in beer glass, 2024.jpg"
+  },
+  {
+    "id": "B-05",
+    "beer": "La Trappe Quadrupel",
+    "style": "クアドルペル",
+    "image": "images/beers/B-05.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Glass_of_la_trappe_quadrupel.jpg",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "title": "File:Glass of la trappe quadrupel.jpg"
+  },
+  {
+    "id": "B-07",
+    "beer": "Orval",
+    "style": "オルヴァル",
+    "image": "images/beers/B-07.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Orval_beer_and_glass.jpg",
+    "author": "(c) 2005 Zubro",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "title": "File:Orval beer and glass.jpg"
+  },
+  {
+    "id": "O-02",
+    "beer": "U Fleků 13°",
+    "style": "チェコダーク",
+    "image": "images/beers/O-02.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Prague_Praha_2014_Holmstad_U_Fleku_Nove_Mesto_Beer_Hall_%C3%B8lhall_Glass_of_dark_beer.jpg",
+    "author": "Øyvind Holmstad",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "title": "File:Prague Praha 2014 Holmstad U Fleku Nove Mesto Beer Hall ølhall Glass of dark beer.jpg"
+  }
+]

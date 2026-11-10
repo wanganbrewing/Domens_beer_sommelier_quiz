@@ -17,9 +17,9 @@
   }
 
   function loadData() {
-    dataPromise ||= fetch("blind-tasting.json?v41", { cache: "no-store" }).then((response) => {
+    dataPromise ||= fetch("blind-tasting.json?v42", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
-      return response.json();
+      return Promise.all([response.json(), window.BierKompassPhotos?.ready]).then(([data]) => data);
     });
     return dataPromise;
   }
@@ -64,7 +64,7 @@
       if (!scenarios.length) return "";
       const cards = scenarios.map((scenario) => {
         const offers = scenario.purchaseOptions || [];
-        return `<article class="beer-guide-card ${offers.length ? "available" : "unavailable"}"><div class="beer-guide-card-head"><span>${escapeHtml(scenario.id)}</span><small>${escapeHtml(FAMILY_LABELS[scenario.fermentationFamily])}</small></div><h3>${styleAnswerHtml(scenario.answer)}</h3><p class="beer-guide-label">学習用の代表銘柄</p><ul>${scenario.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul>${offers.length ? `<p class="beer-guide-label purchase">在庫・1本購入を確認した代表例</p><div class="beer-guide-offers">${offers.map(beerGuideOffer).join("")}</div>` : `<p class="beer-guide-no-stock">販売リンク未確認</p>`}</article>`;
+        return `<article class="beer-guide-card ${offers.length ? "available" : "unavailable"}"><div class="beer-guide-card-head"><span>${escapeHtml(scenario.id)}</span><small>${escapeHtml(FAMILY_LABELS[scenario.fermentationFamily])}</small></div><h3>${styleAnswerHtml(scenario.answer)}</h3>${window.BierKompassPhotos?.forId(scenario.id) || ""}<p class="beer-guide-label">学習用の代表銘柄</p><ul>${scenario.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul>${offers.length ? `<p class="beer-guide-label purchase">在庫・1本購入を確認した代表例</p><div class="beer-guide-offers">${offers.map(beerGuideOffer).join("")}</div>` : `<p class="beer-guide-no-stock">販売リンク未確認</p>`}</article>`;
       }).join("");
       return `<section class="beer-guide-country"><div class="beer-guide-country-heading"><h2>${escapeHtml(country.label)}</h2><span>${scenarios.length}スタイル</span></div><div class="beer-guide-grid">${cards}</div></section>`;
     }).join("");
@@ -329,7 +329,7 @@
       </ul>
       <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${styleAnswerHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${styleAnswerHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
       <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${styleAnswerHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
-      ${representativeBeerSection(target)}
+      ${window.BierKompassPhotos?.forId(target.id) || ""}${representativeBeerSection(target)}
     </div>`;
   }
 

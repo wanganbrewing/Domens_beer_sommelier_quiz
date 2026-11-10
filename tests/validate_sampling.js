@@ -28,8 +28,8 @@ vm.runInNewContext(appSource, context, { filename: "app.js" });
 
 const { studyQuestionSample, broadExamSample } = context.window.BierKompass;
 const tierAPool = data.questions.filter((question) => question.active !== false && question.frequencyTier === "A");
-assert.equal(data.questions.filter((question) => question.active !== false).length, 950);
-assert.equal(tierAPool.filter((question) => question.category === "pairing").length, 0);
+assert.equal(data.questions.filter((question) => question.active !== false).length, 990);
+assert.equal(tierAPool.filter((question) => question.category === "pairing").length, 20);
 
 function maximumRun(sample, answerCount) {
   let current = 0;
@@ -45,7 +45,7 @@ for (let run = 0; run < 25; run += 1) {
   const sample = studyQuestionSample(tierAPool, 50);
   assert.equal(sample.length, 50);
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
-  assert.equal(sample.filter((question) => question.category === "pairing").length, 0);
+  for (let n = 1; n <= 4; n++) assert.ok([12, 13].includes(sample.filter(q => q.correct.length === n).length));
   assert.ok(maximumRun(sample, 4) <= 1, "study mode should separate four-answer questions");
 }
 assert.equal(studyQuestionSample(tierAPool.slice(0, 17), 50).length, 17);
@@ -54,9 +54,20 @@ for (let run = 0; run < 25; run += 1) {
   const sample = broadExamSample(tierAPool, 50);
   assert.equal(sample.length, 50);
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
-  assert.equal(sample.filter((question) => question.correct.length >= 2).length, 35);
-  assert.equal(sample.filter((question) => question.correct.length < 2).length, 15);
+  for (let n = 1; n <= 4; n++) assert.ok([12, 13].includes(sample.filter(q => q.correct.length === n).length));
   assert.ok(maximumRun(sample, 4) <= 1, "final exam should separate four-answer questions");
 }
 
-console.log("OK: 50-question sampling disperses four-answer questions; final exam keeps 35 multi-answer questions");
+for (const sampler of [studyQuestionSample, broadExamSample]) {
+  for (const size of [0, 1, 4, 17, 50, 80]) {
+    const pool = tierAPool.slice(0, size);
+    const selected = sampler(pool, 50);
+    assert.equal(selected.length, Math.min(size, 50));
+    assert.equal(new Set(selected.map(q => q.id)).size, selected.length);
+  }
+  const scarce = tierAPool.filter(q => q.correct.length !== 1);
+  assert.equal(sampler(scarce, 50).length, 50);
+  const exact = sampler(tierAPool, 48);
+  for (let n = 1; n <= 4; n++) assert.equal(exact.filter(q => q.correct.length === n).length, 12);
+}
+console.log("OK: equal answer-count quotas, odd sizes, shortages, unique IDs and four-answer spacing");

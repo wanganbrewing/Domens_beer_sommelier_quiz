@@ -110,7 +110,7 @@ def main() -> None:
     assert "escapeHtml(hints[state.stage])" in SCRIPT
     assert '"△"' not in SCRIPT and "目標達成" in SCRIPT and "要復習" in SCRIPT and "要確認" in SCRIPT
     assert "正答：${render(correctAnswer)}" in SCRIPT and "あなたの回答：" in SCRIPT
-    assert 'fetch("blind-tasting.json?v41"' in SCRIPT
+    assert 'fetch("blind-tasting.json?v42"' in SCRIPT
     assert "openBeerGuideButton" in INDEX and "beerGuideView" in INDEX
     assert "代表ビール購入ガイド" in INDEX and "renderBeerGuide" in SCRIPT
     assert "全58スタイル" in INDEX and "販売リンク未確認" in SCRIPT

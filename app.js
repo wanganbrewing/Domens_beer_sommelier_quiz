@@ -1,8 +1,8 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v41";
-const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v23", settings: "bierkompass-settings-v14" };
+const APP_VERSION = "v42";
+const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
 const TIER_NAMES = { A: "最頻出予想", B: "頻出予想", C: "補強・周辺知識" };
@@ -75,6 +75,7 @@ async function init() {
     const response = await fetch(`questions.json?${APP_VERSION}`, { cache: "no-store" });
     if (!response.ok) throw new Error(`問題データを取得できませんでした (${response.status})`);
     data = await response.json();
+    await window.BierKompassPhotos?.ready;
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     renderFilters();
     restoreSettings();
@@ -198,38 +199,28 @@ function startSession() {
   showSession();
 }
 
-function studyQuestionSample(pool, count) {
-  const fourAnswerPool = pool.filter((question) => question.correct.length === 4);
-  const otherPool = pool.filter((question) => question.correct.length !== 4);
-  let fourAnswerCount = Math.min(
-    fourAnswerPool.length,
-    Math.round(count * fourAnswerPool.length / Math.max(1, pool.length)),
-    Math.floor((count + 1) / 2),
-  );
-  let otherCount = Math.min(otherPool.length, count - fourAnswerCount);
-  if (fourAnswerCount + otherCount < count) {
-    fourAnswerCount = Math.min(fourAnswerPool.length, count - otherCount);
-    otherCount = Math.min(otherPool.length, count - fourAnswerCount);
+// Allocate evenly across 1–4 correct choices, redistributing only exhausted groups.
+function answerCountSample(pool, count, sampleGroup) {
+  const groups = [1, 2, 3, 4].map((n) => pool.filter((q) => q.correct.length === n));
+  const quotas = [0, 0, 0, 0];
+  const limit = Math.min(count, pool.length);
+  while (quotas.reduce((a, b) => a + b, 0) < limit) {
+    const available = shuffle([0, 1, 2, 3].filter((i) => quotas[i] < groups[i].length));
+    const minimum = Math.min(...available.map((i) => quotas[i]));
+    for (const i of available.filter((i) => quotas[i] === minimum)) {
+      if (quotas.reduce((a, b) => a + b, 0) >= limit) break;
+      quotas[i] += 1;
+    }
   }
-  return spreadAnswerCounts([
-    ...shuffle(fourAnswerPool).slice(0, fourAnswerCount),
-    ...shuffle(otherPool).slice(0, otherCount),
-  ]);
+  return spreadAnswerCounts(groups.flatMap((group, i) => sampleGroup(group, quotas[i])));
+}
+
+function studyQuestionSample(pool, count) {
+  return answerCountSample(pool, count, (group, quota) => shuffle(group).slice(0, quota));
 }
 
 function broadExamSample(pool, count) {
-  const multiAnswerPool = pool.filter((question) => question.correct.length >= 2);
-  const otherPool = pool.filter((question) => question.correct.length < 2);
-  let multiAnswerCount = Math.min(multiAnswerPool.length, Math.round(count * 0.7));
-  let otherCount = Math.min(otherPool.length, count - multiAnswerCount);
-  if (multiAnswerCount + otherCount < count) {
-    multiAnswerCount = Math.min(multiAnswerPool.length, count - otherCount);
-    otherCount = Math.min(otherPool.length, count - multiAnswerCount);
-  }
-  return spreadAnswerCounts([
-    ...balancedQuestionSample(multiAnswerPool, multiAnswerCount),
-    ...balancedQuestionSample(otherPool, otherCount),
-  ]);
+  return answerCountSample(pool, count, balancedQuestionSample);
 }
 
 function spreadAnswerCounts(questions) {
@@ -377,7 +368,7 @@ function renderFeedback(question) {
   const correct = sameSet(selectedValues(question.id), question.correct);
   $("#feedbackPanel").classList.toggle("incorrect", !correct);
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
-  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation);
+  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation) + (question.category === "beer_styles" ? window.BierKompassPhotos?.forText(question.explanation) || "" : "");
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const reason = question.choiceReasons[originalIndex].trim();
