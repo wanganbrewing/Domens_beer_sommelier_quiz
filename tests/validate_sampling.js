@@ -28,8 +28,8 @@ vm.runInNewContext(appSource, context, { filename: "app.js" });
 
 const { studyQuestionSample, broadExamSample } = context.window.BierKompass;
 const tierAPool = data.questions.filter((question) => question.active !== false && question.frequencyTier === "A");
-assert.equal(data.questions.filter((question) => question.active !== false).length, 990);
-assert.equal(tierAPool.filter((question) => question.category === "pairing").length, 20);
+assert.equal(data.questions.filter((question) => question.active !== false).length, data.metadata.activeQuestionCount);
+assert.equal(tierAPool.filter((question) => question.category === "pairing").length, data.metadata.categories.find(category => category.id === "pairing").count);
 
 function maximumRun(sample, answerCount) {
   let current = 0;

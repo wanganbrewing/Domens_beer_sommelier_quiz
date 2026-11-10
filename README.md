@@ -3,6 +3,16 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 英語講義資料の追加反映（v44）
+
+- 英語本文と英語図表から28問を追加。官能・オフフレーバー12問、英国カスク管理8問、ペアリング8問です。
+- 全1068問／出題対象1018問。正答数1〜4個を各25%目標で抽出する方式、学習履歴、模試タイマーを維持します。
+- 追加問題の出典ページ・確認内容・版の注意を、解答後と復習画面に表示します。
+- 料理資料は表紙がDBS2025のため、2026年改訂版とは断定していません。英語p2と8/30資料で一致する内容を参照しました。
+- 日本語主体のマーケティング、品質管理、健康、メニュープランニングは今回後回し。健康の修正版は未確認です。
+- 既存OF26-007の原因を限定する表現を訂正。IDと正答数は維持しました。
+- [確認範囲と採用・除外の理由](docs/english-material-coverage.md)
+
 ## 2026年11月の更新（v43）
 
 - 全範囲の模試モード、40分タイマー、時間切れ自動採点、合否表示と復習フィルターを追加しました。
@@ -59,13 +69,14 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
 ```sh
 python tests/validate_questions.py
+python tests/validate_english_supplement.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js
 node tests/validate_mock_exam.js
 ```
 
-問題追加データの再生成：`python tools/add_2026_handouts.py`（追加IDを置き換えるため再実行しても重複しません）。
+問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用します。
 
 ## 保存と閲覧制限
 

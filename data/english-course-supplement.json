@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "EP26-001",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、脂質の化学構造について正しい記述をすべて選んでください。",
+    "choices": [
+      "トリグリセリドは、グリセロールと3本の脂肪酸からなるエステルである",
+      "トリグリセリドは、アミノ酸がペプチド結合した物質である",
+      "トリグリセリドのアルコール部分はエタノールである",
+      "トリグリセリドは、グルコース3分子からできている"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "脂質の基本構造を確認する問題。トリグリセリドの「tri」は3本の脂肪酸に対応する。",
+    "choiceReasons": [
+      "正答：資料の Chemical structure は、3本の脂肪酸とグリセロールのエステルと説明する。",
+      "誤答：アミノ酸の重合体ではなく、グリセロールと脂肪酸のエステルである。",
+      "誤答：資料が挙げるアルコール部分はグリセロールである。",
+      "誤答：グルコースではなく、グリセロールと3本の脂肪酸が構成要素である。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 8,
+        "locator": "PDF表示ページ8・英語本文",
+        "section": "脂質の化学構造",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-002",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、油脂ごとの口当たりの比較について正しい記述をすべて選んでください。",
+    "choices": [
+      "資料では、不飽和脂肪酸の割合が高い油にクリーミーな口当たりを挙げる",
+      "資料では、クリームやミルクの脂肪にまとわりつくような口当たりを挙げる",
+      "資料では、油とクリームを比較しても口当たりに違いはないとしている",
+      "資料では、脂質は香りを弱めるだけの成分とされる"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "講義では油と動物性脂肪の口当たりを比較する。食品全体の組成や温度などで知覚は変わるため、すべての油脂への絶対的な分類ではない。",
+    "choiceReasons": [
+      "正答：Oils の説明は high proportion of unsaturated fatty acids、creamy mouthfeel。",
+      "正答：Animal fats の例は cream or milk、口当たりは Sticky mouthfeel。",
+      "誤答：サラダドレッシングの cream vs. oil を比較例に挙げ、口当たりを区別している。",
+      "誤答：資料は脂質のフレーバーやアロマを強める働きを挙げている。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 8,
+        "locator": "PDF表示ページ8・英語本文",
+        "section": "油脂ごとの口当たりの比較",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-003",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、塩の組成と知覚について正しい記述をすべて選んでください。",
+    "choices": [
+      "食卓塩はほぼ塩化ナトリウムとして説明される",
+      "海塩の例には、塩化ナトリウム以外の塩類も含むものが挙げられる",
+      "塩の組成によって知覚される強さは変わり得る",
+      "海塩なら製品に関係なく必ず同一の組成・強度になる"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "食卓塩と海塩の組成を区別し、強さや感じ方の違いを考える。資料の組成数値を全製品共通の規格として暗記しない。",
+    "choiceReasons": [
+      "正答：Table salt は almost 100% NaCl と記載される。",
+      "正答：Fleur de Sel は other salts の混在する例として紹介される。",
+      "正答：Intensity varies according to composition と記載される。",
+      "誤答：資料は組成と知覚の違いを説明しており、すべての海塩の均一性を保証していない。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 11,
+        "locator": "PDF表示ページ11・英語本文",
+        "section": "塩の組成と知覚",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-004",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、英語のアロマグループ名について正しい記述をすべて選んでください。",
+    "choices": [
+      "fruity／flowery は果実様／花様の香りを表す",
+      "vegetal／spicy は植物・野菜様／スパイス様の香りを表す",
+      "roasted／woody／earthy は焙煎様／木質様／土様の香りを表す",
+      "animal／micro biologic は動物様／微生物に関連する香りのグループである"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "英語のグループ名と香りの表現を結び付ける。ここでの micro biologic はアロマの分類名で、検査による原因微生物の確定ではない。",
+    "choiceReasons": [
+      "正答：図中に fruity と flowery のグループがある。",
+      "正答：図中に vegetal と spicy のグループがある。",
+      "正答：図中では roasted/woody/earthy がまとめて示されている。",
+      "正答：図中に animal と Micro biologic のグループがある。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 16,
+        "locator": "PDF表示ページ16・英語本文",
+        "section": "英語のアロマグループ名",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-005",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、コース例の魚料理とポテト料理について正しい記述をすべて選んでください。",
+    "choices": [
+      "レモンと甘いバルサミコソースを添えたローストサーモンにはトリプル、麦芽の粒とアーモンドを添えたローストポテトにはミュンヘナー・ドゥンケルが例示される",
+      "ローストサーモンにはミュンヘナー・ドゥンケル、ローストポテトにはトリプルが指定される",
+      "ローストサーモンとローストポテトは、どちらもIPAだけに合わせる例である",
+      "ローストサーモンにはチョコレートスタウト、ローストポテトにはピルスナーが例示される"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "資料の魚料理はレモンと甘いバルサミコソースを添えた例。8/30のコース例と料理資料p2で一致する。講義の一例であり、他の組み合わせを一律に不適切とするものではない。",
+    "choiceReasons": [
+      "正答：3番の Roasted Salmon は Tripel、4番の Roasted potatoes, almonds with malt kernels は Munich Dark。",
+      "誤答：資料に示す2品の組み合わせを逆にした記述である。",
+      "誤答：IPA はこのコースではブルスケッタの例であり、魚料理とポテト料理には別のビールが示される。",
+      "誤答：スタウトはクレームブリュレ、ピルスナーは食前の例として示される。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 27,
+        "locator": "PDF表示ページ27・英語本文",
+        "section": "コース例の魚料理とポテト料理",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      },
+      {
+        "filename": "1019DBS Beer& Cooking.pptx",
+        "page": 2,
+        "section": "Example for a beer menu",
+        "language": "en",
+        "status": "表紙はDBS2025。2026年改訂版とは未確認。8/30資料p27と一致する英語部分のみ参照。",
+        "locator": "スライド2・英語本文"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-006",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、辛いソースを使う鶏肉料理の例について正しい記述をすべて選んでください。",
+    "choices": [
+      "セゾンとポーターは、辛いソースを使う鶏肉料理の組み合わせ例に含まれる",
+      "スモークビールとインペリアルスタウトも同じ行に挙げられる",
+      "この行に挙げられるのはブラウンエールとアルトだけである",
+      "この行に挙げられるのはデュッベルとビエール・ド・ギャルドだけである"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "同じ鶏肉でもソースや調理法で組み合わせが変わることを学ぶ。ここでは英語本文の spicy sauce の具体例を問う。",
+    "choiceReasons": [
+      "正答：With spicy sauce の行に Saison と Porter が挙げられる。",
+      "正答：同じ行に Smoke beer と Imperial Stout が挙げられる。",
+      "誤答：Brown Ale と Alt は Fried、揚げた鶏肉の行に挙げられる。",
+      "誤答：Dubbel と Biere de Garde は Coq au Vin、赤ワイン煮の行に挙げられる。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 19,
+        "locator": "PDF表示ページ19・英語本文",
+        "section": "辛いソースを使う鶏肉料理の例",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-007",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、フェノールと金属様の印象の組み合わせについて正しい記述をすべて選んでください。",
+    "choices": [
+      "資料では、フェノールと脂質の組み合わせに金属様の印象を挙げる",
+      "資料では、フェノールとタンパク質の組み合わせに金属様の印象を挙げる",
+      "資料では、フェノールと酸味の組み合わせに金属様の印象を挙げる",
+      "これらの印象だけで、ビールに鉄が混入したと断定できる"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "資料の metallic は組み合わせによる官能的な印象として読む。条件や個人差があり、実際の金属汚染の診断とは区別する。",
+    "choiceReasons": [
+      "正答：Phenols + fat = metallic と記載される。",
+      "正答：Phenols + protein = metallic と記載される。",
+      "正答：Phenols + sourness = metallic と記載される。",
+      "誤答：ここはペアリング時の官能的な印象の説明であり、鉄の混入を分析・確定する記述ではない。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 12,
+        "locator": "PDF表示ページ12・英語本文",
+        "section": "フェノールと金属様の印象の組み合わせ",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "EP26-008",
+    "category": "pairing",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、醸造伝統とアロマの強度について正しい記述をすべて選んでください。",
+    "choices": [
+      "醸造の伝統が違うと、特徴的なアロマグループも異なり得る",
+      "各アロマグループの重要度は、香りの強さも踏まえて判断する",
+      "醸造の伝統に関係なく、全ビールのアロマ構成は同一になる",
+      "各アロマグループの重要度は、香りの強さとは無関係に決まる"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "英語本文1と4の対応を確認する。醸造の伝統が香りの特徴を形づくり、感じ取れる強さもペアリングでの重要度に関わる。",
+    "choiceReasons": [
+      "正答：英語本文1は、brewing traditions に応じた異なる characteristic aroma groups を説明する。",
+      "正答：英語本文4は Importance of a group according to intensity とする。",
+      "誤答：資料は醸造の伝統に応じて特徴的なアロマグループが異なると説明する。",
+      "誤答：資料は香りの強さに応じてグループの重要度を考えるとしている。"
+    ],
+    "sources": [
+      {
+        "filename": "0830ビアペアリング2026.pdf",
+        "page": 17,
+        "locator": "PDF表示ページ17・英語本文",
+        "section": "醸造伝統とアロマの強度",
+        "language": "en",
+        "status": "2026年講義資料・英語本文を確認。相互作用は講義上の説明であり、条件や個人差により知覚は変わる。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-001",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、カスク専用セラーの温度について正しい記述をすべて選んでください。",
+    "choices": [
+      "11〜13°C",
+      "0〜2°C",
+      "20〜22°C",
+      "30〜32°C"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "P101の英語本文はセラーを11〜13°C（約52〜55°F）に保つよう指定しています。一般的な「やや高め」という表現だけでなく、この講義の数値を確認します。",
+    "choiceReasons": [
+      "正答：Temperatureのスライドには11〜13°Cと明記されています。",
+      "誤答：資料の指定は11〜13°Cであり、氷点付近ではありません。",
+      "誤答：資料のセラー管理温度は11〜13°Cです。",
+      "誤答：資料の指定より大幅に高く、推奨温度ではありません。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 101,
+        "locator": "PDF表示ページ101・英語本文",
+        "section": "カスク専用セラーの温度",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-002",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、納品直後のStillagingについて正しい記述をすべて選んでください。",
+    "choices": [
+      "納品直後に設置する",
+      "すべてのカスクを水平に寝かせて設置する",
+      "すべてのカスクを垂直に立てて設置する",
+      "飲み終わる直前まで設置を待つ"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "P102は、納品直後にすべてのカスクを水平に設置する手順を示しています。後のTiltingとは区別します。",
+    "choiceReasons": [
+      "正答：Immediately after deliveryと明記されています。",
+      "正答：All casks level (horizontally)という指定です。",
+      "誤答：このスライドの指定は水平設置です。",
+      "誤答：設置の時点は納品直後です。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 102,
+        "locator": "PDF表示ページ102・英語本文",
+        "section": "納品直後のStillaging",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-003",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、カスク部品の位置と名称について正しい記述をすべて選んでください。",
+    "choices": [
+      "Shiveは、横置きしたカスクの胴部上側に示される",
+      "Pegは、Shive付近の小さな栓として示される",
+      "Tapは、カスクの鏡板側下部の注出部に示される",
+      "Keystoneは、Tapを差す鏡板側下部の栓として示される"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "P105の英語ラベル付き図ではShive・Pegが胴部上側、Tap・Keystoneが鏡板側下部に配置されています。部品名だけでなく位置関係を押さえます。",
+    "choiceReasons": [
+      "正答：図のShiveの矢印は胴部上側の大きな栓を指しています。",
+      "正答：図ではPegが胴部上側の小さな栓を指しています。",
+      "正答：Tapの矢印は鏡板側下部から突き出す注出部を指しています。",
+      "正答：Keystoneの矢印はタップ取り付け位置の栓を指しています。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 105,
+        "locator": "PDF表示ページ105・英語本文",
+        "section": "カスク部品の位置と名称",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-004",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、Wadworthのコンディショニング時間について正しい記述をすべて選んでください。",
+    "choices": [
+      "必要時間は製品によって異なる",
+      "Wadworthのビールの例では24〜48時間である",
+      "全メーカー・全製品に24時間ちょうどを一律適用する",
+      "Wadworthの例では24〜48日を要する"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "P108の24〜48時間はWadworthのビールの例であり、あらゆるカスクに適用する絶対時間ではありません。製品依存という条件も重要です。",
+    "choiceReasons": [
+      "正答：英語本文はThe time this takes will depend on the productとしています。",
+      "正答：Wadworth beers take between 24 to 48 hoursと明記されています。",
+      "誤答：製品依存と明記され、Wadworthの例も24〜48時間の幅があります。",
+      "誤答：単位はDaysではなくHoursです。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 108,
+        "locator": "PDF表示ページ108・英語本文",
+        "section": "Wadworthのコンディショニング時間",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-005",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、提供開始後の販売期間について正しい記述をすべて選んでください。",
+    "choices": [
+      "通常は提供開始から3日以内に売り切ることを目指す",
+      "Aspirator装着時の例は7日以内である",
+      "この日数は品質維持のための販売目安として示される",
+      "Aspiratorの有無にかかわらず必ず7日が基準になる"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "P109は通常3日、Aspirator装着時7日という品質上の目安を区別しています。資料の運用例であり、食品安全上の消費期限を保証する数字ではありません。",
+    "choiceReasons": [
+      "正答：最高の品質のため、提供開始から3日以内に販売するという記載です。",
+      "正答：If aspirators are fitted sell in 7 daysと条件付きで記載されています。",
+      "正答：本文はFor best qualityという目的を明示しています。",
+      "誤答：通常の3日と、装着時の7日という条件の区別があります。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 109,
+        "locator": "PDF表示ページ109・英語本文",
+        "section": "提供開始後の販売期間",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-006",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、カスク販売日数と品質の変化について正しい記述をすべて選んでください。",
+    "choices": [
+      "1日目はPerfectと表現される",
+      "2〜3日目はSatisfactoryと表現される",
+      "4日目以降は急速に劣化すると示される",
+      "4日目以降は熟成によって必ず品質が向上すると示される"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "P110の模式図は1日目、2〜3日目、4日目以降を分け、販売の長期化が品質低下につながることを示します。日数だけで実際の品質を保証するものではありません。",
+    "choiceReasons": [
+      "正答：図のDay 1にはPerfectと記されています。",
+      "正答：図のDay 2/3にはSatisfactoryと記されています。",
+      "正答：Day 4 onwardsにはDeteriorates rapidlyと記されています。",
+      "誤答：資料は品質向上ではなく急速な劣化を示しています。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 110,
+        "locator": "PDF表示ページ110・英語本文",
+        "section": "カスク販売日数と品質の変化",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-007",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、カスクを傾ける時点について正しい記述をすべて選んでください。",
+    "choices": [
+      "残量がおよそ3分の2の時点",
+      "3分の2を飲み終えて残量が3分の1になった時点",
+      "完全に空になった後だけ",
+      "残量にかかわらず納品前に必ず傾ける"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "P111のTilt at two thirds fullは、残量が約3分の2の時点で傾けるという意味です。図の最終的な残量の見た目と、傾け始める時点の文章を混同しないようにします。",
+    "choiceReasons": [
+      "正答：Tilt at two thirds fullは3分の2が残っている時点を意味します。",
+      "誤答：Two thirds fullは残量3分の2であり、消費済み3分の2ではありません。",
+      "誤答：図の指定は空になった後ではなく3分の2が残る時点です。",
+      "誤答：Tiltingの指示は残量を条件としており、納品前という指定ではありません。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 111,
+        "locator": "PDF表示ページ111・英語本文",
+        "section": "カスクを傾ける時点",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "UK26-008",
+    "category": "service_quality",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、カスク品質と販売の循環について正しい記述をすべて選んでください。",
+    "choices": [
+      "質のよくないビールは販売減少につながるという悪循環が示される",
+      "販売期間の長期化はさらなる品質低下につながると示される",
+      "品質向上への取り組みは消費者の信頼につながると示される",
+      "信頼の向上と購入意向の高まりは売上・利益増加につながると示される"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "P115は品質低下・販売低迷・長期滞留の悪循環と、品質への取り組み・信頼・購入・売上増加の好循環を対比しています。カスクの品質管理は販売回転とも関係します。",
+    "choiceReasons": [
+      "正答：左図はIndifferent QualityからReduced Salesへの流れを示します。",
+      "正答：左図ではIncreased Time on Saleの次にLower Qualityが続きます。",
+      "正答：右図はDrive for QualityからConsumer Confidenceへの流れを示します。",
+      "正答：右図はConsumer Confidence、More Likely to Buy、Increased Sales、Increased Profitsの順に進みます。"
+    ],
+    "sources": [
+      {
+        "filename": "ドゥーメンスビアソムリエ講座英国パブ安藤氏テキスト2026（PDF).pdf",
+        "page": 115,
+        "locator": "PDF表示ページ115・英語本文",
+        "section": "カスク品質と販売の循環",
+        "language": "en",
+        "status": "2026年英国講義資料の英語本文・図を確認。製品別の時間や日数は資料の運用例であり、一律の品質・安全保証ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-001",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、マイクロカプセル型の香味標準について正しい記述をすべて選んでください。",
+    "choices": [
+      "香味の参照標準をマイクロカプセル化している",
+      "専門家だけでなく愛好家の利用も想定されている",
+      "国際的なビール官能評価の参照システムとして紹介されている",
+      "香味を嗅ぎ分けず、液色だけで成分濃度を測定する機器である"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "PDF表示5ページ（スライド35）。製品の普及数や安全性の宣伝的な断定は出題対象にしない。",
+    "choiceReasons": [
+      "正答：microencapsulated beer flavor reference standardsと記載されている。",
+      "正答：specialists as well as amateursと説明されている。",
+      "正答：international beer sensory reference systemと記載されている。",
+      "誤答：紹介されているのは香味の参照標準であり、色の測定機器ではない。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 5,
+        "locator": "PDF表示ページ5・英語本文",
+        "section": "マイクロカプセル型の香味標準",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-002",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、官能特性を左右する要因について正しい記述をすべて選んでください。",
+    "choices": [
+      "レシピとビアスタイル",
+      "製造技術",
+      "原材料",
+      "熟成・経時変化"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "PDF表示6・10ページ（スライド36・40）の同内容を統合。香りや味の特徴を原材料だけに帰属させない。",
+    "choiceReasons": [
+      "正答：Recipe、Beer styleが列挙されている。",
+      "正答：Technologyが列挙されている。",
+      "正答：Raw materialが列挙されている。",
+      "正答：Agingが列挙されている。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 6,
+        "locator": "PDF表示ページ6・英語本文",
+        "section": "官能特性を左右する要因",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      },
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 10,
+        "locator": "PDF表示ページ10・英語本文",
+        "section": "官能特性を左右する要因",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-003",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、ブラインド分析の推論順序について正しい記述をすべて選んでください。",
+    "choices": [
+      "主要な特徴を定義し、原材料・工程を推定してからスタイルの結論を出す",
+      "最初に銘柄を決め、その銘柄に合う記述だけを残す",
+      "スタイルの結論を出した後で、主要な特徴を初めて検討する",
+      "原材料や工程の推定を省き、色だけで結論を出す"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "PDF表示4ページの英語手順1〜4に基づく。単なる評価項目の暗記ではなく、観察から結論への推論を問う。",
+    "choiceReasons": [
+      "正答：Define key characteristics → Identify ingredients and process → Make a beer style conclusionの順である。",
+      "誤答：観察と記述を根拠に結論へ進む手順であり、銘柄を先に固定しない。",
+      "誤答：主要な特徴の定義は結論より先の手順である。",
+      "誤答：原材料・工程の推定が明示され、観察は外観だけに限らない。"
+    ],
+    "sources": [
+      {
+        "filename": "0831 Beer style tasting and off flavors.pdf",
+        "page": 4,
+        "locator": "PDF表示ページ4・英語本文",
+        "section": "ブラインド分析の推論順序",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-004",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、ブラインドでの候補除外について正しい記述をすべて選んでください。",
+    "choices": [
+      "エールかラガーかを検討する",
+      "合わないスタイルを除外して、残った候補から選ぶ",
+      "最初に思いついたスタイルがあれば、それ以外の候補を検討しない",
+      "候補の除外は、試料の特徴を記述する前に完了する"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "PDF表示4ページ。エール／ラガーの検討だけで結論を固定せず、候補を比較する。",
+    "choiceReasons": [
+      "正答：4.1 Ale or Lager?と記載されている。",
+      "正答：4.2 Exclude styles → 4.3 Choose among remaining stylesと進む。",
+      "誤答：資料は候補の除外と残った候補間の選択を示している。",
+      "誤答：詳細記述・主要な特徴の定義・原材料と工程の推定が先行する。"
+    ],
+    "sources": [
+      {
+        "filename": "0831 Beer style tasting and off flavors.pdf",
+        "page": 4,
+        "locator": "PDF表示ページ4・英語本文",
+        "section": "ブラインドでの候補除外",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-005",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、ゲラニオールと花の参照香について正しい記述をすべて選んでください。",
+    "choices": [
+      "バラのような香り",
+      "ゼラニウムのような香り",
+      "濡れた段ボールのような香り",
+      "塩味"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "PDF表示28ページ（スライド58）の画像内表を確認。ゲラニオールの花様の記述を学ぶ。",
+    "choiceReasons": [
+      "正答：Rose likeと記載されている。",
+      "正答：Geranium likeと記載されている。",
+      "誤答：標準表ではtrans-2-nonenalに対応する。",
+      "誤答：標準表ではsodium chlorideに対応する。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "ゲラニオールと花の参照香",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-006",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、グアイアコールとオイゲノールについて正しい記述をすべて選んでください。",
+    "choices": [
+      "Guaiacol：スモーキー、燻製ベーコン",
+      "Eugenol：オールスパイス、クローブ油",
+      "Guaiacol：塩味、食塩",
+      "Eugenol：濡れた紙、段ボール"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "PDF表示28ページ。クローブを連想させる記述でも、オイゲノールと4-ビニルグアイアコールは別の化合物。",
+    "choiceReasons": [
+      "正答：Guaiacolの欄はsmoky、smoked bacon。",
+      "正答：Eugenolの欄はAllspice、Clove oil。",
+      "誤答：塩味の参照標準はsodium chlorideである。",
+      "誤答：濡れた紙・段ボールの欄はtrans-2-nonenalである。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "グアイアコールとオイゲノール",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-007",
+    "category": "off_flavor",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、DMTSの参照香について正しい記述をすべて選んでください。",
+    "choices": [
+      "タマネギ、ニンニク",
+      "バニラ、アイスクリーム",
+      "赤いリンゴ、アニス",
+      "アーモンド、マジパン"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "PDF表示28ページ。DMS（dimethyl sulphide）の加熱野菜・スイートコーンの記述と、DMTSの記述を区別する。",
+    "choiceReasons": [
+      "正答：onion、garlicと記載されている。",
+      "誤答：この表ではVanillinに対応する。",
+      "誤答：この表ではEthyl-hexanoateに対応する。",
+      "誤答：この表ではBenzaldehydeに対応する。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "DMTSの参照香",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-008",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、果実・草・ナッツの参照香について正しい記述をすべて選んでください。",
+    "choices": [
+      "Ethyl butyrate：トロピカルフルーツ、マンゴー、パイナップル",
+      "cis-3-Hexenol：葉、刈りたての草",
+      "Benzaldehyde：アーモンド、マジパン",
+      "Ethyl butyrate：金属、インク"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "PDF表示28ページ。Ethyl butyrateは酪酸エチル。化合物と具体的な参照香を対応づける。",
+    "choiceReasons": [
+      "正答：Ethyl butyrateの欄にこの3つの表現がある。",
+      "正答：表ではleavy、fresh cut grassと記載されている。",
+      "正答：Almond、Marzipanと記載されている。",
+      "誤答：金属・インク様の参照はIronと記載されている。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "果実・草・ナッツの参照香",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-009",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、穀物・革・バニラの参照香について正しい記述をすべて選んでください。",
+    "choices": [
+      "Isobutyraldehyde：穀物様、未乾燥麦芽を思わせる特徴",
+      "6-Isobutylquinoline：革様、干し草様",
+      "Vanillin：バニラ、アイスクリーム",
+      "Vanillin：酢、酢酸"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "PDF表示28ページの英語表。参照香との対応であり、検出すれば必ず品質欠陥とする問題ではない。",
+    "choiceReasons": [
+      "正答：grainy、green maltと記載されている。",
+      "正答：leathery、hay likeと記載されている。",
+      "正答：Vanilla、ice creamと記載されている。",
+      "誤答：酢・酢酸の参照はAcetic acidである。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "穀物・革・バニラの参照香",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-010",
+    "category": "sensory",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、酸・塩・硫黄系の標準物質について正しい記述をすべて選んでください。",
+    "choices": [
+      "Citric acid：酸っぱい、レモンを思わせる特徴",
+      "Sodium chloride：塩味",
+      "Acetic acid：酢酸、酢のような特徴",
+      "Sodium sulfite：亜硫酸系、マッチを擦ったような特徴"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "PDF表示28ページの参照標準表に限定した対応。試薬を自己流で飲用することを勧めるものではない。",
+    "choiceReasons": [
+      "正答：sour/acidic、citric/lemonと記載されている。",
+      "正答：saltyと記載されている。",
+      "正答：acetic、vinegarと記載されている。",
+      "正答：sulfitic、striking matchと記載されている。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 28,
+        "locator": "PDF表示ページ28・英語本文",
+        "section": "酸・塩・硫黄系の標準物質",
+        "language": "en",
+        "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-011",
+    "category": "off_flavor",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、老化香の生成反応について正しい記述をすべて選んでください。",
+    "choices": [
+      "フェニルアセトアルデヒドは、蜂蜜・甘い・麦芽・カラメル様の記述に対応する",
+      "フェニルアセトアルデヒドの生成要因に、2-フェニルエタノールの酸化が挙げられる",
+      "メチオナールの生成要因に、メチオニンのストレッカー分解が挙げられる",
+      "trans-2-ノネナールの生成要因に、脂肪酸の酸化が挙げられる"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "PDF表示25ページ（スライド55）。既出の香りの同定から、前駆物質・反応の理解へ広げた問題。原文のphenylacete aldehydeという表記は2-phenylethanalを確認して標準的な名称に整えた。",
+    "choiceReasons": [
+      "正答：表の2-phenylethanalの行にhoney、sweet、malty、caramelとある。",
+      "正答：oxidation of 2-phenylethanolと記載されている。",
+      "正答：methionalの行にmethionineの酸化的脱炭酸が記載されている。",
+      "正答：wet cardboardの行にfatty acid oxidationと記載されている。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 25,
+        "locator": "PDF表示ページ25・英語本文",
+        "section": "老化香の生成反応",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  },
+  {
+    "id": "ES26-012",
+    "category": "off_flavor",
+    "type": "multiple",
+    "question": "講義資料の英語本文に基づき、老化とフェノール香・口当たりについて正しい記述をすべて選んでください。",
+    "choices": [
+      "フェノール様の特徴が弱まり、口当たりにも悪影響が及ぶことがある",
+      "フェノール様の特徴は、老化すれば必ず強くなる",
+      "口当たりは、香りと違って老化の影響を受けない",
+      "老化によって新しい香味成分に由来する特徴が現れることはない"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "PDF表示23ページ（スライド53）。あらゆる長期熟成が必ず失敗するという意味ではなく、資料が扱う老化変化の傾向を問う。",
+    "choiceReasons": [
+      "正答：phenolic notes become less pronouncedとMouthfeel is negatively impactedを合わせた記述。",
+      "誤答：資料はless pronounced、すなわち目立たなくなる方向を示す。",
+      "誤答：資料はmouthfeelへの悪影響を明示している。",
+      "誤答：emergence of flavors resulting from aging componentsと記載されている。"
+    ],
+    "sources": [
+      {
+        "filename": "オフフレーバー、テイスティング実習資料2026.pdf",
+        "page": 23,
+        "locator": "PDF表示ページ23・英語本文",
+        "section": "老化とフェノール香・口当たり",
+        "language": "en",
+        "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
+      }
+    ],
+    "frequencyTier": "A",
+    "active": true
+  }
+]

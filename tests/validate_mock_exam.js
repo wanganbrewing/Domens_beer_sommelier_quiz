@@ -35,6 +35,8 @@ vm.runInContext(source, context);
 const run = (code) => vm.runInContext(code, context);
 const snapshot = (code) => JSON.parse(run(`JSON.stringify(${code})`));
 run("data = fixture; questionsById = new Map(data.questions.map(q => [q.id, q])); bindEvents();");
+// Source status is visible after answering and is HTML-escaped, not executable markup.
+assert.equal(run('sourceHtml({filename:"<file>",locator:"p1",status:"<script>bad</script>"})'), '&lt;file&gt;、p1<br><small>出典確認：&lt;script&gt;bad&lt;/script&gt;</small>');
 const { mockExamSample, scoreQuestion } = context.window.BierKompass;
 const active = fixture.questions.filter(q => q.active !== false);
 for (let i = 0; i < 100; i++) {

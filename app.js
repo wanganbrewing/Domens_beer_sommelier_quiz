@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v43";
+const APP_VERSION = "v44";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -10,6 +10,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
 const answerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);
+const sourceHtml = (source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}${source.status ? `<br><small>出典確認：${escapeHtml(source.status)}</small>` : ""}`;
 const questionHtml = (value) => escapeHtml(value).replace(
   /(誤っているものを1つ選べ|誤っている|正しくない|適切でない|該当しない|当てはまらない|含まれない)/g,
   '<span class="negative-cue">$1</span>',
@@ -406,7 +407,7 @@ function renderFeedback(question) {
       ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
-  $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}</p>`).join("")}`;
+  $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${sourceHtml(source)}</p>`).join("")}`;
 }
 
 function renderReviewChoiceReasons(question, order) {
@@ -514,7 +515,7 @@ function renderReview() {
       .filter(({ originalIndex }) => item.selected.includes(originalIndex))
       .map(({ originalIndex, displayIndex }) => `${String.fromCharCode(65 + displayIndex)}：${question.choices[originalIndex]}`).join("／") : "該当なし（0個）";
     const choiceReasons = renderReviewChoiceReasons(question, order);
-    const sources = question.sources.map((source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}`).join("／");
+    const sources = question.sources.map((source) => sourceHtml(source)).join("／");
     const reviewLabel = "自分の回答・正答・解説・出典を見る";
     return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : item.answered ? "✕ 要復習" : "未回答"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>自分の回答：</strong>${escapeHtml(selectedAnswer)}</p><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${answerHtml(question.explanation)}</p>${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
   }).join("") : '<p class="review-empty">要復習の問題はありません。全問で完全正解です。</p>';

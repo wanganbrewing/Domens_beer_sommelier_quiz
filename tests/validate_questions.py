@@ -19,7 +19,7 @@ BLIND_JS = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
 STYLE_LINKS_JS = (ROOT / "style-links.js").read_text(encoding="utf-8")
 
 EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
-ACTIVE_TIERS = {"A": 415, "B": 325, "C": 250}
+ACTIVE_TIERS = dict(Counter(q["frequencyTier"] for q in ALL_QUESTIONS if q["active"]))
 EXPECTED_ANSWERS = {1: 133, 2: 211, 3: 420, 4: 236}
 EXPECTED_CATEGORIES = {
     "raw_materials": 110,
@@ -58,8 +58,8 @@ def main() -> None:
         r"エステル皆無|焦げ酸味|甘香ばしさ|アーシーさ|高Cl=|高SO4="
     )
     answer_count_hint = re.compile(r"[0-9０-９]+つ選べ")
-    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040
-    assert METADATA["activeQuestionCount"] == 990
+    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040 + METADATA["englishSupplement"]["questionCount"]
+    assert METADATA["activeQuestionCount"] == sum(q["active"] for q in ALL_QUESTIONS) == len(ALL_QUESTIONS) - 50
     assert METADATA["excludedQuestionCount"] == 50
     assert METADATA["excludedCategories"] == []
     assert METADATA["studyQuestionCount"] == 50
@@ -112,7 +112,7 @@ def main() -> None:
     assert METADATA["answerCountDistribution"] == {
         str(key): value for key, value in Counter(len(q["correct"]) for q in ALL_QUESTIONS).items()
     }
-    assert METADATA["multiAnswerQuestionCount"] == 897
+    assert METADATA["multiAnswerQuestionCount"] == sum(len(q["correct"]) >= 2 for q in ALL_QUESTIONS)
     assert METADATA["japanesePolish"]["reverseQuestionsConvertedToPositive"] == 143
     assert Counter(question["category"] for question in QUESTIONS) == EXPECTED_CATEGORIES
     assert {
@@ -131,16 +131,17 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v43"' in APP_JS
+    version = re.search(r'const APP_VERSION = "v(\d+)"', APP_JS).group(1)
+    assert int(version) >= 43
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v24"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=43" in INDEX_HTML
-    assert "style-links.js?v=43" in INDEX_HTML
-    assert "app.js?v=43" in INDEX_HTML
-    assert "blind-quiz.js?v=43" in INDEX_HTML
-    assert INDEX_HTML.index("style-links.js?v=43") < INDEX_HTML.index("app.js?v=43")
+    assert f"styles.css?v={version}" in INDEX_HTML
+    assert f"style-links.js?v={version}" in INDEX_HTML
+    assert f"app.js?v={version}" in INDEX_HTML
+    assert f"blind-quiz.js?v={version}" in INDEX_HTML
+    assert INDEX_HTML.index(f"style-links.js?v={version}") < INDEX_HTML.index(f"app.js?v={version}")
     assert all("APA" not in question["question"] for question in QUESTIONS)
     assert all("APA" not in choice for question in QUESTIONS for choice in question["choices"])
     assert "spreadAnswerCounts" in APP_JS
@@ -164,19 +165,19 @@ def main() -> None:
     assert baltic_porter["correct"] == [0, 1, 2, 3]
     assert all("正答：" in reason for reason in baltic_porter["choiceReasons"])
 
-    added = ALL_QUESTIONS[1000:]
+    added = ALL_QUESTIONS[1000:1040]
     assert len(added) == 40
     assert Counter(len(q['correct']) for q in added) == {1: 10, 2: 10, 3: 10, 4: 10}
-    assert len({q['id'] for q in ALL_QUESTIONS}) == 1040
+    assert len({q['id'] for q in ALL_QUESTIONS}) == len(ALL_QUESTIONS)
     for q in added:
         assert len(q['choices']) == len(q['choiceReasons']) == 4
         assert len(set(q['choices'])) == 4
         assert q['active'] and q['explanation']
         assert all(1 <= src['page'] <= 28 for src in q['sources'])
     print(
-        "OK: 1040 questions including 40 from 2026 English handouts; unique IDs and full question/choice sets; "
-        "1040 stored / 990 active; self-contained choices; explanations present; "
-        "reverse artifacts repaired; Japanese polished; answer links limited to feedback; app v43 verified"
+        f"OK: {len(ALL_QUESTIONS)} questions including reviewed English handouts; unique IDs and full question/choice sets; "
+        f"{len(ALL_QUESTIONS)} stored / {METADATA['activeQuestionCount']} active; self-contained choices; explanations present; "
+        f"reverse artifacts repaired; Japanese polished; answer links limited to feedback; app v{version} verified"
     )
 
 
