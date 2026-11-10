@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1040</small></span></a>
-    <div class="header-status"><small class="version-badge">v42</small><span id="headerProgress">学習記録 0 / 990</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v43</small><span id="headerProgress">学習記録 0 / 990</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -43,13 +43,18 @@
       </div>
 
       <section class="dashboard" aria-labelledby="dashboardTitle">
-        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="study" role="tab" aria-selected="true">学習モード</button><button class="mode-tab" data-mode="exam" role="tab" aria-selected="false">最終試験</button></div></div>
-        <div class="config-grid">
+        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="study" role="tab" aria-selected="true">学習モード</button><button class="mode-tab" data-mode="exam" role="tab" aria-selected="false">最終試験</button><button class="mode-tab" data-mode="mock" role="tab" aria-selected="false">模試モード</button></div></div>
+        <div class="config-grid" id="studyConfig">
           <fieldset class="config-card frequency-card"><legend><span>01</span> 出題予想頻度</legend><p>複数選択できます。選んだ頻度の問題だけを出題します。</p><div id="frequencyFilters" class="frequency-options"></div></fieldset>
           <fieldset class="config-card category-card"><legend><span>02</span> 分野</legend><div class="select-tools"><p>学習したい分野を選択</p><button type="button" class="text-button" id="toggleCategories">すべて解除</button></div><div id="categoryFilters" class="category-options"></div></fieldset>
           <fieldset class="config-card history-card" id="historyFilterCard"><legend><span>03</span> 学習履歴</legend><label class="select-label" for="historyFilter">出題対象</label><select id="historyFilter"><option value="all">全問題</option><option value="unanswered">未回答のみ</option><option value="wrong">過去に不正解だった問題のみ</option><option value="not-mastered">正解済みを除外</option></select></fieldset>
         </div>
         <section class="final-exam-guide" id="finalExamGuide" hidden aria-labelledby="finalExamTitle"><div><p class="eyebrow">FINAL EXAM</p><h3 id="finalExamTitle">最終試験</h3><p>選択した分野から均等に、広く浅く出題します。正答が1・2・3・4個の問題を各25％を目標に抽出します。50問では各12〜13問となり、区分の問題数が不足する条件では他の区分へ再配分します。</p></div><ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分</span></li><li><b>複数</b><span>選択式</span></li><li><b>1〜4</b><span>正答数</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>合格基準</span></li></ol></section>
+        <section class="final-exam-guide mock-exam-guide" id="mockExamGuide" hidden aria-labelledby="mockExamTitle">
+          <div><p class="eyebrow">DOEMENS MOCK EXAM</p><h3 id="mockExamTitle">ドゥーメンス模試</h3><p>学習範囲全体から50問を出題。分野・頻度・学習履歴による絞り込みは使いません。解説は終了後にまとめて確認できます。</p></div>
+          <ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分・時間切れ自動採点</span></li><li><b>複数</b><span>選択式</span></li><li><b>1〜4</b><span>正答数は非表示</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>総可能点に対する合格基準</span></li></ol>
+          <details class="mock-exam-rules"><summary>出題範囲・採点について</summary><p>原材料、醸造工程、酵母・発酵・熟成、ビアスタイル、歴史・文化、官能評価、オフフレーバー、サービス・保存、品質・成分・法規、フードペアリング、総合知識を幅広く扱います。正答数1〜4個を各25%を目標に抽出し、問題が足りない区分は他の区分へ再配分します。分野配分は本アプリの練習用設定です。</p><p>獲得点÷各問題の満点の合計が50%以上で合格です。正しい選択肢を選ばなかった場合は加点せず、未回答は0点です。全問の正答数が同じではないため、満点は50点ではありません。</p><p>形式・採点は<a href="https://kiesbye.at/wp-content/uploads/2020/01/Pr%C3%BCfungsordnung-Diplom_Biersommelier_01_2020.pdf" target="_blank" rel="noopener noreferrer">2020年Kiesbye公開試験規則</a>を参考にした非公式の練習設定です。日本開催の現行公式基準や資格認定を示すものではありません。</p><p>開始後はページを閉じたり再読み込みしても時間は進みます。時間切れになると保存済みの回答を自動採点します。</p></details>
+        </section>
         <div class="launch-panel"><div class="launch-summary"><span id="poolCount">出題 50問（対象 1000問）</span><strong id="modeSummary">50問ずつ回答・解説と出典を表示</strong></div><button class="primary launch" id="startButton" type="button"><span>学習を始める</span><b aria-hidden="true">→</b></button><p id="configMessage" class="message" role="status"></p></div>
       </section>
       <section class="style-corner" aria-labelledby="blindCornerTitle">
@@ -79,7 +84,7 @@
     </section>
 
     <section id="sessionView" class="view" hidden>
-      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><button class="mobile-map-trigger" id="openNavigatorMobile" type="button" aria-controls="navigator" aria-expanded="false">一覧 <span id="unansweredBadgeMobile">50</span></button><div class="session-meta"><span id="sessionModeBadge">最終試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" aria-live="polite">40:00</time></div></div>
+      <div class="session-topbar"><button class="ghost" id="backHomeButton" type="button">← 終了して戻る</button><button class="mobile-map-trigger" id="openNavigatorMobile" type="button" aria-controls="navigator" aria-expanded="false">一覧 <span id="unansweredBadgeMobile">50</span></button><div class="session-meta"><span id="sessionModeBadge">最終試験</span><strong id="questionCounter">1 / 50</strong><time id="timer" role="timer" aria-live="off" aria-label="残り40分0秒">40:00</time></div></div>
       <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
       <div class="session-layout">
         <article class="question-panel">
@@ -93,9 +98,9 @@
     </section>
 
     <section id="resultView" class="view" hidden>
-      <div class="result-hero"><p class="eyebrow">SESSION RESULT</p><div id="resultIcon" class="result-icon">✓</div><h1 id="resultTitle">合格</h1><p id="resultLead"></p><div class="score-ring"><strong id="scoreRate">0%</strong><span id="scorePoints">0 / 0点</span></div></div>
+      <div class="result-hero"><p class="eyebrow">SESSION RESULT</p><div id="resultIcon" class="result-icon">✓</div><h1 id="resultTitle">合格</h1><p id="resultLead"></p><p id="resultScope" class="result-scope"></p><p id="resultSummary" class="result-summary"></p><div class="score-ring"><strong id="scoreRate">0%</strong><span id="scorePoints">0 / 0点</span></div></div>
       <section class="result-card"><div class="section-heading"><div><p class="eyebrow">CATEGORY BREAKDOWN</p><h2>分野別成績</h2></div></div><div id="categoryResults" class="category-results"></div></section>
-      <section class="result-card"><div class="section-heading"><div><p class="eyebrow">REVIEW</p><h2>解答を振り返る</h2></div></div><div id="reviewList" class="review-list"></div></section>
+      <section class="result-card"><div class="section-heading"><div><p class="eyebrow">REVIEW</p><h2>解答を振り返る</h2></div><div class="review-filter"><label for="reviewFilter">表示する問題</label><select id="reviewFilter"><option value="all">全問題</option><option value="incorrect">要復習・未回答のみ</option></select><span id="reviewCount" role="status"></span></div></div><div id="reviewList" class="review-list"></div></section>
       <div class="result-actions"><button class="secondary" id="retryButton" type="button">同じ問題でもう一度</button><button class="primary" id="resultHomeButton" type="button">条件選択へ戻る</button></div>
     </section>
   </main>
@@ -110,6 +115,6 @@
   </footer>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=42" defer></script><script src="beer-photos.js?v=42" defer></script><script src="app.js?v=42" defer></script><script src="blind-quiz.js?v=42" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=43" defer></script><script src="beer-photos.js?v=43" defer></script><script src="app.js?v=43" defer></script><script src="blind-quiz.js?v=43" defer></script>
 </body>
 </html>

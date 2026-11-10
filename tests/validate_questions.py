@@ -131,16 +131,16 @@ def main() -> None:
     assert source_import["appendixMockExamIncluded"] is False
     assert source_import["appendixMockExamQuestionCount"] == 50
 
-    assert 'const APP_VERSION = "v42"' in APP_JS
+    assert 'const APP_VERSION = "v43"' in APP_JS
     assert '"bierkompass-history-v23"' in APP_JS
     assert '"bierkompass-session-v24"' in APP_JS
     assert '"bierkompass-settings-v14"' in APP_JS
     assert "question.active === false" in APP_JS
-    assert "styles.css?v=42" in INDEX_HTML
-    assert "style-links.js?v=42" in INDEX_HTML
-    assert "app.js?v=42" in INDEX_HTML
-    assert "blind-quiz.js?v=42" in INDEX_HTML
-    assert INDEX_HTML.index("style-links.js?v=42") < INDEX_HTML.index("app.js?v=42")
+    assert "styles.css?v=43" in INDEX_HTML
+    assert "style-links.js?v=43" in INDEX_HTML
+    assert "app.js?v=43" in INDEX_HTML
+    assert "blind-quiz.js?v=43" in INDEX_HTML
+    assert INDEX_HTML.index("style-links.js?v=43") < INDEX_HTML.index("app.js?v=43")
     assert all("APA" not in question["question"] for question in QUESTIONS)
     assert all("APA" not in choice for question in QUESTIONS for choice in question["choices"])
     assert "spreadAnswerCounts" in APP_JS
@@ -176,7 +176,7 @@ def main() -> None:
     print(
         "OK: 1040 questions including 40 from 2026 English handouts; unique IDs and full question/choice sets; "
         "1040 stored / 990 active; self-contained choices; explanations present; "
-        "reverse artifacts repaired; Japanese polished; answer links limited to feedback; app v42 verified"
+        "reverse artifacts repaired; Japanese polished; answer links limited to feedback; app v43 verified"
     )
 
 

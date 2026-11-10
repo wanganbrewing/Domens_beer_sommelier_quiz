@@ -37,3 +37,21 @@
 .beer-photo figcaption small { font-size: .72rem; color: #586254; }
 .beer-photo a { color: inherit; }
 @media(max-width: 480px) { .beer-photo img { height: 240px; } }
+
+/* Whole-course mock exam and timed-session results. */
+#studyConfig[hidden],#frequencyTag[hidden]{display:none!important}
+.mode-tabs{flex-wrap:wrap;gap:2px}
+.mock-exam-guide{grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr)}
+.mock-exam-rules{grid-column:1/-1;border-top:1px solid #53646d;padding-top:12px}
+.mock-exam-rules summary{cursor:pointer;font-size:13px;font-weight:700}
+.mock-exam-rules a{color:#f2b94f;text-underline-offset:3px}
+.mock-exam-guide .mock-exam-rules p{font-size:12px;margin:10px 0}
+.session-meta time.timer-warning{color:var(--red);background:#fff1ee;border-radius:8px;padding:0 4px}
+.result-scope{font-size:12px;color:var(--muted);max-width:640px;margin:2px 0}
+.result-summary{font-size:13px;max-width:640px;margin:8px 0}
+.review-filter{display:grid;gap:4px;min-width:200px}
+.review-filter label,.review-filter>span{font-size:11px;color:var(--muted)}
+.review-filter select{font-size:13px;padding:8px 12px}
+.review-empty{color:var(--teal);font-weight:700}
+@media(max-width:840px){.mock-exam-guide{grid-template-columns:1fr}.dashboard>.section-heading{align-items:start;flex-wrap:wrap}}
+@media(max-width:560px){.mode-tab{padding:10px 8px;font-size:12px}.review-filter{margin-top:16px}}
