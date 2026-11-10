@@ -61,7 +61,7 @@ def main() -> None:
     assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040
     assert METADATA["activeQuestionCount"] == 990
     assert METADATA["excludedQuestionCount"] == 50
-    assert METADATA["excludedCategories"] == ["pairing"]
+    assert METADATA["excludedCategories"] == []
     assert METADATA["studyQuestionCount"] == 50
     assert METADATA["examQuestionCount"] == 50
     assert METADATA["examMinutes"] == 40

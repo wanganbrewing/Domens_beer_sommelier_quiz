@@ -82,6 +82,9 @@ if __name__=='__main__':
     names={c['id']:c['name'] for c in meta['categories']};names['pairing']='フードペアリング（2026講義資料）'
     meta['categories']=[dict(id=k,name=names[k],count=v) for k,v in Counter(q['category'] for q in active).items()]
     for t in meta['frequencyTiers']: t['count']=sum(q['frequencyTier']==t['id'] for q in active)
+    meta['excludedCategories']=[]
+    meta['excludedQuestionIds']=[q['id'] for q in data['questions'] if q.get('active') is False]
+    meta['notice']='提供されたMarkdownと2026年講義資料の英語本文をもとにした非公式予想問題です。Doemens公式問題ではありません。'
     meta['supplementalSources']=['添付2026年講義資料2冊の英語本文。追加40問（各正答数10問）。既存の非対象ペアリング50問は維持し、新しい資料から作成した20問のみ有効。']
     path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(len(data['questions']),len(active))

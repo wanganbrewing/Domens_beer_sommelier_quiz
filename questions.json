@@ -99,9 +99,7 @@
     "duplicateQuestionTextCount": 30,
     "questionDesign": "正答1〜4個の問題を各25%を目標に抽出。50問は各12〜13問。区分不足時のみ残りへ再配分。",
     "activeQuestionCount": 990,
-    "excludedCategories": [
-      "pairing"
-    ],
+    "excludedCategories": [],
     "excludedQuestionCount": 50,
     "explanationEnrichment": {
       "allCorrectChoicesExplained": true,
