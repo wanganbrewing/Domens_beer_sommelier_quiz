@@ -20,7 +20,9 @@ const known = [...new Set([
 
 async function main() {
   for (const name of known) {
-    for (const html of [links.linkStyle(name),links.linkify(name)]) {
+    // Brand labels remain linked in explicit style fields, not automatically in prose.
+    const rendered = name === "オルヴァル" ? [links.linkStyle(name)] : [links.linkStyle(name),links.linkify(name)];
+    for (const html of rendered) {
       const hrefs = getHrefs(html);
       assert.equal(hrefs.length,1,`full style name links once: ${name}`);
       const url = new URL(hrefs[0]);

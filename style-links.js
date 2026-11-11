@@ -2,7 +2,8 @@
   "use strict";
 
   const ROOT = "https://www.google.com/search";
-  // Known style labels from the existing style, image and tasting catalogs.
+  // Reviewed style labels from the catalogs AND written question/answer text.
+  // Keep aliases explicit: raw substring matching can turn brands or ordinary words into links.
   const STYLE_NAMES = [
     "アメリカンライトラガー",
     "アメリカンラガー",
@@ -164,12 +165,130 @@
     "アメリカンブラウン",
     "ピルスナー",
     "甘口チェリービール",
-    "甘口フルーツエール"
+    "甘口フルーツエール",
+    "IPA",
+    "ピルス",
+    "ボック",
+    "ボックビール",
+    "ポーター",
+    "スタウト",
+    "スタウトポーター",
+    "スタウト・ポーター",
+    "ペールエール",
+    "ブラウンエール",
+    "アルト",
+    "シュヴァルツ",
+    "ラオホ",
+    "クアド",
+    "ダークストロング",
+    "シャンクビア",
+    "スモールビア",
+    "ロッゲンビア",
+    "ライ麦ビール",
+    "オクトーバーフェストビア",
+    "オクトーバーフェストビール",
+    "オードグーズ",
+    "ストレートランビック",
+    "ストレート・ランビック",
+    "フランダース・レッド",
+    "アウトブラウン",
+    "サワーレッド",
+    "カスクエール",
+    "リアルエール",
+    "イングリッシュ・ペールエール",
+    "イングリッシュペール",
+    "イングリッシュ・ブラウン",
+    "イングリッシュ・マイルド",
+    "アイリッシュスタウト",
+    "アイリッシュレッドエール",
+    "ゴールデンエール",
+    "ゴールデンストロングエール",
+    "スコティッシュエール",
+    "アメリカン・ペールエール",
+    "アメリカン・ウィート",
+    "アメリカン・ライトラガー",
+    "アメリカン・IPA",
+    "アメリカンバーレイ",
+    "チェコダークラガー",
+    "ジャパニーズ・ラガー",
+    "インターナショナルラガー",
+    "アンバーラガー",
+    "ライトラガー",
+    "ドライラガー",
+    "ミュンヘンラガー",
+    "ドイツヴァイツェン",
+    "ヘーフェ・ヴァイス",
+    "クリスタル・ヴァイツェン",
+    "ベルリナー・ヴァイセ",
+    "ベルジャン・ホワイト",
+    "ベルジャンペール",
+    "スペシャル・ベルジュ",
+    "バルチック・ポーター",
+    "ボヘミアンピルス",
+    "ボヘミアン・ピルスナー",
+    "イタリアン・グレープエール",
+    "クヴェイクビール",
+    "ファームハウスエール",
+    "セッションIPA",
+    "セッションエール",
+    "カスケイディアンダークエール",
+    "サワーIPA",
+    "サワービール",
+    "フルーツビール",
+    "フルーツエール",
+    "フルーツサワー",
+    "ペストリースタウト",
+    "オイスタースタウト",
+    "チョコレートスタウト",
+    "ナイトロスタウト",
+    "ツォイグル",
+    "グロジスキェ",
+    "グレツァー",
+    "リヒテンハイナー",
+    "ケラーピルス",
+    "イタリアンピルス",
+    "ブリュットIPA",
+    "ミルクシェイクIPA",
+    "コールドIPA",
+    "ファロ",
+    "グリゼット",
+    "テーブルビア",
+    "ワイルドエール",
+    "ドライホップド・サワー",
+    "スモークビール",
+    "スモークエール",
+    "ピートスモークエール",
+    "バレルエイジド・インペリアルスタウト",
+    "Brown Ale",
+    "Pale Ale",
+    "Dubbel",
+    "Biere de Garde"
   ];
 
   const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const names = [...new Set(STYLE_NAMES)].sort((a, b) => b.length - a.length);
+  // These abbreviations also name places, flavors, ingredients or measures. Only
+  // the local, reviewed beer-style uses qualify; a beer elsewhere in the sentence
+  // must not make e.g. "フランダース地方" or "マイルドな苦味" into a style.
+  const CONTEXTUAL_NAMES = {
+    "ベルリナー": (before, after) => /乳酸菌系[（(]$|ゴーゼ[・/／]$|ヴァイツェン[・/／]$/.test(before)
+      || /^(?:[=＝]乳酸|様の酸|一択)/.test(after),
+    "フランダース": (before, after) => /樽混合熟成系[（(]$/.test(before) || /^系の酸/.test(after),
+    "ビター": (before, after) => /^[／/]ESB|^→インペリアルスタウト/.test(after),
+    "ウィンナー": (before, after) => /メルツェン→$/.test(before)
+      || /^(?:はよりマイルドで飲みやすい琥珀ラガー|は自然発酵)/.test(after),
+    "フェスト": (before, after) => /(?:秋[=＝]|ウィンナー[／/])$/.test(before)
+      && /^[／/]メルツェン|^系の親戚関係/.test(after),
+    "バーレイ": (before) => /冬[=＝]ボック[／/]$/.test(before),
+    "ライヒト": (before) => /シャンクビア[／/]$/.test(before),
+    "バルチック": (before, after) => /シュヴァルツ[・／/]$/.test(before) || /^[=＝]下面発酵/.test(after),
+    "インペリアル": (before, after) => /^[=＝]上面発酵/.test(after),
+    "クリスタル": (before, after) => /ヴァイツェンもろ過で$/.test(before) && /^化/.test(after)
+  };
+  // Catalog style-only fields use linkStyle even if their label is a brand (e.g.
+  // Orval). Prose must not link a style-looking fragment inside a product name.
+  const protectedPattern = /ピルスナー[・\s]*ウルケル|セゾン[・\s]+デュポン|ランミン[・\s]+サハティ|ウェストマール[・\s]+(?:ダブル|トリプル)|フリュー[・\s]+ケルシュ|ユリゲ[・\s]+アルト|リッターグーツ[・\s]+ゴーゼ|ジヴィエツ[・\s]+ポーター|オルヴァル/g;
+  const names = [...new Set([...STYLE_NAMES, ...Object.keys(CONTEXTUAL_NAMES)])].sort((a, b) => b.length - a.length);
   const pattern = new RegExp(names.map(escapeRegex).join("|"), "g");
 
   function linkStyle(value) {
@@ -181,12 +300,18 @@
 
   function linkify(value) {
     const text = String(value ?? "");
+    const protectedRanges = [...text.matchAll(protectedPattern)].map(match => [match.index, match.index + match[0].length]);
     let result = "";
     let cursor = 0;
     for (const match of text.matchAll(pattern)) {
       const name = match[0];
-      // The brand Pilsner Urquell is not a standalone style-name mention.
-      if (name === "ピルスナー" && /^[・\s]?ウルケル/.test(text.slice(match.index + name.length))) continue;
+      const before = text.slice(0, match.index), after = text.slice(match.index + name.length);
+      if (protectedRanges.some(([start, end]) => match.index < end && match.index + name.length > start)) continue;
+      // Do not extract short names from katakana compounds (カラピルス,
+      // ラオホマルツ, ダブルチーズ, etc.), or from named ingredients/equipment.
+      if (/[ァ-ヺー]$/.test(before) || /^[ァ-ヺー]/.test(after)) continue;
+      if (/^(?:麦芽|酵母|用グラス)/.test(after)) continue;
+      if (CONTEXTUAL_NAMES[name] && !CONTEXTUAL_NAMES[name](before, after)) continue;
       // Short ASCII aliases such as IGA must not link inside unrelated words.
       if ((/^[A-Za-z0-9]/.test(name) && /[A-Za-z0-9_]/.test(text[match.index - 1] || ""))
         || (/[A-Za-z0-9]$/.test(name) && /[A-Za-z0-9_]/.test(text[match.index + name.length] || ""))) continue;

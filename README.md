@@ -3,6 +3,10 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## スタイル検索の表記補完（v57）
+
+回答後の説明で漏れていた「ベルリナー」「フランダース」を、ビールスタイルを指す文脈に限定してリンク化しました。既存本文で確認した表記違い・略称も補い、地名、銘柄、原料などへの誤リンクを抑えています。問題・採点・履歴・資料の共有範囲は変更していません。全スタイルの完全対応を示すものではありません。[確認した範囲と検証](docs/style-search-coverage.md)
+
 ## ホームの整理（v56）
 
 「同じ問題を、別の選択肢で」の案内カードと専用開始ボタンを外しました。通常学習・模試で対象8問の選択肢セットが変わる機能は維持しています。教材画像の利用期限案内は、ホーム下段の学習状況の下へ移しました。端末PDFの確認ボタンと選択画面を外し、資料参照は制限付きGoogle Drive画像リンクにまとめました。削除予定の表示であり、自動削除を設定したものではありません。
@@ -10,6 +14,10 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 ## スタイル名のGoogle検索（v55）
 
 回答後の解説・復習、ブラインドテイスティング結果、代表ビール購入ガイド、参考画像のスタイル名からGoogle検索を別タブで開けます。検索語は「表示されたスタイル名＋ビール スタイル」です。回答選択欄はリンクにせず、選択・採点・履歴を保ちます。
+
+### 検索リンクの表記ゆれ・略称対応
+
+筆記問題に出てくる「ベルリナー」「フランダース」の文脈を確認し、略称と中黒のある表記などの検索リンクを追加しました。地名・味の形容・原料・銘柄の一部をスタイルと誤認しないようにし、検索語は引き続き表示名に「ビール スタイル」を加えます。未確認の曖昧語をすべて自動リンクにする機能ではありません。[確認した範囲と検証](docs/style-search-coverage.md)
 
 ## 資料本文へのリンク（v54）
 
@@ -172,6 +180,8 @@ python tests/validate_japanese_answers.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js
+node tests/validate_style_search_links.js
+node tests/validate_style_link_coverage.js
 node tests/validate_mock_exam.js
 node tests/validate_beer_images.js
 node tests/validate_home_cleanup.js

@@ -52,16 +52,19 @@ async function main(){
   }
 
   // Only home promotion/status code and version markers change; old sessions and core behavior stay intact.
+  const version=read("app.js").match(/const APP_VERSION = "(v\d+)";/)[1];
+  const revision=version.slice(1);
   let expected=base("app.js").toString()
-    .replace('const APP_VERSION = "v55";','const APP_VERSION = "v56";')
-    .replace('choice-variants.json?v=55','choice-variants.json?v=56')
+    .replace('const APP_VERSION = "v55";',`const APP_VERSION = "${version}";`)
+    .replace('choice-variants.json?v=55',`choice-variants.json?v=${revision}`)
     .replace('        $("#variantPrototypeStatus").textContent = "別セットを読み込めなかったため、通常の選択肢で学習できます。";\n','        console.warn("別セットを読み込めなかったため、通常の選択肢で学習できます。", error.message);\n');
   for(const line of ['      $("#variantPrototypeButton").disabled = !variantCatalog.size;\n','      $("#variantPrototypeCount").textContent = String(variantCatalog.size);\n','  $("#variantPrototypeButton")?.addEventListener("click", startVariantPrototype);\n'])expected=expected.replace(line,"");
   assert.equal(read("app.js"),expected);
-  for(const name of ["questions.json","choice-variants.js","choice-variants.json","style-links.js","beer-photos.js","blind-quiz.js","source-links.json","source-passages.json"])
+  for(const name of ["questions.json","choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-links.json","source-passages.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,name)),base(name),name);
   assert.ok(read("styles.css").startsWith(base("styles.css").toString().split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");
-  assert.match(html,/class="version-badge">v56<\/small>/);
+  assert.ok(html.includes(`class="version-badge">${version}</small>`));
+  // Search-link rendering is guarded by validate_style_search_links and validate_style_link_coverage.
   console.log("PASS pictured card removed; exact notice at home bottom; DOM-null and offline initialization; variants, history, answers, Google links and source access preserved");
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});
