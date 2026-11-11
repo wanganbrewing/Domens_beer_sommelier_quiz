@@ -1,0 +1,569 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "questionId": "BP26-002",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "ビールの苦味は、料理の辛味とのバランスに役立ち得る",
+            "ビールの炭酸は、料理と楽しむ香りを際立たせる働きを持つ",
+            "料理と組み合わせるとき、ビールのロースト香は検討対象から外す",
+            "ビールのアルコールは、アロマを弱めるための要素として挙げられる"
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "choiceReasons": [
+            "正答：p3のBitterness → Can balance spicinessに対応する。",
+            "正答：p3はCarbonation → emphasizes aromasとする。",
+            "誤答：p3のビールの効果にはRoasty aromasが挙げられている。",
+            "誤答：p3はAlcohol → enhances aromasとする。"
+          ],
+          "explanation": "料理への作用を、苦味・炭酸・ロースト香・アルコールに分けて確認する。いずれも料理を支え、引き立て、バランスを取るための要素である。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 3,
+              "locator": "PDF表示ページ3・英語本文",
+              "section": "料理に対するビールの役割",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "料理との組み合わせでは、ビールの果実様のアロマも検討要素になる",
+            "炭酸の役割は、味蕾に刺激を残し続けることだけである",
+            "モルト由来の甘味も、料理に作用するビールの要素として挙げられる",
+            "料理へのビールの役割は、辛味を必ず最大限に増幅することに限られる"
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "choiceReasons": [
+            "正答：p3の効果の一覧にはFruity aromasが含まれる。",
+            "誤答：p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。",
+            "正答：p3の一覧に(malt) sweetnessがある。",
+            "誤答：p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balanceと説明する。"
+          ],
+          "explanation": "果実香やモルトの甘味など、ビールが料理との組み合わせに持ち込む具体的な要素を問う。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 3,
+              "locator": "PDF表示ページ3・英語本文",
+              "section": "料理に対するビールの役割",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-004",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "主要成分どうしがどのように反応するかを検討する",
+            "鼻と口にどのような反応を引き起こす刺激かを検討する",
+            "支配的に感じる成分ほど注意して扱う",
+            "アロマグループの重要度を、知覚される強さに応じて考える"
+          ],
+          "correct": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "choiceReasons": [
+            "正答：p4はHow do the primary components of beer and food react with each other?と問いかける。",
+            "正答：p4はWhich impulses lead to which reactions in the nose and the mouth?とする。",
+            "正答：p5はthe more dominant the substance, the more attention should be payed to itとする。",
+            "正答：p17の項目4はImportance of a group according to intensityである。"
+          ],
+          "explanation": "成分比較の後に調べる相互作用、感覚への刺激、強さの評価を具体化した手順である。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 4,
+              "locator": "PDF表示ページ4・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            },
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 5,
+              "locator": "PDF表示ページ5・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            },
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 17,
+              "locator": "PDF表示ページ17・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "材料から生じる連想を認識しつつ、ペアリングではそれを前面に出しすぎない",
+            "双方に酸味がある場合は、料理側への海塩の追加を調和の手段として検討する",
+            "料理とビールの支配的なアロマグループを見つける",
+            "強度の低いアロマグループを使って組み合わせを微調整する"
+          ],
+          "correct": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "choiceReasons": [
+            "正答：p4はingredientsが引き起こすassociationsを重要としながら、food pairingではmore in the backgroundとする。",
+            "正答：p5はsourness is present on both sidesの場合にadding sea saltを挙げる。",
+            "正答：p17の項目2はDominant aroma group has to be foundである。",
+            "正答：p17の項目5はFine-tuning by using less intense groupsである。"
+          ],
+          "explanation": "組み合わせの設計を、連想の扱い、調和のための成分追加、香りの分析と微調整へ広げた例である。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 4,
+              "locator": "PDF表示ページ4・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            },
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 5,
+              "locator": "PDF表示ページ5・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            },
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 17,
+              "locator": "PDF表示ページ17・英語本文",
+              "section": "組み合わせを設計する手順",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-006",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "アルコールと酸の組み合わせについて、果実様のエステルの生成が説明される",
+            "アルコールと飽和脂肪酸は、資料ではクリーミーな甘味だけを生む組み合わせである",
+            "アルコールはアロマを運び、ボリューム感のある口当たりに寄与すると説明される",
+            "甘味と組み合わせると、アルコールによる口当たりは必ず薄くなる"
+          ],
+          "correct": [
+            0,
+            2
+          ],
+          "choiceReasons": [
+            "正答：p7はFruity esters develop with acidsと記載する。知覚変化が即座に必ず起きるという保証ではない。",
+            "誤答：p7はSeams metallic when combined with saturated fatty acidsとする。",
+            "正答：p7のeffect in the beerにtransports aromas / creates a voluminous mouthfeelとある。",
+            "誤答：p7はEnhances mouthfeel when combined with sweetnessとする。"
+          ],
+          "explanation": "酸との関係、飽和脂肪酸との知覚、アロマを運ぶ作用と口当たりを区別する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 7,
+              "locator": "PDF表示ページ7・英語本文",
+              "section": "アルコールと味の相互作用",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "酸味と塩がそろうと、資料ではアルコールの刺激をさらに強めるテキーラ効果になる",
+            "飽和脂肪酸との組み合わせでは、金属様の印象になる場合がある",
+            "アルコールと酸の関係で挙げられる香り成分は、果実様エステルではなくタンニンである",
+            "甘味を伴う組み合わせでは、アルコールがもたらす口当たりが強まるとされる"
+          ],
+          "correct": [
+            1,
+            3
+          ],
+          "choiceReasons": [
+            "誤答：p9のTequila-effectの説明はSourness and salt buffer alcoholであり、和らげる方向である。",
+            "正答：p7はsaturated fatty acidsとの組み合わせをmetallicと説明する。",
+            "誤答：p7の該当行はFruity esters develop with acidsであり、タンニンではない。",
+            "正答：p7はEnhances mouthfeel when combined with sweetnessとする。"
+          ],
+          "explanation": "塩と酸の緩和作用、飽和脂肪酸との金属様の印象、甘味と口当たりの関係を確認する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 7,
+              "locator": "PDF表示ページ7・英語本文",
+              "section": "アルコールと味の相互作用",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            },
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 9,
+              "locator": "PDF表示ページ9・英語本文",
+              "section": "アルコールと味の相互作用",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-007",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "脂質は苦味を覆う働きを持つと説明される",
+            "脂質は酸味を覆う働きを持つと説明される",
+            "資料では、クリームやミルクの動物性脂肪はさらさらした口当たりとして示される",
+            "資料では、不飽和脂肪酸の割合が高い油にクリーミーな口当たりを挙げる"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "choiceReasons": [
+            "正答：p8はFats over layer bitternessとする。",
+            "正答：p8はFats over layer sournessとする。",
+            "誤答：p8のAnimal fats (e.g. cream or milk)はSticky mouthfeelに結び付けられる。",
+            "正答：p8はOils (high proportion of unsaturated fatty acids)の後にcreamy mouthfeelと記載する。"
+          ],
+          "explanation": "脂質の働きを苦味・酸味への影響と、油脂の種類による口当たりの違いから確認する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 8,
+              "locator": "PDF表示ページ8・英語本文",
+              "section": "脂質の働き",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "脂質とスパイスは、刺激を伴う調和を生む組み合わせとして示される",
+            "脂質と酸は、金属様の印象につながる組み合わせとして示される",
+            "クリームやミルクの脂肪には、まとわりつくような口当たりが挙げられる",
+            "脂質とアルコールを組み合わせた際の印象は、資料では必ず塩味とされる"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "choiceReasons": [
+            "正答：p8はFats + spices = harmony with a thrillとする。",
+            "正答：p8はFats + acids = metallicとする。",
+            "正答：p8はAnimal fats (e.g. cream or milk) → Sticky mouthfeelとする。",
+            "誤答：p8の該当する記述はFats + alcohol = metallicである。"
+          ],
+          "explanation": "脂質の働きは一様ではなく、組み合わせる成分や油脂の種類によって説明が異なる。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 8,
+              "locator": "PDF表示ページ8・英語本文",
+              "section": "脂質の働き",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-009",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "酸味はカリウムによって和らげられると資料に記載される",
+            "酸味とフェノールは、資料ではクリーミーな口当たりだけを生む",
+            "酸味と塩は、アルコールの刺激を強める作用として説明される",
+            "酸味と甘味は、資料では互いに調和しない組み合わせとされる"
+          ],
+          "correct": [
+            0
+          ],
+          "choiceReasons": [
+            "正答：p9の英語本文にSourness can be buffered by potassiumとある。添加や摂取を勧める設問ではない。",
+            "誤答：p9はSour + phenols = metallicとする。",
+            "誤答：p9はSourness and salt buffer alcoholとする。",
+            "誤答：p9はSour + sweet = pleasantとする。"
+          ],
+          "explanation": "カリウムの記載と、フェノール・アルコール・甘味に関する相互作用を区別する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 9,
+              "locator": "PDF表示ページ9・英語本文",
+              "section": "酸味の相互作用",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "酸とタンパク質の組み合わせは、資料ではメイラード反応そのものとされる",
+            "酸味とフェノールは、金属様の印象につながる組み合わせとして示される",
+            "酸味と脂質の組み合わせは、資料では味蕾の洗浄作用として説明される",
+            "カリウムは酸味を強める方向の成分として挙げられる"
+          ],
+          "correct": [
+            1
+          ],
+          "choiceReasons": [
+            "誤答：p9はAcids denature proteinsとし、ここでの作用は変性である。",
+            "正答：p9はSour + phenols = metallicとする。",
+            "誤答：p9はSour + fat = metallicとする。",
+            "誤答：p9はSourness can be buffered by potassiumとし、緩和する方向を示す。"
+          ],
+          "explanation": "酸味とフェノールによる知覚、タンパク質の変性、脂質との組み合わせを整理する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 9,
+              "locator": "PDF表示ページ9・英語本文",
+              "section": "酸味の相互作用",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-013",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "フェノールと脂質は、金属様の印象として説明される",
+            "フェノールとタンパク質の組み合わせは、資料では果実様エステルの生成として説明される",
+            "フェノールどうしにクリームを加えると、資料では苦味の増強だけが起こる",
+            "フェノールと酸味の組み合わせを和らげる成分として、資料はアルコールを指定する"
+          ],
+          "correct": [
+            0
+          ],
+          "choiceReasons": [
+            "正答：p12はPhenols + fat = metallicとする。",
+            "誤答：p12の該当行はPhenols + protein = metallicである。",
+            "誤答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
+            "誤答：p12はPhenols + sourness can be buffered by saltとし、塩を挙げる。"
+          ],
+          "explanation": "ポリフェノールの相互作用には、脂質による金属様の印象と、クリームを含む別条件での調和の双方が示される。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 12,
+              "locator": "PDF表示ページ12・英語本文",
+              "section": "ポリフェノールとの組み合わせ",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "フェノールと酸味は、資料では甘味だけを生む組み合わせとされる",
+            "フェノールと非加熱タンパク質の組み合わせは、資料では変性ではなく炭酸生成とされる",
+            "フェノールどうしに脂質であるクリームを加えると、調和につながると説明される",
+            "フェノールと甘味は、資料では金属様の印象を生む組み合わせに分類される"
+          ],
+          "correct": [
+            2
+          ],
+          "choiceReasons": [
+            "誤答：p12はPhenols + sourness = metallicとする。",
+            "誤答：p12はPhenols + raw protein = denaturationとする。",
+            "正答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
+            "誤答：p12はPhenols + sweetness = buffer / harmonyとする。"
+          ],
+          "explanation": "二成分の組み合わせと、クリームを加える三成分の組み合わせを区別して読む。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 12,
+              "locator": "PDF表示ページ12・英語本文",
+              "section": "ポリフェノールとの組み合わせ",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-015",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "醸造の伝統に応じた特徴的な香りのグループを、分析の背景として考える",
+            "香りの強さに応じて、各グループの重要度を判断する",
+            "異なるアロマグループを組み合わせる試みも、課題として挙げられる",
+            "微調整には、最も強いアロマグループしか使えない"
+          ],
+          "correct": [
+            0,
+            1,
+            2
+          ],
+          "choiceReasons": [
+            "正答：p17の項目1はdifferent brewing traditionsに応じたdifferent characteristic aroma groupsを示す。",
+            "正答：p17の項目4はImportance of a group according to intensityである。",
+            "正答：p17の項目7はChallenge of combining different aroma groupsである。",
+            "誤答：p17の項目5はless intense groupsを使うFine-tuningを挙げる。"
+          ],
+          "explanation": "アロマの使い方を、醸造の伝統、知覚強度、異なるグループへの挑戦から確認する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 17,
+              "locator": "PDF表示ページ17・英語本文",
+              "section": "アロマグループの使い方",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "果実様の香りはfruity、花様の香りはfloweryとしてグループ分けできる",
+            "焙煎様・木質様・土様の香りは、図のroasted / woody / earthyのグループとして整理できる",
+            "図のvegetalは動物様の香りを分類するための名称である",
+            "Micro biologicは、図で微生物に関連する香りのグループとして扱われる"
+          ],
+          "correct": [
+            0,
+            1,
+            3
+          ],
+          "choiceReasons": [
+            "正答：p16の図はfruityとfloweryを別のアロマグループ名として示す。果実様と花様の香りを分類する際の英語名である。",
+            "正答：p16の図ではroasted / woody / earthyをひとまとまりのラベルとして示す。",
+            "誤答：p16のvegetalは植物・野菜様。動物様に対応する別のラベルはanimalである。",
+            "正答：p16の図にMicro biologicというグループ名がある。検出すれば必ず品質欠陥という意味ではない。"
+          ],
+          "explanation": "アロマグループを分析に使うため、具体的な香りと資料の分類名を対応させる。別セットでは強度・醸造伝統・組み合わせ方を問う。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 16,
+              "locator": "PDF表示ページ16・英語本文のアロマグループ図",
+              "section": "アロマグループの使い方",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questionId": "BP26-018",
+      "variants": [
+        {
+          "id": "alt-a",
+          "choices": [
+            "ローストした鶏肉の例には、オクトーバーフェストビールも含まれる",
+            "辛いソースの鶏肉の例には、セゾンとポーターが含まれる",
+            "資料のCoq au Vinの行では、ブラウンエールとアルトが指定される",
+            "資料の揚げた鶏肉の行では、スモークビールとインペリアルスタウトが指定される"
+          ],
+          "correct": [
+            0,
+            1
+          ],
+          "choiceReasons": [
+            "正答：p19のRoastedの行はPale Ale, Oktoberfestbier, Dunkler Bockである。",
+            "正答：p19のWith spicy sauceの行にSaisonとPorterがある。",
+            "誤答：p19ではBrown AleとAltはFriedの行。Coq au VinはDubbelとBiere de Gardeである。",
+            "誤答：p19ではSmoke beerとImperial StoutはWith spicy sauceの行である。"
+          ],
+          "explanation": "鶏肉の調理方法ごとに、資料が示す具体的なビール例を対応させる。他の組み合わせを一律に否定するものではない。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 19,
+              "locator": "PDF表示ページ19・英語本文",
+              "section": "鶏肉料理と調理方法",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        },
+        {
+          "id": "alt-b",
+          "choices": [
+            "資料のローストした鶏肉の行に、デュッベルが挙げられる",
+            "辛いソースの鶏肉の例には、スモークビールとインペリアルスタウトが含まれる",
+            "資料の揚げた鶏肉の行に、ビエール・ド・ギャルドが挙げられる",
+            "ローストした鶏肉の例には、デュンケルボックが含まれる"
+          ],
+          "correct": [
+            1,
+            3
+          ],
+          "choiceReasons": [
+            "誤答：p19ではDubbelはCoq au Vinの行であり、Roastedの行にはない。",
+            "正答：p19のWith spicy sauceの行にSmoke beerとImperial Stoutがある。",
+            "誤答：p19ではBiere de GardeはCoq au Vinの行であり、Friedの行にはない。",
+            "正答：p19のRoastedの行にDunkler Bockがある。"
+          ],
+          "explanation": "同じ鶏肉でもロースト、揚げ物、辛いソース、赤ワイン煮で例示されるビールを区別する。",
+          "sources": [
+            {
+              "filename": "0830ビアペアリング2026.pdf",
+              "page": 19,
+              "locator": "PDF表示ページ19・英語本文",
+              "section": "鶏肉料理と調理方法",
+              "language": "en",
+              "status": "2026年講義資料の英語原文と選択肢ごとに照合済み。講義上の相互作用・組み合わせ例であり、条件や個人差により知覚は変わる。公式試験問題ではない。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

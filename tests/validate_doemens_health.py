@@ -52,13 +52,18 @@ assert 'µg/bottle' in added[4]['choiceReasons'][0]
 assert all(value in added[4]['choiceReasons'][0] for value in ['33.6', '131.8', '92.1', '58.4'])
 assert all(value in added[8]['choiceReasons'][0] for value in ['30%', '28%', '23%', '21%'])
 assert '臨床試験' in added[10]['choiceReasons'][3]
-# UI code is unchanged except cache version. No auth/storage/scoring/image changes.
-app = (ROOT / 'app.js').read_bytes()
-base_app = subprocess.check_output(['git', 'show', f'{BASE}:app.js'], cwd=ROOT)
-assert app == base_app.replace(b'APP_VERSION = "v48"', b'APP_VERSION = "v49"')
-html = (ROOT / 'index.html').read_bytes()
-base_html = subprocess.check_output(['git', 'show', f'{BASE}:index.html'], cwd=ROOT)
-assert html == base_html.replace(b'v48', b'v49').replace(b'?v=48', b'?v=49').replace(b'1068', b'1080').replace(b'1018', b'1030')
+# Guard the health supplement's protected behavior without freezing unrelated UI features.
+app = (ROOT / 'app.js').read_text()
+base_app = subprocess.check_output(['git', 'show', f'{BASE}:app.js'], cwd=ROOT).decode().replace('\r\n', '\n')
+for constant in ['STORAGE', 'ACCESS_KEY', 'ACCESS_PASSWORD_HASH']:
+    pattern = rf'^const {constant} = .*;$'
+    assert re.search(pattern, app, re.M).group(0) == re.search(pattern, base_app, re.M).group(0), constant
+for function in ['sha256', 'unlockAccess', 'startAccessControl', 'scoreQuestion']:
+    pattern = rf'^(?:async )?function {function}\([^\n]*\) \{{.*?^\}}'
+    assert re.search(pattern, app, re.M | re.S).group(0) == re.search(pattern, base_app, re.M | re.S).group(0), function
+html = (ROOT / 'index.html').read_text()
+assert '全1080問を収録。' in html and '1030' in html
+assert '<script src="app.js?v=50" defer></script>' in html
 for name in ['styles.css', 'blind-quiz.js', 'blind-tasting.json', 'style-quiz.json', 'style-links.js', 'beer-photos.js', 'beer-photos.json', 'beer-illustrations.json', 'beer-image-styles.json']:
     assert (ROOT / name).read_bytes() == subprocess.check_output(['git', 'show', f'{BASE}:{name}'], cwd=ROOT), name
 # Repeated imports do not duplicate IDs, reorder old questions or alter metadata.
@@ -68,4 +73,4 @@ try:
         assert path.read_bytes() == before, script
 finally:
     path.write_bytes(before)
-print('OK: 12 reviewed questions, four verified logo pages, 1080/1030 counts, balanced answers, immutable 1068-question baseline, unchanged UI/auth/images and repeat-safe imports')
+print('OK: 12 reviewed questions, four verified logo pages, 1080/1030 counts, balanced answers, immutable 1068-question baseline, protected auth/scoring/images and repeat-safe imports')

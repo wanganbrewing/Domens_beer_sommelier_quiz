@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v49";
+const APP_VERSION = "v50";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -18,6 +18,10 @@ const questionHtml = (value) => escapeHtml(value).replace(
 
 let data;
 let questionsById = new Map();
+let variantCatalog = new Map();
+const VARIANT_STORAGE = "bierkompass-choice-variants-v1";
+let variantUsage = loadJson(VARIANT_STORAGE, {});
+if (!variantUsage || typeof variantUsage !== "object" || Array.isArray(variantUsage)) variantUsage = {};
 let history = loadJson(STORAGE.history, {});
 let session = null;
 let mode = "study";
@@ -72,7 +76,8 @@ function shuffle(values) {
   return result;
 }
 function sameSet(a, b) { return a.length === b.length && [...a].sort((x, y) => x - y).every((value, index) => value === [...b].sort((x, y) => x - y)[index]); }
-function currentQuestion() { return questionsById.get(session.questionIds[session.current]); }
+function sessionQuestion(id) { return session?.questionSnapshots?.[id] || questionsById.get(id); }
+function currentQuestion() { return sessionQuestion(session.questionIds[session.current]); }
 function selectedValues(id = currentQuestion().id) { return session.answers[id] || []; }
 function categoryName(id) { return data.metadata.categories.find((category) => category.id === id)?.name || id; }
 
@@ -83,6 +88,17 @@ async function init() {
     data = await response.json();
     await window.BierKompassPhotos?.ready;
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
+    if (window.BierKompassChoiceVariants) {
+      try {
+        const variantsResponse = await fetch("choice-variants.json?v=50", { cache: "no-store" });
+        if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
+        variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
+      } catch (error) {
+        $("#variantPrototypeStatus").textContent = "別セットを読み込めなかったため、通常の選択肢で学習できます。";
+      }
+      $("#variantPrototypeButton").disabled = !variantCatalog.size;
+      $("#variantPrototypeCount").textContent = String(variantCatalog.size);
+    }
     renderFilters();
     restoreSettings();
     bindEvents();
@@ -103,6 +119,15 @@ function restoreSavedSession(saved) {
   if (!saved || saved.completed || !["study", "mock", "exam"].includes(saved.mode)
       || !Array.isArray(saved.questionIds) || !saved.questionIds.length
       || !saved.questionIds.every((id) => questionsById.has(id))) return null;
+  if (saved.questionSnapshots) {
+    const engine = window.BierKompassChoiceVariants;
+    if (saved.choiceVariantSchema !== 1 || !engine || !saved.questionIds.every((id) => {
+      const q = saved.questionSnapshots[id];
+      const order = saved.optionOrders?.[id];
+      return q?.id === id && engine.validQuestion(q) && Array.isArray(order)
+        && order.length === 4 && new Set(order).size === 4 && order.every((i) => Number.isInteger(i) && i >= 0 && i < 4);
+    })) return null;
+  }
   if (saved.mode !== "exam") return saved;
   return { ...saved, mode: "study", durationSeconds: null, restoredFromRetiredExam: true };
 }
@@ -119,6 +144,7 @@ function bindEvents() {
   $("#historyFilter").addEventListener("change", updatePoolCount);
   $("#toggleCategories").addEventListener("click", toggleCategories);
   $("#startButton").addEventListener("click", startSession);
+  $("#variantPrototypeButton")?.addEventListener("click", startVariantPrototype);
   $("#homeLink").addEventListener("click", (event) => { event.preventDefault(); requestExit(); });
   $("#backHomeButton").addEventListener("click", requestExit);
   $("#resultHomeButton").addEventListener("click", goHome);
@@ -215,11 +241,34 @@ function startSession() {
   if (!pool.length || (isTimedMode(mode) && pool.length < requestedCount)) return;
   const count = Math.min(requestedCount, pool.length);
   const selectedQuestions = mode === "mock" ? mockExamSample(pool, count) : studyQuestionSample(pool, count);
+  createSession(selectedQuestions, mode);
+}
+
+function createSession(selectedQuestions, nextMode, prototype = false, previous = null) {
+  const engine = window.BierKompassChoiceVariants;
   const questionIds = selectedQuestions.map((question) => question.id);
-  const optionOrders = Object.fromEntries(questionIds.map((id) => [id, shuffle(questionsById.get(id).choices.map((_, index) => index))]));
-  session = { mode, questionIds, optionOrders, answers: {}, answered: {}, checked: {}, current: 0, startedAt: Date.now(), durationSeconds: mode === "mock" ? MOCK_EXAM.minutes * 60 : null, completed: false };
+  const questionSnapshots = engine ? Object.fromEntries(selectedQuestions.map((base) => {
+    const previousId = previous?.questionSnapshots?.[base.id]?.choiceVariantId
+      || (previous?.questionIds?.includes(base.id) ? "base" : null)
+      || variantUsage[base.id] || (history[base.id]?.attempts ? "base" : null);
+    const q = engine.chooseQuestion(base, variantCatalog, previousId);
+    if (q.choiceVariantId) variantUsage[base.id] = q.choiceVariantId;
+    return [base.id, q];
+  })) : null;
+  const optionOrders = Object.fromEntries(questionIds.map((id) => [id, shuffle([0, 1, 2, 3])]));
+  session = { mode: nextMode, questionIds, optionOrders, answers: {}, answered: {}, checked: {}, current: 0,
+    startedAt: Date.now(), durationSeconds: nextMode === "mock" ? MOCK_EXAM.minutes * 60 : null, completed: false };
+  if (questionSnapshots) Object.assign(session, { choiceVariantSchema: 1, questionSnapshots });
+  if (prototype) session.choiceVariantPrototype = true;
+  if (engine) saveJson(VARIANT_STORAGE, variantUsage);
   persistSession();
   showSession();
+}
+
+function startVariantPrototype() {
+  if (!variantCatalog.size) return;
+  setMode("study");
+  createSession([...variantCatalog.keys()].map((id) => questionsById.get(id)), "study", true);
 }
 
 // Allocate evenly across 1–4 correct choices, redistributing only exhausted groups.
@@ -388,7 +437,9 @@ function renderNavigator() {
 }
 
 function checkStudyAnswer() {
+  if (!session || session.completed) return;
   const question = currentQuestion();
+  if (session.checked[question.id]) return;
   if (question.type === "single" && !selectedValues().length) return;
   session.answered[question.id] = true;
   session.checked[question.id] = true;
@@ -434,6 +485,12 @@ function recordHistory(question, correct) {
   item.incorrectCount += correct ? 0 : 1;
   item.lastAnsweredAt = new Date().toISOString();
   item.mastered = item.mastered || correct;
+  if (question.choiceVariantId) {
+    item.variants ||= {};
+    const record = item.variants[question.choiceVariantId] || { attempts: 0, correctCount: 0 };
+    record.attempts += 1; record.correctCount += correct ? 1 : 0;
+    item.variants[question.choiceVariantId] = record;
+  }
   history[question.id] = item;
   saveJson(STORAGE.history, history);
   updateStats();
@@ -468,7 +525,7 @@ function submitExam(reason = "submitted") {
   const categories = {};
   const review = [];
   for (const id of session.questionIds) {
-    const question = questionsById.get(id); const selected = session.answers[id] || []; const answered = Boolean(session.answered[id]);
+    const question = sessionQuestion(id); const selected = session.answers[id] || []; const answered = Boolean(session.answered[id]);
     const points = scoreQuestion(question, selected, answered); const max = Math.max(1, question.correct.length); const exact = answered && sameSet(selected, question.correct);
     earned += points; maximum += max;
     categories[question.category] ||= { earned: 0, maximum: 0, count: 0 };
@@ -508,7 +565,7 @@ function renderReview() {
   $("#reviewCount").textContent = `${reviewItems.length}問を表示`;
   $("#reviewList").innerHTML = reviewItems.length ? reviewItems.map((item) => {
     const index = item.index;
-    const question = questionsById.get(item.id);
+    const question = sessionQuestion(item.id);
     const order = session.optionOrders[item.id];
     const answers = question.correct.length
       ? order.map((originalIndex, displayIndex) => ({ originalIndex, displayIndex }))
@@ -527,12 +584,18 @@ function renderReview() {
 
 function restartSession() {
   if (!session) return;
-  session.answers = {}; session.answered = {}; session.checked = {}; session.current = 0; session.startedAt = Date.now(); session.completed = false; delete session.result; delete session.finishedAt;
-  persistSession(); showSession();
+  if (window.BierKompassChoiceVariants) {
+    const previous = session;
+    createSession(previous.questionIds.map((id) => questionsById.get(id)), previous.mode,
+      Boolean(previous.choiceVariantPrototype), previous);
+  } else {
+    session.answers = {}; session.answered = {}; session.checked = {}; session.current = 0; session.startedAt = Date.now(); session.completed = false; delete session.result; delete session.finishedAt;
+    persistSession(); showSession();
+  }
 }
 
-function requestRestart() { if (!session || session.completed || expireIfNeeded()) return; confirmAction("最初からやり直しますか？", "現在の選択・回答をすべて消去し、同じ問題を1問目から開始します。", restartSession); }
-function requestHistoryReset() { confirmAction("全学習履歴を削除しますか？", "正解済み・不正解・回答回数・最終回答日時を削除します。この操作は元に戻せません。", () => { history = {}; localStorage.removeItem(STORAGE.history); updateHome(); }); }
+function requestRestart() { if (!session || session.completed || expireIfNeeded()) return; confirmAction("最初からやり直しますか？", "現在の選択・回答を消去し、同じ問題を1問目から開始します。別セットがある問題では、選択肢の内容も変わります。", restartSession); }
+function requestHistoryReset() { confirmAction("全学習履歴を削除しますか？", "正解済み・不正解・回答回数・最終回答日時を削除します。この操作は元に戻せません。", () => { history = {}; variantUsage = {}; localStorage.removeItem(STORAGE.history); localStorage.removeItem(VARIANT_STORAGE); updateHome(); }); }
 function requestExit() { if (!session || session.completed) return goHome(); if (expireIfNeeded()) return; confirmAction("セッションを終了しますか？", "現在のセッションの回答状態を破棄して、条件選択へ戻ります。", goHome); }
 function confirmAction(title, text, action) { $("#dialogTitle").textContent = title; $("#dialogText").textContent = text; pendingConfirm = action; $("#confirmDialog").showModal(); }
 
