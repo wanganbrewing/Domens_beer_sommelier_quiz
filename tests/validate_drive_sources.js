@@ -12,11 +12,12 @@ async function main() {
   assert.ok(notice,"home must show the planned shared-image deletion notice");
   assert.match(notice,/共有教材画像は受講者限定です。/);
   assert.match(notice,/2026年11月24日に削除予定です。問題と学習履歴は削除対象ではありません。/);
-  assert.match(notice,/端末内のご自身のPDFも削除されません。/);
+  assert.doesNotMatch(notice,/端末|PDF/);
   assert.doesNotMatch(notice,/自動|日本語も全対応/);
   assert.equal((pageHtml.match(/id="sourceDeletionNotice"/g)||[]).length,1);
   assert.ok(pageHtml.indexOf('id="homeView"') < pageHtml.indexOf('id="sourceDeletionNotice"'));
-  assert.ok(pageHtml.indexOf('id="sourceDeletionNotice"') < pageHtml.indexOf('class="dashboard"'));
+  assert.ok(pageHtml.indexOf('class="stats"') < pageHtml.indexOf('id="sourceDeletionNotice"'));
+  assert.ok(pageHtml.indexOf('id="sourceDeletionNotice"') < pageHtml.indexOf('id="blindQuizView"'));
   assert.doesNotMatch(fs.readFileSync(require("node:path").join(__dirname,"../source-viewer.js"),"utf8"),/2026年11月24日/,
     "the full notice is not repeated beneath each answer");
   const catalog = await source.createCatalog(require("../source-links.json"), bank.questions, variants, webcrypto);
@@ -31,6 +32,7 @@ async function main() {
   const manifest = {version:1,linkSource:"google_drive.get_file_metadata.webViewLink",passages:[entry]};
   const livePassages = await source.createPassageCatalog(require("../source-passages.json"),catalog,webcrypto);
   assert.ok(!JSON.stringify(require("../source-passages.json")).includes("FAKE_TEST_ONLY"),"test IDs must not ship in live mapping");
+  assert.equal(livePassages.size,273,"all protected images remain mapped");
   catalog.passages = livePassages;
   catalog.driveStatus = livePassages.size ? "available" : "unconfigured";
   const canonical = new Map(bank.questions.map(q => [JSON.stringify([q.id,"base"]),q]));
@@ -42,8 +44,7 @@ async function main() {
     const expected = refs.filter(r => livePassages.has(r.passageKey));
     assert.equal((rendered.match(/<a class="source-link" /g)||[]).length,expected.length,
       `each live choice renders exactly its own Drive links: ${groupKey}/${index}`);
-    assert.equal((rendered.match(/<button type="button" class="source-link source-local-link"/g)||[]).length,refs.length,
-      "every reviewed reference retains its local PDF fallback");
+    assert.doesNotMatch(rendered, /<button|<input|source-local-link|端末/, "references contain no local PDF controls");
     assert.equal((rendered.match(/class="source-drive-status"/g)||[]).length,refs.length-expected.length,
       "only missing image mappings are described as preparing");
     for (const liveRef of expected)
@@ -51,20 +52,21 @@ async function main() {
     if (!refs.length) assert.equal(rendered,"","unmapped choices do not imply evidence");
     liveLinkCount += expected.length;
   }
+  assert.equal(liveLinkCount,459,"all existing reference links remain mapped");
   console.log(`PASS shipped mapping renders ${liveLinkCount} protected Drive links across ${catalog.groups.size} question sets (metadata-only test)`);
   const emptyManifest = {version:1,linkSource:manifest.linkSource,passages:[]};
   catalog.passages = await source.createPassageCatalog(manifest,catalog,webcrypto); catalog.driveStatus="available";
   let html = source.renderChoiceLinks(catalog,question,0);
   assert.match(html,/target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"/);
   assert.match(html,/href="https:\/\/drive.google.com\/file\/d\/FAKE_TEST_ONLY_123\/view\?usp=drivesdk"/);
-  assert.match(html,/端末のPDFで確認/); assert.doesNotMatch(html,/<img|<iframe|準備中/);
+  assert.doesNotMatch(html,/端末のPDFで確認|<button|<input/); assert.doesNotMatch(html,/<img|<iframe|準備中/);
   const descriptor = catalog.documents.get(ref.documentId);
   const originalFilename = descriptor.filename;
   assert.ok(html.includes(originalFilename), "source filename is visible beside the label");
   descriptor.filename = '長い日本語資料名<&>"\'試験資料.pdf';
   const escaped = source.renderChoiceLinks(catalog,question,0);
-  assert.equal((escaped.match(/長い日本語資料名&lt;&amp;&gt;&quot;&#39;試験資料.pdf/g)||[]).length,2,
-    "Drive and local PDF links both show the HTML-escaped full filename");
+  assert.equal((escaped.match(/長い日本語資料名&lt;&amp;&gt;&quot;&#39;試験資料.pdf/g)||[]).length,1,
+    "Drive link shows the HTML-escaped full filename");
   assert.doesNotMatch(escaped, /長い日本語資料名<&>/);
   descriptor.filename = originalFilename;
   const old=clone(question); old.explanation+="old snapshot";
@@ -113,7 +115,7 @@ async function main() {
   for(const fetcher of [async()=>{throw Error("offline");},async()=>({ok:false}),async()=>({ok:true,json:async()=>{throw Error("bad JSON");}}),async()=>({ok:true,json:async()=>({...manifest,version:9})})]) {
     assert.equal(await source.loadPassages(catalog,"test",fetcher,webcrypto),"unavailable");
     assert.equal(catalog.passages.size,0);html=source.renderChoiceLinks(catalog,question,0);
-    assert.match(html,/共有画像を読み込めません/);assert.match(html,/端末のPDFで確認/);assert.doesNotMatch(html,/href=/);
+    assert.match(html,/共有画像を読み込めません/);assert.doesNotMatch(html,/端末のPDFで確認|<button|<input/);assert.doesNotMatch(html,/href=/);
   }
   assert.equal(await source.loadPassages(catalog,"test",async()=>({ok:true,json:async()=>emptyManifest}),webcrypto),"unconfigured");
   assert.match(source.renderChoiceLinks(catalog,question,0),/準備中/);

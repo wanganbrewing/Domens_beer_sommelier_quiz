@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v55";
+const APP_VERSION = "v56";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -95,14 +95,12 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=55", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=56", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
-        $("#variantPrototypeStatus").textContent = "別セットを読み込めなかったため、通常の選択肢で学習できます。";
+        console.warn("別セットを読み込めなかったため、通常の選択肢で学習できます。", error.message);
       }
-      $("#variantPrototypeButton").disabled = !variantCatalog.size;
-      $("#variantPrototypeCount").textContent = String(variantCatalog.size);
     }
     await window.BierKompassSources?.init({questions: data.questions, variants: variantCatalog, version: APP_VERSION});
     renderFilters();
@@ -151,7 +149,6 @@ function bindEvents() {
   $("#historyFilter").addEventListener("change", updatePoolCount);
   $("#toggleCategories").addEventListener("click", toggleCategories);
   $("#startButton").addEventListener("click", startSession);
-  $("#variantPrototypeButton")?.addEventListener("click", startVariantPrototype);
   $("#homeLink").addEventListener("click", (event) => { event.preventDefault(); requestExit(); });
   $("#backHomeButton").addEventListener("click", requestExit);
   $("#resultHomeButton").addEventListener("click", goHome);

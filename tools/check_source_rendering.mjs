@@ -11,13 +11,36 @@ const canvas=require(process.env.PDF_CANVAS_MODULE || "@napi-rs/canvas");
 for (const key of ["DOMMatrix","ImageData","Path2D"]) globalThis[key] ||= canvas[key];
 const pdfjs=await import(pathToFileURL(path.join(root,"vendor/pdfjs/pdf.min.mjs")));
 pdfjs.GlobalWorkerOptions.workerSrc=pathToFileURL(path.join(root,"vendor/pdfjs/pdf.worker.min.mjs")).href;
-const api=require(path.join(root,"source-viewer.js"));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,"source-links.json")));
 const paths=JSON.parse(fs.readFileSync(process.argv[2]));
 const output=process.argv[3];
 if(output) fs.mkdirSync(output,{recursive:true});
+function createResourceFactory(baseURL, fetcher = globalThis.fetch.bind(globalThis)) {
+  let resources;
+  const wasm = new Set(["jbig2.wasm", "openjpeg.wasm", "qcms_bg.wasm"]);
+  return class LocalBinaryDataFactory {
+    async fetch({kind, filename}) {
+      if (kind === "wasmUrl" && wasm.has(filename)) {
+        const response = await fetcher(new URL(`wasm/${filename}`, baseURL));
+        if (!response.ok) throw new Error("PDF描画部品を読み込めませんでした。");
+        return new Uint8Array(await response.arrayBuffer());
+      }
+      const folder = {cMapUrl: "cmaps", standardFontDataUrl: "standard_fonts"}[kind];
+      if (!folder || typeof filename !== "string") throw new Error("未対応のPDF描画部品です。");
+      if (!resources) resources = Promise.all([fetcher(new URL("resources.json", baseURL)), fetcher(new URL("resources.bin", baseURL))]).then(async ([index, bytes]) => {
+        if (!index.ok || !bytes.ok) throw new Error("PDFの文字データを読み込めませんでした。");
+        return [await index.json(), await bytes.arrayBuffer()];
+      }).catch(error => { resources = null; throw error; });
+      const [index, buffer] = await resources;
+      const entry = index[`${folder}/${filename}`];
+      if (!Array.isArray(entry) || entry.length !== 2) throw new Error("未対応のPDF文字データです。");
+      return new Uint8Array(buffer.slice(entry[0], entry[0] + entry[1]));
+    }
+  };
+}
+
 const base=pathToFileURL(path.join(root,"vendor/pdfjs/") + path.sep);
-const Factory=api.createResourceFactory(base,async url=>{
+const Factory=createResourceFactory(base,async url=>{
   const location=fileURLToPath(url);
   if(!location.startsWith(fileURLToPath(base))) throw new Error("Unexpected asset path");
   const data=fs.readFileSync(location);
@@ -37,7 +60,9 @@ for(const descriptor of manifest.documents){
 let count=0;
 for(const {descriptor,pages} of byHash.values()){
   const raw=fs.readFileSync(paths[descriptor.id]);
-  const bytes=await api.verifyFile({size:raw.length,arrayBuffer:async()=>raw.buffer.slice(raw.byteOffset,raw.byteOffset+raw.byteLength)},descriptor,crypto.webcrypto);
+  if (!raw.length || raw.length > 100*1024*1024) throw new Error("Invalid source PDF size");
+  if (crypto.createHash("sha256").update(raw).digest("hex") !== descriptor.sha256) throw new Error(`Source PDF does not match: ${descriptor.id}`);
+  const bytes=new Uint8Array(raw);
   const task=pdfjs.getDocument({data:bytes.slice(),CanvasFactory,BinaryDataFactory:Factory,useWorkerFetch:false,
     cMapUrl: new URL("cmaps/",base).href,standardFontDataUrl:new URL("standard_fonts/",base).href,wasmUrl:new URL("wasm/",base).href,
     cMapPacked:true,isEvalSupported:false,enableXfa:false,disableFontFace:true,useSystemFonts:false,stopAtErrors:true});

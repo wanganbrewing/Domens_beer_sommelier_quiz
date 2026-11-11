@@ -15,7 +15,7 @@ const version = app.match(/const APP_VERSION = "v(\d+)";/)[1];
 assert.ok(html.includes(`choice-variants.js?v=${version}`));
 assert.ok(app.includes(`choice-variants.json?v=${version}`));
 assert.ok(html.indexOf("choice-variants.js?") < html.indexOf("app.js?"));
-assert.ok(html.includes('8問対応') && html.includes('それ以外の問題は従来どおりです。'));
+assert.ok(!html.includes('variantPrototypeButton'), 'the dedicated eight-question promo was removed; catalog remains active');
 assert.doesNotMatch(html, /LOCAL PROTOTYPE|未公開/);
 const allNew = [...catalog.values()].flatMap((sets) => sets.slice(1));
 assert.equal(allNew.length, 16);

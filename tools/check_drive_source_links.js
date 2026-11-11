@@ -17,6 +17,6 @@ async function main() {
   const covered=refs.filter(r=>passages.has(r.passageKey)).length;
   console.log(`Valid metadata: ${passages.size}/${keys.size} unique images; ${covered}/${refs.length} reference links.`);
   console.log("This check does not verify Drive existence, image bytes, permission ACLs, or connector readback provenance. Verify those separately before deployment.");
-  if(passages.size<keys.size){console.log("NOT READY: Drive image mappings are incomplete; local PDF fallback remains available.");if(strict)process.exitCode=1;}
+  if(passages.size<keys.size){console.log("NOT READY: Drive image mappings are incomplete; unmapped image links remain unavailable.");if(strict)process.exitCode=1;}
 }
 main().catch(e=>{console.error(e.message);process.exitCode=1;});
