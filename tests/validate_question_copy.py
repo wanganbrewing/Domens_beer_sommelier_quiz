@@ -13,8 +13,9 @@ data = json.loads(before)
 baseline = json.loads(subprocess.check_output(
     ['git', 'show', '64c0645edfe5546330994ed34c5def89c50772eb:questions.json'], cwd=ROOT))
 
-assert len(data['questions']) == len(baseline['questions']) == 1068
-assert sum(q.get('active', True) for q in data['questions']) == 1018
+assert len(baseline['questions']) == 1068
+assert len(data['questions']) == 1068 + data['metadata']['healthSupplement']['questionCount']
+assert sum(q.get('active', True) for q in data['questions']) == 1018 + data['metadata']['healthSupplement']['questionCount']
 assert sum(q['question'].startswith(PREFIX) for q in baseline['questions']) == 68
 assert sum(q['explanation'].startswith(INTRO) for q in baseline['questions']) == 39
 for current, old in zip(data['questions'], baseline['questions']):
@@ -27,7 +28,7 @@ for current, old in zip(data['questions'], baseline['questions']):
 
 assert next(c for c in data['metadata']['categories'] if c['id'] == 'pairing')['name'] == 'フードペアリング'
 assert '英語講義資料から作成' not in (ROOT / 'index.html').read_text()
-assert '全1068問を収録。' in (ROOT / 'index.html').read_text()
+assert f"全{data['metadata']['questionCount']}問を収録。" in (ROOT / 'index.html').read_text()
 
 # Both documented regeneration steps must preserve the questions and existing metadata.
 try:

@@ -3,6 +3,14 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## Doemensロゴ付き健康資料の追加（v49）
+
+- 添付「1005ビールと健康」の右下Doemensロゴ付き4ページ（63・79・84・92）の英語図表から、未収録の12問を追加しました。重複添付は同一ファイルと確認し、1冊として扱っています。
+- 全1080問／出題対象1030問。追加分は各正答数3問、補強・周辺知識（C）です。図表の単位、葉酸・ミネラル、ホップの民間利用を扱います。
+- 古い資料の数値・民間療法としての注意を各問に表示します。飲酒の健康効果や治療効果として断定しません。作成年・改訂版は未確認です。
+- 既存1068問、学習履歴、進行中の模試、画像、アクセス画面を維持します。
+- [対象ページ・重複照合・採用しない断定](docs/doemens-health-coverage.md)
+
 ## ホームを簡潔に整理（v48）
 
 - 解答後の各選択肢に「✓ 正解／✕ 不正解」と「あなたの選択／未選択」を表示。選択した誤答の強調色も修正し、色だけに頼らず判別できるようにしました。回答前には正解表示を出しません。
@@ -93,6 +101,7 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 ```sh
 python tests/validate_questions.py
 python tests/validate_english_supplement.py
+python tests/validate_doemens_health.py
 python tests/validate_question_copy.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
@@ -100,9 +109,10 @@ node tests/validate_style_sanitizer.js
 node tests/validate_mock_exam.js
 node tests/validate_beer_images.js
 node tests/validate_home_cleanup.js
+node tests/validate_health_feedback.js
 ```
 
-問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用します。
+問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
 
 ## 保存と閲覧制限
 

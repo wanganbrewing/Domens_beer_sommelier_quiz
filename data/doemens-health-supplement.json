@@ -1,0 +1,428 @@
+[
+  {
+    "id": "DH-001",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "アルコール消費量とBMIを比較した図の、横軸と縦軸の組み合わせはどれですか。",
+    "choices": [
+      "横軸：1人1日当たりのアルコール消費量（g）、縦軸：BMI",
+      "横軸：ビールの容量（mL）、縦軸：体脂肪率（%）",
+      "横軸：アルコール度数（%）、縦軸：体重（kg）",
+      "横軸：飲酒年数、縦軸：腹囲（cm）"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "図の単位を取り違えないことが要点。gはアルコールの質量であり、ビールの容量ではない。BMIとの比較図だけで、飲酒が体重変化を引き起こしたとは判断できない。",
+    "choiceReasons": [
+      "正答：横軸は Alcohol consumption in grams per person per day、縦軸は Body Mass Index。",
+      "誤答：横軸は飲料容量ではなくアルコールの質量。BMIは体脂肪率ではない。",
+      "誤答：横軸は度数ではなく1日のアルコール消費量、縦軸はBMI。",
+      "誤答：この図は飲酒年数や腹囲を示していない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 63,
+        "locator": "PDF表示ページ63・右下Doemensロゴ付き英語図表",
+        "section": "Alcohol consumption and Body Mass Index",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-002",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "アルコール消費量別のBMIの図から読み取れる記述を選んでください。",
+    "choices": [
+      "21〜40g/日の区分では、3系列の棒が同じ高さになっている",
+      "図中の各系列では、80g/日を超える区分の棒が最も高い",
+      "各系列の棒は、1〜20g/日から21〜40g/日にかけて高くなる",
+      "21〜40g/日の区分では、ビールの棒だけがほかの2系列より高い"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "講義図に描かれた区分間の比較を問う。調査方法や交絡要因はこのページで確認できず、適量の設定や因果関係の証明には使えない。",
+    "choiceReasons": [
+      "正答：21〜40g/日の3本は、いずれもBMI約26.5の高さで描かれる。",
+      "正答：alcohol、Beer、Wineの各系列で、>80gの棒が図中の他区分より高い。",
+      "誤答：1〜20g/日から21〜40g/日へは、alcoholとWineの棒が低くなり、Beerは同じ高さ。",
+      "誤答：この区分では3系列とも同じ高さである。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 63,
+        "locator": "PDF表示ページ63・右下Doemensロゴ付き英語図表",
+        "section": "BMI graph: displayed groups",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-003",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "食品とビールの葉酸含有量を示す表の、単位と基準について正しいものを選んでください。",
+    "choices": [
+      "食品表の含有量は、記載された1回分（serving）当たりのµgで示される",
+      "飲料表の含有量は、1本当たりのµgで示される",
+      "飲料表の割合は、400µgを100%とする基準で計算されている",
+      "食品表も飲料表も、すべて100mL当たりの値である"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "mcgとµgはいずれもマイクログラム。同じ単位でも分母が違う値は、そのまま濃度比較できない。400µgはこの資料の計算基準であり、現在の日本の全員に共通する推奨量を示すものではない。",
+    "choiceReasons": [
+      "正答：食品表の見出しは mcg per serving。食品ごとに量や調理条件が添えられる。",
+      "正答：飲料表の見出しは Folate (µg/bottle)。",
+      "正答：割合の見出しは % of RDA (400µg)。この表で用いた計算基準を示す。",
+      "誤答：食品は1回分（serving）、飲料は1本当たりで、100mL当たりに統一されていない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 79,
+        "locator": "PDF表示ページ79・右下Doemensロゴ付き英語図表",
+        "section": "Folic Acid Content in Food and Beer: units",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-004",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "葉酸を多く含む食品の表に、例として挙げられているものを選んでください。",
+    "choices": [
+      "牛レバー",
+      "ホウレンソウ",
+      "ササゲ（ブラックアイドピー）",
+      "アスパラガス"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "表は食品ごとに1回分（serving）と調理状態を示している。ここでは掲載された食品例を確認し、異なる1回分（serving）の数値を100g当たりの順位と取り違えない。",
+    "choiceReasons": [
+      "正答：Beef liver, braised が掲載されている。",
+      "正答：Spinach は加熱したものと生のものが掲載されている。",
+      "正答：Black-eyed peas (cowpeas), boiled が掲載されている。",
+      "正答：Asparagus, boiled が掲載されている。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 79,
+        "locator": "PDF表示ページ79・右下Doemensロゴ付き英語図表",
+        "section": "High Folate/Folic Acid Food Sources",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-005",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "飲料の葉酸含有量表では、Pale aleの行に異なる数値が並んでいます。この表の読み方として適切なのはどれですか。",
+    "choices": [
+      "同じスタイル名でも、表に掲載された試料の1本当たりの葉酸量は異なる",
+      "Pale aleなら、銘柄や容量に関係なく同じ葉酸量になる",
+      "色が淡いビールほど、例外なく葉酸量が少なくなる",
+      "葉酸量から、そのビールのアルコール度数を一意に計算できる"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "数値は掲載試料の例であり、スタイル全体を代表する固定値ではない。瓶の容量や試料条件が揃っているとも、このページだけでは確認できない。",
+    "choiceReasons": [
+      "正答：Pale aleには33.6、131.8、92.1、58.4µg/bottleという複数の値が掲載される。",
+      "誤答：同じPale ale表記でも値は一致せず、全製品共通の固定値にはできない。",
+      "誤答：この表は色の測定値や、色と葉酸量の一定の関係を示していない。",
+      "誤答：葉酸量とアルコール度数を換算する関係は、この表にない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 79,
+        "locator": "PDF表示ページ79・右下Doemensロゴ付き英語図表",
+        "section": "Folate in Beer: variation among samples",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-006",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "葉酸含有量の飲料表に掲載された値について、正しいものを選んでください。",
+    "choices": [
+      "Alcohol-free beerの行にも、葉酸の値が記載されている",
+      "VodkaとWhiskyの行は、いずれも0.0µg/bottleと記載されている",
+      "Alcohol-free beerの行だけは、含有量の単位がmgに変わっている",
+      "葉酸が記載された飲料は、すべてアルコールを含むと結論できる"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "資料は2007年の文献を出典としている。掲載値の確認であり、現在の製品の栄養表示や飲酒の健康効果を示すものではない。",
+    "choiceReasons": [
+      "正答：Alcohol-free beerは41.7µg/bottle、表の基準に対して10.4%と掲載される。",
+      "正答：この表のVodkaとWhiskyは0.0µg/bottleと記載される。すべての市販品への保証ではない。",
+      "誤答：同じ飲料表のµg/bottleであり、mgへの切り替えはない。",
+      "誤答：Alcohol-free beerやOrange juiceにも値があり、葉酸の記載からアルコールの有無は判断できない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 79,
+        "locator": "PDF表示ページ79・右下Doemensロゴ付き英語図表",
+        "section": "Folate in alcohol-free beer and spirits",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-007",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "ビールのミネラル表の「Beer is rich in」に挙げられている成分を選んでください。",
+    "choices": [
+      "マグネシウム",
+      "カリウム",
+      "リン",
+      "塩化物"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "資料の栄養成分表にある4項目を確認する問題。醸造用水の硬度を決める成分の一覧とは異なる。実際の含有量は製品によって異なり、栄養補給のために飲酒を勧める内容ではない。",
+    "choiceReasons": [
+      "正答：magnesium が掲載されている。",
+      "正答：potassium が掲載されている。",
+      "正答：phosphorus が掲載されている。",
+      "正答：Chloride が掲載されている。ナトリウムや硫酸塩とは別の成分。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 84,
+        "locator": "PDF表示ページ84・右下Doemensロゴ付き英語図表",
+        "section": "Beer is rich in: listed minerals",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-008",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "ミネラル表の「…and contains」に挙げられた微量元素について、正しいものを選んでください。",
+    "choices": [
+      "銅が挙げられている",
+      "鉄が挙げられている",
+      "マンガンと亜鉛が挙げられている",
+      "ヨウ素とセレンが挙げられている"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "表に載っている元素を確認する問題であり、載っていない元素がどのビールにも存在しないと断定するものではない。微量成分の実測値は製品や分析によって異なる。",
+    "choiceReasons": [
+      "正答：copper が掲載されている。",
+      "正答：iron が掲載されている。",
+      "正答：manganese と zinc が掲載されている。",
+      "誤答：この欄の4項目は銅・鉄・マンガン・亜鉛。ヨウ素とセレンは掲載されていない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 84,
+        "locator": "PDF表示ページ84・右下Doemensロゴ付き英語図表",
+        "section": "...and contains: trace elements",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-009",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "ミネラル表の「1L当たりの1日の所要量に対する割合」で、最も大きい数値が示されている成分はどれですか。",
+    "choices": [
+      "マグネシウム",
+      "カリウム",
+      "リン",
+      "塩化物"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "表内の割合を比較する問題。各栄養素の所要量は異なるため、割合の順位を含有質量の順位に置き換えない。資料の基準値や対象集団はこのページでは不明で、1Lの飲用を推奨するものではない。",
+    "choiceReasons": [
+      "正答：この表ではマグネシウム30%、カリウム28%、リン23%、塩化物21%と掲載される。",
+      "誤答：カリウムは28%で、マグネシウムの30%より小さい。",
+      "誤答：リンは23%で、マグネシウムの30%より小さい。",
+      "誤答：塩化物は21%で、マグネシウムの30%より小さい。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 84,
+        "locator": "PDF表示ページ84・右下Doemensロゴ付き英語図表",
+        "section": "Daily requirement percentages per liter",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-010",
+    "category": "quality_law",
+    "type": "multiple",
+    "question": "ミネラル表の「Beer is also」にある、ナトリウムと硝酸塩の説明として正しいものを選んでください。",
+    "choices": [
+      "ナトリウムについて「very low」と記載されている",
+      "硝酸塩について「low」と記載されている",
+      "ナトリウムを全製品で完全にゼロと定義している",
+      "硝酸塩をすべてのビールの主成分としている"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "資料の英語表現を読む問題。個別製品の分析値、現在の表示基準への適合や健康上の安全性を保証するものではない。",
+    "choiceReasons": [
+      "正答：原文は very low in sodium。資料中の定性的な表現として扱う。",
+      "正答：原文は low in nitrates。資料中の定性的な表現として扱う。",
+      "誤答：very low は完全なゼロを意味せず、全製品の分析証明でもない。",
+      "誤答：low in nitrates は硝酸塩が少ないという表現で、主成分という意味ではない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 84,
+        "locator": "PDF表示ページ84・右下Doemensロゴ付き英語図表",
+        "section": "Beer is also: sodium and nitrates",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-011",
+    "category": "history",
+    "type": "multiple",
+    "question": "ホップの民間療法の表に、民間療法上の用途として記載されているものを選んでください。",
+    "choices": [
+      "食欲不振への利用",
+      "睡眠の補助としての利用",
+      "気持ちを落ち着かせる目的での利用",
+      "現代の臨床試験で有効量を確定した治療法としての利用"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "歴史的・文化的な用途を問う。ホップやビールを病気の治療、睡眠改善のために使用することを勧める内容ではなく、掲載だけでは有効性や安全性は証明されない。",
+    "choiceReasons": [
+      "正答：loss of appetite が掲載されている。伝承上の用途の記述である。",
+      "正答：sleeping aid が掲載されている。治療効果が実証されたという意味ではない。",
+      "正答：calming が掲載されている。現在の薬効の保証ではない。",
+      "誤答：表は Folk Remedies（民間療法）の一覧で、臨床試験や有効量の結果を示していない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 92,
+        "locator": "PDF表示ページ92・右下Doemensロゴ付き英語図表",
+        "section": "Uses of Hops as Folk Remedies: historical terms",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  },
+  {
+    "id": "DH-012",
+    "category": "history",
+    "type": "multiple",
+    "question": "「Uses of Hops as Folk Remedies」という表の位置づけについて、適切な説明を選んでください。",
+    "choices": [
+      "Folk Remediesは、民間療法を意味する",
+      "表はホップについてのもので、ビールの処方量を示すものではない",
+      "diuretic（利尿）も、表に列挙された用途の1つである",
+      "表に載っていることだけでは、その用途の有効性や安全性は確認できない"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "民間療法として記録された用途と、現代医学で確認された治療効果を区別する。飲酒による疾病予防や治療を裏づける表ではない。",
+    "choiceReasons": [
+      "正答：見出しは「民間療法としてのホップの利用」という意味。",
+      "正答：見出しの対象はHops。ビールの飲用量・治療用量は示されていない。",
+      "正答：diuretic が表中に掲載されているが、用量や試験結果はない。",
+      "正答：このページは用途の一覧であり、試験方法・対照群・用量・安全性評価を示していない。"
+    ],
+    "sources": [
+      {
+        "filename": "1005ビールと健康.pdf",
+        "page": 92,
+        "locator": "PDF表示ページ92・右下Doemensロゴ付き英語図表",
+        "section": "Uses of Hops as Folk Remedies: evidence limits",
+        "language": "en",
+        "status": "右下Doemensロゴと英語図表を確認。作成年・改訂版は未確認。資料の数値・民間療法は現在の栄養基準や治療効果を保証せず、飲酒を勧めるものではない。"
+      }
+    ],
+    "frequencyTier": "C",
+    "active": true
+  }
+]

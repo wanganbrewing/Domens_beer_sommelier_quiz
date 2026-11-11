@@ -49,6 +49,9 @@ def build():
     }
     data_path.write_bytes((json.dumps(data,ensure_ascii=False,indent=2)+'\n').replace('\n', newline).encode('utf-8'))
     print(f"{len(data['questions'])} stored / {len(active)} active; {len(additions)} new English-source questions")
+    # Keep the reviewed health supplement at the end after either regeneration path.
+    from add_doemens_health_supplement import build as build_health
+    build_health()
 
 
 if __name__ == '__main__':

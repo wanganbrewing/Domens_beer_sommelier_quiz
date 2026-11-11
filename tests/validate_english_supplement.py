@@ -13,10 +13,10 @@ data = json.loads(before)
 added = json.loads((ROOT / 'data/english-course-supplement.json').read_text())
 all_q = data['questions']
 assert added and data['metadata']['englishSupplement']['questionCount'] == len(added)
-assert all_q[-len(added):] == added
+assert [q for q in all_q if q["id"].startswith(("EP26-", "UK26-", "ES26-"))] == added
 assert len({q['id'] for q in all_q}) == len(all_q)
 known_categories = {c['id'] for c in data['metadata']['categories']}
-old_signatures = {(re.sub(r'\s+', '', q['question']), tuple(sorted(q['choices']))) for q in all_q[:-len(added)]}
+old_signatures = {(re.sub(r'\s+', '', q['question']), tuple(sorted(q['choices']))) for q in all_q if q['id'] not in {a['id'] for a in added}}
 signatures = set()
 for q in added:
     assert q['category'] in known_categories

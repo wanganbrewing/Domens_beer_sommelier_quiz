@@ -58,7 +58,7 @@ def main() -> None:
         r"エステル皆無|焦げ酸味|甘香ばしさ|アーシーさ|高Cl=|高SO4="
     )
     answer_count_hint = re.compile(r"[0-9０-９]+つ選べ")
-    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040 + METADATA["englishSupplement"]["questionCount"]
+    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040 + METADATA["englishSupplement"]["questionCount"] + METADATA["healthSupplement"]["questionCount"]
     assert METADATA["activeQuestionCount"] == sum(q["active"] for q in ALL_QUESTIONS) == len(ALL_QUESTIONS) - 50
     assert METADATA["excludedQuestionCount"] == 50
     assert METADATA["excludedCategories"] == []
