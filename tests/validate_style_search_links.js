@@ -108,7 +108,8 @@ async function main() {
   for(const file of ["questions.json","choice-variants.json","source-links.json","source-passages.json","source-viewer.js","blind-tasting.json","beer-image-styles.json","beer-photos.json","beer-illustrations.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,file)),base(file),file);
   assert.equal(read("app.js"),base("app.js").toString().replace('const APP_VERSION = "v54";','const APP_VERSION = "v55";').replace('choice-variants.json?v=54','choice-variants.json?v=55'));
-  assert.equal(read("index.html"),base("index.html").toString().replaceAll("?v=54","?v=55"));
+  assert.equal(read("index.html"),base("index.html").toString().replaceAll("?v=54","?v=55").replace('class="version-badge">v54</small>','class="version-badge">v55</small>'));
+  assert.match(read("index.html"),/class="version-badge">v55<\/small>/);
   let expectedPhotos=base("beer-photos.js").toString().replace('    const caption = illustration','    const style = window.BierKompassStyleLinks?.linkStyle(item.style) || escape(item.style);\n    const caption = illustration').replace('${escape(item.style)}</strong>','${style}</strong>').replace('${escape(item.style)} · 実物写真','${style} · 実物写真');
   assert.equal(read("beer-photos.js"),expectedPhotos,"image source, license and fallback behavior unchanged");
   const expectedBlind=base("blind-quiz.js").toString()
