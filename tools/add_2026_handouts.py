@@ -70,7 +70,7 @@ def build():
                 reasons=[f'正答：{v}。' for v in true[:count]]+[f'誤答：資料では「{v}」と説明している。' for v in true[count:]]+['誤答：'+false[0][1]]
                 sources=[dict(filename=filename,page=page,locator=f'PDF表示ページ{page}・英語本文',section=topic)]
             cat='pairing' if prefix=='BP26' else ('sensory' if i<4 or i==19 else 'off_flavor')
-            result.append(dict(id=f'{prefix}-{i+1:03}',category=cat,type='multiple',question=f'講義資料の英語本文に基づき、{topic}について正しい記述を選んでください。',choices=choices,correct=list(range(count)),explanation='講義資料の英語本文をもとにした学習用問題です。'+' '.join(reasons),choiceReasons=reasons,sources=sources,frequencyTier='A',active=True))
+            result.append(dict(id=f'{prefix}-{i+1:03}',category=cat,type='multiple',question=f'{topic}について正しい記述を選んでください。',choices=choices,correct=list(range(count)),explanation=' '.join(reasons),choiceReasons=reasons,sources=sources,frequencyTier='A',active=True))
     return result
 
 if __name__=='__main__':
@@ -79,12 +79,12 @@ if __name__=='__main__':
     data['questions']=[q for q in data['questions'] if not q['id'].startswith(('OF26-','BP26-'))]+build()
     active=[q for q in data['questions'] if q.get('active',True)]
     meta=data['metadata']; meta.update(questionCount=len(data['questions']),activeQuestionCount=len(active),version='2026-11-10-handouts-balanced-answer-counts',questionDesign='正答1〜4個の問題を各25%を目標に抽出。50問は各12〜13問。区分不足時のみ残りへ再配分。',answerCountDistribution=dict(Counter(str(len(q['correct'])) for q in data['questions'])),multiAnswerQuestionCount=sum(len(q['correct'])>=2 for q in data['questions']))
-    names={c['id']:c['name'] for c in meta['categories']};names['pairing']='フードペアリング（2026講義資料）'
+    names={c['id']:c['name'] for c in meta['categories']};names['pairing']='フードペアリング'
     meta['categories']=[dict(id=k,name=names[k],count=v) for k,v in Counter(q['category'] for q in active).items()]
     for t in meta['frequencyTiers']: t['count']=sum(q['frequencyTier']==t['id'] for q in active)
     meta['excludedCategories']=[]
     meta['excludedQuestionIds']=[q['id'] for q in data['questions'] if q.get('active') is False]
-    meta['notice']='提供されたMarkdownと2026年講義資料の英語本文をもとにした非公式予想問題です。Doemens公式問題ではありません。'
+    meta['notice']='非公式の練習問題です。Doemens公式問題ではありません。'
     meta['supplementalSources']=['添付2026年講義資料2冊の英語本文。追加40問（各正答数10問）。既存の非対象ペアリング50問は維持し、新しい資料から作成した20問のみ有効。']
     path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(len(data['questions']),len(active))

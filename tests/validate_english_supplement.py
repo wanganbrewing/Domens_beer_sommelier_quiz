@@ -42,8 +42,11 @@ for q in added:
     assert signature not in old_signatures and signature not in signatures
     signatures.add(signature)
 
-# All prior questions and their histories retain their original IDs and data.
+# All prior questions retain their IDs and data, apart from the requested copy cleanup.
 base = json.loads(subprocess.check_output(['git', 'show', '8a985a43c70f21a35b20016a13f3c960f54e38b5:questions.json'], cwd=ROOT))
+for q in base['questions']:
+    q['question'] = q['question'].removeprefix('講義資料の英語本文に基づき、')
+    q['explanation'] = q['explanation'].removeprefix('講義資料の英語本文をもとにした学習用問題です。')
 assert [q for q in all_q[:1040] if q['id'] != 'OF26-007'] == [q for q in base['questions'] if q['id'] != 'OF26-007'], 'Unrelated existing questions must not change'
 clarified = next(q for q in all_q if q['id'] == 'OF26-007')
 original = next(q for q in base['questions'] if q['id'] == 'OF26-007')

@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v44";
+const APP_VERSION = "v47";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -396,7 +396,7 @@ function renderFeedback(question) {
   const correct = sameSet(selectedValues(question.id), question.correct);
   $("#feedbackPanel").classList.toggle("incorrect", !correct);
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
-  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation) + (question.category === "beer_styles" ? window.BierKompassPhotos?.forText(question.explanation) || "" : "");
+  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation) + (window.BierKompassPhotos?.forQuestion(question, session.optionOrders[question.id]) || "");
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const reason = question.choiceReasons[originalIndex].trim();
@@ -517,7 +517,7 @@ function renderReview() {
     const choiceReasons = renderReviewChoiceReasons(question, order);
     const sources = question.sources.map((source) => sourceHtml(source)).join("／");
     const reviewLabel = "自分の回答・正答・解説・出典を見る";
-    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : item.answered ? "✕ 要復習" : "未回答"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>自分の回答：</strong>${escapeHtml(selectedAnswer)}</p><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${answerHtml(question.explanation)}</p>${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
+    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : item.answered ? "✕ 要復習" : "未回答"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>自分の回答：</strong>${escapeHtml(selectedAnswer)}</p><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${answerHtml(question.explanation)}</p>${window.BierKompassPhotos?.forQuestion(question, order) || ""}${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
   }).join("") : '<p class="review-empty">要復習の問題はありません。全問で完全正解です。</p>';
 }
 

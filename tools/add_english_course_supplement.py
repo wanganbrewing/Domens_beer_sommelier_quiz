@@ -15,7 +15,7 @@ def build():
     data['questions'] = [q for q in data['questions'] if not q['id'].startswith(PREFIXES)] + additions
     # Preserve ID and answer indices while removing an over-specific cause attribution.
     q = next(q for q in data['questions'] if q['id'] == 'OF26-007')
-    q['question'] = '講義資料の英語本文に基づき、不快な香りの記述と関連物質について正しい記述を選んでください。'
+    q['question'] = '不快な香りの記述と関連物質について正しい記述を選んでください。'
     q['choices'][0] = '汗、古いホップ、チーズのような特徴は、酸敗臭の記述例に含まれる'
     q['choices'][1] = '腐卵臭に関連する代表的な物質は硫化水素である'
     q['choiceReasons'][0] = '正答：英語本文のRancid欄にsweat、cheesy、like old hopsという記述がある。これだけで原因を酵母の自己消化と断定しない。'
@@ -27,13 +27,13 @@ def build():
     meta.update(
         title=f"BierKompass {len(data['questions'])}", questionCount=len(data['questions']), activeQuestionCount=len(active),
         excludedQuestionCount=len(data['questions']) - len(active),
-        version='2026-11-10-english-course-supplement',
+        version='2026-11-10-concise-question-copy',
         answerCountDistribution=dict(Counter(str(len(q['correct'])) for q in data['questions'])),
         multiAnswerQuestionCount=sum(len(q['correct']) >= 2 for q in data['questions']),
-        notice='提供資料に基づく非公式予想問題です。追加問題は講義資料の英語本文を優先し、出典ページと版の注意を表示します。Doemens公式問題ではありません。',
+        notice='非公式の練習問題です。Doemens公式問題ではありません。',
     )
     names = {c['id']: c['name'] for c in meta['categories']}
-    names['pairing'] = 'フードペアリング（講義資料）'
+    names['pairing'] = 'フードペアリング'
     meta['categories'] = [dict(id=k, name=names[k], count=v) for k,v in Counter(q['category'] for q in active).items()]
     for tier in meta['frequencyTiers']:
         tier['count'] = sum(q['frequencyTier'] == tier['id'] for q in active)

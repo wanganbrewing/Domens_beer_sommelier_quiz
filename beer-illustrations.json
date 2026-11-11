@@ -1,0 +1,442 @@
+[
+  {
+    "id": "O-03",
+    "style": "ウィンナーラガー",
+    "kind": "illustration",
+    "image": "images/illustrations/vienna-lager.webp",
+    "appearance": "赤みがかった琥珀〜銅色・クリーミー泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-01",
+    "style": "ジャーマンピルスナー",
+    "kind": "illustration",
+    "image": "images/illustrations/pilsner.webp",
+    "appearance": "淡黄金・清澄・純白のきめ細かい泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-05",
+    "style": "ヘイジーIPA",
+    "kind": "illustration",
+    "image": "images/illustrations/hazy-ipa.webp",
+    "appearance": "鮮やかなマットイエローの濁り・濃厚な泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-04",
+    "style": "イングリッシュブラウン",
+    "kind": "illustration",
+    "image": "images/illustrations/brown-ale.webp",
+    "appearance": "ヘーゼルナッツブラウン・淡ベージュ泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-04",
+    "style": "トリプル",
+    "kind": "illustration",
+    "image": "images/illustrations/belgian-golden.webp",
+    "appearance": "輝く黄金色・分厚く盛り上がる純白泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-10",
+    "style": "クリーク",
+    "kind": "illustration",
+    "image": "images/illustrations/cherry-lambic.webp",
+    "appearance": "鮮やかなルビーレッド・ピンクの泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-08",
+    "style": "アイスボック",
+    "kind": "illustration",
+    "image": "images/illustrations/eisbock.webp",
+    "appearance": "極濃褐色・泡は極めて薄くすぐ消える",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-15",
+    "style": "ケルシュ",
+    "kind": "illustration",
+    "image": "images/illustrations/kolsch.webp",
+    "appearance": "淡いペールゴールド・高透明度",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-09",
+    "style": "グーズ",
+    "kind": "illustration",
+    "image": "images/illustrations/gueuze.webp",
+    "appearance": "濁りある黄金色・泡は急速に消える",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-06",
+    "style": "セゾン",
+    "kind": "illustration",
+    "image": "images/illustrations/saison.webp",
+    "appearance": "ブロンズ〜アンバー・やや濁り・巨大な泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-01",
+    "style": "ベルジャンホワイト",
+    "kind": "illustration",
+    "image": "images/illustrations/witbier.webp",
+    "appearance": "白濁した淡黄色・モコモコと盛り上がる大きな泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-16",
+    "style": "アルトビア",
+    "kind": "illustration",
+    "image": "images/illustrations/altbier.webp",
+    "appearance": "銅色〜濃褐色・緻密な持続泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-14",
+    "style": "ダークヴァイツェン",
+    "kind": "illustration",
+    "image": "images/illustrations/dunkelweizen.webp",
+    "appearance": "混濁した濃褐色（amber or dark weizen）・分厚い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-08",
+    "style": "フランダースレッド",
+    "kind": "illustration",
+    "image": "images/illustrations/flanders-red.webp",
+    "appearance": "ダークルビー〜マホガニー・泡は薄く儚い",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-08",
+    "style": "イングリッシュバーレイワイン",
+    "kind": "illustration",
+    "image": "images/illustrations/barleywine.webp",
+    "appearance": "赤褐〜濃カッパー・泡は極めて薄い",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-07",
+    "style": "インペリアルスタウト",
+    "kind": "illustration",
+    "image": "images/illustrations/imperial-stout.webp",
+    "appearance": "完全な漆黒・濃褐色泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-17",
+    "style": "ベルリナーヴァイセ",
+    "kind": "illustration",
+    "image": "images/illustrations/berliner-weisse.webp",
+    "appearance": "白濁した極淡黄色・泡は薄くすぐ消える",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-08",
+    "style": "サハティ",
+    "kind": "illustration",
+    "image": "images/illustrations/sahti.webp",
+    "appearance": "無濾過の濃色混濁・泡はほぼ立たない",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-13",
+    "style": "クリスタルヴァイツェン",
+    "kind": "illustration",
+    "image": "images/illustrations/kristallweizen.webp",
+    "appearance": "澄み切った黄金・純白の豊かな泡（透明！）",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-03",
+    "style": "ベルジャン・デュッベル",
+    "kind": "illustration",
+    "image": "images/illustrations/dubbel.webp",
+    "appearance": "アンバー〜濃褐色・キメ細かいリッチな泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-09",
+    "style": "ラオホビア",
+    "kind": "illustration",
+    "image": "images/illustrations/rauchbier.webp",
+    "appearance": "暗褐色・しっかりした泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-03",
+    "style": "ドルトムンダー",
+    "kind": "illustration",
+    "image": "images/illustrations/dortmunder.webp",
+    "appearance": "濃い黄金・クリア・しっかりした泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-11",
+    "style": "ライヒトビア",
+    "kind": "illustration",
+    "image": "images/illustrations/leichtbier.webp",
+    "appearance": "極淡黄色・クリア",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "D-18",
+    "style": "ゴーゼ",
+    "kind": "illustration",
+    "image": "images/illustrations/gose.webp",
+    "appearance": "淡黄〜琥珀・混濁・泡控えめ",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-01",
+    "style": "アメリカンライトラガー",
+    "kind": "illustration",
+    "image": "images/illustrations/american-light-lager.webp",
+    "appearance": "極めて淡い黄色・高透明・泡持ち短め",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-02",
+    "style": "アメリカンペールエール",
+    "kind": "illustration",
+    "image": "images/illustrations/american-pale-ale.webp",
+    "appearance": "艶やかなアンバーゴールド・白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-04",
+    "style": "ダブルIPA",
+    "kind": "illustration",
+    "image": "images/illustrations/double-ipa.webp",
+    "appearance": "アンバー〜カッパー",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-06",
+    "style": "アメリカンウィート",
+    "kind": "illustration",
+    "image": "images/illustrations/american-wheat.webp",
+    "appearance": "麦わら〜ゴールド・持続する白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-07",
+    "style": "アメリカンバーレイワイン",
+    "kind": "illustration",
+    "image": "images/illustrations/american-barleywine.webp",
+    "appearance": "アンバー〜赤褐色・泡薄め",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "U-08",
+    "style": "ブラックIPA",
+    "kind": "illustration",
+    "image": "images/illustrations/black-ipa.webp",
+    "appearance": "漆黒・淡褐色のしっかりした泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-09",
+    "style": "スコッチエール",
+    "kind": "illustration",
+    "image": "images/illustrations/scotch-ale.webp",
+    "appearance": "濃アンバー〜暗褐色・クリーミー泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-10",
+    "style": "ミルクスタウト",
+    "kind": "illustration",
+    "image": "images/illustrations/milk-stout.webp",
+    "appearance": "漆黒・ベージュ泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "B-11",
+    "style": "ベルジャンブロンド",
+    "kind": "illustration",
+    "image": "images/illustrations/belgian-blond.webp",
+    "appearance": "金色・清澄〜微濁・良好な泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-01",
+    "style": "ボヘミアンピルスナー",
+    "kind": "illustration",
+    "image": "images/illustrations/bohemian-pilsner.webp",
+    "appearance": "深みある黄金色・極めて分厚くクリーミーな泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-04",
+    "style": "バルチックポーター",
+    "kind": "illustration",
+    "image": "images/illustrations/baltic-porter.webp",
+    "appearance": "漆黒〜極濃褐色",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-05",
+    "style": "ジャパニーズドライ",
+    "kind": "illustration",
+    "image": "images/illustrations/japanese-dry.webp",
+    "appearance": "淡いストローゴールド・高透明・純白泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-06",
+    "style": "ビエール・ド・ギャルド",
+    "kind": "illustration",
+    "image": "images/illustrations/biere-de-garde.webp",
+    "appearance": "ブロンズ〜アンバー・しっかりした泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-07",
+    "style": "グレープエール（旧称イタリアングレープエール）",
+    "kind": "illustration",
+    "image": "images/illustrations/grape-ale.webp",
+    "appearance": "淡黄〜赤ワイン色・ワイン様の軽い泡立ち",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-09",
+    "style": "コルンエール（ノルウェー農家ビール）",
+    "kind": "illustration",
+    "image": "images/illustrations/kornol.webp",
+    "appearance": "混濁ゴールド・低炭酸",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-01",
+    "style": "ビター/ESB",
+    "kind": "illustration",
+    "image": "images/illustrations/bitter-esb.webp",
+    "appearance": "ゴールド〜濃アンバー・薄い泡膜",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-02",
+    "style": "イングリッシュペールエール",
+    "kind": "illustration",
+    "image": "images/illustrations/english-pale-ale.webp",
+    "appearance": "アンバー・適度な泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-03",
+    "style": "イングリッシュIPA",
+    "kind": "illustration",
+    "image": "images/illustrations/english-ipa.webp",
+    "appearance": "ゴールド〜アンバー",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "E-05",
+    "style": "ロンドンポーター",
+    "kind": "illustration",
+    "image": "images/illustrations/london-porter.webp",
+    "appearance": "ダークブラウン〜黒・ベージュ泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-10",
+    "style": "ニュージーランドIPA",
+    "kind": "illustration",
+    "image": "images/illustrations/new-zealand-ipa.webp",
+    "appearance": "明るいゴールド・適度な白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "O-11",
+    "style": "スパークリングエール",
+    "kind": "illustration",
+    "image": "images/illustrations/sparkling-ale.webp",
+    "appearance": "ゴールド・瓶内発酵の澱と細かい持続泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-16",
+    "style": "オートミールスタウト",
+    "kind": "illustration",
+    "image": "images/illustrations/oatmeal-stout.webp",
+    "appearance": "不透明な黒色、細かな淡ベージュの泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-26",
+    "style": "ランビック",
+    "kind": "illustration",
+    "image": "images/illustrations/straight-lambic.webp",
+    "appearance": "無果実のストレート・ランビックの一例。やや濁る黄金〜アンバー色、泡は少ない",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-08",
+    "style": "ヴァイツェンボック",
+    "kind": "illustration",
+    "image": "images/illustrations/weizenbock.webp",
+    "appearance": "濁った褐色、厚いクリーム色の泡（濃色タイプの一例）",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-05",
+    "style": "フェストビア",
+    "kind": "illustration",
+    "image": "images/illustrations/festbier.webp",
+    "appearance": "澄んだ濃い黄金色、豊かな白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-02",
+    "style": "クリームエール",
+    "kind": "illustration",
+    "image": "images/illustrations/cream-ale.webp",
+    "appearance": "清澄な淡い黄金色、白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-06",
+    "style": "ヘレスボック",
+    "kind": "illustration",
+    "image": "images/illustrations/helles-bock.webp",
+    "appearance": "清澄な深い黄金色、持続する白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-21",
+    "style": "カリフォルニアコモン",
+    "kind": "illustration",
+    "image": "images/illustrations/california-common.webp",
+    "appearance": "透明なアンバー色、白〜オフホワイトの泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-01",
+    "style": "アメリカンラガー",
+    "kind": "illustration",
+    "image": "images/illustrations/american-lager.webp",
+    "appearance": "清澄な淡い黄色、白い泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-10",
+    "style": "ベストビター",
+    "kind": "illustration",
+    "image": "images/illustrations/best-bitter.webp",
+    "appearance": "透明なアンバー〜銅色、薄いクリーム色の泡",
+    "createdAt": "2026-11-10"
+  },
+  {
+    "id": "REF-14",
+    "style": "アイリッシュ・レッドエール",
+    "kind": "illustration",
+    "image": "images/illustrations/irish-red-ale.webp",
+    "appearance": "清澄な赤銅色、低〜中程度のオフホワイトの泡",
+    "createdAt": "2026-11-10"
+  }
+]

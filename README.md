@@ -3,6 +3,21 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 解答後・復習のビール参考画像（v46・v47）
+
+- 判定・購入ガイドの全58スタイルと、筆記問題に登場する追加10スタイルに画像を収録。既存13実物写真＋55枚の写真風AI参考イラストです。実物写真の出典・ライセンスを保持します。
+- 設問本文・解説・各選択肢と誤答解説を検索し、関係するビールを画像で比較できます。同じ画像の重複表示と2点の上限をなくしました。
+- 学習モードの解答後と、最終試験・模試の復習に同じ画像表示を追加。回答前には表示しません。
+- ブラインド判定の結果にも正答と誤答候補の参考画像を表示します。
+- AI画像は銘柄の実物写真ではなく、色・泡・濁りを示す参考例です。同じスタイルでも幅があり、見た目だけでは判別できません。収録範囲は `beer-photos.json` と `beer-illustrations.json` で確認できます。
+- 問題、正答、履歴と出題方式は変更しません。
+
+## 設問の表現を簡潔化（v45）
+
+- 68問の冒頭の定型句と、39問の解説の導入文を削除しました。
+- ホームの説明と分野名も簡潔にしました。問題数、正答、選択肢、学習履歴のID、設問ごとの出典は変更していません。
+- 再生成しても不要な定型句が戻らないことを検査します。
+
 ## 英語講義資料の追加反映（v44）
 
 - 英語本文と英語図表から28問を追加。官能・オフフレーバー12問、英国カスク管理8問、ペアリング8問です。
@@ -60,7 +75,7 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 資料の相互作用・ペアリング例は講義上の説明として出題し、万人に同じ官能結果を保証するものではありません。
 
 写真の銘柄、撮影者、ライセンス、出典は `beer-photos.json` と各写真のキャプションに記録しています。
-写真のないスタイルにも既存の代表銘柄・解説・購入リンクを表示します。
+実物写真のない収録スタイルには「AI参考イラスト」と明記した教材用画像を表示します。実在銘柄の写真と混同しない表示にしています。画像未登録のスタイルにも既存の代表銘柄・解説・購入リンクを表示します。
 画像はグラス全体を見られるよう縦横比を維持し、iPhoneでも横にはみ出さない表示にします。
 
 ## 起動・検査
@@ -70,10 +85,12 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 ```sh
 python tests/validate_questions.py
 python tests/validate_english_supplement.py
+python tests/validate_question_copy.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js
 node tests/validate_mock_exam.js
+node tests/validate_beer_images.js
 ```
 
 問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用します。
