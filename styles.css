@@ -97,3 +97,60 @@
 @media(max-width:560px){.result-next-step .result-actions{display:grid;grid-template-columns:1fr 1fr}.result-next-step #retryButton{grid-column:1/-1}.result-next-step button{width:100%;font-size:13px;padding:12px 10px}}
 
 .recent-accuracy p{margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+
+/* Local-only source PDF viewer. Native dialog keeps focus out of the question. */
+.source-links { display: grid; gap: 8px; margin: 10px 0 3px; }
+.source-link { justify-self: start; min-height: 44px; max-width: 100%; padding: 10px 12px; border: 1px solid #967142; border-radius: 10px; color: #68451e; background: #fff9ed; text-align: left; font-size: .88rem; line-height: 1.5; }
+.source-link span { display: block; font-size: .8rem; color: #61564b; }
+.source-viewer-open { overflow: hidden; }
+.source-viewer { box-sizing: border-box; width: min(1100px, 100%); height: min(960px, 100dvh); max-width: 100%; max-height: 100dvh; margin: auto; padding: 0; border: 1px solid #d9ccb5; border-radius: 16px; color: #29251e; background: #fffdf8; overflow: hidden; }
+.source-viewer[open] { display: flex; flex-direction: column; }
+.source-viewer::backdrop { background: rgb(29 23 14 / 65%); }
+.source-header { display: flex; align-items: center; gap: 16px; padding: 12px 18px; border-bottom: 1px solid #e4dac8; flex: 0 0 auto; }
+.source-header h2 { font-size: 1.12rem; margin: 0; line-height: 1.4; }
+.source-header .eyebrow { margin: 0 0 3px; font-size: .65rem; }
+.source-header button { flex-shrink: 0; min-height: 44px; }
+.source-intro { padding: 10px 18px; overflow: auto; max-height: 30dvh; flex: 0 0 auto; font-size: .82rem; line-height: 1.5; }
+.source-intro p { margin: 0 0 6px; }
+.source-filename { font-weight: 700; overflow-wrap: anywhere; }
+.source-file-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.source-file-actions button { min-height: 44px; }
+.source-file-help { color: #665a4c; font-size: .75rem; }
+.source-tools { flex: 0 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 18px; border-top: 1px solid #e4dac8; border-bottom: 1px solid #e4dac8; }
+.source-tools[hidden], .source-viewport[hidden] { display: none; }
+.source-page-navigation, .source-page-navigation form, .source-zoom { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.source-page-navigation form { margin: 0; padding: 0; }
+.source-tools button { padding: 8px 10px; min-width: 44px; min-height: 44px; font-size: .8rem; }
+.source-tools label, .source-tools span { font-size: .8rem; }
+.source-tools input { width: 62px; padding: 8px; min-height: 44px; border: 1px solid #b8a98e; border-radius: 8px; font-size: 16px; }
+.source-status { flex: 0 0 auto; margin: 0; padding: 8px 18px; font-size: .8rem; line-height: 1.5; }
+.source-status.is-error { color: #a72f22; font-weight: 700; }
+.source-viewport { flex: 1 1 auto; min-height: 0; padding: 12px; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; background: #d8d4cb; touch-action: pan-x pan-y pinch-zoom; }
+.source-paper { position: relative; margin: 0 auto; background: white; box-shadow: 0 2px 8px #0002; }
+.source-paper canvas { display: block; max-width: none; }
+.source-highlights { position: absolute; inset: 0; pointer-events: none; }
+.source-highlight { position: absolute; outline: 3px solid #d99b00; background: rgb(255 220 50 / 18%); }
+@media (max-width: 600px) {
+  .source-viewer { width: 100%; height: 100dvh; border: 0; border-radius: 0; padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+  .source-header { gap: 10px; padding: 8px 12px; }
+  .source-header h2 { font-size: .95rem; }
+  .source-header button { font-size: .82rem; padding: 10px; }
+  .source-intro { padding: 8px 12px; max-height: 27dvh; }
+  .source-tools { padding: 6px 12px; }
+  .source-status { padding: 6px 12px; }
+  .source-page-navigation { width: 100%; justify-content: center; }
+  .source-zoom { width: 100%; justify-content: center; }
+}
+
+/* Restricted Drive images open only in Drive; local PDF remains an alternative. */
+a.source-link { text-decoration: none; }
+a.source-link:hover, a.source-link:focus-visible { text-decoration: underline; }
+.source-local-link { background: #fff; }
+.source-drive-status { font-size: .8rem; color: #61564b; }
+
+.source-deletion-notice { margin: 0 0 20px; padding: 14px 16px; border: 1px solid #967142; border-radius: 10px; background: #fff9ed; color: #68451e; line-height: 1.6; }
+.source-deletion-notice p { margin: 0; }
+.source-deletion-notice small { display: block; margin-top: 4px; color: #61564b; }
+
+.source-link { overflow-wrap: anywhere; white-space: normal; }
+.source-link span { white-space: normal; overflow: visible; text-overflow: clip; }

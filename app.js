@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v53";
+const APP_VERSION = "v54";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -95,7 +95,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=53", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=54", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -104,6 +104,7 @@ async function init() {
       $("#variantPrototypeButton").disabled = !variantCatalog.size;
       $("#variantPrototypeCount").textContent = String(variantCatalog.size);
     }
+    await window.BierKompassSources?.init({questions: data.questions, variants: variantCatalog, version: APP_VERSION});
     renderFilters();
     restoreSettings();
     bindEvents();
@@ -523,7 +524,7 @@ function renderFeedback(question) {
     const displayKey = String.fromCharCode(65 + displayIndex);
     const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
+      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${sourceHtml(source)}</p>`).join("")}`;
@@ -537,7 +538,7 @@ function renderReviewChoiceReasons(question, order) {
     const displayKey = String.fromCharCode(65 + displayIndex);
     const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
+      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
 }

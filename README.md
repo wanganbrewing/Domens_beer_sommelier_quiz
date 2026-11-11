@@ -3,6 +3,22 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 資料本文へのリンク（v54）
+
+回答後と復習の選択肢別解説から、端末で選んだ元のPDFの該当ページへ移動できます。原本をSHA-256で照合し、確認済みの箇所を枠で示します。PDFの送信・永続保存は行わず、原資料も公開しません。タブを閉じるか再読み込みすると、PDFの再選択が必要です。
+
+対応範囲は84問と別セット16組、計400選択肢中393選択肢です。英語講義由来の80問に確認できた日本語本文を加え、元の問題集からも4問9選択肢に日本語教材の根拠を追加しました。新たな4問の未確認7選択肢と、その他の問題には本文リンクを出しません。既存の正答・採点・履歴は変更していません。
+
+原資料の日本語が部分訳の場合は「日本語は一部」、該当する日本語を確認できない場合は「英語原文」と表示します。全教材の日本語対応を完了したものではありません。[日本語参照の範囲](docs/japanese-source-links.md)
+
+[使い方・プライバシー・対応表の仕様・検証](docs/local-source-viewer.md)
+
+## 制限付きDrive画像リンク
+
+回答後・復習から、該当箇所の画像をGoogle Driveで直接別タブに開けます。273枚の画像は本人だけが閲覧できるDriveに保存し、459件の参照との対応表を統合済みです。本人は確認用画像を開けることを確認しています。指定受講者への権限付与とアクセス確認、全画像のブラウザー実表示確認は未実施です。読込失敗時も端末PDFで確認できます。
+
+[対応表の契約・共有境界・反映前チェック](docs/drive-source-images.md)
+
 ## 連続学習と直近正答率
 
 - 学習の全問回答後に「結果を見る」を表示し、結果画面上部で「次の50問へ」「終わる」を選べます。最後の解説は結果画面へ進むまで読めます。
@@ -155,8 +171,10 @@ node tests/validate_health_feedback.js
 node tests/validate_choice_variants.js
 node tests/validate_study_continuation.js
 node tests/validate_recent_accuracy.js
-node tests/validate_study_continuation.js
-node tests/validate_recent_accuracy.js
+python tests/validate_source_links.py
+node tests/validate_source_viewer.js
+node tests/validate_drive_sources.js
+node tools/check_drive_source_links.js
 ```
 
 問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。生成時には `data/choice-wording-revisions.json` の確認済み修正と `data/japanese-answer-text.json` の日本語併記も適用します。文言修正だけを再適用する場合は `python tools/apply_reviewed_choice_wording.py`。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
