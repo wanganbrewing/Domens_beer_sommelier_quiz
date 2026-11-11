@@ -25,9 +25,10 @@
     const alt = illustration ? `${item.style}の外観を描いたAI参考イラスト。${item.appearance || ""}` : `${item.beer}：グラスに注いだビールの色と泡`;
     const img = `<img class="beer-reference-image" src="${escape(item.image)}" alt="${escape(alt)}" loading="lazy" width="400" height="360">`;
     const media = illustration ? img : `<a href="${escape(item.source)}" target="_blank" rel="noopener noreferrer">${img}</a>`;
+    const style = window.BierKompassStyleLinks?.linkStyle(item.style) || escape(item.style);
     const caption = illustration
-      ? `<strong>${escape(item.style)}</strong><span class="beer-image-kind">AI参考イラスト</span><small>実在銘柄の写真ではありません。${escape(item.appearance || "")}</small>`
-      : `<strong>${escape(item.beer)}</strong><span>${escape(item.style)} · 実物写真</span><small>写真：${escape(item.author)} · <a href="${escape(item.source)}" target="_blank" rel="noopener noreferrer">出典</a> · <a href="${escape(item.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escape(item.license)}</a></small>`;
+      ? `<strong>${style}</strong><span class="beer-image-kind">AI参考イラスト</span><small>実在銘柄の写真ではありません。${escape(item.appearance || "")}</small>`
+      : `<strong>${escape(item.beer)}</strong><span>${style} · 実物写真</span><small>写真：${escape(item.author)} · <a href="${escape(item.source)}" target="_blank" rel="noopener noreferrer">出典</a> · <a href="${escape(item.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escape(item.license)}</a></small>`;
     return `<figure class="beer-photo" data-beer-style-id="${escape(item.id)}">${context ? `<p class="beer-image-context">${escape(context)}</p>` : ""}${media}<figcaption>${caption}</figcaption></figure>`;
   }
   function matchingIds(text) {

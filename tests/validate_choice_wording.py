@@ -80,6 +80,7 @@ for declaration in ('STORAGE', 'ACCESS_KEY', 'ACCESS_PASSWORD_HASH', 'MOCK_EXAM'
 for function in ('sha256', 'unlockAccess', 'startAccessControl', 'scoreQuestion', 'answerCountSample', 'mockExamSample', 'remainingSeconds', 'expireIfNeeded', 'updateTimer', 'startTimer'):
     pattern = rf'(?:async )?function {function}\([^\n]*[\s\S]*?^}}'
     assert re.search(pattern, app, re.M).group() == re.search(pattern, prior_app.replace('\r\n', '\n'), re.M).group(), function
-for name in ['choice-variants.js', 'beer-photos.js', 'beer-photos.json', 'beer-illustrations.json', 'blind-quiz.js', 'style-links.js']:
+# Style-only UI changes have exact-scope guards in validate_style_search_links.js.
+for name in ['choice-variants.js', 'beer-photos.json', 'beer-illustrations.json']:
     assert (ROOT / name).read_bytes() == old_file(name), name
 print('OK: 187 reviewed distractors (178 bank / 9 variants), 136 questions; unchanged keys/IDs/stems/security/scoring/deadlines and explicitly verified source additions, no duplicates, idempotent application')

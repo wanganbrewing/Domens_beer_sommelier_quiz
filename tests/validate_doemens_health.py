@@ -71,7 +71,7 @@ version = re.search(r'const APP_VERSION = "v(\d+)";', app).group(1)
 assert f'<script src="app.js?v={version}" defer></script>' in html
 # Existing CSS remains a prefix; study-result/recent-card rules are appended.
 assert (ROOT / 'styles.css').read_bytes().startswith(subprocess.check_output(['git', 'show', f'{BASE}:styles.css'], cwd=ROOT))
-for name in ['blind-quiz.js', 'blind-tasting.json', 'style-quiz.json', 'style-links.js', 'beer-photos.js', 'beer-photos.json', 'beer-illustrations.json', 'beer-image-styles.json']:
+for name in ['blind-tasting.json', 'style-quiz.json', 'beer-photos.json', 'beer-illustrations.json', 'beer-image-styles.json']:
     assert (ROOT / name).read_bytes() == subprocess.check_output(['git', 'show', f'{BASE}:{name}'], cwd=ROOT), name
 # Repeated imports do not duplicate IDs, reorder old questions or alter metadata.
 try:

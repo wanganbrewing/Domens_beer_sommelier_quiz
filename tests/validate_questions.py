@@ -156,7 +156,7 @@ def main() -> None:
     assert "scoreScenario" in BLIND_JS
     assert "BierKompassStyleLinks" in APP_JS and "answerHtml" in APP_JS
     assert "target=\"_blank\"" in STYLE_LINKS_JS
-    assert 'const ROOT = "https://www.bjcp.org/style/2021"' in STYLE_LINKS_JS
+    assert 'const ROOT = "https://www.google.com/search"' in STYLE_LINKS_JS
 
     pils_helles = next(question for question in QUESTIONS if question["id"] == "A-088")
     assert "ピルスとヘレス" in pils_helles["question"]

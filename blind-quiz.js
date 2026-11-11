@@ -7,6 +7,7 @@
   const FAMILY_LABELS = { Lager: "下面発酵（ラガー）", Ale: "上面発酵（エール）", Spontaneous: "自然発酵", Farmhouse: "農家醸造系" };
   const byId = (id) => document.getElementById(id);
   const styleAnswerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);
+  const styleNameHtml = (value) => window.BierKompassStyleLinks?.linkStyle(value) || escapeHtml(value);
   let blindData = null;
   let dataPromise = null;
   let state = null;
@@ -64,7 +65,7 @@
       if (!scenarios.length) return "";
       const cards = scenarios.map((scenario) => {
         const offers = scenario.purchaseOptions || [];
-        return `<article class="beer-guide-card ${offers.length ? "available" : "unavailable"}"><div class="beer-guide-card-head"><span>${escapeHtml(scenario.id)}</span><small>${escapeHtml(FAMILY_LABELS[scenario.fermentationFamily])}</small></div><h3>${styleAnswerHtml(scenario.answer)}</h3>${window.BierKompassPhotos?.forId(scenario.id) || ""}<p class="beer-guide-label">学習用の代表銘柄</p><ul>${scenario.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul>${offers.length ? `<p class="beer-guide-label purchase">在庫・1本購入を確認した代表例</p><div class="beer-guide-offers">${offers.map(beerGuideOffer).join("")}</div>` : `<p class="beer-guide-no-stock">販売リンク未確認</p>`}</article>`;
+        return `<article class="beer-guide-card ${offers.length ? "available" : "unavailable"}"><div class="beer-guide-card-head"><span>${escapeHtml(scenario.id)}</span><small>${escapeHtml(FAMILY_LABELS[scenario.fermentationFamily])}</small></div><h3>${styleNameHtml(scenario.answer)}</h3>${window.BierKompassPhotos?.forId(scenario.id) || ""}<p class="beer-guide-label">学習用の代表銘柄</p><ul>${scenario.representativeBeers.map((beer) => `<li>${escapeHtml(beer)}</li>`).join("")}</ul>${offers.length ? `<p class="beer-guide-label purchase">在庫・1本購入を確認した代表例</p><div class="beer-guide-offers">${offers.map(beerGuideOffer).join("")}</div>` : `<p class="beer-guide-no-stock">販売リンク未確認</p>`}</article>`;
       }).join("");
       return `<section class="beer-guide-country"><div class="beer-guide-country-heading"><h2>${escapeHtml(country.label)}</h2><span>${scenarios.length}スタイル</span></div><div class="beer-guide-grid">${cards}</div></section>`;
     }).join("");
@@ -318,7 +319,7 @@
     const selectedDecisive = state.options.decisive.find((item) => item.id === state.answers.decisive)?.label || "未選択";
     const achieved = score.total >= 5;
     return `<div class="style-result ${achieved ? "correct" : "incorrect"}"><p class="eyebrow">BLIND TASTING RESULT</p><div class="style-result-mark result-status-mark">${achieved ? "目標達成" : "要復習"}</div>
-      <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${styleAnswerHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
+      <h1>${score.total} / 10点</h1><p class="style-result-name">正答：<strong>${styleNameHtml(target.answer)}</strong>${state.timedOut ? "（時間切れ）" : ""}</p>
       <ul class="style-answer-breakdown">
         ${resultRow("Step 2 原材料・工程", score.ingredients, 3, target.step3IngredientsProcess.join("／"), state.answers.ingredients.join("／"))}
         ${resultRow("Step 3 発酵系統", score.family, 1, FAMILY_LABELS[target.fermentationFamily], FAMILY_LABELS[state.answers.family] || "未選択")}
@@ -327,8 +328,8 @@
         ${resultRow("Step 6 最終判定", score.final, 3, target.answer, selectedFinal, true)}
         ${resultRow("Step 7 決め手", score.decisive, 1, target.decisiveEvidence, selectedDecisive)}
       </ul>
-      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${styleAnswerHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${styleAnswerHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
-      <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${styleAnswerHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
+      <section class="blind-memory-card"><p class="eyebrow">記憶の軸</p><h2>このスタイルはこれで覚える</h2><strong>${styleNameHtml(target.answer)}</strong><p>${escapeHtml(target.decisiveEvidence)}</p><ul>${target.exclusions.map((item) => `<li><b>${styleNameHtml(item.style)}との違い：</b>${escapeHtml(item.reason)}</li>`).join("")}</ul></section>
+      <section class="style-answer-detail"><h2>正しい推理経路</h2>${blindCard(target, true)}<dl><div><dt>原材料・工程</dt><dd>${escapeHtml(target.step3IngredientsProcess.join("・"))}</dd></div><div><dt>発酵系統</dt><dd>${escapeHtml(FAMILY_LABELS[target.fermentationFamily])}</dd></div><div><dt>国・地域</dt><dd>${escapeHtml(target.countryLabel)}</dd></div><div><dt>最終判定</dt><dd>${styleNameHtml(target.answer)}</dd></div></dl><p class="style-source">出典：${escapeHtml(target.source.filename)}、${escapeHtml(target.source.locator)}</p></section>
       ${window.BierKompassPhotos?.forChoices(target.choices, [target.correctChoice], state.answers.final) || ""}${representativeBeerSection(target)}
     </div>`;
   }

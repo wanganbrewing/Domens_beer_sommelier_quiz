@@ -154,3 +154,5 @@ a.source-link:hover, a.source-link:focus-visible { text-decoration: underline; }
 
 .source-link { overflow-wrap: anywhere; white-space: normal; }
 .source-link span { white-space: normal; overflow: visible; text-overflow: clip; }
+
+.style-reference-link{overflow-wrap:anywhere}.style-reference-link:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:3px}.beer-photo figcaption .style-reference-link{display:inline}

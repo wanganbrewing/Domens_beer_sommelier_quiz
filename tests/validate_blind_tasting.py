@@ -114,9 +114,9 @@ def main() -> None:
     assert "openBeerGuideButton" in INDEX and "beerGuideView" in INDEX
     assert "代表ビール購入ガイド" in INDEX and "renderBeerGuide" in SCRIPT
     assert "全58スタイル" in INDEX and "販売リンク未確認" in SCRIPT
-    assert "styleAnswerHtml(target.answer)" in SCRIPT
+    assert "styleNameHtml(target.answer)" in SCRIPT
     assert "BierKompassStyleLinks" in SCRIPT
-    assert 'const ROOT = "https://www.bjcp.org/style/2021"' in STYLE_LINKS
+    assert 'const ROOT = "https://www.google.com/search"' in STYLE_LINKS
     print("OK: 58 scenarios; seven-stage causal reasoning flow and representative beers verified")
 
 
