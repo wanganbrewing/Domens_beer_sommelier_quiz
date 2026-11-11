@@ -7,11 +7,14 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+from apply_reviewed_choice_wording import apply_to_questions
 BASE = 'c0ebf1c'
 path = ROOT / 'questions.json'
 before = path.read_bytes()
 data = json.loads(before)
 base = json.loads(subprocess.check_output(['git', 'show', f'{BASE}:questions.json'], cwd=ROOT))
+apply_to_questions(base['questions'])
 added = json.loads((ROOT / 'data/doemens-health-supplement.json').read_text(encoding='utf-8'))
 qs = data['questions']
 meta = data['metadata']
@@ -63,7 +66,7 @@ for function in ['sha256', 'unlockAccess', 'startAccessControl', 'scoreQuestion'
     assert re.search(pattern, app, re.M | re.S).group(0) == re.search(pattern, base_app, re.M | re.S).group(0), function
 html = (ROOT / 'index.html').read_text()
 assert '全1080問を収録。' in html and '1030' in html
-assert '<script src="app.js?v=50" defer></script>' in html
+assert '<script src="app.js?v=51" defer></script>' in html
 for name in ['styles.css', 'blind-quiz.js', 'blind-tasting.json', 'style-quiz.json', 'style-links.js', 'beer-photos.js', 'beer-photos.json', 'beer-illustrations.json', 'beer-image-styles.json']:
     assert (ROOT / name).read_bytes() == subprocess.check_output(['git', 'show', f'{BASE}:{name}'], cwd=ROOT), name
 # Repeated imports do not duplicate IDs, reorder old questions or alter metadata.

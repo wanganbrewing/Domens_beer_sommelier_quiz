@@ -14,6 +14,8 @@ def build():
     data = json.loads(path.read_text(encoding='utf-8'))
     additions = json.loads((ROOT / 'data/doemens-health-supplement.json').read_text(encoding='utf-8'))
     data['questions'] = [q for q in data['questions'] if not q['id'].startswith(PREFIX)] + additions
+    from apply_reviewed_choice_wording import apply_to_questions
+    apply_to_questions(data['questions'])
     active = [q for q in data['questions'] if q.get('active', True)]
     meta = data['metadata']
     meta.update(

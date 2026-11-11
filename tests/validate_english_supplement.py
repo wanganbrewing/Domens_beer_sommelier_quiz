@@ -7,6 +7,8 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+from apply_reviewed_choice_wording import apply_to_questions
 data_path = ROOT / 'questions.json'
 before = data_path.read_bytes()
 data = json.loads(before)
@@ -47,6 +49,7 @@ base = json.loads(subprocess.check_output(['git', 'show', '8a985a43c70f21a35b200
 for q in base['questions']:
     q['question'] = q['question'].removeprefix('講義資料の英語本文に基づき、')
     q['explanation'] = q['explanation'].removeprefix('講義資料の英語本文をもとにした学習用問題です。')
+apply_to_questions([q for q in base['questions'] if q['id'] != 'OF26-007'])
 assert [q for q in all_q[:1040] if q['id'] != 'OF26-007'] == [q for q in base['questions'] if q['id'] != 'OF26-007'], 'Unrelated existing questions must not change'
 clarified = next(q for q in all_q if q['id'] == 'OF26-007')
 original = next(q for q in base['questions'] if q['id'] == 'OF26-007')

@@ -3,6 +3,13 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 推測の手掛かりになる限定表現を改善（v51）
+
+- 「だけ」「必ず」「一切」などの語で誤答を推測しやすい選択肢を見直し、本体129問の147選択肢と別セット9選択肢、計156選択肢を修正しました。
+- 条件語の一括削除ではなく、具体的な仕組み・分類・数値の取り違えへ書き直しています。正答、問題ID、出典、問題数、履歴・採点処理は維持します。
+- 正答や技術的条件に必要な限定は残しました。追加の根拠確認が必要な8選択肢は保留し、段階的な改善として扱います。
+- [修正範囲・保持理由・検証](docs/choice-wording-review.md)
+
 ## 別の選択肢セットで再挑戦（v50）
 
 - ペアリングの8問に各3セット（元の1セット＋追加2セット）を用意しました。再挑戦では直前と異なる内容の4択を出します。
@@ -111,6 +118,7 @@ python tests/validate_questions.py
 python tests/validate_english_supplement.py
 python tests/validate_doemens_health.py
 python tests/validate_question_copy.py
+python tests/validate_choice_wording.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js
@@ -121,7 +129,7 @@ node tests/validate_health_feedback.js
 node tests/validate_choice_variants.js
 ```
 
-問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
+問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。生成時には `data/choice-wording-revisions.json` の確認済み修正も適用します。文言修正だけを再適用する場合は `python tools/apply_reviewed_choice_wording.py`。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
 
 ## 保存と閲覧制限
 
