@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v47";
+const APP_VERSION = "v48";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -26,8 +26,8 @@ let pendingConfirm = null;
 
 // The mock exam is an app practice setting, not a current Japanese certification rule.
 const MOCK_EXAM = Object.freeze({ questionCount: 50, minutes: 40, passingRate: 0.5 });
-const isTimedMode = (value) => value === "exam" || value === "mock";
-const sessionLabel = (value) => value === "mock" ? "模試モード" : value === "exam" ? "最終試験" : "学習モード";
+const isTimedMode = (value) => value === "mock";
+const sessionLabel = (value) => value === "mock" ? "模試モード" : "学習モード";
 
 function loadJson(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
@@ -87,14 +87,24 @@ async function init() {
     restoreSettings();
     bindEvents();
     updateHome();
-    const saved = loadJson(STORAGE.session, null);
-    if (saved?.questionIds?.every((id) => questionsById.has(id)) && !saved.completed) {
+    const saved = restoreSavedSession(loadJson(STORAGE.session, null));
+    if (saved) {
       session = saved;
       showSession();
     }
   } catch (error) {
     $("#app").innerHTML = `<section class="dashboard"><h1>読み込みエラー</h1><p>${escapeHtml(error.message)}</p><p>WebサーバーまたはGitHub Pagesから開いてください。</p></section>`;
   }
+}
+
+// Retired exam attempts become untimed study without losing answers or order.
+// Study and mock attempts keep their original state, including mock deadlines.
+function restoreSavedSession(saved) {
+  if (!saved || saved.completed || !["study", "mock", "exam"].includes(saved.mode)
+      || !Array.isArray(saved.questionIds) || !saved.questionIds.length
+      || !saved.questionIds.every((id) => questionsById.has(id))) return null;
+  if (saved.mode !== "exam") return saved;
+  return { ...saved, mode: "study", durationSeconds: null, restoredFromRetiredExam: true };
 }
 
 function renderFilters() {
@@ -131,14 +141,13 @@ function bindEvents() {
 }
 
 function setMode(nextMode) {
-  mode = ["study", "exam", "mock"].includes(nextMode) ? nextMode : "study";
+  mode = ["study", "mock"].includes(nextMode) ? nextMode : "study";
   $$(".mode-tab").forEach((button) => { const active = button.dataset.mode === mode; button.classList.toggle("active", active); button.setAttribute("aria-selected", String(active)); });
   $("#historyFilterCard").hidden = mode !== "study";
-  $("#finalExamGuide").hidden = mode !== "exam";
   $("#mockExamGuide").hidden = mode !== "mock";
   $("#studyConfig").hidden = mode === "mock";
-  $("#modeSummary").textContent = mode === "mock" ? "全分野から50問・40分・終了後に合否と解説を表示" : mode === "exam" ? "50問・40分・合格基準50%" : "50問ずつ回答・解説と出典を表示";
-  $("#startButton span").textContent = mode === "mock" ? "40分の模試を始める" : mode === "exam" ? "最終試験を始める" : "学習を始める";
+  $("#modeSummary").textContent = mode === "mock" ? "全分野から50問・40分・終了後に合否と解説を表示" : "50問ずつ回答・解説と出典を表示";
+  $("#startButton span").textContent = mode === "mock" ? "40分の模試を始める" : "学習を始める";
   updatePoolCount();
 }
 
@@ -173,7 +182,7 @@ function filteredPool() {
 function updatePoolCount() {
   if (!data) return;
   const count = filteredPool().length;
-  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : mode === "exam" ? data.metadata.examQuestionCount : data.metadata.studyQuestionCount;
+  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
   const sessionCount = Math.min(requestedCount, count);
   $("#poolCount").textContent = count ? `出題 ${sessionCount.toLocaleString()}問（対象 ${count.toLocaleString()}問）` : "対象 0問";
   const message = isTimedMode(mode) && count < requestedCount ? `${sessionLabel(mode)}には${requestedCount}問以上の対象問題が必要です（現在${count}問）。` : count === 0 ? "条件に合う問題がありません。" : "";
@@ -202,13 +211,13 @@ function restoreSettings() {
 
 function startSession() {
   const pool = filteredPool();
-  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : mode === "exam" ? data.metadata.examQuestionCount : data.metadata.studyQuestionCount;
+  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
   if (!pool.length || (isTimedMode(mode) && pool.length < requestedCount)) return;
   const count = Math.min(requestedCount, pool.length);
-  const selectedQuestions = mode === "mock" ? mockExamSample(pool, count) : mode === "exam" ? broadExamSample(pool, count) : studyQuestionSample(pool, count);
+  const selectedQuestions = mode === "mock" ? mockExamSample(pool, count) : studyQuestionSample(pool, count);
   const questionIds = selectedQuestions.map((question) => question.id);
   const optionOrders = Object.fromEntries(questionIds.map((id) => [id, shuffle(questionsById.get(id).choices.map((_, index) => index))]));
-  session = { mode, questionIds, optionOrders, answers: {}, answered: {}, checked: {}, current: 0, startedAt: Date.now(), durationSeconds: mode === "mock" ? MOCK_EXAM.minutes * 60 : mode === "exam" ? data.metadata.examMinutes * 60 : null, completed: false };
+  session = { mode, questionIds, optionOrders, answers: {}, answered: {}, checked: {}, current: 0, startedAt: Date.now(), durationSeconds: mode === "mock" ? MOCK_EXAM.minutes * 60 : null, completed: false };
   persistSession();
   showSession();
 }
@@ -233,14 +242,11 @@ function studyQuestionSample(pool, count) {
   return answerCountSample(pool, count, (group, quota) => shuffle(group).slice(0, quota));
 }
 
-function broadExamSample(pool, count) {
-  return answerCountSample(pool, count, balancedQuestionSample);
-}
 
 // Keep the answer-count quotas, while sampling every available field without
 // frequency/ranking bias. Topic distribution is this app's practice design.
 function mockExamSample(pool, count) {
-  return answerCountSample(pool, count, (group, quota) => balancedQuestionSample(group, quota, false));
+  return answerCountSample(pool, count, (group, quota) => balancedQuestionSample(group, quota));
 }
 
 function spreadAnswerCounts(questions) {
@@ -257,13 +263,12 @@ function spreadAnswerCounts(questions) {
   return result;
 }
 
-function balancedQuestionSample(pool, count, prioritizeBasics = true) {
+function balancedQuestionSample(pool, count) {
   const groups = new Map();
   for (const question of shuffle(pool)) {
     if (!groups.has(question.category)) groups.set(question.category, []);
     groups.get(question.category).push(question);
   }
-  if (prioritizeBasics) for (const group of groups.values()) group.sort((a, b) => broadQuestionScore(b) - broadQuestionScore(a));
   let categories = shuffle([...groups.keys()]);
   const selected = [];
   while (selected.length < count && categories.length) {
@@ -278,17 +283,10 @@ function balancedQuestionSample(pool, count, prioritizeBasics = true) {
   return selected;
 }
 
-function broadQuestionScore(question) {
-  let score = { A: 4, B: 2, C: 0 }[question.frequencyTier] || 0;
-  if (question.question.includes("2つの基礎的な問い")) score += 5;
-  if (!/[0-9０-９]{3,}|何年|何L|何ml|何℃/.test(question.question)) score += 2;
-  if (question.question.length < 180) score += 1;
-  if (Math.max(...question.choices.map((choice) => choice.length)) < 90) score += 1;
-  return score;
-}
 
 function showView(name) {
   ["home", "session", "result", "blindQuiz", "beerGuide"].forEach((view) => { $(`#${view}View`).hidden = view !== name; });
+  $("#homeSupplementLinks").hidden = name !== "home";
   window.scrollTo({ top: 0, behavior: "instant" });
   $("#app").focus({ preventScroll: true });
 }
@@ -299,12 +297,18 @@ function showSession() {
   session.answered ||= Object.fromEntries(Object.keys(session.answers || {}).map((id) => [id, true]));
   showView("session");
   $("#sessionModeBadge").textContent = sessionLabel(session.mode);
+  $("#sessionRecoveryMessage").hidden = !session.restoredFromRetiredExam;
   $("#timer").hidden = !isTimedMode(session.mode);
   $("#checkButton").hidden = session.mode !== "study";
   $("#submitExamButton").hidden = !isTimedMode(session.mode);
   $("#restartSessionButton").textContent = isTimedMode(session.mode) ? "今回の試験を最初から" : "今回の学習を最初から";
   renderQuestion();
   startTimer();
+}
+
+function choiceAnswerStatus(question, originalIndex, selected) {
+  const correct = question.correct.includes(originalIndex);
+  return `<span class="choice-status"><strong class="choice-answer-label ${correct ? "is-correct" : "is-incorrect"}">${correct ? "✓ 正解" : "✕ 不正解"}</strong><span class="choice-selection-label">${selected.includes(originalIndex) ? "あなたの選択" : "未選択"}</span></span>`;
 }
 
 function renderQuestion() {
@@ -318,12 +322,12 @@ function renderQuestion() {
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
   $("#questionText").innerHTML = questionHtml(question.question);
-  $("#answerHint").textContent = "問題文の条件に当てはまるものをすべて選択してください。選択数は決まっていません。";
+  $("#answerHint").textContent = checked ? "各選択肢に正解・不正解と、あなたの選択状況を表示しています。" : "問題文の条件に当てはまるものをすべて選択してください。選択数は決まっていません。";
   const selected = selectedValues(question.id);
   const inputType = "checkbox";
   $("#choiceList").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const stateClass = checked ? (question.correct.includes(originalIndex) ? "correct" : selected.includes(originalIndex) ? "wrong" : "") : "";
-    return `<div class="choice ${stateClass}"><input type="${inputType}" name="answer" id="choice-${displayIndex}" value="${originalIndex}" ${selected.includes(originalIndex) ? "checked" : ""} ${checked ? "disabled" : ""}><label for="choice-${displayIndex}"><span class="choice-key">${String.fromCharCode(65 + displayIndex)}</span><span>${escapeHtml(question.choices[originalIndex])}</span></label></div>`;
+    return `<div class="choice ${stateClass}"><input type="${inputType}" name="answer" id="choice-${displayIndex}" value="${originalIndex}" ${selected.includes(originalIndex) ? "checked" : ""} ${checked ? "disabled" : ""}><label for="choice-${displayIndex}"><span class="choice-key">${String.fromCharCode(65 + displayIndex)}</span><span class="choice-content"><span>${escapeHtml(question.choices[originalIndex])}</span>${checked ? choiceAnswerStatus(question, originalIndex, selected) : ""}</span></label></div>`;
   }).join("");
   $$("#choiceList input").forEach((input) => input.addEventListener("change", captureAnswer));
   $("#feedbackPanel").hidden = !checked;
@@ -402,7 +406,7 @@ function renderFeedback(question) {
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${answerHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
       ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
       : `<div class="choice-verdict">${verdict}</div>`;
@@ -416,7 +420,7 @@ function renderReviewChoiceReasons(question, order) {
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正答" : "✕ 誤答"}：${answerHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
       ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p></details>`
       : `<div class="choice-verdict">${verdict}</div>`;
@@ -473,7 +477,7 @@ function submitExam(reason = "submitted") {
     recordHistory(question, exact);
   }
   const rate = maximum ? earned / maximum : 0;
-  const passingRate = session.mode === "mock" ? MOCK_EXAM.passingRate : data.metadata.passingRate;
+  const passingRate = MOCK_EXAM.passingRate;
   session.result = { earned, maximum, rate, passingRate, passed: rate >= passingRate, categories, review, reason };
   localStorage.removeItem(STORAGE.session);
   showResult();
@@ -573,5 +577,5 @@ function updateStats() {
 }
 function updateHome() { updateStats(); updatePoolCount(); }
 
-window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, broadExamSample, mockExamSample, spreadAnswerCounts, broadQuestionScore, escapeHtml, goHome, showView, shuffle };
+window.BierKompass = { scoreQuestion, sameSet, filteredPool, studyQuestionSample, mockExamSample, spreadAnswerCounts, escapeHtml, goHome, showView, shuffle };
 startAccessControl();

@@ -20,7 +20,7 @@
     dataPromise ||= fetch("blind-tasting.json?v42", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error(`判定データを取得できませんでした (${response.status})`);
       return Promise.all([response.json(), window.BierKompassPhotos?.ready]).then(([data]) => data);
-    });
+    }).catch((error) => { dataPromise = null; throw error; });
     return dataPromise;
   }
 
@@ -432,8 +432,8 @@
     else window.scrollTo({ top: 0, behavior: "instant" });
   }
 
-  byId("startBlindQuizButton").addEventListener("click", startBlindQuiz);
-  byId("openBeerGuideButton").addEventListener("click", openBeerGuide);
+  byId("startBlindQuizButton").addEventListener("click", (event) => { event.preventDefault(); startBlindQuiz(); });
+  byId("openBeerGuideButton").addEventListener("click", (event) => { event.preventDefault(); openBeerGuide(); });
   byId("beerGuideHomeButton").addEventListener("click", goHome);
   byId("beerGuideSearch").addEventListener("input", (event) => renderBeerGuide(event.target.value));
   byId("blindQuizHomeButton").addEventListener("click", closeBlindQuiz);

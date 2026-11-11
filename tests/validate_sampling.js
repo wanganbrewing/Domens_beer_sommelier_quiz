@@ -26,7 +26,7 @@ const context = {
 };
 vm.runInNewContext(appSource, context, { filename: "app.js" });
 
-const { studyQuestionSample, broadExamSample } = context.window.BierKompass;
+const { studyQuestionSample, mockExamSample } = context.window.BierKompass;
 const tierAPool = data.questions.filter((question) => question.active !== false && question.frequencyTier === "A");
 assert.equal(data.questions.filter((question) => question.active !== false).length, data.metadata.activeQuestionCount);
 assert.equal(tierAPool.filter((question) => question.category === "pairing").length, data.metadata.categories.find(category => category.id === "pairing").count);
@@ -51,14 +51,14 @@ for (let run = 0; run < 25; run += 1) {
 assert.equal(studyQuestionSample(tierAPool.slice(0, 17), 50).length, 17);
 
 for (let run = 0; run < 25; run += 1) {
-  const sample = broadExamSample(tierAPool, 50);
+  const sample = mockExamSample(tierAPool, 50);
   assert.equal(sample.length, 50);
   assert.equal(new Set(sample.map((question) => question.id)).size, 50);
   for (let n = 1; n <= 4; n++) assert.ok([12, 13].includes(sample.filter(q => q.correct.length === n).length));
-  assert.ok(maximumRun(sample, 4) <= 1, "final exam should separate four-answer questions");
+  assert.ok(maximumRun(sample, 4) <= 1, "mock exam should separate four-answer questions");
 }
 
-for (const sampler of [studyQuestionSample, broadExamSample]) {
+for (const sampler of [studyQuestionSample, mockExamSample]) {
   for (const size of [0, 1, 4, 17, 50, 80]) {
     const pool = tierAPool.slice(0, size);
     const selected = sampler(pool, 50);

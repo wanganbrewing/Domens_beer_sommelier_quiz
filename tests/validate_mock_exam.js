@@ -137,14 +137,15 @@ assert.equal(element("#reviewCount").textContent, "1問を表示");
 run("restartSession(); session.answers[session.questionIds[0]] = [0]; session.answered[session.questionIds[0]] = true; submitExam();");
 assert.equal(run("session.result.passed"), false);
 
-// Study is still untimed; old final-exam sessions keep their timer behavior.
+// Study is untimed; retired final-exam sessions safely migrate to study.
 run('session = null; mode = "study"; startTimer();');
 assert.equal(intervals.size, 0);
-run('mode = "mock"; startSession(); session.mode = "exam"; showSession();');
-assert.equal(element("#timer").hidden, false);
-assert.equal(element("#sessionModeBadge").textContent, "最終試験");
+run('mode = "mock"; startSession(); session.mode = "exam"; session = restoreSavedSession(session); showSession();');
+assert.equal(element("#timer").hidden, true);
+assert.equal(element("#sessionModeBadge").textContent, "学習モード");
+assert.equal(element("#sessionRecoveryMessage").hidden, false);
 run('session.mode = "study"; showSession();');
 assert.equal(element("#timer").hidden, true);
 assert.equal(element("#checkButton").hidden, false);
 assert.equal(intervals.size, 0);
-console.log("OK: mock coverage, quotas, scoring, threshold, filters, deadline persistence, timeout races, review and old modes");
+console.log("OK: mock coverage, quotas, scoring, threshold, filters, deadline persistence, timeout races, review and retired-exam migration");
