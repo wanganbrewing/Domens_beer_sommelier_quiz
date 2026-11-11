@@ -1,6 +1,7 @@
 """Apply explicitly reviewed wording edits without changing question identities or answers."""
 import json
 from pathlib import Path
+from apply_japanese_answer_text import apply_to_questions as add_japanese_questions, apply_to_variants as add_japanese_variants, restore_questions, restore_variants
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'data/choice-wording-revisions.json'
@@ -27,20 +28,22 @@ def apply_question(question, revision):
 
 
 def apply_to_questions(questions):
+    restore_questions(questions)
     by_id = {q['id']: q for q in questions}
     for revision in revisions():
         if revision.get('variantId', 'base') == 'base' and revision['id'] in by_id:
             apply_question(by_id[revision['id']], revision)
-    return questions
+    return add_japanese_questions(questions)
 
 
 def apply_to_variants(document):
+    restore_variants(document)
     by_id = {(g['questionId'], q['id']): q for g in document['questions'] for q in g['variants']}
     for revision in revisions():
         variant = revision.get('variantId', 'base')
         if variant != 'base':
             apply_question(by_id[(revision['id'], variant)], revision)
-    return document
+    return add_japanese_variants(document)
 
 
 def build():

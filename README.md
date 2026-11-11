@@ -3,6 +3,23 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 連続学習と直近正答率
+
+- 学習の全問回答後に「結果を見る」を表示し、結果画面上部で「次の50問へ」「終わる」を選べます。最後の解説は結果画面へ進むまで読めます。
+- 開始時の分野・頻度・履歴条件を保ち、連続学習中の既出問題を除外します。50問未満なら残りの問数を表示し、使い切ったら終了を案内します。
+- ホームの正答率は、直近50回答の完全正解率です。50回答未満では実際の件数を表示します。既存の累積履歴は保持しますが、過去の回答順を復元できないため直近集計は更新後の回答から始めます。
+- 模試は従来どおり得点率50%以上で合格です。直近正答率とは別の指標です。
+- [仕様と検証](docs/study-continuation.md)
+
+## 日本語併記・連続学習・直近正答率（v53）
+
+- 選択肢42箇所、選択肢別解説185箇所、全体解説23箇所に日本語を併記。英語の意味自体を問う設問は回答前に読み、回答後に意味を示し、正答の手がかりを増やさないようにしました。
+- 学習の最後に「結果を見る」を表示し、結果画面上部から「次の50問へ」「終わる」を選べます。同じ条件で連続学習中の既出問題を除外し、残り50問未満は実際の問数を表示します。
+- ホームを直近50回答の「直近正答率」に変更。完全正解数÷回答数で、対象件数を併記します。旧累積履歴は保持し、直近の集計は新しい回答から開始します。
+- 模試の合格は得点率50%以上。50%ちょうどを含みます。直近カードの完全正解率とは別の指標です。
+- 正答・問題ID・出典・採点・模試タイマーは維持。全1080問／出題対象1030問、別セットは引き続き8問対応です。
+- [日本語併記の範囲と検証](docs/japanese-answer-text.md) / [連続学習と直近正答率](docs/study-continuation.md)
+
 ## 内容を直接問う選択肢へ改善（v52）
 
 - 「資料の内容と一致しない」など、内容を示さず誤答を推測できる31選択肢を、具体的な香味・原因物質・組み合わせの取り違えへ変更しました。対象は官能10問、ペアリング10問です。
@@ -127,6 +144,7 @@ python tests/validate_doemens_health.py
 python tests/validate_question_copy.py
 python tests/validate_choice_wording.py
 python tests/validate_concrete_distractors.py
+python tests/validate_japanese_answers.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js
@@ -135,9 +153,13 @@ node tests/validate_beer_images.js
 node tests/validate_home_cleanup.js
 node tests/validate_health_feedback.js
 node tests/validate_choice_variants.js
+node tests/validate_study_continuation.js
+node tests/validate_recent_accuracy.js
+node tests/validate_study_continuation.js
+node tests/validate_recent_accuracy.js
 ```
 
-問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。生成時には `data/choice-wording-revisions.json` の確認済み修正も適用します。文言修正だけを再適用する場合は `python tools/apply_reviewed_choice_wording.py`。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
+問題追加データの再生成：`python tools/add_2026_handouts.py` の後に `python tools/add_english_course_supplement.py`。各追加IDを置き換えるため再実行しても重複しません。後者は英語資料の補強とOF26-007の表現訂正を適用し、`tools/add_doemens_health_supplement.py` を続けて実行します。生成時には `data/choice-wording-revisions.json` の確認済み修正と `data/japanese-answer-text.json` の日本語併記も適用します。文言修正だけを再適用する場合は `python tools/apply_reviewed_choice_wording.py`。健康資料の追加12問だけを更新する場合は `python tools/add_doemens_health_supplement.py`。既存IDと順番を保ち、どちらの経路でも重複しません。
 
 ## 保存と閲覧制限
 

@@ -87,3 +87,13 @@
 .choice.wrong input:checked+label{border-color:var(--red);background:#fff1ee;box-shadow:inset 4px 0 var(--red)}
 .choice.wrong input:checked+label .choice-key{background:var(--red);color:white}
 .choice.wrong .choice-answer-label{color:var(--red);background:#fff1ee}
+
+/* Put the next learning step before the long answer review. */
+.result-next-step{margin:0 0 28px}
+.result-next-step .result-actions{justify-content:flex-start;flex-wrap:wrap;margin:0;gap:12px}
+.result-next-step button{min-height:48px}
+.study-continuation-note{font-size:13px;color:var(--muted);margin:14px 0 0;max-width:760px}
+#nextStudyButton[hidden],.study-continuation-note[hidden]{display:none}
+@media(max-width:560px){.result-next-step .result-actions{display:grid;grid-template-columns:1fr 1fr}.result-next-step #retryButton{grid-column:1/-1}.result-next-step button{width:100%;font-size:13px;padding:12px 10px}}
+
+.recent-accuracy p{margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}

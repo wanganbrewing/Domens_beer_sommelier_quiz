@@ -1,0 +1,2258 @@
+{
+  "version": 1,
+  "baselineCommit": "9db2d8d58ee93792e34fe4c8601ce6a2aaea22aa",
+  "fieldEdits": 250,
+  "questionCount": 54,
+  "edits": [
+    {
+      "id": "A-179",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "世界中で similar な設計",
+      "newChoice": "世界中で似通った（similar）設計",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "A-179",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：「世界中で similar な設計」は「インターナショナルラガーの官能的傾向は」に当てはまる特徴です。",
+      "newChoice": "正答：「世界中で似通った（similar）設計」は「インターナショナルラガーの官能的傾向は」に当てはまる特徴です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "A-179",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "「インターナショナルラガーの官能的傾向は」の識別では、「クリーンでニュートラル」、「苦味・モルトとも穏やか」、「世界中で similar な設計」、「大手ブランドの世界展開とともに広まった」が重要な特徴です。",
+      "newChoice": "「インターナショナルラガーの官能的傾向は」の識別では、「クリーンでニュートラル」、「苦味・モルトとも穏やか」、「世界中で似通った（similar）設計」、「大手ブランドの世界展開とともに広まった」が重要な特徴です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-181",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "微生物の住処（continuity）",
+      "newChoice": "微生物の住処（continuity：継続性）",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "B-181",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：「微生物の住処（continuity）」は、酵母・発酵・熟成の働きとして正しい内容です。",
+      "newChoice": "正答：「微生物の住処（continuity：継続性）」は、酵母・発酵・熟成の働きとして正しい内容です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-181",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：「完全密閉の酸素ゼロ環境」は酵母・発酵生成物・熟成作用の対応が異なります。正しくは「微生物の住処（continuity）」、「微酸素透過での熟成」、「大容量での安定した酸生成」です。",
+      "newChoice": "誤答：「完全密閉の酸素ゼロ環境」は酵母・発酵生成物・熟成作用の対応が異なります。正しくは「微生物の住処（continuity：継続性）」、「微酸素透過での熟成」、「大容量での安定した酸生成」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-181",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "酵母・発酵・熟成の働きとして正しい内容は、「微生物の住処（continuity）」、「微酸素透過での熟成」、「大容量での安定した酸生成」です。",
+      "newChoice": "酵母・発酵・熟成の働きとして正しい内容は、「微生物の住処（continuity：継続性）」、「微酸素透過での熟成」、「大容量での安定した酸生成」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-271",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "酸素透過が glass より大きい傾向",
+      "newChoice": "酸素透過がガラス（glass）より大きい傾向",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "B-271",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：「酸素透過が glass より大きい傾向」は、提供・保存・品質管理の要点として正しい内容です。",
+      "newChoice": "正答：「酸素透過がガラス（glass）より大きい傾向」は、提供・保存・品質管理の要点として正しい内容です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-271",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：「完全酸素バリアで無期限保存」は提供・保存・設備管理の原則と異なります。正しくは「酸素透過が glass より大きい傾向」、「軽量・割れない利点」、「用途（イベント等）で選択」です。",
+      "newChoice": "誤答：「完全酸素バリアで無期限保存」は提供・保存・設備管理の原則と異なります。正しくは「酸素透過がガラス（glass）より大きい傾向」、「軽量・割れない利点」、「用途（イベント等）で選択」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-271",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "提供・保存・品質管理の要点として正しい内容は、「酸素透過が glass より大きい傾向」、「軽量・割れない利点」、「用途（イベント等）で選択」です。",
+      "newChoice": "提供・保存・品質管理の要点として正しい内容は、「酸素透過がガラス（glass）より大きい傾向」、「軽量・割れない利点」、「用途（イベント等）で選択」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-319",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "口中をリセットする酸or炭酸",
+      "newChoice": "口中をリセットする酸または炭酸",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "B-319",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：「口中をリセットする酸or炭酸」は、設問の知識として正しい内容です。",
+      "newChoice": "正答：「口中をリセットする酸または炭酸」は、設問の知識として正しい内容です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-319",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：「最重量級を連打」は料理とビールの強度・調和・対比の考え方と異なります。正しくは「口中をリセットする酸or炭酸」、「次の甘への布石」、「軽い驚き（サワー少量等）も演出」です。",
+      "newChoice": "誤答：「最重量級を連打」は料理とビールの強度・調和・対比の考え方と異なります。正しくは「口中をリセットする酸または炭酸」、「次の甘への布石」、「軽い驚き（サワー少量等）も演出」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "B-319",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "設問の要点として正しい内容は、「口中をリセットする酸or炭酸」、「次の甘への布石」、「軽い驚き（サワー少量等）も演出」です。",
+      "newChoice": "設問の要点として正しい内容は、「口中をリセットする酸または炭酸」、「次の甘への布石」、「軽い驚き（サワー少量等）も演出」です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "OF26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：英語本文のRancid欄にsweat、cheesy、like old hopsという記述がある。これだけで原因を酵母の自己消化と断定しない。",
+      "newChoice": "正答：英語本文のRancid（酸敗臭）欄にsweat（汗様）、cheesy（チーズ様）、like old hops（古いホップのような香り）という記述がある。これだけで原因を酵母の自己消化と断定しない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "OF26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：英語本文ではrotten eggとH2Sを関連づけている。硫化水素は通常の酵母発酵でも生じ得るため、検出だけで汚染とは断定できない。",
+      "newChoice": "正答：英語本文ではrotten egg（腐卵臭）とH2Sを関連づけている。硫化水素は通常の酵母発酵でも生じ得るため、検出だけで汚染とは断定できない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "OF26-007",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "香りの記述と関連物質を確認する問題。腐卵臭だけで汚染、チーズや汗様の香りだけで自己消化と断定しない。正答：英語本文のRancid欄にsweat、cheesy、like old hopsという記述がある。これだけで原因を酵母の自己消化と断定しない。 正答：英語本文ではrotten eggとH2Sを関連づけている。硫化水素は通常の酵母発酵でも生じ得るため、検出だけで汚染とは断定できない。 正答：鉄のような香味は金属様と表現される。 誤答：腐卵臭に関連する代表物質は硫化水素。ヘキサン酸エチルは果実様のエステル香に関連する。",
+      "newChoice": "香りの記述と関連物質を確認する問題。腐卵臭だけで汚染、チーズや汗様の香りだけで自己消化と断定しない。正答：英語本文のRancid（酸敗臭）欄にsweat、cheesy、like old hops（古いホップのような香り）という記述がある。これだけで原因を酵母の自己消化と断定しない。 正答：英語本文ではrotten eggとH2Sを関連づけている。硫化水素は通常の酵母発酵でも生じ得るため、検出だけで汚染とは断定できない。 正答：鉄のような香味は金属様と表現される。 誤答：腐卵臭に関連する代表物質は硫化水素。ヘキサン酸エチルは果実様のエステル香に関連する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "OF26-015",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：資料はmedicinalを例に挙げる。",
+      "newChoice": "誤答：資料はmedicinal（薬品様）を例に挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "OF26-015",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "正答：バター様の香りが例に挙げられている。 正答：酢のような香りが例に挙げられている。 正答：アルカリ性の特徴が例に挙げられている。 誤答：資料はmedicinalを例に挙げる。",
+      "newChoice": "正答：バター様の香りが例に挙げられている。 正答：酢のような香りが例に挙げられている。 正答：アルカリ性の特徴が例に挙げられている。 誤答：資料はmedicinal（薬品様）を例に挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：資料は料理を支え、引き立て、バランスを取るとし、never dominateと説明する。",
+      "newChoice": "誤答：資料は料理を支え、引き立て、バランスを取るとし、never dominate（料理を圧倒しない）と説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "正答：料理を支える。 正答：料理のよさを引き立てる。 誤答：講義では、ビールの苦味は料理の辛味とのバランスに役立つ要素として挙げられる。 誤答：資料は料理を支え、引き立て、バランスを取るとし、never dominateと説明する。",
+      "newChoice": "正答：料理を支える。 正答：料理のよさを引き立てる。 誤答：講義では、ビールの苦味は料理の辛味とのバランスに役立つ要素として挙げられる。 誤答：資料は料理を支え、引き立て、バランスを取るとし、never dominate（料理を圧倒しない）と説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：資料はpolysaccharidesに分類する。",
+      "newChoice": "誤答：資料はpolysaccharides（多糖類）に分類する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：資料の Chemical structure は、3本の脂肪酸とグリセロールのエステルと説明する。",
+      "newChoice": "正答：資料の Chemical structure（化学構造） は、3本の脂肪酸とグリセロールのエステルと説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Oils の説明は high proportion of unsaturated fatty acids、creamy mouthfeel。",
+      "newChoice": "正答：Oils（油） の説明は high proportion of unsaturated fatty acids（不飽和脂肪酸の割合が高い）、creamy mouthfeel（クリーミーな口当たり）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Animal fats の例は cream or milk、口当たりは Sticky mouthfeel。",
+      "newChoice": "正答：Animal fats（動物性脂肪） の例は cream or milk（クリームやミルク）、口当たりは Sticky mouthfeel（まとわりつくような口当たり）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：サラダドレッシングの cream vs. oil を比較例に挙げ、口当たりを区別している。",
+      "newChoice": "誤答：サラダドレッシングの cream vs. oil（クリームと油） を比較例に挙げ、口当たりを区別している。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "資料では、Fleur de Selをほぼ100%の塩化ナトリウムからなる食卓塩の例に挙げる",
+      "newChoice": "資料では、Fleur de Sel（フルール・ド・セル）をほぼ100%の塩化ナトリウムからなる食卓塩の例に挙げる",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Table salt は almost 100% NaCl と記載される。",
+      "newChoice": "正答：Table salt（食卓塩） は almost 100% NaCl（ほぼ100%が塩化ナトリウム） と記載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Fleur de Sel は other salts の混在する例として紹介される。",
+      "newChoice": "正答：Fleur de Sel（フルール・ド・セル） は other salts（ほかの塩類） の混在する例として紹介される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Intensity varies according to composition と記載される。",
+      "newChoice": "正答：Intensity varies according to composition（組成によって感じる強さが変わる） と記載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：almost 100% NaClはTable saltの説明である。Fleur de Selは他の塩類を含む例として挙げられる。",
+      "newChoice": "誤答：almost 100% NaCl（ほぼ100%が塩化ナトリウム）はTable salt（食卓塩）の説明である。Fleur de Sel（フルール・ド・セル）は他の塩類を含む例として挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-003",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "食卓塩と海塩の組成を区別し、強さや感じ方の違いを考える。資料の組成数値を全製品共通の規格として暗記しない。 almost 100% NaClはTable saltの説明である。Fleur de Selは他の塩類を含む例として挙げられる。",
+      "newChoice": "食卓塩と海塩の組成を区別し、強さや感じ方の違いを考える。資料の組成数値を全製品共通の規格として暗記しない。 almost 100% NaCl（ほぼ100%が塩化ナトリウム）はTable saltの説明である。Fleur de Sel（フルール・ド・セル）は他の塩類を含む例として挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：図中に fruity と flowery のグループがある。",
+      "newChoice": "正答：図中に fruity（果実様） と flowery（花様） のグループがある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：図中に vegetal と spicy のグループがある。",
+      "newChoice": "正答：図中に vegetal（植物・野菜様） と spicy（スパイス様） のグループがある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：図中では roasted/woody/earthy がまとめて示されている。",
+      "newChoice": "正答：図中では roasted/woody/earthy（焙煎様・木質様・土様） がまとめて示されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：図中に animal と Micro biologic のグループがある。",
+      "newChoice": "正答：図中に animal（動物様） と Micro biologic（微生物関連） のグループがある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：3番の Roasted Salmon は Tripel、4番の Roasted potatoes, almonds with malt kernels は Munich Dark。",
+      "newChoice": "正答：3番の Roasted Salmon（ローストサーモン） は Tripel（トリプル）、4番の Roasted potatoes, almonds with malt kernels（ローストポテト、アーモンドと麦芽粒） は Munich Dark（ミュンヘナー・ドゥンケル）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：With spicy sauce の行に Saison と Porter が挙げられる。",
+      "newChoice": "正答：With spicy sauce（辛いソースを添えた鶏肉） の行に Saison（セゾン） と Porter（ポーター） が挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：同じ行に Smoke beer と Imperial Stout が挙げられる。",
+      "newChoice": "正答：同じ行に Smoke beer（スモークビール） と Imperial Stout（インペリアルスタウト） が挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：Brown Ale と Alt は Fried、揚げた鶏肉の行に挙げられる。",
+      "newChoice": "誤答：Brown Ale（ブラウンエール） と Alt（アルト） は Fried、揚げた鶏肉の行に挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：Dubbel と Biere de Garde は Coq au Vin、赤ワイン煮の行に挙げられる。",
+      "newChoice": "誤答：Dubbel（デュッベル） と Biere de Garde（ビエール・ド・ギャルド） は Coq au Vin、赤ワイン煮の行に挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-006",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "同じ鶏肉でもソースや調理法で組み合わせが変わることを学ぶ。ここでは英語本文の spicy sauce の具体例を問う。 Brown Ale と Alt は Fried、揚げた鶏肉の行に挙げられる。 Dubbel と Biere de Garde は Coq au Vin、赤ワイン煮の行に挙げられる。",
+      "newChoice": "同じ鶏肉でもソースや調理法で組み合わせが変わることを学ぶ。ここでは英語本文の spicy sauce（辛いソース） の具体例を問う。 Brown Ale（ブラウンエール） と Alt（アルト） は Fried、揚げた鶏肉の行に挙げられる。 Dubbel（デュッベル） と Biere de Garde（ビエール・ド・ギャルド） は Coq au Vin、赤ワイン煮の行に挙げられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-007",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "資料のmetallicは、ビール中の鉄の分析値を表す用語である",
+      "newChoice": "資料のmetallic（メタリック）は、ビール中の鉄の分析値を表す用語である",
+      "reason": "意味そのものが判断対象なので選択前はカタカナ読みだけを併記。既存の誤った意味はそのまま維持し、正しい日本語訳は回答後の理由で示す。"
+    },
+    {
+      "id": "EP26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Phenols + fat = metallic と記載される。",
+      "newChoice": "正答：Phenols + fat = metallic（フェノールと脂質の組み合わせは金属様の印象） と記載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Phenols + protein = metallic と記載される。",
+      "newChoice": "正答：Phenols + protein = metallic（フェノールとタンパク質の組み合わせは金属様の印象） と記載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Phenols + sourness = metallic と記載される。",
+      "newChoice": "正答：Phenols + sourness = metallic（フェノールと酸味の組み合わせは金属様の印象） と記載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：英語本文1は、brewing traditions に応じた異なる characteristic aroma groups を説明する。",
+      "newChoice": "正答：英語本文1は、brewing traditions（醸造の伝統） に応じた異なる characteristic aroma groups（特徴的なアロマグループ） を説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "EP26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：英語本文4は Importance of a group according to intensity とする。",
+      "newChoice": "正答：英語本文4は Importance of a group according to intensity（香りの強さに応じてグループの重要度を判断すること） とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Temperatureのスライドには11〜13°Cと明記されています。",
+      "newChoice": "正答：Temperature（温度）のスライドには11〜13°Cと明記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Immediately after deliveryと明記されています。",
+      "newChoice": "正答：Immediately after delivery（納品直後）と明記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：All casks level (horizontally)という指定です。",
+      "newChoice": "正答：All casks level (horizontally)（すべてのカスクを水平に設置する）という指定です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-002",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "P102は、納品直後にすべてのカスクを水平に設置する手順を示しています。後のTiltingとは区別します。 このスライドの指定は水平設置です。",
+      "newChoice": "P102は、納品直後にすべてのカスクを水平に設置する手順を示しています。後のTilting（カスクを傾ける作業）とは区別します。 このスライドの指定は水平設置です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Shiveは、横置きしたカスクの胴部上側に示される",
+      "newChoice": "Shive（シャイヴ）は、横置きしたカスクの胴部上側に示される",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "Pegは、Shive付近の小さな栓として示される",
+      "newChoice": "Peg（ペグ）は、Shive（シャイヴ）付近の小さな栓として示される",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Tapは、カスクの鏡板側下部の注出部に示される",
+      "newChoice": "Tap（タップ）は、カスクの鏡板側下部の注出部に示される",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Keystoneは、Tapを差す鏡板側下部の栓として示される",
+      "newChoice": "Keystone（キーストーン）は、Tap（タップ）を差す鏡板側下部の栓として示される",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：図のShiveの矢印は胴部上側の大きな栓を指しています。",
+      "newChoice": "正答：図のShive（シャイヴ）の矢印は胴部上側の大きな栓を指しています。",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：図ではPegが胴部上側の小さな栓を指しています。",
+      "newChoice": "正答：図ではPeg（ペグ）が胴部上側の小さな栓を指しています。",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Tapの矢印は鏡板側下部から突き出す注出部を指しています。",
+      "newChoice": "正答：Tap（タップ）の矢印は鏡板側下部から突き出す注出部を指しています。",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：Keystoneの矢印はタップ取り付け位置の栓を指しています。",
+      "newChoice": "正答：Keystone（キーストーン）の矢印はタップ取り付け位置の栓を指しています。",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-003",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "P105の英語ラベル付き図ではShive・Pegが胴部上側、Tap・Keystoneが鏡板側下部に配置されています。部品名だけでなく位置関係を押さえます。",
+      "newChoice": "P105の英語ラベル付き図ではShive（シャイヴ）・Peg（ペグ）が胴部上側、Tap（タップ）・Keystone（キーストーン）が鏡板側下部に配置されています。部品名だけでなく位置関係を押さえます。",
+      "reason": "部品の位置が設問の判断対象なので、位置・用途の定義を新たに足さず日本語の読みだけを併記。正誤は維持。"
+    },
+    {
+      "id": "UK26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：英語本文はThe time this takes will depend on the productとしています。",
+      "newChoice": "正答：英語本文はThe time this takes will depend on the product（必要な時間は製品によって異なる）としています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Wadworth beers take between 24 to 48 hoursと明記されています。",
+      "newChoice": "正答：Wadworth beers take between 24 to 48 hours（Wadworthのビールでは24〜48時間を要する）と明記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：単位はDaysではなくHoursです。",
+      "newChoice": "誤答：単位はDays（日）ではなくHours（時間）です。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "Aspirator装着時の例は7日以内である",
+      "newChoice": "Aspirator（アスピレーター）装着時の例は7日以内である",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Aspiratorを装着しない通常の例でも、販売目安は7日以内とされる",
+      "newChoice": "Aspirator（アスピレーター）を装着しない通常の例でも、販売目安は7日以内とされる",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：If aspirators are fitted sell in 7 daysと条件付きで記載されています。",
+      "newChoice": "正答：If aspirators are fitted sell in 7 days（アスピレーターを装着した場合は7日以内に販売する）と条件付きで記載されています。",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：本文はFor best qualityという目的を明示しています。",
+      "newChoice": "正答：本文はFor best quality（最良の品質を保つため）という目的を明示しています。",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：通常は3日以内、Aspirator装着時は7日以内という条件の区別がある。",
+      "newChoice": "誤答：通常は3日以内、Aspirator（アスピレーター）装着時は7日以内という条件の区別がある。",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-005",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "P109は通常3日、Aspirator装着時7日という品質上の目安を区別しています。資料の運用例であり、食品安全上の消費期限を保証する数字ではありません。 通常は3日以内、Aspirator装着時は7日以内という条件の区別がある。",
+      "newChoice": "P109は通常3日、Aspirator（アスピレーター）装着時7日という品質上の目安を区別しています。資料の運用例であり、食品安全上の消費期限を保証する数字ではありません。 通常は3日以内、Aspirator（アスピレーター）装着時は7日以内という条件の区別がある。",
+      "reason": "部品名の読み・原文の条件を日本語で示す。通常3日／装着時7日の条件と正誤を維持。"
+    },
+    {
+      "id": "UK26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "1日目はPerfectと表現される",
+      "newChoice": "1日目はPerfect（最良の状態）と表現される",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "UK26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "2〜3日目はSatisfactoryと表現される",
+      "newChoice": "2〜3日目はSatisfactory（満足できる状態）と表現される",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "UK26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：図のDay 1にはPerfectと記されています。",
+      "newChoice": "正答：図のDay 1（1日目）にはPerfect（最良の状態）と記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：図のDay 2/3にはSatisfactoryと記されています。",
+      "newChoice": "正答：図のDay 2/3（2〜3日目）にはSatisfactory（満足できる状態）と記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Day 4 onwardsにはDeteriorates rapidlyと記されています。",
+      "newChoice": "正答：Day 4 onwards（4日目以降）にはDeteriorates rapidly（品質が急速に低下する）と記されています。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：納品直後はStillagingの時点。Tiltingは残量約3分の2の時点を指定している。",
+      "newChoice": "誤答：納品直後はStillaging（カスクを台に設置する作業）の時点。Tilting（カスクを傾ける作業）は残量約3分の2の時点を指定している。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-007",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "P111のTilt at two thirds fullは、残量が約3分の2の時点で傾けるという意味です。図の最終的な残量の見た目と、傾け始める時点の文章を混同しないようにします。 資料は残量約3分の2の時点を指定しており、半分ではない。 納品直後はStillagingの時点。Tiltingは残量約3分の2の時点を指定している。",
+      "newChoice": "P111のTilt at two thirds fullは、残量が約3分の2の時点で傾けるという意味です。図の最終的な残量の見た目と、傾け始める時点の文章を混同しないようにします。 資料は残量約3分の2の時点を指定しており、半分ではない。 納品直後はStillaging（カスクを台に設置する作業）の時点。Tilting（カスクを傾ける作業）は残量約3分の2の時点を指定している。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：左図はIndifferent QualityからReduced Salesへの流れを示します。",
+      "newChoice": "正答：左図はIndifferent Quality（質があまりよくない状態）からReduced Sales（売上の減少）への流れを示します。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：左図ではIncreased Time on Saleの次にLower Qualityが続きます。",
+      "newChoice": "正答：左図ではIncreased Time on Sale（販売にかかる時間の増加）の次にLower Quality（品質のさらなる低下）が続きます。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：右図はDrive for QualityからConsumer Confidenceへの流れを示します。",
+      "newChoice": "正答：右図はDrive for Quality（品質向上への取り組み）からConsumer Confidence（消費者の信頼）への流れを示します。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "UK26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：右図はConsumer Confidence、More Likely to Buy、Increased Sales、Increased Profitsの順に進みます。",
+      "newChoice": "正答：右図はConsumer Confidence（消費者の信頼）、More Likely to Buy（購入されやすくなること）、Increased Sales（売上の増加）、Increased Profits（利益の増加）の順に進みます。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：microencapsulated beer flavor reference standardsと記載されている。",
+      "newChoice": "正答：microencapsulated beer flavor reference standards（マイクロカプセル化したビール香味の参照標準）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：specialists as well as amateursと説明されている。",
+      "newChoice": "正答：specialists as well as amateurs（専門家だけでなく一般の愛好家も）と説明されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：international beer sensory reference systemと記載されている。",
+      "newChoice": "正答：international beer sensory reference system（ビールの官能評価に用いる国際的な参照体系）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Recipe、Beer styleが列挙されている。",
+      "newChoice": "正答：Recipe（レシピ）、Beer style（ビアスタイル）が列挙されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Technologyが列挙されている。",
+      "newChoice": "正答：Technology（醸造技術）が列挙されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Raw materialが列挙されている。",
+      "newChoice": "正答：Raw material（原材料）が列挙されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：Agingが列挙されている。",
+      "newChoice": "正答：Aging（老化・熟成に伴う変化）が列挙されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Define key characteristics → Identify ingredients and process → Make a beer style conclusionの順である。",
+      "newChoice": "正答：Define key characteristics → Identify ingredients and process → Make a beer style conclusion（主要な特徴を定める→原材料と工程を推定する→ビアスタイルの結論を出す）の順である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：4.1 Ale or Lager?と記載されている。",
+      "newChoice": "正答：4.1 Ale or Lager?（エールかラガーか）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：4.2 Exclude styles → 4.3 Choose among remaining stylesと進む。",
+      "newChoice": "正答：4.2 Exclude styles（当てはまらないスタイルを除く） → 4.3 Choose among remaining styles（残ったスタイルから選ぶ）と進む。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Rose likeと記載されている。",
+      "newChoice": "正答：Rose like（バラ様）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Geranium likeと記載されている。",
+      "newChoice": "正答：Geranium like（ゼラニウム様）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：標準表ではtrans-2-nonenalに対応する。",
+      "newChoice": "誤答：標準表ではtrans-2-nonenal（トランス-2-ノネナール）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：標準表ではsodium chlorideに対応する。",
+      "newChoice": "誤答：標準表ではsodium chloride（塩化ナトリウム）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Guaiacol：スモーキー、燻製ベーコン",
+      "newChoice": "Guaiacol（グアイアコール）：スモーキー、燻製ベーコン",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "Eugenol：オールスパイス、クローブ油",
+      "newChoice": "Eugenol（オイゲノール）：オールスパイス、クローブ油",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Guaiacol：塩味、食塩",
+      "newChoice": "Guaiacol（グアイアコール）：塩味、食塩",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Eugenol：濡れた紙、段ボール",
+      "newChoice": "Eugenol（オイゲノール）：濡れた紙、段ボール",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Guaiacolの欄はsmoky、smoked bacon。",
+      "newChoice": "正答：Guaiacol（グアイアコール）の欄はsmoky（スモーキー）、smoked bacon（燻製ベーコン）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Eugenolの欄はAllspice、Clove oil。",
+      "newChoice": "正答：Eugenol（オイゲノール）の欄はAllspice（オールスパイス）、Clove oil（クローブ油）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：塩味の参照標準はsodium chlorideである。",
+      "newChoice": "誤答：塩味の参照標準はsodium chloride（塩化ナトリウム）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：濡れた紙・段ボールの欄はtrans-2-nonenalである。",
+      "newChoice": "誤答：濡れた紙・段ボールの欄はtrans-2-nonenal（トランス-2-ノネナール）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：onion、garlicと記載されている。",
+      "newChoice": "正答：onion（タマネギ）、garlic（ニンニク）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "誤答：この表ではVanillinに対応する。",
+      "newChoice": "誤答：この表ではVanillin（バニリン）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：この表ではEthyl-hexanoateに対応する。",
+      "newChoice": "誤答：この表ではEthyl-hexanoate（ヘキサン酸エチル）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：この表ではBenzaldehydeに対応する。",
+      "newChoice": "誤答：この表ではBenzaldehyde（ベンズアルデヒド）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-007",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "PDF表示28ページ。DMS（dimethyl sulphide）の加熱野菜・スイートコーンの記述と、DMTSの記述を区別する。",
+      "newChoice": "PDF表示28ページ。DMS（dimethyl sulphide：硫化ジメチル）の加熱野菜・スイートコーンの記述と、DMTSの記述を区別する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Ethyl butyrate：トロピカルフルーツ、マンゴー、パイナップル",
+      "newChoice": "Ethyl butyrate（酪酸エチル）：トロピカルフルーツ、マンゴー、パイナップル",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "cis-3-Hexenol：葉、刈りたての草",
+      "newChoice": "cis-3-Hexenol（シス-3-ヘキセノール）：葉、刈りたての草",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Benzaldehyde：アーモンド、マジパン",
+      "newChoice": "Benzaldehyde（ベンズアルデヒド）：アーモンド、マジパン",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Ethyl butyrate：金属、インク",
+      "newChoice": "Ethyl butyrate（酪酸エチル）：金属、インク",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Ethyl butyrateの欄にこの3つの表現がある。",
+      "newChoice": "正答：Ethyl butyrate（酪酸エチル）の欄にこの3つの表現がある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：表ではleavy、fresh cut grassと記載されている。",
+      "newChoice": "正答：表ではleavy（葉のような香り）、fresh cut grass（刈りたての草）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Almond、Marzipanと記載されている。",
+      "newChoice": "正答：Almond（アーモンド）、Marzipan（マジパン）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：金属・インク様の参照はIronと記載されている。",
+      "newChoice": "誤答：金属・インク様の参照はIron（鉄）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Isobutyraldehyde：穀物様、未乾燥麦芽を思わせる特徴",
+      "newChoice": "Isobutyraldehyde（イソブチルアルデヒド）：穀物様、未乾燥麦芽を思わせる特徴",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "6-Isobutylquinoline：革様、干し草様",
+      "newChoice": "6-Isobutylquinoline（6-イソブチルキノリン）：革様、干し草様",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Vanillin：バニラ、アイスクリーム",
+      "newChoice": "Vanillin（バニリン）：バニラ、アイスクリーム",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Vanillin：酢、酢酸",
+      "newChoice": "Vanillin（バニリン）：酢、酢酸",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：grainy、green maltと記載されている。",
+      "newChoice": "正答：grainy（穀物様）、green malt（未乾燥麦芽）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：leathery、hay likeと記載されている。",
+      "newChoice": "正答：leathery（革様）、hay like（干し草様）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-009",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Vanilla、ice creamと記載されている。",
+      "newChoice": "正答：Vanilla（バニラ）、ice cream（アイスクリーム）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Citric acid：酸っぱい、レモンを思わせる特徴",
+      "newChoice": "Citric acid（クエン酸）：酸っぱい、レモンを思わせる特徴",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "Sodium chloride：塩味",
+      "newChoice": "Sodium chloride（塩化ナトリウム）：塩味",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Sodium sulfite：亜硫酸系、マッチを擦ったような特徴",
+      "newChoice": "Sodium sulfite（亜硫酸ナトリウム）：亜硫酸系、マッチを擦ったような特徴",
+      "reason": "化合物の標準的な日本語名だけを併記。香味の対応や誤答の内容は変えず、正しい香りの追加説明はしない。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：sour/acidic、citric/lemonと記載されている。",
+      "newChoice": "正答：sour/acidic（酸っぱい・酸味のある）、citric/lemon（柑橘・レモン様）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：saltyと記載されている。",
+      "newChoice": "正答：salty（塩味）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：acetic、vinegarと記載されている。",
+      "newChoice": "正答：acetic（酢酸様）、vinegar（酢）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：sulfitic、striking matchと記載されている。",
+      "newChoice": "正答：sulfitic（亜硫酸系）、striking match（マッチを擦ったときのような香り）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：表の2-phenylethanalの行にhoney、sweet、malty、caramelとある。",
+      "newChoice": "正答：表の2-phenylethanal（フェニルアセトアルデヒド）の行にhoney（蜂蜜様）、sweet（甘い）、malty（麦芽様）、caramel（カラメル様）とある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：oxidation of 2-phenylethanolと記載されている。",
+      "newChoice": "正答：oxidation of 2-phenylethanol（2-フェニルエタノールの酸化）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：methionalの行にmethionineの酸化的脱炭酸が記載されている。",
+      "newChoice": "正答：methional（メチオナール）の行にmethionine（メチオニン）の酸化的脱炭酸が記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：wet cardboardの行にfatty acid oxidationと記載されている。",
+      "newChoice": "正答：wet cardboard（濡れた段ボール様）の行にfatty acid oxidation（脂肪酸の酸化）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-011",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "PDF表示25ページ（スライド55）。既出の香りの同定から、前駆物質・反応の理解へ広げた問題。原文のphenylacete aldehydeという表記は2-phenylethanalを確認して標準的な名称に整えた。",
+      "newChoice": "PDF表示25ページ（スライド55）。既出の香りの同定から、前駆物質・反応の理解へ広げた問題。原文のphenylacete aldehydeという表記は、2-phenylethanal（フェニルアセトアルデヒド）を確認して標準的な名称に整えた。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-012",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：phenolic notes become less pronouncedとMouthfeel is negatively impactedを合わせた記述。",
+      "newChoice": "正答：phenolic notes become less pronounced（フェノール様の特徴が目立たなくなる）とMouthfeel is negatively impacted（口当たりに悪影響が及ぶ）を合わせた記述。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-012",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：資料はmouthfeelへの悪影響を明示している。",
+      "newChoice": "誤答：資料はmouthfeel（口当たり）への悪影響を明示している。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "ES26-012",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：emergence of flavors resulting from aging componentsと記載されている。",
+      "newChoice": "誤答：emergence of flavors resulting from aging components（老化に伴う成分変化によって香味が現れること）と記載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-001",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：横軸は Alcohol consumption in grams per person per day、縦軸は Body Mass Index。",
+      "newChoice": "正答：横軸は Alcohol consumption in grams per person per day（1人1日当たりのアルコール消費量をグラムで示したもの）、縦軸は Body Mass Index（体格指数〔BMI〕）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：alcohol、Beer、Wineの各系列で、>80gの棒が図中の他区分より高い。",
+      "newChoice": "正答：alcohol（アルコール）、Beer（ビール）、Wine（ワイン）の各系列で、>80gの棒が図中の他区分より高い。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-002",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：1〜20g/日から21〜40g/日へは、alcoholとWineの棒が低くなり、Beerは同じ高さ。",
+      "newChoice": "誤答：1〜20g/日から21〜40g/日へは、alcohol（アルコール）とWine（ワイン）の棒が低くなり、Beer（ビール）は同じ高さ。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：食品表の見出しは mcg per serving。食品ごとに量や調理条件が添えられる。",
+      "newChoice": "正答：食品表の見出しは mcg per serving（1回分当たりのマイクログラム）。食品ごとに量や調理条件が添えられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：飲料表の見出しは Folate (µg/bottle)。",
+      "newChoice": "正答：飲料表の見出しは Folate (µg/bottle)（葉酸含有量〔1本当たりのマイクログラム〕）。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-003",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：割合の見出しは % of RDA (400µg)。この表で用いた計算基準を示す。",
+      "newChoice": "正答：割合の見出しは % of RDA (400µg)（この表で用いる推奨量400µgに対する割合）。この表で用いた計算基準を示す。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Beef liver, braised が掲載されている。",
+      "newChoice": "正答：Beef liver, braised（牛レバーの蒸し煮） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：Spinach は加熱したものと生のものが掲載されている。",
+      "newChoice": "正答：Spinach（ホウレンソウ） は加熱したものと生のものが掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：Black-eyed peas (cowpeas), boiled が掲載されている。",
+      "newChoice": "正答：Black-eyed peas (cowpeas), boiled（ゆでたササゲ〔ブラックアイドピー〕） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-004",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：Asparagus, boiled が掲載されている。",
+      "newChoice": "正答：Asparagus, boiled（ゆでたアスパラガス） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-005",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "Pale aleの複数の数値は、同一の葉酸量を異なる単位で表示したものである",
+      "newChoice": "Pale ale（ペールエール）の複数の数値は、同一の葉酸量を異なる単位で表示したものである",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-005",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Pale aleの複数の数値は、ビールの色の濃い順に並べた結果と読める",
+      "newChoice": "Pale ale（ペールエール）の複数の数値は、ビールの色の濃い順に並べた結果と読める",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-005",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Pale aleの数値の大小は、そのままアルコール度数の高低を表している",
+      "newChoice": "Pale ale（ペールエール）の数値の大小は、そのままアルコール度数の高低を表している",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-005",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Pale aleには33.6、131.8、92.1、58.4µg/bottleという複数の値が掲載される。",
+      "newChoice": "正答：Pale ale（ペールエール）には33.6、131.8、92.1、58.4µg/bottleという複数の値が掲載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "Alcohol-free beerの行にも、葉酸の値が記載されている",
+      "newChoice": "Alcohol-free beer（アルコールフリービール）の行にも、葉酸の値が記載されている",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "VodkaとWhiskyの行は、いずれも0.0µg/bottleと記載されている",
+      "newChoice": "Vodka（ウォッカ）とWhisky（ウイスキー）の行は、いずれも0.0µg/bottleと記載されている",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "Alcohol-free beerの41.7という値の単位は、mg/bottleである",
+      "newChoice": "Alcohol-free beer（アルコールフリービール）の41.7という値の単位は、mg/bottleである",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "Alcohol-free beerの10.4%は、この試料のアルコール度数を示す",
+      "newChoice": "Alcohol-free beer（アルコールフリービール）の10.4%は、この試料のアルコール度数を示す",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：Alcohol-free beerは41.7µg/bottle、表の基準に対して10.4%と掲載される。",
+      "newChoice": "正答：Alcohol-free beer（アルコールフリービール）は41.7µg/bottle、表の基準に対して10.4%と掲載される。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-006",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：この表のVodkaとWhiskyは0.0µg/bottleと記載される。すべての市販品への保証ではない。",
+      "newChoice": "正答：この表のVodka（ウォッカ）とWhisky（ウイスキー）は0.0µg/bottleと記載される。すべての市販品への保証ではない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：magnesium が掲載されている。",
+      "newChoice": "正答：magnesium（マグネシウム） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：potassium が掲載されている。",
+      "newChoice": "正答：potassium（カリウム） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：phosphorus が掲載されている。",
+      "newChoice": "正答：phosphorus（リン） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-007",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：Chloride が掲載されている。ナトリウムや硫酸塩とは別の成分。",
+      "newChoice": "正答：Chloride（塩化物） が掲載されている。ナトリウムや硫酸塩とは別の成分。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：copper が掲載されている。",
+      "newChoice": "正答：copper（銅） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：iron が掲載されている。",
+      "newChoice": "正答：iron（鉄） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-008",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：manganese と zinc が掲載されている。",
+      "newChoice": "正答：manganese（マンガン） と zinc（亜鉛） が掲載されている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 0,
+      "oldChoice": "ナトリウムについて「very low」と記載されている",
+      "newChoice": "ナトリウムについて「very low（非常に少ない）」と記載されている",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 1,
+      "oldChoice": "硝酸塩について「low」と記載されている",
+      "newChoice": "硝酸塩について「low（少ない）」と記載されている",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "ナトリウムについて「rich in」と記載されている",
+      "newChoice": "ナトリウムについて「rich in（豊富に含む）」と記載されている",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choices",
+      "index": 3,
+      "oldChoice": "硝酸塩について「rich in」と記載されている",
+      "newChoice": "硝酸塩について「rich in（豊富に含む）」と記載されている",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：原文は very low in sodium。資料中の定性的な表現として扱う。",
+      "newChoice": "正答：原文は very low in sodium（ナトリウムが非常に少ない）。資料中の定性的な表現として扱う。",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：原文は low in nitrates。資料中の定性的な表現として扱う。",
+      "newChoice": "正答：原文は low in nitrates（硝酸塩が少ない）。資料中の定性的な表現として扱う。",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：ナトリウムの表現はvery low in sodiumである。定性的な説明であり、全製品の含有量を保証しない。",
+      "newChoice": "誤答：ナトリウムの表現はvery low in sodium（ナトリウムが非常に少ない）である。定性的な説明であり、全製品の含有量を保証しない。",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：硝酸塩の表現はlow in nitratesである。定性的な説明であり、個別製品の分析値ではない。",
+      "newChoice": "誤答：硝酸塩の表現はlow in nitrates（硝酸塩が少ない）である。定性的な説明であり、個別製品の分析値ではない。",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-010",
+      "variantId": null,
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "資料の英語表現を読む問題。個別製品の分析値、現在の表示基準への適合や健康上の安全性を保証するものではない。 ナトリウムの表現はvery low in sodiumである。定性的な説明であり、全製品の含有量を保証しない。 硝酸塩の表現はlow in nitratesである。定性的な説明であり、個別製品の分析値ではない。",
+      "newChoice": "資料の英語表現を読む問題。個別製品の分析値、現在の表示基準への適合や健康上の安全性を保証するものではない。 ナトリウムの表現はvery low in sodium（ナトリウムが非常に少ない）である。定性的な説明であり、全製品の含有量を保証しない。 硝酸塩の表現はlow in nitrates（硝酸塩が少ない）である。定性的な説明であり、個別製品の分析値ではない。",
+      "reason": "資料中の定性的な量の表現だけを訳す。少ない／豊富という対立、現在の製品や健康効果を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：loss of appetite が掲載されている。伝承上の用途の記述である。",
+      "newChoice": "正答：loss of appetite（食欲不振） が掲載されている。伝承上の用途の記述である。",
+      "reason": "民間療法史の語句の意味だけを併記。治療効果や有効量を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：sleeping aid が掲載されている。治療効果が実証されたという意味ではない。",
+      "newChoice": "正答：sleeping aid（睡眠の補助） が掲載されている。治療効果が実証されたという意味ではない。",
+      "reason": "民間療法史の語句の意味だけを併記。治療効果や有効量を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-011",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：calming が掲載されている。現在の薬効の保証ではない。",
+      "newChoice": "正答：calming（気持ちを落ち着かせること） が掲載されている。現在の薬効の保証ではない。",
+      "reason": "民間療法史の語句の意味だけを併記。治療効果や有効量を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-012",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：見出しの対象はHops。ビールの飲用量・治療用量は示されていない。",
+      "newChoice": "正答：見出しの対象はHops（ホップ）。ビールの飲用量・治療用量は示されていない。",
+      "reason": "民間療法史の語句の意味だけを併記。治療効果や有効量を保証しない注意書きを維持。"
+    },
+    {
+      "id": "DH-012",
+      "variantId": null,
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：diuretic が表中に掲載されているが、用量や試験結果はない。",
+      "newChoice": "正答：diuretic（利尿） が表中に掲載されているが、用量や試験結果はない。",
+      "reason": "民間療法史の語句の意味だけを併記。治療効果や有効量を保証しない注意書きを維持。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p3のBitterness → Can balance spicinessに対応する。",
+      "newChoice": "正答：p3のBitterness → Can balance spiciness（苦味→料理の辛味とのバランスに役立ち得る）に対応する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p3はCarbonation → emphasizes aromasとする。",
+      "newChoice": "正答：p3はCarbonation → emphasizes aromas（炭酸→香りを際立たせる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p3のビールの効果にはRoasty aromasが挙げられている。",
+      "newChoice": "誤答：p3のビールの効果にはRoasty aromas（ロースト香）が挙げられている。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p3はAlcohol → enhances aromasとする。",
+      "newChoice": "誤答：p3はAlcohol → enhances aromas（アルコール→香りを引き立てる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p3の効果の一覧にはFruity aromasが含まれる。",
+      "newChoice": "正答：p3の効果の一覧にはFruity aromas（果実様の香り）が含まれる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p3の一覧に(malt) sweetnessがある。",
+      "newChoice": "正答：p3の一覧に(malt) sweetness（モルト由来の甘味）がある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balanceと説明する。",
+      "newChoice": "誤答：p3は苦味が辛味とのバランスを取れるとし、ビールの役割をsupport（支える）・enhance（引き立てる）・balance（バランスを取る）と説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-002",
+      "variantId": "alt-b",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "果実香やモルトの甘味など、ビールが料理との組み合わせに持ち込む具体的な要素を問う。 p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。 p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balanceと説明する。",
+      "newChoice": "果実香やモルトの甘味など、ビールが料理との組み合わせに持ち込む具体的な要素を問う。 p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。 p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balance（支える・引き立てる・バランスを取る）と説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p4はHow do the primary components of beer and food react with each other?と問いかける。",
+      "newChoice": "正答：p4はHow do the primary components of beer and food react with each other?（ビールと料理の主要成分どうしはどのように反応するか）と問いかける。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p4はWhich impulses lead to which reactions in the nose and the mouth?とする。",
+      "newChoice": "正答：p4はWhich impulses lead to which reactions in the nose and the mouth?（どのような刺激が鼻や口にどのような反応を起こすか）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p5はthe more dominant the substance, the more attention should be payed to itとする。",
+      "newChoice": "正答：p5はthe more dominant the substance, the more attention should be payed to it（成分が支配的であるほど注意を払うべきである）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p17の項目4はImportance of a group according to intensityである。",
+      "newChoice": "正答：p17の項目4はImportance of a group according to intensity（香りの強さに応じてグループの重要度を判断すること）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p4はingredientsが引き起こすassociationsを重要としながら、food pairingではmore in the backgroundとする。",
+      "newChoice": "正答：p4はingredients（食材）が引き起こすassociations（連想）を重要としながら、food pairing（フードペアリング）ではmore in the background（相対的に背景へ退く）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p5はsourness is present on both sidesの場合にadding sea saltを挙げる。",
+      "newChoice": "正答：p5はsourness is present on both sides（ビールと料理の両方に酸味がある）の場合にadding sea salt（海塩を加えること）を挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p17の項目2はDominant aroma group has to be foundである。",
+      "newChoice": "正答：p17の項目2はDominant aroma group has to be found（支配的なアロマグループを見つける必要がある）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-004",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p17の項目5はFine-tuning by using less intense groupsである。",
+      "newChoice": "正答：p17の項目5はFine-tuning by using less intense groups（強さの低いアロマグループを用いて微調整すること）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p7はFruity esters develop with acidsと記載する。知覚変化が即座に必ず起きるという保証ではない。",
+      "newChoice": "正答：p7はFruity esters develop with acids（酸と組み合わせると果実様エステルが生じる）と記載する。知覚変化が即座に必ず起きるという保証ではない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "誤答：p7はSeams metallic when combined with saturated fatty acidsとする。",
+      "newChoice": "誤答：p7はSeams metallic when combined with saturated fatty acids（飽和脂肪酸と組み合わせると金属様に感じられる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p7のeffect in the beerにtransports aromas / creates a voluminous mouthfeelとある。",
+      "newChoice": "正答：p7のeffect in the beer（ビール中での働き）にtransports aromas / creates a voluminous mouthfeel（香りを運ぶ／ボリューム感のある口当たりをつくる）とある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p7はEnhances mouthfeel when combined with sweetnessとする。",
+      "newChoice": "誤答：p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-a",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "酸との関係、飽和脂肪酸との知覚、アロマを運ぶ作用と口当たりを区別する。 p7はSeams metallic when combined with saturated fatty acidsとする。 p7はEnhances mouthfeel when combined with sweetnessとする。",
+      "newChoice": "酸との関係、飽和脂肪酸との知覚、アロマを運ぶ作用と口当たりを区別する。 p7はSeams metallic when combined with saturated fatty acids（飽和脂肪酸と組み合わせると金属様に感じられる）とする。 p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "誤答：p9のTequila-effectの説明はSourness and salt buffer alcoholであり、和らげる方向である。",
+      "newChoice": "誤答：p9のTequila-effect（テキーラ効果）の説明はSourness and salt buffer alcohol（酸味と塩がアルコールの刺激を和らげる）であり、和らげる方向である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p7はsaturated fatty acidsとの組み合わせをmetallicと説明する。",
+      "newChoice": "正答：p7はsaturated fatty acids（飽和脂肪酸）との組み合わせをmetallic（金属様）と説明する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p7の該当行はFruity esters develop with acidsであり、タンニンではない。",
+      "newChoice": "誤答：p7の該当行はFruity esters develop with acids（酸と組み合わせると果実様エステルが生じる）であり、タンニンではない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-006",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p7はEnhances mouthfeel when combined with sweetnessとする。",
+      "newChoice": "正答：p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p8はFats over layer bitternessとする。",
+      "newChoice": "正答：p8はFats over layer bitterness（脂質が苦味を覆う）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p8はFats over layer sournessとする。",
+      "newChoice": "正答：p8はFats over layer sourness（脂質が酸味を覆う）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p8のAnimal fats (e.g. cream or milk)はSticky mouthfeelに結び付けられる。",
+      "newChoice": "誤答：p8のAnimal fats (e.g. cream or milk)（動物性脂肪〔例：クリームやミルク〕）はSticky mouthfeel（まとわりつくような口当たり）に結び付けられる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p8はOils (high proportion of unsaturated fatty acids)の後にcreamy mouthfeelと記載する。",
+      "newChoice": "正答：p8はOils (high proportion of unsaturated fatty acids)（不飽和脂肪酸の割合が高い油）の後にcreamy mouthfeel（クリーミーな口当たり）と記載する。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p8はFats + spices = harmony with a thrillとする。",
+      "newChoice": "正答：p8はFats + spices = harmony with a thrill（脂質とスパイスの組み合わせは刺激を伴う調和）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p8はFats + acids = metallicとする。",
+      "newChoice": "正答：p8はFats + acids = metallic（脂質と酸の組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p8はAnimal fats (e.g. cream or milk) → Sticky mouthfeelとする。",
+      "newChoice": "正答：p8はAnimal fats (e.g. cream or milk)（動物性脂肪〔例：クリームやミルク〕） → Sticky mouthfeel（まとわりつくような口当たり）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p8の該当する記述はFats + alcohol = metallicである。",
+      "newChoice": "誤答：p8の該当する記述はFats + alcohol = metallic（脂質とアルコールの組み合わせは金属様の印象）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-007",
+      "variantId": "alt-b",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "脂質の働きは一様ではなく、組み合わせる成分や油脂の種類によって説明が異なる。 p8の該当する記述はFats + alcohol = metallicである。",
+      "newChoice": "脂質の働きは一様ではなく、組み合わせる成分や油脂の種類によって説明が異なる。 p8の該当する記述はFats + alcohol = metallic（脂質とアルコールの組み合わせは金属様の印象）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p9の英語本文にSourness can be buffered by potassiumとある。添加や摂取を勧める設問ではない。",
+      "newChoice": "正答：p9の英語本文にSourness can be buffered by potassium（酸味はカリウムによって和らげられる）とある。添加や摂取を勧める設問ではない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "誤答：p9はSour + phenols = metallicとする。",
+      "newChoice": "誤答：p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p9はSourness and salt buffer alcoholとする。",
+      "newChoice": "誤答：p9はSourness and salt buffer alcohol（酸味と塩がアルコールの刺激を和らげる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p9はSour + sweet = pleasantとする。",
+      "newChoice": "誤答：p9はSour + sweet = pleasant（酸味と甘味の組み合わせは心地よい）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-a",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "カリウムの記載と、フェノール・アルコール・甘味に関する相互作用を区別する。 p9はSour + phenols = metallicとする。",
+      "newChoice": "カリウムの記載と、フェノール・アルコール・甘味に関する相互作用を区別する。 p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "誤答：p9はAcids denature proteinsとし、ここでの作用は変性である。",
+      "newChoice": "誤答：p9はAcids denature proteins（酸がタンパク質を変性させる）とし、ここでの作用は変性である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p9はSour + phenols = metallicとする。",
+      "newChoice": "正答：p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p9はSour + fat = metallicとする。",
+      "newChoice": "誤答：p9はSour + fat = metallic（酸味と脂質の組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-009",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p9はSourness can be buffered by potassiumとし、緩和する方向を示す。",
+      "newChoice": "誤答：p9はSourness can be buffered by potassium（酸味はカリウムによって和らげられる）とし、緩和する方向を示す。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p12はPhenols + fat = metallicとする。",
+      "newChoice": "正答：p12はPhenols + fat = metallic（フェノールと脂質の組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "誤答：p12の該当行はPhenols + protein = metallicである。",
+      "newChoice": "誤答：p12の該当行はPhenols + protein = metallic（フェノールとタンパク質の組み合わせは金属様の印象）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
+      "newChoice": "誤答：p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p12はPhenols + sourness can be buffered by saltとし、塩を挙げる。",
+      "newChoice": "誤答：p12はPhenols + sourness can be buffered by salt（フェノールと酸味の組み合わせは塩で和らげられる）とし、塩を挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-a",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "ポリフェノールの相互作用には、脂質による金属様の印象と、クリームを含む別条件での調和の双方が示される。 p12はPhenols + phenols + fat (cream) = harmonyとする。",
+      "newChoice": "ポリフェノールの相互作用には、脂質による金属様の印象と、クリームを含む別条件での調和の双方が示される。 p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "誤答：p12はPhenols + sourness = metallicとする。",
+      "newChoice": "誤答：p12はPhenols + sourness = metallic（フェノールと酸味の組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "誤答：p12はPhenols + raw protein = denaturationとする。",
+      "newChoice": "誤答：p12はPhenols + raw protein = denaturation（フェノールと非加熱タンパク質の組み合わせは変性を生じる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
+      "newChoice": "正答：p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p12はPhenols + sweetness = buffer / harmonyとする。",
+      "newChoice": "誤答：p12はPhenols + sweetness = buffer / harmony（フェノールと甘味の組み合わせは緩和・調和につながる）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-013",
+      "variantId": "alt-b",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "二成分の組み合わせと、クリームを加える三成分の組み合わせを区別して読む。 p12はPhenols + sourness = metallicとする。",
+      "newChoice": "二成分の組み合わせと、クリームを加える三成分の組み合わせを区別して読む。 p12はPhenols + sourness = metallic（フェノールと酸味の組み合わせは金属様の印象）とする。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p17の項目1はdifferent brewing traditionsに応じたdifferent characteristic aroma groupsを示す。",
+      "newChoice": "正答：p17の項目1はdifferent brewing traditions（異なる醸造の伝統）に応じたdifferent characteristic aroma groups（異なる特徴的なアロマグループ）を示す。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p17の項目4はImportance of a group according to intensityである。",
+      "newChoice": "正答：p17の項目4はImportance of a group according to intensity（香りの強さに応じてグループの重要度を判断すること）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "正答：p17の項目7はChallenge of combining different aroma groupsである。",
+      "newChoice": "正答：p17の項目7はChallenge of combining different aroma groups（異なるアロマグループを組み合わせる挑戦）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p17の項目5はless intense groupsを使うFine-tuningを挙げる。",
+      "newChoice": "誤答：p17の項目5はless intense groups（強さの低いアロマグループ）を使うFine-tuning（微調整）を挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-a",
+      "field": "explanation",
+      "index": null,
+      "oldChoice": "アロマの使い方を、醸造の伝統、知覚強度、異なるグループへの挑戦から確認する。 p17の項目5はless intense groupsを使うFine-tuningを挙げる。",
+      "newChoice": "アロマの使い方を、醸造の伝統、知覚強度、異なるグループへの挑戦から確認する。 p17の項目5はless intense groups（強さの低いアロマグループ）を使うFine-tuning（微調整）を挙げる。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-b",
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "図のvegetalは動物様の香りを分類するための名称である",
+      "newChoice": "図のvegetal（ベジタル）は動物様の香りを分類するための名称である",
+      "reason": "意味そのものが判断対象なので選択前はカタカナ読みだけを併記。既存の誤った意味はそのまま維持し、正しい日本語訳は回答後の理由で示す。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p16の図ではroasted / woody / earthyをひとまとまりのラベルとして示す。",
+      "newChoice": "正答：p16の図ではroasted / woody / earthy（焙煎様・木質様・土様）をひとまとまりのラベルとして示す。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-015",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p16の図にMicro biologicというグループ名がある。検出すれば必ず品質欠陥という意味ではない。",
+      "newChoice": "正答：p16の図にMicro biologic（微生物関連）というグループ名がある。検出すれば必ず品質欠陥という意味ではない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-a",
+      "field": "choices",
+      "index": 2,
+      "oldChoice": "資料のCoq au Vinの行では、ブラウンエールとアルトが指定される",
+      "newChoice": "資料のCoq au Vin（鶏肉のワイン煮）の行では、ブラウンエールとアルトが指定される",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "正答：p19のRoastedの行はPale Ale, Oktoberfestbier, Dunkler Bockである。",
+      "newChoice": "正答：p19のRoasted（ローストした鶏肉）の行はPale Ale, Oktoberfestbier, Dunkler Bock（ペールエール、オクトーバーフェストビア、ドゥンケルボック）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p19のWith spicy sauceの行にSaisonとPorterがある。",
+      "newChoice": "正答：p19のWith spicy sauce（辛いソースを添えた鶏肉）の行にSaison（セゾン）とPorter（ポーター）がある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p19ではBrown AleとAltはFriedの行。Coq au VinはDubbelとBiere de Gardeである。",
+      "newChoice": "誤答：p19ではBrown Ale（ブラウンエール）とAlt（アルト）はFried（揚げた鶏肉）の行。Coq au Vin（鶏肉のワイン煮）はDubbel（デュッベル）とBiere de Garde（ビエール・ド・ギャルド）である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-a",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "誤答：p19ではSmoke beerとImperial StoutはWith spicy sauceの行である。",
+      "newChoice": "誤答：p19ではSmoke beer（スモークビール）とImperial Stout（インペリアルスタウト）はWith spicy sauce（辛いソースを添えた鶏肉）の行である。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 0,
+      "oldChoice": "誤答：p19ではDubbelはCoq au Vinの行であり、Roastedの行にはない。",
+      "newChoice": "誤答：p19ではDubbel（デュッベル）はCoq au Vin（鶏肉のワイン煮）の行であり、Roasted（ローストした鶏肉）の行にはない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 1,
+      "oldChoice": "正答：p19のWith spicy sauceの行にSmoke beerとImperial Stoutがある。",
+      "newChoice": "正答：p19のWith spicy sauce（辛いソースを添えた鶏肉）の行にSmoke beer（スモークビール）とImperial Stout（インペリアルスタウト）がある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 2,
+      "oldChoice": "誤答：p19ではBiere de GardeはCoq au Vinの行であり、Friedの行にはない。",
+      "newChoice": "誤答：p19ではBiere de Garde（ビエール・ド・ギャルド）はCoq au Vin（鶏肉のワイン煮）の行であり、Fried（揚げた鶏肉）の行にはない。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    },
+    {
+      "id": "BP26-018",
+      "variantId": "alt-b",
+      "field": "choiceReasons",
+      "index": 3,
+      "oldChoice": "正答：p19のRoastedの行にDunkler Bockがある。",
+      "newChoice": "正答：p19のRoasted（ローストした鶏肉）の行にDunkler Bock（ドゥンケルボック）がある。",
+      "reason": "英語原文を残して日本語の意味を併記。数値・条件・否定・正誤判定は変更しない。 回答後の説明を単独で読めるようにする。"
+    }
+  ]
+}

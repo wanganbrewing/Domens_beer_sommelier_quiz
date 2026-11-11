@@ -17,10 +17,10 @@
             1
           ],
           "choiceReasons": [
-            "正答：p3のBitterness → Can balance spicinessに対応する。",
-            "正答：p3はCarbonation → emphasizes aromasとする。",
-            "誤答：p3のビールの効果にはRoasty aromasが挙げられている。",
-            "誤答：p3はAlcohol → enhances aromasとする。"
+            "正答：p3のBitterness → Can balance spiciness（苦味→料理の辛味とのバランスに役立ち得る）に対応する。",
+            "正答：p3はCarbonation → emphasizes aromas（炭酸→香りを際立たせる）とする。",
+            "誤答：p3のビールの効果にはRoasty aromas（ロースト香）が挙げられている。",
+            "誤答：p3はAlcohol → enhances aromas（アルコール→香りを引き立てる）とする。"
           ],
           "explanation": "料理への作用を、苦味・炭酸・ロースト香・アルコールに分けて確認する。いずれも料理を支え、引き立て、バランスを取るための要素である。",
           "sources": [
@@ -47,12 +47,12 @@
             2
           ],
           "choiceReasons": [
-            "正答：p3の効果の一覧にはFruity aromasが含まれる。",
+            "正答：p3の効果の一覧にはFruity aromas（果実様の香り）が含まれる。",
             "誤答：p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。",
-            "正答：p3の一覧に(malt) sweetnessがある。",
-            "誤答：p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balanceと説明する。"
+            "正答：p3の一覧に(malt) sweetness（モルト由来の甘味）がある。",
+            "誤答：p3は苦味が辛味とのバランスを取れるとし、ビールの役割をsupport（支える）・enhance（引き立てる）・balance（バランスを取る）と説明する。"
           ],
-          "explanation": "果実香やモルトの甘味など、ビールが料理との組み合わせに持ち込む具体的な要素を問う。 p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。 p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balanceと説明する。",
+          "explanation": "果実香やモルトの甘味など、ビールが料理との組み合わせに持ち込む具体的な要素を問う。 p3はcleans taste budsとし、味蕾をリフレッシュする働きを挙げる。 p3は苦味が辛味とのバランスを取れるとし、役割をsupport・enhance・balance（支える・引き立てる・バランスを取る）と説明する。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -84,10 +84,10 @@
             3
           ],
           "choiceReasons": [
-            "正答：p4はHow do the primary components of beer and food react with each other?と問いかける。",
-            "正答：p4はWhich impulses lead to which reactions in the nose and the mouth?とする。",
-            "正答：p5はthe more dominant the substance, the more attention should be payed to itとする。",
-            "正答：p17の項目4はImportance of a group according to intensityである。"
+            "正答：p4はHow do the primary components of beer and food react with each other?（ビールと料理の主要成分どうしはどのように反応するか）と問いかける。",
+            "正答：p4はWhich impulses lead to which reactions in the nose and the mouth?（どのような刺激が鼻や口にどのような反応を起こすか）とする。",
+            "正答：p5はthe more dominant the substance, the more attention should be payed to it（成分が支配的であるほど注意を払うべきである）とする。",
+            "正答：p17の項目4はImportance of a group according to intensity（香りの強さに応じてグループの重要度を判断すること）である。"
           ],
           "explanation": "成分比較の後に調べる相互作用、感覚への刺激、強さの評価を具体化した手順である。",
           "sources": [
@@ -132,10 +132,10 @@
             3
           ],
           "choiceReasons": [
-            "正答：p4はingredientsが引き起こすassociationsを重要としながら、food pairingではmore in the backgroundとする。",
-            "正答：p5はsourness is present on both sidesの場合にadding sea saltを挙げる。",
-            "正答：p17の項目2はDominant aroma group has to be foundである。",
-            "正答：p17の項目5はFine-tuning by using less intense groupsである。"
+            "正答：p4はingredients（食材）が引き起こすassociations（連想）を重要としながら、food pairing（フードペアリング）ではmore in the background（相対的に背景へ退く）とする。",
+            "正答：p5はsourness is present on both sides（ビールと料理の両方に酸味がある）の場合にadding sea salt（海塩を加えること）を挙げる。",
+            "正答：p17の項目2はDominant aroma group has to be found（支配的なアロマグループを見つける必要がある）である。",
+            "正答：p17の項目5はFine-tuning by using less intense groups（強さの低いアロマグループを用いて微調整すること）である。"
           ],
           "explanation": "組み合わせの設計を、連想の扱い、調和のための成分追加、香りの分析と微調整へ広げた例である。",
           "sources": [
@@ -183,12 +183,12 @@
             2
           ],
           "choiceReasons": [
-            "正答：p7はFruity esters develop with acidsと記載する。知覚変化が即座に必ず起きるという保証ではない。",
-            "誤答：p7はSeams metallic when combined with saturated fatty acidsとする。",
-            "正答：p7のeffect in the beerにtransports aromas / creates a voluminous mouthfeelとある。",
-            "誤答：p7はEnhances mouthfeel when combined with sweetnessとする。"
+            "正答：p7はFruity esters develop with acids（酸と組み合わせると果実様エステルが生じる）と記載する。知覚変化が即座に必ず起きるという保証ではない。",
+            "誤答：p7はSeams metallic when combined with saturated fatty acids（飽和脂肪酸と組み合わせると金属様に感じられる）とする。",
+            "正答：p7のeffect in the beer（ビール中での働き）にtransports aromas / creates a voluminous mouthfeel（香りを運ぶ／ボリューム感のある口当たりをつくる）とある。",
+            "誤答：p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。"
           ],
-          "explanation": "酸との関係、飽和脂肪酸との知覚、アロマを運ぶ作用と口当たりを区別する。 p7はSeams metallic when combined with saturated fatty acidsとする。 p7はEnhances mouthfeel when combined with sweetnessとする。",
+          "explanation": "酸との関係、飽和脂肪酸との知覚、アロマを運ぶ作用と口当たりを区別する。 p7はSeams metallic when combined with saturated fatty acids（飽和脂肪酸と組み合わせると金属様に感じられる）とする。 p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -213,10 +213,10 @@
             3
           ],
           "choiceReasons": [
-            "誤答：p9のTequila-effectの説明はSourness and salt buffer alcoholであり、和らげる方向である。",
-            "正答：p7はsaturated fatty acidsとの組み合わせをmetallicと説明する。",
-            "誤答：p7の該当行はFruity esters develop with acidsであり、タンニンではない。",
-            "正答：p7はEnhances mouthfeel when combined with sweetnessとする。"
+            "誤答：p9のTequila-effect（テキーラ効果）の説明はSourness and salt buffer alcohol（酸味と塩がアルコールの刺激を和らげる）であり、和らげる方向である。",
+            "正答：p7はsaturated fatty acids（飽和脂肪酸）との組み合わせをmetallic（金属様）と説明する。",
+            "誤答：p7の該当行はFruity esters develop with acids（酸と組み合わせると果実様エステルが生じる）であり、タンニンではない。",
+            "正答：p7はEnhances mouthfeel when combined with sweetness（甘味と組み合わせると口当たりの印象を強める）とする。"
           ],
           "explanation": "塩と酸の緩和作用、飽和脂肪酸との金属様の印象、甘味と口当たりの関係を確認する。",
           "sources": [
@@ -257,10 +257,10 @@
             3
           ],
           "choiceReasons": [
-            "正答：p8はFats over layer bitternessとする。",
-            "正答：p8はFats over layer sournessとする。",
-            "誤答：p8のAnimal fats (e.g. cream or milk)はSticky mouthfeelに結び付けられる。",
-            "正答：p8はOils (high proportion of unsaturated fatty acids)の後にcreamy mouthfeelと記載する。"
+            "正答：p8はFats over layer bitterness（脂質が苦味を覆う）とする。",
+            "正答：p8はFats over layer sourness（脂質が酸味を覆う）とする。",
+            "誤答：p8のAnimal fats (e.g. cream or milk)（動物性脂肪〔例：クリームやミルク〕）はSticky mouthfeel（まとわりつくような口当たり）に結び付けられる。",
+            "正答：p8はOils (high proportion of unsaturated fatty acids)（不飽和脂肪酸の割合が高い油）の後にcreamy mouthfeel（クリーミーな口当たり）と記載する。"
           ],
           "explanation": "脂質の働きを苦味・酸味への影響と、油脂の種類による口当たりの違いから確認する。",
           "sources": [
@@ -288,12 +288,12 @@
             2
           ],
           "choiceReasons": [
-            "正答：p8はFats + spices = harmony with a thrillとする。",
-            "正答：p8はFats + acids = metallicとする。",
-            "正答：p8はAnimal fats (e.g. cream or milk) → Sticky mouthfeelとする。",
-            "誤答：p8の該当する記述はFats + alcohol = metallicである。"
+            "正答：p8はFats + spices = harmony with a thrill（脂質とスパイスの組み合わせは刺激を伴う調和）とする。",
+            "正答：p8はFats + acids = metallic（脂質と酸の組み合わせは金属様の印象）とする。",
+            "正答：p8はAnimal fats (e.g. cream or milk)（動物性脂肪〔例：クリームやミルク〕） → Sticky mouthfeel（まとわりつくような口当たり）とする。",
+            "誤答：p8の該当する記述はFats + alcohol = metallic（脂質とアルコールの組み合わせは金属様の印象）である。"
           ],
-          "explanation": "脂質の働きは一様ではなく、組み合わせる成分や油脂の種類によって説明が異なる。 p8の該当する記述はFats + alcohol = metallicである。",
+          "explanation": "脂質の働きは一様ではなく、組み合わせる成分や油脂の種類によって説明が異なる。 p8の該当する記述はFats + alcohol = metallic（脂質とアルコールの組み合わせは金属様の印象）である。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -322,12 +322,12 @@
             0
           ],
           "choiceReasons": [
-            "正答：p9の英語本文にSourness can be buffered by potassiumとある。添加や摂取を勧める設問ではない。",
-            "誤答：p9はSour + phenols = metallicとする。",
-            "誤答：p9はSourness and salt buffer alcoholとする。",
-            "誤答：p9はSour + sweet = pleasantとする。"
+            "正答：p9の英語本文にSourness can be buffered by potassium（酸味はカリウムによって和らげられる）とある。添加や摂取を勧める設問ではない。",
+            "誤答：p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
+            "誤答：p9はSourness and salt buffer alcohol（酸味と塩がアルコールの刺激を和らげる）とする。",
+            "誤答：p9はSour + sweet = pleasant（酸味と甘味の組み合わせは心地よい）とする。"
           ],
-          "explanation": "カリウムの記載と、フェノール・アルコール・甘味に関する相互作用を区別する。 p9はSour + phenols = metallicとする。",
+          "explanation": "カリウムの記載と、フェノール・アルコール・甘味に関する相互作用を区別する。 p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -351,10 +351,10 @@
             1
           ],
           "choiceReasons": [
-            "誤答：p9はAcids denature proteinsとし、ここでの作用は変性である。",
-            "正答：p9はSour + phenols = metallicとする。",
-            "誤答：p9はSour + fat = metallicとする。",
-            "誤答：p9はSourness can be buffered by potassiumとし、緩和する方向を示す。"
+            "誤答：p9はAcids denature proteins（酸がタンパク質を変性させる）とし、ここでの作用は変性である。",
+            "正答：p9はSour + phenols = metallic（酸味とフェノールの組み合わせは金属様の印象）とする。",
+            "誤答：p9はSour + fat = metallic（酸味と脂質の組み合わせは金属様の印象）とする。",
+            "誤答：p9はSourness can be buffered by potassium（酸味はカリウムによって和らげられる）とし、緩和する方向を示す。"
           ],
           "explanation": "酸味とフェノールによる知覚、タンパク質の変性、脂質との組み合わせを整理する。",
           "sources": [
@@ -385,12 +385,12 @@
             0
           ],
           "choiceReasons": [
-            "正答：p12はPhenols + fat = metallicとする。",
-            "誤答：p12の該当行はPhenols + protein = metallicである。",
-            "誤答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
-            "誤答：p12はPhenols + sourness can be buffered by saltとし、塩を挙げる。"
+            "正答：p12はPhenols + fat = metallic（フェノールと脂質の組み合わせは金属様の印象）とする。",
+            "誤答：p12の該当行はPhenols + protein = metallic（フェノールとタンパク質の組み合わせは金属様の印象）である。",
+            "誤答：p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
+            "誤答：p12はPhenols + sourness can be buffered by salt（フェノールと酸味の組み合わせは塩で和らげられる）とし、塩を挙げる。"
           ],
-          "explanation": "ポリフェノールの相互作用には、脂質による金属様の印象と、クリームを含む別条件での調和の双方が示される。 p12はPhenols + phenols + fat (cream) = harmonyとする。",
+          "explanation": "ポリフェノールの相互作用には、脂質による金属様の印象と、クリームを含む別条件での調和の双方が示される。 p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -414,12 +414,12 @@
             2
           ],
           "choiceReasons": [
-            "誤答：p12はPhenols + sourness = metallicとする。",
-            "誤答：p12はPhenols + raw protein = denaturationとする。",
-            "正答：p12はPhenols + phenols + fat (cream) = harmonyとする。",
-            "誤答：p12はPhenols + sweetness = buffer / harmonyとする。"
+            "誤答：p12はPhenols + sourness = metallic（フェノールと酸味の組み合わせは金属様の印象）とする。",
+            "誤答：p12はPhenols + raw protein = denaturation（フェノールと非加熱タンパク質の組み合わせは変性を生じる）とする。",
+            "正答：p12はPhenols + phenols + fat (cream) = harmony（フェノールどうしに脂質〔クリーム〕を加えると調和する）とする。",
+            "誤答：p12はPhenols + sweetness = buffer / harmony（フェノールと甘味の組み合わせは緩和・調和につながる）とする。"
           ],
-          "explanation": "二成分の組み合わせと、クリームを加える三成分の組み合わせを区別して読む。 p12はPhenols + sourness = metallicとする。",
+          "explanation": "二成分の組み合わせと、クリームを加える三成分の組み合わせを区別して読む。 p12はPhenols + sourness = metallic（フェノールと酸味の組み合わせは金属様の印象）とする。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -450,12 +450,12 @@
             2
           ],
           "choiceReasons": [
-            "正答：p17の項目1はdifferent brewing traditionsに応じたdifferent characteristic aroma groupsを示す。",
-            "正答：p17の項目4はImportance of a group according to intensityである。",
-            "正答：p17の項目7はChallenge of combining different aroma groupsである。",
-            "誤答：p17の項目5はless intense groupsを使うFine-tuningを挙げる。"
+            "正答：p17の項目1はdifferent brewing traditions（異なる醸造の伝統）に応じたdifferent characteristic aroma groups（異なる特徴的なアロマグループ）を示す。",
+            "正答：p17の項目4はImportance of a group according to intensity（香りの強さに応じてグループの重要度を判断すること）である。",
+            "正答：p17の項目7はChallenge of combining different aroma groups（異なるアロマグループを組み合わせる挑戦）である。",
+            "誤答：p17の項目5はless intense groups（強さの低いアロマグループ）を使うFine-tuning（微調整）を挙げる。"
           ],
-          "explanation": "アロマの使い方を、醸造の伝統、知覚強度、異なるグループへの挑戦から確認する。 p17の項目5はless intense groupsを使うFine-tuningを挙げる。",
+          "explanation": "アロマの使い方を、醸造の伝統、知覚強度、異なるグループへの挑戦から確認する。 p17の項目5はless intense groups（強さの低いアロマグループ）を使うFine-tuning（微調整）を挙げる。",
           "sources": [
             {
               "filename": "0830ビアペアリング2026.pdf",
@@ -472,7 +472,7 @@
           "choices": [
             "果実様の香りはfruity、花様の香りはfloweryとしてグループ分けできる",
             "焙煎様・木質様・土様の香りは、図のroasted / woody / earthyのグループとして整理できる",
-            "図のvegetalは動物様の香りを分類するための名称である",
+            "図のvegetal（ベジタル）は動物様の香りを分類するための名称である",
             "Micro biologicは、図で微生物に関連する香りのグループとして扱われる"
           ],
           "correct": [
@@ -482,9 +482,9 @@
           ],
           "choiceReasons": [
             "正答：p16の図はfruityとfloweryを別のアロマグループ名として示す。果実様と花様の香りを分類する際の英語名である。",
-            "正答：p16の図ではroasted / woody / earthyをひとまとまりのラベルとして示す。",
+            "正答：p16の図ではroasted / woody / earthy（焙煎様・木質様・土様）をひとまとまりのラベルとして示す。",
             "誤答：p16のvegetalは植物・野菜様。動物様に対応する別のラベルはanimalである。",
-            "正答：p16の図にMicro biologicというグループ名がある。検出すれば必ず品質欠陥という意味ではない。"
+            "正答：p16の図にMicro biologic（微生物関連）というグループ名がある。検出すれば必ず品質欠陥という意味ではない。"
           ],
           "explanation": "アロマグループを分析に使うため、具体的な香りと資料の分類名を対応させる。別セットでは強度・醸造伝統・組み合わせ方を問う。",
           "sources": [
@@ -508,7 +508,7 @@
           "choices": [
             "ローストした鶏肉の例には、オクトーバーフェストビールも含まれる",
             "辛いソースの鶏肉の例には、セゾンとポーターが含まれる",
-            "資料のCoq au Vinの行では、ブラウンエールとアルトが指定される",
+            "資料のCoq au Vin（鶏肉のワイン煮）の行では、ブラウンエールとアルトが指定される",
             "資料の揚げた鶏肉の行では、スモークビールとインペリアルスタウトが指定される"
           ],
           "correct": [
@@ -516,10 +516,10 @@
             1
           ],
           "choiceReasons": [
-            "正答：p19のRoastedの行はPale Ale, Oktoberfestbier, Dunkler Bockである。",
-            "正答：p19のWith spicy sauceの行にSaisonとPorterがある。",
-            "誤答：p19ではBrown AleとAltはFriedの行。Coq au VinはDubbelとBiere de Gardeである。",
-            "誤答：p19ではSmoke beerとImperial StoutはWith spicy sauceの行である。"
+            "正答：p19のRoasted（ローストした鶏肉）の行はPale Ale, Oktoberfestbier, Dunkler Bock（ペールエール、オクトーバーフェストビア、ドゥンケルボック）である。",
+            "正答：p19のWith spicy sauce（辛いソースを添えた鶏肉）の行にSaison（セゾン）とPorter（ポーター）がある。",
+            "誤答：p19ではBrown Ale（ブラウンエール）とAlt（アルト）はFried（揚げた鶏肉）の行。Coq au Vin（鶏肉のワイン煮）はDubbel（デュッベル）とBiere de Garde（ビエール・ド・ギャルド）である。",
+            "誤答：p19ではSmoke beer（スモークビール）とImperial Stout（インペリアルスタウト）はWith spicy sauce（辛いソースを添えた鶏肉）の行である。"
           ],
           "explanation": "鶏肉の調理方法ごとに、資料が示す具体的なビール例を対応させる。他の組み合わせを一律に否定するものではない。",
           "sources": [
@@ -546,10 +546,10 @@
             3
           ],
           "choiceReasons": [
-            "誤答：p19ではDubbelはCoq au Vinの行であり、Roastedの行にはない。",
-            "正答：p19のWith spicy sauceの行にSmoke beerとImperial Stoutがある。",
-            "誤答：p19ではBiere de GardeはCoq au Vinの行であり、Friedの行にはない。",
-            "正答：p19のRoastedの行にDunkler Bockがある。"
+            "誤答：p19ではDubbel（デュッベル）はCoq au Vin（鶏肉のワイン煮）の行であり、Roasted（ローストした鶏肉）の行にはない。",
+            "正答：p19のWith spicy sauce（辛いソースを添えた鶏肉）の行にSmoke beer（スモークビール）とImperial Stout（インペリアルスタウト）がある。",
+            "誤答：p19ではBiere de Garde（ビエール・ド・ギャルド）はCoq au Vin（鶏肉のワイン煮）の行であり、Fried（揚げた鶏肉）の行にはない。",
+            "正答：p19のRoasted（ローストした鶏肉）の行にDunkler Bock（ドゥンケルボック）がある。"
           ],
           "explanation": "同じ鶏肉でもロースト、揚げ物、辛いソース、赤ワイン煮で例示されるビールを区別する。",
           "sources": [

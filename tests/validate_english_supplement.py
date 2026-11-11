@@ -13,6 +13,7 @@ data_path = ROOT / 'questions.json'
 before = data_path.read_bytes()
 data = json.loads(before)
 added = json.loads((ROOT / 'data/english-course-supplement.json').read_text())
+apply_to_questions(added)
 all_q = data['questions']
 assert added and data['metadata']['englishSupplement']['questionCount'] == len(added)
 assert [q for q in all_q if q["id"].startswith(("EP26-", "UK26-", "ES26-"))] == added
