@@ -3,6 +3,13 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## 内容を直接問う選択肢へ改善（v52）
+
+- 「資料の内容と一致しない」など、内容を示さず誤答を推測できる31選択肢を、具体的な香味・原因物質・組み合わせの取り違えへ変更しました。対象は官能10問、ペアリング10問です。
+- 英語原資料2冊で正誤と解説を照合し、比較根拠のページも補いました。正答、問題ID、4択、採点・履歴・模試処理は維持します。
+- 全1080問と別セット16組を確認し、同種の表現は現在の選択肢に残っていません。途中の回は保存済みの出題内容を保ち、新しく始める回から反映します。
+- [修正範囲・原資料の確認・検証](docs/concrete-distractor-review.md)
+
 ## 推測の手掛かりになる限定表現を改善（v51）
 
 - 「だけ」「必ず」「一切」などの語で誤答を推測しやすい選択肢を見直し、本体129問の147選択肢と別セット9選択肢、計156選択肢を修正しました。
@@ -119,6 +126,7 @@ python tests/validate_english_supplement.py
 python tests/validate_doemens_health.py
 python tests/validate_question_copy.py
 python tests/validate_choice_wording.py
+python tests/validate_concrete_distractors.py
 python tests/validate_blind_tasting.py
 node tests/validate_sampling.js
 node tests/validate_style_sanitizer.js

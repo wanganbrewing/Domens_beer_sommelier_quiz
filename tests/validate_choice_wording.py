@@ -45,10 +45,13 @@ for revision in manifest['questions']:
         q['choiceReasons'][i] = edit['newReason']
         edits += 1
     q['explanation'] = revision['newExplanation']
+    if 'newSources' in revision:
+        assert q['sources'] == revision['oldSources']
+        q['sources'] = deepcopy(revision['newSources'])
     assert len(q['choices']) == len(set(q['choices'])) == len(q['choiceReasons']) == 4
-assert edits == manifest['choiceEdits'] == 156
-assert sum(v == 'base' for _, v, _ in targets) == 147
-assert len({id for id, v, _ in targets if v == 'base'}) == 129
+assert edits == manifest['choiceEdits'] == 187
+assert sum(v == 'base' for _, v, _ in targets) == 178
+assert len({id for id, v, _ in targets if v == 'base'}) == 136
 assert current == expected, 'No unreviewed bank, metadata, source, ID, stem or answer-key change'
 assert current_variants == expected_variants, 'No unreviewed variant change'
 assert len(current['questions']) == 1080 and sum(q['active'] for q in current['questions']) == 1030
@@ -64,8 +67,8 @@ for _ in range(2):
 
 # Runtime, persistence, authorization and images are unchanged apart from cache/version tokens.
 for name in ['app.js', 'index.html']:
-    prior = old_file(name).replace(b'v50', b'v51').replace(b'?v=50', b'?v=51')
+    prior = old_file(name).replace(b'v50', b'v52').replace(b'?v=50', b'?v=52')
     assert (ROOT / name).read_bytes() == prior, name
 for name in ['choice-variants.js', 'styles.css', 'beer-photos.js', 'beer-photos.json', 'beer-illustrations.json', 'blind-quiz.js', 'style-links.js']:
     assert (ROOT / name).read_bytes() == old_file(name), name
-print('OK: 156 reviewed distractors (147 bank / 9 variants), 129 questions; unchanged keys/IDs/stems/sources/runtime, no duplicates, idempotent application')
+print('OK: 187 reviewed distractors (178 bank / 9 variants), 136 questions; unchanged keys/IDs/stems/runtime and explicitly verified source additions, no duplicates, idempotent application')

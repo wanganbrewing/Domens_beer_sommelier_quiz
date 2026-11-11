@@ -52,6 +52,8 @@ PAIR = [
 
 def build():
     result=[]
+    reviewed = json.loads((ROOT/'data/concrete-distractor-revisions.json').read_text(encoding='utf-8'))
+    distractors = {(edit['id'], edit['index']): edit for edit in reviewed['edits']}
     for prefix,rows,filename in [
         ('OF26',OFF,'0830オフフレーバー、テイスティング実習資料2026その１.pdf'),
         ('BP26',PAIR,'0830ビアペアリング2026.pdf')]:
@@ -65,9 +67,10 @@ def build():
                 reasons=[f'正答：{v}。' for v in choices]
                 sources=[dict(filename=filename,page=page,locator=f'PDF表示ページ{page}・英語本文',section=topic),dict(filename=filename,page=12 if prefix=='OF26' else 18,locator=f'PDF表示ページ{12 if prefix=="OF26" else 18}・英語本文',section='評価の文脈・個人の好み')]
             else:
-                # Explicitly false alternatives are topic-specific negations, with corrections.
-                choices=true[:count]+[v+'という説明は資料の内容と一致しない' for v in true[count:]]+[false[0][0]]
-                reasons=[f'正答：{v}。' for v in true[:count]]+[f'誤答：資料では「{v}」と説明している。' for v in true[count:]]+['誤答：'+false[0][1]]
+                # Each distractor is a reviewed, source-grounded factual misconception.
+                alternatives = [distractors[(f'{prefix}-{i+1:03}', index)] for index in range(count, 3)]
+                choices=true[:count]+[edit['newChoice'] for edit in alternatives]+[false[0][0]]
+                reasons=[f'正答：{v}。' for v in true[:count]]+[edit['newReason'] for edit in alternatives]+['誤答：'+false[0][1]]
                 sources=[dict(filename=filename,page=page,locator=f'PDF表示ページ{page}・英語本文',section=topic)]
             cat='pairing' if prefix=='BP26' else ('sensory' if i<4 or i==19 else 'off_flavor')
             result.append(dict(id=f'{prefix}-{i+1:03}',category=cat,type='multiple',question=f'{topic}について正しい記述を選んでください。',choices=choices,correct=list(range(count)),explanation=' '.join(reasons),choiceReasons=reasons,sources=sources,frequencyTier='A',active=True))

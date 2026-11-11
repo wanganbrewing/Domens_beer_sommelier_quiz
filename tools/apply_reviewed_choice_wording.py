@@ -18,8 +18,12 @@ def apply_question(question, revision):
         assert question['choiceReasons'][index] in (edit['oldReason'], edit['newReason']), (revision['id'], index, 'reason drift')
         question['choices'][index] = edit['newChoice']
         question['choiceReasons'][index] = edit['newReason']
-    assert question['explanation'] in (revision['oldExplanation'], revision['newExplanation']), (revision['id'], 'explanation drift')
+    allowed_explanations = [revision['oldExplanation'], revision['newExplanation'], *revision.get('intermediateExplanations', [])]
+    assert question['explanation'] in allowed_explanations, (revision['id'], 'explanation drift')
     question['explanation'] = revision['newExplanation']
+    if 'newSources' in revision:
+        assert question['sources'] in (revision['oldSources'], revision['newSources']), (revision['id'], 'source drift')
+        question['sources'] = json.loads(json.dumps(revision['newSources']))
 
 
 def apply_to_questions(questions):
