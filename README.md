@@ -3,6 +3,14 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## iPhoneの音声再生への対応（v61）
+
+- 対応するSafariではAudio Sessionを`playback`に設定し、Web Audioが消音スイッチに従う既定の`ambient`状態を回避します。音OFF・背景移動では元の設定に戻します。
+- iPhoneの`touchend`・`pointerup`を含む操作で再生を開始します。古い`resume()`が保留中でも次のタップで再試行し、中断後の復帰も扱います。
+- ヘッダーの「音を試す」でピンポーンを直接試せます。音量・出力先・消音モード・Safariで開く案内も表示します。音OFF時は試聴ボタンも無効です。
+- iPhone実機での動作確認は未実施です。Audio Session API非対応環境やアプリ内ブラウザーでは、消音解除やSafariで開く操作が必要な場合があります。Web Audioの`running`状態だけで実際に聞こえたとは判定しません。
+- 根拠：[WebKitの消音モードに関する推奨](https://bugs.webkit.org/show_bug.cgi?id=251532#c6)、[Audio Sessionの既定値](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API)、[ユーザー操作の有効化](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/User_activation)。
+
 ## はっきりしたクイズ効果音（v60）
 
 正解音を高低2音の「ピンポーン」、不正解音を低く長めの「ブー」に変更しました。5問ごとの連続正解はベルを素早く繰り返して鳴らします。倍音を重ねた響きと長めの余韻で、従来の短い電子音より聞き分けやすくしています。合格・学習完了も明るいチャイム、不合格は下降するブザーにしています。音ON/OFF・設定保存・連続正解の数え方・模試中の正誤非表示は維持します。
