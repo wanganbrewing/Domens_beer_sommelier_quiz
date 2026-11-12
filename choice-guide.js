@@ -9,23 +9,30 @@
   const normalize = (value) => String(value ?? "").normalize("NFKC").toLowerCase();
   function note(choice) {
     const value = normalize(choice);
-    const found = [];
+    const candidates = [];
     for (const [terms, definition] of entries) {
-      const matches = terms.split("|").some(term => {
+      for (const term of terms.split("|")) {
         const needle = normalize(term);
         let start = value.indexOf(needle);
         while (start !== -1) {
           const before = value[start - 1] || "";
           const after = value[start + needle.length] || "";
-          if (!/^[a-z0-9]+$/.test(needle) || (!/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after))) return true;
+          if (!/^[a-z0-9]+$/.test(needle) || (!/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after))) {
+            candidates.push({ start, end: start + needle.length, length: needle.length, definition });
+          }
           start = value.indexOf(needle, start + 1);
         }
-        return false;
-      });
-      if (matches && !found.includes(definition)) found.push(definition);
-      if (found.length === 2) break;
+      }
     }
-    return found;
+    candidates.sort((a, b) => b.length - a.length);
+    const accepted = [];
+    for (const candidate of candidates) {
+      if (accepted.some(existing => candidate.start < existing.end && candidate.end > existing.start)) continue;
+      if (accepted.some(existing => existing.definition === candidate.definition)) continue;
+      accepted.push(candidate);
+      if (accepted.length === 2) break;
+    }
+    return accepted.map(item => item.definition);
   }
   return { note, count: entries.length };
 });
