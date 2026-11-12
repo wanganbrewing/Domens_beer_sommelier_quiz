@@ -29,22 +29,30 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   a.play("pass"); assert.equal(a.nodes.length,0);
   a.events.pointerdown({isTrusted:false}); assert.equal(a.contexts.length,0);
   a.unlock(); await flush();
-  const signatures=[];
-  for(const name of ["correct","incorrect","streak","complete","pass","fail"]){const n=a.nodes.length; a.play(name); signatures.push(a.nodes.slice(n).map(x=>[x.frequencyValue,x.startTime,x.stopTime]));}
+  const signatures=[], rendered={};
+  for(const name of ["correct","incorrect","streak","complete","pass","fail"]){const n=a.nodes.length; a.play(name); const notes=a.nodes.slice(n); rendered[name]=notes.map(x=>({frequency:x.frequencyValue,start:x.startTime,stop:x.stopTime,type:x.type}));signatures.push(notes.map(x=>[x.frequencyValue,x.startTime,x.stopTime]));}
+  const onsets=notes=>[...new Set(notes.map(x=>x.start))];
+  assert.equal(onsets(rendered.correct).length,2,"pin-pon has two clear strikes");
+  assert.ok(rendered.correct[0].frequency > rendered.correct[3].frequency,"pin-pon descends to the longer second chime");
+  assert.ok(rendered.correct[3].stop-rendered.correct[3].start > .7,"second chime rings out");
+  assert.equal(onsets(rendered.incorrect).length,1,"boo is one sustained buzz");
+  assert.ok(rendered.incorrect.every(x=>x.frequency<150 && ["sawtooth","square"].includes(x.type) && x.stop-x.start>.5));
+  assert.ok(onsets(rendered.streak).length>=7,"streak is a rapid series of bell strikes");
+  assert.ok(rendered.streak.every(x=>x.type==="sine"),"bells use additive ringing partials instead of buzzer waves");
   assert.equal(new Set(signatures.map(x=>JSON.stringify(x))).size,6,"six distinct sound cues");
   assert.ok(signatures.every(notes=>notes.every(([,start,stop])=>stop>start)));
   const n=a.nodes.length; a.button.click(); assert.equal(a.storage.get(KEY),"off"); assert.equal(a.button.attrs["aria-pressed"],"false");
   assert.ok(a.nodes.every(n=>n.disconnected),"mute disconnects scheduled and playing notes");
   a.play("pass"); assert.equal(a.nodes.length,n);
   const b=audioRuntime({stored:"off"}); b.unlock(); assert.equal(b.contexts.length,0,"OFF persists");
-  b.button.click(); await flush(); assert.equal(b.storage.get(KEY),"on"); assert.equal(b.nodes.length,2,"enabling previews a short cue");
+  b.button.click(); await flush(); assert.equal(b.storage.get(KEY),"on"); assert.equal(b.nodes.length,6,"enabling previews a two-chime cue");
   b.document.hidden=true; b.events.visibilitychange(); const hiddenCount=b.nodes.length; b.play("fail"); assert.equal(b.nodes.length,hiddenCount);
   b.document.hidden=false; b.events.visibilitychange(); assert.equal(b.nodes.length,hiddenCount,"no old cue on foregrounding");
   b.windowEvents.storage({key:KEY,newValue:"off"}); assert.equal(b.button.attrs["aria-pressed"],"false");
   b.windowEvents.storage({key:null,newValue:null}); assert.equal(b.button.attrs["aria-pressed"],"true");
   for(const options of [{supported:false},{blockedStorage:true},{resumeFails:true},{throwConstructor:true}]){const t=audioRuntime(options); t.unlock(); t.play("correct"); t.button.click(); await flush();}
   const c=audioRuntime({delayedResume:true}); c.unlock(); c.play("correct"); c.button.click(); c.resolve(); await flush(); assert.equal(c.nodes.length,0,"mute cancels pending resume sound");
-  const d=audioRuntime({delayedResume:true}); d.unlock(); d.play("correct"); d.play("incorrect"); d.resolve(); await flush(); assert.equal(d.nodes.length,2,"latest cue replaces pending cue"); assert.equal(d.nodes[0].frequencyValue,220);
+  const d=audioRuntime({delayedResume:true}); d.unlock(); d.play("correct"); d.play("incorrect"); d.resolve(); await flush(); assert.equal(d.nodes.length,2,"latest cue replaces pending cue"); assert.equal(d.nodes[0].frequencyValue,130.81);
 
   const r=runtime(), sounds=[]; r.context.window.BierKompassSound={play:n=>sounds.push(n)};
   r.run('startSession(); session.answers[currentQuestion().id]=[...currentQuestion().correct]; checkStudyAnswer();');
@@ -72,6 +80,6 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   streak.run('mode="mock";startSession();for(const id of session.questionIds){session.answers[id]=[...sessionQuestion(id).correct];session.answered[id]=true;}submitExam();');assert.equal(streak.run('studyCorrectStreak'),previousStreak,"mock results do not silently build study streaks");
   streak.run('requestHistoryReset();document.querySelector("#confirmDialog").close("confirm");');assert.equal(streak.run('studyCorrectStreak'),0);assert.equal(streak.storage.has('bierkompass-study-streak-v1'),false);
   for(const value of ['-1','null','"oops"','1.2']){const broken=runtime({initialStorage:new Map([['bierkompass-study-streak-v1',value]])});assert.equal(broken.run('studyCorrectStreak'),0);}
-  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes('sound.js?v=59'));
+  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes('sound.js?v=60'));
   console.log("PASS: distinct cues, gesture unlock, mute/persistence, failures, delayed resume, study and mock integration");
 })().catch(error=>{console.error(error);process.exitCode=1;});
