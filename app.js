@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v58";
+const APP_VERSION = "v59";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -26,6 +26,9 @@ if (!variantUsage || typeof variantUsage !== "object" || Array.isArray(variantUs
 let history = loadJson(STORAGE.history, {});
 const RECENT_STORAGE = "bierkompass-recent-answers-v1";
 const RECENT_ANSWER_LIMIT = 50;
+const STREAK_STORAGE = "bierkompass-study-streak-v1";
+let studyCorrectStreak = loadJson(STREAK_STORAGE, 0);
+if (!Number.isSafeInteger(studyCorrectStreak) || studyCorrectStreak < 0) studyCorrectStreak = 0;
 let recentAnswers = loadJson(RECENT_STORAGE, []);
 if (!Array.isArray(recentAnswers)) recentAnswers = [];
 recentAnswers = recentAnswers.filter((item) => typeof item?.correct === "boolean").slice(-RECENT_ANSWER_LIMIT);
@@ -96,7 +99,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=57", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=59", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -468,6 +471,7 @@ function startNextStudySession() {
 
 function finishStudySession() {
   if (!session || session.mode !== "study" || !session.questionIds.every((id) => session.checked[id])) return;
+  const newlyCompleted = !session.completed;
   // Answer checks already record study history. Summarising/reloading never records it again.
   session.completed = true;
   session.finishedAt ||= Date.now();
@@ -489,6 +493,7 @@ function finishStudySession() {
   session.result = { earned, maximum, rate: maximum ? earned / maximum : 0, categories, review };
   saveJson(STORAGE.session, session);
   showResult();
+  if (newlyCompleted) window.BierKompassSound?.play("complete");
 }
 
 function renderNavigator() {
@@ -500,14 +505,18 @@ function renderNavigator() {
 }
 
 function checkStudyAnswer() {
-  if (!session || session.completed) return;
+  if (!session || session.completed || session.mode !== "study") return;
   const question = currentQuestion();
   if (session.checked[question.id]) return;
   if (question.type === "single" && !selectedValues().length) return;
   session.answered[question.id] = true;
   session.checked[question.id] = true;
-  recordHistory(question, sameSet(selectedValues(), question.correct));
+  const correct = sameSet(selectedValues(), question.correct);
+  recordHistory(question, correct);
   renderQuestion();
+  studyCorrectStreak = correct ? studyCorrectStreak + 1 : 0;
+  saveJson(STREAK_STORAGE, studyCorrectStreak);
+  window.BierKompassSound?.play(correct && studyCorrectStreak % 5 === 0 ? "streak" : correct ? "correct" : "incorrect");
 }
 
 function renderFeedback(question) {
@@ -604,6 +613,7 @@ function submitExam(reason = "submitted") {
   session.result = { earned, maximum, rate, passingRate, passed: rate >= passingRate, categories, review, reason };
   localStorage.removeItem(STORAGE.session);
   showResult();
+  window.BierKompassSound?.play(session.result.passed ? "pass" : "fail");
 }
 
 function showResult() {
@@ -680,7 +690,7 @@ function restartSession() {
 }
 
 function requestRestart() { if (!session || session.completed || expireIfNeeded()) return; confirmAction("最初からやり直しますか？", "現在の選択・回答を消去し、同じ問題を1問目から開始します。別セットがある問題では、選択肢の内容も変わります。", restartSession); }
-function requestHistoryReset() { confirmAction("全学習履歴を削除しますか？", "正解済み・不正解・回答回数・最終回答日時を削除します。この操作は元に戻せません。", () => { history = {}; variantUsage = {}; recentAnswers = []; localStorage.removeItem(STORAGE.history); localStorage.removeItem(VARIANT_STORAGE); localStorage.removeItem(RECENT_STORAGE); updateHome(); }); }
+function requestHistoryReset() { confirmAction("全学習履歴を削除しますか？", "正解済み・不正解・回答回数・最終回答日時を削除します。この操作は元に戻せません。", () => { history = {}; variantUsage = {}; recentAnswers = []; studyCorrectStreak = 0; localStorage.removeItem(STREAK_STORAGE); localStorage.removeItem(STORAGE.history); localStorage.removeItem(VARIANT_STORAGE); localStorage.removeItem(RECENT_STORAGE); updateHome(); }); }
 function requestExit() { if (!session || session.completed) return goHome(); if (expireIfNeeded()) return; confirmAction("セッションを終了しますか？", "現在のセッションの回答状態を破棄して、条件選択へ戻ります。", goHome); }
 function confirmAction(title, text, action) { $("#dialogTitle").textContent = title; $("#dialogText").textContent = text; pendingConfirm = action; $("#confirmDialog").showModal(); }
 

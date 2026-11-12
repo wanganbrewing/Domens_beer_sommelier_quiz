@@ -121,3 +121,8 @@ a.source-link:hover, a.source-link:focus-visible { text-decoration: underline; }
 /* Optional context notes for what an incorrect answer actually represents. */
 .choice-knowledge{background:rgba(12,110,105,.055);border-left:3px solid var(--teal);padding:10px 12px;border-radius:0 8px 8px 0;line-height:1.7;color:var(--ink)}
 .choice-knowledge strong{color:var(--teal);margin-right:5px}
+
+/* Sound stays within reach on narrow mobile headers. */
+.sound-toggle{white-space:nowrap;min-height:44px;min-width:88px;touch-action:manipulation}.sound-toggle[aria-pressed="true"]{color:var(--teal);border-color:var(--teal)}
+@media(max-width:840px){.site-header{height:auto;min-height:82px;flex-wrap:wrap;gap:8px;padding-top:12px;padding-bottom:12px}.header-status{flex-wrap:wrap;gap:8px}.header-status>span{display:none}}
+@media(max-width:560px){.site-header{column-gap:8px}.header-status{margin-left:auto}.header-status #resetHistoryButton{font-size:10px;padding:8px}.sound-toggle{font-size:12px;padding:8px}.version-badge{font-size:10px}}
