@@ -117,3 +117,7 @@ a.source-link:hover, a.source-link:focus-visible { text-decoration: underline; }
 .style-reference-link{overflow-wrap:anywhere}.style-reference-link:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:3px}.beer-photo figcaption .style-reference-link{display:inline}
 
 .stats + .source-deletion-notice { margin: 24px 0 0; }
+
+/* Optional context notes for what an incorrect answer actually represents. */
+.choice-knowledge{background:rgba(12,110,105,.055);border-left:3px solid var(--teal);padding:10px 12px;border-radius:0 8px 8px 0;line-height:1.7;color:var(--ink)}
+.choice-knowledge strong{color:var(--teal);margin-right:5px}
