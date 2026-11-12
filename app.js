@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v57";
+const APP_VERSION = "v58";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -10,6 +10,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
 const answerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);
+const choiceKnowledgeHtml = (choice) => (window.BierKompassChoiceGuide?.note(choice) || []).map((note) => `<p class="choice-knowledge"><strong>選択肢の知識：</strong>${escapeHtml(note)}</p>`).join("");
 const sourceHtml = (source) => `${escapeHtml(source.filename)}、${escapeHtml(source.locator)}${source.section ? `、「${escapeHtml(source.section)}」` : ""}${source.status ? `<br><small>出典確認：${escapeHtml(source.status)}</small>` : ""}`;
 const questionHtml = (value) => escapeHtml(value).replace(
   /(誤っているものを1つ選べ|誤っている|正しくない|適切でない|該当しない|当てはまらない|含まれない)/g,
@@ -521,7 +522,7 @@ function renderFeedback(question) {
     const displayKey = String.fromCharCode(65 + displayIndex);
     const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
+      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}<p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${sourceHtml(source)}</p>`).join("")}`;
@@ -535,7 +536,7 @@ function renderReviewChoiceReasons(question, order) {
     const displayKey = String.fromCharCode(65 + displayIndex);
     const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary><p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
+      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}<p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
 }
