@@ -8,7 +8,6 @@ const source = fs.readFileSync(path.join(__dirname, "../sound.js"), "utf8");
 const KEY = "bierkompass-sound-v1";
 function audioRuntime({supported = true, stored, blockedStorage = false, resumeFails = false, delayedResume = false, throwConstructor = false, firstResumePending = false, sessionApi = true, sessionThrows = false} = {}) {
   const events = {}, windowEvents = {}, button = {attrs: {}, setAttribute(k,v) {this.attrs[k]=v;}, addEventListener(n,f) {this[n]=f;}};
-  const testButton={attrs:{},setAttribute(k,v){this.attrs[k]=v;},addEventListener(n,f){this[n]=f;}}, status={hidden:true,textContent:""};
   const storage = new Map(stored ? [[KEY, stored]] : []);
   let sessionType="auto", resumeCalls=0;
   const audioSession={get type(){return sessionType;},set type(v){if(sessionThrows)throw Error("unavailable");sessionType=v;}};
@@ -20,10 +19,10 @@ function audioRuntime({supported = true, stored, blockedStorage = false, resumeF
     createGain() {return {gain: {setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){},disconnect(){}};}
     createOscillator() {const n={frequency:{setValueAtTime(f){n.frequencyValue=f;}},connect(){},disconnect(){n.disconnected=true;},start(t){n.startTime=t;},stop(t){n.stopTime=t;}}; nodes.push(n); return n;}
   }
-  const document={hidden:false,querySelector:selector=>selector==="#soundToggle"?button:selector==="#testSoundButton"?testButton:status,addEventListener(n,f){events[n]=f;}};
+  const document={hidden:false,querySelector:selector=>selector==="#soundToggle"?button:null,addEventListener(n,f){events[n]=f;}};
   const window={navigator:sessionApi?{audioSession}:{},...(supported ? {AudioContext:Context}:{}),addEventListener(n,f){windowEvents[n]=f;}};
   vm.runInNewContext(source,{window,document,console,Date,Promise,localStorage:{getItem(k){if(blockedStorage)throw Error();return storage.get(k)??null;},setItem(k,v){if(blockedStorage)throw Error();storage.set(k,v);}}});
-  return {window, document, button, testButton, status, audioSession, storage, nodes, contexts, events, windowEvents, resumeCount:()=>resumeCalls, unlock:()=>events.pointerup({isTrusted:true}), resolve:()=>resolveResume?.(), reject:()=>rejectResume?.(Error("interrupted")), play:window.BierKompassSound.play};
+  return {window, document, button, audioSession, storage, nodes, contexts, events, windowEvents, resumeCount:()=>resumeCalls, unlock:()=>events.pointerup({isTrusted:true}), resolve:()=>resolveResume?.(), reject:()=>rejectResume?.(Error("interrupted")), play:window.BierKompassSound.play};
 }
 const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
 (async () => {
@@ -45,7 +44,7 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   assert.ok(rendered.streak.every(x=>x.type==="sine"),"bells use additive ringing partials instead of buzzer waves");
   assert.equal(new Set(signatures.map(x=>JSON.stringify(x))).size,6,"six distinct sound cues");
   assert.ok(signatures.every(notes=>notes.every(([,start,stop])=>stop>start)));
-  const n=a.nodes.length; a.button.click(); assert.equal(a.storage.get(KEY),"off"); assert.equal(a.button.attrs["aria-pressed"],"false"); assert.equal(a.audioSession.type,"auto","mute releases the playback category"); assert.equal(a.testButton.disabled,true);
+  const n=a.nodes.length; a.button.click(); assert.equal(a.storage.get(KEY),"off"); assert.equal(a.button.attrs["aria-pressed"],"false"); assert.equal(a.audioSession.type,"auto","mute releases the playback category");
   assert.ok(a.nodes.every(n=>n.disconnected),"mute disconnects scheduled and playing notes");
   a.play("pass"); assert.equal(a.nodes.length,n);
   const b=audioRuntime({stored:"off"}); b.unlock(); assert.equal(b.contexts.length,0,"OFF persists");
@@ -62,12 +61,12 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   const pending=audioRuntime({firstResumePending:true});pending.unlock();pending.events.click({isTrusted:true});pending.play("correct");await flush();
   assert.equal(pending.resumeCount(),2,"a pending resume must not block a new user activation");assert.equal(pending.nodes.length,6);
   pending.contexts[0].state="interrupted";pending.events.touchend({isTrusted:true});await flush();assert.equal(pending.contexts[0].state,"running","next touch resumes interruption");
-  const preview=audioRuntime();preview.testButton.click();await flush();assert.equal(preview.nodes.length,6,"test button creates/resumes and plays inside its direct click handler");assert.ok(preview.status.textContent.includes("iPhone"));assert.equal(preview.status.hidden,false);
-  const denied=audioRuntime({resumeFails:true});denied.testButton.click();await flush();assert.equal(denied.nodes.length,0);assert.ok(denied.status.textContent.includes("開始できません"));
-  for(const options of [{sessionApi:false},{sessionThrows:true}]){const fallback=audioRuntime(options);fallback.testButton.click();await flush();assert.equal(fallback.nodes.length,6,"unsupported Audio Session API does not break existing browsers");}
+  const preview=audioRuntime({stored:"off"});preview.button.click();await flush();assert.equal(preview.nodes.length,6,"enabling sound still creates/resumes and plays in its direct click handler");
+  const denied=audioRuntime({resumeFails:true,stored:"off"});denied.button.click();await flush();assert.equal(denied.nodes.length,0,"failed resume is safely handled without removed UI");
+  for(const options of [{sessionApi:false},{sessionThrows:true}]){const fallback=audioRuntime({...options,stored:"off"});fallback.button.click();await flush();assert.equal(fallback.nodes.length,6,"unsupported Audio Session API does not break existing browsers");}
   preview.windowEvents.pagehide();assert.equal(preview.audioSession.type,"auto");
-  const late=audioRuntime({delayedResume:true});late.testButton.click();late.button.click();late.reject();await flush();assert.equal(late.status.hidden,true,"late rejected preview cannot display help after mute");
-  const background=audioRuntime({delayedResume:true});background.testButton.click();const beforeHidden=background.status.textContent;background.document.hidden=true;background.events.visibilitychange();background.reject();await flush();assert.equal(background.status.textContent,beforeHidden,"late rejection does not change hidden-page guidance");
+  const late=audioRuntime({delayedResume:true,stored:"off"});late.button.click();late.button.click();late.reject();await flush();assert.equal(late.nodes.length,0,"late resume rejection after mute is handled without UI");
+  const background=audioRuntime({delayedResume:true,stored:"off"});background.button.click();background.document.hidden=true;background.events.visibilitychange();background.reject();await flush();assert.equal(background.nodes.length,0,"late rejection in background never starts sound");
 
   const r=runtime(), sounds=[]; r.context.window.BierKompassSound={play:n=>sounds.push(n)};
   r.run('startSession(); session.answers[currentQuestion().id]=[...currentQuestion().correct]; checkStudyAnswer();');
@@ -95,6 +94,11 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   streak.run('mode="mock";startSession();for(const id of session.questionIds){session.answers[id]=[...sessionQuestion(id).correct];session.answered[id]=true;}submitExam();');assert.equal(streak.run('studyCorrectStreak'),previousStreak,"mock results do not silently build study streaks");
   streak.run('requestHistoryReset();document.querySelector("#confirmDialog").close("confirm");');assert.equal(streak.run('studyCorrectStreak'),0);assert.equal(streak.storage.has('bierkompass-study-streak-v1'),false);
   for(const value of ['-1','null','"oops"','1.2']){const broken=runtime({initialStorage:new Map([['bierkompass-study-streak-v1',value]])});assert.equal(broken.run('studyCorrectStreak'),0);}
-  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes('sound.js?v=61'));
+  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes('sound.js?v=64'));
+  const html=fs.readFileSync(path.join(__dirname,"../index.html"),"utf8"), css=fs.readFileSync(path.join(__dirname,"../styles.css"),"utf8");
+  assert.doesNotMatch(html,/testSoundButton|soundStatus|音を試す/);
+  assert.doesNotMatch(source,/testSoundButton|soundStatus|テスト音が聞こえない場合|showPlaybackHelp/);
+  assert.doesNotMatch(css,/\.sound-test|\.sound-status/);
+  assert.match(html,/id="soundToggle"/);
   console.log("PASS: distinct cues, gesture unlock, mute/persistence, failures, delayed resume, study and mock integration");
 })().catch(error=>{console.error(error);process.exitCode=1;});

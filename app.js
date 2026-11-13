@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v61";
+const APP_VERSION = "v64";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -99,7 +99,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=61", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=64", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -163,6 +163,8 @@ function bindEvents() {
   $("#nextStudyButton").addEventListener("click", startNextStudySession);
   $("#checkButton").addEventListener("click", checkStudyAnswer);
   $("#submitExamButton").addEventListener("click", requestSubmitExam);
+  $("#finishSessionButton").addEventListener("click", requestFinishSession);
+  $("#luckyAnswerButton").addEventListener("click", markLuckyAnswer);
   $("#restartSessionButton").addEventListener("click", requestRestart);
   $("#retryButton").addEventListener("click", restartSession);
   $("#reviewFilter").addEventListener("change", renderReview);
@@ -393,6 +395,9 @@ function renderQuestion() {
   $$("#choiceList input").forEach((input) => input.addEventListener("change", captureAnswer));
   $("#feedbackPanel").hidden = !checked;
   if (checked) renderFeedback(question);
+  $("#luckyAnswerButton").hidden = !checked || session.mode !== "study" || !sameSet(selected, question.correct);
+  $("#luckyAnswerButton").disabled = Boolean(session.luckyAnswers?.[question.id]);
+  $("#luckyAnswerButton").textContent = session.luckyAnswers?.[question.id] ? "再出題する問題に登録済み" : "偶然正解したので、もう一度出題する";
   $("#prevButton").disabled = session.current === 0;
   const studyFinished = session.mode === "study" && session.questionIds.every((id) => session.checked[id]);
   const lastQuestion = session.current === session.questionIds.length - 1;
@@ -469,8 +474,8 @@ function startNextStudySession() {
   createSession(studyQuestionSample(pool, Math.min(data.metadata.studyQuestionCount, pool.length)), "study", false, previous);
 }
 
-function finishStudySession() {
-  if (!session || session.mode !== "study" || !session.questionIds.every((id) => session.checked[id])) return;
+function finishStudySession(allowPartial = false) {
+  if (!session || session.completed || session.mode !== "study" || (!allowPartial && !session.questionIds.every((id) => session.checked[id]))) return;
   const newlyCompleted = !session.completed;
   // Answer checks already record study history. Summarising/reloading never records it again.
   session.completed = true;
@@ -482,18 +487,36 @@ function finishStudySession() {
   const categories = {};
   const review = session.questionIds.map((id) => {
     const question = sessionQuestion(id), selected = session.answers[id] || [];
-    const points = scoreQuestion(question, selected), max = Math.max(1, question.correct.length);
+    const answered = Boolean(session.checked[id]);
+    const points = scoreQuestion(question, selected, answered), max = Math.max(1, question.correct.length);
     earned += points; maximum += max;
     categories[question.category] ||= { earned: 0, maximum: 0, count: 0 };
     categories[question.category].earned += points;
     categories[question.category].maximum += max;
     categories[question.category].count += 1;
-    return { id, selected, points, max, exact: sameSet(selected, question.correct), answered: true };
+    return { id, selected, points, max, exact: answered && sameSet(selected, question.correct), answered };
   });
   session.result = { earned, maximum, rate: maximum ? earned / maximum : 0, categories, review };
   saveJson(STORAGE.session, session);
   showResult();
   if (newlyCompleted) window.BierKompassSound?.play("complete");
+}
+
+function markLuckyAnswer() {
+  if (!session || session.completed || session.mode !== "study") return;
+  const question = currentQuestion();
+  if (!session.checked[question.id] || !sameSet(selectedValues(), question.correct)) return;
+  session.luckyAnswers ||= {};
+  session.luckyAnswers[question.id] = true;
+  if (history[question.id]) { history[question.id].mastered = false; saveJson(STORAGE.history, history); }
+  updateStats(); renderQuestion();
+}
+
+function requestFinishSession() {
+  if (!session || session.completed || expireIfNeeded()) return;
+  if (isTimedMode(session.mode)) return requestSubmitExam();
+  const count = session.questionIds.filter(id => !session.checked[id]).length;
+  confirmAction("学習を終了して採点しますか？", count ? `未回答・未採点が${count}問あります。これらは0点として結果を表示します。学習履歴には回答した問題だけを記録します。` : "結果と解説を表示します。", () => finishStudySession(true));
 }
 
 function renderNavigator() {

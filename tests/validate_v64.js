@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict'); const runtime=require('./runtime_harness');
+const r=runtime();r.run('startSession();');
+assert.equal(r.element('#luckyAnswerButton').hidden,true);
+r.run('session.answers[currentQuestion().id]=[...currentQuestion().correct]; checkStudyAnswer();');
+const id=r.run('currentQuestion().id'); assert.equal(r.run(`history[${JSON.stringify(id)}].mastered`),true);
+r.click('#luckyAnswerButton');r.click('#luckyAnswerButton');
+assert.equal(r.run(`history[${JSON.stringify(id)}].mastered`),false);
+assert.equal(r.run(`history[${JSON.stringify(id)}].attempts`),1);
+assert.equal(r.run(`filteredPool({tiers:['A','B','C'], categories:data.metadata.categories.map(c=>c.id),historyFilter:'not-mastered'},'study').some(q=>q.id===${JSON.stringify(id)})`),true);
+r.click('#finishSessionButton'); r.element('#confirmDialog').close('cancel'); assert.equal(r.run('session.completed'),false);
+r.click('#finishSessionButton'); r.element('#confirmDialog').close('confirm'); assert.equal(r.run('session.completed'),true);
+assert.equal(r.run('session.result.review.filter(x=>x.answered).length'),1);
+assert.equal(r.run('session.result.review.filter(x=>!x.answered).every(x=>x.points===0)'),true);
+const count=r.run('Object.values(history).reduce((s,h)=>s+h.attempts,0)');r.click('#finishSessionButton'); assert.equal(r.run('Object.values(history).reduce((s,h)=>s+h.attempts,0)'),count);
+const m=runtime(); m.run("mode='mock'; startSession();");m.click('#finishSessionButton');m.element('#confirmDialog').close('confirm');assert.equal(m.run('session.completed'),true);assert.equal(m.run('session.result.earned'),0);
+console.log('OK: lucky correct, persisted mastery override, exclusion pool, partial finish, cancel, repeated finish, mock finish');
