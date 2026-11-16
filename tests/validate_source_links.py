@@ -6,8 +6,11 @@ import math
 from pathlib import Path
 import re
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools'))
+from correct_s011_aroma import apply_to_questions as correct_s011_aroma
 data = json.loads((ROOT / 'questions.json').read_text())
 variants = json.loads((ROOT / 'choice-variants.json').read_text())
 links = json.loads((ROOT / 'source-links.json').read_text())
@@ -85,7 +88,10 @@ assert {(r['documentId'], r['page']) for r in resolved} == {('pairing0830', 9), 
 # This change adds pointers, not copied source documents, text pages or altered answers.
 BASE = '1820068c448800d07dd7ed9ac059ca2265fca247'
 for filename in ('questions.json', 'choice-variants.json'):
-    assert (ROOT / filename).read_bytes() == subprocess.check_output(['git', 'show', f'{BASE}:{filename}'], cwd=ROOT)
+    expected = json.loads(subprocess.check_output(['git', 'show', f'{BASE}:{filename}'], cwd=ROOT))
+    if filename == 'questions.json':
+        correct_s011_aroma(expected['questions'])
+    assert json.loads((ROOT / filename).read_bytes()) == expected
 tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT).decode().splitlines()
 assert not any(name.lower().endswith('.pdf') for name in tracked), 'Original PDFs must not be published'
 print(f'OK: {len(seen)} exact question sets; {mapped}/400 choices have reviewed passage links, {len(missing)} explicitly unmapped; English references preserved, reviewed Japanese references added; no PDF publication or answer changes')

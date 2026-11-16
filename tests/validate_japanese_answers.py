@@ -13,6 +13,8 @@ manifest = json.loads((ROOT / 'data/japanese-answer-text.json').read_text())
 def original(path):
     return json.loads(subprocess.check_output(['git', 'show', f"{manifest['baselineCommit']}:{path}"], cwd=ROOT))
 baseline = original('questions.json')
+from correct_s011_aroma import apply_to_questions as correct_s011_aroma
+correct_s011_aroma(baseline["questions"])
 base_variants = original('choice-variants.json')
 expected, expected_variants = deepcopy(baseline), deepcopy(base_variants)
 questions = {(q['id'], None): q for q in expected['questions']}

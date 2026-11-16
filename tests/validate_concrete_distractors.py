@@ -14,6 +14,8 @@ manifest = json.loads((ROOT / 'data/concrete-distractor-revisions.json').read_te
 def original(path):
     return subprocess.check_output(['git', 'show', f"{manifest['baselineCommit']}:{path}"], cwd=ROOT)
 baseline = json.loads(original('questions.json'))
+from correct_s011_aroma import apply_to_questions as correct_s011_aroma
+correct_s011_aroma(baseline["questions"])
 current = json.loads((ROOT / 'questions.json').read_text())
 expected = deepcopy(baseline)
 questions = {q['id']: q for q in expected['questions']}

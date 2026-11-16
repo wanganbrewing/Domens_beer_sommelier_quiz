@@ -94,7 +94,8 @@ const flush = async () => {for(let i=0;i<6;i++)await Promise.resolve();};
   streak.run('mode="mock";startSession();for(const id of session.questionIds){session.answers[id]=[...sessionQuestion(id).correct];session.answered[id]=true;}submitExam();');assert.equal(streak.run('studyCorrectStreak'),previousStreak,"mock results do not silently build study streaks");
   streak.run('requestHistoryReset();document.querySelector("#confirmDialog").close("confirm");');assert.equal(streak.run('studyCorrectStreak'),0);assert.equal(streak.storage.has('bierkompass-study-streak-v1'),false);
   for(const value of ['-1','null','"oops"','1.2']){const broken=runtime({initialStorage:new Map([['bierkompass-study-streak-v1',value]])});assert.equal(broken.run('studyCorrectStreak'),0);}
-  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes('sound.js?v=64'));
+  const appVersion=fs.readFileSync(path.join(__dirname,"../app.js"),"utf8").match(/const APP_VERSION = "v(\d+)";/)[1];
+  assert.ok(fs.readFileSync(path.join(__dirname,"../index.html"),"utf8").includes(`sound.js?v=${appVersion}`));
   const html=fs.readFileSync(path.join(__dirname,"../index.html"),"utf8"), css=fs.readFileSync(path.join(__dirname,"../styles.css"),"utf8");
   assert.doesNotMatch(html,/testSoundButton|soundStatus|音を試す/);
   assert.doesNotMatch(source,/testSoundButton|soundStatus|テスト音が聞こえない場合|showPlaybackHelp/);

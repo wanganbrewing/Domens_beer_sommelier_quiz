@@ -15,6 +15,8 @@ data = json.loads(before)
 baseline = json.loads(subprocess.check_output(
     ['git', 'show', '64c0645edfe5546330994ed34c5def89c50772eb:questions.json'], cwd=ROOT))
 
+from correct_s011_aroma import apply_to_questions as correct_s011_aroma
+correct_s011_aroma(baseline["questions"])
 assert len(baseline['questions']) == 1068
 assert len(data['questions']) == 1068 + data['metadata']['healthSupplement']['questionCount']
 assert sum(q.get('active', True) for q in data['questions']) == 1018 + data['metadata']['healthSupplement']['questionCount']

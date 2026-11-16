@@ -21,6 +21,8 @@ def old_file(name):
 
 old = json.loads(old_file('questions.json'))
 current = json.loads((ROOT / 'questions.json').read_text())
+from correct_s011_aroma import apply_to_questions as correct_s011_aroma
+correct_s011_aroma(old["questions"])
 old_variants = json.loads(old_file('choice-variants.json'))
 current_variants = json.loads((ROOT / 'choice-variants.json').read_text())
 expected = deepcopy(old)
