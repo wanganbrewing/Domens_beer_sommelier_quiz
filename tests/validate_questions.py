@@ -58,9 +58,11 @@ def main() -> None:
         r"エステル皆無|焦げ酸味|甘香ばしさ|アーシーさ|高Cl=|高SO4="
     )
     answer_count_hint = re.compile(r"[0-9０-９]+つ選べ")
-    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040 + METADATA["englishSupplement"]["questionCount"] + METADATA["healthSupplement"]["questionCount"]
-    assert METADATA["activeQuestionCount"] == sum(q["active"] for q in ALL_QUESTIONS) == len(ALL_QUESTIONS) - 50
-    assert METADATA["excludedQuestionCount"] == 50
+    assert METADATA["questionCount"] == len(ALL_QUESTIONS) == 1040 + METADATA["englishSupplement"]["questionCount"] + METADATA["healthSupplement"]["questionCount"] + METADATA["imageDeckSupplement"]["questionCount"]
+    # 2026-11-16 scope audit: besides the 50 generic pairing questions, 178 questions are
+    # inactive (handbook numeric ranges/brands, Japan-specific items, meta questions).
+    assert METADATA["activeQuestionCount"] == sum(q["active"] for q in ALL_QUESTIONS) == len(ALL_QUESTIONS) - 228
+    assert METADATA["excludedQuestionCount"] == 228
     assert METADATA["excludedCategories"] == []
     assert METADATA["studyQuestionCount"] == 50
     assert METADATA["examQuestionCount"] == 50
@@ -118,9 +120,12 @@ def main() -> None:
     assert {
         category["id"]: category["count"] for category in METADATA["categories"]
     } == ACTIVE_CATEGORIES
-    assert sum(question["active"] for question in QUESTIONS) == 950
+    assert sum(question["active"] for question in QUESTIONS) == 772
     assert all(not question["active"] for question in QUESTIONS if question["category"] == "pairing")
-    assert all(question["active"] for question in QUESTIONS if question["category"] != "pairing")
+    scope_audit_inactive = {q["id"] for q in QUESTIONS if q["category"] != "pairing" and not q["active"]}
+    assert len(scope_audit_inactive) == 178
+    assert {f"C-{n:03d}" for n in list(range(1, 141)) + list(range(201, 231))} <= scope_audit_inactive
+    assert scope_audit_inactive - {f"C-{n:03d}" for n in range(1, 231)} == {"A-081", "A-158", "A-334", "B-227", "B-230", "B-346", "B-350"}
     assert all("添付資料に個別解説の記載はありません" not in question["explanation"] for question in QUESTIONS)
     ester_question = next(question for question in QUESTIONS if question["id"] == "A-050")
     assert "バター・バタースコッチ様の香りは主にジアセチル" in ester_question["choiceReasons"][3]

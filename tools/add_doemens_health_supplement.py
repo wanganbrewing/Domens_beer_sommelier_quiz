@@ -4,6 +4,10 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Legacy regeneration cannot reconstruct the approved v66 rewrites.
+if 'imageDeckSupplement' in json.loads((ROOT / 'questions.json').read_text()).get('metadata', {}):
+    raise RuntimeError('v66 scope audit: legacy regeneration is disabled; edit the reviewed bank explicitly')
+
 PREFIX = 'DH-'
 SOURCE_NOTE = '健康資料の右下Doemensロゴ付き英語図表（PDF 63・79・84・92ページ）から12問。古い図表の読み取り・民間療法史として扱い、飲酒の健康効果や治療効果は保証しない。'
 

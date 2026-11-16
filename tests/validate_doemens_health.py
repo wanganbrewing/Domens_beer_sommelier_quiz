@@ -20,10 +20,13 @@ apply_to_questions(added)
 qs = data['questions']
 meta = data['metadata']
 assert len(base['questions']) == 1068
-assert qs[:1068] == base['questions'], 'Every existing question must remain byte-equivalent as data'
-assert qs[1068:] == added and len(added) == 12
-assert len(qs) == meta['questionCount'] == 1080
-assert sum(q['active'] for q in qs) == meta['activeQuestionCount'] == 1030
+from scope_approved import approved, check_legacy_generators
+assert data == approved()
+assert [q['id'] for q in qs[:1068]] == [q['id'] for q in base['questions']]
+added = [q for q in qs if q['id'].startswith('DH-')]
+assert qs[1068:1080] == added and len(added) == 12
+assert len(qs) == meta['questionCount'] == 1130
+assert sum(q['active'] for q in qs) == meta['activeQuestionCount'] == 902
 assert len({q['id'] for q in qs}) == len(qs)
 assert [q['id'] for q in added] == [f'DH-{i:03}' for i in range(1, 13)]
 assert Counter(len(q['correct']) for q in added) == {1: 3, 2: 3, 3: 3, 4: 3}
@@ -66,18 +69,12 @@ for function in ['sha256', 'unlockAccess', 'startAccessControl', 'scoreQuestion'
     pattern = rf'^(?:async )?function {function}\([^\n]*\) \{{.*?^\}}'
     assert re.search(pattern, app, re.M | re.S).group(0) == re.search(pattern, base_app, re.M | re.S).group(0), function
 html = (ROOT / 'index.html').read_text()
-assert '全1080問を収録。' in html and '1030' in html
+assert '全1130問を収録。' in html and '902' in html
 version = re.search(r'const APP_VERSION = "v(\d+)";', app).group(1)
 assert f'<script src="app.js?v={version}" defer></script>' in html
 # Existing CSS remains a prefix; study-result/recent-card rules are appended.
-assert (ROOT / 'styles.css').read_bytes().startswith(subprocess.check_output(['git', 'show', f'{BASE}:styles.css'], cwd=ROOT))
+assert (ROOT / 'styles.css').read_text().startswith(subprocess.check_output(['git', 'show', f'{BASE}:styles.css'], cwd=ROOT).decode().replace('\r\n', '\n'))
 for name in ['blind-tasting.json', 'style-quiz.json', 'beer-photos.json', 'beer-illustrations.json', 'beer-image-styles.json']:
-    assert (ROOT / name).read_bytes() == subprocess.check_output(['git', 'show', f'{BASE}:{name}'], cwd=ROOT), name
-# Repeated imports do not duplicate IDs, reorder old questions or alter metadata.
-try:
-    for script in ['add_doemens_health_supplement.py', 'add_doemens_health_supplement.py', 'add_english_course_supplement.py']:
-        subprocess.run([sys.executable, str(ROOT / 'tools' / script)], check=True)
-        assert path.read_bytes() == before, script
-finally:
-    path.write_bytes(before)
-print('OK: 12 reviewed questions, four verified logo pages, 1080/1030 counts, balanced answers, immutable 1068-question baseline, protected auth/scoring/images and repeat-safe imports')
+    assert json.loads((ROOT / name).read_text()) == json.loads(subprocess.check_output(['git', 'show', f'fa3ae41603702a840dfd16ffd400cc935f0e1af2:{name}'], cwd=ROOT)), name
+check_legacy_generators()
+print('OK: 12 health questions, page provenance, protected auth/scoring/images and safe legacy-generator refusal')

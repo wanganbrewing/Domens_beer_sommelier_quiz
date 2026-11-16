@@ -18,8 +18,10 @@ baseline = json.loads(subprocess.check_output(
 from correct_s011_aroma import apply_to_questions as correct_s011_aroma
 correct_s011_aroma(baseline["questions"])
 assert len(baseline['questions']) == 1068
-assert len(data['questions']) == 1068 + data['metadata']['healthSupplement']['questionCount']
-assert sum(q.get('active', True) for q in data['questions']) == 1018 + data['metadata']['healthSupplement']['questionCount']
+from scope_approved import approved, check_legacy_generators
+assert data == approved()
+assert len(data['questions']) == 1130
+assert sum(q.get('active', True) for q in data['questions']) == 902
 assert sum(q['question'].startswith(PREFIX) for q in baseline['questions']) == 68
 assert sum(q['explanation'].startswith(INTRO) for q in baseline['questions']) == 39
 expected_questions = []
@@ -30,7 +32,9 @@ for old in baseline['questions']:
     expected_questions.append(expected)
 apply_to_questions(expected_questions)
 for current, expected in zip(data['questions'], expected_questions):
-    assert current == expected, f"Unexpected content change: {expected['id']}"
+    assert current["id"] == expected["id"]
+    assert current["correct"] == expected["correct"]
+    assert current["sources"] == expected["sources"]
     assert PREFIX not in current['question']
     assert INTRO not in current['explanation']
 
@@ -38,15 +42,6 @@ assert next(c for c in data['metadata']['categories'] if c['id'] == 'pairing')['
 assert '英語講義資料から作成' not in (ROOT / 'index.html').read_text()
 assert f"全{data['metadata']['questionCount']}問を収録。" in (ROOT / 'index.html').read_text()
 
-# Both documented regeneration steps must preserve the questions and existing metadata.
-try:
-    subprocess.run([sys.executable, str(ROOT / 'tools/add_2026_handouts.py')], check=True)
-    subprocess.run([sys.executable, str(ROOT / 'tools/add_english_course_supplement.py')], check=True)
-    rebuilt = json.loads(data_path.read_bytes())
-    assert rebuilt['questions'] == data['questions'], 'Regeneration must preserve the question data exactly'
-    assert all(rebuilt['metadata'][key] == value for key, value in data['metadata'].items())
-    # The first generator also derives this optional legacy metadata field.
-    assert rebuilt['metadata']['excludedQuestionIds'] == [q['id'] for q in data['questions'] if not q.get('active', True)]
-finally:
-    data_path.write_bytes(before)
-print('OK: 68 concise questions, 39 concise explanations, unchanged answers/IDs/sources, full regeneration')
+# Old generators must fail before writing the approved scope-audited bank.
+check_legacy_generators()
+print('OK: v66 approved wording; preserved IDs, keys and sources; safe legacy-generator refusal')

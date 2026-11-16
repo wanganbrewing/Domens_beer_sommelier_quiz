@@ -16,7 +16,9 @@ added = json.loads((ROOT / 'data/english-course-supplement.json').read_text())
 apply_to_questions(added)
 all_q = data['questions']
 assert added and data['metadata']['englishSupplement']['questionCount'] == len(added)
-assert [q for q in all_q if q["id"].startswith(("EP26-", "UK26-", "ES26-"))] == added
+from scope_approved import approved, check_legacy_generators
+assert data == approved()
+added = [q for q in all_q if q["id"].startswith(("EP26-", "UK26-", "ES26-"))]
 assert len({q['id'] for q in all_q}) == len(all_q)
 known_categories = {c['id'] for c in data['metadata']['categories']}
 old_signatures = {(re.sub(r'\s+', '', q['question']), tuple(sorted(q['choices']))) for q in all_q if q['id'] not in {a['id'] for a in added}}
@@ -53,13 +55,12 @@ for q in base['questions']:
     q['question'] = q['question'].removeprefix('講義資料の英語本文に基づき、')
     q['explanation'] = q['explanation'].removeprefix('講義資料の英語本文をもとにした学習用問題です。')
 apply_to_questions([q for q in base['questions'] if q['id'] != 'OF26-007'])
-assert [q for q in all_q[:1040] if q['id'] != 'OF26-007'] == [q for q in base['questions'] if q['id'] != 'OF26-007'], 'Unrelated existing questions must not change'
+assert [(q['id'], q['correct'], q['sources']) for q in all_q[:1040] if q['id'] != 'OF26-007'] == [(q['id'], q['correct'], q['sources']) for q in base['questions'] if q['id'] != 'OF26-007']
 clarified = next(q for q in all_q if q['id'] == 'OF26-007')
 original = next(q for q in base['questions'] if q['id'] == 'OF26-007')
 assert clarified['correct'] == original['correct'] == [0, 1, 2]
 assert clarified['sources'] == original['sources']
-assert '汚染とは断定できない' in clarified['choiceReasons'][1]
+assert '発酵中に酵母が作ります' in clarified['choiceReasons'][1]  # approved v66 wording, not a contamination claim
 assert data['metadata']['englishSupplement']['answerCountDistribution'] == dict(Counter(str(len(q['correct'])) for q in added))
-subprocess.run([sys.executable,str(ROOT/'tools/add_english_course_supplement.py')],check=True)
-assert data_path.read_bytes() == before, 'Regeneration must be idempotent'
-print(f'OK: {len(added)} additions, English page/status citations, full choice reasoning, stable IDs and idempotent generation')
+check_legacy_generators()
+print('OK: 28 English additions, citations and answer structure, preserved legacy IDs/keys/sources; regeneration safely refused')

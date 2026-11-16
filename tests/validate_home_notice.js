@@ -3,7 +3,7 @@ const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("n
 const {execFileSync}=require("node:child_process");
 const root=path.resolve(__dirname,"..");
 const read=name=>fs.readFileSync(path.join(root,name),"utf8");
-const base=name=>execFileSync("git",["show",`6fcd16407bd2260f7c4a48280cc68cfa4637c4f7:${name}`],{cwd:root,maxBuffer:10*1024*1024});
+const base=name=>execFileSync("git",["show",`fa3ae41603702a840dfd16ffd400cc935f0e1af2:${name}`],{cwd:root,maxBuffer:10*1024*1024});
 const first="共有教材画像は受講者限定です。2026年11月24日に削除予定です。問題と学習履歴は削除対象ではありません。";
 async function main(){
   const html=read("index.html");
@@ -37,7 +37,7 @@ async function main(){
     };
     await h.run("init()");
     assert.deepEqual(removed,[],"initialization never accesses removed UI");
-    assert.equal(h.run("questionsById.size"),1080);
+    assert.equal(h.run("questionsById.size"),1130);
     assert.equal(h.run("variantCatalog.size"),failure?0:8);
     assert.equal(warnings.length,failure?1:0);
     assert.ok(!String(h.element("#configMessage").textContent).includes("エラー"));
@@ -54,13 +54,13 @@ async function main(){
   // Only home promotion/status code and version markers change; old sessions and core behavior stay intact.
   const version=read("app.js").match(/const APP_VERSION = "(v\d+)";/)[1];
   const revision=version.slice(1);
-  let expected=base("app.js").toString()
-    .replace('const APP_VERSION = "v55";',`const APP_VERSION = "${version}";`)
-    .replace('choice-variants.json?v=55',`choice-variants.json?v=${revision}`)
-    .replace('        $("#variantPrototypeStatus").textContent = "別セットを読み込めなかったため、通常の選択肢で学習できます。";\n','        console.warn("別セットを読み込めなかったため、通常の選択肢で学習できます。", error.message);\n');
-  for(const line of ['      $("#variantPrototypeButton").disabled = !variantCatalog.size;\n','      $("#variantPrototypeCount").textContent = String(variantCatalog.size);\n','  $("#variantPrototypeButton")?.addEventListener("click", startVariantPrototype);\n'])expected=expected.replace(line,"");
-  assert.equal(read("app.js"),expected);
-  for(const name of ["questions.json","choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-links.json","source-passages.json"])
+  let expected=base("app.js").toString().replace(/\r\n/g,"\n")
+    .replace('const APP_VERSION = "v65";',`const APP_VERSION = "${version}";`)
+    .replace('choice-variants.json?v=65',`choice-variants.json?v=${revision}`)
+    .replace('const mastered = values.filter((item) => item.mastered).length;', 'const mastered = Object.entries(history).filter(([id, item]) => item.mastered && questionsById.get(id)?.active !== false && questionsById.has(id)).length;');
+  assert.equal(read("app.js").replace(/\r\n/g,"\n"),expected);
+  assert.deepEqual(JSON.parse(read("questions.json")),JSON.parse(read("tests/fixtures/scope-v66-approved.json")));
+  for(const name of ["choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-passages.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,name)),base(name),name);
   assert.ok(read("styles.css").startsWith(base("styles.css").toString().split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");
   assert.ok(html.includes(`class="version-badge">${version}</small>`));

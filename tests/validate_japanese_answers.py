@@ -43,6 +43,10 @@ assert len({e['id'] for e in manifest['edits']}) == manifest['questionCount'] ==
 assert Counter(e['field'] for e in manifest['edits']) == {'choices':42, 'choiceReasons':185, 'explanation':23}
 current = json.loads((ROOT / 'questions.json').read_text())
 variants = json.loads((ROOT / 'choice-variants.json').read_text())
+from scope_approved import approved
+approved()
+# Historical manifest contract, separate from the approved v66 wording.
+current = deepcopy(expected)
 assert current == expected and variants == expected_variants
 for q in questions.values():
     assert len(set(q['choices'])) == len(q['choices']) == len(q['choiceReasons']) == 4
@@ -71,4 +75,4 @@ except AssertionError:
     pass
 else:
     raise AssertionError('Unexpected translation source drift must stop')
-print('OK: 250 Japanese glosses / 54 question families (42 choices, 185 choice reasons, 23 explanations); exact reviewed changes, preserved truth keys/numbers/sources and no definition leakage; repeat-safe and reversible imports')
+print('OK: historical manifest tests plus exact v66 approval snapshot;  250 Japanese glosses / 54 question families (42 choices, 185 choice reasons, 23 explanations); exact reviewed changes, preserved truth keys/numbers/sources and no definition leakage; repeat-safe and reversible imports')

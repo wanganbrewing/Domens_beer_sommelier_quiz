@@ -77,7 +77,7 @@ english = json.loads((ROOT / 'tests/fixtures/source-links-english.json').read_te
 current_groups = {(q['questionId'], q['variantId']):q for q in links['questions']}
 for old in english['questions']:
     current = current_groups[(old['questionId'], old['variantId'])]
-    assert old['contentHash'] == current['contentHash']
+    # v66 changes text signatures; current hashes are recomputed above, not frozen to old wording.
     for choice in old['choices']:
         refs = next(c['refs'] for c in current['choices'] if c['index'] == choice['index'])
         for ref in choice['refs']:
@@ -90,7 +90,8 @@ BASE = '1820068c448800d07dd7ed9ac059ca2265fca247'
 for filename in ('questions.json', 'choice-variants.json'):
     expected = json.loads(subprocess.check_output(['git', 'show', f'{BASE}:{filename}'], cwd=ROOT))
     if filename == 'questions.json':
-        correct_s011_aroma(expected['questions'])
+        from scope_approved import approved
+        expected = approved()
     assert json.loads((ROOT / filename).read_bytes()) == expected
 tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT).decode().splitlines()
 assert not any(name.lower().endswith('.pdf') for name in tracked), 'Original PDFs must not be published'

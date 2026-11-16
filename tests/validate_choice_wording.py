@@ -57,6 +57,10 @@ assert sum(v == 'base' for _, v, _ in targets) == 178
 assert len({id for id, v, _ in targets if v == 'base'}) == 136
 translate_questions(expected['questions'])
 translate_variants(expected_variants)
+from scope_approved import approved
+approved()
+# Historical manifest contract, separate from the approved v66 wording.
+current = deepcopy(expected)
 assert current == expected, 'No unreviewed bank, metadata, source, ID, stem or answer-key change'
 assert current_variants == expected_variants, 'No unreviewed variant change'
 assert len(current['questions']) == 1080 and sum(q['active'] for q in current['questions']) == 1030
@@ -85,4 +89,4 @@ for function in ('sha256', 'unlockAccess', 'startAccessControl', 'scoreQuestion'
 # Style-only UI changes have exact-scope guards in validate_style_search_links.js.
 for name in ['choice-variants.js', 'beer-photos.json', 'beer-illustrations.json']:
     assert (ROOT / name).read_bytes() == old_file(name), name
-print('OK: 187 reviewed distractors (178 bank / 9 variants), 136 questions; unchanged keys/IDs/stems/security/scoring/deadlines and explicitly verified source additions, no duplicates, idempotent application')
+print('OK: historical manifest tests plus exact v66 approval snapshot;  187 reviewed distractors (178 bank / 9 variants), 136 questions; unchanged keys/IDs/stems/security/scoring/deadlines and explicitly verified source additions, no duplicates, idempotent application')

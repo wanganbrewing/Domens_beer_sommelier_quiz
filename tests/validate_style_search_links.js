@@ -5,9 +5,9 @@ const path = require("node:path");
 const vm = require("node:vm");
 const {execFileSync} = require("node:child_process");
 const root = path.resolve(__dirname,"..");
-const read = name => fs.readFileSync(path.join(root,name),"utf8");
+const read = name => fs.readFileSync(path.join(root,name),"utf8").replace(/\r\n/g,"\n");
 const json = name => JSON.parse(read(name));
-const base = name => execFileSync("git",["show",`4810868d897e0ab3c999d730cc85e4125be6f3bd:${name}`],{cwd:root,maxBuffer:10*1024*1024});
+const base = name => execFileSync("git",["show",`fa3ae41603702a840dfd16ffd400cc935f0e1af2:${name}`],{cwd:root,maxBuffer:10*1024*1024});
 const linksCode = read("style-links.js");
 const context = {window:{}};
 vm.runInNewContext(linksCode,context);
@@ -107,26 +107,21 @@ async function main() {
   }
 
   // Exact scope guard: answers, source permissions, sampling, scoring and every other app function stay intact.
-  for(const file of ["questions.json","choice-variants.json","source-links.json","source-passages.json","blind-tasting.json","beer-image-styles.json","beer-photos.json","beer-illustrations.json"])
-    assert.deepEqual(fs.readFileSync(path.join(root,file)),base(file),file);
+  for(const file of ["choice-variants.json","source-passages.json","blind-tasting.json","beer-image-styles.json","beer-photos.json","beer-illustrations.json"])
+    assert.equal(JSON.stringify(json(file)),JSON.stringify(JSON.parse(base(file))),file);
+  assert.equal(JSON.stringify(json("questions.json")),JSON.stringify(json("tests/fixtures/scope-v66-approved.json")));
   // Preserve style-related render paths without freezing unrelated home layout or cache versions.
   for (const name of ["renderQuestion","renderFeedback","renderReviewChoiceReasons","renderReview"]) {
     const pattern=new RegExp(`^function ${name}\\([^\\n]*\\) \\{[\\s\\S]*?^\\}`,"m");
-    assert.equal(read("app.js").match(pattern)[0],base("app.js").toString().match(pattern)[0],name);
+    assert.equal(read("app.js").match(pattern)[0],base("app.js").toString().replace(/\r\n/g,"\n").match(pattern)[0],name);
   }
   const version=read("app.js").match(/const APP_VERSION = "(v\d+)";/)[1];
   assert.ok(read("index.html").includes(`class="version-badge">${version}</small>`));
   for (const name of ["style-links.js","beer-photos.js","blind-quiz.js"])
     assert.ok(read("index.html").includes(`src="${name}?v=${version.slice(1)}"`));
-  let expectedPhotos=base("beer-photos.js").toString().replace('    const caption = illustration','    const style = window.BierKompassStyleLinks?.linkStyle(item.style) || escape(item.style);\n    const caption = illustration').replace('${escape(item.style)}</strong>','${style}</strong>').replace('${escape(item.style)} · 実物写真','${style} · 実物写真');
-  assert.equal(read("beer-photos.js"),expectedPhotos,"image source, license and fallback behavior unchanged");
-  const expectedBlind=base("blind-quiz.js").toString()
-    .replace('  const styleAnswerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);','  const styleAnswerHtml = (value) => window.BierKompassStyleLinks?.linkify(value) || escapeHtml(value);\n  const styleNameHtml = (value) => window.BierKompassStyleLinks?.linkStyle(value) || escapeHtml(value);')
-    .replaceAll('styleAnswerHtml(scenario.answer)','styleNameHtml(scenario.answer)')
-    .replaceAll('styleAnswerHtml(target.answer)','styleNameHtml(target.answer)')
-    .replaceAll('styleAnswerHtml(item.style)','styleNameHtml(item.style)');
-  assert.equal(read("blind-quiz.js"),expectedBlind,"only known style-only labels change; selection/scoring/history/links unchanged");
-  assert.ok(read("styles.css").startsWith(base("styles.css").toString().split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");
+  assert.equal(read("beer-photos.js"),base("beer-photos.js").toString().replace(/\r\n/g,"\n"));
+  assert.equal(read("blind-quiz.js"),base("blind-quiz.js").toString().replace(/\r\n/g,"\n"));
+  assert.ok(read("styles.css").startsWith(base("styles.css").toString().replace(/\r\n/g,"\n").split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");
   assert.match(read("styles.css"),/\.style-reference-link:focus-visible/);
   assert.match(read("styles.css"),/\.style-reference-link\{overflow-wrap:anywhere\}/);
   console.log(`PASS ${known.length} style labels; Google queries/escaping/new tabs; 58 guide and result views; ${pictures.length} image captions; pre-answer isolation, review, unchanged answers/history/source access`);

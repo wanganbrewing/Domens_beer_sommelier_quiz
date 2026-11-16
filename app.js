@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v65";
+const APP_VERSION = "v66";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -99,7 +99,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=65", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=66", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -750,7 +750,7 @@ function startTimer() {
 }
 
 function updateStats() {
-  const values = Object.values(history); const attempts = values.reduce((sum, item) => sum + item.attempts, 0); const mastered = values.filter((item) => item.mastered).length;
+  const values = Object.values(history); const attempts = values.reduce((sum, item) => sum + item.attempts, 0); const mastered = Object.entries(history).filter(([id, item]) => item.mastered && questionsById.get(id)?.active !== false && questionsById.has(id)).length;
   const correct = recentAnswers.filter((item) => item.correct).length;
   $("#accuracyStat").textContent = recentAnswers.length ? `${Math.floor(correct / recentAnswers.length * 1000) / 10}%` : "—";
   $("#recentAccuracyDetail").textContent = recentAnswers.length

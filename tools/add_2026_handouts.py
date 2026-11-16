@@ -4,6 +4,10 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Legacy regeneration cannot reconstruct the approved v66 rewrites.
+if 'imageDeckSupplement' in json.loads((ROOT / 'questions.json').read_text()).get('metadata', {}):
+    raise RuntimeError('v66 scope audit: legacy regeneration is disabled; edit the reviewed bank explicitly')
+
 # page, topic, true statements, false statement/correction pairs.
 OFF = [
 (1,'官能分析用語の要件',['用語は明確に定義する','標準物質を用いて用語を学べるようにする','品質問題の原因に沿って用語を分類する'],[('用語の意味は評価者ごとに自由に変える','明確な定義と共通の標準が必要。')]),

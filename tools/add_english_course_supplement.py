@@ -4,6 +4,10 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Legacy regeneration cannot reconstruct the approved v66 rewrites.
+if 'imageDeckSupplement' in json.loads((ROOT / 'questions.json').read_text()).get('metadata', {}):
+    raise RuntimeError('v66 scope audit: legacy regeneration is disabled; edit the reviewed bank explicitly')
+
 PREFIXES = ('EP26-', 'UK26-', 'ES26-')
 
 
