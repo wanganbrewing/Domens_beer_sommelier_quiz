@@ -113,7 +113,10 @@ async function main() {
   // Preserve style-related render paths without freezing unrelated home layout or cache versions.
   for (const name of ["renderQuestion","renderFeedback","renderReviewChoiceReasons","renderReview"]) {
     const pattern=new RegExp(`^function ${name}\\([^\\n]*\\) \\{[\\s\\S]*?^\\}`,"m");
-    assert.equal(read("app.js").match(pattern)[0],base("app.js").toString().replace(/\r\n/g,"\n").match(pattern)[0],name);
+    const current=read("app.js").match(pattern)[0]
+      .replace(' + (window.BierKompassGlassGuide?.forQuestion(question) || "")','')
+      .replace('${window.BierKompassGlassGuide?.forQuestion(question) || ""}','');
+    assert.equal(current,base("app.js").toString().replace(/\r\n/g,"\n").match(pattern)[0],name);
   }
   const version=read("app.js").match(/const APP_VERSION = "(v\d+)";/)[1];
   assert.ok(read("index.html").includes(`class="version-badge">${version}</small>`));

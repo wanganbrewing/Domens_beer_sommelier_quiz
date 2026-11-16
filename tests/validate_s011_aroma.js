@@ -20,7 +20,7 @@ const blindOld=JSON.parse(old('blind-tasting.json')),blind=JSON.parse(read('blin
 const b=blindOld.scenarios.find(s=>s.id==='B-04');b.blindCard.aroma=aroma;b.step1ObservationsJa[1]='香り：'+aroma;
 assert.deepEqual(blind,blindOld,'only the duplicate B-04 aroma and observation change');
 for(const p of ['questions.json','choice-guide.js','blind-tasting.json']) assert.ok(!read(p).includes('完熟バナナ・桃・クローブ'));
-for(const p of ['choice-variants.json','source-passages.json','styles.css','sound.js','blind-quiz.js','style-links.js'])assert.equal(read(p),old(p),p);
+for(const p of ['choice-variants.json','source-passages.json','sound.js','blind-quiz.js','style-links.js'])assert.equal(read(p),old(p),p);
 // Exact v66 runtime change scope is checked by validate_home_notice and validate_scope_v66.
 const h=require('./runtime_harness')();h.context.q=currentTarget;h.context.window.BierKompassChoiceGuide=guide;
 h.run('createSession([q],"study");');
@@ -49,3 +49,5 @@ apply_ui_overrides(b['scenarios'])
 assert b==json.load(open('blind-tasting.json'))
 `],{cwd:root});
 console.log('PASS S-011 aroma classification; exact two-field question scope; shared note/B-04 consistency; unchanged answers, scoring, history and permissions; feedback/review; safe idempotent correction and blind regeneration');
+
+assert.ok(read('styles.css').startsWith(old('styles.css')), 'existing CSS unchanged; glass reference styles appended');

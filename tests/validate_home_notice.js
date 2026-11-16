@@ -58,7 +58,11 @@ async function main(){
     .replace('const APP_VERSION = "v65";',`const APP_VERSION = "${version}";`)
     .replace('choice-variants.json?v=65',`choice-variants.json?v=${revision}`)
     .replace('const mastered = values.filter((item) => item.mastered).length;', 'const mastered = Object.entries(history).filter(([id, item]) => item.mastered && questionsById.get(id)?.active !== false && questionsById.has(id)).length;');
-  assert.equal(read("app.js").replace(/\r\n/g,"\n"),expected);
+  // Permit exactly the two independent post-answer reference insertions.
+  const withoutGlass=read("app.js").replace(/\r\n/g,"\n")
+    .replace(' + (window.BierKompassGlassGuide?.forQuestion(question) || "")', '')
+    .replace('${window.BierKompassGlassGuide?.forQuestion(question) || ""}', '');
+  assert.equal(withoutGlass,expected);
   assert.deepEqual(JSON.parse(read("questions.json")),JSON.parse(read("tests/fixtures/scope-v66-approved.json")));
   for(const name of ["choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-passages.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,name)),base(name),name);
