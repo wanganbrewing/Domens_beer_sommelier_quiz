@@ -37,7 +37,7 @@ async function main(){
     };
     await h.run("init()");
     assert.deepEqual(removed,[],"initialization never accesses removed UI");
-    assert.equal(h.run("questionsById.size"),1130);
+    assert.equal(h.run("questionsById.size"),1170);
     assert.equal(h.run("variantCatalog.size"),failure?0:8);
     assert.equal(warnings.length,failure?1:0);
     assert.ok(!String(h.element("#configMessage").textContent).includes("エラー"));
@@ -63,7 +63,7 @@ async function main(){
     .replace(' + (window.BierKompassGlassGuide?.forQuestion(question) || "")', '')
     .replace('${window.BierKompassGlassGuide?.forQuestion(question) || ""}', '');
   assert.equal(withoutGlass,expected);
-  assert.deepEqual(JSON.parse(read("questions.json")),JSON.parse(read("tests/fixtures/scope-v66-approved.json")));
+  assert.deepEqual(JSON.parse(read("questions.json")),JSON.parse(read("tests/fixtures/scope-v69-approved.json")));
   for(const name of ["choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-passages.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,name)),base(name),name);
   assert.ok(read("styles.css").startsWith(base("styles.css").toString().split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");

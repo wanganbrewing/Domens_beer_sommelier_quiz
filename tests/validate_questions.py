@@ -18,7 +18,7 @@ INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 BLIND_JS = (ROOT / "blind-quiz.js").read_text(encoding="utf-8")
 STYLE_LINKS_JS = (ROOT / "style-links.js").read_text(encoding="utf-8")
 
-EXPECTED_TIERS = {"A": 400, "B": 350, "C": 250}
+EXPECTED_TIERS = {"A": 580, "B": 177, "C": 243}
 ACTIVE_TIERS = dict(Counter(q["frequencyTier"] for q in ALL_QUESTIONS if q["active"]))
 EXPECTED_ANSWERS = {1: 133, 2: 211, 3: 420, 4: 236}
 EXPECTED_CATEGORIES = {

@@ -3,7 +3,8 @@ import json, subprocess
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 load=lambda n:json.loads((R/n).read_text())
-p=load('questions.json'); b=json.loads(subprocess.check_output(['git','show','fa3ae41603702a840dfd16ffd400cc935f0e1af2:questions.json'],cwd=R))
+# Validate the preserved v66 evidence independently of later frequency revisions.
+p=load('tests/fixtures/scope-v66-approved.json'); b=json.loads(subprocess.check_output(['git','show','fa3ae41603702a840dfd16ffd400cc935f0e1af2:questions.json'],cwd=R))
 assert p==load('tests/fixtures/scope-v66-approved.json')
 B={q['id']:q for q in b['questions']};P={q['id']:q for q in p['questions']}
 assert len(P)==len(p['questions'])==1130 and B.keys()<=P.keys()

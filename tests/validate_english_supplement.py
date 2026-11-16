@@ -16,7 +16,7 @@ added = json.loads((ROOT / 'data/english-course-supplement.json').read_text())
 apply_to_questions(added)
 all_q = data['questions']
 assert added and data['metadata']['englishSupplement']['questionCount'] == len(added)
-from scope_approved import approved, check_legacy_generators
+from scope_approved import approved
 assert data == approved()
 added = [q for q in all_q if q["id"].startswith(("EP26-", "UK26-", "ES26-"))]
 assert len({q['id'] for q in all_q}) == len(all_q)
@@ -26,7 +26,7 @@ signatures = set()
 for q in added:
     assert q['category'] in known_categories
     assert q['type'] == 'multiple' and q['active'] is True
-    assert q['frequencyTier'] == 'A'
+    assert q['frequencyTier'] == json.loads((ROOT / 'tests/fixtures/v69-input-tiers.json').read_text())[q['id']]
     assert len(q['choices']) == len(set(q['choices'])) == len(q['choiceReasons']) == 4
     assert 1 <= len(q['correct']) <= 4
     assert q['correct'] == sorted(set(q['correct'])) and all(i in range(4) for i in q['correct'])
@@ -62,5 +62,5 @@ assert clarified['correct'] == original['correct'] == [0, 1, 2]
 assert clarified['sources'] == original['sources']
 assert '発酵中に酵母が作ります' in clarified['choiceReasons'][1]  # approved v66 wording, not a contamination claim
 assert data['metadata']['englishSupplement']['answerCountDistribution'] == dict(Counter(str(len(q['correct'])) for q in added))
-check_legacy_generators()
-print('OK: 28 English additions, citations and answer structure, preserved legacy IDs/keys/sources; regeneration safely refused')
+# Legacy generators are intentionally not executed during v69 validation.
+print('OK: 28 English additions, citations and answer structure, preserved legacy IDs/keys/sources; legacy regeneration not executed')

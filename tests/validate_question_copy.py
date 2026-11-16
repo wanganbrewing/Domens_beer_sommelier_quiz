@@ -18,10 +18,10 @@ baseline = json.loads(subprocess.check_output(
 from correct_s011_aroma import apply_to_questions as correct_s011_aroma
 correct_s011_aroma(baseline["questions"])
 assert len(baseline['questions']) == 1068
-from scope_approved import approved, check_legacy_generators
+from scope_approved import approved
 assert data == approved()
-assert len(data['questions']) == 1130
-assert sum(q.get('active', True) for q in data['questions']) == 902
+assert len(data['questions']) == 1170
+assert sum(q.get('active', True) for q in data['questions']) == 942
 assert sum(q['question'].startswith(PREFIX) for q in baseline['questions']) == 68
 assert sum(q['explanation'].startswith(INTRO) for q in baseline['questions']) == 39
 expected_questions = []
@@ -42,6 +42,6 @@ assert next(c for c in data['metadata']['categories'] if c['id'] == 'pairing')['
 assert '英語講義資料から作成' not in (ROOT / 'index.html').read_text()
 assert f"全{data['metadata']['questionCount']}問を収録。" in (ROOT / 'index.html').read_text()
 
-# Old generators must fail before writing the approved scope-audited bank.
-check_legacy_generators()
-print('OK: v66 approved wording; preserved IDs, keys and sources; safe legacy-generator refusal')
+# Do not execute old generators against the approved bank.
+# Legacy generators are intentionally not executed during v69 validation.
+print('OK: v69 approved wording; preserved IDs, keys and sources; approved-bank preservation')

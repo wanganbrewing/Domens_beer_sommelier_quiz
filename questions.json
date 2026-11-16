@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "BierKompass 1130",
+    "title": "BierKompass 1170",
     "subtitle": "Doemens Biersommelier 試験対策",
-    "version": "2026-11-16-doemens-scope-audit-2",
-    "questionCount": 1130,
+    "version": "2026-11-16-v69-corrections",
+    "questionCount": 1170,
     "studyQuestionCount": 50,
     "examQuestionCount": 50,
     "examMinutes": 40,
@@ -17,22 +17,22 @@
       {
         "id": "fermentation",
         "name": "酵母・発酵・熟成",
-        "count": 76
+        "count": 77
       },
       {
         "id": "brewing_process",
         "name": "醸造工程・設備",
-        "count": 50
+        "count": 52
       },
       {
         "id": "beer_styles",
         "name": "ビアスタイル",
-        "count": 266
+        "count": 282
       },
       {
         "id": "history",
         "name": "ビールの歴史・文化",
-        "count": 62
+        "count": 64
       },
       {
         "id": "sensory",
@@ -47,7 +47,7 @@
       {
         "id": "service_quality",
         "name": "サービス・グラス・樽生・保存",
-        "count": 100
+        "count": 119
       },
       {
         "id": "integrated",
@@ -69,17 +69,17 @@
       {
         "id": "A",
         "name": "最頻出予想",
-        "count": 482
+        "count": 657
       },
       {
         "id": "B",
         "name": "頻出予想",
-        "count": 329
+        "count": 201
       },
       {
         "id": "C",
         "name": "補強・周辺知識",
-        "count": 91
+        "count": 84
       }
     ],
     "notice": "非公式の練習問題です。Doemens公式問題ではありません。",
@@ -89,16 +89,16 @@
       "appendixMockExamIncluded": false,
       "appendixMockExamQuestionCount": 50
     },
-    "multiAnswerQuestionCount": 974,
+    "multiAnswerQuestionCount": 1009,
     "answerCountDistribution": {
-      "4": 269,
+      "4": 272,
       "2": 235,
-      "3": 470,
-      "1": 156
+      "3": 502,
+      "1": 161
     },
     "duplicateQuestionTextCount": 30,
     "questionDesign": "正答1〜4個の問題を各25%を目標に抽出。50問は各12〜13問。区分不足時のみ残りへ再配分。",
-    "activeQuestionCount": 902,
+    "activeQuestionCount": 942,
     "excludedCategories": [],
     "excludedQuestionCount": 228,
     "explanationEnrichment": {
@@ -116,7 +116,7 @@
       "8/30英語講義資料由来の既存40問を維持。既存の非対象ペアリング50問も保管。",
       "英語本文の未反映論点を追加28問。官能・オフフレーバー、ペアリング、英国カスク管理を出典ページ付きで補強。日本語主体の資料は低優先として今回の追加対象外。",
       "健康資料の右下Doemensロゴ付き英語図表（PDF 63・79・84・92ページ）から12問。古い図表の読み取り・民間療法史として扱い、飲酒の健康効果や治療効果は保証しない。",
-      "画像PDF 3点（感覚生理学・官能評価、Q&A Updates・Tasting Preparation、ビアグラス）の英語本文を文字認識で読み取り、42問。アメリカビール本編（日本語の講義資料）から8問を追加。"
+      "画像PDF 3点（感覚生理学・官能評価、Q&A Updates・Tasting Preparation、ビアグラス）の英語本文を文字認識で読み取り、42問。アメリカビール本編（日本語の講義資料）から8問、ドラフトシステム（2026-11-16配布）から19問、ビール純粋令の移り変わり2問を追加。 スタイル識別16問と醸造用語3問も追加。"
     ],
     "englishSupplement": {
       "questionCount": 28,
@@ -191,7 +191,7 @@
       "sourceVersionStatus": "作成年・改訂版は未確認。重複添付2件は同一の113ページPDF。"
     },
     "imageDeckSupplement": {
-      "questionCount": 50,
+      "questionCount": 90,
       "ids": [
         "SP26-001",
         "SP26-002",
@@ -242,7 +242,47 @@
         "US26-005",
         "US26-006",
         "US26-007",
-        "US26-008"
+        "US26-008",
+        "DS26-001",
+        "DS26-002",
+        "DS26-003",
+        "DS26-004",
+        "DS26-005",
+        "DS26-006",
+        "DS26-007",
+        "DS26-008",
+        "DS26-009",
+        "DS26-010",
+        "DS26-011",
+        "DS26-012",
+        "DS26-013",
+        "DS26-014",
+        "DS26-015",
+        "DS26-016",
+        "DS26-017",
+        "DS26-018",
+        "DS26-019",
+        "PL26-001",
+        "PL26-002",
+        "ST26-001",
+        "ST26-002",
+        "ST26-003",
+        "ST26-004",
+        "ST26-005",
+        "ST26-006",
+        "ST26-007",
+        "ST26-008",
+        "ST26-009",
+        "ST26-010",
+        "ST26-011",
+        "ST26-012",
+        "ST26-013",
+        "ST26-014",
+        "ST26-015",
+        "ST26-016",
+        "BW26-001",
+        "BW26-002",
+        "BW26-003"
       ]
     }
   },
@@ -8951,7 +8991,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-181"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-181",
       "active": true
     },
@@ -9171,7 +9211,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-187"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-187",
       "active": true
     },
@@ -9207,7 +9247,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-188"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-188",
       "active": true
     },
@@ -9244,7 +9284,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-189"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-189",
       "active": true
     },
@@ -9280,7 +9320,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-190"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-190",
       "active": true
     },
@@ -9463,7 +9503,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-195"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-195",
       "active": true
     },
@@ -9500,7 +9540,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-196"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-196",
       "active": true
     },
@@ -9573,7 +9613,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-198"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-198",
       "active": true
     },
@@ -9646,7 +9686,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-200"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-200",
       "active": true
     },
@@ -9719,7 +9759,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-202"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-202",
       "active": true
     },
@@ -9756,7 +9796,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-203"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-203",
       "active": true
     },
@@ -9792,7 +9832,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-204"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-204",
       "active": true
     },
@@ -9865,7 +9905,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-206"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-206",
       "active": true
     },
@@ -9938,7 +9978,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-208"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-208",
       "active": true
     },
@@ -9974,7 +10014,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-209"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-209",
       "active": true
     },
@@ -10011,7 +10051,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-210"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-210",
       "active": true
     },
@@ -10304,7 +10344,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-218"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-218",
       "active": true
     },
@@ -10338,7 +10378,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-219"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-219",
       "active": true
     },
@@ -10375,7 +10415,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-220"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-220",
       "active": true
     },
@@ -10409,7 +10449,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-221"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-221",
       "active": true
     },
@@ -10445,7 +10485,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-222"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-222",
       "active": true
     },
@@ -10481,7 +10521,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-223"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-223",
       "active": true
     },
@@ -10518,7 +10558,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-224"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-224",
       "active": true
     },
@@ -10554,7 +10594,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-225"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-225",
       "active": true
     },
@@ -10591,7 +10631,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-226"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-226",
       "active": true
     },
@@ -10628,7 +10668,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-227"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-227",
       "active": true
     },
@@ -10664,7 +10704,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-228"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-228",
       "active": true
     },
@@ -10701,7 +10741,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-229"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-229",
       "active": true
     },
@@ -10737,7 +10777,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-230"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-230",
       "active": true
     },
@@ -10773,7 +10813,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-231"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-231",
       "active": true
     },
@@ -10810,7 +10850,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-232"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-232",
       "active": true
     },
@@ -10846,7 +10886,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-233"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-233",
       "active": true
     },
@@ -10882,7 +10922,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-234"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-234",
       "active": true
     },
@@ -10919,7 +10959,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-235"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-235",
       "active": true
     },
@@ -10955,7 +10995,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-236"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-236",
       "active": true
     },
@@ -10991,7 +11031,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-237"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-237",
       "active": true
     },
@@ -11028,7 +11068,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-238"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-238",
       "active": true
     },
@@ -11064,7 +11104,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-239"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-239",
       "active": true
     },
@@ -11100,7 +11140,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-240"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-240",
       "active": true
     },
@@ -11137,7 +11177,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-241"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-241",
       "active": true
     },
@@ -11173,7 +11213,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-242"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-242",
       "active": true
     },
@@ -11209,7 +11249,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-243"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-243",
       "active": true
     },
@@ -11246,7 +11286,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-244"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-244",
       "active": true
     },
@@ -11282,7 +11322,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md A-245"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "id": "A-245",
       "active": true
     },
@@ -14765,7 +14805,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-001"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-001",
       "active": true
     },
@@ -14800,7 +14840,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-002"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-002",
       "active": true
     },
@@ -14836,7 +14876,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-003"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-003",
       "active": true
     },
@@ -14872,7 +14912,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-004"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-004",
       "active": true
     },
@@ -14909,7 +14949,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-005"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-005",
       "active": true
     },
@@ -14944,7 +14984,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-006"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-006",
       "active": true
     },
@@ -14980,7 +15020,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-007"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-007",
       "active": true
     },
@@ -15016,7 +15056,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-008"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-008",
       "active": true
     },
@@ -15053,7 +15093,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-009"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-009",
       "active": true
     },
@@ -15089,7 +15129,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-010"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-010",
       "active": true
     },
@@ -15125,7 +15165,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-011"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-011",
       "active": true
     },
@@ -15160,7 +15200,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-012"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-012",
       "active": true
     },
@@ -15197,7 +15237,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-013"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-013",
       "active": true
     },
@@ -15233,7 +15273,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-014"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-014",
       "active": true
     },
@@ -15269,7 +15309,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-015"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-015",
       "active": true
     },
@@ -15306,7 +15346,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-016"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-016",
       "active": true
     },
@@ -15342,7 +15382,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-017"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-017",
       "active": true
     },
@@ -15378,7 +15418,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-018"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-018",
       "active": true
     },
@@ -15415,7 +15455,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-019"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-019",
       "active": true
     },
@@ -15451,7 +15491,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-020"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-020",
       "active": true
     },
@@ -15487,7 +15527,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-021"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-021",
       "active": true
     },
@@ -15524,7 +15564,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-022"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-022",
       "active": true
     },
@@ -15559,7 +15599,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-023"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-023",
       "active": true
     },
@@ -15595,7 +15635,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-024"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-024",
       "active": true
     },
@@ -15631,7 +15671,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-025"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-025",
       "active": true
     },
@@ -15668,7 +15708,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-026"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-026",
       "active": true
     },
@@ -15705,7 +15745,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-027"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-027",
       "active": true
     },
@@ -15741,7 +15781,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-028"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-028",
       "active": true
     },
@@ -15776,7 +15816,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-029"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-029",
       "active": true
     },
@@ -15812,7 +15852,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-030"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-030",
       "active": true
     },
@@ -15849,7 +15889,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-031"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-031",
       "active": true
     },
@@ -15886,7 +15926,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-032"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-032",
       "active": true
     },
@@ -15922,7 +15962,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-033"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-033",
       "active": true
     },
@@ -15957,7 +15997,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-034"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-034",
       "active": true
     },
@@ -15993,7 +16033,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-035"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-035",
       "active": true
     },
@@ -16030,7 +16070,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-036"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-036",
       "active": true
     },
@@ -16066,7 +16106,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-037"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-037",
       "active": true
     },
@@ -16102,7 +16142,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-038"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-038",
       "active": true
     },
@@ -16137,7 +16177,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-039"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-039",
       "active": true
     },
@@ -16174,7 +16214,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-040"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-040",
       "active": true
     },
@@ -16210,7 +16250,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-041"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-041",
       "active": true
     },
@@ -16246,7 +16286,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-042"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-042",
       "active": true
     },
@@ -16283,7 +16323,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-043"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-043",
       "active": true
     },
@@ -16319,7 +16359,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-044"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-044",
       "active": true
     },
@@ -16355,7 +16395,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-045"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-045",
       "active": true
     },
@@ -16390,7 +16430,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-046"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-046",
       "active": true
     },
@@ -16427,7 +16467,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-047"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-047",
       "active": true
     },
@@ -16463,7 +16503,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-048"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-048",
       "active": true
     },
@@ -16499,7 +16539,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-049"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-049",
       "active": true
     },
@@ -16536,7 +16576,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-050"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-050",
       "active": true
     },
@@ -16572,7 +16612,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-051"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-051",
       "active": true
     },
@@ -16607,7 +16647,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-052"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-052",
       "active": true
     },
@@ -16643,7 +16683,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-053"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-053",
       "active": true
     },
@@ -16680,7 +16720,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-054"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-054",
       "active": true
     },
@@ -16716,7 +16756,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-055"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-055",
       "active": true
     },
@@ -16752,7 +16792,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-056"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-056",
       "active": true
     },
@@ -16787,7 +16827,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-057"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-057",
       "active": true
     },
@@ -16824,7 +16864,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-058"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-058",
       "active": true
     },
@@ -16860,7 +16900,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-059"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-059",
       "active": true
     },
@@ -16896,7 +16936,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-060"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-060",
       "active": true
     },
@@ -16933,7 +16973,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-061"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-061",
       "active": true
     },
@@ -16968,7 +17008,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-062"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-062",
       "active": true
     },
@@ -17004,7 +17044,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-063"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-063",
       "active": true
     },
@@ -17040,7 +17080,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-064"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-064",
       "active": true
     },
@@ -17077,7 +17117,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-065"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-065",
       "active": true
     },
@@ -17113,7 +17153,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-066"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-066",
       "active": true
     },
@@ -17149,7 +17189,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-067"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-067",
       "active": true
     },
@@ -17184,7 +17224,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-068"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-068",
       "active": true
     },
@@ -17221,7 +17261,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-069"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-069",
       "active": true
     },
@@ -17258,7 +17298,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-070"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-070",
       "active": true
     },
@@ -17294,7 +17334,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-071"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-071",
       "active": true
     },
@@ -17330,7 +17370,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-072"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-072",
       "active": true
     },
@@ -17365,7 +17405,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-073"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-073",
       "active": true
     },
@@ -17402,7 +17442,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-074"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-074",
       "active": true
     },
@@ -17438,7 +17478,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-075"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-075",
       "active": true
     },
@@ -17474,7 +17514,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-076"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-076",
       "active": true
     },
@@ -17511,7 +17551,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-077"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-077",
       "active": true
     },
@@ -17547,7 +17587,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-078"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-078",
       "active": true
     },
@@ -17582,7 +17622,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-079"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-079",
       "active": true
     },
@@ -17618,7 +17658,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-080"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-080",
       "active": true
     },
@@ -17655,7 +17695,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-081"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-081",
       "active": true
     },
@@ -17691,7 +17731,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-082"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-082",
       "active": true
     },
@@ -17727,7 +17767,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-083"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-083",
       "active": true
     },
@@ -17762,7 +17802,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-084"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-084",
       "active": true
     },
@@ -17799,7 +17839,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-085"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-085",
       "active": true
     },
@@ -17835,7 +17875,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-086"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-086",
       "active": true
     },
@@ -17871,7 +17911,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-087"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-087",
       "active": true
     },
@@ -17908,7 +17948,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-088"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-088",
       "active": true
     },
@@ -17944,7 +17984,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-089"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-089",
       "active": true
     },
@@ -17979,7 +18019,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-090"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-090",
       "active": true
     },
@@ -18015,7 +18055,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-091"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-091",
       "active": true
     },
@@ -18052,7 +18092,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-092"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-092",
       "active": true
     },
@@ -18088,7 +18128,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-093"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-093",
       "active": true
     },
@@ -18124,7 +18164,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-094"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-094",
       "active": true
     },
@@ -18161,7 +18201,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-095"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-095",
       "active": true
     },
@@ -18196,7 +18236,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-096"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-096",
       "active": true
     },
@@ -18232,7 +18272,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-097"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-097",
       "active": true
     },
@@ -18268,7 +18308,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-098"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-098",
       "active": true
     },
@@ -18305,7 +18345,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-099"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-099",
       "active": true
     },
@@ -18341,7 +18381,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-100"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-100",
       "active": true
     },
@@ -18376,7 +18416,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-101"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-101",
       "active": true
     },
@@ -18412,7 +18452,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-102"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-102",
       "active": true
     },
@@ -18449,7 +18489,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-103"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-103",
       "active": true
     },
@@ -18485,7 +18525,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-104"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-104",
       "active": true
     },
@@ -18521,7 +18561,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-105"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-105",
       "active": true
     },
@@ -18558,7 +18598,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-106"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-106",
       "active": true
     },
@@ -18593,7 +18633,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-107"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-107",
       "active": true
     },
@@ -18630,7 +18670,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-108"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-108",
       "active": true
     },
@@ -18666,7 +18706,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-109"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-109",
       "active": true
     },
@@ -18703,7 +18743,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-110"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-110",
       "active": true
     },
@@ -18739,7 +18779,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-111"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-111",
       "active": true
     },
@@ -18774,7 +18814,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-112"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-112",
       "active": true
     },
@@ -18811,7 +18851,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-113"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-113",
       "active": true
     },
@@ -18847,7 +18887,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-114"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-114",
       "active": true
     },
@@ -18883,7 +18923,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-115"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-115",
       "active": true
     },
@@ -18920,7 +18960,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-116"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-116",
       "active": true
     },
@@ -18956,7 +18996,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-117"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-117",
       "active": true
     },
@@ -18991,7 +19031,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-118"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-118",
       "active": true
     },
@@ -19027,7 +19067,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-119"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-119",
       "active": true
     },
@@ -19064,7 +19104,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-120"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-120",
       "active": true
     },
@@ -19100,7 +19140,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-121"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-121",
       "active": true
     },
@@ -19136,7 +19176,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-122"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-122",
       "active": true
     },
@@ -19171,7 +19211,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-123"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-123",
       "active": true
     },
@@ -19208,7 +19248,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-124"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-124",
       "active": true
     },
@@ -19245,7 +19285,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-125"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-125",
       "active": true
     },
@@ -20076,7 +20116,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-148"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-148",
       "active": true
     },
@@ -21087,7 +21127,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-176"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-176",
       "active": true
     },
@@ -21122,7 +21162,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-177"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-177",
       "active": true
     },
@@ -21158,7 +21198,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-178"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-178",
       "active": true
     },
@@ -21195,7 +21235,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-179"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-179",
       "active": true
     },
@@ -21231,7 +21271,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-180"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-180",
       "active": true
     },
@@ -21267,7 +21307,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-181"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-181",
       "active": true
     },
@@ -21304,7 +21344,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-182"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-182",
       "active": true
     },
@@ -21339,7 +21379,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-183"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-183",
       "active": true
     },
@@ -21375,7 +21415,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-184"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-184",
       "active": true
     },
@@ -21411,7 +21451,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-185"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-185",
       "active": true
     },
@@ -21448,7 +21488,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-186"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-186",
       "active": true
     },
@@ -21484,7 +21524,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-187"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-187",
       "active": true
     },
@@ -21519,7 +21559,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-188"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-188",
       "active": true
     },
@@ -21555,7 +21595,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-189"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-189",
       "active": true
     },
@@ -21592,7 +21632,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-190"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-190",
       "active": true
     },
@@ -21628,7 +21668,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-191"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-191",
       "active": true
     },
@@ -21664,7 +21704,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-192"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-192",
       "active": true
     },
@@ -21699,7 +21739,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-193"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-193",
       "active": true
     },
@@ -21736,7 +21776,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-194"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-194",
       "active": true
     },
@@ -21772,7 +21812,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-195"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-195",
       "active": true
     },
@@ -21808,7 +21848,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-196"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-196",
       "active": true
     },
@@ -21845,7 +21885,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-197"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-197",
       "active": true
     },
@@ -21881,7 +21921,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-198"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-198",
       "active": true
     },
@@ -21916,7 +21956,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-199"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-199",
       "active": true
     },
@@ -21952,7 +21992,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-200"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-200",
       "active": true
     },
@@ -22096,7 +22136,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-204"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-204",
       "active": true
     },
@@ -22205,7 +22245,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-207"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-207",
       "active": true
     },
@@ -22242,7 +22282,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-208"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-208",
       "active": true
     },
@@ -22349,7 +22389,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-211"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-211",
       "active": true
     },
@@ -22386,7 +22426,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-212"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-212",
       "active": true
     },
@@ -22458,7 +22498,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-214"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-214",
       "active": true
     },
@@ -22493,7 +22533,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-215"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-215",
       "active": true
     },
@@ -22529,7 +22569,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-216"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-216",
       "active": true
     },
@@ -22780,7 +22820,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-223"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-223",
       "active": true
     },
@@ -22852,7 +22892,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-225"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-225",
       "active": true
     },
@@ -22887,7 +22927,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-226"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-226",
       "active": true
     },
@@ -23246,7 +23286,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-236"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-236",
       "active": true
     },
@@ -23389,7 +23429,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-240"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-240",
       "active": true
     },
@@ -23425,7 +23465,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-241"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-241",
       "active": true
     },
@@ -23461,7 +23501,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-242"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-242",
       "active": true
     },
@@ -23496,7 +23536,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-243"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-243",
       "active": true
     },
@@ -23640,7 +23680,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-247"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-247",
       "active": true
     },
@@ -23962,7 +24002,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-256"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-256",
       "active": true
     },
@@ -23998,7 +24038,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-257"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-257",
       "active": true
     },
@@ -24034,7 +24074,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-258"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-258",
       "active": true
     },
@@ -24069,7 +24109,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-259"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-259",
       "active": true
     },
@@ -24105,7 +24145,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-260"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-260",
       "active": true
     },
@@ -24141,7 +24181,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-261"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-261",
       "active": true
     },
@@ -24177,7 +24217,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-262"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-262",
       "active": true
     },
@@ -24213,7 +24253,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-263"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-263",
       "active": true
     },
@@ -24248,7 +24288,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-264"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-264",
       "active": true
     },
@@ -24284,7 +24324,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-265"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-265",
       "active": true
     },
@@ -24320,7 +24360,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-266"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-266",
       "active": true
     },
@@ -24356,7 +24396,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-267"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-267",
       "active": true
     },
@@ -24392,7 +24432,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-268"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-268",
       "active": true
     },
@@ -24428,7 +24468,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-269"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-269",
       "active": true
     },
@@ -24463,7 +24503,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-270"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-270",
       "active": true
     },
@@ -24499,7 +24539,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-271"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-271",
       "active": true
     },
@@ -24535,7 +24575,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-272"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-272",
       "active": true
     },
@@ -24572,7 +24612,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-273"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-273",
       "active": true
     },
@@ -24608,7 +24648,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-274"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-274",
       "active": true
     },
@@ -24643,7 +24683,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-275"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-275",
       "active": true
     },
@@ -24679,7 +24719,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-276"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-276",
       "active": true
     },
@@ -24715,7 +24755,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-277"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-277",
       "active": true
     },
@@ -24751,7 +24791,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-278"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-278",
       "active": true
     },
@@ -24787,7 +24827,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-279"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-279",
       "active": true
     },
@@ -24823,7 +24863,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-280"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-280",
       "active": true
     },
@@ -25181,7 +25221,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-290"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-290",
       "active": true
     },
@@ -26471,7 +26511,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-326"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-326",
       "active": true
     },
@@ -26507,7 +26547,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-327"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-327",
       "active": true
     },
@@ -26543,7 +26583,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-328"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-328",
       "active": true
     },
@@ -26579,7 +26619,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-329"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-329",
       "active": true
     },
@@ -26615,7 +26655,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-330"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-330",
       "active": true
     },
@@ -26651,7 +26691,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-331"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-331",
       "active": true
     },
@@ -26686,7 +26726,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-332"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-332",
       "active": true
     },
@@ -26722,7 +26762,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-333"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-333",
       "active": true
     },
@@ -26758,7 +26798,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-334"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-334",
       "active": true
     },
@@ -26794,7 +26834,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-335"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-335",
       "active": true
     },
@@ -26830,7 +26870,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-336"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-336",
       "active": true
     },
@@ -26866,7 +26906,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-337"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-337",
       "active": true
     },
@@ -26901,7 +26941,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-338"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-338",
       "active": true
     },
@@ -26937,7 +26977,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-339"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-339",
       "active": true
     },
@@ -26973,7 +27013,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-340"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-340",
       "active": true
     },
@@ -27009,7 +27049,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-341"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-341",
       "active": true
     },
@@ -27045,7 +27085,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-342"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-342",
       "active": true
     },
@@ -27081,7 +27121,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-343"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-343",
       "active": true
     },
@@ -27116,7 +27156,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-344"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-344",
       "active": true
     },
@@ -27152,7 +27192,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-345"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-345",
       "active": true
     },
@@ -27224,7 +27264,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-347"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-347",
       "active": true
     },
@@ -27260,7 +27300,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-348"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-348",
       "active": true
     },
@@ -27295,7 +27335,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md B-349"
         }
       ],
-      "frequencyTier": "B",
+      "frequencyTier": "A",
       "id": "B-349",
       "active": true
     },
@@ -33461,7 +33501,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-176"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-176",
       "active": true
     },
@@ -35356,7 +35396,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-231"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-231",
       "active": true
     },
@@ -35390,7 +35430,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-232"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-232",
       "active": true
     },
@@ -35424,7 +35464,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-233"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-233",
       "active": true
     },
@@ -35764,7 +35804,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-243"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-243",
       "active": true
     },
@@ -35798,7 +35838,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-244"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-244",
       "active": true
     },
@@ -35832,7 +35872,7 @@
           "raw": "0901 v3 ドゥーメンス予想問題1000問_完全統合版_v3_25パーセント配分.md C-245"
         }
       ],
-      "frequencyTier": "C",
+      "frequencyTier": "A",
       "id": "C-245",
       "active": true
     },
@@ -36035,7 +36075,7 @@
           "section": "官能分析用語の要件"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36068,7 +36108,7 @@
           "section": "記述式官能分析"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36102,7 +36142,7 @@
           "section": "ビールのフレーバーホイール"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36143,7 +36183,7 @@
           "section": "評価の文脈・個人の好み"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36191,7 +36231,7 @@
           "status": "英語原文の香味分類・原因物質との対応を確認。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36224,7 +36264,7 @@
           "section": "金属様・薬品様のオフフレーバー"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36258,7 +36298,7 @@
           "section": "不快な香りと原因"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36299,7 +36339,7 @@
           "section": "評価の文脈・個人の好み"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36339,7 +36379,7 @@
           "status": "英語原文の香味分類・原因物質との対応を確認。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36372,7 +36412,7 @@
           "section": "加熱野菜様の香り"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36406,7 +36446,7 @@
           "section": "クローブ様の香り"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36447,7 +36487,7 @@
           "section": "評価の文脈・個人の好み"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36511,7 +36551,7 @@
           "status": "英語原文の香味分類・原因物質との対応を確認。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36552,7 +36592,7 @@
           "status": "英語原文の香味分類・原因物質との対応を確認。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36586,7 +36626,7 @@
           "section": "注出段階に関連するオフフレーバー"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36627,7 +36667,7 @@
           "section": "評価の文脈・個人の好み"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36659,7 +36699,7 @@
           "section": "老化に伴う官能変化"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36700,7 +36740,7 @@
           "status": "英語原文の香味分類・原因物質との対応を確認。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36734,7 +36774,7 @@
           "section": "老化香の化合物と原因"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -36775,7 +36815,7 @@
           "section": "評価の文脈・個人の好み"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38085,7 +38125,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38130,7 +38170,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38164,7 +38204,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38199,7 +38239,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38303,7 +38343,7 @@
           "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38339,7 +38379,7 @@
           "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38375,7 +38415,7 @@
           "status": "2026年配布資料の画像内にある英語香味標準表を視認確認。参照香との対応であり、すべてを品質欠陥とするものではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38449,7 +38489,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -38483,7 +38523,7 @@
           "status": "2026年配布資料の英語本文を確認。PDF表示ページで参照。公式試験問題ではない。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39104,7 +39144,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39138,7 +39178,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39175,7 +39215,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39255,7 +39295,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39327,7 +39367,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39363,7 +39403,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39441,7 +39481,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39477,7 +39517,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39511,7 +39551,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39548,7 +39588,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39585,7 +39625,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39747,7 +39787,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39792,7 +39832,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39828,7 +39868,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39864,7 +39904,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -39945,7 +39985,7 @@
           "status": "2026年配布資料（画像PDF）の英語本文を文字認識で読み取り、内容を確認。"
         }
       ],
-      "frequencyTier": "A",
+      "frequencyTier": "B",
       "active": true
     },
     {
@@ -40915,6 +40955,1551 @@
         }
       ],
       "frequencyTier": "B",
+      "active": true
+    },
+    {
+      "id": "DS26-001",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ドラフトシステムの基本的な考え方について、正しいものをすべて選んでください。",
+      "choices": [
+        "最新型のドラフトシステムでは、洗浄やメンテナンスの頻度を減らすと注出品質が安定する",
+        "正しい使い方、適切な洗浄、こまめなメンテナンスがあって初めて、正しく注げる",
+        "技術的な部品は、ガスが流れる側と、ビールが流れる側に分けられる",
+        "ガスが流れる側は、高圧側と低圧側に分けられる"
+      ],
+      "correct": [
+        1,
+        2,
+        3
+      ],
+      "explanation": "ドラフトシステムは、ガスフロー側（高圧側と低圧側）と、ビールフロー側に分けられます。設備が新しくても、正しい使い方、洗浄、メンテナンスがなければ、良いビールは出せません。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.2",
+      "choiceReasons": [
+        "誤答：設備が新しくても、適切な洗浄と定期的なメンテナンスが必要です。手入れを減らすことが品質の安定につながるわけではありません。",
+        "正答：設備の性能に加え、正しい使い方と適切な手入れが品質を支えます。",
+        "正答：ガスフロー側と、ビールフロー側です。",
+        "正答：ボンベから主減圧弁までが高圧側、減圧弁から樽までが低圧側です。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 2,
+          "locator": "PDF表示ページ2・英語本文",
+          "section": "ドラフトシステムの考え方",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-002",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、炭酸ガスボンベと主減圧弁について、正しいものをすべて選んでください。",
+      "choices": [
+        "ボンベの中の圧力は、約60バールである",
+        "主減圧弁は、ボンベの圧力を、システム用の圧力（最大3バール）まで下げる",
+        "主減圧弁には、安全弁と圧力計が付いている",
+        "主減圧弁は、ビールの温度を下げる装置である"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "炭酸ガスボンベの圧力は約60バールです。主減圧弁が、これをシステム用の圧力（最大3バール）に下げます。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.4【補足】圧力と加熱装置の説明は教材の設備例です。実際の機器では、メーカー指定の使用条件・耐圧・安全手順に従います。",
+      "choiceReasons": [
+        "正答：約60バールは教材で示された例です。液化炭酸ガスボンベの圧力は温度によって変わるため、常に一定の値ではありません。",
+        "正答：ボンベの約60バールを、3バール以下に下げます。",
+        "正答：圧力が上がりすぎると、安全弁が開いて、圧力を逃がします。圧力計は、ボンベの圧力と、下げた後の圧力を示します。",
+        "誤答：圧力を下げる装置です。1時間にボンベの中身の10%を超える量を取り出す場合は、加熱装置が必要になります。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 4,
+          "locator": "PDF表示ページ4・英語本文",
+          "section": "主減圧弁",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-003",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ガスの配管の部品について、正しいものをすべて選んでください。",
+      "choices": [
+        "中間減圧弁は、ビールのラインごとに個別の圧力を設定し、スタイルごとに最適な圧力を保つ",
+        "ガス閉止弁は、樽の接続器具を外すときに、ガスのラインを閉じる",
+        "リップバルブ（トーマスバルブ）は、ガス圧が下がったときに、ビールがガスのラインに逆流するのを防ぐ",
+        "チェックバルブは、炭酸ガスが樽に入るのを防ぐ"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "逆止弁には2つあります。リップバルブは、ビールがガスのラインに逆流するのを防ぎます。チェックバルブは、カプラーを外したときに、ビールが流れ出るのを防ぎます。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.6、7",
+      "choiceReasons": [
+        "正答：ビールによって、必要な圧力が違います。",
+        "正答：主減圧弁と、中間減圧弁に付いています。",
+        "正答：炭酸ガスは樽に流れますが、ビールは戻れません。減圧弁を、ビールによる損傷から守ります。",
+        "誤答：チェックバルブは、接続器具（カプラー）を樽から外したときに、ビールのラインの中のビールが、カプラーから流れ出るのを防ぎます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 6,
+          "locator": "PDF表示ページ6・英語本文",
+          "section": "中間減圧弁と逆止弁",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 7,
+          "locator": "PDF表示ページ7・英語本文",
+          "section": "中間減圧弁と逆止弁",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-004",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "樽の接続器具（ケグコネクター、カプラー）について、正しいものをすべて選んでください。",
+      "choices": [
+        "樽と、ドラフトシステムをつなぐ",
+        "フラット型（Aタイプ）、バスケット型（Sタイプ、サンキー）、三角型（Gタイプ、グランディ）などの種類がある",
+        "米国では、主に「Dサンキー」が使われる",
+        "樽の口金と、接続器具の種類が合わなくても、ビールは出せる"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "樽の口金には、フラット型（A）、バスケット型（S、サンキー）、三角型（G）、コンビ型などがあります。接続器具は、樽の口金に合ったものを使います。教材の接続ねじの例では、ビール側が5/8インチ、ガス側が3/4インチです。これらは配管内径ではなく、地域や機器によって接続規格は異なります。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.8、9",
+      "choiceReasons": [
+        "正答：ガスを樽に入れ、ビールを樽から出します。",
+        "正答：これらに加えてコンビ型も別の口金規格として挙げられています。コンビ型という名称は、A型とS型の両方に使えるという意味ではありません。",
+        "正答：ヨーロッパでは、フラット型、バスケット型、コンビ型が手に入ります。",
+        "誤答：口金と接続器具の種類が合わないと、ビールは出せません。樽を注文するときに、必ず確かめます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 8,
+          "locator": "PDF表示ページ8・英語本文",
+          "section": "ケグコネクター",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 9,
+          "locator": "PDF表示ページ9・英語本文",
+          "section": "ケグコネクター",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-005",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールのライン（配管）に求められる条件について、正しいものをすべて選んでください。",
+      "choices": [
+        "ガスを通さない",
+        "内側の表面のでこぼこが少ない",
+        "配管の材料から、ビールに物質が移らない",
+        "つなぎ目には、すき間を作って、乱流を起こす"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ビールのラインは、ガスを通さず、内側がなめらかで、ビールに物質を移さないものを使います。つなぎ目は、すき間をなくします。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.10",
+      "choiceReasons": [
+        "正答：炭酸ガスが抜けたり、酸素が入ったりしないようにします。",
+        "正答：表面がなめらかだと、汚れが付きにくく、洗いやすくなります。",
+        "正答：においや味が、ビールに移らない材料を使います。",
+        "誤答：逆です。つなぎ目は、すき間をなくして、乱流を避けます。すき間には、ビールが残り、微生物が増えます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 10,
+          "locator": "PDF表示ページ10・英語本文",
+          "section": "ビールライン",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-006",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールのラインに付ける装置について、正しいものをすべて選んでください。",
+      "choices": [
+        "FOB（フォーム・オン・ビア）は、樽が空になると、ラインのビールの流れを止める",
+        "FOBによって、ラインはビールで満たされたまま保たれる",
+        "パイソンは、ビールのラインを囲む冷却装置で、樽からグラスまで温度を一定に保つ",
+        "パイソンは、ラインが短く、室温が低い場合に使う"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "FOBは、樽が空になったときに流れを止めて、ラインをビールで満たしておく装置です。パイソンは、長いラインを冷やして、ビールの温度を一定に保つ装置です。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.11、12",
+      "choiceReasons": [
+        "正答：樽が空になっても、泡やガスがラインに入りません。",
+        "正答：樽を交換した後の、ビールのロスが減ります。教材p.11ではFOBを2週間ごとに洗浄するとしています。実際にはメーカー指定と設備の衛生管理手順に従います。",
+        "正答：冷たい水などを循環させて、ラインを冷やします。",
+        "誤答：逆です。ラインが長い場合や、室温が高い場合に使います。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 11,
+          "locator": "PDF表示ページ11・英語本文",
+          "section": "FOBとパイソン",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 12,
+          "locator": "PDF表示ページ12・英語本文",
+          "section": "FOBとパイソン",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-007",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、オープンタップと、流量調整機能付きタップの使い分けについて、正しいものをすべて選んでください。",
+      "choices": [
+        "オープンタップは、直径の小さいライン（4〜7mm）と組み合わせる",
+        "オープンタップでは、ビールがタップに届くまでに、ラインの中で圧力を下げる",
+        "流量調整機能付きタップでは、タップの入口で、少なくとも飽和圧力を保つ",
+        "流量調整機能付きタップには、直径の小さいライン（4mm）が望ましい"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "オープンタップは、細いライン（4〜7mm）で圧力を下げてから注ぎます。流量調整機能付きタップは、太いライン（10〜15mm）でタップまで飽和圧力を保ち、タップの中で流れを絞ります。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.15【補足】ここでは教材の設備例を扱います。実際の必要内径や圧力は、流量・長さ・高低差・タップの仕様などによって変わります。",
+      "choiceReasons": [
+        "正答：細いラインの抵抗で、圧力を下げます。必要なら、らせん状のコイルも使います。",
+        "正答：タップに届いたときに圧力が高いと、泡だらけになります。",
+        "正答：ラインで失われる圧力は、同じだけ樽の圧力を上げて補います。",
+        "誤答：逆です。直径の大きいライン（10〜15mm）が望ましいとされています。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 15,
+          "locator": "PDF表示ページ15・英語本文",
+          "section": "オープンタップと流量調整機能付きタップ",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-008",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、ビール（樽）の保管場所の条件について、正しいものをすべて選んでください。",
+      "choices": [
+        "ドアは、内側と外側の両方から開けられる（鍵をかけない）",
+        "ガスボンベは、部屋の外に置く",
+        "二酸化炭素の警報器を付ける",
+        "食品も一緒に保管して、場所を有効に使う"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "樽の保管場所は、両側から開くドア、部屋の外のガスボンベ、二酸化炭素の警報器、水を通さない床、洗える壁を備え、飲み物だけを保管します。ビールのラインには、正しく印を付けます。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.16",
+      "choiceReasons": [
+        "正答：中で気分が悪くなったときに、閉じ込められないようにします。",
+        "正答：ガスが漏れても、保管場所にたまらないようにします。",
+        "正答：炭酸ガスは空気より重く、床の近くにたまります。",
+        "誤答：飲み物だけを保管し、食品は置きません。食品の微生物が、ビールに移るおそれがあります。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 16,
+          "locator": "PDF表示ページ16・英語本文",
+          "section": "ビールの保管場所の条件",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-009",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、樽の保管と使い方について、正しいものをすべて選んでください。",
+      "choices": [
+        "温度は、5〜6℃で一定に保つ",
+        "先に入れたものから、先に出す",
+        "つないだ樽は、2日以内に使い切る",
+        "教材の小麦ビールの樽の例では、逆さまにして保管する"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "樽は、5〜6℃で保管し、古いものから使い、つないだら2日以内に使い切ります。使う2日前から、保管場所で冷やします。小麦ビールの樽は、逆さまにして保管します。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.17【補足】温度・期間・樽の向きは、この教材の運用例です。実際の保存条件や取扱いは商品・設備の指定を優先します。",
+      "choiceReasons": [
+        "正答：温度が変わると、炭酸ガスの釣り合いが崩れます。",
+        "正答：古い樽を残さないようにします。",
+        "正答：この教材は、接続した樽を2日以内に使い切る運用を推奨しています。すべての樽の一律の消費期限を示すものではありません。",
+        "正答：教材p.17の英語本文と図は、小麦ビールの樽の逆さ保管を示しています。沈殿した酵母の扱いを含め、実際には商品・樽メーカーの指示に従います。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 17,
+          "locator": "PDF表示ページ17・英語本文",
+          "section": "樽の保管の最良の条件",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-010",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールの炭酸量を保つ平衡圧力と、炭酸ガスで加圧するときの変化について、正しいものをすべて選んでください。",
+      "choices": [
+        "ビールに溶けた炭酸ガスと気相が釣り合う圧力は、飽和圧力と呼ばれる",
+        "飽和圧力は、ビールの温度と、炭酸ガスの含有量で決まる",
+        "圧力が足りないと、注いでいる間に圧力が下がり、ビールの炭酸ガスが減って、気が抜ける",
+        "炭酸ガスの圧力を飽和圧力より高く保ち続けても、ビールの炭酸ガスの量は変わらない"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "バーテンダーの務めは、ビールの品質と、もとの炭酸ガスの量を保つことです。そのための正しい圧力が、飽和圧力です。飽和圧力は、ビールの温度と炭酸ガスの量で決まります。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.18、20【補足】飽和圧力は炭酸量を保つ基準です。タップまで運ぶための損失を補う圧力とは区別し、混合ガスを使う場合は炭酸ガスの分圧を考えます。",
+      "choiceReasons": [
+        "正答：樽の中で、ビールに溶けた炭酸ガスと、上の空間の炭酸ガスが釣り合う圧力です。",
+        "正答：温度が高いほど、また炭酸ガスが多いほど、高い圧力が必要です。",
+        "正答：釣り合いが崩れて、ビールから炭酸ガスが抜けます。",
+        "誤答：高すぎる圧力をかけ続けると、炭酸ガスがビールに溶け込み、炭酸が強くなりすぎます。その程度は、時間、圧力の差、温度で決まります。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 18,
+          "locator": "PDF表示ページ18・英語本文",
+          "section": "飽和圧力",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 20,
+          "locator": "PDF表示ページ20・英語本文",
+          "section": "飽和圧力",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-011",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールを樽からタップまで運ぶための圧力（作動圧力）について、流量など他の条件が同じ場合に、正しいものをすべて選んでください。",
+      "choices": [
+        "高低差、ラインの摩擦（長さと直径）、流量で決まる",
+        "ラインが長いほど、また直径が小さいほど、圧力の損失は大きくなる",
+        "高さによる損失は、おおよそ10mで1バールである",
+        "直径10mmのラインは、4mmのラインより、1m当たりの圧力の損失が大きい"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "作動圧力は、高低差（10mで1バール）と、ラインの摩擦や流量で決まります。ラインは、長いほど、細いほど、圧力を失います。一般的なシステムは、毎分2.5〜3リットルのビールを運びます。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.21、22",
+      "choiceReasons": [
+        "正答：飽和圧力に加えて、ビールを運ぶための圧力が必要です。",
+        "正答：流れる量が増えるほど、損失も大きくなります。",
+        "正答：1mで0.1バールです。重力に逆らって、ビールを押し上げるためです。",
+        "誤答：逆です。毎分3リットルの場合、4mmは1m当たり0.72バール、7mmは0.05バール、10mmは0.01バールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 21,
+          "locator": "PDF表示ページ21・英語本文",
+          "section": "作動圧力",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 22,
+          "locator": "PDF表示ページ22・英語本文",
+          "section": "作動圧力",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-012",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "流量調整機能付きタップ、直径10mmのラインで、タップが樽より4m高く、ラインの長さ6m、流量3L/分、飽和圧力0.90バールのとき、樽にかける圧力を選んでください。教材の近似値として、高低差の損失を0.1バール/m、ラインの損失を0.01バール/mとします。",
+      "choices": [
+        "1.36バール",
+        "0.90バール",
+        "0.44バール",
+        "4.90バール"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "教材の計算例では、樽の圧力＝高さによる損失＋ラインによる損失＋飽和圧力です。0.40＋0.06＋0.90＝1.36バールになります。ラインの圧力損失は流量や内径などで変わるため、この問題では条件と近似値を指定しています。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.21、23",
+      "choiceReasons": [
+        "正答：高低差 4m × 0.1 = 0.40、ライン 6m × 0.01 = 0.06、飽和圧力 0.90 を足して、1.36バールです。",
+        "誤答：飽和圧力だけです。ビールを運ぶための圧力が入っていません。",
+        "誤答：飽和圧力から、損失を引いています。足すのが正しい計算です。",
+        "誤答：高低差の4mを、そのまま4バールとして足しています。高さによる損失は、1mで0.1バールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 21,
+          "locator": "PDF表示ページ21・英語本文",
+          "section": "流量3L/分でのライン圧力損失",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 23,
+          "locator": "PDF表示ページ23・英語本文",
+          "section": "樽の圧力の計算",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-013",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "窒素と炭酸ガスの混合ガスについて、正しいものをすべて選んでください。",
+      "choices": [
+        "ラインが長い場合に、炭酸が強くなりすぎる問題を避けるために使う",
+        "窒素は、高い圧力でも、ビールにほとんど溶けない",
+        "炭酸ガスの分圧が飽和圧力を受け持ち、窒素の分圧がビールを運ぶ圧力を受け持つ",
+        "教材で示された混合比「窒素：炭酸ガス＝80：20」では、炭酸ガスが80%を占める"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "混合ガスは、窒素が炭酸ガスに比べてビールに溶けにくい性質を利用します。必要な炭酸ガス分圧を保ちながら、搬送用の全圧を確保します。教材は窒素：炭酸ガス＝80：20、70：30、60：40を例示し、それでは炭酸ガスが足りない設備条件に注意を促しています。すべての市販混合ガスや、すべてのビールに当てはまる比率ではありません。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.27、28",
+      "choiceReasons": [
+        "正答：運ぶための高い圧力を、炭酸ガスだけでかけると、炭酸ガスがビールに溶け込みます。",
+        "正答：窒素は炭酸ガスに比べて溶けにくい気体です。全く溶けないわけではありません。",
+        "正答：溶けにくい窒素を併用すると、必要な炭酸ガス分圧を保ちながら、搬送に必要な全圧を確保できます。",
+        "誤答：この表記では、窒素80%、炭酸ガス20%です。必要な混合比は、ビールの炭酸量、温度、必要な全圧などによって選びます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 27,
+          "locator": "PDF表示ページ27・英語本文",
+          "section": "混合ガス",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 28,
+          "locator": "PDF表示ページ28・英語本文",
+          "section": "混合ガス",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-014",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、炭酸ガスボンベの扱いについて、正しいものをすべて選んでください。",
+      "choices": [
+        "ボンベを、樽に直接つないではいけない",
+        "ボンベは、立てた状態で使い、倒れないように固定する",
+        "樽の保管場所とは別の場所に、25℃未満で保管する",
+        "炭酸ガスは空気より軽く、低い場所より高い場所にたまりやすい"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "炭酸ガスボンベは、減圧弁を通して使い、立てて固定し、樽の保管場所の外に、25℃未満で保管します。炭酸ガスは空気より重く、閉め切った部屋で漏れると、命にかかわります。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.29【補足】25℃未満はこの教材の保管条件です。実際にはボンベ供給元の安全指示と適用される規則に従います。",
+      "choiceReasons": [
+        "正答：必ず、減圧弁を通します。ボンベの圧力は、約60バールあります。",
+        "正答：倒れてバルブが壊れると、ガスが一気に噴き出します。",
+        "正答：温度が上がると、ボンベの中の圧力が上がります。",
+        "誤答：炭酸ガスは空気より重く、低い場所にたまりやすい気体です。閉め切った室内での漏洩は命に関わります。教材では大量漏洩の危険を濃度の計算例で示しています。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 29,
+          "locator": "PDF表示ページ29・英語本文",
+          "section": "炭酸ガスボンベの安全",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-015",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールを注ぐときに、やってはいけないことを、すべて選んでください。",
+      "choices": [
+        "注ぎかけのグラスのビールを、集めて1杯にする",
+        "注文の前に、あらかじめ注いでおく",
+        "温かく、乾いたグラスを使う",
+        "前の日からラインに残っているビールを、そのまま出す"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "Doemensのテキストは、注ぐときの「大罪」として、注ぎかけのビールを集める、前もって注ぐ、温かく乾いたグラスを使う、水が滴るグラスを使う、前の日のビールを使う、を挙げています。洗ったグラスが、注ぎ口に触れてもいけません。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.31、32",
+      "choiceReasons": [
+        "正答：炭酸が抜け、口当たりも味も変わります。",
+        "正答：時間がたったビールは、泡も炭酸も失われます。",
+        "正答：洗浄機から出したばかりの温かいグラスは、泡だらけになります。注ぐ前に、冷たいきれいな水ですすぎます。",
+        "正答：ラインに一晩残ったビールは、味が変わっています。捨ててから注ぎます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 31,
+          "locator": "PDF表示ページ31・英語本文",
+          "section": "注ぐときにやってはいけないこと",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 32,
+          "locator": "PDF表示ページ32・英語本文",
+          "section": "注ぐときにやってはいけないこと",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-016",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "ビールの注ぎ方について、Doemensのチェックリストの説明として正しいものをすべて選んでください。",
+      "choices": [
+        "正しいグラスを選び、傷がないか確かめる",
+        "冷たいきれいな水でグラスをすすぎ、水の流れ方を確かめる",
+        "グラスを、タップに近づけるが、触れさせない",
+        "タップの開度を絞り、細い流れでゆっくり注ぐ"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "注ぎ方は、正しいグラスを選ぶ、傷を確かめる、冷たい水ですすぐ、水の流れを確かめる、正しい角度で構える、タップに触れさせない、タップを完全に開ける、ゆっくりグラスを起こす、タップを閉めて泡の割合を確かめる、必要なら調整する、の順です。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.33",
+      "choiceReasons": [
+        "正答：スタイルと、注文された量に合ったグラスを選びます。",
+        "正答：水が、内側を均一に流れれば、きれいなグラスです。",
+        "正答：グラスを、正しい角度で、タップの下に構えます。",
+        "誤答：タップは、完全に開けます。ビールの炭酸と温度が変わらないように、素早く、全開で注ぎます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 33,
+          "locator": "PDF表示ページ33・英語本文",
+          "section": "注ぎ方のチェックリスト",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-017",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、ドラフトシステムを、必ず洗浄しなければならないときを、すべて選んでください。",
+      "choices": [
+        "初めて使うとき",
+        "1週間以上、使わなかったとき",
+        "ビアスタイルを変えた後",
+        "タップから、酢のような、いつもと違うにおいがするとき"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "洗浄の頻度は、注いだ量、ビールの種類、使う頻度、システムの構造で決まります。樽を替えるたびに、接続器具をすすぎます。Doemensのテキストは、2週間おきの洗浄はもはや最新の水準ではない、としています。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.36【補足】洗浄間隔は教材の説明です。実際には地域の規則、メーカー指定、設備ごとの衛生管理手順に従います。",
+      "choiceReasons": [
+        "正答：新しい設備も、使う前に洗浄します。",
+        "正答：ラインに残ったビールの中で、微生物が増えます。",
+        "正答：前のビールの味や、微生物を、次のビールに持ち込まないようにします。",
+        "正答：微生物汚染などが疑われるため点検・洗浄します。においだけで菌種は確定できません。味が変わったとき、カビやぬめりが出たとき、澄んだビールが濁ったときも、洗浄します。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 36,
+          "locator": "PDF表示ページ36・英語本文",
+          "section": "洗浄しなければならないとき",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-018",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、ビールのラインの汚れと洗浄剤について、正しいものをすべて選んでください。",
+      "choices": [
+        "ラインには、ホップの樹脂、タンパク質、ミネラル（ビアストーン）が付く",
+        "ホップの樹脂とタンパク質は、アルカリ性の洗浄剤で落とす",
+        "ミネラルの汚れは、酸性の洗浄剤で落とす",
+        "アルカリ洗浄は年に2回、酸による処理は毎週行う"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ホップの樹脂とタンパク質はアルカリ性、ミネラル（ビアストーン）は酸性の洗浄剤で落とします。この教材では、アルカリ洗浄は定期的に、酸による処理は年に2回としています。洗浄剤は、製造者が定めた濃度で使います。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.37【補足】洗浄間隔・薬剤・濃度は設備と汚れに応じ、メーカー指定の安全手順に従います。酸性とアルカリ性の洗浄剤を混ぜてはいけません。",
+      "choiceReasons": [
+        "正答：どれも、ビールに由来する汚れです。",
+        "正答：有機物の汚れには、アルカリが効きます。",
+        "正答：ビアストーンは、シュウ酸カルシウムなどの、ミネラルの沈着物です。",
+        "誤答：逆です。アルカリ洗浄を定期的に行い、酸による処理は年に2回行います。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 37,
+          "locator": "PDF表示ページ37・英語本文",
+          "section": "ラインの汚れと洗浄剤",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "DS26-019",
+      "category": "service_quality",
+      "type": "multiple",
+      "question": "Doemensのドラフトシステム教材に示された説明として、ドラフトシステムの衛生と洗浄について、正しいものをすべて選んでください。",
+      "choices": [
+        "教材では、1000個の細菌が1時間40分で100万個に増える例が示されている",
+        "バイオフィルムは、通常の洗浄の手順の多くに耐えて、生き残る",
+        "化学的・機械的洗浄では、洗浄剤で汚れをゆるめ、スポンジボールでこすり落とす",
+        "洗浄剤の成分をライン内に残し、そのまま次のビールを通して洗浄を終える"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "教材の化学的・機械的洗浄の例は、水ですすぐ、洗浄剤とスポンジボールで20分間洗う、水ですすぐ、の順です。p.37には条件に応じた浸け置きの例もありますが、時間・濃度・対応素材は薬剤と機器の指定に従います。洗浄後は指定どおりにすすぎ、洗浄剤が残っていないことを確認してから提供を再開します。【参照テキスト】「1116ドラフトシステムDBS 2026配布資料」p.35、37、41",
+      "choiceReasons": [
+        "正答：教材が示す増殖の例です。実際の増殖速度は、菌の種類、温度、栄養、水分などの条件によって変わります。",
+        "正答：微生物が作る、ぬめりのある膜です。一度できると、落としにくくなります。",
+        "正答：教材p.41の手順では、洗浄剤とスポンジボールで20分間洗浄します。実際の時間・濃度は機器と薬剤のメーカー指定に従います。",
+        "誤答：洗浄の前と後に、きれいな水ですすぎます。"
+      ],
+      "sources": [
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 35,
+          "locator": "PDF表示ページ35・英語本文",
+          "section": "バイオフィルムと化学的・機械的洗浄",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 37,
+          "locator": "PDF表示ページ37・英語本文",
+          "section": "浸け置き洗浄とメーカー指定濃度",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        },
+        {
+          "filename": "1116ドラフトシステムDBS 2026配布資料.pdf",
+          "page": 41,
+          "locator": "PDF表示ページ41・英語本文",
+          "section": "バイオフィルムと化学的・機械的洗浄",
+          "language": "en",
+          "status": "2026年11月16日の配布メール添付PDFの該当ページを照合。設備条件・推奨値は教材の例として扱う。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "PL26-001",
+      "category": "history",
+      "type": "multiple",
+      "question": "ビール純粋令の移り変わりについて、正しいものをすべて選んでください。",
+      "choices": [
+        "1516年の純粋令が挙げた原料は、大麦、ホップ、水で、酵母は入っていなかった",
+        "1906年に、純粋令はドイツ全体に広げられた",
+        "1987年に、輸入ビールへの適用は保護主義に当たるという裁定が出て、1993年に再定義された",
+        "「Reinheitsgebot（純粋令）」という名称は、1516年の発布のときから使われている"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ビール純粋令は、1516年にバイエルンで発布され（大麦、ホップ、水）、1906年にドイツ全体に広がり、1987年の裁定を経て、1993年に再定義されました。「純粋令」という名称は、1918年に生まれました。【参照テキスト】「0803ビールの世界史前半」PDF p.3・4、「0803ビールの世界史後半」PDF p.2、「3､ドイツビール」PDF p.32（スライド記載7）",
+      "choiceReasons": [
+        "正答：酵母の発酵における正確な働きは、当時まだ解明されていませんでした。後に、酵母が加えられました。",
+        "正答：それまでは、バイエルンなど、一部の地域の決まりでした。",
+        "正答：欧州司法裁判所の判決によって、他の加盟国で合法的に製造・販売されたビールは、ドイツで「ビール」として売れるようになりました。1993年に、暫定ビール法として定め直されました。",
+        "誤答：配布テキストでは、「Reinheitsgebot」という名称は、1918年に出てきたものとされています。英国のビールに対抗する、マーケティングの道具として定着しました。"
+      ],
+      "sources": [
+        {
+          "filename": "0803ビールの世界史前半.pdf",
+          "page": 3,
+          "locator": "PDF表示ページ3",
+          "section": "1516年の原料",
+          "language": "ja",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        },
+        {
+          "filename": "0803ビールの世界史前半.pdf",
+          "page": 4,
+          "locator": "PDF表示ページ4",
+          "section": "1906年の全国適用",
+          "language": "ja",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        },
+        {
+          "filename": "0803ビールの世界史後半.pdf",
+          "page": 2,
+          "locator": "PDF表示ページ2",
+          "section": "1987年の裁定と1993年の再定義",
+          "language": "ja",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        },
+        {
+          "filename": "3､ドイツビール.pdf",
+          "page": 32,
+          "locator": "PDF表示ページ32（スライド記載7）",
+          "section": "純粋令の名称",
+          "language": "ja",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "PL26-002",
+      "category": "history",
+      "type": "multiple",
+      "question": "1516年のビール純粋令の位置づけについて、正しいものをすべて選んでください。",
+      "choices": [
+        "ドイツ各地にあった、ビールに関する条例のひとつである",
+        "1516年より前にも、アウクスブルク、ニュルンベルク、ミュンヘンなどに、ビールの条例があった",
+        "1516年の純粋令は、バイエルン公国の条例である",
+        "1516年の純粋令は、ドイツで最初の、ビールに関する決まりである"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "1516年の純粋令は、最初のビール条例ではありません。アウクスブルク（1156年）やミュンヘン（1363年）など、各地に先行する条例がありました。【参照テキスト】「3､ドイツビール」PDF p.32（スライド記載7）",
+      "choiceReasons": [
+        "正答：配布テキストでは、「いわゆる」純粋令は、各地の条例のひとつとされています。",
+        "正答：アウクスブルク（1156年）、ニュルンベルク（1305年ごろ）、ワイマール（1348年）、ミュンヘン（1363年）、ヴァイセンゼー（1434年）、レーゲンスブルク（1447年）などです。",
+        "正答：ヴィルヘルム4世が、インゴルシュタットで発布しました。",
+        "誤答：それより前から、各地にビールの条例がありました。"
+      ],
+      "sources": [
+        {
+          "filename": "3､ドイツビール.pdf",
+          "page": 32,
+          "locator": "PDF表示ページ32（スライド記載7）",
+          "section": "純粋令の前のビール条例",
+          "language": "ja",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-001",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "下面発酵（ラガー）のスタイルを、すべて選んでください。",
+      "choices": [
+        "ジャーマンピルスナー",
+        "ミュンヘナー・ヘレス",
+        "メルツェン",
+        "ケルシュ"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ピルスナー、ヘレス、メルツェン、ドゥンケル、シュヴァルツビア、ボックは下面発酵です。ケルシュとアルトビアは、すっきりしていますが、上面発酵です。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：下面発酵の、淡色でホップの効いたラガーです。",
+        "正答：下面発酵の、淡色でモルトが主役のラガーです。",
+        "正答：下面発酵の、琥珀色のラガーです。",
+        "誤答：ケルシュは上面発酵です。低温で熟成させるので、ラガーのようにすっきりしていますが、エールに分類されます。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-002",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "上面発酵（エール）のスタイルを、すべて選んでください。",
+      "choices": [
+        "ヘーフェヴァイツェン",
+        "アルトビア",
+        "アイリッシュ・ドライスタウト",
+        "シュヴァルツビア"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ヴァイツェン、アルトビア、ケルシュ、ペールエール、IPA、英国型ポーター、スタウト、ベルギーのエールは上面発酵です。色の濃さと、発酵の形式は関係ありません。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：ヴァイツェン酵母による、上面発酵のビールです。",
+        "正答：上面発酵の後で、低温熟成します。",
+        "正答：英国とアイルランドのエールの仲間です。",
+        "誤答：シュヴァルツビアは、黒い下面発酵のラガーです。色が濃くても、エールとは限りません。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-003",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "名前や印象から、発酵の形式を間違えやすいスタイルについて、正しいものをすべて選んでください。",
+      "choices": [
+        "バルティックポーターは、「ポーター」という名前だが、主に下面発酵（ラガー酵母）で造られる",
+        "ケルシュは、淡くすっきりしているが、上面発酵である",
+        "カリフォルニアコモンは、ラガー酵母を、エールのような高い温度で発酵させる",
+        "ドッペルボックは、濃色で強いので、上面発酵である"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "発酵の形式は、名前、色、強さでは決まりません。バルティックポーターは主に下面発酵、ケルシュとアルトビアは上面発酵、カリフォルニアコモンはラガー酵母の高温発酵です。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：原表ではラガー酵母に分類されています。一般には下面発酵が中心ですが、エール酵母を低温で使う例もあります。",
+        "正答：上面発酵の後で、低温熟成します。",
+        "正答：スチームビアとも呼ばれます。",
+        "誤答：ドッペルボックは、下面発酵の強いラガーです。色や強さでは、発酵の形式は決まりません。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-004",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "ホップが主体（ホッピー）のスタイルを、すべて選んでください。",
+      "choices": [
+        "ジャーマンピルスナー",
+        "アメリカンIPA",
+        "アメリカン・ペールエール",
+        "ドッペルボック"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ホップが主体のスタイルは、ピルスナー、ペールエール、IPAの仲間です。スタイル一覧表では、苦味（IBU）は、ジャーマンピルスナーが25以上、アメリカンIPAが50以上、ドッペルボックが17〜27ほどです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：ノーブルホップの香りと、引き締まった苦味が主役です。",
+        "正答：米国のホップの香りと、強い苦味が主役です。",
+        "正答：柑橘や松のホップの香りが主役です。",
+        "誤答：ドッペルボックは、モルトの甘味とコクが主役です。苦味は弱く、ホップの香りはほとんどありません。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-005",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "モルトが主体（モルティ）のスタイルを、すべて選んでください。",
+      "choices": [
+        "ミュンヘナー・ドゥンケル",
+        "ドッペルボック",
+        "スコッチエール（ウィーヘビー）",
+        "ウエストコーストIPA"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "モルトが主体のスタイルは、ヘレス、ドゥンケル、メルツェン、ボックの仲間、スコットランドのエール、英国のマイルドやブラウンエールなどです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：ミュンヘン麦芽の、パンの皮のような甘い香ばしさが主役です。",
+        "正答：濃厚な麦芽の甘味が主役です。",
+        "正答：カラメルのような麦芽の甘味が主役で、ホップは控えめです。",
+        "誤答：ウエストコーストIPAは、ホップの香りと強い苦味が主役で、モルトは控えめです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-006",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "色の淡い（ライト）スタイルを、すべて選んでください。",
+      "choices": [
+        "ミュンヘナー・ヘレス",
+        "ケルシュ",
+        "トリプル",
+        "デュッベル"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "淡色のスタイルは、ピルスナー、ヘレス、ケルシュ、ヴィット、ベルリナーヴァイセ、トリプル、ストロング・ゴールデンエールなどです。トリプルのように、淡色でも強いビールがあります。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：淡い黄金色です。",
+        "正答：淡い黄金色です。",
+        "正答：アルコールは高いですが、色は黄金色です。",
+        "誤答：デュッベルは、琥珀色から褐色の、濃色のビールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-007",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "色の濃い（ダーク）スタイルを、すべて選んでください。",
+      "choices": [
+        "シュヴァルツビア",
+        "ミュンヘナー・ドゥンケル",
+        "アイリッシュ・ドライスタウト",
+        "ベルジャンホワイト（ヴィット）"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "濃色のスタイルは、ドゥンケル、シュヴァルツビア、濃色のボック、濃色のドッペルボック、ポーター、スタウト、デュッベル、クアドルペルなどです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：黒い下面発酵ビールです。",
+        "正答：褐色の下面発酵ビールです。",
+        "正答：真っ黒な上面発酵ビールです。",
+        "誤答：ヴィットは、白く濁った、ごく淡い色のビールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-008",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "ビールの色と、アルコールの強さの関係について、正しいものをすべて選んでください。",
+      "choices": [
+        "トリプルは、淡色だが、アルコールが高い",
+        "シュヴァルツビアは、黒いが、アルコールは5%前後である",
+        "アイリッシュ・ドライスタウトは、真っ黒だが、アルコールは4〜5%ほどである",
+        "濃色のシュヴァルツビアは、淡色のトリプルよりアルコール度数が高い"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "色の濃さだけでは、アルコールの強さは決まりません。淡色で強いビール（トリプル、ストロング・ゴールデンエール、マイボック）も、濃色で軽いビール（シュヴァルツビア、ドライスタウト、英国の濃色のマイルド）もあります。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：スタイル一覧表では、7.1〜10.1%です。",
+        "正答：スタイル一覧表では、3.8〜4.9%です。",
+        "正答：スタイル一覧表では、4.1〜5.3%です。",
+        "誤答：原表ではシュヴァルツビアが3.8〜4.9%、トリプルが7.1〜10.1%です。色の濃さは、アルコール度数の高低を示すものではありません。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-009",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "アルコール度数が高い（おおむね7%以上）スタイルを、すべて選んでください。",
+      "choices": [
+        "ドッペルボック",
+        "トリプル",
+        "バーレイワイン",
+        "ベルリナーヴァイセ"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "アルコールの高いスタイルは、ボックの仲間、アイスボック、トリプル、クアドルペル、ストロング・ゴールデンエール、バーレイワイン、インペリアルスタウト、ダブルIPAなどです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：スタイル一覧表では、6.6〜7.9%です。",
+        "正答：7.1〜10.1%です。",
+        "正答：8.5〜12.2%です。",
+        "誤答：ベルリナーヴァイセは、2.8〜5.0%の、アルコールの低いビールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-010",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "アルコール度数が低い（おおむね4.5%未満）スタイルを、すべて選んでください。",
+      "choices": [
+        "ベルリナーヴァイセ",
+        "イングリッシュ・マイルド",
+        "英国の最も軽いビター（オーディナリー）",
+        "アイスボック"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "アルコールの低いスタイルは、ベルリナーヴァイセ、マイルド、英国の最も軽いビター、スコティッシュ・ライト、ライトラガー、グロジスキェなどです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：伝統的には、3%前後です。",
+        "正答：スタイル一覧表では、3.4〜4.4%です。",
+        "正答：3.0〜4.2%です。",
+        "誤答：アイスボックは、凍らせて濃縮した、8.6〜14.3%の非常に強いビールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-011",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "アルコール度数が中程度（5%前後）のスタイルを、すべて選んでください。",
+      "choices": [
+        "ミュンヘナー・ヘレス",
+        "ケルシュ",
+        "ヘーフェヴァイツェン",
+        "インペリアルスタウト"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "ドイツの日常のビール（ピルスナー、ヘレス、ケルシュ、アルトビア、ヴァイツェン、ドゥンケル）は、5%前後です。ドイツの原麦汁濃度による区分では、フォルビア（麦汁の濃さ11〜16%未満）に当たります。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：スタイル一覧表では、4.8〜5.6%です。",
+        "正答：4.8〜5.3%です。",
+        "正答：4.9〜5.6%です。",
+        "誤答：インペリアルスタウトは、7〜12%の、非常に強いビールです。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-012",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "強い酸味が特徴のスタイルを、すべて選んでください。",
+      "choices": [
+        "ベルリナーヴァイセ",
+        "グーズ",
+        "フランダース・レッドエール",
+        "ヘーフェヴァイツェン"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "強い酸味のスタイルは、ベルリナーヴァイセ、ゴーゼ（塩とコリアンダーも使う）、ランビックとグーズ、フランダースのレッドエールとブラウンエールです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：乳酸菌による、すっきりした酸味です。",
+        "正答：自然発酵による、鋭く複雑な酸味です。",
+        "正答：樽熟成による、乳酸と酢酸の酸味です。",
+        "誤答：ヴァイツェンに軽い酸味を感じることはありますが、強い酸味を主な特徴とするスタイルではありません。バナナやクローブの香りが特徴です。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-013",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "「下面発酵、淡色、ホップが主体、アルコールは5%前後」のスタイルを選んでください。",
+      "choices": [
+        "ジャーマンピルスナー",
+        "ミュンヘナー・ヘレス",
+        "ケルシュ",
+        "アメリカンIPA"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "ピルスナーとヘレスは、どちらも淡色の下面発酵ビールです。ホップが主体ならピルスナー、モルトが主体ならヘレスです。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：4つの条件が、すべて当てはまります。",
+        "誤答：下面発酵、淡色、5%前後は当てはまりますが、モルトが主体で、苦味は弱いビールです。",
+        "誤答：淡色で5%前後ですが、上面発酵です。ホップも控えめです。",
+        "誤答：ホップが主体ですが、上面発酵で、アルコールは6〜7%あります。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-014",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "「上面発酵、濃色、モルトと干した果実の甘い香り、アルコールは10%前後と高い」のスタイルを選んでください。",
+      "choices": [
+        "クアドルペル",
+        "ドッペルボック",
+        "デュッベル",
+        "アイリッシュ・ドライスタウト"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "デュッベルとクアドルペルは、同じ系統の濃色のベルギーのエールで、強さが違います。ドッペルボックは、よく似た色と甘さですが、下面発酵です。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：ベルギーの、非常に強い濃色のエールです。",
+        "誤答：濃色でモルトが主体ですが、下面発酵で、アルコールは7%前後です。",
+        "誤答：上面発酵、濃色、干した果実の香りは当てはまりますが、アルコールは6〜7%台です。",
+        "誤答：上面発酵で濃色ですが、ドライで、アルコールは4〜5%です。ローストの苦味が主役です。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-015",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "「上面発酵、ごく淡い色、乳酸の強い酸味、アルコールは3%前後」のスタイルを選んでください。",
+      "choices": [
+        "ベルリナーヴァイセ",
+        "ゴーゼ",
+        "グーズ",
+        "ヴィット"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "酸味のあるビールは、アルコールの強さでも見分けられます。ベルリナーヴァイセは約3%、ゴーゼは4〜5%、グーズは5〜8%です。【参照テキスト】「1-2配布用ビアスタイル参考2026」（スタイル一覧表）、各国のビールのテキスト",
+      "choiceReasons": [
+        "正答：この選択肢の中では、伝統的に低アルコールの酸味のビールです。",
+        "誤答：酸味はありますが、塩とコリアンダーを使い、アルコールは4〜5%です。",
+        "誤答：自然発酵で、野性的な香りがあり、アルコールは5〜8%です。",
+        "誤答：淡色の小麦ビールで軽い酸味を感じる例はありますが、強い乳酸の酸味と3%前後のアルコールを代表的な組合せとするスタイルではありません。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "ST26-016",
+      "category": "beer_styles",
+      "type": "multiple",
+      "question": "この4スタイルの代表的な傾向として、苦味の強さの順（弱い方から強い方へ）として、正しいものを選んでください。",
+      "choices": [
+        "ヘーフェヴァイツェン → ミュンヘナー・ヘレス → ジャーマンピルスナー → アメリカンIPA",
+        "アメリカンIPA → ジャーマンピルスナー → ミュンヘナー・ヘレス → ヘーフェヴァイツェン",
+        "ジャーマンピルスナー → ヘーフェヴァイツェン → アメリカンIPA → ミュンヘナー・ヘレス",
+        "ミュンヘナー・ヘレス → アメリカンIPA → ヘーフェヴァイツェン → ジャーマンピルスナー"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "代表的な苦味の傾向は、ヴァイツェン、ヘレス、ピルスナー、アメリカンIPAの順です。原表のIBU範囲を比較した問題であり、個々の商品や知覚する苦味の強さを一律に順位づけるものではありません。【参照テキスト】「1-2配布用ビアスタイル参考2026」シート「配布用」",
+      "choiceReasons": [
+        "正答：スタイル一覧表の苦味（IBU）は、ヴァイツェンが10〜15、ヘレスが15〜25、ジャーマンピルスナーが25〜50、アメリカンIPAが50〜70です。",
+        "誤答：逆の順です。",
+        "誤答：この4つの中では、一般にヴァイツェンの苦味が最も弱くなります。",
+        "誤答：この4つの中では、一般にアメリカンIPAの苦味が最も強くなります。"
+      ],
+      "sources": [
+        {
+          "filename": "1-2配布用ビアスタイル参考2026.xlsx",
+          "page": 1,
+          "locator": "シート「配布用」",
+          "section": "スタイルの属性の整理",
+          "language": "ja",
+          "status": "2026年配布のスタイル一覧表（発酵の区分、色、アルコール度数、苦味）と照合。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "BW26-001",
+      "category": "brewing_process",
+      "type": "multiple",
+      "question": "通常の麦汁に含まれる糖について、正しいものをすべて選んでください。",
+      "choices": [
+        "最も多い糖は、マルトース（麦芽糖）である",
+        "発酵する糖は、麦汁のエキスの約3分の2を占める",
+        "デキストリンは、一般的なビール酵母では発酵されにくく、ビールに残る",
+        "最も多い糖は、スクロース（ショ糖）である"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "麦汁のエキスのうち、発酵性の糖は64〜67%で、その中心はマルトース（40〜45%）です。デキストリンは一般的なビール酵母では利用されにくく、残存エキスの一部になります。実際の組成は原料や糖化条件で変わります。【参照テキスト】「ビール 醸造2026配布資料」p.17",
+      "choiceReasons": [
+        "正答：Doemensのテキストでは、マルトースは麦汁のエキスの40〜45%です。",
+        "正答：発酵性の糖は、64〜67%です。グルコース5〜7%、マルトース40〜45%、マルトトリオース11〜13%などからなります。",
+        "正答：一般的なビール酵母では利用されにくく、残存エキスの一部になります。デキストリンを分解・利用する酵母株などの例外もあります。",
+        "誤答：スクロースは3〜6%、フルクトースは1〜2%で、わずかです。"
+      ],
+      "sources": [
+        {
+          "filename": "ビール 醸造2026配布資料.pdf",
+          "page": 17,
+          "locator": "PDF表示ページ17・英語本文",
+          "section": "麦汁の糖の組成",
+          "language": "en",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "BW26-002",
+      "category": "brewing_process",
+      "type": "multiple",
+      "question": "マッシュ（もろみ）と麦汁のpHについて、正しいものをすべて選んでください。",
+      "choices": [
+        "高すぎるマッシュのpHを適正範囲へ下げることは、醸造に有益である",
+        "醸造用水の硫酸カルシウムと塩化カルシウムは、麦汁のpHを下げる",
+        "酵素が有機のリン酸塩を分解し、リン酸が出ることも、pHを下げる",
+        "カルシウムは、麦汁のpHを上げる"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "高すぎるマッシュのpHを適正範囲へ下げることは有益です。低ければ低いほどよいわけではありません。水のカルシウム（硫酸カルシウム、塩化カルシウム）と、麦芽のリン酸塩が、pHを下げます。【参照テキスト】「ビール 醸造2026配布資料」p.35、37",
+      "choiceReasons": [
+        "正答：教材の “A lower mash pH is beneficial” は「マッシュpHを下げることは有益」という説明です。高すぎるpHを適正範囲へ調整する意味で、低ければ低いほどよいわけではありません。",
+        "正答：カルシウムが、麦芽のリン酸塩と反応して、pHを下げます。",
+        "正答：麦芽に由来するリン酸塩が、麦汁のpHと、緩衝の力に影響します。",
+        "誤答：逆です。カルシウムは、pHを下げます。pHを上げるのは、水の炭酸水素塩（残留アルカリ度）です。"
+      ],
+      "sources": [
+        {
+          "filename": "ビール 醸造2026配布資料.pdf",
+          "page": 35,
+          "locator": "PDF表示ページ35・英語本文",
+          "section": "マッシュのpH",
+          "language": "en",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        },
+        {
+          "filename": "ビール 醸造2026配布資料.pdf",
+          "page": 37,
+          "locator": "PDF表示ページ37・英語本文",
+          "section": "マッシュのpH",
+          "language": "en",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        }
+      ],
+      "frequencyTier": "A",
+      "active": true
+    },
+    {
+      "id": "BW26-003",
+      "category": "fermentation",
+      "type": "multiple",
+      "question": "Doemensの教材が示す通常法の例として、下面発酵と上面発酵の主発酵・熟成の条件について、正しいものをすべて選んでください。",
+      "choices": [
+        "下面発酵の主発酵は、9〜12℃で、6〜10日である",
+        "上面発酵の主発酵は、18〜22℃で、4〜6日である",
+        "熟成（ラガーリング）は、どちらもマイナス2〜2℃で行う",
+        "下面発酵の方が、上面発酵より高い温度で、短い期間で終わる"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Doemensのテキストでは、主発酵は、下面発酵が9〜12℃で6〜10日、上面発酵が18〜22℃で4〜6日です。熟成は、マイナス2〜2℃で行います。【参照テキスト】「ビール 醸造2026配布資料」p.71【補足】これらは教材の代表的な工程例です。すべてのビールに一律の温度・期間が適用されるわけではありません。同じ表には、下面発酵の加速法（14〜22℃・加圧）の例も示されています。",
+      "choiceReasons": [
+        "正答：低い温度で、ゆっくり発酵させます。",
+        "正答：高い温度で、速く発酵させます。",
+        "正答：熟成の期間は、下面発酵が2〜16週間、上面発酵が2〜4週間です。",
+        "誤答：逆です。下面発酵の方が、温度が低く、期間が長くなります。"
+      ],
+      "sources": [
+        {
+          "filename": "ビール 醸造2026配布資料.pdf",
+          "page": 71,
+          "locator": "PDF表示ページ71・英語本文",
+          "section": "発酵と熟成の温度と期間",
+          "language": "en",
+          "status": "原配布資料の該当ページを照合。数値・運用条件は教材の例として扱い、一般化しすぎる表現を補足。"
+        }
+      ],
+      "frequencyTier": "A",
       "active": true
     }
   ]
