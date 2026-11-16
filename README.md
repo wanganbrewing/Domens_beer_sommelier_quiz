@@ -3,6 +3,16 @@
 Doemens Biersommelier試験対策の非公式Web問題集です。公開ページ：
 https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
+## iPhoneの効果音をメディア再生へ変更（v68）
+
+iPhone/iPadでは、正解・不正解・連続正解・終了・合否の同じ音を端末内で短いWAVに合成し、通常のaudio要素で再生します。Web Audioだけに依存する方式を外し、消音モードとの相性を改善しました。他の環境は従来のWeb Audioを維持します。
+
+音ON/OFF・保存設定・5問ごとの連続正解・模試中の正誤秘匿は変更しません。最初の明示的なタップ時に20msの無音クリップで再生を有効化し、音声ファイルの外部取得や無音ループは行いません。OFF・背景移動では再生を止め、古い再生処理が新しい音を止めないようにしています。確認用ボタンや案内文は再追加していません。
+
+検査：`node tests/validate_ios_media_sound.js`、既存の音・波形・採点テスト。画像のA-228も確認しました。これらは自動試験であり、iPhone実機で聞こえたことの確認ではありません。消音モードが今回の原因と断定したものでもなく、端末のメディア音量やBluetooth等の出力先の影響は残ります。
+
+根拠：[WebKitのWeb Audioと消音モードの説明](https://bugs.webkit.org/show_bug.cgi?id=252746#c2)、[WebKitのユーザー操作からの再生規則](https://webkit.org/blog/6784/new-video-policies-for-ios/)、[Audio Sessionの再生カテゴリ](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API)。
+
 ## S-011の香り分類の訂正（v65）
 
 バナナ・桃を思わせる香りをエステル系、クローブを思わせるスパイス香をフェノール系として区別しました。S-011の問題文・正答解説、同じ記述を使用する選択肢の知識補足・ブラインド練習B-04を訂正しています。正答、他の設問、採点・履歴・資料権限は変更していません。保存済みの途中の回は以前の問題を保持するため、再読み込み後に新しく学習を始めると訂正が反映されます。
@@ -13,7 +23,7 @@ https://wanganbrewing.github.io/Domens_beer_sommelier_quiz/
 
 - 対応するSafariではAudio Sessionを`playback`に設定し、Web Audioが消音スイッチに従う既定の`ambient`状態を回避します。音OFF・背景移動では元の設定に戻します。
 - iPhoneの`touchend`・`pointerup`を含む操作で再生を開始します。古い`resume()`が保留中でも次のタップで再試行し、中断後の復帰も扱います。
-- ヘッダーの「音を試す」でピンポーンを直接試せます。音量・出力先・消音モード・Safariで開く案内も表示します。音OFF時は試聴ボタンも無効です。
+- v61では「音を試す」と案内文を追加しましたが、ご依頼により後の版で削除済みです。音ON/OFFは維持しています。
 - iPhone実機での動作確認は未実施です。Audio Session API非対応環境やアプリ内ブラウザーでは、消音解除やSafariで開く操作が必要な場合があります。Web Audioの`running`状態だけで実際に聞こえたとは判定しません。
 - 根拠：[WebKitの消音モードに関する推奨](https://bugs.webkit.org/show_bug.cgi?id=251532#c6)、[Audio Sessionの既定値](https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API)、[ユーザー操作の有効化](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/User_activation)。
 

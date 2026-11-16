@@ -4,12 +4,17 @@
 (() => {
   const STORAGE_KEY = "bierkompass-sound-v1";
   const AudioContext = window.AudioContext || window.webkitAudioContext;
+  const navigator = window.navigator || {};
+  const appleTouch = /iPhone|iPad|iPod/.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const preferMedia = appleTouch && window.BierKompassMediaSound?.supported(window);
+  const supported = Boolean(AudioContext || preferMedia);
   const button = document.querySelector("#soundToggle");
   let previousAudioSessionType = null;
   let enabled = true;
   try { enabled = localStorage.getItem(STORAGE_KEY) !== "off"; } catch { /* Private browsing can block storage. */ }
   let context = null;
   let ready = null;
+  let media = null;
   let generation = 0;
   const voices = new Set();
   // Additive chimes and a sustained buzzer are intentionally more recognisable
@@ -56,15 +61,16 @@
   }
   function render() {
     if (!button) return;
-    button.disabled = !AudioContext;
-    button.textContent = !AudioContext ? "音 非対応" : enabled ? "🔊 音 ON" : "🔇 音 OFF";
-    button.setAttribute("aria-pressed", String(Boolean(AudioContext && enabled)));
-    button.setAttribute("aria-label", !AudioContext ? "このブラウザーは効果音に対応していません" : `効果音 ${enabled ? "オン。オフにする" : "オフ。オンにする"}`);
-    button.title = !AudioContext ? "効果音なしで学習できます" : "正解・不正解・5問ごとの連続正解・学習完了・模試の合否を効果音でお知らせします";
+    button.disabled = !supported;
+    button.textContent = !supported ? "音 非対応" : enabled ? "🔊 音 ON" : "🔇 音 OFF";
+    button.setAttribute("aria-pressed", String(Boolean(supported && enabled)));
+    button.setAttribute("aria-label", !supported ? "このブラウザーは効果音に対応していません" : `効果音 ${enabled ? "オン。オフにする" : "オフ。オンにする"}`);
+    button.title = !supported ? "効果音なしで学習できます" : "正解・不正解・5問ごとの連続正解・学習完了・模試の合否を効果音でお知らせします";
   }
 
   function stop() {
     generation += 1;
+    media?.stop();
     for (const voice of voices) {
       try { voice.oscillator.stop(); } catch { /* Already ended. */ }
       voice.oscillator.disconnect();
@@ -75,10 +81,15 @@
 
   // Retry on each new usable gesture, including touchend/pointerup on iPhone.
   // An earlier resume() can remain pending; it must not block a later tap.
-  function unlock() {
-    if (!enabled || !AudioContext || document.hidden) return;
+  function unlock(gesture = false) {
+    if (!enabled || !supported || document.hidden) return;
     try {
       usePlaybackSession();
+      if (preferMedia) {
+        try { media ||= window.BierKompassMediaSound.create(cues, window); } catch { /* Fall back if media construction fails. */ }
+        if (media) { if (gesture) media.unlock(); return; }
+      }
+      if (!AudioContext) return;
       if (!context || context.state === "closed") context = new AudioContext();
       if (context.state !== "running") {
         const attempt = Promise.resolve(context.resume()).catch(() => {}).finally(() => { if (ready === attempt) ready = null; });
@@ -88,8 +99,10 @@
   }
 
   function play(name) {
-    if (context) unlock();
-    if (!enabled || !cues[name] || !context || document.hidden) return;
+    if (context || media) unlock();
+    if (!enabled || !cues[name] || document.hidden) return;
+    if (media) { stop(); media.play(name); return; }
+    if (!context) return;
     stop();
     const ticket = generation;
     const startedAt = Date.now();
@@ -130,11 +143,11 @@
     enabled = !enabled;
     try { localStorage.setItem(STORAGE_KEY, enabled ? "on" : "off"); } catch { /* Keep the switch usable without storage. */ }
     render();
-    if (enabled) { unlock(); play("correct"); }
+    if (enabled) { unlock(true); play("correct"); }
     else { stop(); releasePlaybackSession(); }
   });
   for (const event of ["touchend", "pointerup", "keydown", "click"]) {
-    document.addEventListener(event, (event) => { if (event.isTrusted) unlock(); }, { capture: true, passive: true });
+    document.addEventListener(event, (event) => { if (event.isTrusted) unlock(true); }, { capture: true, passive: true });
   }
   document.addEventListener("visibilitychange", () => { if (document.hidden) { stop(); releasePlaybackSession(); } });
   window.addEventListener("pagehide", () => { stop(); releasePlaybackSession(); });

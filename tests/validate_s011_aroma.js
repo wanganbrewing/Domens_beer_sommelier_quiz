@@ -20,7 +20,8 @@ const blindOld=JSON.parse(old('blind-tasting.json')),blind=JSON.parse(read('blin
 const b=blindOld.scenarios.find(s=>s.id==='B-04');b.blindCard.aroma=aroma;b.step1ObservationsJa[1]='香り：'+aroma;
 assert.deepEqual(blind,blindOld,'only the duplicate B-04 aroma and observation change');
 for(const p of ['questions.json','choice-guide.js','blind-tasting.json']) assert.ok(!read(p).includes('完熟バナナ・桃・クローブ'));
-for(const p of ['choice-variants.json','source-passages.json','sound.js','blind-quiz.js','style-links.js'])assert.equal(read(p),old(p),p);
+for(const p of ['choice-variants.json','source-passages.json','blind-quiz.js','style-links.js'])assert.equal(read(p),old(p),p);
+// v68 intentionally changes sound.js; validate_sound and validate_ios_media_sound cover audio.
 // Exact v66 runtime change scope is checked by validate_home_notice and validate_scope_v66.
 const h=require('./runtime_harness')();h.context.q=currentTarget;h.context.window.BierKompassChoiceGuide=guide;
 h.run('createSession([q],"study");');
