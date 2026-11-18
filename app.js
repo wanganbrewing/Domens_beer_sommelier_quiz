@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v69";
+const APP_VERSION = "v70";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -99,7 +99,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=69", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=70", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -542,19 +542,30 @@ function checkStudyAnswer() {
   window.BierKompassSound?.play(correct && studyCorrectStreak % 5 === 0 ? "streak" : correct ? "correct" : "incorrect");
 }
 
+// Legacy labels describe the answer choice, not the correction that follows.
+// Normalize only at render time so banks and saved sessions retain their data.
+function explanationHtml(text) {
+  return answerHtml(String(text).replace(/(?:正答|誤答)[：:]/g, "解説："));
+}
+
+function choiceReasonHtml(reason) {
+  const body = reason.replace(/^(?:正答|誤答|正解|不正解)[：:]\s*/, "");
+  return `<p class="choice-explanation"><strong>解説：</strong>${explanationHtml(body)}</p>`;
+}
+
 function renderFeedback(question) {
   const correct = sameSet(selectedValues(question.id), question.correct);
   $("#feedbackPanel").classList.toggle("incorrect", !correct);
   $("#feedbackVerdict").textContent = correct ? "✓ 正解" : "✕ 不正解";
-  $("#feedbackExplanation").innerHTML = answerHtml(question.explanation) + (window.BierKompassGlassGuide?.forQuestion(question) || "") + (window.BierKompassPhotos?.forQuestion(question, session.optionOrders[question.id]) || "");
+  $("#feedbackExplanation").innerHTML = explanationHtml(question.explanation) + (window.BierKompassGlassGuide?.forQuestion(question) || "") + (window.BierKompassPhotos?.forQuestion(question, session.optionOrders[question.id]) || "");
   $("#choiceReasons").innerHTML = session.optionOrders[question.id].map((originalIndex, displayIndex) => {
     const choice = question.choices[originalIndex];
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解の選択肢" : "✕ 不正解の選択肢"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}<p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
+      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}${choiceReasonHtml(reason)}${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
   $("#sourceList").innerHTML = `<strong>出典</strong>${question.sources.map((source) => `<p>${sourceHtml(source)}</p>`).join("")}`;
@@ -566,9 +577,9 @@ function renderReviewChoiceReasons(question, order) {
     const reason = question.choiceReasons[originalIndex].trim();
     const isCorrect = question.correct.includes(originalIndex);
     const displayKey = String.fromCharCode(65 + displayIndex);
-    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解" : "✕ 不正解"}：${answerHtml(choice)}`;
+    const verdict = `${displayKey}｜${isCorrect ? "✓ 正解の選択肢" : "✕ 不正解の選択肢"}：${answerHtml(choice)}`;
     return reason
-      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}<p>${answerHtml(reason)}</p>${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
+      ? `<details open><summary>${verdict}</summary>${choiceKnowledgeHtml(choice)}${choiceReasonHtml(reason)}${window.BierKompassSources?.choiceLinks(question, originalIndex) || ""}</details>`
       : `<div class="choice-verdict">${verdict}</div>`;
   }).join("");
 }
@@ -696,7 +707,7 @@ function renderReview() {
     const choiceReasons = renderReviewChoiceReasons(question, order);
     const sources = question.sources.map((source) => sourceHtml(source)).join("／");
     const reviewLabel = "自分の回答・正答・解説・出典を見る";
-    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : item.answered ? "✕ 要復習" : "未回答"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>自分の回答：</strong>${escapeHtml(selectedAnswer)}</p><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${answerHtml(question.explanation)}</p>${window.BierKompassGlassGuide?.forQuestion(question) || ""}${window.BierKompassPhotos?.forQuestion(question, order) || ""}${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
+    return `<article class="review-item"><span class="review-status ${item.exact ? "ok" : "ng"}">${item.exact ? "✓ 完全正解" : item.answered ? "✕ 要復習" : "未回答"}・${item.points}/${item.max}点</span><h3>Q${index + 1}. ${escapeHtml(question.question)}</h3><details><summary>${reviewLabel}</summary><p><strong>自分の回答：</strong>${escapeHtml(selectedAnswer)}</p><p><strong>正答：</strong>${answerHtml(answers)}</p><p>${explanationHtml(question.explanation)}</p>${window.BierKompassGlassGuide?.forQuestion(question) || ""}${window.BierKompassPhotos?.forQuestion(question, order) || ""}${choiceReasons ? `<div class="choice-reasons review-choice-reasons">${choiceReasons}</div>` : ""}<p><strong>出典：</strong>${sources}</p></details></article>`;
   }).join("") : '<p class="review-empty">要復習の問題はありません。全問で完全正解です。</p>';
 }
 

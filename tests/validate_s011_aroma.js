@@ -28,7 +28,7 @@ h.run('createSession([q],"study");');
 assert.ok(h.element('#questionText').innerHTML.includes(aroma));
 assert.equal(h.run('scoreQuestion(q,[2])'),1);assert.equal(h.run('scoreQuestion(q,[0])'),0);
 h.run('session.answers[q.id]=[2];checkStudyAnswer();');
-assert.ok(h.element('#choiceReasons').innerHTML.includes(currentTarget.choiceReasons[2]));
+assert.ok(h.element('#choiceReasons').innerHTML.includes(currentTarget.choiceReasons[2].replace(/^(?:正答|誤答)[：:]\s*/, '')));
 assert.ok(!h.element('#choiceReasons').innerHTML.includes(original));
 assert.equal(h.run('history[q.id].attempts'),1);assert.equal(h.run('history[q.id].correctCount'),1);
 const saved=[...h.storage];h.run('renderFeedback(q);renderFeedback(q);');assert.deepEqual([...h.storage],saved);
