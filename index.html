@@ -12,7 +12,7 @@
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <title>BierKompass | Doemens Biersommelier 試験対策</title>
-  <link rel="stylesheet" href="styles.css?v=70">
+  <link rel="stylesheet" href="styles.css?v=71">
 </head>
 <body class="access-locked">
   <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
@@ -32,7 +32,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header" aria-hidden="true">
     <a class="brand" href="#" id="homeLink" aria-label="ホームへ戻る"><span class="brand-mark" aria-hidden="true"><span>✦</span></span><span><strong>BierKompass</strong><small>1170</small></span></a>
-    <div class="header-status"><small class="version-badge">v70</small><button class="ghost small sound-toggle" id="soundToggle" type="button" aria-pressed="true" aria-label="効果音 オン。オフにする">🔊 音 ON</button><span id="headerProgress">学習記録 0 / 942</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
+    <div class="header-status"><small class="version-badge">v71</small><button class="ghost small sound-toggle" id="soundToggle" type="button" aria-pressed="true" aria-label="効果音 オン。オフにする">🔊 音 ON</button><span id="headerProgress">学習記録 0 / 942</span><button class="ghost small" id="resetHistoryButton" type="button">履歴をリセット</button></div>
   </header>
 
   <main id="app" tabindex="-1" aria-hidden="true">
@@ -44,12 +44,18 @@
 
 
       <section class="dashboard" aria-labelledby="dashboardTitle">
-        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="study" role="tab" aria-selected="true">学習モード</button><button class="mode-tab" data-mode="mock" role="tab" aria-selected="false">模試モード</button></div></div>
+        <div class="section-heading"><div><p class="eyebrow">START YOUR SESSION</p><h2 id="dashboardTitle">出題条件を選ぶ</h2></div><div class="mode-tabs" role="tablist" aria-label="モード"><button class="mode-tab active" data-mode="study" role="tab" aria-selected="true">学習モード</button><button class="mode-tab" data-mode="mock" role="tab" aria-selected="false">模試モード</button><button class="mode-tab" data-mode="prediction" role="tab" aria-selected="false">直近予想問題集</button></div></div>
         <div class="config-grid" id="studyConfig">
           <fieldset class="config-card frequency-card"><legend><span>01</span> 出題予想頻度</legend><p>複数選択できます。選んだ頻度の問題だけを出題します。</p><div id="frequencyFilters" class="frequency-options"></div></fieldset>
           <fieldset class="config-card category-card"><legend><span>02</span> 分野</legend><div class="select-tools"><p>学習したい分野を選択</p><button type="button" class="text-button" id="toggleCategories">すべて解除</button></div><div id="categoryFilters" class="category-options"></div></fieldset>
           <fieldset class="config-card history-card" id="historyFilterCard"><legend><span>03</span> 出題モード・学習履歴</legend><label class="select-label" for="historyFilter">出題対象</label><select id="historyFilter"><option value="all">全問題</option><option value="unanswered">未回答のみ</option><option value="wrong">過去に不正解だった問題のみ</option><option value="not-mastered">一度正解した問題を出さない</option></select><p>「一度正解した問題を出さない」を選べます。偶然正解した問題は回答後に再出題へ戻せます。</p></fieldset>
         </div>
+        <section class="prediction-guide" id="predictionGuide" hidden aria-labelledby="predictionTitle">
+          <p class="eyebrow">LAST-MINUTE PRACTICE · 50 QUESTIONS</p><h3 id="predictionTitle">直近予想問題集</h3>
+          <p>講義の「筆記テストの準備」スライドを最優先に選んだ50問。細かな銘柄暗記より、分類・仕組み・提供の基本を確認します。</p>
+          <ul><li><strong>まず必須：</strong>ビール純粋令の年号・原料、混同しやすい定義</li><li><strong>スタイル：</strong>ラガー／エール、ホッピー／モルティー、色・アルコール・酸味</li><li><strong>製造・工程：</strong>製麦、醸造、4原料、酵素・pH・温度・糖</li><li><strong>サービス・知識：</strong>味覚・ペアリング、保管・熟成、ドラフトの長さ・内径・高さ・圧・温度、グラス・注ぎ方</li></ul>
+          <p class="prediction-note">時間制限なし・1問ごとに解説。毎回50問すべてを出題し、正解済みも含みます。純粋令と定義を先頭に、以降は章内の問題順と選択肢順を変えます。学習履歴は通常学習と共通です。本番の出題を保証するものではありません。</p>
+        </section>
         <section class="exam-guide mock-exam-guide" id="mockExamGuide" hidden aria-labelledby="mockExamTitle">
           <div><p class="eyebrow">DOEMENS MOCK EXAM</p><h3 id="mockExamTitle">ドゥーメンス模試</h3><p>学習範囲全体から50問を出題。分野・頻度・学習履歴による絞り込みは使いません。解説は終了後にまとめて確認できます。</p></div>
           <ol><li><b>50</b><span>問題</span></li><li><b>40</b><span>分・時間切れ自動採点</span></li><li><b>複数</b><span>選択式</span></li><li><b>1〜4</b><span>正答数は非表示</span></li><li><b>＋1</b><span>正答選択</span></li><li><b>−1</b><span>誤答選択</span></li><li><b>0</b><span>1問の最低点</span></li><li><b>50%</b><span>総可能点に対する合格基準</span></li></ol>
@@ -118,6 +124,6 @@
   </footer>
 
   <dialog id="confirmDialog"><form method="dialog"><p class="eyebrow">CONFIRM</p><h2 id="dialogTitle">確認</h2><p id="dialogText"></p><div><button value="cancel" class="ghost">キャンセル</button><button value="confirm" class="danger" id="dialogConfirm">実行する</button></div></form></dialog>
-  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=70" defer></script><script src="beer-photos.js?v=70" defer></script><script src="choice-variants.js?v=70" defer></script><script src="choice-guide.js?v=70" defer></script><script src="source-viewer.js?v=70" defer></script><script src="sound-media.js?v=70" defer></script><script src="sound.js?v=70" defer></script><script src="glass-guide.js?v=70" defer></script><script src="app.js?v=70" defer></script><script src="blind-quiz.js?v=70" defer></script>
+  <noscript>この問題集の利用にはJavaScriptを有効にしてください。</noscript><script src="style-links.js?v=71" defer></script><script src="beer-photos.js?v=71" defer></script><script src="choice-variants.js?v=71" defer></script><script src="choice-guide.js?v=71" defer></script><script src="source-viewer.js?v=71" defer></script><script src="sound-media.js?v=71" defer></script><script src="sound.js?v=71" defer></script><script src="glass-guide.js?v=71" defer></script><script src="prediction-set.js?v=71" defer></script><script src="app.js?v=71" defer></script><script src="blind-quiz.js?v=71" defer></script>
 </body>
 </html>

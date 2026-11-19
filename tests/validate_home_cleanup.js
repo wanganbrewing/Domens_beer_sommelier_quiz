@@ -27,7 +27,7 @@ const run = (s) => vm.runInContext(s, context);
 const snapshot = (s) => JSON.parse(run(`JSON.stringify(${s})`));
 run("data = fixture; questionsById = new Map(data.questions.map(q => [q.id, q]));");
 assert.doesNotMatch(html, /最終試験|finalExamGuide|data-mode="exam"|class="style-corner"|class="beer-guide-corner"/);
-assert.deepEqual([...html.matchAll(/data-mode="(.*?)"/g)].map(m => m[1]), ["study", "mock"]);
+assert.deepEqual([...html.matchAll(/data-mode="(.*?)"/g)].map(m => m[1]), ["study", "mock", "prediction"]);
 const footer = html.slice(html.indexOf('<footer'), html.indexOf('</footer>'));
 assert.match(footer, /<a id="startBlindQuizButton" href="#blindQuizView">ブラインドテイスティング<\/a>/);
 assert.match(footer, /<a id="openBeerGuideButton" href="#beerGuideView">代表ビール購入ガイド<\/a>/);
@@ -79,7 +79,7 @@ for (const view of ["session", "result", "blindQuiz", "beerGuide"]) {
   run(`showView("${view}");`);
   assert.equal(element("#homeSupplementLinks").hidden, true);
 }
-console.log("OK: two-mode home, footer-only links, retired settings, answer-preserving migration, existing sessions and view visibility");
+console.log("OK: three-mode home, footer-only links, retired settings, answer-preserving migration, existing sessions and view visibility");
 // Screenshot regression S-022: green selected wrong options must not imply correctness.
 run(`const pictured = questionsById.get("S-022");
   session = { mode: "study", questionIds: [pictured.id], optionOrders: {[pictured.id]:[3,1,2,0]},

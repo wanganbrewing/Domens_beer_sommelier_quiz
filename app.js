@@ -1,7 +1,7 @@
 "use strict";
 
 // 問題文と回答形式を全面更新したため、旧版の回答履歴を混在させない。
-const APP_VERSION = "v70";
+const APP_VERSION = "v71";
 const STORAGE = { history: "bierkompass-history-v23", session: "bierkompass-session-v24", settings: "bierkompass-settings-v14" };
 const ACCESS_KEY = "bierkompass-access-v1";
 const ACCESS_PASSWORD_HASH = "1d8b4cf854cd42f4868849c4ce329da72c406cc11983b4bf45acdae0805f7a72";
@@ -40,6 +40,12 @@ let pendingConfirm = null;
 // The mock exam is an app practice setting, not a current Japanese certification rule.
 const MOCK_EXAM = Object.freeze({ questionCount: 50, minutes: 40, passingRate: 0.5 });
 const isTimedMode = (value) => value === "mock";
+// The prediction collection reuses the study engine, with its own bounded pool.
+// Keeping the study schema preserves grading, explanations, sound and history.
+const isPredictionSession = () => session?.collection === "recent-prediction-v1";
+function predictionPool() {
+  return window.BierKompassChoiceVariants && window.BierKompassPrediction?.questions(questionsById) || [];
+}
 const sessionLabel = (value) => value === "mock" ? "模試モード" : "学習モード";
 
 function loadJson(key, fallback) {
@@ -99,7 +105,7 @@ async function init() {
     questionsById = new Map(data.questions.map((question) => [question.id, question]));
     if (window.BierKompassChoiceVariants) {
       try {
-        const variantsResponse = await fetch("choice-variants.json?v=70", { cache: "no-store" });
+        const variantsResponse = await fetch("choice-variants.json?v=71", { cache: "no-store" });
         if (!variantsResponse.ok) throw new Error("選択肢セットを読み込めませんでした。");
         variantCatalog = window.BierKompassChoiceVariants.createCatalog(data.questions, await variantsResponse.json());
       } catch (error) {
@@ -126,7 +132,7 @@ async function init() {
 function restoreSavedSession(saved) {
   if (!saved || !["study", "mock", "exam"].includes(saved.mode)
       || !Array.isArray(saved.questionIds) || !saved.questionIds.length
-      || (saved.completed && (saved.mode !== "study" || !saved.questionIds.every((id) => saved.checked?.[id])))
+      || (saved.completed && (saved.mode !== "study" || (saved.collection !== "recent-prediction-v1" && !saved.questionIds.every((id) => saved.checked?.[id]))))
       || !saved.questionIds.every((id) => questionsById.has(id))) return null;
   if (saved.questionSnapshots) {
     const engine = window.BierKompassChoiceVariants;
@@ -137,8 +143,30 @@ function restoreSavedSession(saved) {
         && order.length === 4 && new Set(order).size === 4 && order.every((i) => Number.isInteger(i) && i >= 0 && i < 4);
     })) return null;
   }
+  if (saved.completed && saved.collection === "recent-prediction-v1" && !validPredictionResult(saved)) return null;
   if (saved.mode !== "exam") return saved;
   return { ...saved, mode: "study", durationSeconds: null, restoredFromRetiredExam: true };
+}
+
+// Only the new collection restores partial completed results; legacy study rules stay unchanged.
+function validPredictionResult(saved) {
+  const result = saved.result;
+  if (!result || !Array.isArray(result.review) || result.review.length !== saved.questionIds.length) return false;
+  let earned = 0, maximum = 0;
+  const categories = {};
+  for (let i = 0; i < saved.questionIds.length; i += 1) {
+    const id = saved.questionIds[i], q = saved.questionSnapshots?.[id] || questionsById.get(id);
+    const selected = saved.answers?.[id] || [], answered = Boolean(saved.checked?.[id]), item = result.review[i];
+    if (!Array.isArray(selected) || new Set(selected).size !== selected.length || !selected.every(n => Number.isInteger(n) && n >= 0 && n < 4)) return false;
+    const points = scoreQuestion(q, selected, answered), max = Math.max(1, q.correct.length);
+    if (!item || item.id !== id || !Array.isArray(item.selected) || !sameSet(item.selected, selected)
+        || item.answered !== answered || item.points !== points || item.max !== max || item.exact !== (answered && sameSet(selected, q.correct))) return false;
+    earned += points; maximum += max;
+    categories[q.category] ||= {earned: 0, maximum: 0, count: 0};
+    categories[q.category].earned += points; categories[q.category].maximum += max; categories[q.category].count += 1;
+  }
+  return result.earned === earned && result.maximum === maximum && result.rate === (maximum ? earned / maximum : 0)
+    && JSON.stringify(result.categories) === JSON.stringify(categories);
 }
 
 function renderFilters() {
@@ -178,13 +206,14 @@ function bindEvents() {
 }
 
 function setMode(nextMode) {
-  mode = ["study", "mock"].includes(nextMode) ? nextMode : "study";
+  mode = ["study", "mock", "prediction"].includes(nextMode) ? nextMode : "study";
   $$(".mode-tab").forEach((button) => { const active = button.dataset.mode === mode; button.classList.toggle("active", active); button.setAttribute("aria-selected", String(active)); });
   $("#historyFilterCard").hidden = mode !== "study";
   $("#mockExamGuide").hidden = mode !== "mock";
-  $("#studyConfig").hidden = mode === "mock";
-  $("#modeSummary").textContent = mode === "mock" ? "全分野から50問・40分・終了後に合否と解説を表示" : "50問ずつ回答・解説と出典を表示";
-  $("#startButton span").textContent = mode === "mock" ? "40分の模試を始める" : "学習を始める";
+  $("#studyConfig").hidden = mode !== "study";
+  $("#predictionGuide").hidden = mode !== "prediction";
+  $("#modeSummary").textContent = mode === "prediction" ? "画像の準備項目に沿った50問・純粋令と定義を最初に・毎問解説" : mode === "mock" ? "全分野から50問・40分・終了後に合否と解説を表示" : "50問ずつ回答・解説と出典を表示";
+  $("#startButton span").textContent = mode === "prediction" ? "直近予想50問を始める" : mode === "mock" ? "40分の模試を始める" : "学習を始める";
   updatePoolCount();
 }
 
@@ -202,6 +231,7 @@ function selectedFilters() {
 }
 
 function filteredPool(filters = selectedFilters(), poolMode = mode) {
+  if (poolMode === "prediction") return predictionPool();
   return data.questions.filter((question) => {
     if (question.active === false) return false;
     if (poolMode === "mock") return true;
@@ -218,10 +248,10 @@ function filteredPool(filters = selectedFilters(), poolMode = mode) {
 function updatePoolCount() {
   if (!data) return;
   const count = filteredPool().length;
-  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
+  const requestedCount = mode === "prediction" ? 50 : mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
   const sessionCount = Math.min(requestedCount, count);
   $("#poolCount").textContent = count ? `出題 ${sessionCount.toLocaleString()}問（対象 ${count.toLocaleString()}問）` : "対象 0問";
-  const message = isTimedMode(mode) && count < requestedCount ? `${sessionLabel(mode)}には${requestedCount}問以上の対象問題が必要です（現在${count}問）。` : count === 0 ? "条件に合う問題がありません。" : "";
+  const message = mode === "prediction" && count !== 50 ? "予想問題集を読み込めませんでした。再読み込みしてください。通常の学習・模試は利用できます。" : isTimedMode(mode) && count < requestedCount ? `${sessionLabel(mode)}には${requestedCount}問以上の対象問題が必要です（現在${count}問）。` : count === 0 ? "条件に合う問題がありません。" : "";
   $("#configMessage").textContent = message;
   $("#startButton").disabled = Boolean(message);
   saveJson(STORAGE.settings, { mode, ...selectedFilters() });
@@ -247,21 +277,26 @@ function restoreSettings() {
 
 function startSession() {
   const pool = filteredPool();
-  const requestedCount = mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
-  if (!pool.length || (isTimedMode(mode) && pool.length < requestedCount)) return;
+  const requestedCount = mode === "prediction" ? 50 : mode === "mock" ? MOCK_EXAM.questionCount : data.metadata.studyQuestionCount;
+  if (!pool.length || (mode === "prediction" && pool.length !== 50) || (isTimedMode(mode) && pool.length < requestedCount)) return;
   const count = Math.min(requestedCount, pool.length);
-  const selectedQuestions = mode === "mock" ? mockExamSample(pool, count) : studyQuestionSample(pool, count);
+  const selectedQuestions = mode === "prediction"
+    ? window.BierKompassPrediction.orderedQuestions(questionsById, shuffle)
+    : mode === "mock" ? mockExamSample(pool, count) : studyQuestionSample(pool, count);
   createSession(selectedQuestions, mode);
 }
 
 function createSession(selectedQuestions, nextMode, prototype = false, previous = null) {
+  const prediction = nextMode === "prediction" || previous?.collection === "recent-prediction-v1";
+  if (prediction) nextMode = "study";
   const engine = window.BierKompassChoiceVariants;
   const questionIds = selectedQuestions.map((question) => question.id);
   const questionSnapshots = engine ? Object.fromEntries(selectedQuestions.map((base) => {
     const previousId = previous?.questionSnapshots?.[base.id]?.choiceVariantId
       || (previous?.questionIds?.includes(base.id) ? "base" : null)
       || variantUsage[base.id] || (history[base.id]?.attempts ? "base" : null);
-    const q = engine.chooseQuestion(base, variantCatalog, previousId);
+    const chosen = engine.chooseQuestion(base, variantCatalog, previousId);
+    const q = prediction ? window.BierKompassPrediction.prepareQuestion(chosen) : chosen;
     if (q.choiceVariantId) variantUsage[base.id] = q.choiceVariantId;
     return [base.id, q];
   })) : null;
@@ -270,6 +305,7 @@ function createSession(selectedQuestions, nextMode, prototype = false, previous 
     startedAt: Date.now(), durationSeconds: nextMode === "mock" ? MOCK_EXAM.minutes * 60 : null, completed: false };
   if (questionSnapshots) Object.assign(session, { choiceVariantSchema: 1, questionSnapshots });
   if (prototype) session.choiceVariantPrototype = true;
+  if (prediction) session.collection = "recent-prediction-v1";
   if (nextMode === "study") {
     session.studyFilters = previous?.studyFilters || selectedFilters();
     session.studySeenIds = [...new Set([...(previous?.studySeenIds || previous?.questionIds || []), ...questionIds])];
@@ -356,10 +392,10 @@ function showView(name) {
 
 function showSession() {
   if (!session) return;
-  if (session.completed) { if (session.mode === "study") finishStudySession(); else if (session.result) showResult(); return; }
+  if (session.completed) { if (isPredictionSession() && session.result) showResult(); else if (session.mode === "study") finishStudySession(); else if (session.result) showResult(); return; }
   session.answered ||= Object.fromEntries(Object.keys(session.answers || {}).map((id) => [id, true]));
   showView("session");
-  $("#sessionModeBadge").textContent = sessionLabel(session.mode);
+  $("#sessionModeBadge").textContent = isPredictionSession() ? "直近予想問題集" : sessionLabel(session.mode);
   $("#sessionRecoveryMessage").hidden = !session.restoredFromRetiredExam;
   $("#timer").hidden = !isTimedMode(session.mode);
   $("#checkButton").hidden = session.mode !== "study";
@@ -380,7 +416,9 @@ function renderQuestion() {
   const checked = Boolean(session.checked[question.id]);
   $("#questionCounter").textContent = `${session.current + 1} / ${session.questionIds.length}`;
   $("#progressBar").style.width = `${((session.current + 1) / session.questionIds.length) * 100}%`;
-  $("#frequencyTag").textContent = `${question.frequencyTier} · ${TIER_NAMES[question.frequencyTier]}`;
+  $("#frequencyTag").textContent = isPredictionSession()
+    ? (window.BierKompassPrediction?.sectionFor(question.id) || "直近予想問題集")
+    : `${question.frequencyTier} · ${TIER_NAMES[question.frequencyTier]}`;
   $("#frequencyTag").hidden = session.mode === "mock";
   $("#categoryTag").textContent = categoryName(question.category);
   $("#typeTag").textContent = "複数選択";
@@ -461,13 +499,13 @@ function advanceQuestion() {
 }
 
 function remainingStudyPool() {
-  if (!session || session.mode !== "study" || session.choiceVariantPrototype) return [];
+  if (!session || session.mode !== "study" || session.choiceVariantPrototype || isPredictionSession()) return [];
   const seen = new Set([...(session.studySeenIds || []), ...session.questionIds]);
   return filteredPool(session.studyFilters || selectedFilters(), "study").filter((question) => !seen.has(question.id));
 }
 
 function startNextStudySession() {
-  if (!session?.completed || session.mode !== "study" || session.choiceVariantPrototype) return;
+  if (!session?.completed || session.mode !== "study" || session.choiceVariantPrototype || isPredictionSession()) return;
   const pool = remainingStudyPool();
   if (!pool.length) return;
   const previous = session;
@@ -656,9 +694,11 @@ function showResult() {
   const study = session.mode === "study";
   $(".result-hero").classList.toggle("fail", !study && !result.passed);
   $("#resultIcon").textContent = study || result.passed ? "✓" : "!";
-  $("#resultTitle").textContent = study ? `${session.questionIds.length}問の学習完了` : result.passed ? "合格" : "不合格";
+  $("#resultTitle").textContent = isPredictionSession() ? (result.review.every(item => item.answered) ? "直近予想問題集の学習完了" : "直近予想問題集の途中結果") : study ? `${session.questionIds.length}問の学習完了` : result.passed ? "合格" : "不合格";
   if (study) {
-    $("#resultLead").textContent = `${session.questionIds.length}問の学習が終わりました。続けるか、ここで終わるか選べます。`;
+    $("#resultLead").textContent = isPredictionSession()
+      ? `50問中${result.review.filter(item => item.answered).length}問に回答しました。解説を復習するか、同じ問題集でもう一度練習できます。`
+      : `${session.questionIds.length}問の学習が終わりました。続けるか、ここで終わるか選べます。`;
     $("#resultScope").textContent = "学習の得点率です。模試の合否判定ではありません。";
     $("#resultSummary").textContent = `全${result.review.length}問 · 完全正解 ${result.review.filter((item) => item.exact).length}問 · 学習履歴は保存済みです。`;
   } else {
@@ -670,11 +710,13 @@ function showResult() {
   }
   const remaining = study ? remainingStudyPool().length : 0;
   const nextCount = Math.min(data.metadata.studyQuestionCount, remaining);
-  $("#nextStudyButton").hidden = !study || Boolean(session.choiceVariantPrototype);
+  $("#nextStudyButton").hidden = !study || Boolean(session.choiceVariantPrototype) || isPredictionSession();
   $("#nextStudyButton").disabled = !remaining;
   $("#nextStudyButton").textContent = remaining ? `次の${nextCount}問へ →` : "次の問題はありません";
   $("#studyContinuationNote").hidden = !study;
-  $("#studyContinuationNote").textContent = session.choiceVariantPrototype
+  $("#studyContinuationNote").textContent = isPredictionSession()
+    ? "この問題集は50問で一巡です。本番の出題を保証するものではありません。通常学習では、これまでの頻度・分野・履歴の絞り込みを引き続き使えます。"
+    : session.choiceVariantPrototype
     ? "別セット対応問題の学習が終わりました。同じ問題でもう一度学ぶと、選択肢の内容が変わります。"
     : remaining
       ? `同じ絞り込み条件で、今回の連続学習でまだ出していない残り${remaining}問から出題します。${nextCount < data.metadata.studyQuestionCount ? `次は残り${nextCount}問です。` : ""}`
