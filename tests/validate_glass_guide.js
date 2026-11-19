@@ -45,7 +45,7 @@ h.run('createSession([questionsById.get("B-332")],"mock");');assert.equal(h.elem
 // Guide loading is optional: failure does not prevent feedback or scoring.
 delete h.context.window.BierKompassGlassGuide;h.run('renderFeedback(currentQuestion());');assert.equal(h.run('scoreQuestion(currentQuestion(),currentQuestion().correct)'),h.run('currentQuestion().correct.length'));
 for(const name of ['questions.json','choice-variants.json','source-links.json','source-passages.json','blind-tasting.json']){
- const base=name==='questions.json' ? JSON.parse(read('tests/fixtures/scope-v69-approved.json')) : JSON.parse(execFileSync('git',['show',`362a97e1d844ead1292e628feb710aa81a277cd4:${name}`],{cwd:root,maxBuffer:20*1024*1024}));
+ const base=name==='questions.json' ? require('./approved_bank')() : JSON.parse(execFileSync('git',['show',`362a97e1d844ead1292e628feb710aa81a277cd4:${name}`],{cwd:root,maxBuffer:20*1024*1024}));
  assert.equal(JSON.stringify(JSON.parse(read(name))),JSON.stringify(base),name+' unchanged');
 }
 console.log('PASS glass references: matching, no false positives/duplicates, safe original SVG, after-answer/review only, immutable data/scoring/history and optional-module fallback');

@@ -63,7 +63,7 @@ async function main(){
     .replace(' + (window.BierKompassGlassGuide?.forQuestion(question) || "")', '')
     .replace('${window.BierKompassGlassGuide?.forQuestion(question) || ""}', '');
   assert.equal(withoutGlass,expected);
-  assert.deepEqual(JSON.parse(read("questions.json")),JSON.parse(read("tests/fixtures/scope-v69-approved.json")));
+  assert.deepEqual(JSON.parse(read("questions.json")),require('./approved_bank')());
   for(const name of ["choice-variants.js","choice-variants.json","beer-photos.js","blind-quiz.js","source-passages.json"])
     assert.deepEqual(fs.readFileSync(path.join(root,name)),base(name),name);
   assert.ok(read("styles.css").startsWith(base("styles.css").toString().split("/* Local-only source PDF viewer.")[0]),"pre-existing learning layout styles remain unchanged");

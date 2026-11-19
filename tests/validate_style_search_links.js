@@ -109,7 +109,7 @@ async function main() {
   // Exact scope guard: answers, source permissions, sampling, scoring and every other app function stay intact.
   for(const file of ["choice-variants.json","source-passages.json","blind-tasting.json","beer-image-styles.json","beer-photos.json","beer-illustrations.json"])
     assert.equal(JSON.stringify(json(file)),JSON.stringify(JSON.parse(base(file))),file);
-  assert.equal(JSON.stringify(json("questions.json")),JSON.stringify(json("tests/fixtures/scope-v69-approved.json")));
+  assert.equal(JSON.stringify(json("questions.json")),JSON.stringify(require('./approved_bank')()));
   // Preserve style-related render paths without freezing unrelated home layout or cache versions.
   for (const name of ["renderQuestion","renderFeedback","renderReviewChoiceReasons","renderReview"]) {
     const pattern=new RegExp(`^function ${name}\\([^\\n]*\\) \\{[\\s\\S]*?^\\}`,"m");

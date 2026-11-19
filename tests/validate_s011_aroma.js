@@ -8,7 +8,7 @@ const aroma='完熟バナナ・桃を思わせるエステル系の果実香と�
 const before=JSON.parse(old('questions.json')),after=JSON.parse(read('questions.json'));
 const expected=JSON.parse(JSON.stringify(before));const target=expected.questions.find(q=>q.id==='S-011');
 target.question=target.question.replace(original,aroma);target.choiceReasons[2]=target.choiceReasons[2].replace(original,aroma);
-assert.equal(JSON.stringify(after),JSON.stringify(JSON.parse(read('tests/fixtures/scope-v69-approved.json'))),'approved v69 bank');
+assert.equal(JSON.stringify(after),JSON.stringify(require('./approved_bank')()),'approved v69 bank');
 const currentTarget=after.questions.find(q=>q.id==='S-011');
 assert.equal(currentTarget.question,`次の特徴に当てはまるスタイルを選んでください。「${target.question}」`,'S-011 corrected question aroma preserved inside approved prompt');
 assert.deepEqual(currentTarget.correct,target.correct);
